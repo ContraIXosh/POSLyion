@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
+using EntityLayer;
+using BusinessLayer;
 
 namespace PDCLyion
 {
@@ -16,10 +18,13 @@ namespace PDCLyion
 
         private static IconMenuItem activeMenu = null;
         private static Form activeForm = null;
+        private static Users oUser = new Users();
 
-        public Start()
+        public Start(Users user)
         {
             InitializeComponent();
+            oUser = user;
+            lbl_usuario.Text = user.Full_name;
         }
 
         private void OpenForm (IconMenuItem iconmenuitem, Form form)

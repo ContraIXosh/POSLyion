@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer;
+using EntityLayer;
 
 namespace PDCLyion
 {
@@ -19,6 +21,11 @@ namespace PDCLyion
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
+
+            Users oUser = new BL_Users()
+                .ListAll()
+                .Where(u => u.Username == txtusername.Text && u.Password == txtpassword.Text).FirstOrDefault();
+
             if (txtpassword.Text == "" && txtusername.Text == "")
             {
                 MessageBox.Show("Ingrese un usuario y contraseña", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -31,9 +38,13 @@ namespace PDCLyion
             {
                 MessageBox.Show("Ingrese una contraseña", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (oUser == null)
+            {
+                MessageBox.Show("Usuario no encontrado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             else
             {
-                Start form = new Start();
+                Start form = new Start(oUser);
                 form.Show();
                 this.Hide();
                 form.FormClosing += form_closing;
