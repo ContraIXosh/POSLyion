@@ -22,6 +22,28 @@ namespace PDCLyion
         private void btnlogin_Click(object sender, EventArgs e)
         {
 
+            
+           
+        }
+
+        private void btncancel_Click(object sender, EventArgs e)
+        {
+        }
+
+        public void form_closing(object sender, FormClosingEventArgs e)
+        {
+            txtusername.Text = "";
+            txtpassword.Text = "";
+            this.Show();
+        }
+
+        private void rjButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
             Users oUser = new BL_Users()
                 .ListAll()
                 .Where(u => u.Username == txtusername.Text && u.Password == txtpassword.Text).FirstOrDefault();
@@ -49,19 +71,21 @@ namespace PDCLyion
                 this.Hide();
                 form.FormClosing += form_closing;
             }
-           
         }
 
-        private void btncancel_Click(object sender, EventArgs e)
+        private void txtpassword_TextChanged(object sender, EventArgs e)
         {
-            this.Close();
+
         }
 
-        public void form_closing(object sender, FormClosingEventArgs e)
+        private void txtusername_TextChanged(object sender, EventArgs e)
         {
-            txtusername.Text = "";
-            txtpassword.Text = "";
-            this.Show();
+
+        }
+
+        private void txtusername__TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

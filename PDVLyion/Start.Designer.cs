@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.container = new System.Windows.Forms.Panel();
-            this.menu = new System.Windows.Forms.MenuStrip();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbl_usuario = new System.Windows.Forms.Label();
+            this.lbl_POS = new System.Windows.Forms.Label();
             this.iconmenuitem_sales = new FontAwesome.Sharp.IconMenuItem();
             this.iconmenuitem_purchaseorders = new FontAwesome.Sharp.IconMenuItem();
             this.iconmenuitem_products = new FontAwesome.Sharp.IconMenuItem();
@@ -39,45 +40,54 @@
             this.iconmenuitem_vendors = new FontAwesome.Sharp.IconMenuItem();
             this.iconmenuitem_statistics = new FontAwesome.Sharp.IconMenuItem();
             this.iconmenuitem_config = new FontAwesome.Sharp.IconMenuItem();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lbl_usuario = new System.Windows.Forms.Label();
-            this.lbl_POS = new System.Windows.Forms.Label();
-            this.rjButton1 = new ClassLibrary1.RJButton();
+            this.menu = new System.Windows.Forms.MenuStrip();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.container.SuspendLayout();
-            this.menu.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.menu.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
             // 
             this.container.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.container.Controls.Add(this.rjButton1);
-            this.container.Controls.Add(this.menu);
-            this.container.Controls.Add(this.panel5);
+            this.container.Controls.Add(this.panel1);
             this.container.Location = new System.Drawing.Point(0, 0);
             this.container.Name = "container";
             this.container.Size = new System.Drawing.Size(983, 538);
             this.container.TabIndex = 3;
             // 
-            // menu
+            // panel5
             // 
-            this.menu.BackColor = System.Drawing.Color.Gold;
-            this.menu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.iconmenuitem_sales,
-            this.iconmenuitem_purchaseorders,
-            this.iconmenuitem_products,
-            this.iconmenuitem_users,
-            this.iconmenuitem_customers,
-            this.iconmenuitem_vendors,
-            this.iconmenuitem_statistics,
-            this.iconmenuitem_config});
-            this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Name = "menu";
-            this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu.Size = new System.Drawing.Size(131, 538);
-            this.menu.TabIndex = 0;
-            this.menu.Text = "menuStrip1";
+            this.panel5.AutoSize = true;
+            this.panel5.BackColor = System.Drawing.Color.Gold;
+            this.panel5.Controls.Add(this.lbl_usuario);
+            this.panel5.Controls.Add(this.lbl_POS);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(983, 61);
+            this.panel5.TabIndex = 2;
+            // 
+            // lbl_usuario
+            // 
+            this.lbl_usuario.AutoSize = true;
+            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_usuario.Location = new System.Drawing.Point(739, 18);
+            this.lbl_usuario.Name = "lbl_usuario";
+            this.lbl_usuario.Size = new System.Drawing.Size(141, 28);
+            this.lbl_usuario.TabIndex = 1;
+            this.lbl_usuario.Text = "PERSONAL1";
+            // 
+            // lbl_POS
+            // 
+            this.lbl_POS.AutoSize = true;
+            this.lbl_POS.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_POS.Location = new System.Drawing.Point(67, 6);
+            this.lbl_POS.Name = "lbl_POS";
+            this.lbl_POS.Size = new System.Drawing.Size(248, 55);
+            this.lbl_POS.TabIndex = 0;
+            this.lbl_POS.Text = "POSLyion";
             // 
             // iconmenuitem_sales
             // 
@@ -175,56 +185,36 @@
             this.iconmenuitem_config.Text = "Configuración";
             this.iconmenuitem_config.Click += new System.EventHandler(this.iconmenuitem_config_Click);
             // 
-            // panel5
+            // menu
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(226)))), ((int)(((byte)(4)))));
-            this.panel5.Controls.Add(this.lbl_usuario);
-            this.panel5.Controls.Add(this.lbl_POS);
-            this.panel5.Location = new System.Drawing.Point(126, -1);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(855, 67);
-            this.panel5.TabIndex = 2;
+            this.menu.BackColor = System.Drawing.Color.Gold;
+            this.menu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iconmenuitem_sales,
+            this.iconmenuitem_purchaseorders,
+            this.iconmenuitem_products,
+            this.iconmenuitem_users,
+            this.iconmenuitem_customers,
+            this.iconmenuitem_vendors,
+            this.iconmenuitem_statistics,
+            this.iconmenuitem_config});
+            this.menu.Location = new System.Drawing.Point(0, 61);
+            this.menu.Name = "menu";
+            this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menu.Size = new System.Drawing.Size(131, 477);
+            this.menu.TabIndex = 0;
+            this.menu.Text = "menuStrip1";
             // 
-            // lbl_usuario
+            // panel1
             // 
-            this.lbl_usuario.AutoSize = true;
-            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_usuario.Location = new System.Drawing.Point(739, 21);
-            this.lbl_usuario.Name = "lbl_usuario";
-            this.lbl_usuario.Size = new System.Drawing.Size(105, 20);
-            this.lbl_usuario.TabIndex = 1;
-            this.lbl_usuario.Text = "PERSONAL1";
-            // 
-            // lbl_POS
-            // 
-            this.lbl_POS.AutoSize = true;
-            this.lbl_POS.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_POS.Location = new System.Drawing.Point(67, 6);
-            this.lbl_POS.Name = "lbl_POS";
-            this.lbl_POS.Size = new System.Drawing.Size(248, 55);
-            this.lbl_POS.TabIndex = 0;
-            this.lbl_POS.Text = "POSLyion";
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 10;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Image = ((System.Drawing.Image)(resources.GetObject("rjButton1.Image")));
-            this.rjButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rjButton1.Location = new System.Drawing.Point(393, 221);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(265, 56);
-            this.rjButton1.TabIndex = 3;
-            this.rjButton1.Text = "rjButton1";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
+            this.panel1.Controls.Add(this.menu);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(983, 538);
+            this.panel1.TabIndex = 3;
+            this.panel1.DockChanged += new System.EventHandler(this.panel1_DockChanged);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Start
             // 
@@ -237,11 +227,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Punto de Venta - Lyion";
             this.container.ResumeLayout(false);
-            this.container.PerformLayout();
-            this.menu.ResumeLayout(false);
-            this.menu.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -249,6 +240,9 @@
         #endregion
 
         private System.Windows.Forms.Panel container;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lbl_usuario;
+        private System.Windows.Forms.Label lbl_POS;
         private System.Windows.Forms.MenuStrip menu;
         private FontAwesome.Sharp.IconMenuItem iconmenuitem_sales;
         private FontAwesome.Sharp.IconMenuItem iconmenuitem_purchaseorders;
@@ -258,10 +252,7 @@
         private FontAwesome.Sharp.IconMenuItem iconmenuitem_vendors;
         private FontAwesome.Sharp.IconMenuItem iconmenuitem_statistics;
         private FontAwesome.Sharp.IconMenuItem iconmenuitem_config;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label lbl_usuario;
-        private System.Windows.Forms.Label lbl_POS;
-        private ClassLibrary1.RJButton rjButton1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

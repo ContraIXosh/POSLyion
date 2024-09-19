@@ -86,5 +86,15 @@ namespace PDCLyion
         {
             OpenForm((IconMenuItem)sender, new formConfig());
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_DockChanged(object sender, EventArgs e)
+        {
+            Dock = DockStyle.Fill;
+        }
     }
 }
