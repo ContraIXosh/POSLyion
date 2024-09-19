@@ -149,7 +149,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::PDCLyion.Properties.Resources.logo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(411, 227);
+            this.ClientSize = new System.Drawing.Size(494, 336);
             this.Controls.Add(this.btncancel);
             this.Controls.Add(this.btnlogin);
             this.Controls.Add(this.iconpicturebox_lock);
