@@ -118,7 +118,7 @@ namespace PDCLyion
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formUsers());
+            abrirHerencia(new formUsers2());
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)

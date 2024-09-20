@@ -1,15 +1,18 @@
-﻿using OxyPlot;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Xml.Serialization;
 
 namespace PDCLyion
 {
-    public partial class formStatistics : Form
+    public partial class formUsers2 : Form
     {
-        public formStatistics()
+        public formUsers2()
         {
             InitializeComponent();
         }
@@ -30,30 +33,12 @@ namespace PDCLyion
 
             }
         }
-
-        private void panel_main_Paint(object sender, PaintEventArgs e)
+        private void btn_addUser_Click(object sender, EventArgs e)
         {
-
+            abrirHerencia(new formUsers());
         }
 
-        private void panel_grafico_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btn_grafico_Click(object sender, EventArgs e)
-        {
-         
-
-            
-        }
-
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton4_Click(object sender, EventArgs e)
+        private void rjButton2_Click(object sender, EventArgs e)
         {
             abrirHerencia(new formSales());
         }

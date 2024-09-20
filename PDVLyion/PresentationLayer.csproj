@@ -166,6 +166,12 @@
     <Compile Include="formUsers.Designer.cs">
       <DependentUpon>formUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="formUsers2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUsers2.Designer.cs">
+      <DependentUpon>formUsers2.cs</DependentUpon>
+    </Compile>
     <Compile Include="formVendors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formUsers.resx">
       <DependentUpon>formUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUsers2.resx">
+      <DependentUpon>formUsers2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formVendors.resx">
       <DependentUpon>formVendors.cs</DependentUpon>
