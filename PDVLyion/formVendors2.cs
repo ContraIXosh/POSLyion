@@ -10,14 +10,12 @@ using System.Windows.Forms;
 
 namespace PDCLyion
 {
-    public partial class formVendors : Form
+    public partial class formVendors2 : Form
     {
-        public formVendors()
+        public formVendors2()
         {
             InitializeComponent();
         }
-
-
         private void abrirHerencia(object formhija)
         {
             if (this.panel_main.Controls.Count > 0)
@@ -35,22 +33,19 @@ namespace PDCLyion
 
             }
         }
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void rjButton2_Click(object sender, EventArgs e)
         {
-            
-                   abrirHerencia(new formSales());
-
+            abrirHerencia(new formSales());
         }
 
         private void rjButton5_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void rjButton1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors2());
+            abrirHerencia(new formVendors());
         }
     }
 }
-   

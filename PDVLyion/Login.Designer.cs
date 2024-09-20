@@ -35,10 +35,11 @@
             this.rjToggleButton1 = new CustomBox.RJControls.RJToggleButton();
             this.rjButton2 = new CustomBox.RJControls.RJButton();
             this.abrir_sesion = new CustomBox.RJControls.RJButton();
-            this.txtpassword = new RJCodeAdvance.RJControls.RJTextBox();
-            this.txtusername = new RJCodeAdvance.RJControls.RJTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.txtusername = new System.Windows.Forms.TextBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -144,51 +145,6 @@
             this.abrir_sesion.UseVisualStyleBackColor = false;
             this.abrir_sesion.Click += new System.EventHandler(this.rjButton1_Click);
             // 
-            // txtpassword
-            // 
-            this.txtpassword.BackColor = System.Drawing.SystemColors.Window;
-            this.txtpassword.BorderColor = System.Drawing.Color.Goldenrod;
-            this.txtpassword.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtpassword.BorderRadius = 0;
-            this.txtpassword.BorderSize = 2;
-            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtpassword.Location = new System.Drawing.Point(293, 170);
-            this.txtpassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtpassword.Multiline = false;
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtpassword.PasswordChar = false;
-            this.txtpassword.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtpassword.PlaceholderText = "";
-            this.txtpassword.Size = new System.Drawing.Size(265, 31);
-            this.txtpassword.TabIndex = 13;
-            this.txtpassword.Texts = "";
-            this.txtpassword.UnderlinedStyle = false;
-            // 
-            // txtusername
-            // 
-            this.txtusername.BackColor = System.Drawing.SystemColors.Window;
-            this.txtusername.BorderColor = System.Drawing.Color.Goldenrod;
-            this.txtusername.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtusername.BorderRadius = 0;
-            this.txtusername.BorderSize = 2;
-            this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtusername.Location = new System.Drawing.Point(293, 94);
-            this.txtusername.Margin = new System.Windows.Forms.Padding(4);
-            this.txtusername.Multiline = false;
-            this.txtusername.Name = "txtusername";
-            this.txtusername.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtusername.PasswordChar = false;
-            this.txtusername.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtusername.PlaceholderText = "";
-            this.txtusername.Size = new System.Drawing.Size(265, 31);
-            this.txtusername.TabIndex = 14;
-            this.txtusername.Texts = "";
-            this.txtusername.UnderlinedStyle = false;
-            this.txtusername._TextChanged += new System.EventHandler(this.txtusername__TextChanged);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.rjCircularPictureBox1);
@@ -213,6 +169,35 @@
             this.rjCircularPictureBox1.TabIndex = 0;
             this.rjCircularPictureBox1.TabStop = false;
             // 
+            // txtusername
+            // 
+            this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.Location = new System.Drawing.Point(295, 98);
+            this.txtusername.Multiline = true;
+            this.txtusername.Name = "txtusername";
+            this.txtusername.Size = new System.Drawing.Size(262, 31);
+            this.txtusername.TabIndex = 16;
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.Location = new System.Drawing.Point(293, 169);
+            this.txtpassword.Multiline = true;
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(262, 31);
+            this.txtpassword.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(352, 223);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 16);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Guardar contraseña";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,9 +206,10 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(588, 304);
             this.ControlBox = false;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtpassword);
+            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.abrir_sesion);
             this.Controls.Add(this.rjButton2);
             this.Controls.Add(this.rjToggleButton1);
@@ -249,9 +235,10 @@
         private CustomBox.RJControls.RJToggleButton rjToggleButton1;
         private CustomBox.RJControls.RJButton rjButton2;
         private CustomBox.RJControls.RJButton abrir_sesion;
-        private RJCodeAdvance.RJControls.RJTextBox txtpassword;
-        private RJCodeAdvance.RJControls.RJTextBox txtusername;
         private System.Windows.Forms.Panel panel1;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
+        private System.Windows.Forms.TextBox txtusername;
+        private System.Windows.Forms.TextBox txtpassword;
+        private System.Windows.Forms.Label label1;
     }
 }
