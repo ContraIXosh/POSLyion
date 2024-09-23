@@ -43,11 +43,18 @@
             this.lbl_condicion = new System.Windows.Forms.Label();
             this.btn_eventual = new RJCodeAdvance.RJControls.RJButton();
             this.btn_cfinal = new RJCodeAdvance.RJControls.RJButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.rjButton4 = new RJCodeAdvance.RJControls.RJButton();
+            this.txt_sumVenta = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel_condicion.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -62,6 +69,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -250,13 +258,70 @@
             this.btn_cfinal.TextColor = System.Drawing.Color.White;
             this.btn_cfinal.UseVisualStyleBackColor = false;
             // 
-            // formSells
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.rjButton4);
+            this.panel4.Controls.Add(this.txt_sumVenta);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Location = new System.Drawing.Point(711, -2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(271, 376);
+            this.panel4.TabIndex = 5;
+            // 
+            // rjButton4
+            // 
+            this.rjButton4.BackColor = System.Drawing.Color.Gold;
+            this.rjButton4.BackgroundColor = System.Drawing.Color.Gold;
+            this.rjButton4.BorderColor = System.Drawing.Color.Black;
+            this.rjButton4.BorderRadius = 0;
+            this.rjButton4.BorderSize = 2;
+            this.rjButton4.FlatAppearance.BorderSize = 0;
+            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton4.ForeColor = System.Drawing.Color.Black;
+            this.rjButton4.Location = new System.Drawing.Point(5, 332);
+            this.rjButton4.Name = "rjButton4";
+            this.rjButton4.Size = new System.Drawing.Size(260, 37);
+            this.rjButton4.TabIndex = 7;
+            this.rjButton4.Text = "CERRAR VENTA";
+            this.rjButton4.TextColor = System.Drawing.Color.Black;
+            this.rjButton4.UseVisualStyleBackColor = false;
+            // 
+            // txt_sumVenta
+            // 
+            this.txt_sumVenta.Location = new System.Drawing.Point(5, 79);
+            this.txt_sumVenta.Multiline = true;
+            this.txt_sumVenta.Name = "txt_sumVenta";
+            this.txt_sumVenta.Size = new System.Drawing.Size(260, 248);
+            this.txt_sumVenta.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Crimson;
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Location = new System.Drawing.Point(0, -1);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(275, 63);
+            this.panel5.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(223, 33);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "FACTURACION";
+            // 
+            // formSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 537);
             this.Controls.Add(this.panel_main);
-            this.Name = "formSells";
+            this.Name = "formSales";
             this.Text = "formSells";
             this.panel_main.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -266,6 +331,10 @@
             this.panel3.PerformLayout();
             this.panel_condicion.ResumeLayout(false);
             this.panel_condicion.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -287,5 +356,10 @@
         private System.Windows.Forms.Label lbl_condicion;
         private RJCodeAdvance.RJControls.RJButton btn_eventual;
         private RJCodeAdvance.RJControls.RJButton btn_cfinal;
+        private System.Windows.Forms.Panel panel4;
+        private RJCodeAdvance.RJControls.RJButton rjButton4;
+        private System.Windows.Forms.TextBox txt_sumVenta;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label3;
     }
 }

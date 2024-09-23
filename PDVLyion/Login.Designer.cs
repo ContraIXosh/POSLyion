@@ -38,8 +38,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.txtusername = new System.Windows.Forms.TextBox();
-            this.txtpassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtpassword = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -177,15 +177,7 @@
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(262, 31);
             this.txtusername.TabIndex = 16;
-            // 
-            // txtpassword
-            // 
-            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(293, 169);
-            this.txtpassword.Multiline = true;
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(262, 31);
-            this.txtpassword.TabIndex = 17;
+            this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged_1);
             // 
             // label1
             // 
@@ -197,6 +189,16 @@
             this.label1.Size = new System.Drawing.Size(144, 16);
             this.label1.TabIndex = 18;
             this.label1.Text = "Guardar contraseña";
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.Location = new System.Drawing.Point(293, 169);
+            this.txtpassword.Multiline = true;
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(262, 31);
+            this.txtpassword.TabIndex = 17;
+            this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
             // 
             // Login
             // 
@@ -238,7 +240,7 @@
         private System.Windows.Forms.Panel panel1;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
         private System.Windows.Forms.TextBox txtusername;
-        private System.Windows.Forms.TextBox txtpassword;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtpassword;
     }
 }

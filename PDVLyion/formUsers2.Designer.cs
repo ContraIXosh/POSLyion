@@ -30,21 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsers2));
             this.panel_main = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_visualizarUser = new RJCodeAdvance.RJControls.RJButton();
             this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_visualizarUser = new RJCodeAdvance.RJControls.RJButton();
             this.btn_addUser = new RJCodeAdvance.RJControls.RJButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.data_idUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_nameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ApellidoUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_dniUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_telUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataSet1 = new System.Data.DataSet();
             this.panel_main.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
@@ -61,6 +65,45 @@
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(966, 498);
             this.panel_main.TabIndex = 3;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.data_idUser,
+            this.data_nameUser,
+            this.data_ApellidoUser,
+            this.data_dniUser,
+            this.data_telUser,
+            this.btn_eliminar,
+            this.btn_editar});
+            this.dataGridView1.Location = new System.Drawing.Point(248, 15);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(695, 377);
+            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // btn_visualizarUser
+            // 
+            this.btn_visualizarUser.BackColor = System.Drawing.Color.Transparent;
+            this.btn_visualizarUser.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_visualizarUser.BorderColor = System.Drawing.Color.Gold;
+            this.btn_visualizarUser.BorderRadius = 7;
+            this.btn_visualizarUser.BorderSize = 2;
+            this.btn_visualizarUser.FlatAppearance.BorderSize = 0;
+            this.btn_visualizarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_visualizarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_visualizarUser.ForeColor = System.Drawing.Color.Gold;
+            this.btn_visualizarUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_visualizarUser.Image")));
+            this.btn_visualizarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 58);
+            this.btn_visualizarUser.Name = "btn_visualizarUser";
+            this.btn_visualizarUser.Size = new System.Drawing.Size(220, 50);
+            this.btn_visualizarUser.TabIndex = 8;
+            this.btn_visualizarUser.Text = "VISUALIZAR USUARIO";
+            this.btn_visualizarUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_visualizarUser.TextColor = System.Drawing.Color.Gold;
+            this.btn_visualizarUser.UseVisualStyleBackColor = false;
             // 
             // rjButton2
             // 
@@ -110,28 +153,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Actualizacion: v1.0.0.5";
             // 
-            // btn_visualizarUser
-            // 
-            this.btn_visualizarUser.BackColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BorderColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.BorderRadius = 7;
-            this.btn_visualizarUser.BorderSize = 2;
-            this.btn_visualizarUser.FlatAppearance.BorderSize = 0;
-            this.btn_visualizarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_visualizarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_visualizarUser.ForeColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_visualizarUser.Image")));
-            this.btn_visualizarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 58);
-            this.btn_visualizarUser.Name = "btn_visualizarUser";
-            this.btn_visualizarUser.Size = new System.Drawing.Size(220, 50);
-            this.btn_visualizarUser.TabIndex = 8;
-            this.btn_visualizarUser.Text = "VISUALIZAR USUARIO";
-            this.btn_visualizarUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_visualizarUser.TextColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.UseVisualStyleBackColor = false;
-            // 
             // btn_addUser
             // 
             this.btn_addUser.BackColor = System.Drawing.Color.Transparent;
@@ -155,24 +176,12 @@
             this.btn_addUser.UseVisualStyleBackColor = false;
             this.btn_addUser.Click += new System.EventHandler(this.btn_addUser_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.data_idUser,
-            this.data_nameUser,
-            this.data_ApellidoUser,
-            this.data_dniUser,
-            this.data_telUser});
-            this.dataGridView1.Location = new System.Drawing.Point(248, 15);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(695, 377);
-            this.dataGridView1.TabIndex = 9;
-            // 
             // data_idUser
             // 
+            this.data_idUser.FillWeight = 50F;
             this.data_idUser.HeaderText = "ID";
             this.data_idUser.Name = "data_idUser";
+            this.data_idUser.Width = 50;
             // 
             // data_nameUser
             // 
@@ -194,6 +203,28 @@
             this.data_telUser.HeaderText = "TELEFONO";
             this.data_telUser.Name = "data_telUser";
             // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.btn_eliminar.FillWeight = 60F;
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Width = 64;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.btn_editar.FillWeight = 50F;
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btn_editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btn_editar.Width = 72;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "NewDataSet";
+            // 
             // formUsers2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,9 +234,10 @@
             this.Name = "formUsers2";
             this.Text = "formUsers2";
             this.panel_main.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,5 +258,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ApellidoUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_dniUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_telUser;
+        private System.Windows.Forms.DataGridViewButtonColumn btn_eliminar;
+        private System.Windows.Forms.DataGridViewButtonColumn btn_editar;
+        private System.Data.DataSet dataSet1;
     }
 }
