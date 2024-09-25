@@ -88,5 +88,19 @@ namespace PDCLyion
 
         }
 
+        private void txtpassword_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpassword_TextChanged_2(object sender, EventArgs e)
+        {
+            txtpassword.PasswordChar = '*';
+        }
+
+        private void txtusername_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

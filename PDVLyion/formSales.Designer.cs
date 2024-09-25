@@ -28,185 +28,338 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel_main = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_card = new FontAwesome.Sharp.IconButton();
-            this.btn_busqueda = new FontAwesome.Sharp.IconButton();
-            this.tb_busqueda = new System.Windows.Forms.TextBox();
-            this.lbl_dinero = new System.Windows.Forms.Label();
-            this.panel_fact = new System.Windows.Forms.Panel();
-            this.lbl_precio = new System.Windows.Forms.Label();
-            this.btn_closeSell = new System.Windows.Forms.Button();
-            this.panel_result = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.f9 = new System.Windows.Forms.Label();
+            this.lbl_cobrar = new System.Windows.Forms.Label();
+            this.rjButton3 = new RJCodeAdvance.RJControls.RJButton();
+            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
+            this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lbl_fact = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel_condicion = new System.Windows.Forms.Panel();
+            this.lbl_condicion = new System.Windows.Forms.Label();
+            this.btn_eventual = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_cfinal = new RJCodeAdvance.RJControls.RJButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.rjButton4 = new RJCodeAdvance.RJControls.RJButton();
+            this.txt_sumVenta = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel_fact.SuspendLayout();
-            this.panel_result.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel_condicion.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel_main
+            // 
+            this.panel_main.Controls.Add(this.panel1);
+            this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_main.Location = new System.Drawing.Point(0, 0);
+            this.panel_main.Name = "panel_main";
+            this.panel_main.Size = new System.Drawing.Size(982, 537);
+            this.panel_main.TabIndex = 4;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Controls.Add(this.btn_card);
-            this.panel1.Controls.Add(this.btn_busqueda);
-            this.panel1.Controls.Add(this.tb_busqueda);
-            this.panel1.Controls.Add(this.panel_fact);
-            this.panel1.Location = new System.Drawing.Point(1, -1);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(982, 540);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(982, 537);
+            this.panel1.TabIndex = 4;
             // 
-            // btn_card
+            // panel2
             // 
-            this.btn_card.BackgroundImage = global::PDCLyion.Properties.Resources.listitoe;
-            this.btn_card.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_card.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_card.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btn_card.IconColor = System.Drawing.Color.Black;
-            this.btn_card.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_card.Location = new System.Drawing.Point(145, 79);
-            this.btn_card.Name = "btn_card";
-            this.btn_card.Size = new System.Drawing.Size(36, 34);
-            this.btn_card.TabIndex = 12;
-            this.btn_card.UseVisualStyleBackColor = true;
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Controls.Add(this.f9);
+            this.panel2.Controls.Add(this.lbl_cobrar);
+            this.panel2.Controls.Add(this.rjButton3);
+            this.panel2.Controls.Add(this.rjButton2);
+            this.panel2.Controls.Add(this.rjButton1);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.panel_condicion);
+            this.panel2.Location = new System.Drawing.Point(0, 374);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(990, 102);
+            this.panel2.TabIndex = 4;
             // 
-            // btn_busqueda
+            // f9
             // 
-            this.btn_busqueda.BackgroundImage = global::PDCLyion.Properties.Resources.lupitanegra;
-            this.btn_busqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_busqueda.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btn_busqueda.IconColor = System.Drawing.Color.Black;
-            this.btn_busqueda.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_busqueda.Location = new System.Drawing.Point(651, 79);
-            this.btn_busqueda.Name = "btn_busqueda";
-            this.btn_busqueda.Size = new System.Drawing.Size(35, 36);
-            this.btn_busqueda.TabIndex = 11;
-            this.btn_busqueda.UseVisualStyleBackColor = true;
+            this.f9.AutoSize = true;
+            this.f9.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.f9.ForeColor = System.Drawing.Color.Gold;
+            this.f9.Location = new System.Drawing.Point(647, 9);
+            this.f9.Name = "f9";
+            this.f9.Size = new System.Drawing.Size(29, 22);
+            this.f9.TabIndex = 6;
+            this.f9.Text = "F9";
             // 
-            // tb_busqueda
+            // lbl_cobrar
             // 
-            this.tb_busqueda.Location = new System.Drawing.Point(187, 79);
-            this.tb_busqueda.Multiline = true;
-            this.tb_busqueda.Name = "tb_busqueda";
-            this.tb_busqueda.Size = new System.Drawing.Size(457, 34);
-            this.tb_busqueda.TabIndex = 9;
+            this.lbl_cobrar.AutoSize = true;
+            this.lbl_cobrar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cobrar.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_cobrar.Location = new System.Drawing.Point(437, 9);
+            this.lbl_cobrar.Name = "lbl_cobrar";
+            this.lbl_cobrar.Size = new System.Drawing.Size(39, 22);
+            this.lbl_cobrar.TabIndex = 5;
+            this.lbl_cobrar.Text = "F10";
             // 
-            // lbl_dinero
+            // rjButton3
             // 
-            this.lbl_dinero.AutoSize = true;
-            this.lbl_dinero.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dinero.Location = new System.Drawing.Point(135, 394);
-            this.lbl_dinero.Name = "lbl_dinero";
-            this.lbl_dinero.Size = new System.Drawing.Size(58, 25);
-            this.lbl_dinero.TabIndex = 4;
-            this.lbl_dinero.Text = "0,00";
+            this.rjButton3.BackColor = System.Drawing.Color.Gold;
+            this.rjButton3.BackgroundColor = System.Drawing.Color.Gold;
+            this.rjButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton3.BorderRadius = 0;
+            this.rjButton3.BorderSize = 0;
+            this.rjButton3.FlatAppearance.BorderSize = 0;
+            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton3.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton3.ForeColor = System.Drawing.Color.Black;
+            this.rjButton3.Location = new System.Drawing.Point(784, 38);
+            this.rjButton3.Name = "rjButton3";
+            this.rjButton3.Size = new System.Drawing.Size(194, 40);
+            this.rjButton3.TabIndex = 4;
+            this.rjButton3.Text = "CERRAR CAJA";
+            this.rjButton3.TextColor = System.Drawing.Color.Black;
+            this.rjButton3.UseVisualStyleBackColor = false;
             // 
-            // panel_fact
+            // rjButton2
             // 
-            this.panel_fact.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel_fact.Controls.Add(this.lbl_dinero);
-            this.panel_fact.Controls.Add(this.lbl_precio);
-            this.panel_fact.Controls.Add(this.btn_closeSell);
-            this.panel_fact.Controls.Add(this.panel_result);
-            this.panel_fact.Controls.Add(this.panel3);
-            this.panel_fact.Location = new System.Drawing.Point(702, 69);
-            this.panel_fact.Name = "panel_fact";
-            this.panel_fact.Size = new System.Drawing.Size(280, 471);
-            this.panel_fact.TabIndex = 10;
+            this.rjButton2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton2.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton2.BorderRadius = 0;
+            this.rjButton2.BorderSize = 0;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.ForeColor = System.Drawing.Color.White;
+            this.rjButton2.Location = new System.Drawing.Point(571, 39);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(194, 40);
+            this.rjButton2.TabIndex = 3;
+            this.rjButton2.Text = "DESCUENTOS";
+            this.rjButton2.TextColor = System.Drawing.Color.White;
+            this.rjButton2.UseVisualStyleBackColor = false;
             // 
-            // lbl_precio
+            // rjButton1
             // 
-            this.lbl_precio.AutoSize = true;
-            this.lbl_precio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_precio.Location = new System.Drawing.Point(33, 396);
-            this.lbl_precio.Name = "lbl_precio";
-            this.lbl_precio.Size = new System.Drawing.Size(96, 20);
-            this.lbl_precio.TabIndex = 3;
-            this.lbl_precio.Text = "PRECIO: $";
-            // 
-            // btn_closeSell
-            // 
-            this.btn_closeSell.BackColor = System.Drawing.Color.Gold;
-            this.btn_closeSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_closeSell.ForeColor = System.Drawing.Color.Black;
-            this.btn_closeSell.Location = new System.Drawing.Point(12, 429);
-            this.btn_closeSell.Name = "btn_closeSell";
-            this.btn_closeSell.Size = new System.Drawing.Size(256, 33);
-            this.btn_closeSell.TabIndex = 2;
-            this.btn_closeSell.Text = "CERRAR VENTA";
-            this.btn_closeSell.UseVisualStyleBackColor = false;
-            // 
-            // panel_result
-            // 
-            this.panel_result.Controls.Add(this.label6);
-            this.panel_result.Location = new System.Drawing.Point(7, 66);
-            this.panel_result.Name = "panel_result";
-            this.panel_result.Size = new System.Drawing.Size(265, 310);
-            this.panel_result.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(50, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "RESUMEN DE PRODUCTOS";
+            this.rjButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.BorderRadius = 0;
+            this.rjButton1.BorderSize = 0;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.White;
+            this.rjButton1.Location = new System.Drawing.Point(356, 39);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(194, 40);
+            this.rjButton1.TabIndex = 2;
+            this.rjButton1.Text = "COBRAR";
+            this.rjButton1.TextColor = System.Drawing.Color.White;
+            this.rjButton1.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Gold;
-            this.panel3.Controls.Add(this.lbl_fact);
-            this.panel3.Location = new System.Drawing.Point(0, -1);
+            this.panel3.BackColor = System.Drawing.Color.Khaki;
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(0, 84);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(280, 59);
-            this.panel3.TabIndex = 0;
+            this.panel3.Size = new System.Drawing.Size(987, 18);
+            this.panel3.TabIndex = 1;
             // 
-            // lbl_fact
+            // label2
             // 
-            this.lbl_fact.AutoSize = true;
-            this.lbl_fact.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_fact.Location = new System.Drawing.Point(7, 16);
-            this.lbl_fact.Name = "lbl_fact";
-            this.lbl_fact.Size = new System.Drawing.Size(266, 29);
-            this.lbl_fact.TabIndex = 0;
-            this.lbl_fact.Text = "FACTURA DE VENTA";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(633, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(199, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(863, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Actualizacion: v1.0.0.5";
+            // 
+            // panel_condicion
+            // 
+            this.panel_condicion.Controls.Add(this.lbl_condicion);
+            this.panel_condicion.Controls.Add(this.btn_eventual);
+            this.panel_condicion.Controls.Add(this.btn_cfinal);
+            this.panel_condicion.Location = new System.Drawing.Point(6, 3);
+            this.panel_condicion.Name = "panel_condicion";
+            this.panel_condicion.Size = new System.Drawing.Size(344, 78);
+            this.panel_condicion.TabIndex = 0;
+            // 
+            // lbl_condicion
+            // 
+            this.lbl_condicion.AutoSize = true;
+            this.lbl_condicion.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_condicion.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_condicion.Location = new System.Drawing.Point(117, 6);
+            this.lbl_condicion.Name = "lbl_condicion";
+            this.lbl_condicion.Size = new System.Drawing.Size(127, 21);
+            this.lbl_condicion.TabIndex = 2;
+            this.lbl_condicion.Text = "TIPO DE TICKET";
+            // 
+            // btn_eventual
+            // 
+            this.btn_eventual.BackColor = System.Drawing.Color.Crimson;
+            this.btn_eventual.BackgroundColor = System.Drawing.Color.Crimson;
+            this.btn_eventual.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_eventual.BorderRadius = 0;
+            this.btn_eventual.BorderSize = 0;
+            this.btn_eventual.FlatAppearance.BorderSize = 0;
+            this.btn_eventual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eventual.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eventual.ForeColor = System.Drawing.Color.White;
+            this.btn_eventual.Location = new System.Drawing.Point(209, 36);
+            this.btn_eventual.Name = "btn_eventual";
+            this.btn_eventual.Size = new System.Drawing.Size(135, 39);
+            this.btn_eventual.TabIndex = 1;
+            this.btn_eventual.Text = "EVENTUAL";
+            this.btn_eventual.TextColor = System.Drawing.Color.White;
+            this.btn_eventual.UseVisualStyleBackColor = false;
+            // 
+            // btn_cfinal
+            // 
+            this.btn_cfinal.BackColor = System.Drawing.Color.Crimson;
+            this.btn_cfinal.BackgroundColor = System.Drawing.Color.Crimson;
+            this.btn_cfinal.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_cfinal.BorderRadius = 0;
+            this.btn_cfinal.BorderSize = 0;
+            this.btn_cfinal.FlatAppearance.BorderSize = 0;
+            this.btn_cfinal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cfinal.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cfinal.ForeColor = System.Drawing.Color.White;
+            this.btn_cfinal.Location = new System.Drawing.Point(3, 36);
+            this.btn_cfinal.Name = "btn_cfinal";
+            this.btn_cfinal.Size = new System.Drawing.Size(200, 39);
+            this.btn_cfinal.TabIndex = 0;
+            this.btn_cfinal.Text = "CONSUMIDOR FINAL";
+            this.btn_cfinal.TextColor = System.Drawing.Color.White;
+            this.btn_cfinal.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.rjButton4);
+            this.panel4.Controls.Add(this.txt_sumVenta);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Location = new System.Drawing.Point(711, -2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(271, 376);
+            this.panel4.TabIndex = 5;
+            // 
+            // rjButton4
+            // 
+            this.rjButton4.BackColor = System.Drawing.Color.Gold;
+            this.rjButton4.BackgroundColor = System.Drawing.Color.Gold;
+            this.rjButton4.BorderColor = System.Drawing.Color.Black;
+            this.rjButton4.BorderRadius = 0;
+            this.rjButton4.BorderSize = 2;
+            this.rjButton4.FlatAppearance.BorderSize = 0;
+            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton4.ForeColor = System.Drawing.Color.Black;
+            this.rjButton4.Location = new System.Drawing.Point(5, 332);
+            this.rjButton4.Name = "rjButton4";
+            this.rjButton4.Size = new System.Drawing.Size(260, 37);
+            this.rjButton4.TabIndex = 7;
+            this.rjButton4.Text = "CERRAR VENTA";
+            this.rjButton4.TextColor = System.Drawing.Color.Black;
+            this.rjButton4.UseVisualStyleBackColor = false;
+            // 
+            // txt_sumVenta
+            // 
+            this.txt_sumVenta.Location = new System.Drawing.Point(5, 79);
+            this.txt_sumVenta.Multiline = true;
+            this.txt_sumVenta.Name = "txt_sumVenta";
+            this.txt_sumVenta.Size = new System.Drawing.Size(260, 248);
+            this.txt_sumVenta.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Crimson;
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Location = new System.Drawing.Point(0, -1);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(275, 63);
+            this.panel5.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(223, 33);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "FACTURACION";
             // 
             // formSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 537);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_main);
             this.Name = "formSales";
-            this.Text = "formSales";
+            this.Text = "formSells";
+            this.panel_main.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel_fact.ResumeLayout(false);
-            this.panel_fact.PerformLayout();
-            this.panel_result.ResumeLayout(false);
-            this.panel_result.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel_condicion.ResumeLayout(false);
+            this.panel_condicion.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton btn_card;
-        private FontAwesome.Sharp.IconButton btn_busqueda;
-        private System.Windows.Forms.TextBox tb_busqueda;
-        private System.Windows.Forms.Panel panel_fact;
-        private System.Windows.Forms.Label lbl_dinero;
-        private System.Windows.Forms.Label lbl_precio;
-        private System.Windows.Forms.Button btn_closeSell;
-        private System.Windows.Forms.Panel panel_result;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label f9;
+        private System.Windows.Forms.Label lbl_cobrar;
+        private RJCodeAdvance.RJControls.RJButton rjButton3;
+        private RJCodeAdvance.RJControls.RJButton rjButton2;
+        private RJCodeAdvance.RJControls.RJButton rjButton1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lbl_fact;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel_condicion;
+        private System.Windows.Forms.Label lbl_condicion;
+        private RJCodeAdvance.RJControls.RJButton btn_eventual;
+        private RJCodeAdvance.RJControls.RJButton btn_cfinal;
+        private System.Windows.Forms.Panel panel4;
+        private RJCodeAdvance.RJControls.RJButton rjButton4;
+        private System.Windows.Forms.TextBox txt_sumVenta;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label3;
     }
 }

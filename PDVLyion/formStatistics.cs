@@ -13,6 +13,23 @@ namespace PDCLyion
         {
             InitializeComponent();
         }
+        private void abrirHerencia(object formhija)
+        {
+            if (this.panel_main.Controls.Count > 0)
+            {
+                this.panel_main.Controls.RemoveAt(0);
+                Form fh = formhija as Form;
+                fh.TopLevel = false; //dependencia
+                fh.Dock = DockStyle.Fill;
+                fh.FormBorderStyle = FormBorderStyle.None;
+                this.panel_main.Controls.Add(fh);
+                this.panel_main.Tag = fh;
+                fh.BringToFront();
+                this.panel_main.Refresh();
+                fh.Show();
+
+            }
+        }
 
         private void panel_main_Paint(object sender, PaintEventArgs e)
         {
@@ -34,6 +51,11 @@ namespace PDCLyion
         private void chart1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void rjButton4_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formSales());
         }
     }
 }

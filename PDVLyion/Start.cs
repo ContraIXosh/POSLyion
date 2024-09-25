@@ -26,75 +26,119 @@ namespace PDCLyion
             oUser = user;
             lbl_usuario.Text = user.Full_name;
         }
-
+        
+        private void abrirHerencia(object formhija)
+        {
+           if(this.panel_main.Controls.Count > 0)
+            {
+                this.panel_main.Controls.RemoveAt(0);
+                Form fh = formhija as Form; 
+                fh.TopLevel = false; //dependencia
+                fh.Dock = DockStyle.Fill;
+                fh.FormBorderStyle = FormBorderStyle.None;
+                this.panel_main.Controls.Add(fh);
+                this.panel_main.Tag = fh;
+                fh.BringToFront();
+                this.panel_main.Refresh();
+                fh.Show();
+                
+            }
+        }
         private void OpenForm (IconMenuItem iconmenuitem, Form form)
         {
-            if (activeMenu != null)
-            {
-                activeMenu.BackColor = Color.White;
-            }
-            iconmenuitem.BackColor = Color.Silver;
-            activeMenu = iconmenuitem;
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
-            activeForm = form;
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            container.Controls.Add(form);
-            form.Show();
+            
         }
 
         private void iconmenuitem_sales_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formSales());
         }
 
         private void iconmenuitem_purchaseorders_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formPurchaseOrders());
         }
 
         private void iconmenuitem_products_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formProducts());
         }
 
         private void iconmenuitem_users_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formUsers());
         }
 
         private void iconmenuitem_customers_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formCustomers());
         }
 
         private void iconmenuitem_vendors_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formVendors());
         }
 
         private void iconmenuitem_statistics_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formStatistics());
         }
 
         private void iconmenuitem_config_Click(object sender, EventArgs e)
         {
-            OpenForm((IconMenuItem)sender, new formConfig());
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void panel1_DockChanged(object sender, EventArgs e)
         {
             Dock = DockStyle.Fill;
+        }
+
+        private void rjButton2_Click(object sender, EventArgs e)
+        {
+            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+        }
+
+        private void btn_hamb_Click(object sender, EventArgs e)
+        {
+            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        }
+
+        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formSales());
+        }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formPurchaseOrders());
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formProducts());
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers2());
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCustomers());
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formVendors());
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formStatistics());
+        }
+
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formConfig());
         }
     }
 }

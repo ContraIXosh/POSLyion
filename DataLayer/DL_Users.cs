@@ -28,6 +28,7 @@ namespace DataLayer
                     command.Parameters.AddWithValue("username", oUser.Username);
                     command.Parameters.AddWithValue("password", oUser.Password);
                     command.Parameters.AddWithValue("role_id", oUser.oRol.Role_id);
+                    command.Parameters.AddWithValue("phone", oUser.Phone);
                     command.Parameters.AddWithValue("state", oUser.State);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("created_user_id", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -54,7 +55,7 @@ namespace DataLayer
                 {
                     oConnection.Open();
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.user_id, u.dni, u.full_name, u.email, u.username, u.password, u.state, r.role_id, r.description FROM Users u");
+                    query.AppendLine("SELECT u.user_id, u.dni, u.full_name, u.email, u.username, u.password, u.phone, u.state, r.role_id, r.description FROM Users u");
                     query.AppendLine("INNER JOIN Roles r ON r.role_id = u.role_id");
                     SqlCommand command = new SqlCommand(query.ToString(), oConnection);
                     command.CommandType = CommandType.Text;
@@ -75,6 +76,7 @@ namespace DataLayer
                                     Role_id = Convert.ToInt32(reader["role_id"]),
                                     Description = reader["description"].ToString()
                                 },
+                                Phone = reader["phone"].ToString(),
                                 State = Convert.ToBoolean(reader["state"])
                             });
                         }
@@ -105,6 +107,7 @@ namespace DataLayer
                     command.Parameters.AddWithValue("username", oUser.Username);
                     command.Parameters.AddWithValue("password", oUser.Password);
                     command.Parameters.AddWithValue("role_id", oUser.oRol.Role_id);
+                    command.Parameters.AddWithValue("phone", oUser.Phone);
                     command.Parameters.AddWithValue("state", oUser.State);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
