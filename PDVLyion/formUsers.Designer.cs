@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsers));
             this.panel_main = new System.Windows.Forms.Panel();
             this.combo_rol = new System.Windows.Forms.Panel();
+            this.btn_deshacer = new CustomBox.RJControls.RJButton();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.lbl_rol = new System.Windows.Forms.Label();
             this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
@@ -41,12 +42,12 @@
             this.txt_username = new CustomBox.RJControls.RJTextBox();
             this.lbl_username = new System.Windows.Forms.Label();
             this.txt_tel = new CustomBox.RJControls.RJTextBox();
-            this.btn_eliminar = new CustomBox.RJControls.RJButton();
-            this.btn_crear = new CustomBox.RJControls.RJButton();
+            this.btn_limpiar = new CustomBox.RJControls.RJButton();
+            this.btn_guardar = new CustomBox.RJControls.RJButton();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_dni = new CustomBox.RJControls.RJTextBox();
             this.txt_correo = new CustomBox.RJControls.RJTextBox();
-            this.txt_nombre = new CustomBox.RJControls.RJTextBox();
+            this.txt_nombre_completo = new CustomBox.RJControls.RJTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_addUser = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main.SuspendLayout();
             this.combo_rol.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,7 +69,6 @@
             this.panel_main.Controls.Add(this.btn_visualizarUser);
             this.panel_main.Controls.Add(this.rjButton2);
             this.panel_main.Controls.Add(this.panel3);
-            this.panel_main.Controls.Add(this.btn_addUser);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Name = "panel_main";
@@ -79,6 +78,7 @@
             // combo_rol
             // 
             this.combo_rol.BackColor = System.Drawing.Color.DarkRed;
+            this.combo_rol.Controls.Add(this.btn_deshacer);
             this.combo_rol.Controls.Add(this.lbl_estado);
             this.combo_rol.Controls.Add(this.lbl_rol);
             this.combo_rol.Controls.Add(this.cbo_estado);
@@ -89,12 +89,12 @@
             this.combo_rol.Controls.Add(this.txt_username);
             this.combo_rol.Controls.Add(this.lbl_username);
             this.combo_rol.Controls.Add(this.txt_tel);
-            this.combo_rol.Controls.Add(this.btn_eliminar);
-            this.combo_rol.Controls.Add(this.btn_crear);
+            this.combo_rol.Controls.Add(this.btn_limpiar);
+            this.combo_rol.Controls.Add(this.btn_guardar);
             this.combo_rol.Controls.Add(this.label6);
             this.combo_rol.Controls.Add(this.txt_dni);
             this.combo_rol.Controls.Add(this.txt_correo);
-            this.combo_rol.Controls.Add(this.txt_nombre);
+            this.combo_rol.Controls.Add(this.txt_nombre_completo);
             this.combo_rol.Controls.Add(this.label5);
             this.combo_rol.Controls.Add(this.label3);
             this.combo_rol.Controls.Add(this.label7);
@@ -102,6 +102,26 @@
             this.combo_rol.Name = "combo_rol";
             this.combo_rol.Size = new System.Drawing.Size(695, 377);
             this.combo_rol.TabIndex = 10;
+            // 
+            // btn_deshacer
+            // 
+            this.btn_deshacer.BackColor = System.Drawing.Color.Gold;
+            this.btn_deshacer.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_deshacer.BorderColor = System.Drawing.Color.Black;
+            this.btn_deshacer.BorderRadius = 10;
+            this.btn_deshacer.BorderSize = 2;
+            this.btn_deshacer.FlatAppearance.BorderSize = 0;
+            this.btn_deshacer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_deshacer.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deshacer.ForeColor = System.Drawing.Color.Black;
+            this.btn_deshacer.Location = new System.Drawing.Point(283, 322);
+            this.btn_deshacer.Name = "btn_deshacer";
+            this.btn_deshacer.Size = new System.Drawing.Size(148, 52);
+            this.btn_deshacer.TabIndex = 37;
+            this.btn_deshacer.Text = "DESHACER CAMBIOS";
+            this.btn_deshacer.TextColor = System.Drawing.Color.Black;
+            this.btn_deshacer.UseVisualStyleBackColor = false;
+            this.btn_deshacer.Click += new System.EventHandler(this.btn_deshacer_Click);
             // 
             // lbl_estado
             // 
@@ -172,7 +192,7 @@
             this.txt_id.BorderSize = 2;
             this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(35, 285);
+            this.txt_id.Location = new System.Drawing.Point(35, 275);
             this.txt_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_id.Multiline = false;
             this.txt_id.Name = "txt_id";
@@ -184,6 +204,7 @@
             this.txt_id.TabIndex = 32;
             this.txt_id.Texts = "0";
             this.txt_id.UnderlinedStyle = false;
+            this.txt_id.Visible = false;
             // 
             // txt_pass
             // 
@@ -273,44 +294,45 @@
             this.txt_tel.Texts = "";
             this.txt_tel.UnderlinedStyle = false;
             // 
-            // btn_eliminar
+            // btn_limpiar
             // 
-            this.btn_eliminar.BackColor = System.Drawing.Color.Gold;
-            this.btn_eliminar.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_eliminar.BorderColor = System.Drawing.Color.Black;
-            this.btn_eliminar.BorderRadius = 10;
-            this.btn_eliminar.BorderSize = 2;
-            this.btn_eliminar.FlatAppearance.BorderSize = 0;
-            this.btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_eliminar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminar.ForeColor = System.Drawing.Color.Black;
-            this.btn_eliminar.Location = new System.Drawing.Point(378, 324);
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Size = new System.Drawing.Size(171, 41);
-            this.btn_eliminar.TabIndex = 24;
-            this.btn_eliminar.Text = "BORRAR";
-            this.btn_eliminar.TextColor = System.Drawing.Color.Black;
-            this.btn_eliminar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.BackColor = System.Drawing.Color.Gold;
+            this.btn_limpiar.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_limpiar.BorderColor = System.Drawing.Color.Black;
+            this.btn_limpiar.BorderRadius = 10;
+            this.btn_limpiar.BorderSize = 2;
+            this.btn_limpiar.FlatAppearance.BorderSize = 0;
+            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar.ForeColor = System.Drawing.Color.Black;
+            this.btn_limpiar.Location = new System.Drawing.Point(460, 322);
+            this.btn_limpiar.Name = "btn_limpiar";
+            this.btn_limpiar.Size = new System.Drawing.Size(148, 52);
+            this.btn_limpiar.TabIndex = 24;
+            this.btn_limpiar.Text = "LIMPIAR CAMPOS";
+            this.btn_limpiar.TextColor = System.Drawing.Color.Black;
+            this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
-            // btn_crear
+            // btn_guardar
             // 
-            this.btn_crear.BackColor = System.Drawing.Color.Gold;
-            this.btn_crear.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_crear.BorderColor = System.Drawing.Color.Black;
-            this.btn_crear.BorderRadius = 10;
-            this.btn_crear.BorderSize = 2;
-            this.btn_crear.FlatAppearance.BorderSize = 0;
-            this.btn_crear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_crear.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear.ForeColor = System.Drawing.Color.Black;
-            this.btn_crear.Location = new System.Drawing.Point(172, 324);
-            this.btn_crear.Name = "btn_crear";
-            this.btn_crear.Size = new System.Drawing.Size(171, 41);
-            this.btn_crear.TabIndex = 23;
-            this.btn_crear.Text = "CREAR USUARIO";
-            this.btn_crear.TextColor = System.Drawing.Color.Black;
-            this.btn_crear.UseVisualStyleBackColor = false;
-            this.btn_crear.Click += new System.EventHandler(this.rjButton3_Click);
+            this.btn_guardar.BackColor = System.Drawing.Color.Gold;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_guardar.BorderColor = System.Drawing.Color.Black;
+            this.btn_guardar.BorderRadius = 10;
+            this.btn_guardar.BorderSize = 2;
+            this.btn_guardar.FlatAppearance.BorderSize = 0;
+            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_guardar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_guardar.ForeColor = System.Drawing.Color.Black;
+            this.btn_guardar.Location = new System.Drawing.Point(106, 322);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(148, 52);
+            this.btn_guardar.TabIndex = 23;
+            this.btn_guardar.Text = "GUARDAR";
+            this.btn_guardar.TextColor = System.Drawing.Color.Black;
+            this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // label6
             // 
@@ -367,27 +389,27 @@
             this.txt_correo.Texts = "";
             this.txt_correo.UnderlinedStyle = false;
             // 
-            // txt_nombre
+            // txt_nombre_completo
             // 
-            this.txt_nombre.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_nombre.BorderColor = System.Drawing.Color.DarkViolet;
-            this.txt_nombre.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_nombre.BorderRadius = 0;
-            this.txt_nombre.BorderSize = 2;
-            this.txt_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_nombre.Location = new System.Drawing.Point(34, 42);
-            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_nombre.Multiline = false;
-            this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_nombre.PasswordChar = false;
-            this.txt_nombre.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_nombre.PlaceholderText = "";
-            this.txt_nombre.Size = new System.Drawing.Size(250, 31);
-            this.txt_nombre.TabIndex = 9;
-            this.txt_nombre.Texts = "";
-            this.txt_nombre.UnderlinedStyle = false;
+            this.txt_nombre_completo.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_nombre_completo.BorderColor = System.Drawing.Color.DarkViolet;
+            this.txt_nombre_completo.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_nombre_completo.BorderRadius = 0;
+            this.txt_nombre_completo.BorderSize = 2;
+            this.txt_nombre_completo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_nombre_completo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_nombre_completo.Location = new System.Drawing.Point(34, 42);
+            this.txt_nombre_completo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_nombre_completo.Multiline = false;
+            this.txt_nombre_completo.Name = "txt_nombre_completo";
+            this.txt_nombre_completo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_nombre_completo.PasswordChar = false;
+            this.txt_nombre_completo.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_nombre_completo.PlaceholderText = "";
+            this.txt_nombre_completo.Size = new System.Drawing.Size(250, 31);
+            this.txt_nombre_completo.TabIndex = 9;
+            this.txt_nombre_completo.Texts = "";
+            this.txt_nombre_completo.UnderlinedStyle = false;
             // 
             // label5
             // 
@@ -436,11 +458,11 @@
             this.btn_visualizarUser.ForeColor = System.Drawing.Color.Gold;
             this.btn_visualizarUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_visualizarUser.Image")));
             this.btn_visualizarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 67);
+            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 15);
             this.btn_visualizarUser.Name = "btn_visualizarUser";
             this.btn_visualizarUser.Size = new System.Drawing.Size(220, 50);
             this.btn_visualizarUser.TabIndex = 8;
-            this.btn_visualizarUser.Text = "VISUALIZAR USUARIO";
+            this.btn_visualizarUser.Text = "VISUALIZAR USUARIOS";
             this.btn_visualizarUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_visualizarUser.TextColor = System.Drawing.Color.Gold;
             this.btn_visualizarUser.UseVisualStyleBackColor = false;
@@ -494,29 +516,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Actualizacion: v1.0.0.5";
             // 
-            // btn_addUser
-            // 
-            this.btn_addUser.BackColor = System.Drawing.Color.Transparent;
-            this.btn_addUser.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_addUser.BorderColor = System.Drawing.Color.Gold;
-            this.btn_addUser.BorderRadius = 7;
-            this.btn_addUser.BorderSize = 2;
-            this.btn_addUser.FlatAppearance.BorderSize = 0;
-            this.btn_addUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addUser.ForeColor = System.Drawing.Color.Gold;
-            this.btn_addUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_addUser.Image")));
-            this.btn_addUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_addUser.Location = new System.Drawing.Point(12, 12);
-            this.btn_addUser.Name = "btn_addUser";
-            this.btn_addUser.Size = new System.Drawing.Size(220, 40);
-            this.btn_addUser.TabIndex = 0;
-            this.btn_addUser.Text = "AGREGAR USUARIO";
-            this.btn_addUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_addUser.TextColor = System.Drawing.Color.Gold;
-            this.btn_addUser.UseVisualStyleBackColor = false;
-            this.btn_addUser.Click += new System.EventHandler(this.btn_addUser_Click);
-            // 
             // formUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,21 +540,20 @@
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.Panel combo_rol;
         private CustomBox.RJControls.RJTextBox txt_tel;
-        private CustomBox.RJControls.RJButton btn_eliminar;
-        private CustomBox.RJControls.RJButton btn_crear;
+        private CustomBox.RJControls.RJButton btn_limpiar;
+        private CustomBox.RJControls.RJButton btn_guardar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private CustomBox.RJControls.RJTextBox txt_dni;
         private CustomBox.RJControls.RJTextBox txt_correo;
-        private CustomBox.RJControls.RJTextBox txt_nombre;
+        private CustomBox.RJControls.RJTextBox txt_nombre_completo;
         private RJCodeAdvance.RJControls.RJButton btn_visualizarUser;
         private RJCodeAdvance.RJControls.RJButton rjButton2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private RJCodeAdvance.RJControls.RJButton btn_addUser;
         private CustomBox.RJControls.RJTextBox txt_pass;
         private System.Windows.Forms.Label lbl_pass;
         private CustomBox.RJControls.RJTextBox txt_username;
@@ -565,5 +563,6 @@
         private RJCodeAdvance.RJControls.RJComboBox cbo_rol;
         private System.Windows.Forms.Label lbl_rol;
         private System.Windows.Forms.Label lbl_estado;
+        private CustomBox.RJControls.RJButton btn_deshacer;
     }
 }

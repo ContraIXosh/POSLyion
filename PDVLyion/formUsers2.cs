@@ -44,9 +44,9 @@ namespace PDCLyion
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           if (dgvdata.Columns[e.ColumnIndex].Name == "btn_editar")
-           {
-                int index = e.RowIndex;
+            int index = e.RowIndex;
+            if (dgvdata.Columns[e.ColumnIndex].Name == "btn_editar")
+            {
                 if(index >= 0)
                 {
                     Users user = new Users()
@@ -66,6 +66,27 @@ namespace PDCLyion
                         State = Convert.ToBoolean(dgvdata.Rows[index].Cells["data_estado_valor"].Value)
                     };
                     abrirHerencia(new formUsers(user));
+                }
+            }
+           else if (dgvdata.Columns[e.ColumnIndex].Name == "btn_eliminar")
+           {
+                if (index >= 0)
+                {
+                    string message = string.Empty;
+                    Users user = new Users()
+                    {
+                        User_id = Convert.ToInt32(dgvdata.Rows[index].Cells["data_id"].Value)
+                    };
+                    bool result = new BL_Users().Delete(user, out message);
+                    if (!result)
+                    {
+                        MessageBox.Show(message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        abrirHerencia(new formUsers2());
+                    }
                 }
            }
         }
@@ -91,6 +112,11 @@ namespace PDCLyion
                     user.State == true ? 1 : 0
                 });
             }
+        }
+
+        private void btn_addUser_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers());
         }
     }
 }

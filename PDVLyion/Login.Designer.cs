@@ -121,7 +121,7 @@
             this.rjButton2.UseVisualStyleBackColor = false;
             this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
             // 
-            // rjButton1
+            // abrir_sesion
             // 
             this.abrir_sesion.BackColor = System.Drawing.Color.Gold;
             this.abrir_sesion.BackgroundColor = System.Drawing.Color.Gold;
@@ -131,9 +131,8 @@
             this.abrir_sesion.BorderSize = 0;
             this.abrir_sesion.FlatAppearance.BorderSize = 0;
             this.abrir_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abrir_sesion.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.abrir_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.abrir_sesion.ForeColor = System.Drawing.Color.Black;
-            this.abrir_sesion.Image = ((System.Drawing.Image)(resources.GetObject("abrir_sesion.Image")));
             this.abrir_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.abrir_sesion.Location = new System.Drawing.Point(276, 261);
             this.abrir_sesion.Name = "abrir_sesion";
@@ -177,6 +176,7 @@
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(262, 31);
             this.txtusername.TabIndex = 16;
+            this.txtusername.Text = "hexatec9";
             this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged_1);
             // 
             // label1
@@ -198,6 +198,7 @@
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(262, 31);
             this.txtpassword.TabIndex = 17;
+            this.txtpassword.Text = "123";
             this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
             // 
             // Login
