@@ -32,7 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.container = new System.Windows.Forms.Panel();
             this.panel_main = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rjButton4 = new RJCodeAdvance.RJControls.RJButton();
+            this.txt_sumVenta = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rjButton5 = new RJCodeAdvance.RJControls.RJButton();
             this.f9 = new System.Windows.Forms.Label();
             this.lbl_cobrar = new System.Windows.Forms.Label();
             this.rjButton3 = new RJCodeAdvance.RJControls.RJButton();
@@ -63,23 +70,16 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_sumVenta = new System.Windows.Forms.TextBox();
-            this.rjButton4 = new RJCodeAdvance.RJControls.RJButton();
-            this.rjButton5 = new RJCodeAdvance.RJControls.RJButton();
-            this.label4 = new System.Windows.Forms.Label();
             this.container.SuspendLayout();
             this.panel_main.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel_condicion.SuspendLayout();
             this.panel5.SuspendLayout();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // container
@@ -103,6 +103,63 @@
             this.panel_main.TabIndex = 3;
             this.panel_main.DockChanged += new System.EventHandler(this.panel1_DockChanged);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.rjButton4);
+            this.panel1.Controls.Add(this.txt_sumVenta);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Location = new System.Drawing.Point(712, 61);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(271, 376);
+            this.panel1.TabIndex = 4;
+            // 
+            // rjButton4
+            // 
+            this.rjButton4.BackColor = System.Drawing.Color.Gold;
+            this.rjButton4.BackgroundColor = System.Drawing.Color.Gold;
+            this.rjButton4.BorderColor = System.Drawing.Color.Black;
+            this.rjButton4.BorderRadius = 0;
+            this.rjButton4.BorderSize = 2;
+            this.rjButton4.FlatAppearance.BorderSize = 0;
+            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton4.ForeColor = System.Drawing.Color.Black;
+            this.rjButton4.Location = new System.Drawing.Point(5, 332);
+            this.rjButton4.Name = "rjButton4";
+            this.rjButton4.Size = new System.Drawing.Size(260, 37);
+            this.rjButton4.TabIndex = 7;
+            this.rjButton4.Text = "CERRAR VENTA";
+            this.rjButton4.TextColor = System.Drawing.Color.Black;
+            this.rjButton4.UseVisualStyleBackColor = false;
+            // 
+            // txt_sumVenta
+            // 
+            this.txt_sumVenta.Location = new System.Drawing.Point(5, 79);
+            this.txt_sumVenta.Multiline = true;
+            this.txt_sumVenta.Name = "txt_sumVenta";
+            this.txt_sumVenta.Size = new System.Drawing.Size(260, 248);
+            this.txt_sumVenta.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Crimson;
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Location = new System.Drawing.Point(0, -1);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(275, 63);
+            this.panel4.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(224, 31);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "FACTURACION";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
@@ -119,6 +176,36 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(990, 102);
             this.panel2.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gold;
+            this.label4.Location = new System.Drawing.Point(696, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 22);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "F8";
+            // 
+            // rjButton5
+            // 
+            this.rjButton5.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton5.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton5.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton5.BorderRadius = 0;
+            this.rjButton5.BorderSize = 0;
+            this.rjButton5.FlatAppearance.BorderSize = 0;
+            this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton5.ForeColor = System.Drawing.Color.White;
+            this.rjButton5.Location = new System.Drawing.Point(641, 38);
+            this.rjButton5.Name = "rjButton5";
+            this.rjButton5.Size = new System.Drawing.Size(137, 40);
+            this.rjButton5.TabIndex = 7;
+            this.rjButton5.Text = "TIPO COBRO";
+            this.rjButton5.TextColor = System.Drawing.Color.White;
+            this.rjButton5.UseVisualStyleBackColor = false;
             // 
             // f9
             // 
@@ -468,93 +555,6 @@
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.rjButton4);
-            this.panel1.Controls.Add(this.txt_sumVenta);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Location = new System.Drawing.Point(712, 61);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(271, 376);
-            this.panel1.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Crimson;
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(0, -1);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(275, 63);
-            this.panel4.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(223, 33);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "FACTURACION";
-            // 
-            // txt_sumVenta
-            // 
-            this.txt_sumVenta.Location = new System.Drawing.Point(5, 79);
-            this.txt_sumVenta.Multiline = true;
-            this.txt_sumVenta.Name = "txt_sumVenta";
-            this.txt_sumVenta.Size = new System.Drawing.Size(260, 248);
-            this.txt_sumVenta.TabIndex = 1;
-            // 
-            // rjButton4
-            // 
-            this.rjButton4.BackColor = System.Drawing.Color.Gold;
-            this.rjButton4.BackgroundColor = System.Drawing.Color.Gold;
-            this.rjButton4.BorderColor = System.Drawing.Color.Black;
-            this.rjButton4.BorderRadius = 0;
-            this.rjButton4.BorderSize = 2;
-            this.rjButton4.FlatAppearance.BorderSize = 0;
-            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton4.ForeColor = System.Drawing.Color.Black;
-            this.rjButton4.Location = new System.Drawing.Point(5, 332);
-            this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(260, 37);
-            this.rjButton4.TabIndex = 7;
-            this.rjButton4.Text = "CERRAR VENTA";
-            this.rjButton4.TextColor = System.Drawing.Color.Black;
-            this.rjButton4.UseVisualStyleBackColor = false;
-            // 
-            // rjButton5
-            // 
-            this.rjButton5.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton5.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton5.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton5.BorderRadius = 0;
-            this.rjButton5.BorderSize = 0;
-            this.rjButton5.FlatAppearance.BorderSize = 0;
-            this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton5.ForeColor = System.Drawing.Color.White;
-            this.rjButton5.Location = new System.Drawing.Point(641, 38);
-            this.rjButton5.Name = "rjButton5";
-            this.rjButton5.Size = new System.Drawing.Size(137, 40);
-            this.rjButton5.TabIndex = 7;
-            this.rjButton5.Text = "TIPO COBRO";
-            this.rjButton5.TextColor = System.Drawing.Color.White;
-            this.rjButton5.UseVisualStyleBackColor = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gold;
-            this.label4.Location = new System.Drawing.Point(696, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 22);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "F8";
-            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,9 +564,14 @@
             this.Name = "Start";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Punto de Venta - Lyion";
+            this.Load += new System.EventHandler(this.Start_Load);
             this.container.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -577,10 +582,6 @@
             this.panel5.PerformLayout();
             this.menu_sesion.ResumeLayout(false);
             this.menu_Main.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

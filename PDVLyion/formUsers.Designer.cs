@@ -51,11 +51,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btn_visualizarUser = new RJCodeAdvance.RJControls.RJButton();
             this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_editar_permisos = new CustomBox.RJControls.RJButton();
+            this.btn_visualizarUser = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main.SuspendLayout();
             this.combo_rol.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -78,6 +79,7 @@
             // combo_rol
             // 
             this.combo_rol.BackColor = System.Drawing.Color.DarkRed;
+            this.combo_rol.Controls.Add(this.btn_editar_permisos);
             this.combo_rol.Controls.Add(this.btn_deshacer);
             this.combo_rol.Controls.Add(this.lbl_estado);
             this.combo_rol.Controls.Add(this.lbl_rol);
@@ -114,7 +116,7 @@
             this.btn_deshacer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deshacer.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deshacer.ForeColor = System.Drawing.Color.Black;
-            this.btn_deshacer.Location = new System.Drawing.Point(283, 322);
+            this.btn_deshacer.Location = new System.Drawing.Point(189, 322);
             this.btn_deshacer.Name = "btn_deshacer";
             this.btn_deshacer.Size = new System.Drawing.Size(148, 52);
             this.btn_deshacer.TabIndex = 37;
@@ -305,7 +307,7 @@
             this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_limpiar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_limpiar.ForeColor = System.Drawing.Color.Black;
-            this.btn_limpiar.Location = new System.Drawing.Point(460, 322);
+            this.btn_limpiar.Location = new System.Drawing.Point(364, 322);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(148, 52);
             this.btn_limpiar.TabIndex = 24;
@@ -325,7 +327,7 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.Black;
-            this.btn_guardar.Location = new System.Drawing.Point(106, 322);
+            this.btn_guardar.Location = new System.Drawing.Point(22, 322);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(148, 52);
             this.btn_guardar.TabIndex = 23;
@@ -445,29 +447,6 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "CORREO ELECTRONICO";
             // 
-            // btn_visualizarUser
-            // 
-            this.btn_visualizarUser.BackColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BorderColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.BorderRadius = 7;
-            this.btn_visualizarUser.BorderSize = 2;
-            this.btn_visualizarUser.FlatAppearance.BorderSize = 0;
-            this.btn_visualizarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_visualizarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_visualizarUser.ForeColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_visualizarUser.Image")));
-            this.btn_visualizarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 15);
-            this.btn_visualizarUser.Name = "btn_visualizarUser";
-            this.btn_visualizarUser.Size = new System.Drawing.Size(220, 50);
-            this.btn_visualizarUser.TabIndex = 8;
-            this.btn_visualizarUser.Text = "VISUALIZAR USUARIOS";
-            this.btn_visualizarUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_visualizarUser.TextColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.UseVisualStyleBackColor = false;
-            this.btn_visualizarUser.Click += new System.EventHandler(this.btn_visualizarUser_Click);
-            // 
             // rjButton2
             // 
             this.rjButton2.BackColor = System.Drawing.Color.Transparent;
@@ -515,6 +494,49 @@
             this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Actualizacion: v1.0.0.5";
+            // 
+            // btn_editar_permisos
+            // 
+            this.btn_editar_permisos.BackColor = System.Drawing.Color.Gold;
+            this.btn_editar_permisos.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_editar_permisos.BorderColor = System.Drawing.Color.Black;
+            this.btn_editar_permisos.BorderRadius = 10;
+            this.btn_editar_permisos.BorderSize = 2;
+            this.btn_editar_permisos.FlatAppearance.BorderSize = 0;
+            this.btn_editar_permisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_editar_permisos.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editar_permisos.ForeColor = System.Drawing.Color.Black;
+            this.btn_editar_permisos.Location = new System.Drawing.Point(532, 322);
+            this.btn_editar_permisos.Name = "btn_editar_permisos";
+            this.btn_editar_permisos.Size = new System.Drawing.Size(148, 52);
+            this.btn_editar_permisos.TabIndex = 38;
+            this.btn_editar_permisos.Text = "EDITAR PERMISOS";
+            this.btn_editar_permisos.TextColor = System.Drawing.Color.Black;
+            this.btn_editar_permisos.UseVisualStyleBackColor = false;
+            this.btn_editar_permisos.Click += new System.EventHandler(this.btn_editar_permisos_Click);
+            // 
+            // btn_visualizarUser
+            // 
+            this.btn_visualizarUser.BackColor = System.Drawing.Color.Transparent;
+            this.btn_visualizarUser.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_visualizarUser.BorderColor = System.Drawing.Color.Gold;
+            this.btn_visualizarUser.BorderRadius = 7;
+            this.btn_visualizarUser.BorderSize = 2;
+            this.btn_visualizarUser.FlatAppearance.BorderSize = 0;
+            this.btn_visualizarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_visualizarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_visualizarUser.ForeColor = System.Drawing.Color.Gold;
+            this.btn_visualizarUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_visualizarUser.Image")));
+            this.btn_visualizarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 15);
+            this.btn_visualizarUser.Name = "btn_visualizarUser";
+            this.btn_visualizarUser.Size = new System.Drawing.Size(220, 50);
+            this.btn_visualizarUser.TabIndex = 8;
+            this.btn_visualizarUser.Text = "VISUALIZAR USUARIOS";
+            this.btn_visualizarUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_visualizarUser.TextColor = System.Drawing.Color.Gold;
+            this.btn_visualizarUser.UseVisualStyleBackColor = false;
+            this.btn_visualizarUser.Click += new System.EventHandler(this.btn_visualizarUser_Click);
             // 
             // formUsers
             // 
@@ -564,5 +586,6 @@
         private System.Windows.Forms.Label lbl_rol;
         private System.Windows.Forms.Label lbl_estado;
         private CustomBox.RJControls.RJButton btn_deshacer;
+        private CustomBox.RJControls.RJButton btn_editar_permisos;
     }
 }

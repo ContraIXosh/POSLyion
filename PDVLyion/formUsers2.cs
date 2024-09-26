@@ -70,22 +70,25 @@ namespace PDCLyion
             }
            else if (dgvdata.Columns[e.ColumnIndex].Name == "btn_eliminar")
            {
-                if (index >= 0)
+                if(MessageBox.Show("¿Desea eliminar el usuario?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string message = string.Empty;
-                    Users user = new Users()
+                    if (index >= 0)
                     {
-                        User_id = Convert.ToInt32(dgvdata.Rows[index].Cells["data_id"].Value)
-                    };
-                    bool result = new BL_Users().Delete(user, out message);
-                    if (!result)
-                    {
-                        MessageBox.Show(message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        abrirHerencia(new formUsers2());
+                        string message = string.Empty;
+                        Users user = new Users()
+                        {
+                            User_id = Convert.ToInt32(dgvdata.Rows[index].Cells["data_id"].Value)
+                        };
+                        bool result = new BL_Users().Delete(user, out message);
+                        if (!result)
+                        {
+                            MessageBox.Show(message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            abrirHerencia(new formUsers2());
+                        }
                     }
                 }
            }

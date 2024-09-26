@@ -13,7 +13,7 @@ CREATE TABLE Permissions (
   menu_name VARCHAR(100) NOT NULL,
   create_date DATETIME DEFAULT GETDATE() NOT NULL,
   CONSTRAINT PK_permission_id PRIMARY KEY (permission_id),
-  CONSTRAINT FK_Permissions_Roles FOREIGN KEY (role_id) REFERENCES Roles(role_id)
+  CONSTRAINT FK_Permissions_Roles FOREIGN KEY (role_id) REFERENCES Roles(role_id) ON DELETE CASCADE
 );
 GO
 

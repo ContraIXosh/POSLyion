@@ -184,5 +184,10 @@ namespace PDCLyion
             cbo_estado.SelectedIndex = 0;
             cbo_rol.SelectedIndex = 0;
         }
+
+        private void btn_editar_permisos_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formPermissions(User));
+        }
     }
 }

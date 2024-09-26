@@ -44,6 +44,20 @@ namespace PDCLyion
                 
             }
         }
+
+        private void Start_Load(object sender, EventArgs e)
+        {
+            List<Permissions> permissions_list = new BL_Permissions().Read(oUser.User_id);
+            foreach(ToolStripMenuItem menu in menu_Main.Items)
+            {
+                bool found = permissions_list.Any(m => m.Menu_name == menu.Name);
+                if (!found)
+                {
+                    menu.Visible = false;
+                }
+            }
+        }
+
         private void OpenForm (IconMenuItem iconmenuitem, Form form)
         {
             
