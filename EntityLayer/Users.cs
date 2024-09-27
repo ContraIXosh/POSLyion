@@ -15,6 +15,7 @@ namespace EntityLayer
         public string Username { get; set; }
         public string Password { get; set; }
         public Roles oRol { get; set; }
+        public string Phone { get; set; }
         public bool State { get; set; }
         public string Create_date { get; set; }
         public string Modify_date { get; set; }

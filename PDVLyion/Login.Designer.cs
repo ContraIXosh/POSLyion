@@ -48,11 +48,11 @@
             // 
             this.lblusername.AutoSize = true;
             this.lblusername.BackColor = System.Drawing.Color.Transparent;
-            this.lblusername.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblusername.ForeColor = System.Drawing.Color.Gold;
             this.lblusername.Location = new System.Drawing.Point(289, 70);
             this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(86, 20);
+            this.lblusername.Size = new System.Drawing.Size(76, 20);
             this.lblusername.TabIndex = 2;
             this.lblusername.Text = "Usuario:";
             // 
@@ -60,11 +60,11 @@
             // 
             this.lblpassword.AutoSize = true;
             this.lblpassword.BackColor = System.Drawing.Color.Transparent;
-            this.lblpassword.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpassword.ForeColor = System.Drawing.Color.Gold;
             this.lblpassword.Location = new System.Drawing.Point(289, 146);
             this.lblpassword.Name = "lblpassword";
-            this.lblpassword.Size = new System.Drawing.Size(120, 20);
+            this.lblpassword.Size = new System.Drawing.Size(107, 20);
             this.lblpassword.TabIndex = 3;
             this.lblpassword.Text = "Contraseña:";
             // 
@@ -107,7 +107,7 @@
             this.rjButton2.BorderSize = 0;
             this.rjButton2.FlatAppearance.BorderSize = 0;
             this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton2.ForeColor = System.Drawing.Color.White;
             this.rjButton2.Image = ((System.Drawing.Image)(resources.GetObject("rjButton2.Image")));
             this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -131,9 +131,8 @@
             this.abrir_sesion.BorderSize = 0;
             this.abrir_sesion.FlatAppearance.BorderSize = 0;
             this.abrir_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abrir_sesion.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.abrir_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.abrir_sesion.ForeColor = System.Drawing.Color.Black;
-            this.abrir_sesion.Image = ((System.Drawing.Image)(resources.GetObject("abrir_sesion.Image")));
             this.abrir_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.abrir_sesion.Location = new System.Drawing.Point(276, 261);
             this.abrir_sesion.Name = "abrir_sesion";
@@ -177,6 +176,7 @@
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(262, 31);
             this.txtusername.TabIndex = 16;
+            this.txtusername.Text = "hexatec9";
             this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged_1);
             // 
             // label1
@@ -198,6 +198,7 @@
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(262, 31);
             this.txtpassword.TabIndex = 17;
+            this.txtpassword.Text = "123";
             this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
             // 
             // Login

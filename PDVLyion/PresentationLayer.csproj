@@ -136,6 +136,12 @@
     <Compile Include="formCustomers.Designer.cs">
       <DependentUpon>formCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="formPermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPermissions.Designer.cs">
+      <DependentUpon>formPermissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="formProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\OpcionCombo.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formCustomers.resx">
       <DependentUpon>formCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formPermissions.resx">
+      <DependentUpon>formPermissions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formProducts.resx">
       <DependentUpon>formProducts.cs</DependentUpon>

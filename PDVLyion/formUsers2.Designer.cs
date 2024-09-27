@@ -30,32 +30,37 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsers2));
             this.panel_main = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.btn_seleccionar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_nombre_completo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_id_rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_visualizarUser = new RJCodeAdvance.RJControls.RJButton();
             this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_addUser = new RJCodeAdvance.RJControls.RJButton();
-            this.data_idUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_nameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_ApellidoUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_dniUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_telUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataSet1 = new System.Data.DataSet();
             this.panel_main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
             // 
             this.panel_main.AutoSize = true;
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel_main.Controls.Add(this.dataGridView1);
+            this.panel_main.Controls.Add(this.dgvdata);
             this.panel_main.Controls.Add(this.btn_visualizarUser);
             this.panel_main.Controls.Add(this.rjButton2);
             this.panel_main.Controls.Add(this.panel3);
@@ -63,25 +68,135 @@
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(966, 498);
-            this.panel_main.TabIndex = 3;
+            this.panel_main.Size = new System.Drawing.Size(1193, 581);
+            this.panel_main.TabIndex = 4;
             // 
-            // dataGridView1
+            // dgvdata
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.data_idUser,
-            this.data_nameUser,
-            this.data_ApellidoUser,
-            this.data_dniUser,
-            this.data_telUser,
+            this.dgvdata.AllowUserToAddRows = false;
+            this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btn_seleccionar,
+            this.data_id,
+            this.data_dni,
+            this.data_nombre_completo,
+            this.data_correo,
+            this.data_username,
+            this.data_clave,
+            this.data_id_rol,
+            this.data_rol,
+            this.data_tel,
+            this.data_estado,
+            this.data_estado_valor,
             this.btn_eliminar,
             this.btn_editar});
-            this.dataGridView1.Location = new System.Drawing.Point(248, 15);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(695, 377);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvdata.Location = new System.Drawing.Point(248, 15);
+            this.dgvdata.MultiSelect = false;
+            this.dgvdata.Name = "dgvdata";
+            this.dgvdata.ReadOnly = true;
+            this.dgvdata.Size = new System.Drawing.Size(938, 377);
+            this.dgvdata.TabIndex = 9;
+            this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
+            // 
+            // btn_seleccionar
+            // 
+            this.btn_seleccionar.HeaderText = "";
+            this.btn_seleccionar.Name = "btn_seleccionar";
+            this.btn_seleccionar.ReadOnly = true;
+            this.btn_seleccionar.Width = 20;
+            // 
+            // data_id
+            // 
+            this.data_id.FillWeight = 50F;
+            this.data_id.HeaderText = "ID";
+            this.data_id.Name = "data_id";
+            this.data_id.ReadOnly = true;
+            this.data_id.Visible = false;
+            this.data_id.Width = 50;
+            // 
+            // data_dni
+            // 
+            this.data_dni.HeaderText = "DNI";
+            this.data_dni.Name = "data_dni";
+            this.data_dni.ReadOnly = true;
+            // 
+            // data_nombre_completo
+            // 
+            this.data_nombre_completo.HeaderText = "NOMBRE";
+            this.data_nombre_completo.Name = "data_nombre_completo";
+            this.data_nombre_completo.ReadOnly = true;
+            // 
+            // data_correo
+            // 
+            this.data_correo.HeaderText = "CORREO";
+            this.data_correo.Name = "data_correo";
+            this.data_correo.ReadOnly = true;
+            // 
+            // data_username
+            // 
+            this.data_username.HeaderText = "NOMBRE USUARIO";
+            this.data_username.Name = "data_username";
+            this.data_username.ReadOnly = true;
+            // 
+            // data_clave
+            // 
+            this.data_clave.HeaderText = "CLAVE";
+            this.data_clave.Name = "data_clave";
+            this.data_clave.ReadOnly = true;
+            // 
+            // data_id_rol
+            // 
+            this.data_id_rol.HeaderText = "IDROL";
+            this.data_id_rol.Name = "data_id_rol";
+            this.data_id_rol.ReadOnly = true;
+            this.data_id_rol.Width = 20;
+            // 
+            // data_rol
+            // 
+            this.data_rol.HeaderText = "ROL";
+            this.data_rol.Name = "data_rol";
+            this.data_rol.ReadOnly = true;
+            this.data_rol.Width = 20;
+            // 
+            // data_tel
+            // 
+            this.data_tel.HeaderText = "TELEFONO";
+            this.data_tel.Name = "data_tel";
+            this.data_tel.ReadOnly = true;
+            // 
+            // data_estado
+            // 
+            this.data_estado.HeaderText = "ESTADO";
+            this.data_estado.Name = "data_estado";
+            this.data_estado.ReadOnly = true;
+            this.data_estado.Width = 50;
+            // 
+            // data_estado_valor
+            // 
+            this.data_estado_valor.HeaderText = "ESTADO_VALOR";
+            this.data_estado_valor.Name = "data_estado_valor";
+            this.data_estado_valor.ReadOnly = true;
+            this.data_estado_valor.Visible = false;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.btn_eliminar.FillWeight = 60F;
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
+            this.btn_eliminar.Width = 64;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.btn_editar.FillWeight = 50F;
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btn_editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btn_editar.Width = 72;
             // 
             // btn_visualizarUser
             // 
@@ -176,68 +291,19 @@
             this.btn_addUser.UseVisualStyleBackColor = false;
             this.btn_addUser.Click += new System.EventHandler(this.btn_addUser_Click);
             // 
-            // data_idUser
-            // 
-            this.data_idUser.FillWeight = 50F;
-            this.data_idUser.HeaderText = "ID";
-            this.data_idUser.Name = "data_idUser";
-            this.data_idUser.Width = 50;
-            // 
-            // data_nameUser
-            // 
-            this.data_nameUser.HeaderText = "NOMBRE";
-            this.data_nameUser.Name = "data_nameUser";
-            // 
-            // data_ApellidoUser
-            // 
-            this.data_ApellidoUser.HeaderText = "APELLIDO";
-            this.data_ApellidoUser.Name = "data_ApellidoUser";
-            // 
-            // data_dniUser
-            // 
-            this.data_dniUser.HeaderText = "DNI";
-            this.data_dniUser.Name = "data_dniUser";
-            // 
-            // data_telUser
-            // 
-            this.data_telUser.HeaderText = "TELEFONO";
-            this.data_telUser.Name = "data_telUser";
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.btn_eliminar.FillWeight = 60F;
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Width = 64;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.btn_editar.FillWeight = 50F;
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btn_editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btn_editar.Width = 72;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "NewDataSet";
-            // 
             // formUsers2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 498);
+            this.ClientSize = new System.Drawing.Size(1193, 581);
             this.Controls.Add(this.panel_main);
             this.Name = "formUsers2";
             this.Text = "formUsers2";
+            this.Load += new System.EventHandler(this.formUsers2_Load);
             this.panel_main.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,20 +312,26 @@
         #endregion
 
         private System.Windows.Forms.Panel panel_main;
+        private System.Windows.Forms.DataGridView dgvdata;
+        private System.Windows.Forms.DataGridViewTextBoxColumn btn_seleccionar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_nombre_completo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_correo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_clave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_id_rol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_rol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_tel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_estado_valor;
+        private System.Windows.Forms.DataGridViewButtonColumn btn_eliminar;
+        private System.Windows.Forms.DataGridViewButtonColumn btn_editar;
         private RJCodeAdvance.RJControls.RJButton btn_visualizarUser;
         private RJCodeAdvance.RJControls.RJButton rjButton2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private RJCodeAdvance.RJControls.RJButton btn_addUser;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_idUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_nameUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_ApellidoUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_dniUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_telUser;
-        private System.Windows.Forms.DataGridViewButtonColumn btn_eliminar;
-        private System.Windows.Forms.DataGridViewButtonColumn btn_editar;
-        private System.Data.DataSet dataSet1;
     }
 }

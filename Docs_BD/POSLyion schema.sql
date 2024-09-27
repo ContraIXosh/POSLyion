@@ -13,7 +13,7 @@ CREATE TABLE Permissions (
   menu_name VARCHAR(100) NOT NULL,
   create_date DATETIME DEFAULT GETDATE() NOT NULL,
   CONSTRAINT PK_permission_id PRIMARY KEY (permission_id),
-  CONSTRAINT FK_Permissions_Roles FOREIGN KEY (role_id) REFERENCES Roles(role_id)
+  CONSTRAINT FK_Permissions_Roles FOREIGN KEY (role_id) REFERENCES Roles(role_id) ON DELETE CASCADE
 );
 GO
 
@@ -72,18 +72,18 @@ GO
 
 CREATE TABLE Users (
 	user_id INT IDENTITY(1, 1) NOT NULL,
-	dni VARCHAR(30) NULL,
+	dni VARCHAR(30) NOT NULL,
 	full_name VARCHAR(100) NOT NULL,
 	email VARCHAR(155) NULL,
 	username VARCHAR(30) NOT NULL,
 	password VARCHAR(155) NOT NULL,
 	role_id INT NOT NULL,
+	phone VARCHAR(360) NULL,
 	state BIT NOT NULL,
 	create_date DATETIME DEFAULT GETDATE() NOT NULL,
 	modify_date DATETIME NULL,
 	CONSTRAINT PK_user_id PRIMARY KEY (user_id),
-	CONSTRAINT FK_Users_Roles FOREIGN KEY (role_id) REFERENCES Roles(role_id),
-	CONSTRAINT UC_Username UNIQUE (username)
+	CONSTRAINT FK_Users_Roles FOREIGN KEY (role_id) REFERENCES Roles(role_id)
 );
 GO
 
@@ -109,8 +109,7 @@ CREATE TABLE PurchaseOrderDetails (
 	quantity INT NOT NULL,
 	subtotal DECIMAL (12, 2) NOT NULL,
 	CONSTRAINT PK_order_detail_id PRIMARY KEY (purchase_order_detail_id),
-	CONSTRAINT FK_PurchaseOrderDetails_PurchaseOrders FOREIGN KEY (order_id) REFERENCES PurchaseOrders(purchase_order_id),
-	CONSTRAINT FK_PurchaseOrderDetails_Products FOREIGN KEY (product_id) REFERENCES Products(product_id)
+	CONSTRAINT FK_PurchaseOrderDetails_PurchaseOrders FOREIGN KEY (order_id) REFERENCES PurchaseOrders(purchase_order_id)
 );	
 GO
 
