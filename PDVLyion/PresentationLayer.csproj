@@ -136,6 +136,12 @@
     <Compile Include="formCustomers.Designer.cs">
       <DependentUpon>formCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="formCustomers2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCustomers2.Designer.cs">
+      <DependentUpon>formCustomers2.cs</DependentUpon>
+    </Compile>
     <Compile Include="formPermissions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formCustomers.resx">
       <DependentUpon>formCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCustomers2.resx">
+      <DependentUpon>formCustomers2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPermissions.resx">
       <DependentUpon>formPermissions.cs</DependentUpon>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PDCLyion
 {
-    public partial class formVendors2 : Form
+    public partial class formCustomers2 : Form
     {
-        public formVendors2()
+        public formCustomers2()
         {
             InitializeComponent();
         }
@@ -33,30 +33,44 @@ namespace PDCLyion
 
             }
         }
-        private void rjButton1_Click(object sender, EventArgs e)
+
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void rjButton2_Click(object sender, EventArgs e)
+        private void btn_viewvendedor_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCustomers());
+        }
+
+        private void panel_footer_Resize(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_addvendedor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
         {
             abrirHerencia(new formSales());
         }
 
-        private void rjButton5_Click(object sender, EventArgs e)
+        private void btn_back_Click_1(object sender, EventArgs e)
         {
-            abrirHerencia(new formVendors());
+            abrirHerencia(new formSales());
         }
 
-        private void panel1_Resize(object sender, EventArgs e)
+        private void panel_footer_Resize_1(object sender, EventArgs e)
         {
-
-
             if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_add.Left = this.ClientSize.Width - panel_add.Width;
                 panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
                 btn_back.Width = 150;
                 btn_back.Left = this.ClientSize.Width - btn_back.Width;
@@ -65,15 +79,18 @@ namespace PDCLyion
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_add.Left = this.ClientSize.Width - panel_add.Width;
                 panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
                 btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
         }
 
-        private void btn_viewvendedor_Click(object sender, EventArgs e)
+        private void btn_addvendedor_Click_1(object sender, EventArgs e)
         {
-            abrirHerencia(new formVendors());
+        }
+
+        private void btn_viewvendedor_Click_1(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCustomers());
         }
     }
 }

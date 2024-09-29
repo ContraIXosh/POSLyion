@@ -219,5 +219,53 @@ namespace PDCLyion
         {
             abrirHerencia(new formSales());
         }
+
+        private void panel1_Resize(object sender, EventArgs e)
+        {
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+               
+            }
+        }
+
+        private void panel_useradd_Resize(object sender, EventArgs e)
+        {
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                btn_back.Width = 150;
+                btn_back.Left = this.ClientSize.Width - btn_back.Width;
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+                btn_back.Left = this.ClientSize.Width - btn_back.Width;
+            }
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formSales());
+        }
+
+        private void btn_viewvendedor_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers2());
+        }
     }
 }

@@ -45,6 +45,7 @@ namespace PDCLyion
             }
         }
 
+
         private void Start_Load(object sender, EventArgs e)
         {
             List<Permissions> permissions_list = new BL_Permissions().Read(oUser.User_id);
@@ -102,12 +103,12 @@ namespace PDCLyion
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
-            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+            
         }
 
         private void btn_hamb_Click(object sender, EventArgs e)
         {
-            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+            
         }
 
         private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -153,6 +154,63 @@ namespace PDCLyion
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             abrirHerencia(new formConfig());
+        }
+
+        private void panel_main_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Start_Resize(object sender, EventArgs e)
+        {
+
+            if(this.ClientSize.Width > 1000 && this.ClientSize.Height >  700) {
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            panel_right.Width = 500;
+            panel_right.Height = 860;
+            panel_right.Left = this.ClientSize.Width - panel_right.Width;
+
+
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_right.Width = 280;
+                panel_right.Height = 455;
+                panel_right.Left = this.ClientSize.Width - panel_right.Width;
+            }
+        }
+
+        private void lbl_usuario_Click(object sender, EventArgs e)
+        {
+    
+        }
+
+        private void btn_Down_Click(object sender, EventArgs e)
+        {
+            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+        }
+
+        private void btn_hamb_Click_1(object sender, EventArgs e)
+        {
+            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        }
+
+        private void menu_Main_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void panel_factura_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Resize(object sender, EventArgs e)
+        {
+           
         }
     }
 }
