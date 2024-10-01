@@ -177,7 +177,6 @@
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(262, 31);
             this.txtusername.TabIndex = 16;
-            this.txtusername.Text = "hexatec9";
             this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged_1);
             // 
             // label1
@@ -199,7 +198,6 @@
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(262, 31);
             this.txtpassword.TabIndex = 17;
-            this.txtpassword.Text = "123";
             this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
             // 
             // Login
