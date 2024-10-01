@@ -30,7 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsers));
             this.panel_main = new System.Windows.Forms.Panel();
-            this.combo_rol = new System.Windows.Forms.Panel();
+            this.panel_useradd = new System.Windows.Forms.Panel();
+            this.btn_editar_permisos = new CustomBox.RJControls.RJButton();
             this.btn_deshacer = new CustomBox.RJControls.RJButton();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.lbl_rol = new System.Windows.Forms.Label();
@@ -51,59 +52,81 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel_footer = new System.Windows.Forms.Panel();
+            this.btn_viewvendedor = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_back = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_addvendedor = new RJCodeAdvance.RJControls.RJButton();
+            this.panel_update = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_editar_permisos = new CustomBox.RJControls.RJButton();
-            this.btn_visualizarUser = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main.SuspendLayout();
-            this.combo_rol.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panel_useradd.SuspendLayout();
+            this.panel_footer.SuspendLayout();
+            this.panel_update.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
             // 
             this.panel_main.AutoSize = true;
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel_main.Controls.Add(this.combo_rol);
-            this.panel_main.Controls.Add(this.btn_visualizarUser);
-            this.panel_main.Controls.Add(this.rjButton2);
-            this.panel_main.Controls.Add(this.panel3);
+            this.panel_main.Controls.Add(this.panel_footer);
+            this.panel_main.Controls.Add(this.panel_useradd);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(982, 537);
-            this.panel_main.TabIndex = 2;
+            this.panel_main.Size = new System.Drawing.Size(1001, 558);
+            this.panel_main.TabIndex = 3;
             // 
-            // combo_rol
+            // panel_useradd
             // 
-            this.combo_rol.BackColor = System.Drawing.Color.DarkRed;
-            this.combo_rol.Controls.Add(this.btn_editar_permisos);
-            this.combo_rol.Controls.Add(this.btn_deshacer);
-            this.combo_rol.Controls.Add(this.lbl_estado);
-            this.combo_rol.Controls.Add(this.lbl_rol);
-            this.combo_rol.Controls.Add(this.cbo_estado);
-            this.combo_rol.Controls.Add(this.cbo_rol);
-            this.combo_rol.Controls.Add(this.txt_id);
-            this.combo_rol.Controls.Add(this.txt_pass);
-            this.combo_rol.Controls.Add(this.lbl_pass);
-            this.combo_rol.Controls.Add(this.txt_username);
-            this.combo_rol.Controls.Add(this.lbl_username);
-            this.combo_rol.Controls.Add(this.txt_tel);
-            this.combo_rol.Controls.Add(this.btn_limpiar);
-            this.combo_rol.Controls.Add(this.btn_guardar);
-            this.combo_rol.Controls.Add(this.label6);
-            this.combo_rol.Controls.Add(this.txt_dni);
-            this.combo_rol.Controls.Add(this.txt_correo);
-            this.combo_rol.Controls.Add(this.txt_nombre_completo);
-            this.combo_rol.Controls.Add(this.label5);
-            this.combo_rol.Controls.Add(this.label3);
-            this.combo_rol.Controls.Add(this.label7);
-            this.combo_rol.Location = new System.Drawing.Point(258, 15);
-            this.combo_rol.Name = "combo_rol";
-            this.combo_rol.Size = new System.Drawing.Size(695, 377);
-            this.combo_rol.TabIndex = 10;
+            this.panel_useradd.BackColor = System.Drawing.Color.DarkRed;
+            this.panel_useradd.Controls.Add(this.btn_editar_permisos);
+            this.panel_useradd.Controls.Add(this.btn_deshacer);
+            this.panel_useradd.Controls.Add(this.lbl_estado);
+            this.panel_useradd.Controls.Add(this.lbl_rol);
+            this.panel_useradd.Controls.Add(this.cbo_estado);
+            this.panel_useradd.Controls.Add(this.cbo_rol);
+            this.panel_useradd.Controls.Add(this.txt_id);
+            this.panel_useradd.Controls.Add(this.txt_pass);
+            this.panel_useradd.Controls.Add(this.lbl_pass);
+            this.panel_useradd.Controls.Add(this.txt_username);
+            this.panel_useradd.Controls.Add(this.lbl_username);
+            this.panel_useradd.Controls.Add(this.txt_tel);
+            this.panel_useradd.Controls.Add(this.btn_limpiar);
+            this.panel_useradd.Controls.Add(this.btn_guardar);
+            this.panel_useradd.Controls.Add(this.label6);
+            this.panel_useradd.Controls.Add(this.txt_dni);
+            this.panel_useradd.Controls.Add(this.txt_correo);
+            this.panel_useradd.Controls.Add(this.txt_nombre_completo);
+            this.panel_useradd.Controls.Add(this.label5);
+            this.panel_useradd.Controls.Add(this.label3);
+            this.panel_useradd.Controls.Add(this.label7);
+            this.panel_useradd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_useradd.Location = new System.Drawing.Point(0, 0);
+            this.panel_useradd.Name = "panel_useradd";
+            this.panel_useradd.Size = new System.Drawing.Size(1001, 558);
+            this.panel_useradd.TabIndex = 10;
+            this.panel_useradd.Resize += new System.EventHandler(this.panel_useradd_Resize);
+            // 
+            // btn_editar_permisos
+            // 
+            this.btn_editar_permisos.BackColor = System.Drawing.Color.Gold;
+            this.btn_editar_permisos.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_editar_permisos.BorderColor = System.Drawing.Color.Black;
+            this.btn_editar_permisos.BorderRadius = 10;
+            this.btn_editar_permisos.BorderSize = 2;
+            this.btn_editar_permisos.FlatAppearance.BorderSize = 0;
+            this.btn_editar_permisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_editar_permisos.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editar_permisos.ForeColor = System.Drawing.Color.Black;
+            this.btn_editar_permisos.Location = new System.Drawing.Point(525, 343);
+            this.btn_editar_permisos.Name = "btn_editar_permisos";
+            this.btn_editar_permisos.Size = new System.Drawing.Size(148, 52);
+            this.btn_editar_permisos.TabIndex = 38;
+            this.btn_editar_permisos.Text = "EDITAR PERMISOS";
+            this.btn_editar_permisos.TextColor = System.Drawing.Color.Black;
+            this.btn_editar_permisos.UseVisualStyleBackColor = false;
+            this.btn_editar_permisos.Click += new System.EventHandler(this.btn_editar_permisos_Click);
             // 
             // btn_deshacer
             // 
@@ -116,7 +139,7 @@
             this.btn_deshacer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deshacer.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deshacer.ForeColor = System.Drawing.Color.Black;
-            this.btn_deshacer.Location = new System.Drawing.Point(189, 322);
+            this.btn_deshacer.Location = new System.Drawing.Point(182, 343);
             this.btn_deshacer.Name = "btn_deshacer";
             this.btn_deshacer.Size = new System.Drawing.Size(148, 52);
             this.btn_deshacer.TabIndex = 37;
@@ -307,7 +330,7 @@
             this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_limpiar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_limpiar.ForeColor = System.Drawing.Color.Black;
-            this.btn_limpiar.Location = new System.Drawing.Point(364, 322);
+            this.btn_limpiar.Location = new System.Drawing.Point(353, 343);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(148, 52);
             this.btn_limpiar.TabIndex = 24;
@@ -327,7 +350,7 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.Black;
-            this.btn_guardar.Location = new System.Drawing.Point(22, 322);
+            this.btn_guardar.Location = new System.Drawing.Point(8, 343);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(148, 52);
             this.btn_guardar.TabIndex = 23;
@@ -447,35 +470,93 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "CORREO ELECTRONICO";
             // 
-            // rjButton2
+            // panel_footer
             // 
-            this.rjButton2.BackColor = System.Drawing.Color.Transparent;
-            this.rjButton2.BackgroundColor = System.Drawing.Color.Transparent;
-            this.rjButton2.BorderColor = System.Drawing.Color.Chartreuse;
-            this.rjButton2.BorderRadius = 7;
-            this.rjButton2.BorderSize = 2;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.Lime;
-            this.rjButton2.Location = new System.Drawing.Point(813, 398);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(150, 40);
-            this.rjButton2.TabIndex = 5;
-            this.rjButton2.Text = "Regresar";
-            this.rjButton2.TextColor = System.Drawing.Color.Lime;
-            this.rjButton2.UseVisualStyleBackColor = false;
-            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
+            this.panel_footer.Controls.Add(this.panel_update);
+            this.panel_footer.Controls.Add(this.btn_viewvendedor);
+            this.panel_footer.Controls.Add(this.btn_back);
+            this.panel_footer.Controls.Add(this.btn_addvendedor);
+            this.panel_footer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_footer.Location = new System.Drawing.Point(0, 476);
+            this.panel_footer.Name = "panel_footer";
+            this.panel_footer.Size = new System.Drawing.Size(1001, 82);
+            this.panel_footer.TabIndex = 39;
             // 
-            // panel3
+            // btn_viewvendedor
             // 
-            this.panel3.BackColor = System.Drawing.Color.Khaki;
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(0, 459);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(987, 18);
-            this.panel3.TabIndex = 3;
+            this.btn_viewvendedor.BackColor = System.Drawing.Color.Transparent;
+            this.btn_viewvendedor.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_viewvendedor.BorderColor = System.Drawing.Color.Gold;
+            this.btn_viewvendedor.BorderRadius = 7;
+            this.btn_viewvendedor.BorderSize = 2;
+            this.btn_viewvendedor.FlatAppearance.BorderSize = 0;
+            this.btn_viewvendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_viewvendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_viewvendedor.ForeColor = System.Drawing.Color.Gold;
+            this.btn_viewvendedor.Image = ((System.Drawing.Image)(resources.GetObject("btn_viewvendedor.Image")));
+            this.btn_viewvendedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_viewvendedor.Location = new System.Drawing.Point(256, 13);
+            this.btn_viewvendedor.Name = "btn_viewvendedor";
+            this.btn_viewvendedor.Size = new System.Drawing.Size(254, 40);
+            this.btn_viewvendedor.TabIndex = 8;
+            this.btn_viewvendedor.Text = "VISUALIZAR VENDEDORES";
+            this.btn_viewvendedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_viewvendedor.TextColor = System.Drawing.Color.Gold;
+            this.btn_viewvendedor.UseVisualStyleBackColor = false;
+            this.btn_viewvendedor.Click += new System.EventHandler(this.btn_viewvendedor_Click);
+            // 
+            // btn_back
+            // 
+            this.btn_back.BackColor = System.Drawing.Color.Transparent;
+            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_back.BorderColor = System.Drawing.Color.Red;
+            this.btn_back.BorderRadius = 7;
+            this.btn_back.BorderSize = 2;
+            this.btn_back.FlatAppearance.BorderSize = 0;
+            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.ForeColor = System.Drawing.Color.Red;
+            this.btn_back.Location = new System.Drawing.Point(820, 13);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(150, 40);
+            this.btn_back.TabIndex = 5;
+            this.btn_back.Text = "Regresar";
+            this.btn_back.TextColor = System.Drawing.Color.Red;
+            this.btn_back.UseVisualStyleBackColor = false;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
+            // 
+            // btn_addvendedor
+            // 
+            this.btn_addvendedor.BackColor = System.Drawing.Color.Transparent;
+            this.btn_addvendedor.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_addvendedor.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btn_addvendedor.BorderRadius = 7;
+            this.btn_addvendedor.BorderSize = 2;
+            this.btn_addvendedor.FlatAppearance.BorderSize = 0;
+            this.btn_addvendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addvendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addvendedor.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btn_addvendedor.Image = ((System.Drawing.Image)(resources.GetObject("btn_addvendedor.Image")));
+            this.btn_addvendedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_addvendedor.Location = new System.Drawing.Point(2, 13);
+            this.btn_addvendedor.Name = "btn_addvendedor";
+            this.btn_addvendedor.Size = new System.Drawing.Size(250, 40);
+            this.btn_addvendedor.TabIndex = 0;
+            this.btn_addvendedor.Text = "AGREGAR VENDEDOR";
+            this.btn_addvendedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_addvendedor.TextColor = System.Drawing.Color.DarkGreen;
+            this.btn_addvendedor.UseVisualStyleBackColor = false;
+            // 
+            // panel_update
+            // 
+            this.panel_update.BackColor = System.Drawing.Color.Khaki;
+            this.panel_update.Controls.Add(this.label2);
+            this.panel_update.Controls.Add(this.label1);
+            this.panel_update.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_update.Location = new System.Drawing.Point(0, 64);
+            this.panel_update.Name = "panel_update";
+            this.panel_update.Size = new System.Drawing.Size(1001, 18);
+            this.panel_update.TabIndex = 9;
             // 
             // label2
             // 
@@ -495,63 +576,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Actualizacion: v1.0.0.5";
             // 
-            // btn_editar_permisos
-            // 
-            this.btn_editar_permisos.BackColor = System.Drawing.Color.Gold;
-            this.btn_editar_permisos.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_editar_permisos.BorderColor = System.Drawing.Color.Black;
-            this.btn_editar_permisos.BorderRadius = 10;
-            this.btn_editar_permisos.BorderSize = 2;
-            this.btn_editar_permisos.FlatAppearance.BorderSize = 0;
-            this.btn_editar_permisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_editar_permisos.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editar_permisos.ForeColor = System.Drawing.Color.Black;
-            this.btn_editar_permisos.Location = new System.Drawing.Point(532, 322);
-            this.btn_editar_permisos.Name = "btn_editar_permisos";
-            this.btn_editar_permisos.Size = new System.Drawing.Size(148, 52);
-            this.btn_editar_permisos.TabIndex = 38;
-            this.btn_editar_permisos.Text = "EDITAR PERMISOS";
-            this.btn_editar_permisos.TextColor = System.Drawing.Color.Black;
-            this.btn_editar_permisos.UseVisualStyleBackColor = false;
-            this.btn_editar_permisos.Click += new System.EventHandler(this.btn_editar_permisos_Click);
-            // 
-            // btn_visualizarUser
-            // 
-            this.btn_visualizarUser.BackColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BorderColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.BorderRadius = 7;
-            this.btn_visualizarUser.BorderSize = 2;
-            this.btn_visualizarUser.FlatAppearance.BorderSize = 0;
-            this.btn_visualizarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_visualizarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_visualizarUser.ForeColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_visualizarUser.Image")));
-            this.btn_visualizarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 15);
-            this.btn_visualizarUser.Name = "btn_visualizarUser";
-            this.btn_visualizarUser.Size = new System.Drawing.Size(220, 50);
-            this.btn_visualizarUser.TabIndex = 8;
-            this.btn_visualizarUser.Text = "VISUALIZAR USUARIOS";
-            this.btn_visualizarUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_visualizarUser.TextColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.UseVisualStyleBackColor = false;
-            this.btn_visualizarUser.Click += new System.EventHandler(this.btn_visualizarUser_Click);
-            // 
             // formUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 537);
+            this.ClientSize = new System.Drawing.Size(1001, 558);
             this.Controls.Add(this.panel_main);
             this.Name = "formUsers";
             this.Text = "formUsers";
             this.Load += new System.EventHandler(this.formUsers_Load);
             this.panel_main.ResumeLayout(false);
-            this.combo_rol.ResumeLayout(false);
-            this.combo_rol.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panel_useradd.ResumeLayout(false);
+            this.panel_useradd.PerformLayout();
+            this.panel_footer.ResumeLayout(false);
+            this.panel_update.ResumeLayout(false);
+            this.panel_update.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,32 +599,34 @@
         #endregion
 
         private System.Windows.Forms.Panel panel_main;
-        private System.Windows.Forms.Panel combo_rol;
-        private CustomBox.RJControls.RJTextBox txt_tel;
-        private CustomBox.RJControls.RJButton btn_limpiar;
-        private CustomBox.RJControls.RJButton btn_guardar;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private CustomBox.RJControls.RJTextBox txt_dni;
-        private CustomBox.RJControls.RJTextBox txt_correo;
-        private CustomBox.RJControls.RJTextBox txt_nombre_completo;
-        private RJCodeAdvance.RJControls.RJButton btn_visualizarUser;
-        private RJCodeAdvance.RJControls.RJButton rjButton2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel_useradd;
+        private CustomBox.RJControls.RJButton btn_editar_permisos;
+        private CustomBox.RJControls.RJButton btn_deshacer;
+        private System.Windows.Forms.Label lbl_estado;
+        private System.Windows.Forms.Label lbl_rol;
+        private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
+        private RJCodeAdvance.RJControls.RJComboBox cbo_rol;
+        private RJCodeAdvance.RJControls.RJTextBox txt_id;
         private CustomBox.RJControls.RJTextBox txt_pass;
         private System.Windows.Forms.Label lbl_pass;
         private CustomBox.RJControls.RJTextBox txt_username;
         private System.Windows.Forms.Label lbl_username;
-        private RJCodeAdvance.RJControls.RJTextBox txt_id;
-        private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
-        private RJCodeAdvance.RJControls.RJComboBox cbo_rol;
-        private System.Windows.Forms.Label lbl_rol;
-        private System.Windows.Forms.Label lbl_estado;
-        private CustomBox.RJControls.RJButton btn_deshacer;
-        private CustomBox.RJControls.RJButton btn_editar_permisos;
+        private CustomBox.RJControls.RJTextBox txt_tel;
+        private CustomBox.RJControls.RJButton btn_limpiar;
+        private CustomBox.RJControls.RJButton btn_guardar;
+        private System.Windows.Forms.Label label6;
+        private CustomBox.RJControls.RJTextBox txt_dni;
+        private CustomBox.RJControls.RJTextBox txt_correo;
+        private CustomBox.RJControls.RJTextBox txt_nombre_completo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel_footer;
+        private RJCodeAdvance.RJControls.RJButton btn_viewvendedor;
+        private RJCodeAdvance.RJControls.RJButton btn_back;
+        private RJCodeAdvance.RJControls.RJButton btn_addvendedor;
+        private System.Windows.Forms.Panel panel_update;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -25,6 +25,24 @@ namespace PDCLyion
             Current_user = oUser;
         }
 
+        private void abrirHerencia(object formhija)
+        {
+            if (this.panel_main.Controls.Count > 0)
+            {
+                this.panel_main.Controls.RemoveAt(0);
+                Form fh = formhija as Form;
+                fh.TopLevel = false; //dependencia
+                fh.Dock = DockStyle.Fill;
+                fh.FormBorderStyle = FormBorderStyle.None;
+                this.panel_main.Controls.Add(fh);
+                this.panel_main.Tag = fh;
+                fh.BringToFront();
+                this.panel_main.Refresh();
+                fh.Show();
+
+            }
+        }
+
         private void formPermissions_Load(object sender, EventArgs e)
         {
             List<Permissions> permissions_list = new BL_Permissions().Read(Current_user.User_id);
@@ -36,6 +54,16 @@ namespace PDCLyion
                     checkbox.CheckState = CheckState.Checked;
                 }
             }
+        }
+
+        private void btn_visualizarUser_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers2());
+        }
+
+        private void rjButton2_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formSales());
         }
     }
 }

@@ -51,6 +51,37 @@ namespace PDCLyion
         {
             abrirHerencia(new formVendors2());
         }
+
+        private void dataGridView1_Resize(object sender, EventArgs e)
+        {
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_grid.Left = this.ClientSize.Width - panel_grid.Width;
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                btn_back.Width = 150; 
+                btn_back.Left = this.ClientSize.Width - btn_back.Width; 
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_grid.Left = this.ClientSize.Width - panel_grid.Width;
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                btn_back.Left = this.ClientSize.Width - btn_back.Width;
+            }
+        }
+
+        private void formVendors_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel_update_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
    

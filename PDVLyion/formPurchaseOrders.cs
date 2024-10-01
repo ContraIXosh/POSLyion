@@ -16,5 +16,10 @@ namespace PDCLyion
         {
             InitializeComponent();
         }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

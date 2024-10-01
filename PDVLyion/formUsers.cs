@@ -17,8 +17,8 @@ namespace PDCLyion
 {
     public partial class formUsers : Form
     {
-
         private Users User;
+        private Users Old_User;
 
         public formUsers()
         {
@@ -49,12 +49,12 @@ namespace PDCLyion
             }
         }
 
-        private void rjButton2_Click(object sender, EventArgs e)
+        private void btn_visualizarUser_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new formUsers2());
         }
 
-        private void btn_visualizarUser_Click(object sender, EventArgs e)
+        private void btn_visualizarUser_Click_1(object sender, EventArgs e)
         {
             abrirHerencia(new formUsers2());
         }
@@ -90,6 +90,16 @@ namespace PDCLyion
             }
             else
             {
+                Old_User = new Users();
+                Old_User.User_id = User.User_id;
+                Old_User.Dni = User.Dni;
+                Old_User.Full_name = User.Full_name;
+                Old_User.Email = User.Email;
+                Old_User.Username = User.Username;
+                Old_User.Password = User.Password;
+                Old_User.oRol = new Roles() { Role_id = User.oRol.Role_id };
+                Old_User.Phone = User.Phone;
+                Old_User.State = User.State;
                 User.Dni = txt_dni.Texts;
                 User.Full_name = txt_nombre_completo.Texts;
                 User.Email = txt_correo.Texts;
@@ -107,12 +117,52 @@ namespace PDCLyion
                 {
                     MessageBox.Show("Usuario actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                
+
             }
+        }
+
+        private void btn_deshacer_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(txt_id.Texts) != 0)
+            {
+                abrirHerencia(new formUsers(Old_User));
+            }
+            else
+            {
+                txt_dni.Texts = "";
+                txt_correo.Texts = "";
+                txt_nombre_completo.Texts = "";
+                txt_pass.Texts = "";
+                txt_tel.Texts = "";
+                txt_username.Texts = "";
+                cbo_estado.SelectedIndex = 0;
+                cbo_rol.SelectedIndex = 0;
+            }
+        }
+
+        private void btn_limpiar_Click(object sender, EventArgs e)
+        {
+            txt_dni.Texts = "";
+            txt_correo.Texts = "";
+            txt_nombre_completo.Texts = "";
+            txt_pass.Texts = "";
+            txt_tel.Texts = "";
+            txt_username.Texts = "";
+            cbo_estado.SelectedIndex = 0;
+            cbo_rol.SelectedIndex = 0;
+        }
+
+        private void btn_editar_permisos_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formPermissions(User));
         }
 
         private void formUsers_Load(object sender, EventArgs e)
         {
+            if(User.User_id == 0)
+            {
+                btn_editar_permisos.Visible = false;
+            }
             List<Roles> roles = new BL_Roles().ListAll();
             foreach (Roles role in roles)
             {
@@ -136,7 +186,7 @@ namespace PDCLyion
             int cbo_rol_index = 0;
             int cbo_estado_index = 0;
 
-            if(Convert.ToInt32(txt_id.Texts) == 0)
+            if (Convert.ToInt32(txt_id.Texts) == 0)
             {
                 cbo_estado.SelectedIndex = 0;
                 cbo_rol.SelectedIndex = 0;
@@ -165,29 +215,57 @@ namespace PDCLyion
             }
         }
 
-        private void btn_deshacer_Click(object sender, EventArgs e)
+        private void rjButton2_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(txt_id.Texts) != 0)
+            abrirHerencia(new formSales());
+        }
+
+        private void panel1_Resize(object sender, EventArgs e)
+        {
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
             {
-                abrirHerencia(new formUsers(User));
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+               
             }
         }
 
-        private void btn_limpiar_Click(object sender, EventArgs e)
+        private void panel_useradd_Resize(object sender, EventArgs e)
         {
-            txt_dni.Texts = "";
-            txt_correo.Texts = "";
-            txt_nombre_completo.Texts = "";
-            txt_pass.Texts = "";
-            txt_tel.Texts = "";
-            txt_username.Texts = "";
-            cbo_estado.SelectedIndex = 0;
-            cbo_rol.SelectedIndex = 0;
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                btn_back.Width = 150;
+                btn_back.Left = this.ClientSize.Width - btn_back.Width;
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                panel_useradd.Left = this.ClientSize.Width - panel_useradd.Width;
+                btn_back.Left = this.ClientSize.Width - btn_back.Width;
+            }
         }
 
-        private void btn_editar_permisos_Click(object sender, EventArgs e)
+        private void btn_back_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formPermissions(User));
+            abrirHerencia(new formSales());
+        }
+
+        private void btn_viewvendedor_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers2());
         }
     }
 }
