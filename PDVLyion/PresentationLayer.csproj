@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bunifu.UI.WinForms.1.5.3, Version=1.5.3.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
-      <HintPath>packages\Bunifu.UI.WinForms.1.5.3.2.0.0\lib\net452\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
-    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.6.6.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
     </Reference>
@@ -154,6 +151,12 @@
     <Compile Include="formProducts.Designer.cs">
       <DependentUpon>formProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="formProducts2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formProducts2.Designer.cs">
+      <DependentUpon>formProducts2.cs</DependentUpon>
+    </Compile>
     <Compile Include="formPurchaseOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,11 +169,11 @@
     <Compile Include="formSales.Designer.cs">
       <DependentUpon>formSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="formStatistics.cs">
+    <Compile Include="formStadistic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formStatistics.Designer.cs">
-      <DependentUpon>formStatistics.cs</DependentUpon>
+    <Compile Include="formStadistic.Designer.cs">
+      <DependentUpon>formStadistic.cs</DependentUpon>
     </Compile>
     <Compile Include="formUsers.cs">
       <SubType>Form</SubType>
@@ -226,14 +229,17 @@
     <EmbeddedResource Include="formProducts.resx">
       <DependentUpon>formProducts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formProducts2.resx">
+      <DependentUpon>formProducts2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formPurchaseOrders.resx">
       <DependentUpon>formPurchaseOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formSales.resx">
       <DependentUpon>formSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formStatistics.resx">
-      <DependentUpon>formStatistics.cs</DependentUpon>
+    <EmbeddedResource Include="formStadistic.resx">
+      <DependentUpon>formStadistic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUsers.resx">
       <DependentUpon>formUsers.cs</DependentUpon>

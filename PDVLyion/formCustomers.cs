@@ -85,5 +85,10 @@ namespace PDCLyion
                 btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
         }
+
+        private void panel_footer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

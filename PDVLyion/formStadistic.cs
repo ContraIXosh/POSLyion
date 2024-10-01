@@ -1,18 +1,22 @@
-﻿using OxyPlot;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Xml.Serialization;
 
 namespace PDCLyion
 {
-    public partial class formStatistics : Form
+    public partial class formStadistic : Form
     {
-        public formStatistics()
+        public formStadistic()
         {
             InitializeComponent();
         }
+
         private void abrirHerencia(object formhija)
         {
             if (this.panel_main.Controls.Count > 0)
@@ -30,32 +34,15 @@ namespace PDCLyion
 
             }
         }
-
-        private void panel_main_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel_grafico_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btn_grafico_Click(object sender, EventArgs e)
-        {
-         
-
-            
-        }
-
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void rjButton4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void rjButton4_Click_1(object sender, EventArgs e)
+        {
             abrirHerencia(new formSales());
+            this.panel_izq.Hide();
         }
     }
 }

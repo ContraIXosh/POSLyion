@@ -133,10 +133,11 @@
             this.abrir_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.abrir_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.abrir_sesion.ForeColor = System.Drawing.Color.Black;
+            this.abrir_sesion.Image = ((System.Drawing.Image)(resources.GetObject("abrir_sesion.Image")));
             this.abrir_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.abrir_sesion.Location = new System.Drawing.Point(276, 261);
+            this.abrir_sesion.Location = new System.Drawing.Point(284, 261);
             this.abrir_sesion.Name = "abrir_sesion";
-            this.abrir_sesion.Size = new System.Drawing.Size(154, 31);
+            this.abrir_sesion.Size = new System.Drawing.Size(146, 31);
             this.abrir_sesion.TabIndex = 12;
             this.abrir_sesion.Text = "Iniciar Sesion";
             this.abrir_sesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

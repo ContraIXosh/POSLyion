@@ -123,7 +123,9 @@ namespace PDCLyion
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formPurchaseOrders());
+            formPurchaseOrders crearfactura = new formPurchaseOrders();
+
+            crearfactura.Show(); ;
         }
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -148,7 +150,7 @@ namespace PDCLyion
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formStatistics());
+            abrirHerencia(new formStadistic());
         }
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
