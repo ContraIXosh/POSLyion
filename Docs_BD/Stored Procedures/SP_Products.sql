@@ -43,7 +43,7 @@ AS
 BEGIN
 	SET @message = ''
 	SET @result = 0
-	IF NOT EXISTS(SELECT description FROM Products WHERE bar_code = @bar_code and product_id != @product_id)
+	IF NOT EXISTS(SELECT description FROM Products WHERE bar_code = @bar_code AND product_id != @product_id)
 	BEGIN
 		UPDATE Products
 		SET
@@ -56,6 +56,7 @@ BEGIN
 		minimum_stock = @minimum_stock,
 		state = @state,
 		modify_date = GETDATE()
+		WHERE product_id = @product_id
 		SET @result = 1
 	END
 	ELSE

@@ -21,18 +21,18 @@ namespace DataLayer
                 {
                     oConnection.Open();
                     SqlCommand command = new SqlCommand("SP_CREATE_PRODUCT", oConnection);
-                    command.Parameters.AddWithValue("description", oProduct.Bar_code);
+                    command.Parameters.AddWithValue("bar_code", oProduct.Bar_code);
                     command.Parameters.AddWithValue("description", oProduct.Description);
-                    command.Parameters.AddWithValue("description", oProduct.oProductCategory.Product_category_id);
-                    command.Parameters.AddWithValue("description", oProduct.Cost_price);
-                    command.Parameters.AddWithValue("description", oProduct.Sale_price);
-                    command.Parameters.AddWithValue("description", oProduct.Current_stock);
-                    command.Parameters.AddWithValue("description", oProduct.Minimum_stock);
+                    command.Parameters.AddWithValue("product_category_id", oProduct.oProductCategory.Product_category_id);
+                    command.Parameters.AddWithValue("cost_price", oProduct.Cost_price);
+                    command.Parameters.AddWithValue("sale_price", oProduct.Sale_price);
+                    command.Parameters.AddWithValue("current_stock", oProduct.Current_stock);
+                    command.Parameters.AddWithValue("minimum_stock", oProduct.Minimum_stock);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("created_product_id", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
                     command.ExecuteNonQuery();
-                    created_product_id = Convert.ToInt32(command.Parameters["created_productcategory_id"].Value);
+                    created_product_id = Convert.ToInt32(command.Parameters["created_product_id"].Value);
                     message = command.Parameters["message"].Value.ToString();
                 }
                 catch (Exception ex)
@@ -99,14 +99,14 @@ namespace DataLayer
                     oConnection.Open();
                     SqlCommand command = new SqlCommand("SP_UPDATE_PRODUCT", oConnection);
                     command.Parameters.AddWithValue("product_id", oProduct.Product_id);
-                    command.Parameters.AddWithValue("description", oProduct.Bar_code);
+                    command.Parameters.AddWithValue("bar_code", oProduct.Bar_code);
                     command.Parameters.AddWithValue("description", oProduct.Description);
-                    command.Parameters.AddWithValue("description", oProduct.oProductCategory.Product_category_id);
-                    command.Parameters.AddWithValue("description", oProduct.Cost_price);
-                    command.Parameters.AddWithValue("description", oProduct.Sale_price);
-                    command.Parameters.AddWithValue("description", oProduct.Current_stock);
-                    command.Parameters.AddWithValue("description", oProduct.Minimum_stock);
-                    command.Parameters.AddWithValue("description", oProduct.State);
+                    command.Parameters.AddWithValue("product_category_id", oProduct.oProductCategory.Product_category_id);
+                    command.Parameters.AddWithValue("cost_price", oProduct.Cost_price);
+                    command.Parameters.AddWithValue("sale_price", oProduct.Sale_price);
+                    command.Parameters.AddWithValue("current_stock", oProduct.Current_stock);
+                    command.Parameters.AddWithValue("minimum_stock", oProduct.Minimum_stock);
+                    command.Parameters.AddWithValue("state", oProduct.State);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;

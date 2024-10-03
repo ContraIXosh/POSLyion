@@ -14,9 +14,13 @@ namespace PDCLyion
 {
     public partial class formProducts : Form
     {
+
+        private List<Products> Products_list;
+
         public formProducts()
         {
             InitializeComponent();
+            Products_list = new BL_Products().ListAll();
         }
         private void abrirHerencia(object formhija)
         {
@@ -49,8 +53,7 @@ namespace PDCLyion
 
         private void formProducts_Load(object sender, EventArgs e)
         {
-            List<Products> products_list = new BL_Products().ListAll();
-            foreach (Products product in products_list)
+            foreach (Products product in Products_list)
             {
                 grid_prod.Rows.Add(new object[]
                 {
@@ -98,26 +101,124 @@ namespace PDCLyion
             }
             else if (grid_prod.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
-                if (MessageBox.Show("¿Desea eliminar el usuario?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea eliminar el producto?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (index >= 0)
                     {
                         string message = string.Empty;
-                        Users user = new Users()
+                        Products product = new Products()
                         {
-                            User_id = Convert.ToInt32(grid_prod.Rows[index].Cells["data_id"].Value)
+                            Product_id = Convert.ToInt32(grid_prod.Rows[index].Cells["prod_id"].Value)
                         };
-                        bool result = new BL_Users().Delete(user, out message);
+                        bool result = new BL_Products().Delete(product, out message);
                         if (!result)
                         {
                             MessageBox.Show(message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                         {
-                            MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            abrirHerencia(new formUsers2());
+                            MessageBox.Show("Producto eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            abrirHerencia(new formProducts());
                         }
                     }
+                }
+            }
+        }
+
+        private void cb_stock_CheckedChanged(object sender, EventArgs e)
+        {
+            grid_prod.Rows.Clear();
+            if (cb_stock.Checked)
+            {
+                List<Products> products_list = new BL_Products()
+                .ListAll()
+                .Where(p => p.Current_stock > 0).ToList();
+                foreach (Products product in products_list)
+                {
+                    grid_prod.Rows.Add(new object[]
+                    {
+                    "",
+                    product.Product_id,
+                    product.Bar_code,
+                    product.Description,
+                    product.oProductCategory.Product_category_id,
+                    product.oProductCategory.Description,
+                    product.Current_stock,
+                    product.Minimum_stock,
+                    product.Cost_price,
+                    product.Sale_price,
+                    product.State == true ? "Activo" : "Inactivo",
+                    product.State == true ? 1 : 0
+                    });
+                }
+            }
+            else
+            {
+                foreach (Products product in Products_list)
+                {
+                    grid_prod.Rows.Add(new object[]
+                    {
+                    "",
+                    product.Product_id,
+                    product.Bar_code,
+                    product.Description,
+                    product.oProductCategory.Product_category_id,
+                    product.oProductCategory.Description,
+                    product.Current_stock,
+                    product.Minimum_stock,
+                    product.Cost_price,
+                    product.Sale_price,
+                    product.State == true ? "Activo" : "Inactivo",
+                    product.State == true ? 1 : 0
+                    });
+                }
+            }
+        }
+
+        private void cb_inactive_CheckedChanged(object sender, EventArgs e)
+        {
+            grid_prod.Rows.Clear();
+            if (cb_inactive.Checked)
+            {
+                List<Products> products_list = new BL_Products().ListAll().Where(p => p.State == false).ToList();
+                foreach (Products product in products_list)
+                {
+                    grid_prod.Rows.Add(new object[]
+                    {
+                    "",
+                    product.Product_id,
+                    product.Bar_code,
+                    product.Description,
+                    product.oProductCategory.Product_category_id,
+                    product.oProductCategory.Description,
+                    product.Current_stock,
+                    product.Minimum_stock,
+                    product.Cost_price,
+                    product.Sale_price,
+                    product.State == true ? "Activo" : "Inactivo",
+                    product.State == true ? 1 : 0
+                    });
+                }
+            }
+            else
+            {
+                foreach (Products product in Products_list)
+                {
+                    grid_prod.Rows.Add(new object[]
+                    {
+                    "",
+                    product.Product_id,
+                    product.Bar_code,
+                    product.Description,
+                    product.oProductCategory.Product_category_id,
+                    product.oProductCategory.Description,
+                    product.Current_stock,
+                    product.Minimum_stock,
+                    product.Cost_price,
+                    product.Sale_price,
+                    product.State == true ? "Activo" : "Inactivo",
+                    product.State == true ? 1 : 0
+                    });
                 }
             }
         }

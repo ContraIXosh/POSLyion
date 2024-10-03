@@ -38,9 +38,10 @@ namespace PDCLyion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
+            string message = String.Empty;
             if(Convert.ToInt32(txt_id.Texts) == 0)
             {
-                string message = String.Empty;
+                int created_product_id = 0;
                 Product = new Products()
                 {
                     Bar_code = txt_cod.Texts,
@@ -53,17 +54,25 @@ namespace PDCLyion
                     Sale_price = Convert.ToDecimal(txt_precio.Texts),
                     Current_stock = Convert.ToInt32(txt_cant.Texts),
                     Minimum_stock = Convert.ToInt32(txt_cant_min.Texts),
-                    State = Convert.ToInt32(((OpcionCombo)cbox_estado.SelectedItem).Value) == 1 ? true : false
                 };
-                int created_product_id = new BL_Products().Create(Product, out message);
+                created_product_id = new BL_Products().Create(Product, out message);
+                if (created_product_id == 0)
+                {
+                    MessageBox.Show(message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("Producto generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             else
             {
+                bool result = false;
                 Old_product = new Products();
                 Old_product.Product_id = Product.Product_id;
                 Old_product.Bar_code = Product.Bar_code;
                 Old_product.Description = Product.Description;
-                Old_product.oProductCategory.Product_category_id = Product.oProductCategory.Product_category_id;
+                Old_product.oProductCategory = new ProductCategories() { Product_category_id = Product.oProductCategory.Product_category_id };
                 Old_product.Cost_price = Product.Cost_price;
                 Old_product.Sale_price = Product.Sale_price;
                 Old_product.Current_stock = Product.Current_stock;
@@ -75,6 +84,17 @@ namespace PDCLyion
                 Product.Cost_price = Convert.ToDecimal(txt_costo.Texts);
                 Product.Sale_price = Convert.ToDecimal(txt_precio.Texts);
                 Product.Current_stock = Convert.ToInt32(txt_cant.Texts);
+                Product.Minimum_stock = Convert.ToInt32(txt_cant_min.Texts);
+                Product.State = Convert.ToBoolean(((OpcionCombo)cbox_estado.SelectedItem).Value);
+                result = new BL_Products().Update(Product, out message);
+                if (result == false)
+                {
+                    MessageBox.Show(message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("Producto actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
 
@@ -161,6 +181,11 @@ namespace PDCLyion
 
         private void formProducts2_Load(object sender, EventArgs e)
         {
+            if(Convert.ToInt32(Product.Product_id) == 0)
+            {
+                cbox_estado.Visible = false;
+                lbl_estado.Visible = false;
+            }
             List<ProductCategories> productcategories = new BL_ProductCategories().ListAll();
             foreach (ProductCategories productcategory in productcategories)
             {

@@ -31,6 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formProducts));
             this.panel_main = new System.Windows.Forms.Panel();
             this.grid_prod = new System.Windows.Forms.DataGridView();
+            this.btn_seleccionar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_id_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_precio_costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_precio_venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_btn = new System.Windows.Forms.Panel();
             this.btn_addprod = new RJCodeAdvance.RJControls.RJButton();
@@ -47,20 +61,6 @@
             this.panel_updates = new System.Windows.Forms.Panel();
             this.lbl_updatetime = new System.Windows.Forms.Label();
             this.lbl_updateversion = new System.Windows.Forms.Label();
-            this.btn_seleccionar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_id_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_stock_min = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_precio_costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_precio_venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_prod)).BeginInit();
             this.panel2.SuspendLayout();
@@ -104,6 +104,87 @@
             this.grid_prod.Size = new System.Drawing.Size(791, 518);
             this.grid_prod.TabIndex = 8;
             this.grid_prod.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_prod_CellContentClick);
+            // 
+            // btn_seleccionar
+            // 
+            this.btn_seleccionar.HeaderText = "";
+            this.btn_seleccionar.Name = "btn_seleccionar";
+            this.btn_seleccionar.Width = 20;
+            // 
+            // prod_id
+            // 
+            this.prod_id.HeaderText = "ID";
+            this.prod_id.Name = "prod_id";
+            this.prod_id.Visible = false;
+            // 
+            // prod_cod
+            // 
+            this.prod_cod.HeaderText = "COD. BARRAS";
+            this.prod_cod.Name = "prod_cod";
+            // 
+            // prod_desc
+            // 
+            this.prod_desc.HeaderText = "DESCRIPCIÓN";
+            this.prod_desc.Name = "prod_desc";
+            // 
+            // prod_id_cat
+            // 
+            this.prod_id_cat.HeaderText = "ID CATEGORIA";
+            this.prod_id_cat.Name = "prod_id_cat";
+            this.prod_id_cat.Visible = false;
+            // 
+            // prod_cat
+            // 
+            this.prod_cat.HeaderText = "CATEGORÍA";
+            this.prod_cat.Name = "prod_cat";
+            // 
+            // prod_stock
+            // 
+            this.prod_stock.HeaderText = "STOCK ACTUAL";
+            this.prod_stock.Name = "prod_stock";
+            this.prod_stock.Width = 40;
+            // 
+            // prod_stock_min
+            // 
+            this.prod_stock_min.HeaderText = "STOCK MIN";
+            this.prod_stock_min.Name = "prod_stock_min";
+            this.prod_stock_min.Width = 40;
+            // 
+            // prod_precio_costo
+            // 
+            this.prod_precio_costo.HeaderText = "PRECIO COSTO";
+            this.prod_precio_costo.Name = "prod_precio_costo";
+            this.prod_precio_costo.Width = 70;
+            // 
+            // prod_precio_venta
+            // 
+            this.prod_precio_venta.HeaderText = "PRECIO VENTA";
+            this.prod_precio_venta.Name = "prod_precio_venta";
+            this.prod_precio_venta.Width = 70;
+            // 
+            // prod_estado
+            // 
+            this.prod_estado.HeaderText = "ESTADO";
+            this.prod_estado.Name = "prod_estado";
+            this.prod_estado.Width = 70;
+            // 
+            // prod_estado_valor
+            // 
+            this.prod_estado_valor.HeaderText = "ESTADO VALOR";
+            this.prod_estado_valor.Name = "prod_estado_valor";
+            this.prod_estado_valor.Visible = false;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.Width = 70;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Width = 70;
             // 
             // panel2
             // 
@@ -208,6 +289,7 @@
             this.cb_inactive.TabIndex = 10;
             this.cb_inactive.Text = "Mostrar inactivos";
             this.cb_inactive.UseVisualStyleBackColor = true;
+            this.cb_inactive.CheckedChanged += new System.EventHandler(this.cb_inactive_CheckedChanged);
             // 
             // cb_stock
             // 
@@ -220,6 +302,7 @@
             this.cb_stock.TabIndex = 9;
             this.cb_stock.Text = "Mostrar solo con stock";
             this.cb_stock.UseVisualStyleBackColor = true;
+            this.cb_stock.CheckedChanged += new System.EventHandler(this.cb_stock_CheckedChanged);
             // 
             // label3
             // 
@@ -329,87 +412,6 @@
             this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
             this.lbl_updateversion.TabIndex = 0;
             this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
-            // 
-            // btn_seleccionar
-            // 
-            this.btn_seleccionar.HeaderText = "";
-            this.btn_seleccionar.Name = "btn_seleccionar";
-            this.btn_seleccionar.Width = 20;
-            // 
-            // prod_id
-            // 
-            this.prod_id.HeaderText = "ID";
-            this.prod_id.Name = "prod_id";
-            this.prod_id.Visible = false;
-            // 
-            // prod_cod
-            // 
-            this.prod_cod.HeaderText = "COD. BARRAS";
-            this.prod_cod.Name = "prod_cod";
-            // 
-            // prod_desc
-            // 
-            this.prod_desc.HeaderText = "DESCRIPCIÓN";
-            this.prod_desc.Name = "prod_desc";
-            // 
-            // prod_id_cat
-            // 
-            this.prod_id_cat.HeaderText = "ID CATEGORIA";
-            this.prod_id_cat.Name = "prod_id_cat";
-            this.prod_id_cat.Visible = false;
-            // 
-            // prod_cat
-            // 
-            this.prod_cat.HeaderText = "CATEGORÍA";
-            this.prod_cat.Name = "prod_cat";
-            // 
-            // prod_stock
-            // 
-            this.prod_stock.HeaderText = "STOCK ACTUAL";
-            this.prod_stock.Name = "prod_stock";
-            this.prod_stock.Width = 40;
-            // 
-            // prod_stock_min
-            // 
-            this.prod_stock_min.HeaderText = "STOCK MIN";
-            this.prod_stock_min.Name = "prod_stock_min";
-            this.prod_stock_min.Width = 40;
-            // 
-            // prod_precio_costo
-            // 
-            this.prod_precio_costo.HeaderText = "PRECIO COSTO";
-            this.prod_precio_costo.Name = "prod_precio_costo";
-            this.prod_precio_costo.Width = 70;
-            // 
-            // prod_precio_venta
-            // 
-            this.prod_precio_venta.HeaderText = "PRECIO VENTA";
-            this.prod_precio_venta.Name = "prod_precio_venta";
-            this.prod_precio_venta.Width = 70;
-            // 
-            // prod_estado
-            // 
-            this.prod_estado.HeaderText = "ESTADO";
-            this.prod_estado.Name = "prod_estado";
-            this.prod_estado.Width = 70;
-            // 
-            // prod_estado_valor
-            // 
-            this.prod_estado_valor.HeaderText = "ESTADO VALOR";
-            this.prod_estado_valor.Name = "prod_estado_valor";
-            this.prod_estado_valor.Visible = false;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.Width = 70;
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Width = 70;
             // 
             // formProducts
             // 

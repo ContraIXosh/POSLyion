@@ -459,6 +459,7 @@ BEGIN
 		minimum_stock = @minimum_stock,
 		state = @state,
 		modify_date = GETDATE()
+		WHERE product_id = @product_id
 		SET @result = 1
 	END
 	ELSE
