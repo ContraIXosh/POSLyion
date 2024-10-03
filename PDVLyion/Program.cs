@@ -16,7 +16,7 @@ namespace PDCLyion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formProducts());
+            Application.Run(new Login());
         }
     }
 }

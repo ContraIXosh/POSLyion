@@ -176,7 +176,7 @@
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(262, 31);
             this.txtusername.TabIndex = 16;
-            this.txtusername.Text = "hexatec9";
+            this.txtusername.Text = "admin";
             this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged_1);
             // 
             // label1

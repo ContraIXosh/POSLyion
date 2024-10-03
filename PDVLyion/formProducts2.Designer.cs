@@ -36,7 +36,6 @@
             this.cb_res = new System.Windows.Forms.CheckBox();
             this.cb_applyion = new System.Windows.Forms.CheckBox();
             this.cb_fraccion = new System.Windows.Forms.CheckBox();
-            this.cb_active = new System.Windows.Forms.CheckBox();
             this.lbl_actividad = new System.Windows.Forms.Label();
             this.panel_crimconfg = new System.Windows.Forms.Panel();
             this.panel_config = new System.Windows.Forms.Panel();
@@ -56,8 +55,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel_crimdesc = new System.Windows.Forms.Panel();
             this.panel_desc = new System.Windows.Forms.Panel();
-            this.cbox_proveedor = new CustomBox.RJControls.RJComboBox();
-            this.lbl_proveedor = new System.Windows.Forms.Label();
+            this.lbl_estado = new System.Windows.Forms.Label();
+            this.txt_id = new CustomBox.RJControls.RJTextBox();
+            this.cbox_estado = new CustomBox.RJControls.RJComboBox();
+            this.lbl_stock_minimo = new System.Windows.Forms.Label();
             this.lbl_descrip = new System.Windows.Forms.Label();
             this.cbox_tipo = new CustomBox.RJControls.RJComboBox();
             this.lbl_cantprod = new System.Windows.Forms.Label();
@@ -65,11 +66,9 @@
             this.txt_cant = new CustomBox.RJControls.RJTextBox();
             this.lbl_cod = new System.Windows.Forms.Label();
             this.lbl_desc = new System.Windows.Forms.Label();
-            this.txt_cod2 = new CustomBox.RJControls.RJTextBox();
             this.txt_desc = new CustomBox.RJControls.RJTextBox();
-            this.lbl_cod2 = new System.Windows.Forms.Label();
             this.lbl_tipoprod = new System.Windows.Forms.Label();
-            this.txt_id = new CustomBox.RJControls.RJTextBox();
+            this.txt_cant_min = new CustomBox.RJControls.RJTextBox();
             this.panel_main.SuspendLayout();
             this.panel_crimactividad.SuspendLayout();
             this.panel_actividad.SuspendLayout();
@@ -150,7 +149,6 @@
             this.panel_actividad.Controls.Add(this.cb_res);
             this.panel_actividad.Controls.Add(this.cb_applyion);
             this.panel_actividad.Controls.Add(this.cb_fraccion);
-            this.panel_actividad.Controls.Add(this.cb_active);
             this.panel_actividad.Controls.Add(this.lbl_actividad);
             this.panel_actividad.Location = new System.Drawing.Point(3, 3);
             this.panel_actividad.Name = "panel_actividad";
@@ -174,7 +172,7 @@
             this.cb_applyion.AutoSize = true;
             this.cb_applyion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_applyion.ForeColor = System.Drawing.Color.Gold;
-            this.cb_applyion.Location = new System.Drawing.Point(361, 53);
+            this.cb_applyion.Location = new System.Drawing.Point(301, 53);
             this.cb_applyion.Name = "cb_applyion";
             this.cb_applyion.Size = new System.Drawing.Size(268, 28);
             this.cb_applyion.TabIndex = 13;
@@ -186,25 +184,12 @@
             this.cb_fraccion.AutoSize = true;
             this.cb_fraccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_fraccion.ForeColor = System.Drawing.Color.Gold;
-            this.cb_fraccion.Location = new System.Drawing.Point(153, 53);
+            this.cb_fraccion.Location = new System.Drawing.Point(28, 53);
             this.cb_fraccion.Name = "cb_fraccion";
             this.cb_fraccion.Size = new System.Drawing.Size(178, 28);
             this.cb_fraccion.TabIndex = 12;
             this.cb_fraccion.Text = "FRACCIONADO";
             this.cb_fraccion.UseVisualStyleBackColor = true;
-            // 
-            // cb_active
-            // 
-            this.cb_active.AutoSize = true;
-            this.cb_active.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_active.ForeColor = System.Drawing.Color.Gold;
-            this.cb_active.Location = new System.Drawing.Point(9, 53);
-            this.cb_active.Name = "cb_active";
-            this.cb_active.Size = new System.Drawing.Size(105, 28);
-            this.cb_active.TabIndex = 11;
-            this.cb_active.Text = "ACTIVO";
-            this.cb_active.UseVisualStyleBackColor = true;
-            this.cb_active.CheckedChanged += new System.EventHandler(this.cb_active_CheckedChanged);
             // 
             // lbl_actividad
             // 
@@ -481,9 +466,11 @@
             // panel_desc
             // 
             this.panel_desc.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_desc.Controls.Add(this.txt_cant_min);
+            this.panel_desc.Controls.Add(this.lbl_estado);
             this.panel_desc.Controls.Add(this.txt_id);
-            this.panel_desc.Controls.Add(this.cbox_proveedor);
-            this.panel_desc.Controls.Add(this.lbl_proveedor);
+            this.panel_desc.Controls.Add(this.cbox_estado);
+            this.panel_desc.Controls.Add(this.lbl_stock_minimo);
             this.panel_desc.Controls.Add(this.lbl_descrip);
             this.panel_desc.Controls.Add(this.cbox_tipo);
             this.panel_desc.Controls.Add(this.lbl_cantprod);
@@ -491,44 +478,75 @@
             this.panel_desc.Controls.Add(this.txt_cant);
             this.panel_desc.Controls.Add(this.lbl_cod);
             this.panel_desc.Controls.Add(this.lbl_desc);
-            this.panel_desc.Controls.Add(this.txt_cod2);
             this.panel_desc.Controls.Add(this.txt_desc);
-            this.panel_desc.Controls.Add(this.lbl_cod2);
             this.panel_desc.Controls.Add(this.lbl_tipoprod);
             this.panel_desc.Location = new System.Drawing.Point(3, 3);
             this.panel_desc.Name = "panel_desc";
             this.panel_desc.Size = new System.Drawing.Size(859, 216);
             this.panel_desc.TabIndex = 0;
             // 
-            // cbox_proveedor
+            // lbl_estado
             // 
-            this.cbox_proveedor.BackColor = System.Drawing.Color.Crimson;
-            this.cbox_proveedor.BorderColor = System.Drawing.Color.GhostWhite;
-            this.cbox_proveedor.BorderSize = 1;
-            this.cbox_proveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_proveedor.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_proveedor.IconColor = System.Drawing.Color.GhostWhite;
-            this.cbox_proveedor.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbox_proveedor.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_proveedor.Location = new System.Drawing.Point(616, 172);
-            this.cbox_proveedor.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbox_proveedor.Name = "cbox_proveedor";
-            this.cbox_proveedor.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_proveedor.Size = new System.Drawing.Size(213, 30);
-            this.cbox_proveedor.TabIndex = 11;
-            this.cbox_proveedor.Texts = "";
+            this.lbl_estado.AutoSize = true;
+            this.lbl_estado.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_estado.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_estado.Location = new System.Drawing.Point(3, 142);
+            this.lbl_estado.Name = "lbl_estado";
+            this.lbl_estado.Size = new System.Drawing.Size(91, 26);
+            this.lbl_estado.TabIndex = 18;
+            this.lbl_estado.Text = "ESTADO";
             // 
-            // lbl_proveedor
+            // txt_id
             // 
-            this.lbl_proveedor.AutoSize = true;
-            this.lbl_proveedor.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_proveedor.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_proveedor.Location = new System.Drawing.Point(611, 143);
-            this.lbl_proveedor.Name = "lbl_proveedor";
-            this.lbl_proveedor.Size = new System.Drawing.Size(133, 26);
-            this.lbl_proveedor.TabIndex = 12;
-            this.lbl_proveedor.Text = "PROVEEDOR";
+            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_id.BorderColor = System.Drawing.Color.Crimson;
+            this.txt_id.BorderFocusColor = System.Drawing.Color.Crimson;
+            this.txt_id.BorderRadius = 0;
+            this.txt_id.BorderSize = 2;
+            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_id.Location = new System.Drawing.Point(314, 5);
+            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_id.Multiline = false;
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_id.PasswordChar = false;
+            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_id.PlaceholderText = "";
+            this.txt_id.Size = new System.Drawing.Size(75, 31);
+            this.txt_id.TabIndex = 13;
+            this.txt_id.Texts = "0";
+            this.txt_id.UnderlinedStyle = false;
+            // 
+            // cbox_estado
+            // 
+            this.cbox_estado.BackColor = System.Drawing.Color.Crimson;
+            this.cbox_estado.BorderColor = System.Drawing.Color.GhostWhite;
+            this.cbox_estado.BorderSize = 1;
+            this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbox_estado.ForeColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.IconColor = System.Drawing.Color.GhostWhite;
+            this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.Location = new System.Drawing.Point(8, 172);
+            this.cbox_estado.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbox_estado.Name = "cbox_estado";
+            this.cbox_estado.Padding = new System.Windows.Forms.Padding(1);
+            this.cbox_estado.Size = new System.Drawing.Size(213, 30);
+            this.cbox_estado.TabIndex = 14;
+            this.cbox_estado.Texts = "";
+            // 
+            // lbl_stock_minimo
+            // 
+            this.lbl_stock_minimo.AutoSize = true;
+            this.lbl_stock_minimo.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_stock_minimo.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_stock_minimo.Location = new System.Drawing.Point(611, 143);
+            this.lbl_stock_minimo.Name = "lbl_stock_minimo";
+            this.lbl_stock_minimo.Size = new System.Drawing.Size(167, 26);
+            this.lbl_stock_minimo.TabIndex = 12;
+            this.lbl_stock_minimo.Text = "STOCK MINIMO";
             // 
             // lbl_descrip
             // 
@@ -625,9 +643,9 @@
             this.lbl_cod.ForeColor = System.Drawing.Color.Gold;
             this.lbl_cod.Location = new System.Drawing.Point(3, 53);
             this.lbl_cod.Name = "lbl_cod";
-            this.lbl_cod.Size = new System.Drawing.Size(111, 26);
+            this.lbl_cod.Size = new System.Drawing.Size(177, 26);
             this.lbl_cod.TabIndex = 1;
-            this.lbl_cod.Text = "CODIGO 1";
+            this.lbl_cod.Text = "CODIGO BARRAS";
             // 
             // lbl_desc
             // 
@@ -639,29 +657,6 @@
             this.lbl_desc.Size = new System.Drawing.Size(144, 26);
             this.lbl_desc.TabIndex = 7;
             this.lbl_desc.Text = "DESCRIPCIÓN";
-            // 
-            // txt_cod2
-            // 
-            this.txt_cod2.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_cod2.BorderColor = System.Drawing.Color.Crimson;
-            this.txt_cod2.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.txt_cod2.BorderRadius = 0;
-            this.txt_cod2.BorderSize = 2;
-            this.txt_cod2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_cod2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_cod2.Location = new System.Drawing.Point(8, 172);
-            this.txt_cod2.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_cod2.Multiline = false;
-            this.txt_cod2.Name = "txt_cod2";
-            this.txt_cod2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_cod2.PasswordChar = false;
-            this.txt_cod2.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_cod2.PlaceholderText = "";
-            this.txt_cod2.Size = new System.Drawing.Size(213, 31);
-            this.txt_cod2.TabIndex = 2;
-            this.txt_cod2.Texts = "";
-            this.txt_cod2.UnderlinedStyle = false;
-            this.txt_cod2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cod2_KeyPress);
             // 
             // txt_desc
             // 
@@ -686,17 +681,6 @@
             this.txt_desc.UnderlinedStyle = false;
             this.txt_desc._TextChanged += new System.EventHandler(this.txt_desc__TextChanged);
             // 
-            // lbl_cod2
-            // 
-            this.lbl_cod2.AutoSize = true;
-            this.lbl_cod2.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cod2.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cod2.Location = new System.Drawing.Point(3, 142);
-            this.lbl_cod2.Name = "lbl_cod2";
-            this.lbl_cod2.Size = new System.Drawing.Size(111, 26);
-            this.lbl_cod2.TabIndex = 3;
-            this.lbl_cod2.Text = "CODIGO 2";
-            // 
             // lbl_tipoprod
             // 
             this.lbl_tipoprod.AutoSize = true;
@@ -708,28 +692,27 @@
             this.lbl_tipoprod.TabIndex = 5;
             this.lbl_tipoprod.Text = "TIPO DE PRODUCTO";
             // 
-            // txt_id
+            // txt_cant_min
             // 
-            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_id.BorderColor = System.Drawing.Color.Crimson;
-            this.txt_id.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.txt_id.BorderRadius = 0;
-            this.txt_id.BorderSize = 2;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(314, 5);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_id.Multiline = false;
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_id.PasswordChar = false;
-            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_id.PlaceholderText = "";
-            this.txt_id.Size = new System.Drawing.Size(75, 31);
-            this.txt_id.TabIndex = 13;
-            this.txt_id.Texts = "";
-            this.txt_id.UnderlinedStyle = false;
-            this.txt_id.Visible = false;
+            this.txt_cant_min.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_cant_min.BorderColor = System.Drawing.Color.Crimson;
+            this.txt_cant_min.BorderFocusColor = System.Drawing.Color.Crimson;
+            this.txt_cant_min.BorderRadius = 0;
+            this.txt_cant_min.BorderSize = 2;
+            this.txt_cant_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_cant_min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_cant_min.Location = new System.Drawing.Point(616, 171);
+            this.txt_cant_min.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_cant_min.Multiline = false;
+            this.txt_cant_min.Name = "txt_cant_min";
+            this.txt_cant_min.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_cant_min.PasswordChar = false;
+            this.txt_cant_min.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_cant_min.PlaceholderText = "";
+            this.txt_cant_min.Size = new System.Drawing.Size(213, 31);
+            this.txt_cant_min.TabIndex = 19;
+            this.txt_cant_min.Texts = "";
+            this.txt_cant_min.UnderlinedStyle = false;
             // 
             // formProducts2
             // 
@@ -763,8 +746,6 @@
         private CustomBox.RJControls.RJTextBox txt_cod;
         private System.Windows.Forms.Label lbl_tipoprod;
         private CustomBox.RJControls.RJComboBox cbox_tipo;
-        private System.Windows.Forms.Label lbl_cod2;
-        private CustomBox.RJControls.RJTextBox txt_cod2;
         private System.Windows.Forms.Panel panel_crimdesc;
         private System.Windows.Forms.Label lbl_cantprod;
         private CustomBox.RJControls.RJTextBox txt_cant;
@@ -786,8 +767,7 @@
         private CustomBox.RJControls.RJTextBox txt_ganancia;
         private CustomBox.RJControls.RJTextBox txt_costo;
         private System.Windows.Forms.Label label10;
-        private CustomBox.RJControls.RJComboBox cbox_proveedor;
-        private System.Windows.Forms.Label lbl_proveedor;
+        private System.Windows.Forms.Label lbl_stock_minimo;
         private System.Windows.Forms.Panel panel_crimactividad;
         private System.Windows.Forms.Panel panel_actividad;
         private System.Windows.Forms.Label lbl_actividad;
@@ -798,7 +778,9 @@
         private System.Windows.Forms.CheckBox cb_res;
         private System.Windows.Forms.CheckBox cb_applyion;
         private System.Windows.Forms.CheckBox cb_fraccion;
-        private System.Windows.Forms.CheckBox cb_active;
         private CustomBox.RJControls.RJTextBox txt_id;
+        private CustomBox.RJControls.RJComboBox cbox_estado;
+        private System.Windows.Forms.Label lbl_estado;
+        private CustomBox.RJControls.RJTextBox txt_cant_min;
     }
 }
