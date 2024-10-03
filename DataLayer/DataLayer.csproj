@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="DL_Products.cs" />
     <Compile Include="DL_Permissions.cs" />
     <Compile Include="DL_ProductCategories.cs" />
     <Compile Include="DL_Roles.cs" />

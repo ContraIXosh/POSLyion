@@ -42,7 +42,7 @@
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_top = new System.Windows.Forms.Panel();
             this.btn_Down = new CustomBox.RJControls.RJButton();
             this.lbl_usuario = new System.Windows.Forms.Label();
@@ -55,9 +55,10 @@
             this.lbl_updateversion = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_condicion = new System.Windows.Forms.Label();
-            this.btn_cfinal = new RJCodeAdvance.RJControls.RJButton();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_eventual = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_cfinal = new RJCodeAdvance.RJControls.RJButton();
+            this.lbl_condicion = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_tipocobro = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_cerrarcaja = new RJCodeAdvance.RJControls.RJButton();
@@ -70,7 +71,6 @@
             this.btn_cerrarventa = new RJCodeAdvance.RJControls.RJButton();
             this.panel_factura = new System.Windows.Forms.Panel();
             this.lbl_factura = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
             this.panel_top.SuspendLayout();
@@ -79,10 +79,10 @@
             this.panel_updates.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel_right.SuspendLayout();
             this.panel_factura.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu_sesion
@@ -130,69 +130,69 @@
             this.clientesToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
             this.reportesToolStripMenuItem,
-            this.configuraciónToolStripMenuItem});
+            this.configuracionToolStripMenuItem});
             this.menu_Main.MenuItemHeight = 25;
             this.menu_Main.MenuItemTextColor = System.Drawing.Color.White;
             this.menu_Main.Name = "menu_Main";
             this.menu_Main.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_Main.Size = new System.Drawing.Size(151, 180);
+            this.menu_Main.Size = new System.Drawing.Size(181, 202);
             this.menu_Main.Opening += new System.ComponentModel.CancelEventHandler(this.menu_Main_Opening);
             // 
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.comprasToolStripMenuItem.Text = "Compras";
             this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reportesToolStripMenuItem.Text = "Reportes";
             this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
             // 
-            // configuraciónToolStripMenuItem
+            // configuracionToolStripMenuItem
             // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
+            this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuracionToolStripMenuItem.Text = "Configuración";
+            this.configuracionToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
             // panel_top
             // 
@@ -361,17 +361,44 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 75);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
-            // lbl_condicion
+            // tableLayoutPanel5
             // 
-            this.lbl_condicion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_condicion.AutoSize = true;
-            this.lbl_condicion.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_condicion.ForeColor = System.Drawing.Color.FloralWhite;
-            this.lbl_condicion.Location = new System.Drawing.Point(132, 8);
-            this.lbl_condicion.Name = "lbl_condicion";
-            this.lbl_condicion.Size = new System.Drawing.Size(127, 21);
-            this.lbl_condicion.TabIndex = 2;
-            this.lbl_condicion.Text = "TIPO DE TICKET";
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel5.Controls.Add(this.btn_eventual, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btn_cfinal, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 37);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(392, 38);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // btn_eventual
+            // 
+            this.btn_eventual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_eventual.AutoSize = true;
+            this.btn_eventual.BackColor = System.Drawing.Color.DarkMagenta;
+            this.btn_eventual.BackgroundColor = System.Drawing.Color.DarkMagenta;
+            this.btn_eventual.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_eventual.BorderRadius = 0;
+            this.btn_eventual.BorderSize = 0;
+            this.btn_eventual.FlatAppearance.BorderSize = 0;
+            this.btn_eventual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eventual.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eventual.ForeColor = System.Drawing.Color.White;
+            this.btn_eventual.Location = new System.Drawing.Point(238, 3);
+            this.btn_eventual.Name = "btn_eventual";
+            this.btn_eventual.Size = new System.Drawing.Size(151, 32);
+            this.btn_eventual.TabIndex = 1;
+            this.btn_eventual.Text = "EVENTUAL";
+            this.btn_eventual.TextColor = System.Drawing.Color.White;
+            this.btn_eventual.UseVisualStyleBackColor = false;
             // 
             // btn_cfinal
             // 
@@ -396,28 +423,17 @@
             this.btn_cfinal.TextColor = System.Drawing.Color.White;
             this.btn_cfinal.UseVisualStyleBackColor = false;
             // 
-            // btn_eventual
+            // lbl_condicion
             // 
-            this.btn_eventual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_eventual.AutoSize = true;
-            this.btn_eventual.BackColor = System.Drawing.Color.DarkMagenta;
-            this.btn_eventual.BackgroundColor = System.Drawing.Color.DarkMagenta;
-            this.btn_eventual.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_eventual.BorderRadius = 0;
-            this.btn_eventual.BorderSize = 0;
-            this.btn_eventual.FlatAppearance.BorderSize = 0;
-            this.btn_eventual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_eventual.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eventual.ForeColor = System.Drawing.Color.White;
-            this.btn_eventual.Location = new System.Drawing.Point(238, 3);
-            this.btn_eventual.Name = "btn_eventual";
-            this.btn_eventual.Size = new System.Drawing.Size(151, 32);
-            this.btn_eventual.TabIndex = 1;
-            this.btn_eventual.Text = "EVENTUAL";
-            this.btn_eventual.TextColor = System.Drawing.Color.White;
-            this.btn_eventual.UseVisualStyleBackColor = false;
+            this.lbl_condicion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_condicion.AutoSize = true;
+            this.lbl_condicion.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_condicion.ForeColor = System.Drawing.Color.FloralWhite;
+            this.lbl_condicion.Location = new System.Drawing.Point(132, 8);
+            this.lbl_condicion.Name = "lbl_condicion";
+            this.lbl_condicion.Size = new System.Drawing.Size(127, 21);
+            this.lbl_condicion.TabIndex = 2;
+            this.lbl_condicion.Text = "TIPO DE TICKET";
             // 
             // tableLayoutPanel1
             // 
@@ -623,22 +639,6 @@
             this.lbl_factura.TabIndex = 0;
             this.lbl_factura.Text = "FACTURACION";
             // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel5.Controls.Add(this.btn_eventual, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btn_cfinal, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 37);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(392, 38);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,13 +665,13 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel_right.ResumeLayout(false);
             this.panel_factura.ResumeLayout(false);
             this.panel_factura.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -689,7 +689,7 @@
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuracionToolStripMenuItem;
         private System.Windows.Forms.Panel panel_top;
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.Panel panel_right;

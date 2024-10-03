@@ -69,6 +69,7 @@
             this.txt_desc = new CustomBox.RJControls.RJTextBox();
             this.lbl_cod2 = new System.Windows.Forms.Label();
             this.lbl_tipoprod = new System.Windows.Forms.Label();
+            this.txt_id = new CustomBox.RJControls.RJTextBox();
             this.panel_main.SuspendLayout();
             this.panel_crimactividad.SuspendLayout();
             this.panel_actividad.SuspendLayout();
@@ -480,6 +481,7 @@
             // panel_desc
             // 
             this.panel_desc.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_desc.Controls.Add(this.txt_id);
             this.panel_desc.Controls.Add(this.cbox_proveedor);
             this.panel_desc.Controls.Add(this.lbl_proveedor);
             this.panel_desc.Controls.Add(this.lbl_descrip);
@@ -706,6 +708,29 @@
             this.lbl_tipoprod.TabIndex = 5;
             this.lbl_tipoprod.Text = "TIPO DE PRODUCTO";
             // 
+            // txt_id
+            // 
+            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_id.BorderColor = System.Drawing.Color.Crimson;
+            this.txt_id.BorderFocusColor = System.Drawing.Color.Crimson;
+            this.txt_id.BorderRadius = 0;
+            this.txt_id.BorderSize = 2;
+            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_id.Location = new System.Drawing.Point(314, 5);
+            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_id.Multiline = false;
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_id.PasswordChar = false;
+            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_id.PlaceholderText = "";
+            this.txt_id.Size = new System.Drawing.Size(75, 31);
+            this.txt_id.TabIndex = 13;
+            this.txt_id.Texts = "";
+            this.txt_id.UnderlinedStyle = false;
+            this.txt_id.Visible = false;
+            // 
             // formProducts2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,6 +740,7 @@
             this.Controls.Add(this.panel_main);
             this.Name = "formProducts2";
             this.Text = "Crear Producto";
+            this.Load += new System.EventHandler(this.formProducts2_Load);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
             this.panel_crimactividad.ResumeLayout(false);
@@ -773,5 +799,6 @@
         private System.Windows.Forms.CheckBox cb_applyion;
         private System.Windows.Forms.CheckBox cb_fraccion;
         private System.Windows.Forms.CheckBox cb_active;
+        private CustomBox.RJControls.RJTextBox txt_id;
     }
 }
