@@ -59,6 +59,59 @@ namespace PDCLyion
             }
         }
 
+        private void mostrarHistorialSell()
+        {
+            float precio = 0;
+            float total = precio;
+
+            if (precio > 0) { 
+                
+            }
+            panel_container.Controls.Clear();
+            DataGridView dgvCompra = new DataGridView();
+            dgvCompra.Columns.Add("Hora", "Hora");
+            dgvCompra.Columns.Add("Precio", "Precio");
+            dgvCompra.Columns.Add("Productos", "Productos");
+            dgvCompra.Columns.Add("Fecha", "Fecha");
+            dgvCompra.Rows.Add("16:52:16", "$1620", "Last product", "10/02/2025");
+            dgvCompra.Rows.Add("16:53:42", "$1920", "Last product", "10/02/2025");
+            panel_container.Controls.Add(dgvCompra);
+
+            dgvCompra.Columns.Add("Fecha", "Fecha");
+            dgvCompra.Columns.Add("Producto", "Producto");
+            dgvCompra.Columns.Add("Precio", "Precio");
+           
+            dgvCompra.Rows.Add("01/10/2024", "Producto A", "$15");
+            dgvCompra.Rows.Add("02/10/2024", "Producto B", "$25");
+            panel_container.Controls.Add(dgvCompra, 0,0);
+
+            DataGridView dgvAmpliar = new DataGridView();
+            dgvCompra.Columns.Add("Fecha", "Fecha");
+            dgvCompra.Columns.Add("Producto", "Producto");
+            dgvCompra.Columns.Add("Cantidad", "Cantidad");
+            dgvCompra.Columns.Add("Precio", "precio");
+            dgvCompra.Rows.Add("01/10/2024", "Salsa golf LC", "8", precio = 3999);
+            dgvCompra.Rows.Add("01/10/2024", "Heineken lata 473", "6", precio = 124);
+            dgvCompra.Rows.Add("01/10/2024", "Amstel lata 473", "15", precio = 15);
+            dgvCompra.Rows.Add("Total =", total);
+        }
+
+        private void MostrarFacturacion()
+        {
+            panel_container.Controls.Clear(); 
+            ListBox lstProductos = new ListBox();
+            lstProductos.Items.Add("Producto 1 - $10");
+            lstProductos.Items.Add("Producto 2 - $20");
+            panel_container.Controls.Add(lstProductos); 
+        }
+
+        private void mostrarHistorialBuy() {
+            panel_container.Controls.Clear();
+            DataGridView dgvCompra = new DataGridView();
+            
+
+        }
+
         private void OpenForm (IconMenuItem iconmenuitem, Form form)
         {
             
@@ -213,6 +266,59 @@ namespace PDCLyion
         private void panel2_Resize(object sender, EventArgs e)
         {
            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lbl_titulo.Text = "Historial de compras";
+            mostrarHistorialBuy();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lbl_titulo.Text = "Facturación"; 
+            MostrarFacturacion();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            lbl_titulo.Text = "Historial de ventas";
+            mostrarHistorialSell();
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCat());
+        }
+
+        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btn_cfinal_Click(object sender, EventArgs e)
+        {
+            btn_cfinal.ForeColor = Color.White;
+            btn_cfinal.BackColor = Color.BlueViolet;
+            btn_cfinal.Enabled = false;
+            if (btn_eventual.Enabled == false)
+            {
+                btn_cfinal.ForeColor = Color.White;
+                btn_cfinal.BackColor = Color.BlueViolet;
+                btn_eventual.Enabled = true;
+            }
+        }
+
+        private void btn_eventual_Click(object sender, EventArgs e)
+        {
+            btn_eventual.ForeColor = Color.White;
+            btn_eventual.BackColor = Color.DarkMagenta;
+            btn_eventual.Enabled = false;
+            if (btn_cfinal.Enabled == false)
+            {
+                btn_eventual.ForeColor = Color.White;
+                btn_eventual.BackColor = Color.DarkMagenta;
+                btn_cfinal.Enabled = true;
+            }
         }
     }
 }
