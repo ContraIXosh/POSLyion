@@ -176,7 +176,7 @@ namespace PDCLyion
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formPurchaseOrders crearfactura = new formPurchaseOrders();
+            formPurchaseOrders crearfactura = new formPurchaseOrders(oUser);
 
             crearfactura.Show(); ;
         }

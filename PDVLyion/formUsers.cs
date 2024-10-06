@@ -45,7 +45,6 @@ namespace PDCLyion
                 fh.BringToFront();
                 this.panel_main.Refresh();
                 fh.Show();
-
             }
         }
 
