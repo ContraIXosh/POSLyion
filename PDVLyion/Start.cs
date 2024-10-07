@@ -44,11 +44,6 @@ namespace PDCLyion
 
         private void searchProd(string filtro)
         {
-            string query = "SELECT * FROM Products WHERE description LIKE " + txt_buscarproductos;
-            using (SqlConnection conn = new SqlConnection(Connection.ConnectionString))
-            {
-
-            }
         }
 
         private void cargarProd()
@@ -287,10 +282,6 @@ namespace PDCLyion
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
-            string filtro = txt_buscarproductos.Text.ToLower();
-
-            var prodFiltro = productos
-            .Where(productosToolStripMenuItem => p.Nombre.ToLower().Contains(filtro) || p.Precio.ToString().Contains(filtro)) .ToList();
         }
     }
 }
