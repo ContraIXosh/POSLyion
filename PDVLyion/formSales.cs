@@ -119,5 +119,29 @@ namespace PDCLyion
             lbl_titulo.Text = "Historial de compras";
             mostrarHistorialBuy();
         }
+
+        private void btn_cfinal_Click(object sender, EventArgs e)
+        {
+            lbl_tipoticket.Text = "CONSUMIDOR FINAL";
+        }
+
+        private void btn_eventual_Click(object sender, EventArgs e)
+        {
+            lbl_tipoticket.Text = "EVENTUAL";
+        }
+
+        private void btn_cobrar_Click(object sender, EventArgs e)
+        {
+            formCambio cerrarventa = new formCambio();
+
+            cerrarventa.Show();
+        }
+
+        private void btn_cerrarventa_Click(object sender, EventArgs e)
+        {
+            formCambio cerrarventa = new formCambio();
+
+            cerrarventa.Show();
+        }
     }
 }
