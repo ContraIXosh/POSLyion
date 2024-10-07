@@ -88,6 +88,43 @@ namespace DataLayer
             }
         }
 
+        public DataTable Search(string text)
+        {
+            DataTable dataTable = new DataTable();
+            List<Products> list = new List<Products>();
+            using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
+            {
+                try
+                {
+                    oConnection.Open();
+                    string query = "SELECT product_id, description, sale_price, current_stock FROM Products WHERE state = 1 AND description LIKE '%" + text + "%'";
+                    SqlCommand command = new SqlCommand(query.ToString(), oConnection);
+                    command.CommandType = CommandType.Text;
+                    dataTable = new DataTable();
+                    dataTable.Columns.Add("ID");
+                    dataTable.Columns.Add("Producto");
+                    dataTable.Columns.Add("Precio");
+                    dataTable.Columns.Add("Stock actual");
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var row = dataTable.NewRow();
+                            row["ID"] = Convert.ToInt32(reader["product_id"]);
+                            row["Producto"] = reader["description"];
+                            row["Precio"] = Convert.ToDecimal(reader["sale_price"]);
+                            row["Stock actual"] = Convert.ToInt32(reader["current_stock"]);
+                            dataTable.Rows.Add(row);
+                        }
+                    }
+                } catch (Exception ex)
+                {
+                    dataTable = new DataTable();
+                }
+                return dataTable;
+            }
+        }
+
         public bool Update(Products oProduct, out string message)
         {
             message = string.Empty;

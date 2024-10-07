@@ -2,6 +2,7 @@
 using EntityLayer;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,11 @@ namespace BusinessLayer
         public List<Products> ListAll()
         {
             return oProduct.Read();
+        }
+
+        public DataTable Search(string text)
+        {
+            return oProduct.Search(text);
         }
 
         public bool Update(Products product, out string message)

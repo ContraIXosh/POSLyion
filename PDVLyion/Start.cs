@@ -42,15 +42,6 @@ namespace PDCLyion
 
         }
 
-        private void searchProd(string filtro)
-        {
-            string query = "SELECT * FROM Products WHERE description LIKE " + txt_buscarproductos;
-            using (SqlConnection conn = new SqlConnection(Connection.ConnectionString))
-            {
-
-            }
-        }
-
         private void cargarProd()
         {
             dgv_productos.DataSource = productos;
@@ -287,10 +278,16 @@ namespace PDCLyion
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
-            string filtro = txt_buscarproductos.Text.ToLower();
-
-            var prodFiltro = productos
-            .Where(productosToolStripMenuItem => p.Nombre.ToLower().Contains(filtro) || p.Precio.ToString().Contains(filtro)) .ToList();
+            if (txt_buscarproductos.Text == "")
+            {
+                dgv_productos.DataSource = null;
+            }
+            else
+            {
+                DataTable dataTable = new BL_Products().Search(txt_buscarproductos.Text);
+                dgv_productos.DataSource = dataTable;
+                dgv_productos.Columns["ID"].Visible = false;
+            }
         }
     }
 }
