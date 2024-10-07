@@ -49,16 +49,18 @@
             this.btn_cobrar = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_f9 = new System.Windows.Forms.Label();
             this.panel_right = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_container = new System.Windows.Forms.TableLayoutPanel();
-            this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_factura = new System.Windows.Forms.Button();
-            this.btn_compra = new System.Windows.Forms.Button();
-            this.btn_venta = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbl_titulo = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_venta = new System.Windows.Forms.Button();
+            this.btn_compra = new System.Windows.Forms.Button();
+            this.btn_factura = new System.Windows.Forms.Button();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_tipoticket = new System.Windows.Forms.Label();
+            this.panel_container = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_cerrarventa = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -68,10 +70,11 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel_right.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -213,6 +216,7 @@
             this.btn_eventual.Text = "EVENTUAL";
             this.btn_eventual.TextColor = System.Drawing.Color.White;
             this.btn_eventual.UseVisualStyleBackColor = false;
+            this.btn_eventual.Click += new System.EventHandler(this.btn_eventual_Click);
             // 
             // btn_cfinal
             // 
@@ -236,6 +240,7 @@
             this.btn_cfinal.Text = "CONSUMIDOR FINAL";
             this.btn_cfinal.TextColor = System.Drawing.Color.White;
             this.btn_cfinal.UseVisualStyleBackColor = false;
+            this.btn_cfinal.Click += new System.EventHandler(this.btn_cfinal_Click);
             // 
             // lbl_condicion
             // 
@@ -388,6 +393,7 @@
             this.btn_cobrar.Text = "COBRAR";
             this.btn_cobrar.TextColor = System.Drawing.Color.White;
             this.btn_cobrar.UseVisualStyleBackColor = false;
+            this.btn_cobrar.Click += new System.EventHandler(this.btn_cobrar_Click);
             // 
             // lbl_f9
             // 
@@ -411,63 +417,9 @@
             this.panel_right.Size = new System.Drawing.Size(280, 514);
             this.panel_right.TabIndex = 8;
             // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 3;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel8.Controls.Add(this.rjButton1, 1, 3);
-            this.tableLayoutPanel8.Controls.Add(this.panel_container, 1, 1);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 86);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 4;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(280, 428);
-            this.tableLayoutPanel8.TabIndex = 9;
-            // 
-            // panel_container
-            // 
-            this.panel_container.BackColor = System.Drawing.Color.Crimson;
-            this.panel_container.ColumnCount = 1;
-            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
-            this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_container.Location = new System.Drawing.Point(10, 5);
-            this.panel_container.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_container.Name = "panel_container";
-            this.panel_container.RowCount = 2;
-            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.Size = new System.Drawing.Size(260, 378);
-            this.panel_container.TabIndex = 12;
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.BackColor = System.Drawing.Color.Black;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.Black;
-            this.rjButton1.BorderColor = System.Drawing.Color.Lime;
-            this.rjButton1.BorderRadius = 9;
-            this.rjButton1.BorderSize = 2;
-            this.rjButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.Lime;
-            this.rjButton1.Location = new System.Drawing.Point(13, 391);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(254, 34);
-            this.rjButton1.TabIndex = 7;
-            this.rjButton1.Text = "CERRAR VENTA";
-            this.rjButton1.TextColor = System.Drawing.Color.Lime;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            // 
             // tableLayoutPanel6
             // 
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.DarkMagenta;
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.panel3, 0, 1);
@@ -480,60 +432,6 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(280, 86);
             this.tableLayoutPanel6.TabIndex = 8;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 3;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.Controls.Add(this.btn_venta, 2, 0);
-            this.tableLayoutPanel7.Controls.Add(this.btn_compra, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.btn_factura, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(280, 25);
-            this.tableLayoutPanel7.TabIndex = 1;
-            // 
-            // btn_factura
-            // 
-            this.btn_factura.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_factura.Location = new System.Drawing.Point(0, 0);
-            this.btn_factura.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_factura.Name = "btn_factura";
-            this.btn_factura.Size = new System.Drawing.Size(93, 25);
-            this.btn_factura.TabIndex = 0;
-            this.btn_factura.Text = "Facturación";
-            this.btn_factura.UseVisualStyleBackColor = true;
-            this.btn_factura.Click += new System.EventHandler(this.btn_factura_Click);
-            // 
-            // btn_compra
-            // 
-            this.btn_compra.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_compra.Location = new System.Drawing.Point(93, 0);
-            this.btn_compra.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_compra.Name = "btn_compra";
-            this.btn_compra.Size = new System.Drawing.Size(93, 25);
-            this.btn_compra.TabIndex = 1;
-            this.btn_compra.Text = "Compra";
-            this.btn_compra.UseVisualStyleBackColor = true;
-            this.btn_compra.Click += new System.EventHandler(this.btn_compra_Click);
-            // 
-            // btn_venta
-            // 
-            this.btn_venta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_venta.Location = new System.Drawing.Point(186, 0);
-            this.btn_venta.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_venta.Name = "btn_venta";
-            this.btn_venta.Size = new System.Drawing.Size(94, 25);
-            this.btn_venta.TabIndex = 2;
-            this.btn_venta.Text = "Ventas";
-            this.btn_venta.UseVisualStyleBackColor = true;
-            this.btn_venta.Click += new System.EventHandler(this.btn_venta_Click);
             // 
             // panel3
             // 
@@ -555,6 +453,152 @@
             this.lbl_titulo.Size = new System.Drawing.Size(224, 31);
             this.lbl_titulo.TabIndex = 0;
             this.lbl_titulo.Text = "FACTURACION";
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 3;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.Controls.Add(this.btn_venta, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btn_compra, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.btn_factura, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(280, 25);
+            this.tableLayoutPanel7.TabIndex = 1;
+            // 
+            // btn_venta
+            // 
+            this.btn_venta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_venta.Location = new System.Drawing.Point(186, 0);
+            this.btn_venta.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_venta.Name = "btn_venta";
+            this.btn_venta.Size = new System.Drawing.Size(94, 25);
+            this.btn_venta.TabIndex = 2;
+            this.btn_venta.Text = "Ventas";
+            this.btn_venta.UseVisualStyleBackColor = true;
+            this.btn_venta.Click += new System.EventHandler(this.btn_venta_Click);
+            // 
+            // btn_compra
+            // 
+            this.btn_compra.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_compra.Location = new System.Drawing.Point(93, 0);
+            this.btn_compra.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_compra.Name = "btn_compra";
+            this.btn_compra.Size = new System.Drawing.Size(93, 25);
+            this.btn_compra.TabIndex = 1;
+            this.btn_compra.Text = "Compra";
+            this.btn_compra.UseVisualStyleBackColor = true;
+            this.btn_compra.Click += new System.EventHandler(this.btn_compra_Click);
+            // 
+            // btn_factura
+            // 
+            this.btn_factura.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_factura.Location = new System.Drawing.Point(0, 0);
+            this.btn_factura.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_factura.Name = "btn_factura";
+            this.btn_factura.Size = new System.Drawing.Size(93, 25);
+            this.btn_factura.TabIndex = 0;
+            this.btn_factura.Text = "Facturación";
+            this.btn_factura.UseVisualStyleBackColor = true;
+            this.btn_factura.Click += new System.EventHandler(this.btn_factura_Click);
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.BackColor = System.Drawing.Color.DarkMagenta;
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.panel_container, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.btn_cerrarventa, 1, 4);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 86);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 5;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(280, 428);
+            this.tableLayoutPanel8.TabIndex = 10;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel9.Controls.Add(this.lbl_tipoticket, 1, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(10, 0);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(260, 40);
+            this.tableLayoutPanel9.TabIndex = 13;
+            // 
+            // lbl_tipoticket
+            // 
+            this.lbl_tipoticket.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_tipoticket.AutoSize = true;
+            this.lbl_tipoticket.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tipoticket.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_tipoticket.Location = new System.Drawing.Point(13, 6);
+            this.lbl_tipoticket.Name = "lbl_tipoticket";
+            this.lbl_tipoticket.Size = new System.Drawing.Size(234, 28);
+            this.lbl_tipoticket.TabIndex = 0;
+            this.lbl_tipoticket.Text = "CONSUMIDOR FINAL";
+            this.lbl_tipoticket.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel_container
+            // 
+            this.panel_container.BackColor = System.Drawing.Color.Crimson;
+            this.panel_container.ColumnCount = 1;
+            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
+            this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_container.Location = new System.Drawing.Point(10, 43);
+            this.panel_container.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_container.Name = "panel_container";
+            this.panel_container.RowCount = 2;
+            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_container.Size = new System.Drawing.Size(260, 340);
+            this.panel_container.TabIndex = 12;
+            // 
+            // btn_cerrarventa
+            // 
+            this.btn_cerrarventa.BackColor = System.Drawing.Color.Black;
+            this.btn_cerrarventa.BackgroundColor = System.Drawing.Color.Black;
+            this.btn_cerrarventa.BorderColor = System.Drawing.Color.Lime;
+            this.btn_cerrarventa.BorderRadius = 5;
+            this.btn_cerrarventa.BorderSize = 2;
+            this.btn_cerrarventa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_cerrarventa.FlatAppearance.BorderSize = 0;
+            this.btn_cerrarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cerrarventa.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrarventa.ForeColor = System.Drawing.Color.Lime;
+            this.btn_cerrarventa.Location = new System.Drawing.Point(10, 388);
+            this.btn_cerrarventa.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.btn_cerrarventa.Name = "btn_cerrarventa";
+            this.btn_cerrarventa.Size = new System.Drawing.Size(260, 37);
+            this.btn_cerrarventa.TabIndex = 7;
+            this.btn_cerrarventa.Text = "CERRAR VENTA";
+            this.btn_cerrarventa.TextColor = System.Drawing.Color.Lime;
+            this.btn_cerrarventa.UseVisualStyleBackColor = false;
+            this.btn_cerrarventa.Click += new System.EventHandler(this.btn_cerrarventa_Click);
             // 
             // formSales
             // 
@@ -578,11 +622,13 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel_right.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -610,9 +656,6 @@
         private RJCodeAdvance.RJControls.RJButton btn_cobrar;
         private System.Windows.Forms.Label lbl_f9;
         private System.Windows.Forms.Panel panel_right;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private RJCodeAdvance.RJControls.RJButton rjButton1;
-        private System.Windows.Forms.TableLayoutPanel panel_container;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbl_titulo;
@@ -620,5 +663,10 @@
         private System.Windows.Forms.Button btn_venta;
         private System.Windows.Forms.Button btn_compra;
         private System.Windows.Forms.Button btn_factura;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.Label lbl_tipoticket;
+        private System.Windows.Forms.TableLayoutPanel panel_container;
+        private RJCodeAdvance.RJControls.RJButton btn_cerrarventa;
     }
 }

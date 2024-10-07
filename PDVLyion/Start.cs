@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using FontAwesome.Sharp;
 using EntityLayer;
 using BusinessLayer;
+using System.Data.SqlClient;
 
 namespace PDCLyion
 {
     public partial class Start : Form
     {
-
+        string connectionString = "Data Source = ; Initial Catalog = POSLyion; Integrated Security = True";
         private static IconMenuItem activeMenu = null;
         private static Form activeForm = null;
         private static Users oUser = new Users();
@@ -26,7 +27,34 @@ namespace PDCLyion
             oUser = user;
             lbl_usuario.Text = user.Full_name;
         }
-        
+
+        List<Producto> productos = new List<Producto>
+        {
+            new Producto {}
+
+        };
+
+        private class Producto
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+            public decimal precio { get; set; }
+
+        }
+
+        private void searchProd(string filtro)
+        {
+            string query = "SELECT * FROM Products WHERE description LIKE " + txt_buscarproductos;
+            using (SqlConnection conn = new SqlConnection(Connection.ConnectionString))
+            {
+
+            }
+        }
+
+        private void cargarProd()
+        {
+            dgv_productos.DataSource = productos;
+        }
         private void abrirHerencia(object formhija)
         {
            if(this.panel_main.Controls.Count > 0)
@@ -112,61 +140,11 @@ namespace PDCLyion
 
         }
 
-        private void OpenForm (IconMenuItem iconmenuitem, Form form)
-        {
-            
-        }
-
-        private void iconmenuitem_sales_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_purchaseorders_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_products_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_users_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_customers_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_vendors_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_statistics_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_config_Click(object sender, EventArgs e)
-        {
-        }
+     
 
         private void panel1_DockChanged(object sender, EventArgs e)
         {
             Dock = DockStyle.Fill;
-        }
-
-        private void rjButton2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_hamb_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,11 +189,6 @@ namespace PDCLyion
             abrirHerencia(new formConfig());
         }
 
-        private void panel_main_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void Start_Resize(object sender, EventArgs e)
         {
 
@@ -238,11 +211,6 @@ namespace PDCLyion
             }
         }
 
-        private void lbl_usuario_Click(object sender, EventArgs e)
-        {
-    
-        }
-
         private void btn_Down_Click(object sender, EventArgs e)
         {
             menu_sesion.Show(btn_Down, btn_Down.Width, 0);
@@ -251,21 +219,6 @@ namespace PDCLyion
         private void btn_hamb_Click_1(object sender, EventArgs e)
         {
             menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
-        }
-
-        private void menu_Main_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void panel_factura_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Resize(object sender, EventArgs e)
-        {
-           
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -291,12 +244,9 @@ namespace PDCLyion
             abrirHerencia(new formCat());
         }
 
-        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btn_cfinal_Click(object sender, EventArgs e)
         {
+            lbl_tipoticket.Text = "CONSUMIDOR FINAL";
             btn_cfinal.ForeColor = Color.White;
             btn_cfinal.BackColor = Color.BlueViolet;
             btn_cfinal.Enabled = false;
@@ -310,6 +260,7 @@ namespace PDCLyion
 
         private void btn_eventual_Click(object sender, EventArgs e)
         {
+            lbl_tipoticket.Text = "EVENTUAL";
             btn_eventual.ForeColor = Color.White;
             btn_eventual.BackColor = Color.DarkMagenta;
             btn_eventual.Enabled = false;
@@ -319,6 +270,27 @@ namespace PDCLyion
                 btn_eventual.BackColor = Color.DarkMagenta;
                 btn_cfinal.Enabled = true;
             }
+        }
+
+        private void btn_cobrar_Click(object sender, EventArgs e)
+        {
+            formCambio closeventa = new formCambio();
+
+            closeventa.Show();
+        }
+        private void btn_cerrarventa_Click(object sender, EventArgs e)
+        {
+            formCambio closeventa = new formCambio();
+
+            closeventa.Show();
+        }
+
+        private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txt_buscarproductos.Text.ToLower();
+
+            var prodFiltro = productos
+            .Where(productosToolStripMenuItem => p.Nombre.ToLower().Contains(filtro) || p.Precio.ToString().Contains(filtro)) .ToList();
         }
     }
 }
