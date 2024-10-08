@@ -1,64 +1,68 @@
-﻿using System;
+﻿using EntityLayer;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
-using EntityLayer;
-using System.Runtime.CompilerServices;
 
 namespace DataLayer
 {
-    public class DL_ProductCategories
+    public class DL_Vendors
     {
-        
-        public int Create(ProductCategories oProductCategory, out string message)
+        public int Create(Vendors oVendor, out string message)
         {
             message = string.Empty;
-            int created_productcategory_id = 0;
+            int created_vendor_id = 0;
             using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
             {
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_CREATE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("description", oProductCategory.Description);
+                    SqlCommand command = new SqlCommand("SP_CREATE_VENDOR", oConnection);
+                    command.Parameters.AddWithValue("cuit", oVendor.Cuit);
+                    command.Parameters.AddWithValue("company_name", oVendor.Company_name);
+                    command.Parameters.AddWithValue("email", oVendor.Email);
+                    command.Parameters.AddWithValue("phone", oVendor.Phone);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
-                    command.Parameters.Add("created_productcategory_id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("created_vendor_id", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
                     command.ExecuteNonQuery();
-                    created_productcategory_id = Convert.ToInt32(command.Parameters["created_productcategory_id"].Value);
+                    created_vendor_id = Convert.ToInt32(command.Parameters["created_vendor_id"].Value);
                     message = command.Parameters["message"].Value.ToString();
                 }
                 catch (Exception ex)
                 {
-                    created_productcategory_id = 0;
+                    created_vendor_id = 0;
                     message = ex.Message;
                 }
-                return created_productcategory_id;
+                return created_vendor_id;
             }
         }
 
-        public List<ProductCategories> Read()
+        public List<Vendors> Read()
         {
-            List<ProductCategories> list = new List<ProductCategories>();
+            List<Vendors> list = new List<Vendors>();
             using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
             {
                 try
                 {
                     oConnection.Open();
-                    string query = "SELECT product_category_id, description, state FROM ProductCategories";
+                    string query = "SELECT vendor_id, cuit, company_name, email, phone, state FROM Vendors";
                     SqlCommand command = new SqlCommand(query, oConnection);
                     command.CommandType = CommandType.Text;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            list.Add(new ProductCategories()
+                            list.Add(new Vendors()
                             {
-                                Product_category_id = Convert.ToInt32(reader["product_category_id"]),
-                                Description = reader["description"].ToString(),
+                                Vendor_id = Convert.ToInt32(reader["Vendor_id"]),
+                                Cuit = reader["cuit"].ToString(),
+                                Company_name = reader["company_name"].ToString(),
+                                Email = reader["email"].ToString(),
+                                Phone = reader["phone"].ToString(),
                                 State = Convert.ToBoolean(reader["state"])
                             });
                         }
@@ -66,49 +70,13 @@ namespace DataLayer
                 }
                 catch (Exception ex)
                 {
-                    list = new List<ProductCategories>();
+                    list = new List<Vendors>();
                 }
                 return list;
             }
         }
 
-        public List<ProductCategories> CountProducts()
-        {
-            List<ProductCategories> list = new List<ProductCategories>();
-            using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
-            {
-                try
-                {
-                    oConnection.Open();
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT pc.product_category_id[ProductCategoryId], pc.description[ProductCategoryDescription], ISNULL(COUNT(p.product_id), 0) AS products_quantity");
-                    query.AppendLine("FROM ProductCategories pc");
-                    query.AppendLine("LEFT JOIN Products p ON pc.product_category_id = p.product_category_id");
-                    query.AppendLine("GROUP BY pc.product_category_id, pc.description");
-                    SqlCommand command = new SqlCommand(query.ToString(), oConnection);
-                    command.CommandType = CommandType.Text;
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            list.Add(new ProductCategories()
-                            {
-                                Product_category_id = Convert.ToInt32(reader["ProductCategoryId"]),
-                                Description = reader["ProductCategoryDescription"].ToString(),
-                                Quantity = Convert.ToInt32(reader["products_quantity"])
-                            });
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    list = new List<ProductCategories>();
-                }
-                return list;
-            }
-        }
-
-        public bool Update(ProductCategories oProductCategory, out string message)
+        public bool Update(Vendors oVendor, out string message)
         {
             message = string.Empty;
             bool result = false;
@@ -117,10 +85,13 @@ namespace DataLayer
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_UPDATE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("product_category_id", oProductCategory.Product_category_id);
-                    command.Parameters.AddWithValue("description", oProductCategory.Description);
-                    command.Parameters.AddWithValue("state", oProductCategory.State);
+                    SqlCommand command = new SqlCommand("SP_UPDATE_VENDOR", oConnection);
+                    command.Parameters.AddWithValue("vendor_id", oVendor.Vendor_id);
+                    command.Parameters.AddWithValue("cuit", oVendor.Cuit);
+                    command.Parameters.AddWithValue("company_name", oVendor.Company_name);
+                    command.Parameters.AddWithValue("email", oVendor.Email);
+                    command.Parameters.AddWithValue("phone", oVendor.Phone);
+                    command.Parameters.AddWithValue("state", oVendor.State);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
@@ -137,7 +108,7 @@ namespace DataLayer
             }
         }
 
-        public bool Delete(ProductCategories oProductCategory, out string message)
+        public bool Delete(Vendors oVendor, out string message)
         {
             message = string.Empty;
             bool result = false;
@@ -146,8 +117,8 @@ namespace DataLayer
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_DELETE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("product_category_id", oProductCategory.Product_category_id);
+                    SqlCommand command = new SqlCommand("SP_UPDATE_VENDOR", oConnection);
+                    command.Parameters.AddWithValue("vendor_id", oVendor.Vendor_id);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
@@ -164,7 +135,7 @@ namespace DataLayer
             }
         }
 
-        public bool Restore(ProductCategories oProductCategory, out string message)
+        public bool Restore(Vendors oVendor, out string message)
         {
             message = string.Empty;
             bool result = false;
@@ -173,8 +144,8 @@ namespace DataLayer
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_RESTORE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("product_category_id", oProductCategory.Product_category_id);
+                    SqlCommand command = new SqlCommand("SP_UPDATE_VENDOR", oConnection);
+                    command.Parameters.AddWithValue("vendor_id", oVendor.Vendor_id);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;

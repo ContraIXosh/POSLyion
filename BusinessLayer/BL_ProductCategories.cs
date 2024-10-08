@@ -52,6 +52,11 @@ namespace BusinessLayer
             }
         }
 
+        public List<ProductCategories> CountProducts()
+        {
+            return oProductCategory.CountProducts();
+        }
+
         public bool Delete(ProductCategories productcategory, out string message)
         {
             return oProductCategory.Delete(productcategory, out message);

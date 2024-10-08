@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BusinessLayer;
+using EntityLayer;
+using PDCLyion.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +15,21 @@ namespace PDCLyion
 {
     public partial class formCustomers2 : Form
     {
+
+        private Customers Customer;
+
         public formCustomers2()
         {
             InitializeComponent();
+            Customer = new Customers();
         }
+
+        public formCustomers2(Customers customer)
+        {
+            InitializeComponent();
+            Customer = customer;
+        }
+
         private void abrirHerencia(object formhija)
         {
             if (this.panel_main.Controls.Count > 0)
@@ -91,6 +105,43 @@ namespace PDCLyion
         private void btn_viewvendedor_Click_1(object sender, EventArgs e)
         {
             abrirHerencia(new formCustomers());
+        }
+
+        private void formCustomers2_Load(object sender, EventArgs e)
+        {
+            cbo_estado.Items.Add(new OpcionCombo() { Value = 1, Text = "Activo" });
+            cbo_estado.Items.Add(new OpcionCombo() { Value = 0, Text = "Inactivo" });
+            cbo_estado.DisplayMember = "Text";
+            cbo_estado.ValueMember = "Value";
+
+            txt_id.Texts = Customer.Customer_id.ToString();
+            txt_nombre_completo.Texts = Customer.Full_name;
+            txt_correo.Texts = Customer.Email;
+            txt_dni.Texts = Customer.Dni;
+            txt_tel.Texts = Customer.Phone;
+            int cbo_estado_index = 0;
+
+            if (Convert.ToInt32(txt_id.Texts) == 0)
+            {
+                cbo_estado.SelectedIndex = 0;
+            }
+            else
+            {
+                foreach (OpcionCombo opcion_estado in cbo_estado.Items)
+                {
+                    if (Convert.ToInt32(opcion_estado.Value) == (Customer.State == true ? 1 : 0))
+                    {
+                        cbo_estado_index = cbo_estado.Items.IndexOf(opcion_estado);
+                        break;
+                    }
+                }
+                cbo_estado.SelectedIndex = cbo_estado_index;
+            }
+        }
+
+        private void btn_guardar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

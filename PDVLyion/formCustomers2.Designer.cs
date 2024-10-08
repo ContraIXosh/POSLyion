@@ -30,18 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formCustomers2));
             this.panel_main = new System.Windows.Forms.Panel();
-            this.panel_addclient = new System.Windows.Forms.Panel();
-            this.rjTextBox1 = new CustomBox.RJControls.RJTextBox();
-            this.rjTextBox2 = new CustomBox.RJControls.RJTextBox();
-            this.rjTextBox3 = new CustomBox.RJControls.RJTextBox();
-            this.rjTextBox4 = new CustomBox.RJControls.RJTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lbl_nombre = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btn_borrar = new CustomBox.RJControls.RJButton();
-            this.btn_crear = new CustomBox.RJControls.RJButton();
             this.panel_footer = new System.Windows.Forms.Panel();
             this.panel_update = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,10 +37,25 @@
             this.btn_viewvendedor = new RJCodeAdvance.RJControls.RJButton();
             this.btn_addvendedor = new RJCodeAdvance.RJControls.RJButton();
             this.btn_back = new RJCodeAdvance.RJControls.RJButton();
+            this.panel_addclient = new System.Windows.Forms.Panel();
+            this.btn_borrar = new CustomBox.RJControls.RJButton();
+            this.btn_guardar = new CustomBox.RJControls.RJButton();
+            this.lbl_email = new System.Windows.Forms.Label();
+            this.lbl_tel = new System.Windows.Forms.Label();
+            this.lbl_dni = new System.Windows.Forms.Label();
+            this.lbl_full_name = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txt_tel = new CustomBox.RJControls.RJTextBox();
+            this.txt_correo = new CustomBox.RJControls.RJTextBox();
+            this.txt_dni = new CustomBox.RJControls.RJTextBox();
+            this.txt_nombre_completo = new CustomBox.RJControls.RJTextBox();
+            this.txt_id = new CustomBox.RJControls.RJTextBox();
+            this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
+            this.lbl_state = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
-            this.panel_addclient.SuspendLayout();
             this.panel_footer.SuspendLayout();
             this.panel_update.SuspendLayout();
+            this.panel_addclient.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -65,207 +68,6 @@
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(982, 537);
             this.panel_main.TabIndex = 0;
-            // 
-            // panel_addclient
-            // 
-            this.panel_addclient.BackColor = System.Drawing.Color.Indigo;
-            this.panel_addclient.Controls.Add(this.btn_borrar);
-            this.panel_addclient.Controls.Add(this.btn_crear);
-            this.panel_addclient.Controls.Add(this.label6);
-            this.panel_addclient.Controls.Add(this.label5);
-            this.panel_addclient.Controls.Add(this.label4);
-            this.panel_addclient.Controls.Add(this.lbl_nombre);
-            this.panel_addclient.Controls.Add(this.label3);
-            this.panel_addclient.Controls.Add(this.rjTextBox4);
-            this.panel_addclient.Controls.Add(this.rjTextBox3);
-            this.panel_addclient.Controls.Add(this.rjTextBox2);
-            this.panel_addclient.Controls.Add(this.rjTextBox1);
-            this.panel_addclient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_addclient.Location = new System.Drawing.Point(0, 0);
-            this.panel_addclient.Name = "panel_addclient";
-            this.panel_addclient.Size = new System.Drawing.Size(982, 537);
-            this.panel_addclient.TabIndex = 12;
-            // 
-            // rjTextBox1
-            // 
-            this.rjTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox1.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox1.BorderRadius = 0;
-            this.rjTextBox1.BorderSize = 2;
-            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(38, 106);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox1.PlaceholderText = "";
-            this.rjTextBox1.Size = new System.Drawing.Size(250, 31);
-            this.rjTextBox1.TabIndex = 0;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = false;
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox2.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox2.BorderRadius = 0;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.rjTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox2.Location = new System.Drawing.Point(38, 190);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox2.PlaceholderText = "";
-            this.rjTextBox2.Size = new System.Drawing.Size(250, 31);
-            this.rjTextBox2.TabIndex = 1;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = false;
-            // 
-            // rjTextBox3
-            // 
-            this.rjTextBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox3.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjTextBox3.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox3.BorderRadius = 0;
-            this.rjTextBox3.BorderSize = 2;
-            this.rjTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.rjTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox3.Location = new System.Drawing.Point(397, 190);
-            this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox3.Multiline = false;
-            this.rjTextBox3.Name = "rjTextBox3";
-            this.rjTextBox3.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox3.PasswordChar = false;
-            this.rjTextBox3.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox3.PlaceholderText = "";
-            this.rjTextBox3.Size = new System.Drawing.Size(250, 31);
-            this.rjTextBox3.TabIndex = 2;
-            this.rjTextBox3.Texts = "";
-            this.rjTextBox3.UnderlinedStyle = false;
-            // 
-            // rjTextBox4
-            // 
-            this.rjTextBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox4.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjTextBox4.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox4.BorderRadius = 0;
-            this.rjTextBox4.BorderSize = 2;
-            this.rjTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.rjTextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox4.Location = new System.Drawing.Point(397, 106);
-            this.rjTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox4.Multiline = false;
-            this.rjTextBox4.Name = "rjTextBox4";
-            this.rjTextBox4.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox4.PasswordChar = false;
-            this.rjTextBox4.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox4.PlaceholderText = "";
-            this.rjTextBox4.Size = new System.Drawing.Size(250, 31);
-            this.rjTextBox4.TabIndex = 3;
-            this.rjTextBox4.Texts = "";
-            this.rjTextBox4.UnderlinedStyle = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Orange;
-            this.label3.Location = new System.Drawing.Point(289, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(426, 60);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "CREAR CLIENTE";
-            // 
-            // lbl_nombre
-            // 
-            this.lbl_nombre.AutoSize = true;
-            this.lbl_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nombre.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_nombre.Location = new System.Drawing.Point(33, 77);
-            this.lbl_nombre.Name = "lbl_nombre";
-            this.lbl_nombre.Size = new System.Drawing.Size(250, 25);
-            this.lbl_nombre.TabIndex = 5;
-            this.lbl_nombre.Text = "NOMBRE Y APELLIDO";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Orange;
-            this.label4.Location = new System.Drawing.Point(33, 161);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 25);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "DNI";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Orange;
-            this.label5.Location = new System.Drawing.Point(392, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 25);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "TELEFONO";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Orange;
-            this.label6.Location = new System.Drawing.Point(392, 161);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 25);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "EMAIL";
-            // 
-            // btn_borrar
-            // 
-            this.btn_borrar.BackColor = System.Drawing.Color.Gold;
-            this.btn_borrar.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_borrar.BorderColor = System.Drawing.Color.Black;
-            this.btn_borrar.BorderRadius = 10;
-            this.btn_borrar.BorderSize = 2;
-            this.btn_borrar.FlatAppearance.BorderSize = 0;
-            this.btn_borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_borrar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_borrar.ForeColor = System.Drawing.Color.Black;
-            this.btn_borrar.Location = new System.Drawing.Point(227, 262);
-            this.btn_borrar.Name = "btn_borrar";
-            this.btn_borrar.Size = new System.Drawing.Size(171, 41);
-            this.btn_borrar.TabIndex = 26;
-            this.btn_borrar.Text = "BORRAR";
-            this.btn_borrar.TextColor = System.Drawing.Color.Black;
-            this.btn_borrar.UseVisualStyleBackColor = false;
-            // 
-            // btn_crear
-            // 
-            this.btn_crear.BackColor = System.Drawing.Color.Gold;
-            this.btn_crear.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_crear.BorderColor = System.Drawing.Color.Black;
-            this.btn_crear.BorderRadius = 10;
-            this.btn_crear.BorderSize = 2;
-            this.btn_crear.FlatAppearance.BorderSize = 0;
-            this.btn_crear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_crear.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear.ForeColor = System.Drawing.Color.Black;
-            this.btn_crear.Location = new System.Drawing.Point(38, 262);
-            this.btn_crear.Name = "btn_crear";
-            this.btn_crear.Size = new System.Drawing.Size(171, 41);
-            this.btn_crear.TabIndex = 25;
-            this.btn_crear.Text = "CREAR CLIENTE";
-            this.btn_crear.TextColor = System.Drawing.Color.Black;
-            this.btn_crear.UseVisualStyleBackColor = false;
             // 
             // panel_footer
             // 
@@ -375,6 +177,264 @@
             this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click_1);
             // 
+            // panel_addclient
+            // 
+            this.panel_addclient.BackColor = System.Drawing.Color.Indigo;
+            this.panel_addclient.Controls.Add(this.lbl_state);
+            this.panel_addclient.Controls.Add(this.cbo_estado);
+            this.panel_addclient.Controls.Add(this.txt_id);
+            this.panel_addclient.Controls.Add(this.btn_borrar);
+            this.panel_addclient.Controls.Add(this.btn_guardar);
+            this.panel_addclient.Controls.Add(this.lbl_email);
+            this.panel_addclient.Controls.Add(this.lbl_tel);
+            this.panel_addclient.Controls.Add(this.lbl_dni);
+            this.panel_addclient.Controls.Add(this.lbl_full_name);
+            this.panel_addclient.Controls.Add(this.label3);
+            this.panel_addclient.Controls.Add(this.txt_tel);
+            this.panel_addclient.Controls.Add(this.txt_correo);
+            this.panel_addclient.Controls.Add(this.txt_dni);
+            this.panel_addclient.Controls.Add(this.txt_nombre_completo);
+            this.panel_addclient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_addclient.Location = new System.Drawing.Point(0, 0);
+            this.panel_addclient.Name = "panel_addclient";
+            this.panel_addclient.Size = new System.Drawing.Size(982, 537);
+            this.panel_addclient.TabIndex = 12;
+            // 
+            // btn_borrar
+            // 
+            this.btn_borrar.BackColor = System.Drawing.Color.Gold;
+            this.btn_borrar.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_borrar.BorderColor = System.Drawing.Color.Black;
+            this.btn_borrar.BorderRadius = 10;
+            this.btn_borrar.BorderSize = 2;
+            this.btn_borrar.FlatAppearance.BorderSize = 0;
+            this.btn_borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_borrar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_borrar.ForeColor = System.Drawing.Color.Black;
+            this.btn_borrar.Location = new System.Drawing.Point(215, 258);
+            this.btn_borrar.Name = "btn_borrar";
+            this.btn_borrar.Size = new System.Drawing.Size(171, 41);
+            this.btn_borrar.TabIndex = 26;
+            this.btn_borrar.Text = "BORRAR";
+            this.btn_borrar.TextColor = System.Drawing.Color.Black;
+            this.btn_borrar.UseVisualStyleBackColor = false;
+            // 
+            // btn_guardar
+            // 
+            this.btn_guardar.BackColor = System.Drawing.Color.Gold;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_guardar.BorderColor = System.Drawing.Color.Black;
+            this.btn_guardar.BorderRadius = 10;
+            this.btn_guardar.BorderSize = 2;
+            this.btn_guardar.FlatAppearance.BorderSize = 0;
+            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_guardar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_guardar.ForeColor = System.Drawing.Color.Black;
+            this.btn_guardar.Location = new System.Drawing.Point(38, 258);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(171, 41);
+            this.btn_guardar.TabIndex = 25;
+            this.btn_guardar.Text = "GUARDAR";
+            this.btn_guardar.TextColor = System.Drawing.Color.Black;
+            this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            // 
+            // lbl_email
+            // 
+            this.lbl_email.AutoSize = true;
+            this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_email.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_email.Location = new System.Drawing.Point(392, 161);
+            this.lbl_email.Name = "lbl_email";
+            this.lbl_email.Size = new System.Drawing.Size(80, 25);
+            this.lbl_email.TabIndex = 8;
+            this.lbl_email.Text = "EMAIL";
+            // 
+            // lbl_tel
+            // 
+            this.lbl_tel.AutoSize = true;
+            this.lbl_tel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tel.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_tel.Location = new System.Drawing.Point(392, 77);
+            this.lbl_tel.Name = "lbl_tel";
+            this.lbl_tel.Size = new System.Drawing.Size(133, 25);
+            this.lbl_tel.TabIndex = 7;
+            this.lbl_tel.Text = "TELEFONO";
+            // 
+            // lbl_dni
+            // 
+            this.lbl_dni.AutoSize = true;
+            this.lbl_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dni.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_dni.Location = new System.Drawing.Point(33, 161);
+            this.lbl_dni.Name = "lbl_dni";
+            this.lbl_dni.Size = new System.Drawing.Size(50, 25);
+            this.lbl_dni.TabIndex = 6;
+            this.lbl_dni.Text = "DNI";
+            // 
+            // lbl_full_name
+            // 
+            this.lbl_full_name.AutoSize = true;
+            this.lbl_full_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_full_name.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_full_name.Location = new System.Drawing.Point(33, 77);
+            this.lbl_full_name.Name = "lbl_full_name";
+            this.lbl_full_name.Size = new System.Drawing.Size(250, 25);
+            this.lbl_full_name.TabIndex = 5;
+            this.lbl_full_name.Text = "NOMBRE Y APELLIDO";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Orange;
+            this.label3.Location = new System.Drawing.Point(289, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(422, 55);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "CREAR CLIENTE";
+            // 
+            // txt_tel
+            // 
+            this.txt_tel.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_tel.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_tel.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_tel.BorderRadius = 0;
+            this.txt_tel.BorderSize = 2;
+            this.txt_tel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_tel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_tel.Location = new System.Drawing.Point(397, 106);
+            this.txt_tel.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_tel.Multiline = false;
+            this.txt_tel.Name = "txt_tel";
+            this.txt_tel.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_tel.PasswordChar = false;
+            this.txt_tel.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_tel.PlaceholderText = "";
+            this.txt_tel.Size = new System.Drawing.Size(250, 31);
+            this.txt_tel.TabIndex = 3;
+            this.txt_tel.Texts = "";
+            this.txt_tel.UnderlinedStyle = false;
+            // 
+            // txt_correo
+            // 
+            this.txt_correo.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_correo.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_correo.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_correo.BorderRadius = 0;
+            this.txt_correo.BorderSize = 2;
+            this.txt_correo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_correo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_correo.Location = new System.Drawing.Point(397, 190);
+            this.txt_correo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_correo.Multiline = false;
+            this.txt_correo.Name = "txt_correo";
+            this.txt_correo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_correo.PasswordChar = false;
+            this.txt_correo.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_correo.PlaceholderText = "";
+            this.txt_correo.Size = new System.Drawing.Size(250, 31);
+            this.txt_correo.TabIndex = 2;
+            this.txt_correo.Texts = "";
+            this.txt_correo.UnderlinedStyle = false;
+            // 
+            // txt_dni
+            // 
+            this.txt_dni.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_dni.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_dni.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_dni.BorderRadius = 0;
+            this.txt_dni.BorderSize = 2;
+            this.txt_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_dni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_dni.Location = new System.Drawing.Point(38, 190);
+            this.txt_dni.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_dni.Multiline = false;
+            this.txt_dni.Name = "txt_dni";
+            this.txt_dni.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_dni.PasswordChar = false;
+            this.txt_dni.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_dni.PlaceholderText = "";
+            this.txt_dni.Size = new System.Drawing.Size(250, 31);
+            this.txt_dni.TabIndex = 1;
+            this.txt_dni.Texts = "";
+            this.txt_dni.UnderlinedStyle = false;
+            // 
+            // txt_nombre_completo
+            // 
+            this.txt_nombre_completo.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_nombre_completo.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_nombre_completo.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_nombre_completo.BorderRadius = 0;
+            this.txt_nombre_completo.BorderSize = 2;
+            this.txt_nombre_completo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_nombre_completo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_nombre_completo.Location = new System.Drawing.Point(38, 106);
+            this.txt_nombre_completo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_nombre_completo.Multiline = false;
+            this.txt_nombre_completo.Name = "txt_nombre_completo";
+            this.txt_nombre_completo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_nombre_completo.PasswordChar = false;
+            this.txt_nombre_completo.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_nombre_completo.PlaceholderText = "";
+            this.txt_nombre_completo.Size = new System.Drawing.Size(250, 31);
+            this.txt_nombre_completo.TabIndex = 0;
+            this.txt_nombre_completo.Texts = "";
+            this.txt_nombre_completo.UnderlinedStyle = false;
+            // 
+            // txt_id
+            // 
+            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_id.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_id.BorderRadius = 0;
+            this.txt_id.BorderSize = 2;
+            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_id.Location = new System.Drawing.Point(38, 24);
+            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_id.Multiline = false;
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_id.PasswordChar = false;
+            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_id.PlaceholderText = "";
+            this.txt_id.Size = new System.Drawing.Size(45, 31);
+            this.txt_id.TabIndex = 27;
+            this.txt_id.Texts = "";
+            this.txt_id.UnderlinedStyle = false;
+            this.txt_id.Visible = false;
+            // 
+            // cbo_estado
+            // 
+            this.cbo_estado.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbo_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_estado.BorderSize = 1;
+            this.cbo_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbo_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbo_estado.ForeColor = System.Drawing.Color.DimGray;
+            this.cbo_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbo_estado.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbo_estado.Location = new System.Drawing.Point(699, 106);
+            this.cbo_estado.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbo_estado.Name = "cbo_estado";
+            this.cbo_estado.Padding = new System.Windows.Forms.Padding(1);
+            this.cbo_estado.Size = new System.Drawing.Size(200, 30);
+            this.cbo_estado.TabIndex = 28;
+            this.cbo_estado.Texts = "";
+            // 
+            // lbl_state
+            // 
+            this.lbl_state.AutoSize = true;
+            this.lbl_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_state.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_state.Location = new System.Drawing.Point(694, 77);
+            this.lbl_state.Name = "lbl_state";
+            this.lbl_state.Size = new System.Drawing.Size(104, 25);
+            this.lbl_state.TabIndex = 29;
+            this.lbl_state.Text = "ESTADO";
+            // 
             // formCustomers2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,12 +443,13 @@
             this.Controls.Add(this.panel_main);
             this.Name = "formCustomers2";
             this.Text = "formCustomers2";
+            this.Load += new System.EventHandler(this.formCustomers2_Load);
             this.panel_main.ResumeLayout(false);
-            this.panel_addclient.ResumeLayout(false);
-            this.panel_addclient.PerformLayout();
             this.panel_footer.ResumeLayout(false);
             this.panel_update.ResumeLayout(false);
             this.panel_update.PerformLayout();
+            this.panel_addclient.ResumeLayout(false);
+            this.panel_addclient.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -397,17 +458,17 @@
 
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.Panel panel_addclient;
-        private CustomBox.RJControls.RJTextBox rjTextBox3;
-        private CustomBox.RJControls.RJTextBox rjTextBox2;
-        private CustomBox.RJControls.RJTextBox rjTextBox1;
+        private CustomBox.RJControls.RJTextBox txt_correo;
+        private CustomBox.RJControls.RJTextBox txt_dni;
+        private CustomBox.RJControls.RJTextBox txt_nombre_completo;
         private System.Windows.Forms.Label label3;
-        private CustomBox.RJControls.RJTextBox rjTextBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbl_nombre;
+        private CustomBox.RJControls.RJTextBox txt_tel;
+        private System.Windows.Forms.Label lbl_email;
+        private System.Windows.Forms.Label lbl_tel;
+        private System.Windows.Forms.Label lbl_dni;
+        private System.Windows.Forms.Label lbl_full_name;
         private CustomBox.RJControls.RJButton btn_borrar;
-        private CustomBox.RJControls.RJButton btn_crear;
+        private CustomBox.RJControls.RJButton btn_guardar;
         private System.Windows.Forms.Panel panel_footer;
         private System.Windows.Forms.Panel panel_update;
         private System.Windows.Forms.Label label2;
@@ -415,5 +476,8 @@
         private RJCodeAdvance.RJControls.RJButton btn_viewvendedor;
         private RJCodeAdvance.RJControls.RJButton btn_addvendedor;
         private RJCodeAdvance.RJControls.RJButton btn_back;
+        private CustomBox.RJControls.RJTextBox txt_id;
+        private System.Windows.Forms.Label lbl_state;
+        private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
     }
 }

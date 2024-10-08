@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,14 +84,12 @@
             this.panel_container = new System.Windows.Forms.TableLayoutPanel();
             this.btn_cerrarventa = new RJCodeAdvance.RJControls.RJButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_buscarproductos = new System.Windows.Forms.TextBox();
-            this.btn_search = new CustomBox.RJControls.RJButton();
             this.dgv_productos = new System.Windows.Forms.DataGridView();
-            this.dgv_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_buscarproductos = new System.Windows.Forms.TextBox();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
             this.panel_top.SuspendLayout();
@@ -112,7 +109,6 @@
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -862,112 +858,48 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgv_productos, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txt_buscarproductos, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(682, 451);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(676, 445);
             this.tableLayoutPanel1.TabIndex = 18;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel4.Controls.Add(this.txt_buscarproductos, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btn_search, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(682, 40);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // txt_buscarproductos
-            // 
-            this.txt_buscarproductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_buscarproductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_buscarproductos.Location = new System.Drawing.Point(3, 3);
-            this.txt_buscarproductos.Name = "txt_buscarproductos";
-            this.txt_buscarproductos.Size = new System.Drawing.Size(586, 26);
-            this.txt_buscarproductos.TabIndex = 6;
-            // 
-            // btn_search
-            // 
-            this.btn_search.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btn_search.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btn_search.BorderColor = System.Drawing.Color.Red;
-            this.btn_search.BorderRadius = 10;
-            this.btn_search.BorderSize = 0;
-            this.btn_search.FlatAppearance.BorderSize = 0;
-            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(595, 3);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(84, 29);
-            this.btn_search.TabIndex = 7;
-            this.btn_search.Text = "Buscar";
-            this.btn_search.TextColor = System.Drawing.Color.White;
-            this.btn_search.UseVisualStyleBackColor = false;
             // 
             // dgv_productos
             // 
             this.dgv_productos.AllowUserToAddRows = false;
             this.dgv_productos.AllowUserToDeleteRows = false;
-            this.dgv_productos.AllowUserToResizeColumns = false;
-            this.dgv_productos.AllowUserToResizeRows = false;
-            this.dgv_productos.BackgroundColor = System.Drawing.Color.Black;
-            this.dgv_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgv_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_productos.ColumnHeadersHeight = 40;
+            this.dgv_productos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgv_desc,
             this.dgv_id,
+            this.dgv_desc,
             this.dgv_precio,
             this.dgv_stock});
             this.dgv_productos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_productos.EnableHeadersVisualStyles = false;
-            this.dgv_productos.GridColor = System.Drawing.Color.Crimson;
-            this.dgv_productos.Location = new System.Drawing.Point(0, 40);
-            this.dgv_productos.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.dgv_productos.MultiSelect = false;
+            this.dgv_productos.Location = new System.Drawing.Point(3, 43);
             this.dgv_productos.Name = "dgv_productos";
-            this.dgv_productos.RowHeadersVisible = false;
-            this.dgv_productos.RowHeadersWidth = 25;
-            this.dgv_productos.RowTemplate.Height = 25;
-            this.dgv_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_productos.Size = new System.Drawing.Size(679, 391);
-            this.dgv_productos.TabIndex = 8;
-            // 
-            // dgv_desc
-            // 
-            this.dgv_desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_desc.FillWeight = 150F;
-            this.dgv_desc.HeaderText = "DESCRIPCION";
-            this.dgv_desc.Name = "dgv_desc";
+            this.dgv_productos.ReadOnly = true;
+            this.dgv_productos.Size = new System.Drawing.Size(670, 399);
+            this.dgv_productos.TabIndex = 10;
             // 
             // dgv_id
             // 
             this.dgv_id.HeaderText = "ID";
             this.dgv_id.Name = "dgv_id";
+            this.dgv_id.ReadOnly = true;
             this.dgv_id.Visible = false;
+            // 
+            // dgv_desc
+            // 
+            this.dgv_desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_desc.FillWeight = 120F;
+            this.dgv_desc.HeaderText = "DESCRIPCION";
+            this.dgv_desc.Name = "dgv_desc";
+            this.dgv_desc.ReadOnly = true;
             // 
             // dgv_precio
             // 
@@ -975,13 +907,24 @@
             this.dgv_precio.FillWeight = 60F;
             this.dgv_precio.HeaderText = "PRECIO";
             this.dgv_precio.Name = "dgv_precio";
+            this.dgv_precio.ReadOnly = true;
             // 
             // dgv_stock
             // 
             this.dgv_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dgv_stock.FillWeight = 60F;
-            this.dgv_stock.HeaderText = "STOCK DISPONIBLE";
+            this.dgv_stock.HeaderText = "STOCK";
             this.dgv_stock.Name = "dgv_stock";
+            this.dgv_stock.ReadOnly = true;
+            // 
+            // txt_buscarproductos
+            // 
+            this.txt_buscarproductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_buscarproductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_buscarproductos.Location = new System.Drawing.Point(3, 3);
+            this.txt_buscarproductos.Name = "txt_buscarproductos";
+            this.txt_buscarproductos.Size = new System.Drawing.Size(670, 26);
+            this.txt_buscarproductos.TabIndex = 9;
             // 
             // Start
             // 
@@ -1024,8 +967,7 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).EndInit();
             this.ResumeLayout(false);
 
@@ -1086,12 +1028,10 @@
         private System.Windows.Forms.Button btn_compra;
         private System.Windows.Forms.Button btn_factura;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TextBox txt_buscarproductos;
-        private CustomBox.RJControls.RJButton btn_search;
         private System.Windows.Forms.DataGridView dgv_productos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_desc;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_desc;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_stock;
     }

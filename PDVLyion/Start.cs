@@ -42,10 +42,6 @@ namespace PDCLyion
 
         }
 
-        private void searchProd(string filtro)
-        {
-        }
-
         private void cargarProd()
         {
             dgv_productos.DataSource = productos;
@@ -149,7 +145,7 @@ namespace PDCLyion
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formPurchaseOrders crearfactura = new formPurchaseOrders();
+            formPurchaseOrders crearfactura = new formPurchaseOrders(oUser);
 
             crearfactura.Show(); ;
         }
@@ -282,6 +278,21 @@ namespace PDCLyion
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
+            dgv_productos.Rows.Clear();
+            if (txt_buscarproductos.Text != "")
+            {
+                DataTable products_table = new BL_Products().Search(txt_buscarproductos.Text);
+                foreach (DataRow row in products_table.Rows)
+                {
+                    dgv_productos.Rows.Add(new object[]
+                    {
+                row["ID"],
+                row["Descripcion"],
+                row["Precio"],
+                row["Stock actual"]
+                    });
+                }
+            }
         }
     }
 }

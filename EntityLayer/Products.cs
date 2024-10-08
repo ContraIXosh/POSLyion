@@ -8,7 +8,7 @@ namespace EntityLayer
 {
     public class Products
     {
-        public string Product_id { get; set; }
+        public int Product_id { get; set; }
         public string Bar_code { get; set; }
         public string Description { get; set; }
         public ProductCategories oProductCategory { get; set; }

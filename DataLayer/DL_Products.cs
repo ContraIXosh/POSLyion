@@ -1,64 +1,80 @@
-﻿using System;
+﻿using EntityLayer;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
-using EntityLayer;
-using System.Runtime.CompilerServices;
 
 namespace DataLayer
 {
-    public class DL_ProductCategories
+    public class DL_Products
     {
-        
-        public int Create(ProductCategories oProductCategory, out string message)
+        public int Create(Products oProduct, out string message)
         {
             message = string.Empty;
-            int created_productcategory_id = 0;
+            int created_product_id = 0;
             using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
             {
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_CREATE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("description", oProductCategory.Description);
+                    SqlCommand command = new SqlCommand("SP_CREATE_PRODUCT", oConnection);
+                    command.Parameters.AddWithValue("bar_code", oProduct.Bar_code);
+                    command.Parameters.AddWithValue("description", oProduct.Description);
+                    command.Parameters.AddWithValue("product_category_id", oProduct.oProductCategory.Product_category_id);
+                    command.Parameters.AddWithValue("cost_price", oProduct.Cost_price);
+                    command.Parameters.AddWithValue("sale_price", oProduct.Sale_price);
+                    command.Parameters.AddWithValue("current_stock", oProduct.Current_stock);
+                    command.Parameters.AddWithValue("minimum_stock", oProduct.Minimum_stock);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
-                    command.Parameters.Add("created_productcategory_id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.Parameters.Add("created_product_id", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
                     command.ExecuteNonQuery();
-                    created_productcategory_id = Convert.ToInt32(command.Parameters["created_productcategory_id"].Value);
+                    created_product_id = Convert.ToInt32(command.Parameters["created_product_id"].Value);
                     message = command.Parameters["message"].Value.ToString();
                 }
                 catch (Exception ex)
                 {
-                    created_productcategory_id = 0;
+                    created_product_id = 0;
                     message = ex.Message;
                 }
-                return created_productcategory_id;
+                return created_product_id;
             }
         }
 
-        public List<ProductCategories> Read()
+        public List<Products> Read()
         {
-            List<ProductCategories> list = new List<ProductCategories>();
+            List<Products> list = new List<Products>();
             using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
             {
                 try
                 {
                     oConnection.Open();
-                    string query = "SELECT product_category_id, description, state FROM ProductCategories";
-                    SqlCommand command = new SqlCommand(query, oConnection);
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT product_id, bar_code, p.description, cost_price, sale_price, current_stock, minimum_stock, p.state, pc.product_category_id, pc.description[ProductCategoryDescription] FROM Products as p");
+                    query.AppendLine("INNER JOIN ProductCategories as pc ON p.product_category_id = pc.product_category_id ");
+                    SqlCommand command = new SqlCommand(query.ToString(), oConnection);
                     command.CommandType = CommandType.Text;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            list.Add(new ProductCategories()
+                            list.Add(new Products()
                             {
-                                Product_category_id = Convert.ToInt32(reader["product_category_id"]),
+                                Product_id = Convert.ToInt32(reader["product_id"]),
+                                Bar_code = reader["bar_code"].ToString(),
                                 Description = reader["description"].ToString(),
+                                oProductCategory = new ProductCategories() 
+                                { 
+                                    Product_category_id = Convert.ToInt32(reader["product_category_id"]),
+                                    Description = reader["ProductCategoryDescription"].ToString(),
+                                },
+                                Cost_price = Convert.ToDecimal(reader["cost_price"]),
+                                Sale_price = Convert.ToDecimal(reader["sale_price"]),
+                                Current_stock = Convert.ToInt32(reader["current_stock"]),
+                                Minimum_stock = Convert.ToInt32(reader["minimum_stock"]),
                                 State = Convert.ToBoolean(reader["state"])
                             });
                         }
@@ -66,49 +82,45 @@ namespace DataLayer
                 }
                 catch (Exception ex)
                 {
-                    list = new List<ProductCategories>();
+                    list = new List<Products>();
                 }
                 return list;
             }
         }
 
-        public List<ProductCategories> CountProducts()
+        public DataTable Search(string text)
         {
-            List<ProductCategories> list = new List<ProductCategories>();
+            DataTable dataTable = new DataTable();
             using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
             {
                 try
                 {
                     oConnection.Open();
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT pc.product_category_id[ProductCategoryId], pc.description[ProductCategoryDescription], ISNULL(COUNT(p.product_id), 0) AS products_quantity");
-                    query.AppendLine("FROM ProductCategories pc");
-                    query.AppendLine("LEFT JOIN Products p ON pc.product_category_id = p.product_category_id");
-                    query.AppendLine("GROUP BY pc.product_category_id, pc.description");
+                    string query = "SELECT product_id, description, sale_price, current_stock FROM Products WHERE state = 1 AND description LIKE '%" + text + "%'";
                     SqlCommand command = new SqlCommand(query.ToString(), oConnection);
                     command.CommandType = CommandType.Text;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        dataTable = new DataTable();
+                        dataTable.Columns.Add("ID", typeof(int));
+                        dataTable.Columns.Add("Descripcion", typeof(string));
+                        dataTable.Columns.Add("Precio", typeof(decimal));
+                        dataTable.Columns.Add("Stock actual", typeof(int));
                         while (reader.Read())
                         {
-                            list.Add(new ProductCategories()
-                            {
-                                Product_category_id = Convert.ToInt32(reader["ProductCategoryId"]),
-                                Description = reader["ProductCategoryDescription"].ToString(),
-                                Quantity = Convert.ToInt32(reader["products_quantity"])
-                            });
+                            dataTable.Rows.Add(reader["product_id"], reader["description"], reader["sale_price"], reader["current_stock"]);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    list = new List<ProductCategories>();
+                    dataTable = new DataTable();
                 }
-                return list;
+                return dataTable;
             }
         }
 
-        public bool Update(ProductCategories oProductCategory, out string message)
+        public bool Update(Products oProduct, out string message)
         {
             message = string.Empty;
             bool result = false;
@@ -117,10 +129,16 @@ namespace DataLayer
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_UPDATE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("product_category_id", oProductCategory.Product_category_id);
-                    command.Parameters.AddWithValue("description", oProductCategory.Description);
-                    command.Parameters.AddWithValue("state", oProductCategory.State);
+                    SqlCommand command = new SqlCommand("SP_UPDATE_PRODUCT", oConnection);
+                    command.Parameters.AddWithValue("product_id", oProduct.Product_id);
+                    command.Parameters.AddWithValue("bar_code", oProduct.Bar_code);
+                    command.Parameters.AddWithValue("description", oProduct.Description);
+                    command.Parameters.AddWithValue("product_category_id", oProduct.oProductCategory.Product_category_id);
+                    command.Parameters.AddWithValue("cost_price", oProduct.Cost_price);
+                    command.Parameters.AddWithValue("sale_price", oProduct.Sale_price);
+                    command.Parameters.AddWithValue("current_stock", oProduct.Current_stock);
+                    command.Parameters.AddWithValue("minimum_stock", oProduct.Minimum_stock);
+                    command.Parameters.AddWithValue("state", oProduct.State);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
@@ -137,7 +155,7 @@ namespace DataLayer
             }
         }
 
-        public bool Delete(ProductCategories oProductCategory, out string message)
+        public bool Delete(Products oProduct, out string message)
         {
             message = string.Empty;
             bool result = false;
@@ -146,8 +164,8 @@ namespace DataLayer
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_DELETE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("product_category_id", oProductCategory.Product_category_id);
+                    SqlCommand command = new SqlCommand("SP_DELETE_PRODUCT", oConnection);
+                    command.Parameters.AddWithValue("product_id", oProduct.Product_id);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
@@ -164,7 +182,7 @@ namespace DataLayer
             }
         }
 
-        public bool Restore(ProductCategories oProductCategory, out string message)
+        public bool Restore(Products oProduct, out string message)
         {
             message = string.Empty;
             bool result = false;
@@ -173,8 +191,8 @@ namespace DataLayer
                 try
                 {
                     oConnection.Open();
-                    SqlCommand command = new SqlCommand("SP_RESTORE_PRODUCTCATEGORY", oConnection);
-                    command.Parameters.AddWithValue("product_category_id", oProductCategory.Product_category_id);
+                    SqlCommand command = new SqlCommand("SP_RESTORE_PRODUCT", oConnection);
+                    command.Parameters.AddWithValue("product_id", oProduct.Product_id);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("result", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
@@ -192,3 +210,4 @@ namespace DataLayer
         }
     }
 }
+

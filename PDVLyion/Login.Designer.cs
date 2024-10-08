@@ -115,7 +115,6 @@
             this.abrir_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.abrir_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.abrir_sesion.ForeColor = System.Drawing.Color.Black;
-            this.abrir_sesion.Image = ((System.Drawing.Image)(resources.GetObject("abrir_sesion.Image")));
             this.abrir_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.abrir_sesion.Location = new System.Drawing.Point(284, 261);
             this.abrir_sesion.Name = "abrir_sesion";

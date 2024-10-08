@@ -15,6 +15,7 @@ namespace EntityLayer
         public decimal Total { get; set; }
         public string Document_type { get; set; }
         public string Document_number { get; set; }
+        public string Document_date { get; set; }
         public string Create_date { get; set; }
     }
 }

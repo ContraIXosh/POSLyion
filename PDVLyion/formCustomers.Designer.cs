@@ -35,16 +35,19 @@
             this.btn_addvendedor = new RJCodeAdvance.RJControls.RJButton();
             this.btn_back = new RJCodeAdvance.RJControls.RJButton();
             this.grid_proveedores = new System.Windows.Forms.DataGridView();
+            this.panel_update = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_seleccionar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente_fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente_dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cliente_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cliente_editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel_update = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cliente_estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel_main.SuspendLayout();
             this.panel_footer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_proveedores)).BeginInit();
@@ -146,54 +149,23 @@
             // 
             this.grid_proveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_proveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btn_seleccionar,
             this.cliente_id,
             this.cliente_fullname,
             this.cliente_dni,
             this.cliente_tel,
             this.cliente_email,
-            this.cliente_eliminar,
-            this.cliente_editar});
+            this.cliente_estado,
+            this.cliente_estado_valor,
+            this.btn_eliminar,
+            this.btn_editar});
             this.grid_proveedores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_proveedores.Location = new System.Drawing.Point(0, 0);
             this.grid_proveedores.Margin = new System.Windows.Forms.Padding(15);
             this.grid_proveedores.Name = "grid_proveedores";
             this.grid_proveedores.Size = new System.Drawing.Size(982, 537);
             this.grid_proveedores.TabIndex = 15;
-            // 
-            // cliente_id
-            // 
-            this.cliente_id.HeaderText = "ID";
-            this.cliente_id.Name = "cliente_id";
-            // 
-            // cliente_fullname
-            // 
-            this.cliente_fullname.HeaderText = "NOMBRE COMPLETO";
-            this.cliente_fullname.Name = "cliente_fullname";
-            // 
-            // cliente_dni
-            // 
-            this.cliente_dni.HeaderText = "DNI";
-            this.cliente_dni.Name = "cliente_dni";
-            // 
-            // cliente_tel
-            // 
-            this.cliente_tel.HeaderText = "TELEFONO";
-            this.cliente_tel.Name = "cliente_tel";
-            // 
-            // cliente_email
-            // 
-            this.cliente_email.HeaderText = "EMAIL";
-            this.cliente_email.Name = "cliente_email";
-            // 
-            // cliente_eliminar
-            // 
-            this.cliente_eliminar.HeaderText = "ELIMINAR";
-            this.cliente_eliminar.Name = "cliente_eliminar";
-            // 
-            // cliente_editar
-            // 
-            this.cliente_editar.HeaderText = "EDITAR";
-            this.cliente_editar.Name = "cliente_editar";
+            this.grid_proveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_proveedores_CellContentClick);
             // 
             // panel_update
             // 
@@ -224,6 +196,57 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Actualizacion: v1.0.0.5";
             // 
+            // btn_seleccionar
+            // 
+            this.btn_seleccionar.HeaderText = "";
+            this.btn_seleccionar.Name = "btn_seleccionar";
+            // 
+            // cliente_id
+            // 
+            this.cliente_id.HeaderText = "ID";
+            this.cliente_id.Name = "cliente_id";
+            // 
+            // cliente_fullname
+            // 
+            this.cliente_fullname.HeaderText = "NOMBRE COMPLETO";
+            this.cliente_fullname.Name = "cliente_fullname";
+            // 
+            // cliente_dni
+            // 
+            this.cliente_dni.HeaderText = "DNI";
+            this.cliente_dni.Name = "cliente_dni";
+            // 
+            // cliente_tel
+            // 
+            this.cliente_tel.HeaderText = "TELEFONO";
+            this.cliente_tel.Name = "cliente_tel";
+            // 
+            // cliente_email
+            // 
+            this.cliente_email.HeaderText = "EMAIL";
+            this.cliente_email.Name = "cliente_email";
+            // 
+            // cliente_estado
+            // 
+            this.cliente_estado.HeaderText = "ESTADO";
+            this.cliente_estado.Name = "cliente_estado";
+            // 
+            // cliente_estado_valor
+            // 
+            this.cliente_estado_valor.HeaderText = "ESTADO_VALOR";
+            this.cliente_estado_valor.Name = "cliente_estado_valor";
+            this.cliente_estado_valor.Visible = false;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Name = "btn_eliminar";
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Name = "btn_editar";
+            // 
             // formCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +256,7 @@
             this.Controls.Add(this.panel_main);
             this.Name = "formCustomers";
             this.Text = "formCustomers";
+            this.Load += new System.EventHandler(this.formCustomers_Load);
             this.panel_main.ResumeLayout(false);
             this.panel_footer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_proveedores)).EndInit();
@@ -246,13 +270,6 @@
 
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.DataGridView grid_proveedores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_fullname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_dni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_tel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_email;
-        private System.Windows.Forms.DataGridViewButtonColumn cliente_eliminar;
-        private System.Windows.Forms.DataGridViewButtonColumn cliente_editar;
         private System.Windows.Forms.Panel panel_footer;
         private RJCodeAdvance.RJControls.RJButton btn_viewvendedor;
         private RJCodeAdvance.RJControls.RJButton btn_back;
@@ -260,5 +277,15 @@
         private System.Windows.Forms.Panel panel_update;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn btn_seleccionar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_fullname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_tel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente_estado_valor;
+        private System.Windows.Forms.DataGridViewButtonColumn btn_eliminar;
+        private System.Windows.Forms.DataGridViewButtonColumn btn_editar;
     }
 }
