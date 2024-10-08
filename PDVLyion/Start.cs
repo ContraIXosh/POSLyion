@@ -278,15 +278,28 @@ namespace PDCLyion
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
-            if (txt_buscarproductos.Text == "")
+            //string filtro = txt_buscarproductos.Text.ToLower();
+            //var prodFiltro = productos
+            //.Where(productosToolStripMenuItem => p.Nombre.ToLower().Contains(filtro) || p.Precio.ToString().Contains(filtro)) .ToList();
+            dgv_productos.Rows.Clear();
+            dgv_productos.Visible = true;
+            if (txt_buscarproductos.Text != "")
             {
-                dgv_productos.DataSource = null;
+                DataTable dataTable = new BL_Products().Search(txt_buscarproductos.Text);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    dgv_productos.Rows.Add(new object[]
+                    {
+                    row["ID"],
+                    row["Descripcion"],
+                    row["Precio"],
+                    row["Stock actual"]
+                    });
+                }
             }
             else
             {
-                DataTable dataTable = new BL_Products().Search(txt_buscarproductos.Text);
-                dgv_productos.DataSource = dataTable;
-                dgv_productos.Columns["ID"].Visible = false;
+                dgv_productos.Visible = false;
             }
         }
     }

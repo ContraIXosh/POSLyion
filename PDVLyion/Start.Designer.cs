@@ -87,6 +87,10 @@
             this.txt_buscarproductos = new System.Windows.Forms.TextBox();
             this.rjButton1 = new CustomBox.RJControls.RJButton();
             this.dgv_productos = new System.Windows.Forms.DataGridView();
+            this.dgv_column_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_column_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_column_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_column_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
             this.panel_top.SuspendLayout();
@@ -890,14 +894,36 @@
             // 
             // dgv_productos
             // 
-            this.dgv_productos.AllowUserToAddRows = false;
-            this.dgv_productos.AllowUserToDeleteRows = false;
             this.dgv_productos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_column_id,
+            this.dgv_column_desc,
+            this.dgv_column_precio,
+            this.dgv_column_stock});
             this.dgv_productos.Location = new System.Drawing.Point(3, 38);
             this.dgv_productos.Name = "dgv_productos";
-            this.dgv_productos.ReadOnly = true;
             this.dgv_productos.Size = new System.Drawing.Size(660, 382);
             this.dgv_productos.TabIndex = 2;
+            // 
+            // dgv_column_id
+            // 
+            this.dgv_column_id.HeaderText = "ID";
+            this.dgv_column_id.Name = "dgv_column_id";
+            // 
+            // dgv_column_desc
+            // 
+            this.dgv_column_desc.HeaderText = "DESCRIPCION";
+            this.dgv_column_desc.Name = "dgv_column_desc";
+            // 
+            // dgv_column_precio
+            // 
+            this.dgv_column_precio.HeaderText = "PRECIO";
+            this.dgv_column_precio.Name = "dgv_column_precio";
+            // 
+            // dgv_column_stock
+            // 
+            this.dgv_column_stock.HeaderText = "STOCK DISPONIBLE";
+            this.dgv_column_stock.Name = "dgv_column_stock";
             // 
             // Start
             // 
@@ -1004,6 +1030,10 @@
         private System.Windows.Forms.TextBox txt_buscarproductos;
         private CustomBox.RJControls.RJButton rjButton1;
         private System.Windows.Forms.DataGridView dgv_productos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_column_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_column_desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_column_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_column_stock;
     }
 }
 

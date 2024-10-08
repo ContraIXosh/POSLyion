@@ -91,7 +91,6 @@ namespace DataLayer
         public DataTable Search(string text)
         {
             DataTable dataTable = new DataTable();
-            List<Products> list = new List<Products>();
             using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
             {
                 try
@@ -100,24 +99,20 @@ namespace DataLayer
                     string query = "SELECT product_id, description, sale_price, current_stock FROM Products WHERE state = 1 AND description LIKE '%" + text + "%'";
                     SqlCommand command = new SqlCommand(query.ToString(), oConnection);
                     command.CommandType = CommandType.Text;
-                    dataTable = new DataTable();
-                    dataTable.Columns.Add("ID");
-                    dataTable.Columns.Add("Producto");
-                    dataTable.Columns.Add("Precio");
-                    dataTable.Columns.Add("Stock actual");
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        dataTable = new DataTable();
+                        dataTable.Columns.Add("ID", typeof(int));
+                        dataTable.Columns.Add("Descripcion", typeof(string));
+                        dataTable.Columns.Add("Precio", typeof(decimal));
+                        dataTable.Columns.Add("Stock actual", typeof(int));
                         while (reader.Read())
                         {
-                            var row = dataTable.NewRow();
-                            row["ID"] = Convert.ToInt32(reader["product_id"]);
-                            row["Producto"] = reader["description"];
-                            row["Precio"] = Convert.ToDecimal(reader["sale_price"]);
-                            row["Stock actual"] = Convert.ToInt32(reader["current_stock"]);
-                            dataTable.Rows.Add(row);
+                            dataTable.Rows.Add(reader["product_id"], reader["description"], reader["sale_price"], reader["current_stock"]);
                         }
                     }
-                } catch (Exception ex)
+                } 
+                catch (Exception ex)
                 {
                     dataTable = new DataTable();
                 }
