@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formCat));
             this.grid_category = new System.Windows.Forms.DataGridView();
+            this.id_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.num_prods = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel_update = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,15 +44,20 @@
             this.btn_back = new RJCodeAdvance.RJControls.RJButton();
             this.btn_add_category = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main = new System.Windows.Forms.Panel();
-            this.id_cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.num_prods = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_top = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_Down = new CustomBox.RJControls.RJButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
+            this.lbl_usuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid_category)).BeginInit();
             this.panel_update.SuspendLayout();
             this.panel_footer.SuspendLayout();
             this.panel_main.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel_top.SuspendLayout();
             this.SuspendLayout();
             // 
             // grid_category
@@ -60,12 +70,37 @@
             this.btn_eliminar,
             this.btn_editar});
             this.grid_category.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_category.Location = new System.Drawing.Point(0, 0);
-            this.grid_category.Margin = new System.Windows.Forms.Padding(15);
+            this.grid_category.Location = new System.Drawing.Point(294, 0);
+            this.grid_category.Margin = new System.Windows.Forms.Padding(0);
             this.grid_category.Name = "grid_category";
-            this.grid_category.Size = new System.Drawing.Size(982, 459);
+            this.grid_category.Size = new System.Drawing.Size(688, 414);
             this.grid_category.TabIndex = 13;
             this.grid_category.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_category_CellContentClick);
+            // 
+            // id_cat
+            // 
+            this.id_cat.HeaderText = "ID";
+            this.id_cat.Name = "id_cat";
+            // 
+            // name_category
+            // 
+            this.name_category.HeaderText = "Categoria";
+            this.name_category.Name = "name_category";
+            // 
+            // num_prods
+            // 
+            this.num_prods.HeaderText = "CANTIDAD DE PRODUCTOS ASOCIADOS";
+            this.num_prods.Name = "num_prods";
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Name = "btn_eliminar";
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Name = "btn_editar";
             // 
             // panel_update
             // 
@@ -172,6 +207,7 @@
             this.btn_back.Text = "Regresar";
             this.btn_back.TextColor = System.Drawing.Color.Red;
             this.btn_back.UseVisualStyleBackColor = false;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // btn_add_category
             // 
@@ -198,37 +234,124 @@
             // panel_main
             // 
             this.panel_main.BackColor = System.Drawing.Color.Black;
-            this.panel_main.Controls.Add(this.grid_category);
+            this.panel_main.Controls.Add(this.tableLayoutPanel1);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(982, 459);
             this.panel_main.TabIndex = 13;
             // 
-            // id_cat
+            // tableLayoutPanel1
             // 
-            this.id_cat.HeaderText = "ID";
-            this.id_cat.Name = "id_cat";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel_top, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(982, 459);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // name_category
+            // tableLayoutPanel2
             // 
-            this.name_category.HeaderText = "Categoria";
-            this.name_category.Name = "name_category";
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.Controls.Add(this.grid_category, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 45);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(982, 414);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // num_prods
+            // panel_top
             // 
-            this.num_prods.HeaderText = "CANTIDAD DE PRODUCTOS ASOCIADOS";
-            this.num_prods.Name = "num_prods";
+            this.panel_top.BackColor = System.Drawing.Color.Gold;
+            this.panel_top.ColumnCount = 4;
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.panel_top.Controls.Add(this.btn_Down, 2, 0);
+            this.panel_top.Controls.Add(this.label3, 1, 0);
+            this.panel_top.Controls.Add(this.btn_hamb, 0, 0);
+            this.panel_top.Controls.Add(this.lbl_usuario, 3, 0);
+            this.panel_top.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_top.ForeColor = System.Drawing.Color.Black;
+            this.panel_top.Location = new System.Drawing.Point(0, 0);
+            this.panel_top.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_top.Name = "panel_top";
+            this.panel_top.RowCount = 1;
+            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_top.Size = new System.Drawing.Size(982, 45);
+            this.panel_top.TabIndex = 15;
             // 
-            // btn_eliminar
+            // btn_Down
             // 
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
+            this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_Down.BorderColor = System.Drawing.Color.Red;
+            this.btn_Down.BorderRadius = 1;
+            this.btn_Down.BorderSize = 0;
+            this.btn_Down.FlatAppearance.BorderSize = 0;
+            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Down.ForeColor = System.Drawing.Color.White;
+            this.btn_Down.Location = new System.Drawing.Point(677, 9);
+            this.btn_Down.Name = "btn_Down";
+            this.btn_Down.Size = new System.Drawing.Size(30, 27);
+            this.btn_Down.TabIndex = 10;
+            this.btn_Down.TextColor = System.Drawing.Color.White;
+            this.btn_Down.UseVisualStyleBackColor = false;
             // 
-            // btn_editar
+            // label3
             // 
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Name = "btn_editar";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Britannic Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(53, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(221, 45);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "POSLyion";
+            // 
+            // btn_hamb
+            // 
+            this.btn_hamb.BackColor = System.Drawing.Color.Transparent;
+            this.btn_hamb.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_hamb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_hamb.BackgroundImage")));
+            this.btn_hamb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_hamb.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_hamb.BorderRadius = 0;
+            this.btn_hamb.BorderSize = 0;
+            this.btn_hamb.FlatAppearance.BorderSize = 0;
+            this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_hamb.ForeColor = System.Drawing.Color.White;
+            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
+            this.btn_hamb.Name = "btn_hamb";
+            this.btn_hamb.Size = new System.Drawing.Size(44, 39);
+            this.btn_hamb.TabIndex = 11;
+            this.btn_hamb.TextColor = System.Drawing.Color.White;
+            this.btn_hamb.UseVisualStyleBackColor = false;
+            // 
+            // lbl_usuario
+            // 
+            this.lbl_usuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_usuario.AutoSize = true;
+            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_usuario.Location = new System.Drawing.Point(720, 8);
+            this.lbl_usuario.Name = "lbl_usuario";
+            this.lbl_usuario.Size = new System.Drawing.Size(165, 29);
+            this.lbl_usuario.TabIndex = 12;
+            this.lbl_usuario.Text = "PERSONAL1";
             // 
             // formCat
             // 
@@ -245,6 +368,10 @@
             this.panel_update.PerformLayout();
             this.panel_footer.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel_top.ResumeLayout(false);
+            this.panel_top.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -266,5 +393,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn num_prods;
         private System.Windows.Forms.DataGridViewButtonColumn btn_eliminar;
         private System.Windows.Forms.DataGridViewButtonColumn btn_editar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel panel_top;
+        private CustomBox.RJControls.RJButton btn_Down;
+        private System.Windows.Forms.Label label3;
+        private RJCodeAdvance.RJControls.RJButton btn_hamb;
+        private System.Windows.Forms.Label lbl_usuario;
     }
 }

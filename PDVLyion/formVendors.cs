@@ -14,6 +14,7 @@ namespace PDCLyion
 {
     public partial class formVendors : Form
     {
+        private static Users oUser = new Users();
         public formVendors()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace PDCLyion
         private void rjButton2_Click(object sender, EventArgs e)
         {
             
-                   abrirHerencia(new formSales());
+                   abrirHerencia(new Start(oUser));
 
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace PDCLyion
 {
     public partial class formStadistic : Form
     {
+        private static Users oUser = new Users();
         public formStadistic()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace PDCLyion
 
         private void rjButton4_Click_1(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
             this.panel_izq.Hide();
         }
     }

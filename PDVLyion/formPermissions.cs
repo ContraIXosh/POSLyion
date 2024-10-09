@@ -16,7 +16,7 @@ namespace PDCLyion
 {
     public partial class formPermissions : Form
     {
-
+        private static Users oUser = new Users();
         private Users Current_user = new Users();
 
         public formPermissions(Users oUser)
@@ -63,7 +63,7 @@ namespace PDCLyion
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
     }
 }

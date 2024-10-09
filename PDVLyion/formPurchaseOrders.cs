@@ -36,5 +36,6 @@ namespace PDCLyion
             cbo_tipo_documento.ValueMember = "Value";
             cbo_tipo_documento.SelectedIndex = 0;
         }
+
     }
 }

@@ -15,27 +15,21 @@ namespace PDCLyion
 {
     public partial class formUsers2 : Form
     {
+        private static Users oUser = new Users();
         public formUsers2()
         {
             InitializeComponent();
         }
 
-        private void abrirHerencia(object formhija)
+        private void abrirHerencia(Form formhija)
         {
-            if (this.panel_main.Controls.Count > 0)
-            {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
+            this.panel_main.Controls.Clear();
+            formhija.TopLevel = false;
+            formhija.FormBorderStyle = FormBorderStyle.None;
+            formhija.Dock = DockStyle.Fill;
 
-            }
+            panel_main.Controls.Add(formhija);
+            formhija.Show();
         }
 
         private void formUsers2_Load(object sender, EventArgs e)
@@ -68,7 +62,7 @@ namespace PDCLyion
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
 
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -135,7 +129,7 @@ namespace PDCLyion
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
 
         private void formUsers2_Resize(object sender, EventArgs e)

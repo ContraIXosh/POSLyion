@@ -71,8 +71,8 @@
             this.lbl_guion = new System.Windows.Forms.Label();
             this.rjTextBox1 = new CustomBox.RJControls.RJTextBox();
             this.lbl_nro_doc = new System.Windows.Forms.Label();
-            this.lbl_proveedor = new System.Windows.Forms.Label();
             this.txt_proveedor = new CustomBox.RJControls.RJTextBox();
+            this.lbl_proveedor = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -761,18 +761,6 @@
             this.lbl_nro_doc.TabIndex = 18;
             this.lbl_nro_doc.Text = "Nro. de documento";
             // 
-            // lbl_proveedor
-            // 
-            this.lbl_proveedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_proveedor.AutoSize = true;
-            this.lbl_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_proveedor.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_proveedor.Location = new System.Drawing.Point(54, 11);
-            this.lbl_proveedor.Name = "lbl_proveedor";
-            this.lbl_proveedor.Size = new System.Drawing.Size(107, 24);
-            this.lbl_proveedor.TabIndex = 16;
-            this.lbl_proveedor.Text = "Proveedor";
-            // 
             // txt_proveedor
             // 
             this.txt_proveedor.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -795,6 +783,18 @@
             this.txt_proveedor.TabIndex = 17;
             this.txt_proveedor.Texts = "";
             this.txt_proveedor.UnderlinedStyle = false;
+            // 
+            // lbl_proveedor
+            // 
+            this.lbl_proveedor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_proveedor.AutoSize = true;
+            this.lbl_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_proveedor.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_proveedor.Location = new System.Drawing.Point(54, 11);
+            this.lbl_proveedor.Name = "lbl_proveedor";
+            this.lbl_proveedor.Size = new System.Drawing.Size(107, 24);
+            this.lbl_proveedor.TabIndex = 16;
+            this.lbl_proveedor.Text = "Proveedor";
             // 
             // formPurchaseOrders
             // 

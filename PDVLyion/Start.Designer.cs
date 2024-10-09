@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,11 +46,8 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_top = new System.Windows.Forms.Panel();
             this.btn_Down = new CustomBox.RJControls.RJButton();
-            this.lbl_usuario = new System.Windows.Forms.Label();
             this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_POS = new System.Windows.Forms.Label();
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel_busqueda = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -90,9 +89,11 @@
             this.dgv_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_buscarproductos = new System.Windows.Forms.TextBox();
+            this.panel_top = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_usuario = new System.Windows.Forms.Label();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
-            this.panel_top.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.panel_busqueda.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -110,6 +111,7 @@
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).BeginInit();
+            this.panel_top.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu_sesion
@@ -228,51 +230,26 @@
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
-            // panel_top
-            // 
-            this.panel_top.BackColor = System.Drawing.Color.Gold;
-            this.panel_top.Controls.Add(this.btn_Down);
-            this.panel_top.Controls.Add(this.lbl_usuario);
-            this.panel_top.Controls.Add(this.btn_hamb);
-            this.panel_top.Controls.Add(this.lbl_POS);
-            this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_top.Location = new System.Drawing.Point(0, 0);
-            this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(982, 61);
-            this.panel_top.TabIndex = 2;
-            // 
             // btn_Down
             // 
-            this.btn_Down.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_Down.BackColor = System.Drawing.Color.Transparent;
             this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
             this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
             this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_Down.BorderColor = System.Drawing.Color.Red;
-            this.btn_Down.BorderRadius = 10;
+            this.btn_Down.BorderRadius = 1;
             this.btn_Down.BorderSize = 0;
             this.btn_Down.FlatAppearance.BorderSize = 0;
             this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Down.ForeColor = System.Drawing.Color.White;
-            this.btn_Down.Location = new System.Drawing.Point(739, 20);
+            this.btn_Down.Location = new System.Drawing.Point(677, 12);
             this.btn_Down.Name = "btn_Down";
             this.btn_Down.Size = new System.Drawing.Size(30, 27);
             this.btn_Down.TabIndex = 10;
             this.btn_Down.TextColor = System.Drawing.Color.White;
             this.btn_Down.UseVisualStyleBackColor = false;
             this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
-            // 
-            // lbl_usuario
-            // 
-            this.lbl_usuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_usuario.AutoEllipsis = true;
-            this.lbl_usuario.AutoSize = true;
-            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_usuario.Location = new System.Drawing.Point(761, 16);
-            this.lbl_usuario.Name = "lbl_usuario";
-            this.lbl_usuario.Size = new System.Drawing.Size(141, 28);
-            this.lbl_usuario.TabIndex = 9;
-            this.lbl_usuario.Text = "PERSONAL1";
             // 
             // btn_hamb
             // 
@@ -286,49 +263,40 @@
             this.btn_hamb.FlatAppearance.BorderSize = 0;
             this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_hamb.ForeColor = System.Drawing.Color.White;
-            this.btn_hamb.Location = new System.Drawing.Point(9, 12);
+            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
             this.btn_hamb.Name = "btn_hamb";
-            this.btn_hamb.Size = new System.Drawing.Size(39, 38);
+            this.btn_hamb.Size = new System.Drawing.Size(44, 45);
             this.btn_hamb.TabIndex = 11;
             this.btn_hamb.TextColor = System.Drawing.Color.White;
             this.btn_hamb.UseVisualStyleBackColor = false;
             this.btn_hamb.Click += new System.EventHandler(this.btn_hamb_Click_1);
-            // 
-            // lbl_POS
-            // 
-            this.lbl_POS.AutoSize = true;
-            this.lbl_POS.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_POS.Location = new System.Drawing.Point(75, 2);
-            this.lbl_POS.Name = "lbl_POS";
-            this.lbl_POS.Size = new System.Drawing.Size(248, 55);
-            this.lbl_POS.TabIndex = 8;
-            this.lbl_POS.Text = "POSLyion";
             // 
             // panel_main
             // 
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.Controls.Add(this.panel_busqueda);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_main.Location = new System.Drawing.Point(0, 61);
+            this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(982, 550);
+            this.panel_main.Size = new System.Drawing.Size(982, 611);
             this.panel_main.TabIndex = 3;
             // 
             // panel_busqueda
             // 
             this.panel_busqueda.ColumnCount = 1;
-            this.panel_busqueda.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.74949F));
-            this.panel_busqueda.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.25051F));
-            this.panel_busqueda.Controls.Add(this.tableLayoutPanel6, 0, 1);
-            this.panel_busqueda.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.panel_busqueda.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_busqueda.Controls.Add(this.tableLayoutPanel6, 0, 2);
+            this.panel_busqueda.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.panel_busqueda.Controls.Add(this.panel_top, 0, 0);
             this.panel_busqueda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_busqueda.Location = new System.Drawing.Point(0, 0);
             this.panel_busqueda.Margin = new System.Windows.Forms.Padding(0);
             this.panel_busqueda.Name = "panel_busqueda";
-            this.panel_busqueda.RowCount = 2;
-            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82F));
-            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18F));
-            this.panel_busqueda.Size = new System.Drawing.Size(982, 550);
+            this.panel_busqueda.RowCount = 3;
+            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.panel_busqueda.Size = new System.Drawing.Size(982, 611);
             this.panel_busqueda.TabIndex = 12;
             // 
             // tableLayoutPanel6
@@ -338,8 +306,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.panel_updates, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 451);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 510);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
@@ -353,7 +320,6 @@
             this.panel_updates.BackColor = System.Drawing.Color.Khaki;
             this.panel_updates.Controls.Add(this.lbl_updatetime);
             this.panel_updates.Controls.Add(this.lbl_updateversion);
-            this.panel_updates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_updates.Location = new System.Drawing.Point(0, 79);
             this.panel_updates.Margin = new System.Windows.Forms.Padding(0);
             this.panel_updates.Name = "panel_updates";
@@ -649,12 +615,12 @@
             this.tableLayoutPanel3.Controls.Add(this.panel_right, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 51);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(982, 451);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(982, 459);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
             // panel_right
@@ -670,7 +636,7 @@
             this.panel_right.RowCount = 2;
             this.panel_right.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.panel_right.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.panel_right.Size = new System.Drawing.Size(300, 451);
+            this.panel_right.Size = new System.Drawing.Size(300, 459);
             this.panel_right.TabIndex = 17;
             // 
             // tableLayoutPanel10
@@ -687,7 +653,7 @@
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(300, 90);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(300, 91);
             this.tableLayoutPanel10.TabIndex = 15;
             // 
             // panel_factura
@@ -697,7 +663,7 @@
             this.panel_factura.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_factura.Location = new System.Drawing.Point(3, 30);
             this.panel_factura.Name = "panel_factura";
-            this.panel_factura.Size = new System.Drawing.Size(294, 57);
+            this.panel_factura.Size = new System.Drawing.Size(294, 58);
             this.panel_factura.TabIndex = 0;
             // 
             // lbl_titulo
@@ -705,7 +671,7 @@
             this.lbl_titulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_titulo.AutoSize = true;
             this.lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_titulo.Location = new System.Drawing.Point(34, 16);
+            this.lbl_titulo.Location = new System.Drawing.Point(34, 17);
             this.lbl_titulo.Name = "lbl_titulo";
             this.lbl_titulo.Size = new System.Drawing.Size(224, 31);
             this.lbl_titulo.TabIndex = 0;
@@ -773,7 +739,7 @@
             this.tableLayoutPanel8.Controls.Add(this.panel_container, 1, 2);
             this.tableLayoutPanel8.Controls.Add(this.btn_cerrarventa, 1, 4);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 90);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 91);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 5;
@@ -782,7 +748,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(300, 361);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(300, 368);
             this.tableLayoutPanel8.TabIndex = 16;
             // 
             // tableLayoutPanel9
@@ -830,7 +796,7 @@
             this.panel_container.RowCount = 2;
             this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.Size = new System.Drawing.Size(280, 273);
+            this.panel_container.Size = new System.Drawing.Size(280, 280);
             this.panel_container.TabIndex = 12;
             // 
             // btn_cerrarventa
@@ -845,7 +811,7 @@
             this.btn_cerrarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrarventa.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cerrarventa.ForeColor = System.Drawing.Color.Lime;
-            this.btn_cerrarventa.Location = new System.Drawing.Point(10, 321);
+            this.btn_cerrarventa.Location = new System.Drawing.Point(10, 328);
             this.btn_cerrarventa.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_cerrarventa.Name = "btn_cerrarventa";
             this.btn_cerrarventa.Size = new System.Drawing.Size(280, 37);
@@ -866,24 +832,52 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(676, 445);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(676, 453);
             this.tableLayoutPanel1.TabIndex = 18;
             // 
             // dgv_productos
             // 
             this.dgv_productos.AllowUserToAddRows = false;
             this.dgv_productos.AllowUserToDeleteRows = false;
-            this.dgv_productos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_productos.AllowUserToResizeColumns = false;
+            this.dgv_productos.AllowUserToResizeRows = false;
+            this.dgv_productos.BackgroundColor = System.Drawing.Color.Black;
+            this.dgv_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_productos.ColumnHeadersHeight = 35;
             this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_id,
             this.dgv_desc,
             this.dgv_precio,
             this.dgv_stock});
             this.dgv_productos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_productos.EnableHeadersVisualStyles = false;
+            this.dgv_productos.GridColor = System.Drawing.Color.Crimson;
             this.dgv_productos.Location = new System.Drawing.Point(3, 43);
+            this.dgv_productos.MultiSelect = false;
             this.dgv_productos.Name = "dgv_productos";
             this.dgv_productos.ReadOnly = true;
-            this.dgv_productos.Size = new System.Drawing.Size(670, 399);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_productos.RowHeadersWidth = 25;
+            this.dgv_productos.RowTemplate.Height = 25;
+            this.dgv_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_productos.Size = new System.Drawing.Size(670, 407);
             this.dgv_productos.TabIndex = 10;
             // 
             // dgv_id
@@ -925,6 +919,50 @@
             this.txt_buscarproductos.Name = "txt_buscarproductos";
             this.txt_buscarproductos.Size = new System.Drawing.Size(670, 26);
             this.txt_buscarproductos.TabIndex = 9;
+            this.txt_buscarproductos.TextChanged += new System.EventHandler(this.txt_buscarproductos_TextChanged);
+            // 
+            // panel_top
+            // 
+            this.panel_top.BackColor = System.Drawing.Color.Gold;
+            this.panel_top.ColumnCount = 4;
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.panel_top.Controls.Add(this.btn_Down, 2, 0);
+            this.panel_top.Controls.Add(this.label1, 1, 0);
+            this.panel_top.Controls.Add(this.btn_hamb, 0, 0);
+            this.panel_top.Controls.Add(this.lbl_usuario, 3, 0);
+            this.panel_top.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_top.ForeColor = System.Drawing.Color.Black;
+            this.panel_top.Location = new System.Drawing.Point(0, 0);
+            this.panel_top.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_top.Name = "panel_top";
+            this.panel_top.RowCount = 1;
+            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_top.Size = new System.Drawing.Size(982, 51);
+            this.panel_top.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Britannic Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(53, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(221, 51);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "POSLyion";
+            // 
+            // lbl_usuario
+            // 
+            this.lbl_usuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_usuario.AutoSize = true;
+            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_usuario.Location = new System.Drawing.Point(720, 11);
+            this.lbl_usuario.Name = "lbl_usuario";
+            this.lbl_usuario.Size = new System.Drawing.Size(165, 29);
+            this.lbl_usuario.TabIndex = 12;
+            this.lbl_usuario.Text = "PERSONAL1";
             // 
             // Start
             // 
@@ -932,7 +970,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 611);
             this.Controls.Add(this.panel_main);
-            this.Controls.Add(this.panel_top);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 650);
             this.Name = "Start";
@@ -943,8 +980,6 @@
             this.Resize += new System.EventHandler(this.Start_Resize);
             this.menu_sesion.ResumeLayout(false);
             this.menu_Main.ResumeLayout(false);
-            this.panel_top.ResumeLayout(false);
-            this.panel_top.PerformLayout();
             this.panel_main.ResumeLayout(false);
             this.panel_busqueda.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -969,6 +1004,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).EndInit();
+            this.panel_top.ResumeLayout(false);
+            this.panel_top.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -987,12 +1024,9 @@
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
-        private System.Windows.Forms.Panel panel_top;
         private System.Windows.Forms.Panel panel_main;
         private RJCodeAdvance.RJControls.RJButton btn_hamb;
         private CustomBox.RJControls.RJButton btn_Down;
-        private System.Windows.Forms.Label lbl_POS;
-        private System.Windows.Forms.Label lbl_usuario;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel panel_busqueda;
         private System.Windows.Forms.Panel panel_updates;
@@ -1028,12 +1062,15 @@
         private System.Windows.Forms.Button btn_compra;
         private System.Windows.Forms.Button btn_factura;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txt_buscarproductos;
         private System.Windows.Forms.DataGridView dgv_productos;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_desc;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_stock;
+        private System.Windows.Forms.TextBox txt_buscarproductos;
+        private System.Windows.Forms.TableLayoutPanel panel_top;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_usuario;
     }
 }
 

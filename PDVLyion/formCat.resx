@@ -197,4 +197,19 @@
         3MgHr6sO4xRtqKt6BoqlUewEaALN4Cwe0T5q91a6cvIJ6Q/Y00NyuLtlOAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btn_Down.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAIRJREFUSEvt
+        k8sNgCAQBSnFUizNTizFUixF993M8sD9kHiQSeYGS5ysZfIvdvEaJGZVnCI7HBGzKhZx1COrSNlEdsEj
+        ZnTJfAVNo8mkwl0TkVSvaTSHyAYxcdaNNZWpewtLquZKWuk9Qv/YCCxVKo0GGfQD6TSaZyr3SlpBltBK
+        Tr6ilBtLQ6iacVeZnwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btn_hamb.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAADVJREFUSEvt
+        0LEJADAAAkH3XzpZQBAx6f7gSxsFfHHGIjdqws792hS5URN27temyI2agKekC16WX6Hq9Gh8AAAAAElF
+        TkSuQmCC
+</value>
+  </data>
 </root>

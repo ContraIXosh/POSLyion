@@ -46,22 +46,21 @@ namespace PDCLyion
         {
             dgv_productos.DataSource = productos;
         }
-        private void abrirHerencia(object formhija)
+        private void abrirHerencia(Form formhija)
         {
-           if(this.panel_main.Controls.Count > 0)
+            if (formhija.Controls.Contains(this.panel_top))
             {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form; 
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-                
+                formhija.Controls.Remove(this.panel_top);
             }
+
+            this.panel_main.Controls.Clear();
+            formhija.TopLevel = false;
+            formhija.FormBorderStyle = FormBorderStyle.None;
+            formhija.Dock = DockStyle.Fill;
+
+            panel_main.Controls.Add(formhija);
+            formhija.Show();
+
         }
 
 
@@ -140,7 +139,7 @@ namespace PDCLyion
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -294,5 +293,6 @@ namespace PDCLyion
                 }
             }
         }
+
     }
 }
