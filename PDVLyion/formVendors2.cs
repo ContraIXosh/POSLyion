@@ -11,26 +11,29 @@ using EntityLayer;
 using BusinessLayer;
 using PDCLyion.Resources;
 using static System.Windows.Forms.AxHost;
+using System.Web.UI;
 
 namespace PDCLyion
 {
 
     public partial class formVendors2 : Form
     {
-
+        private static Users oUser = new Users();
         private Vendors Vendor;
         private Vendors Old_vendor;
 
-        public formVendors2()
+        public formVendors2(Users user)
         {
             InitializeComponent();
             Vendor = new Vendors();
+            oUser = user;
         }
 
-        public formVendors2(Vendors vendor)
+        public formVendors2(Vendors vendor, Users user)
         {
             InitializeComponent();
             Vendor = vendor;
+            oUser = user;
         }
 
         private void abrirHerencia(object formhija)
@@ -57,12 +60,12 @@ namespace PDCLyion
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
 
         private void rjButton5_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formVendors());
+            abrirHerencia(new formVendors(oUser));
         }
 
         private void panel1_Resize(object sender, EventArgs e)
@@ -90,7 +93,7 @@ namespace PDCLyion
 
         private void btn_viewvendedor_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formVendors());
+            abrirHerencia(new formVendors(oUser));
         }
 
         private void formVendors2_Load(object sender, EventArgs e)

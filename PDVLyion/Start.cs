@@ -46,22 +46,21 @@ namespace PDCLyion
         {
             dgv_productos.DataSource = productos;
         }
-        private void abrirHerencia(object formhija)
+        private void abrirHerencia(Form formhija)
         {
-           if(this.panel_main.Controls.Count > 0)
+            if (formhija.Controls.Contains(this.panel_top))
             {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form; 
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-                
+                formhija.Controls.Remove(this.panel_top);
             }
+
+            this.panel_main.Controls.Clear();
+            formhija.TopLevel = false;
+            formhija.FormBorderStyle = FormBorderStyle.None;
+            formhija.Dock = DockStyle.Fill;
+
+            panel_main.Controls.Add(formhija);
+            formhija.Show();
+
         }
 
 
@@ -140,7 +139,7 @@ namespace PDCLyion
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,32 +151,37 @@ namespace PDCLyion
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formProducts());
+            abrirHerencia(new formProducts(oUser));
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formUsers2());
+            abrirHerencia(new formUsers2(oUser));
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formCustomers());
+            abrirHerencia(new formCustomers(oUser));
         }
 
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formVendors());
+            abrirHerencia(new formVendors(oUser));
         }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formStadistic());
+            abrirHerencia(new formStadistic(oUser));
         }
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formConfig());
+            abrirHerencia(new formConfig(oUser));
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCat(oUser));
         }
 
         private void Start_Resize(object sender, EventArgs e)
@@ -230,11 +234,6 @@ namespace PDCLyion
             mostrarHistorialSell();
         }
 
-        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCat());
-        }
-
         private void btn_cfinal_Click(object sender, EventArgs e)
         {
             lbl_tipoticket.Text = "CONSUMIDOR FINAL";
@@ -278,29 +277,22 @@ namespace PDCLyion
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
-            //string filtro = txt_buscarproductos.Text.ToLower();
-            //var prodFiltro = productos
-            //.Where(productosToolStripMenuItem => p.Nombre.ToLower().Contains(filtro) || p.Precio.ToString().Contains(filtro)) .ToList();
             dgv_productos.Rows.Clear();
-            dgv_productos.Visible = true;
             if (txt_buscarproductos.Text != "")
             {
-                DataTable dataTable = new BL_Products().Search(txt_buscarproductos.Text);
-                foreach (DataRow row in dataTable.Rows)
+                DataTable products_table = new BL_Products().Search(txt_buscarproductos.Text);
+                foreach (DataRow row in products_table.Rows)
                 {
                     dgv_productos.Rows.Add(new object[]
                     {
-                    row["ID"],
-                    row["Descripcion"],
-                    row["Precio"],
-                    row["Stock actual"]
+                row["ID"],
+                row["Descripcion"],
+                row["Precio"],
+                row["Stock actual"]
                     });
                 }
             }
-            else
-            {
-                dgv_productos.Visible = false;
-            }
         }
+
     }
 }

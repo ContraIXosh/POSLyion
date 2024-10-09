@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,18 @@ namespace PDCLyion
 {
     public partial class formConfig : Form
     {
-        public formConfig()
+
+        private static Users oUser = new Users();
+
+        public formConfig(Users user)
         {
             InitializeComponent();
+            oUser = user;
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

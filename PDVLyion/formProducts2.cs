@@ -18,16 +18,19 @@ namespace PDCLyion
 
         private Products Product;
         private Products Old_product;
+        private static Users oUser = new Users();
 
-        public formProducts2()
+        public formProducts2(Users user)
         {
             Product = new Products();
             InitializeComponent();
+            oUser = user;
         }
 
-        public formProducts2(Products product)
+        public formProducts2(Products product, Users user)
         {
             Product = product;
+            oUser = user;
             InitializeComponent();
         }
 

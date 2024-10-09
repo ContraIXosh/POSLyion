@@ -73,7 +73,9 @@
     <Reference Include="RJCodeAdvance.RJControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\RJCodeAdvance.RJControls.1.0.0\lib\net45\RJCodeAdvance.RJControls.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -175,12 +177,6 @@
     <Compile Include="formPurchaseOrders.Designer.cs">
       <DependentUpon>formPurchaseOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="formSales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formSales.Designer.cs">
-      <DependentUpon>formSales.cs</DependentUpon>
-    </Compile>
     <Compile Include="formStadistic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,9 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formPurchaseOrders.resx">
       <DependentUpon>formPurchaseOrders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formSales.resx">
-      <DependentUpon>formSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formStadistic.resx">
       <DependentUpon>formStadistic.cs</DependentUpon>

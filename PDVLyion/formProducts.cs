@@ -14,39 +14,33 @@ namespace PDCLyion
 {
     public partial class formProducts : Form
     {
-
+        private static Users oUser = new Users();
         private List<Products> Products_list;
 
-        public formProducts()
+        public formProducts(Users user)
         {
             InitializeComponent();
             Products_list = new BL_Products().ListAll();
+            oUser = user;
         }
-        private void abrirHerencia(object formhija)
+        private void abrirHerencia(Form formhija)
         {
-            if (this.panel_main.Controls.Count > 0)
-            {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
+            this.panel_main.Controls.Clear();
+            formhija.TopLevel = false;
+            formhija.FormBorderStyle = FormBorderStyle.None;
+            formhija.Dock = DockStyle.Fill;
 
-            }
+            panel_main.Controls.Add(formhija);
+            formhija.Show();
         }
         private void btn_back_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
 
         private void btn_addprod_Click(object sender, EventArgs e)
         {
-            formProducts2 crearprod = new formProducts2();
+            formProducts2 crearprod = new formProducts2(oUser);
 
             crearprod.Show();
         }
@@ -96,7 +90,7 @@ namespace PDCLyion
                         Sale_price = Convert.ToDecimal(grid_prod.Rows[index].Cells["prod_precio_venta"].Value),
                         State = Convert.ToBoolean(grid_prod.Rows[index].Cells["prod_estado_valor"].Value)
                     };
-                    abrirHerencia(new formProducts2(product));
+                    abrirHerencia(new formProducts2(product, oUser));
                 }
             }
             else if (grid_prod.Columns[e.ColumnIndex].Name == "btn_eliminar")
@@ -118,7 +112,7 @@ namespace PDCLyion
                         else
                         {
                             MessageBox.Show("Producto eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            abrirHerencia(new formProducts());
+                            abrirHerencia(new formProducts(oUser));
                         }
                     }
                 }
@@ -221,6 +215,11 @@ namespace PDCLyion
                     });
                 }
             }
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

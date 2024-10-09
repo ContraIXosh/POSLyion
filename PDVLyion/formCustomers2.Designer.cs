@@ -38,6 +38,12 @@
             this.btn_addvendedor = new RJCodeAdvance.RJControls.RJButton();
             this.btn_back = new RJCodeAdvance.RJControls.RJButton();
             this.panel_addclient = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_state = new System.Windows.Forms.Label();
+            this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
+            this.txt_id = new CustomBox.RJControls.RJTextBox();
             this.btn_borrar = new CustomBox.RJControls.RJButton();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
             this.lbl_email = new System.Windows.Forms.Label();
@@ -49,13 +55,11 @@
             this.txt_correo = new CustomBox.RJControls.RJTextBox();
             this.txt_dni = new CustomBox.RJControls.RJTextBox();
             this.txt_nombre_completo = new CustomBox.RJControls.RJTextBox();
-            this.txt_id = new CustomBox.RJControls.RJTextBox();
-            this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
-            this.lbl_state = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
             this.panel_footer.SuspendLayout();
             this.panel_update.SuspendLayout();
             this.panel_addclient.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -180,6 +184,7 @@
             // panel_addclient
             // 
             this.panel_addclient.BackColor = System.Drawing.Color.Indigo;
+            this.panel_addclient.Controls.Add(this.panel1);
             this.panel_addclient.Controls.Add(this.lbl_state);
             this.panel_addclient.Controls.Add(this.cbo_estado);
             this.panel_addclient.Controls.Add(this.txt_id);
@@ -199,6 +204,88 @@
             this.panel_addclient.Name = "panel_addclient";
             this.panel_addclient.Size = new System.Drawing.Size(982, 537);
             this.panel_addclient.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Khaki;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 519);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(982, 18);
+            this.panel1.TabIndex = 32;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(633, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(199, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(863, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Actualizacion: v1.0.0.5";
+            // 
+            // lbl_state
+            // 
+            this.lbl_state.AutoSize = true;
+            this.lbl_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_state.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_state.Location = new System.Drawing.Point(694, 77);
+            this.lbl_state.Name = "lbl_state";
+            this.lbl_state.Size = new System.Drawing.Size(104, 25);
+            this.lbl_state.TabIndex = 29;
+            this.lbl_state.Text = "ESTADO";
+            // 
+            // cbo_estado
+            // 
+            this.cbo_estado.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbo_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_estado.BorderSize = 1;
+            this.cbo_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbo_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbo_estado.ForeColor = System.Drawing.Color.DimGray;
+            this.cbo_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbo_estado.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbo_estado.Location = new System.Drawing.Point(699, 106);
+            this.cbo_estado.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbo_estado.Name = "cbo_estado";
+            this.cbo_estado.Padding = new System.Windows.Forms.Padding(1);
+            this.cbo_estado.Size = new System.Drawing.Size(200, 30);
+            this.cbo_estado.TabIndex = 28;
+            this.cbo_estado.Texts = "";
+            // 
+            // txt_id
+            // 
+            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_id.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_id.BorderRadius = 0;
+            this.txt_id.BorderSize = 2;
+            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_id.Location = new System.Drawing.Point(38, 24);
+            this.txt_id.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_id.Multiline = false;
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_id.PasswordChar = false;
+            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_id.PlaceholderText = "";
+            this.txt_id.Size = new System.Drawing.Size(45, 31);
+            this.txt_id.TabIndex = 27;
+            this.txt_id.Texts = "";
+            this.txt_id.UnderlinedStyle = false;
+            this.txt_id.Visible = false;
             // 
             // btn_borrar
             // 
@@ -304,7 +391,7 @@
             this.txt_tel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_tel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txt_tel.Location = new System.Drawing.Point(397, 106);
-            this.txt_tel.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_tel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_tel.Multiline = false;
             this.txt_tel.Name = "txt_tel";
             this.txt_tel.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -326,7 +413,7 @@
             this.txt_correo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_correo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txt_correo.Location = new System.Drawing.Point(397, 190);
-            this.txt_correo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_correo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_correo.Multiline = false;
             this.txt_correo.Name = "txt_correo";
             this.txt_correo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -348,7 +435,7 @@
             this.txt_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_dni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txt_dni.Location = new System.Drawing.Point(38, 190);
-            this.txt_dni.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_dni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_dni.Multiline = false;
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -370,7 +457,7 @@
             this.txt_nombre_completo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_nombre_completo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txt_nombre_completo.Location = new System.Drawing.Point(38, 106);
-            this.txt_nombre_completo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_nombre_completo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_nombre_completo.Multiline = false;
             this.txt_nombre_completo.Name = "txt_nombre_completo";
             this.txt_nombre_completo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -381,59 +468,6 @@
             this.txt_nombre_completo.TabIndex = 0;
             this.txt_nombre_completo.Texts = "";
             this.txt_nombre_completo.UnderlinedStyle = false;
-            // 
-            // txt_id
-            // 
-            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_id.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_id.BorderRadius = 0;
-            this.txt_id.BorderSize = 2;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(38, 24);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_id.Multiline = false;
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_id.PasswordChar = false;
-            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_id.PlaceholderText = "";
-            this.txt_id.Size = new System.Drawing.Size(45, 31);
-            this.txt_id.TabIndex = 27;
-            this.txt_id.Texts = "";
-            this.txt_id.UnderlinedStyle = false;
-            this.txt_id.Visible = false;
-            // 
-            // cbo_estado
-            // 
-            this.cbo_estado.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbo_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.BorderSize = 1;
-            this.cbo_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbo_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbo_estado.ForeColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbo_estado.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.Location = new System.Drawing.Point(699, 106);
-            this.cbo_estado.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbo_estado.Name = "cbo_estado";
-            this.cbo_estado.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_estado.Size = new System.Drawing.Size(200, 30);
-            this.cbo_estado.TabIndex = 28;
-            this.cbo_estado.Texts = "";
-            // 
-            // lbl_state
-            // 
-            this.lbl_state.AutoSize = true;
-            this.lbl_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_state.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_state.Location = new System.Drawing.Point(694, 77);
-            this.lbl_state.Name = "lbl_state";
-            this.lbl_state.Size = new System.Drawing.Size(104, 25);
-            this.lbl_state.TabIndex = 29;
-            this.lbl_state.Text = "ESTADO";
             // 
             // formCustomers2
             // 
@@ -450,6 +484,8 @@
             this.panel_update.PerformLayout();
             this.panel_addclient.ResumeLayout(false);
             this.panel_addclient.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -479,5 +515,8 @@
         private CustomBox.RJControls.RJTextBox txt_id;
         private System.Windows.Forms.Label lbl_state;
         private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

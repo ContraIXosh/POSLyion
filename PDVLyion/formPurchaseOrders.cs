@@ -15,7 +15,7 @@ namespace PDCLyion
     public partial class formPurchaseOrders : Form
     {
 
-        private Users oUser;
+        private static Users oUser = new Users();
 
         public formPurchaseOrders(Users user)
         {
@@ -36,5 +36,6 @@ namespace PDCLyion
             cbo_tipo_documento.ValueMember = "Value";
             cbo_tipo_documento.SelectedIndex = 0;
         }
+
     }
 }

@@ -111,7 +111,7 @@ namespace DataLayer
                             dataTable.Rows.Add(reader["product_id"], reader["description"], reader["sale_price"], reader["current_stock"]);
                         }
                     }
-                } 
+                }
                 catch (Exception ex)
                 {
                     dataTable = new DataTable();

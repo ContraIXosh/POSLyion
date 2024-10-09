@@ -14,11 +14,13 @@ namespace PDCLyion
 {
     public partial class formVendors : Form
     {
-        public formVendors()
+        private static Users oUser = new Users();
+
+        public formVendors(Users user)
         {
             InitializeComponent();
+            oUser = user;
         }
-
 
         private void abrirHerencia(object formhija)
         {
@@ -40,7 +42,7 @@ namespace PDCLyion
         private void rjButton2_Click(object sender, EventArgs e)
         {
             
-                   abrirHerencia(new formSales());
+                   abrirHerencia(new Start(oUser));
 
         }
 
@@ -51,7 +53,7 @@ namespace PDCLyion
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formVendors2());
+            abrirHerencia(new formVendors2(oUser));
         }
 
         private void dataGridView1_Resize(object sender, EventArgs e)
@@ -114,7 +116,7 @@ namespace PDCLyion
                         Phone = grid_proveedores.Rows[index].Cells["phone"].Value.ToString(),
                         State = Convert.ToBoolean(grid_proveedores.Rows[index].Cells["state_value"].Value)
                     };
-                    abrirHerencia(new formVendors2(vendor));
+                    abrirHerencia(new formVendors2(vendor, oUser));
                 }
             }
             else if (grid_proveedores.Columns[e.ColumnIndex].Name == "btn_eliminar")
@@ -136,7 +138,7 @@ namespace PDCLyion
                         else
                         {
                             MessageBox.Show("Proveedor eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            abrirHerencia(new formVendors());
+                            abrirHerencia(new formVendors(oUser));
                         }
                     }
                 }
