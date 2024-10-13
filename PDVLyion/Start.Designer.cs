@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +48,6 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_Down = new CustomBox.RJControls.RJButton();
-            this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel_busqueda = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -90,7 +90,9 @@
             this.dgv_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_buscarproductos = new System.Windows.Forms.TextBox();
             this.panel_top = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_Down = new CustomBox.RJControls.RJButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_usuario = new System.Windows.Forms.Label();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
@@ -165,111 +167,70 @@
             this.menu_Main.MenuItemTextColor = System.Drawing.Color.White;
             this.menu_Main.Name = "menu_Main";
             this.menu_Main.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_Main.Size = new System.Drawing.Size(151, 202);
+            this.menu_Main.Size = new System.Drawing.Size(181, 224);
             // 
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.comprasToolStripMenuItem.Text = "Compras";
             this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reportesToolStripMenuItem.Text = "Reportes";
             this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
             // 
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
-            // 
-            // btn_Down
-            // 
-            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
-            this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_Down.BorderColor = System.Drawing.Color.Red;
-            this.btn_Down.BorderRadius = 1;
-            this.btn_Down.BorderSize = 0;
-            this.btn_Down.FlatAppearance.BorderSize = 0;
-            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Down.ForeColor = System.Drawing.Color.White;
-            this.btn_Down.Location = new System.Drawing.Point(677, 12);
-            this.btn_Down.Name = "btn_Down";
-            this.btn_Down.Size = new System.Drawing.Size(30, 27);
-            this.btn_Down.TabIndex = 10;
-            this.btn_Down.TextColor = System.Drawing.Color.White;
-            this.btn_Down.UseVisualStyleBackColor = false;
-            this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
-            // 
-            // btn_hamb
-            // 
-            this.btn_hamb.BackColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_hamb.BackgroundImage")));
-            this.btn_hamb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_hamb.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_hamb.BorderRadius = 0;
-            this.btn_hamb.BorderSize = 0;
-            this.btn_hamb.FlatAppearance.BorderSize = 0;
-            this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hamb.ForeColor = System.Drawing.Color.White;
-            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
-            this.btn_hamb.Name = "btn_hamb";
-            this.btn_hamb.Size = new System.Drawing.Size(44, 45);
-            this.btn_hamb.TabIndex = 11;
-            this.btn_hamb.TextColor = System.Drawing.Color.White;
-            this.btn_hamb.UseVisualStyleBackColor = false;
-            this.btn_hamb.Click += new System.EventHandler(this.btn_hamb_Click_1);
             // 
             // panel_main
             // 
@@ -293,8 +254,8 @@
             this.panel_busqueda.Margin = new System.Windows.Forms.Padding(0);
             this.panel_busqueda.Name = "panel_busqueda";
             this.panel_busqueda.RowCount = 3;
-            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_busqueda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.panel_busqueda.Size = new System.Drawing.Size(982, 611);
             this.panel_busqueda.TabIndex = 12;
@@ -306,13 +267,14 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.panel_updates, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 510);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 511);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(982, 99);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(982, 100);
             this.tableLayoutPanel6.TabIndex = 12;
             // 
             // panel_updates
@@ -320,7 +282,7 @@
             this.panel_updates.BackColor = System.Drawing.Color.Khaki;
             this.panel_updates.Controls.Add(this.lbl_updatetime);
             this.panel_updates.Controls.Add(this.lbl_updateversion);
-            this.panel_updates.Location = new System.Drawing.Point(0, 79);
+            this.panel_updates.Location = new System.Drawing.Point(0, 80);
             this.panel_updates.Margin = new System.Windows.Forms.Padding(0);
             this.panel_updates.Name = "panel_updates";
             this.panel_updates.Size = new System.Drawing.Size(982, 20);
@@ -356,7 +318,7 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(976, 73);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(976, 74);
             this.tableLayoutPanel7.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -374,7 +336,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(292, 73);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(292, 74);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // tableLayoutPanel5
@@ -385,7 +347,7 @@
             this.tableLayoutPanel5.Controls.Add(this.btn_eventual, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btn_cfinal, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 36);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 37);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
@@ -447,7 +409,7 @@
             this.lbl_condicion.AutoSize = true;
             this.lbl_condicion.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_condicion.ForeColor = System.Drawing.Color.FloralWhite;
-            this.lbl_condicion.Location = new System.Drawing.Point(82, 7);
+            this.lbl_condicion.Location = new System.Drawing.Point(82, 8);
             this.lbl_condicion.Name = "lbl_condicion";
             this.lbl_condicion.Size = new System.Drawing.Size(127, 21);
             this.lbl_condicion.TabIndex = 2;
@@ -475,7 +437,7 @@
             this.panel_bottom.RowCount = 2;
             this.panel_bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_bottom.Size = new System.Drawing.Size(684, 73);
+            this.panel_bottom.Size = new System.Drawing.Size(684, 74);
             this.panel_bottom.TabIndex = 9;
             // 
             // btn_tipocobro
@@ -493,7 +455,7 @@
             this.btn_tipocobro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_tipocobro.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_tipocobro.ForeColor = System.Drawing.Color.White;
-            this.btn_tipocobro.Location = new System.Drawing.Point(3, 39);
+            this.btn_tipocobro.Location = new System.Drawing.Point(3, 40);
             this.btn_tipocobro.Name = "btn_tipocobro";
             this.btn_tipocobro.Size = new System.Drawing.Size(165, 31);
             this.btn_tipocobro.TabIndex = 7;
@@ -516,7 +478,7 @@
             this.lbl_cerrarcaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_cerrarcaja.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cerrarcaja.ForeColor = System.Drawing.Color.Black;
-            this.lbl_cerrarcaja.Location = new System.Drawing.Point(516, 39);
+            this.lbl_cerrarcaja.Location = new System.Drawing.Point(516, 40);
             this.lbl_cerrarcaja.Name = "lbl_cerrarcaja";
             this.lbl_cerrarcaja.Size = new System.Drawing.Size(165, 31);
             this.lbl_cerrarcaja.TabIndex = 4;
@@ -551,7 +513,7 @@
             this.btn_desc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_desc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_desc.ForeColor = System.Drawing.Color.White;
-            this.btn_desc.Location = new System.Drawing.Point(345, 39);
+            this.btn_desc.Location = new System.Drawing.Point(345, 40);
             this.btn_desc.Name = "btn_desc";
             this.btn_desc.Size = new System.Drawing.Size(165, 31);
             this.btn_desc.TabIndex = 3;
@@ -586,7 +548,7 @@
             this.btn_cobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cobrar.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cobrar.ForeColor = System.Drawing.Color.White;
-            this.btn_cobrar.Location = new System.Drawing.Point(174, 39);
+            this.btn_cobrar.Location = new System.Drawing.Point(174, 40);
             this.btn_cobrar.Name = "btn_cobrar";
             this.btn_cobrar.Size = new System.Drawing.Size(165, 31);
             this.btn_cobrar.TabIndex = 2;
@@ -620,7 +582,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(982, 459);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(982, 460);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
             // panel_right
@@ -636,7 +598,7 @@
             this.panel_right.RowCount = 2;
             this.panel_right.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.panel_right.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.panel_right.Size = new System.Drawing.Size(300, 459);
+            this.panel_right.Size = new System.Drawing.Size(300, 460);
             this.panel_right.TabIndex = 17;
             // 
             // tableLayoutPanel10
@@ -653,7 +615,7 @@
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(300, 91);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(300, 92);
             this.tableLayoutPanel10.TabIndex = 15;
             // 
             // panel_factura
@@ -663,7 +625,7 @@
             this.panel_factura.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_factura.Location = new System.Drawing.Point(3, 30);
             this.panel_factura.Name = "panel_factura";
-            this.panel_factura.Size = new System.Drawing.Size(294, 58);
+            this.panel_factura.Size = new System.Drawing.Size(294, 59);
             this.panel_factura.TabIndex = 0;
             // 
             // lbl_titulo
@@ -739,7 +701,7 @@
             this.tableLayoutPanel8.Controls.Add(this.panel_container, 1, 2);
             this.tableLayoutPanel8.Controls.Add(this.btn_cerrarventa, 1, 4);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 91);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 92);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 5;
@@ -832,7 +794,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(676, 453);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(676, 454);
             this.tableLayoutPanel1.TabIndex = 18;
             // 
             // dgv_productos
@@ -841,24 +803,38 @@
             this.dgv_productos.AllowUserToDeleteRows = false;
             this.dgv_productos.AllowUserToResizeColumns = false;
             this.dgv_productos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orchid;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_productos.BackgroundColor = System.Drawing.Color.Black;
             this.dgv_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_productos.ColumnHeadersHeight = 35;
             this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_id,
             this.dgv_desc,
             this.dgv_precio,
             this.dgv_stock});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightPink;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_productos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_productos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_productos.EnableHeadersVisualStyles = false;
             this.dgv_productos.GridColor = System.Drawing.Color.Crimson;
@@ -866,18 +842,20 @@
             this.dgv_productos.MultiSelect = false;
             this.dgv_productos.Name = "dgv_productos";
             this.dgv_productos.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_productos.RowHeadersVisible = false;
             this.dgv_productos.RowHeadersWidth = 25;
+            this.dgv_productos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_productos.RowTemplate.Height = 25;
             this.dgv_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_productos.Size = new System.Drawing.Size(670, 407);
+            this.dgv_productos.Size = new System.Drawing.Size(670, 408);
             this.dgv_productos.TabIndex = 10;
             // 
             // dgv_id
@@ -943,6 +921,27 @@
             this.panel_top.Size = new System.Drawing.Size(982, 51);
             this.panel_top.TabIndex = 14;
             // 
+            // btn_Down
+            // 
+            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
+            this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_Down.BorderColor = System.Drawing.Color.Red;
+            this.btn_Down.BorderRadius = 1;
+            this.btn_Down.BorderSize = 0;
+            this.btn_Down.FlatAppearance.BorderSize = 0;
+            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Down.ForeColor = System.Drawing.Color.White;
+            this.btn_Down.Location = new System.Drawing.Point(677, 12);
+            this.btn_Down.Name = "btn_Down";
+            this.btn_Down.Size = new System.Drawing.Size(30, 27);
+            this.btn_Down.TabIndex = 10;
+            this.btn_Down.TextColor = System.Drawing.Color.White;
+            this.btn_Down.UseVisualStyleBackColor = false;
+            this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -952,6 +951,26 @@
             this.label1.Size = new System.Drawing.Size(221, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "POSLyion";
+            // 
+            // btn_hamb
+            // 
+            this.btn_hamb.BackColor = System.Drawing.Color.Transparent;
+            this.btn_hamb.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_hamb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_hamb.BackgroundImage")));
+            this.btn_hamb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_hamb.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_hamb.BorderRadius = 0;
+            this.btn_hamb.BorderSize = 0;
+            this.btn_hamb.FlatAppearance.BorderSize = 0;
+            this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_hamb.ForeColor = System.Drawing.Color.White;
+            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
+            this.btn_hamb.Name = "btn_hamb";
+            this.btn_hamb.Size = new System.Drawing.Size(44, 45);
+            this.btn_hamb.TabIndex = 11;
+            this.btn_hamb.TextColor = System.Drawing.Color.White;
+            this.btn_hamb.UseVisualStyleBackColor = false;
+            this.btn_hamb.Click += new System.EventHandler(this.btn_hamb_Click_1);
             // 
             // lbl_usuario
             // 
@@ -1025,8 +1044,6 @@
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.Panel panel_main;
-        private RJCodeAdvance.RJControls.RJButton btn_hamb;
-        private CustomBox.RJControls.RJButton btn_Down;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel panel_busqueda;
         private System.Windows.Forms.Panel panel_updates;
@@ -1069,7 +1086,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_stock;
         private System.Windows.Forms.TextBox txt_buscarproductos;
         private System.Windows.Forms.TableLayoutPanel panel_top;
+        private CustomBox.RJControls.RJButton btn_Down;
         private System.Windows.Forms.Label label1;
+        private RJCodeAdvance.RJControls.RJButton btn_hamb;
         private System.Windows.Forms.Label lbl_usuario;
     }
 }

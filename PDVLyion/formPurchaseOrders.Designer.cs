@@ -801,8 +801,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 537);
-            this.ControlBox = false;
             this.Controls.Add(this.panel_main);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "formPurchaseOrders";
             this.Text = "formPurchaseOrders";
             this.Load += new System.EventHandler(this.formPurchaseOrders_Load);

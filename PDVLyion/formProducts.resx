@@ -123,10 +123,10 @@
   <metadata name="prod_id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="prod_cod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="prod_desc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="prod_desc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="prod_cod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="prod_id_cat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -156,10 +156,26 @@
   <metadata name="btn_editar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btn_editar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAG5JREFUSEvt
+        kdsJgEAMBFOKpVmKnViapWgWjYQj4CPZH72Bgftx9jjl94zqtB/rQXw9pIwsqg1QRgbVj8xqGjwLoogD
+        GymL223bkTQ+Ho2kiOKw/Fl6/IQaB9Q4oMYBNd65hf8Hb7wk+uiJn0JkA+IDYx/0XYSFAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
   <metadata name="btn_eliminar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btn_eliminar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAIdJREFUSEvl
+        lbENgDAQxDIao7EZozAKfLor7iInFAhhyY2VC3Rpv2Arr+BePmJ0efcs+xmMu2TFiDu84vu4vyJi3JiI
+        cWMixo20pY5xI22pY9xIW+oYN9KWOsaNtKWOcSNtqWPcSFvqGDfSljrGjbSljtHRjJijdBeM7BtMf6Vm
+        PjL9sn2F1m4q/t3j0mMGlgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btn_addprod.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -289,4 +305,25 @@
         pRRifwASzxvTGx4fOQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btn_Down.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAIRJREFUSEvt
+        k8sNgCAQBSnFUizNTizFUixF993M8sD9kHiQSeYGS5ysZfIvdvEaJGZVnCI7HBGzKhZx1COrSNlEdsEj
+        ZnTJfAVNo8mkwl0TkVSvaTSHyAYxcdaNNZWpewtLquZKWuk9Qv/YCCxVKo0GGfQD6TSaZyr3SlpBltBK
+        Tr6ilBtLQ6iacVeZnwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btn_hamb.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAADVJREFUSEvt
+        0LEJADAAAkH3XzpZQBAx6f7gSxsFfHHGIjdqws792hS5URN27temyI2agKekC16WX6Hq9Gh8AAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <metadata name="menu_sesion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>634, 54</value>
+  </metadata>
+  <metadata name="menu_Main.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>757, 54</value>
+  </metadata>
 </root>

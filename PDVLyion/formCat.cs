@@ -53,7 +53,7 @@ namespace PDCLyion
                 if (index >= 0)
                 {
                     int cbo_estado_index = 0;
-                    txt_category.Texts = grid_category.Rows[index].Cells["name_category"].Value.ToString();
+                    txt_categorynew.Texts = grid_category.Rows[index].Cells["name_category"].Value.ToString();
                     txt_id.Texts = grid_category.Rows[index].Cells["id_cat"].Value.ToString();
                 }
             }
@@ -90,7 +90,7 @@ namespace PDCLyion
             if (Convert.ToInt32(txt_id.Texts) == 0)
             {
                 
-                product_categories.Description = txt_category.Texts;
+                product_categories.Description = txt_categorynew.Texts;
                 int created_productcategory_id = new BL_ProductCategories().Create(product_categories, out message);
                 if(created_productcategory_id == 0)
                 {
@@ -105,7 +105,7 @@ namespace PDCLyion
             else
             {
                 product_categories.Product_category_id = Convert.ToInt32(txt_id.Texts);
-                product_categories.Description = txt_category.Texts;
+                product_categories.Description = txt_categorynew.Texts;
                 bool result = false;
                 result = new BL_ProductCategories().Update(product_categories, out message);
                 if (result == false)
@@ -120,9 +120,14 @@ namespace PDCLyion
             }
         }
 
-        private void btn_back_Click(object sender, EventArgs e)
+        private void btn_hamb_Click(object sender, EventArgs e)
         {
+            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        }
 
+        private void panel_top_Paint(object sender, PaintEventArgs e)
+        {
+            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
         }
     }
 }

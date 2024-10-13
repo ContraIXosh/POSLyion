@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Shapes;
 
 namespace PDCLyion
 {
@@ -39,7 +40,7 @@ namespace PDCLyion
 
         private void btn_addprod_Click(object sender, EventArgs e)
         {
-            formProducts2 crearprod = new formProducts2();
+            formProductsAdd crearprod = new formProductsAdd();
 
             crearprod.Show();
         }
@@ -89,7 +90,7 @@ namespace PDCLyion
                         Sale_price = Convert.ToDecimal(grid_prod.Rows[index].Cells["prod_precio_venta"].Value),
                         State = Convert.ToBoolean(grid_prod.Rows[index].Cells["prod_estado_valor"].Value)
                     };
-                    abrirHerencia(new formProducts2(product));
+                    abrirHerencia(new formProductsAdd(product));
                 }
             }
             else if (grid_prod.Columns[e.ColumnIndex].Name == "btn_eliminar")
@@ -216,9 +217,61 @@ namespace PDCLyion
             }
         }
 
-        private void txt_search_TextChanged(object sender, EventArgs e)
+        private void btn_hamb_Click(object sender, EventArgs e)
         {
+            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        }
 
+        private void btn_Down_Click(object sender, EventArgs e)
+        {
+            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new Start(oUser));
+        }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formPurchaseOrders crearfactura = new formPurchaseOrders(oUser);
+
+            crearfactura.Show(); ;
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formProducts());
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers());
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCustomers());
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCat());
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formVendors());
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formStadistic());
+        }
+
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formConfig());
         }
     }
 }

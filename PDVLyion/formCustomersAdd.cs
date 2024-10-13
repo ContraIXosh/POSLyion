@@ -13,18 +13,18 @@ using System.Windows.Forms;
 
 namespace PDCLyion
 {
-    public partial class formCustomers2 : Form
+    public partial class formCustomersAdd : Form
     {
         private static Users oUser = new Users();
         private Customers Customer;
 
-        public formCustomers2()
+        public formCustomersAdd()
         {
             InitializeComponent();
             Customer = new Customers();
         }
 
-        public formCustomers2(Customers customer)
+        public formCustomersAdd(Customers customer)
         {
             InitializeComponent();
             Customer = customer;
@@ -78,16 +78,11 @@ namespace PDCLyion
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Width = 150;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
             else
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
         }
 
@@ -135,6 +130,11 @@ namespace PDCLyion
         private void btn_guardar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_back_Click_2(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

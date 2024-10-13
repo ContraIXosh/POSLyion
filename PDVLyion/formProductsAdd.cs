@@ -13,19 +13,19 @@ using System.Windows.Forms;
 
 namespace PDCLyion
 {
-    public partial class formProducts2 : Form
+    public partial class formProductsAdd : Form
     {
 
         private Products Product;
         private Products Old_product;
 
-        public formProducts2()
+        public formProductsAdd()
         {
             Product = new Products();
             InitializeComponent();
         }
 
-        public formProducts2(Products product)
+        public formProductsAdd(Products product)
         {
             Product = product;
             InitializeComponent();
@@ -103,81 +103,7 @@ namespace PDCLyion
             this.Close();
         }
 
-        private void txt_cod__TextChanged(object sender, EventArgs e)
-        {
-           
-        }
 
-        private void txt_cod_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true; 
-                MessageBox.Show("Ingrese solo numeros");
-            }
-        }
-
-        private void txt_cod2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) { 
-                e.Handled = true;
-                MessageBox.Show("Por favor, solo introduzca números.", "Valor desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
-
-        private void txt_desc__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_cant_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                e.Handled = true;
-                MessageBox.Show("Por favor, solo introduzca números.", "Valor desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txt_costo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                e.Handled = true;
-                MessageBox.Show("Por favor, solo introduzca números.", "Valor desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txt_ganancia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                e.Handled = true;
-                MessageBox.Show("Por favor, solo introduzca números.", "Valor desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txt_precio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                e.Handled = true;
-                MessageBox.Show("Por favor, solo introduzca números.", "Valor desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txt_precio2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                e.Handled = true;
-                MessageBox.Show("Por favor, solo introduzca números.", "Valor desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void txt_descuento_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                e.Handled = true;
-                MessageBox.Show("Por favor, solo introduzca números.", "Valor desconocido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void formProducts2_Load(object sender, EventArgs e)
         {
@@ -238,5 +164,6 @@ namespace PDCLyion
                 cbox_tipo.SelectedIndex = cbox_tipo_index;
             }
         }
+
     }
 }

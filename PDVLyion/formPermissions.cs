@@ -58,7 +58,7 @@ namespace PDCLyion
 
         private void btn_visualizarUser_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formUsers2());
+            abrirHerencia(new formUsers());
         }
 
         private void rjButton2_Click(object sender, EventArgs e)

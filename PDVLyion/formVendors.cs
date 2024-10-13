@@ -20,40 +20,23 @@ namespace PDCLyion
             InitializeComponent();
         }
 
-
-        private void abrirHerencia(object formhija)
+        private void abrirHerencia(Form formhija)
         {
-            if (this.panel_main.Controls.Count > 0)
+            if (formhija.Controls.Contains(this.panel_top))
             {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-
+                formhija.Controls.Remove(this.panel_top);
             }
-        }
-        private void rjButton2_Click(object sender, EventArgs e)
-        {
-            
-                   abrirHerencia(new Start(oUser));
+
+            this.panel_main.Controls.Clear();
+            formhija.TopLevel = false;
+            formhija.FormBorderStyle = FormBorderStyle.None;
+            formhija.Dock = DockStyle.Fill;
+
+            panel_main.Controls.Add(formhija);
+            formhija.Show();
 
         }
 
-        private void rjButton5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors2());
-        }
 
         private void dataGridView1_Resize(object sender, EventArgs e)
         {
@@ -61,18 +44,11 @@ namespace PDCLyion
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_grid.Left = this.ClientSize.Width - panel_grid.Width;
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Width = 150; 
-                btn_back.Left = this.ClientSize.Width - btn_back.Width; 
             }
             else
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_grid.Left = this.ClientSize.Width - panel_grid.Width;
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
         }
 
@@ -115,7 +91,7 @@ namespace PDCLyion
                         Phone = grid_proveedores.Rows[index].Cells["phone"].Value.ToString(),
                         State = Convert.ToBoolean(grid_proveedores.Rows[index].Cells["state_value"].Value)
                     };
-                    abrirHerencia(new formVendors2(vendor));
+                    abrirHerencia(new formVendorsAdd(vendor));
                 }
             }
             else if (grid_proveedores.Columns[e.ColumnIndex].Name == "btn_eliminar")
@@ -142,6 +118,79 @@ namespace PDCLyion
                     }
                 }
             }
+        }
+
+        private void btn_hamb_Click(object sender, EventArgs e)
+        {
+            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        }
+
+        private void btn_Down_Click(object sender, EventArgs e)
+        {
+            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new Start(oUser));
+        }
+
+        private void btn_addvendedor_Click(object sender, EventArgs e)
+        {
+            formVendorsAdd crearvendedor = new formVendorsAdd();
+
+            crearvendedor.Show();
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new Start(oUser));
+        }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formPurchaseOrders crearFactura = new formPurchaseOrders(oUser);
+            crearFactura.Show();
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formProducts());
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers());
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCustomers());
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCat());
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formVendors());
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formStadistic());
+        }
+
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formConfig());
+        }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new Start(oUser));
         }
     }
 }

@@ -15,19 +15,19 @@ using static System.Windows.Forms.AxHost;
 namespace PDCLyion
 {
 
-    public partial class formVendors2 : Form
+    public partial class formVendorsAdd : Form
     {
         private static Users oUser = new Users();
         private Vendors Vendor;
         private Vendors Old_vendor;
 
-        public formVendors2()
+        public formVendorsAdd()
         {
             InitializeComponent();
             Vendor = new Vendors();
         }
 
-        public formVendors2(Vendors vendor)
+        public formVendorsAdd(Vendors vendor)
         {
             InitializeComponent();
             Vendor = vendor;
@@ -171,6 +171,11 @@ namespace PDCLyion
                     MessageBox.Show("Proveedor actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

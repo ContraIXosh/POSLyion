@@ -1,6 +1,6 @@
 ﻿namespace PDCLyion
 {
-    partial class formProducts2
+    partial class formProductsAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -55,6 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel_crimdesc = new System.Windows.Forms.Panel();
             this.panel_desc = new System.Windows.Forms.Panel();
+            this.txt_cant_min = new CustomBox.RJControls.RJTextBox();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.txt_id = new CustomBox.RJControls.RJTextBox();
             this.cbox_estado = new CustomBox.RJControls.RJComboBox();
@@ -68,7 +69,6 @@
             this.lbl_desc = new System.Windows.Forms.Label();
             this.txt_desc = new CustomBox.RJControls.RJTextBox();
             this.lbl_tipoprod = new System.Windows.Forms.Label();
-            this.txt_cant_min = new CustomBox.RJControls.RJTextBox();
             this.panel_main.SuspendLayout();
             this.panel_crimactividad.SuspendLayout();
             this.panel_actividad.SuspendLayout();
@@ -253,7 +253,6 @@
             this.txt_descuento.TabIndex = 17;
             this.txt_descuento.Texts = "";
             this.txt_descuento.UnderlinedStyle = false;
-            this.txt_descuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_descuento_KeyPress);
             // 
             // cbox_iva
             // 
@@ -295,7 +294,6 @@
             this.txt_precio2.TabIndex = 16;
             this.txt_precio2.Texts = "";
             this.txt_precio2.UnderlinedStyle = false;
-            this.txt_precio2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precio2_KeyPress);
             // 
             // txt_precio
             // 
@@ -318,7 +316,6 @@
             this.txt_precio.TabIndex = 15;
             this.txt_precio.Texts = "";
             this.txt_precio.UnderlinedStyle = false;
-            this.txt_precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precio_KeyPress);
             // 
             // txt_ganancia
             // 
@@ -341,7 +338,6 @@
             this.txt_ganancia.TabIndex = 14;
             this.txt_ganancia.Texts = "";
             this.txt_ganancia.UnderlinedStyle = false;
-            this.txt_ganancia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_ganancia_KeyPress);
             // 
             // txt_costo
             // 
@@ -364,7 +360,6 @@
             this.txt_costo.TabIndex = 13;
             this.txt_costo.Texts = "";
             this.txt_costo.UnderlinedStyle = false;
-            this.txt_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_costo_KeyPress);
             // 
             // label10
             // 
@@ -484,6 +479,28 @@
             this.panel_desc.Name = "panel_desc";
             this.panel_desc.Size = new System.Drawing.Size(859, 216);
             this.panel_desc.TabIndex = 0;
+            // 
+            // txt_cant_min
+            // 
+            this.txt_cant_min.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_cant_min.BorderColor = System.Drawing.Color.Crimson;
+            this.txt_cant_min.BorderFocusColor = System.Drawing.Color.Crimson;
+            this.txt_cant_min.BorderRadius = 0;
+            this.txt_cant_min.BorderSize = 2;
+            this.txt_cant_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_cant_min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_cant_min.Location = new System.Drawing.Point(616, 171);
+            this.txt_cant_min.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_cant_min.Multiline = false;
+            this.txt_cant_min.Name = "txt_cant_min";
+            this.txt_cant_min.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_cant_min.PasswordChar = false;
+            this.txt_cant_min.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_cant_min.PlaceholderText = "";
+            this.txt_cant_min.Size = new System.Drawing.Size(213, 31);
+            this.txt_cant_min.TabIndex = 19;
+            this.txt_cant_min.Texts = "";
+            this.txt_cant_min.UnderlinedStyle = false;
             // 
             // lbl_estado
             // 
@@ -610,8 +627,6 @@
             this.txt_cod.TabIndex = 0;
             this.txt_cod.Texts = "";
             this.txt_cod.UnderlinedStyle = false;
-            this.txt_cod._TextChanged += new System.EventHandler(this.txt_cod__TextChanged);
-            this.txt_cod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cod_KeyPress);
             // 
             // txt_cant
             // 
@@ -634,7 +649,6 @@
             this.txt_cant.TabIndex = 8;
             this.txt_cant.Texts = "";
             this.txt_cant.UnderlinedStyle = false;
-            this.txt_cant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cant_KeyPress);
             // 
             // lbl_cod
             // 
@@ -679,7 +693,6 @@
             this.txt_desc.TabIndex = 6;
             this.txt_desc.Texts = "";
             this.txt_desc.UnderlinedStyle = false;
-            this.txt_desc._TextChanged += new System.EventHandler(this.txt_desc__TextChanged);
             // 
             // lbl_tipoprod
             // 
@@ -692,35 +705,14 @@
             this.lbl_tipoprod.TabIndex = 5;
             this.lbl_tipoprod.Text = "TIPO DE PRODUCTO";
             // 
-            // txt_cant_min
-            // 
-            this.txt_cant_min.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_cant_min.BorderColor = System.Drawing.Color.Crimson;
-            this.txt_cant_min.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.txt_cant_min.BorderRadius = 0;
-            this.txt_cant_min.BorderSize = 2;
-            this.txt_cant_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_cant_min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_cant_min.Location = new System.Drawing.Point(616, 171);
-            this.txt_cant_min.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_cant_min.Multiline = false;
-            this.txt_cant_min.Name = "txt_cant_min";
-            this.txt_cant_min.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_cant_min.PasswordChar = false;
-            this.txt_cant_min.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_cant_min.PlaceholderText = "";
-            this.txt_cant_min.Size = new System.Drawing.Size(213, 31);
-            this.txt_cant_min.TabIndex = 19;
-            this.txt_cant_min.Texts = "";
-            this.txt_cant_min.UnderlinedStyle = false;
-            // 
             // formProducts2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 647);
-            this.ControlBox = false;
             this.Controls.Add(this.panel_main);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "formProducts2";
             this.Text = "Crear Producto";
             this.Load += new System.EventHandler(this.formProducts2_Load);
