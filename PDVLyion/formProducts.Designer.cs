@@ -53,7 +53,6 @@
             this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_back = new RJCodeAdvance.RJControls.RJButton();
             this.btn_addprod = new RJCodeAdvance.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
@@ -104,11 +103,11 @@
             this.panel_mid.Controls.Add(this.grid_prod, 1, 0);
             this.panel_mid.Controls.Add(this.panel_midizq, 0, 0);
             this.panel_mid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_mid.Location = new System.Drawing.Point(3, 56);
+            this.panel_mid.Location = new System.Drawing.Point(3, 3);
             this.panel_mid.Name = "panel_mid";
             this.panel_mid.RowCount = 1;
             this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_mid.Size = new System.Drawing.Size(1080, 458);
+            this.panel_mid.Size = new System.Drawing.Size(1080, 511);
             this.panel_mid.TabIndex = 1;
             // 
             // grid_prod
@@ -182,7 +181,7 @@
             this.grid_prod.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.grid_prod.RowTemplate.Height = 25;
             this.grid_prod.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_prod.Size = new System.Drawing.Size(823, 458);
+            this.grid_prod.Size = new System.Drawing.Size(823, 511);
             this.grid_prod.TabIndex = 13;
             // 
             // btn_seleccionar
@@ -309,46 +308,24 @@
             this.panel_midizq.RowCount = 2;
             this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_midizq.Size = new System.Drawing.Size(257, 458);
+            this.panel_midizq.Size = new System.Drawing.Size(257, 511);
             this.panel_midizq.TabIndex = 14;
             // 
             // panel_btns
             // 
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_back, 0, 2);
             this.panel_btns.Controls.Add(this.btn_addprod, 0, 0);
             this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_btns.Location = new System.Drawing.Point(3, 323);
+            this.panel_btns.Location = new System.Drawing.Point(3, 360);
             this.panel_btns.Name = "panel_btns";
             this.panel_btns.RowCount = 3;
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.Size = new System.Drawing.Size(251, 132);
+            this.panel_btns.Size = new System.Drawing.Size(251, 148);
             this.panel_btns.TabIndex = 16;
-            // 
-            // btn_back
-            // 
-            this.btn_back.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_back.BackColor = System.Drawing.Color.Transparent;
-            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_back.BorderColor = System.Drawing.Color.Red;
-            this.btn_back.BorderRadius = 7;
-            this.btn_back.BorderSize = 2;
-            this.btn_back.FlatAppearance.BorderSize = 0;
-            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.ForeColor = System.Drawing.Color.Red;
-            this.btn_back.Location = new System.Drawing.Point(13, 90);
-            this.btn_back.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(225, 40);
-            this.btn_back.TabIndex = 16;
-            this.btn_back.Text = "Regresar";
-            this.btn_back.TextColor = System.Drawing.Color.Red;
-            this.btn_back.UseVisualStyleBackColor = false;
             // 
             // btn_addprod
             // 
@@ -364,7 +341,7 @@
             this.btn_addprod.ForeColor = System.Drawing.Color.Chartreuse;
             this.btn_addprod.Image = ((System.Drawing.Image)(resources.GetObject("btn_addprod.Image")));
             this.btn_addprod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_addprod.Location = new System.Drawing.Point(13, 2);
+            this.btn_addprod.Location = new System.Drawing.Point(13, 4);
             this.btn_addprod.Margin = new System.Windows.Forms.Padding(0);
             this.btn_addprod.Name = "btn_addprod";
             this.btn_addprod.Size = new System.Drawing.Size(225, 40);
@@ -373,6 +350,7 @@
             this.btn_addprod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_addprod.TextColor = System.Drawing.Color.Chartreuse;
             this.btn_addprod.UseVisualStyleBackColor = false;
+            this.btn_addprod.Click += new System.EventHandler(this.btn_addprod_Click_1);
             // 
             // btn_actualizar
             // 
@@ -388,7 +366,7 @@
             this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
             this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(13, 47);
+            this.btn_actualizar.Location = new System.Drawing.Point(13, 54);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
@@ -422,7 +400,7 @@
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
-            this.panel_filter.Size = new System.Drawing.Size(257, 320);
+            this.panel_filter.Size = new System.Drawing.Size(257, 357);
             this.panel_filter.TabIndex = 17;
             // 
             // label3
@@ -431,7 +409,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(67, 95);
+            this.label3.Location = new System.Drawing.Point(67, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 25);
             this.label3.TabIndex = 16;
@@ -443,7 +421,7 @@
             this.lbl_search.AutoSize = true;
             this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_search.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_search.Location = new System.Drawing.Point(60, 15);
+            this.lbl_search.Location = new System.Drawing.Point(60, 20);
             this.lbl_search.Name = "lbl_search";
             this.lbl_search.Size = new System.Drawing.Size(137, 25);
             this.lbl_search.TabIndex = 13;
@@ -453,7 +431,7 @@
             // 
             this.txt_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_search.Location = new System.Drawing.Point(3, 43);
+            this.txt_search.Location = new System.Drawing.Point(3, 48);
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(251, 29);
             this.txt_search.TabIndex = 11;
@@ -470,7 +448,7 @@
             this.cbox_empresa.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbox_empresa.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_empresa.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_empresa.Location = new System.Drawing.Point(3, 123);
+            this.cbox_empresa.Location = new System.Drawing.Point(3, 138);
             this.cbox_empresa.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_empresa.Name = "cbox_empresa";
             this.cbox_empresa.Padding = new System.Windows.Forms.Padding(1);
@@ -484,7 +462,7 @@
             this.lbl_cat.AutoSize = true;
             this.lbl_cat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cat.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cat.Location = new System.Drawing.Point(57, 175);
+            this.lbl_cat.Location = new System.Drawing.Point(57, 200);
             this.lbl_cat.Name = "lbl_cat";
             this.lbl_cat.Size = new System.Drawing.Size(143, 25);
             this.lbl_cat.TabIndex = 14;
@@ -502,7 +480,7 @@
             this.cbox_cat.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbox_cat.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_cat.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_cat.Location = new System.Drawing.Point(3, 203);
+            this.cbox_cat.Location = new System.Drawing.Point(3, 228);
             this.cbox_cat.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_cat.Name = "cbox_cat";
             this.cbox_cat.Padding = new System.Windows.Forms.Padding(1);
@@ -516,7 +494,7 @@
             this.cb_inactive.AutoSize = true;
             this.cb_inactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_inactive.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactive.Location = new System.Drawing.Point(46, 288);
+            this.cb_inactive.Location = new System.Drawing.Point(46, 324);
             this.cb_inactive.Name = "cb_inactive";
             this.cb_inactive.Size = new System.Drawing.Size(164, 24);
             this.cb_inactive.TabIndex = 18;
@@ -529,7 +507,7 @@
             this.cb_stock.AutoSize = true;
             this.cb_stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_stock.ForeColor = System.Drawing.Color.Gold;
-            this.cb_stock.Location = new System.Drawing.Point(24, 248);
+            this.cb_stock.Location = new System.Drawing.Point(24, 280);
             this.cb_stock.Name = "cb_stock";
             this.cb_stock.Size = new System.Drawing.Size(209, 24);
             this.cb_stock.TabIndex = 17;
@@ -587,15 +565,15 @@
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_main.Controls.Add(this.panel_bottom, 0, 2);
-            this.panel_main.Controls.Add(this.panel_mid, 0, 1);
+            this.panel_main.Controls.Add(this.panel_bottom, 0, 1);
+            this.panel_main.Controls.Add(this.panel_mid, 0, 0);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Margin = new System.Windows.Forms.Padding(0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.RowCount = 3;
-            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.panel_main.RowCount = 2;
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.Size = new System.Drawing.Size(1086, 537);
             this.panel_main.TabIndex = 0;
@@ -658,63 +636,54 @@
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.ventasToolStripMenuItem.Text = "Ventas";
-            this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
             this.comprasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.comprasToolStripMenuItem.Text = "Compras";
-            this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.productosToolStripMenuItem.Text = "Productos";
-            this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
             this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
-            this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
             this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
-            this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.reportesToolStripMenuItem.Text = "Reportes";
-            this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
             // 
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
             // formProducts
             // 
@@ -746,7 +715,6 @@
         private System.Windows.Forms.TableLayoutPanel panel_mid;
         private System.Windows.Forms.TableLayoutPanel panel_midizq;
         private System.Windows.Forms.TableLayoutPanel panel_btns;
-        private RJCodeAdvance.RJControls.RJButton btn_back;
         private RJCodeAdvance.RJControls.RJButton btn_addprod;
         private CustomBox.RJControls.RJButton btn_actualizar;
         private System.Windows.Forms.TableLayoutPanel panel_filter;

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel_full = new System.Windows.Forms.Panel();
-            this.lbl_logout = new System.Windows.Forms.Label();
-            this.btn_cerrar = new CustomBox.RJControls.RJButton();
-            this.btn_cancelar = new CustomBox.RJControls.RJButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_cancelar = new CustomBox.RJControls.RJButton();
+            this.btn_cerrar = new CustomBox.RJControls.RJButton();
+            this.lbl_logout = new System.Windows.Forms.Label();
             this.panel_full.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,35 +49,16 @@
             this.panel_full.Size = new System.Drawing.Size(460, 170);
             this.panel_full.TabIndex = 0;
             // 
-            // lbl_logout
+            // label1
             // 
-            this.lbl_logout.AutoSize = true;
-            this.lbl_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_logout.ForeColor = System.Drawing.Color.Ivory;
-            this.lbl_logout.Location = new System.Drawing.Point(56, 75);
-            this.lbl_logout.Name = "lbl_logout";
-            this.lbl_logout.Size = new System.Drawing.Size(343, 25);
-            this.lbl_logout.TabIndex = 0;
-            this.lbl_logout.Text = "¿Seguro que desea cerrar sesión?";
-            // 
-            // btn_cerrar
-            // 
-            this.btn_cerrar.BackColor = System.Drawing.Color.Gold;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Black;
-            this.btn_cerrar.BorderRadius = 10;
-            this.btn_cerrar.BorderSize = 0;
-            this.btn_cerrar.FlatAppearance.BorderSize = 0;
-            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Black;
-            this.btn_cerrar.Location = new System.Drawing.Point(61, 119);
-            this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(150, 39);
-            this.btn_cerrar.TabIndex = 1;
-            this.btn_cerrar.Text = "Cerrar sesión";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Black;
-            this.btn_cerrar.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.Location = new System.Drawing.Point(156, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 37);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "POSLyion";
             // 
             // btn_cancelar
             // 
@@ -97,17 +78,38 @@
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.TextColor = System.Drawing.Color.Black;
             this.btn_cancelar.UseVisualStyleBackColor = false;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
-            // label1
+            // btn_cerrar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(156, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 37);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "POSLyion";
+            this.btn_cerrar.BackColor = System.Drawing.Color.Gold;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Black;
+            this.btn_cerrar.BorderRadius = 10;
+            this.btn_cerrar.BorderSize = 0;
+            this.btn_cerrar.FlatAppearance.BorderSize = 0;
+            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Black;
+            this.btn_cerrar.Location = new System.Drawing.Point(61, 119);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(150, 39);
+            this.btn_cerrar.TabIndex = 1;
+            this.btn_cerrar.Text = "Cerrar sesión";
+            this.btn_cerrar.TextColor = System.Drawing.Color.Black;
+            this.btn_cerrar.UseVisualStyleBackColor = false;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
+            // 
+            // lbl_logout
+            // 
+            this.lbl_logout.AutoSize = true;
+            this.lbl_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_logout.ForeColor = System.Drawing.Color.Ivory;
+            this.lbl_logout.Location = new System.Drawing.Point(56, 75);
+            this.lbl_logout.Name = "lbl_logout";
+            this.lbl_logout.Size = new System.Drawing.Size(343, 25);
+            this.lbl_logout.TabIndex = 0;
+            this.lbl_logout.Text = "¿Seguro que desea cerrar sesión?";
             // 
             // formLogOut
             // 
@@ -120,7 +122,7 @@
             this.Name = "formLogOut";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cerrar sesion";
             this.panel_full.ResumeLayout(false);
             this.panel_full.PerformLayout();

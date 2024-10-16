@@ -14,36 +14,12 @@ namespace PDCLyion
 {
     public partial class formVendors : Form
     {
+        private static ToolStripMenuItem activeMenu = null;
+        private static Form activeForm = null;
         private static Users oUser = new Users();
         public formVendors()
         {
             InitializeComponent();
-        }
-
-        //private void abrirHerencia(Form formhija)
-        //{
-        //    if (formhija.Controls.Contains(this.panel_top))
-        //    {
-        //        formhija.Controls.Remove(this.panel_top);
-        //    }
-
-        //    this.panel_main.Controls.Clear();
-        //    formhija.TopLevel = false;
-        //    formhija.FormBorderStyle = FormBorderStyle.None;
-        //    formhija.Dock = DockStyle.Fill;
-
-        //    panel_main.Controls.Add(formhija);
-        //    formhija.Show();
-
-        //}
-        private void abrirHerencia(Form formHijo)
-        {
-            if (this.ActiveMdiChild != null)
-                this.ActiveMdiChild.Close(); // Cierra el formulario hijo actual
-
-            formHijo.MdiParent = this; // Establece el formulario hijo como MDI del formulario principal
-            formHijo.Dock = DockStyle.Fill; // Llena todo el espacio disponible
-            formHijo.Show(); // Muestra el nuevo formulario
         }
 
 
@@ -100,7 +76,7 @@ namespace PDCLyion
                         Phone = grid_proveedores.Rows[index].Cells["phone"].Value.ToString(),
                         State = Convert.ToBoolean(grid_proveedores.Rows[index].Cells["state_value"].Value)
                     };
-                    abrirHerencia(new formVendorsAdd(vendor));
+                 
                 }
             }
             else if (grid_proveedores.Columns[e.ColumnIndex].Name == "btn_eliminar")
@@ -122,84 +98,17 @@ namespace PDCLyion
                         else
                         {
                             MessageBox.Show("Proveedor eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            abrirHerencia(new formVendors());
+                            
                         }
                     }
                 }
             }
         }
 
-        //private void btn_hamb_Click(object sender, EventArgs e)
-        //{
-        //    menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
-        //}
-
-        //private void btn_Down_Click(object sender, EventArgs e)
-        //{
-        //    menu_sesion.Show(btn_Down, btn_Down.Width, 0);
-        //}
-
-        private void btn_back_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-        }
-
         private void btn_addvendedor_Click(object sender, EventArgs e)
         {
-            formVendorsAdd crearvendedor = new formVendorsAdd();
-
-            crearvendedor.Show();
-        }
-
-        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-        }
-
-        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            formPurchaseOrders crearFactura = new formPurchaseOrders(oUser);
-            crearFactura.Show();
-        }
-
-        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formProducts());
-        }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formUsers());
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCustomers());
-        }
-
-        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCat());
-        }
-
-        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors());
-        }
-
-        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formStadistic());
-        }
-
-        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formConfig());
-        }
-
-        private void rjButton1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
+            formVendorsAdd vendoradd = new formVendorsAdd();
+            vendoradd.Show();
         }
     }
 }

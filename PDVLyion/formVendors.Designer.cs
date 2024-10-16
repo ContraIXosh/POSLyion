@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formVendors));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,7 +37,6 @@
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_back = new RJCodeAdvance.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
             this.btn_addvendedor = new RJCodeAdvance.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
@@ -61,21 +59,6 @@
             this.panel_update = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_Main = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_top = new System.Windows.Forms.TableLayoutPanel();
             this.panel_main.SuspendLayout();
             this.panel_mid.SuspendLayout();
             this.panel_midizq.SuspendLayout();
@@ -84,8 +67,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid_proveedores)).BeginInit();
             this.panel_bottom.SuspendLayout();
             this.panel_update.SuspendLayout();
-            this.menu_sesion.SuspendLayout();
-            this.menu_Main.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -93,16 +74,15 @@
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_main.Controls.Add(this.panel_top, 0, 0);
-            this.panel_main.Controls.Add(this.panel_mid, 0, 1);
-            this.panel_main.Controls.Add(this.panel_bottom, 0, 2);
+            this.panel_main.Controls.Add(this.panel_mid, 0, 0);
+            this.panel_main.Controls.Add(this.panel_bottom, 0, 1);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Margin = new System.Windows.Forms.Padding(0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.RowCount = 3;
-            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.panel_main.RowCount = 2;
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.Size = new System.Drawing.Size(1042, 538);
             this.panel_main.TabIndex = 1;
@@ -115,14 +95,14 @@
             this.panel_mid.Controls.Add(this.panel_midizq, 0, 0);
             this.panel_mid.Controls.Add(this.grid_proveedores, 1, 0);
             this.panel_mid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_mid.Location = new System.Drawing.Point(0, 53);
+            this.panel_mid.Location = new System.Drawing.Point(0, 0);
             this.panel_mid.Margin = new System.Windows.Forms.Padding(0);
             this.panel_mid.Name = "panel_mid";
             this.panel_mid.RowCount = 1;
             this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 465F));
-            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 465F));
-            this.panel_mid.Size = new System.Drawing.Size(1042, 465);
+            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 518F));
+            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 518F));
+            this.panel_mid.Size = new System.Drawing.Size(1042, 518);
             this.panel_mid.TabIndex = 0;
             // 
             // panel_midizq
@@ -138,47 +118,24 @@
             this.panel_midizq.RowCount = 2;
             this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_midizq.Size = new System.Drawing.Size(312, 465);
+            this.panel_midizq.Size = new System.Drawing.Size(312, 518);
             this.panel_midizq.TabIndex = 17;
             // 
             // panel_btns
             // 
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_back, 0, 2);
-            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
-            this.panel_btns.Controls.Add(this.btn_addvendedor, 0, 0);
+            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 2);
+            this.panel_btns.Controls.Add(this.btn_addvendedor, 0, 1);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_btns.Location = new System.Drawing.Point(3, 328);
+            this.panel_btns.Location = new System.Drawing.Point(3, 365);
             this.panel_btns.Name = "panel_btns";
             this.panel_btns.RowCount = 3;
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.Size = new System.Drawing.Size(306, 134);
+            this.panel_btns.Size = new System.Drawing.Size(306, 150);
             this.panel_btns.TabIndex = 16;
-            // 
-            // btn_back
-            // 
-            this.btn_back.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_back.BackColor = System.Drawing.Color.Transparent;
-            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_back.BorderColor = System.Drawing.Color.Red;
-            this.btn_back.BorderRadius = 7;
-            this.btn_back.BorderSize = 2;
-            this.btn_back.FlatAppearance.BorderSize = 0;
-            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.ForeColor = System.Drawing.Color.Red;
-            this.btn_back.Location = new System.Drawing.Point(40, 91);
-            this.btn_back.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(225, 40);
-            this.btn_back.TabIndex = 16;
-            this.btn_back.Text = "Regresar";
-            this.btn_back.TextColor = System.Drawing.Color.Red;
-            this.btn_back.UseVisualStyleBackColor = false;
-            this.btn_back.Click += new System.EventHandler(this.rjButton1_Click);
             // 
             // btn_actualizar
             // 
@@ -194,7 +151,7 @@
             this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
             this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(40, 47);
+            this.btn_actualizar.Location = new System.Drawing.Point(40, 105);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
@@ -217,7 +174,7 @@
             this.btn_addvendedor.ForeColor = System.Drawing.Color.Lime;
             this.btn_addvendedor.Image = ((System.Drawing.Image)(resources.GetObject("btn_addvendedor.Image")));
             this.btn_addvendedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_addvendedor.Location = new System.Drawing.Point(39, 3);
+            this.btn_addvendedor.Location = new System.Drawing.Point(39, 52);
             this.btn_addvendedor.Name = "btn_addvendedor";
             this.btn_addvendedor.Size = new System.Drawing.Size(227, 36);
             this.btn_addvendedor.TabIndex = 23;
@@ -247,7 +204,7 @@
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
-            this.panel_filter.Size = new System.Drawing.Size(312, 325);
+            this.panel_filter.Size = new System.Drawing.Size(312, 362);
             this.panel_filter.TabIndex = 17;
             // 
             // lbl_search
@@ -256,7 +213,7 @@
             this.lbl_search.AutoSize = true;
             this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_search.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_search.Location = new System.Drawing.Point(87, 16);
+            this.lbl_search.Location = new System.Drawing.Point(87, 21);
             this.lbl_search.Name = "lbl_search";
             this.lbl_search.Size = new System.Drawing.Size(137, 25);
             this.lbl_search.TabIndex = 13;
@@ -266,7 +223,7 @@
             // 
             this.txt_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_search.Location = new System.Drawing.Point(30, 44);
+            this.txt_search.Location = new System.Drawing.Point(30, 49);
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(251, 29);
             this.txt_search.TabIndex = 11;
@@ -277,7 +234,7 @@
             this.cb_inactive.AutoSize = true;
             this.cb_inactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_inactive.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactive.Location = new System.Drawing.Point(74, 90);
+            this.cb_inactive.Location = new System.Drawing.Point(74, 103);
             this.cb_inactive.Name = "cb_inactive";
             this.cb_inactive.Size = new System.Drawing.Size(164, 24);
             this.cb_inactive.TabIndex = 18;
@@ -341,7 +298,7 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkGreen;
             this.grid_proveedores.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.grid_proveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_proveedores.Size = new System.Drawing.Size(730, 465);
+            this.grid_proveedores.Size = new System.Drawing.Size(730, 518);
             this.grid_proveedores.TabIndex = 16;
             // 
             // vendor_id
@@ -467,7 +424,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(618, 7);
+            this.label2.Location = new System.Drawing.Point(639, 2);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(199, 13);
             this.label2.TabIndex = 1;
@@ -476,145 +433,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(863, 2);
+            this.label1.Location = new System.Drawing.Point(915, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Actualizacion: v1.0.0.5";
-            // 
-            // menu_sesion
-            // 
-            this.menu_sesion.DropShadowEnabled = false;
-            this.menu_sesion.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_sesion.IsMainMenu = false;
-            this.menu_sesion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verPerfilToolStripMenuItem,
-            this.inicioAdministradorToolStripMenuItem,
-            this.cerrarSesionToolStripMenuItem});
-            this.menu_sesion.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
-            this.menu_sesion.MenuItemHeight = 25;
-            this.menu_sesion.MenuItemTextColor = System.Drawing.Color.Black;
-            this.menu_sesion.Name = "menu_sesion";
-            this.menu_sesion.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_sesion.Size = new System.Drawing.Size(203, 70);
-            // 
-            // verPerfilToolStripMenuItem
-            // 
-            this.verPerfilToolStripMenuItem.Name = "verPerfilToolStripMenuItem";
-            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.verPerfilToolStripMenuItem.Text = "Ver perfil";
-            // 
-            // inicioAdministradorToolStripMenuItem
-            // 
-            this.inicioAdministradorToolStripMenuItem.Name = "inicioAdministradorToolStripMenuItem";
-            this.inicioAdministradorToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.inicioAdministradorToolStripMenuItem.Text = "Inicio Administrador";
-            // 
-            // cerrarSesionToolStripMenuItem
-            // 
-            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
-            // 
-            // menu_Main
-            // 
-            this.menu_Main.IsMainMenu = true;
-            this.menu_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ventasToolStripMenuItem,
-            this.comprasToolStripMenuItem,
-            this.productosToolStripMenuItem,
-            this.usuariosToolStripMenuItem,
-            this.clientesToolStripMenuItem,
-            this.categoriasToolStripMenuItem,
-            this.proveedoresToolStripMenuItem,
-            this.reportesToolStripMenuItem,
-            this.configuraciónToolStripMenuItem});
-            this.menu_Main.MenuItemHeight = 25;
-            this.menu_Main.MenuItemTextColor = System.Drawing.Color.White;
-            this.menu_Main.Name = "menu_Main";
-            this.menu_Main.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_Main.Size = new System.Drawing.Size(151, 202);
-            // 
-            // ventasToolStripMenuItem
-            // 
-            this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.ventasToolStripMenuItem.Text = "Ventas";
-            this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
-            // 
-            // comprasToolStripMenuItem
-            // 
-            this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.comprasToolStripMenuItem.Text = "Compras";
-            this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
-            // 
-            // productosToolStripMenuItem
-            // 
-            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.productosToolStripMenuItem.Text = "Productos";
-            this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
-            // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
-            // 
-            // categoriasToolStripMenuItem
-            // 
-            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.categoriasToolStripMenuItem.Text = "Categorias";
-            this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
-            // 
-            // proveedoresToolStripMenuItem
-            // 
-            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.proveedoresToolStripMenuItem.Text = "Proveedores";
-            this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
-            // 
-            // reportesToolStripMenuItem
-            // 
-            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.reportesToolStripMenuItem.Text = "Reportes";
-            this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
-            // 
-            // panel_top
-            // 
-            this.panel_top.BackColor = System.Drawing.Color.Gold;
-            this.panel_top.ColumnCount = 4;
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_top.ForeColor = System.Drawing.Color.Black;
-            this.panel_top.Location = new System.Drawing.Point(0, 0);
-            this.panel_top.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_top.Name = "panel_top";
-            this.panel_top.RowCount = 1;
-            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_top.Size = new System.Drawing.Size(1042, 53);
-            this.panel_top.TabIndex = 20;
             // 
             // formVendors
             // 
@@ -635,8 +458,6 @@
             this.panel_bottom.ResumeLayout(false);
             this.panel_update.ResumeLayout(false);
             this.panel_update.PerformLayout();
-            this.menu_sesion.ResumeLayout(false);
-            this.menu_Main.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -646,23 +467,8 @@
         private System.Windows.Forms.TableLayoutPanel panel_main;
         private System.Windows.Forms.TableLayoutPanel panel_mid;
         private System.Windows.Forms.DataGridView grid_proveedores;
-        private RJCodeAdvance.RJControls.RJDropdownMenu menu_sesion;
-        private System.Windows.Forms.ToolStripMenuItem verPerfilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inicioAdministradorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
-        private RJCodeAdvance.RJControls.RJDropdownMenu menu_Main;
-        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel panel_midizq;
         private System.Windows.Forms.TableLayoutPanel panel_btns;
-        private RJCodeAdvance.RJControls.RJButton btn_back;
         private CustomBox.RJControls.RJButton btn_actualizar;
         private RJCodeAdvance.RJControls.RJButton btn_addvendedor;
         private System.Windows.Forms.TableLayoutPanel panel_filter;
@@ -684,6 +490,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn forma_pago;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewButtonColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.TableLayoutPanel panel_top;
     }
 }

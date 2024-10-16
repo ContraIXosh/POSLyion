@@ -217,61 +217,10 @@ namespace PDCLyion
             }
         }
 
-        //private void btn_hamb_Click(object sender, EventArgs e)
-        //{
-        //    menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
-        //}
-
-        //private void btn_Down_Click(object sender, EventArgs e)
-        //{
-        //    menu_sesion.Show(btn_Down, btn_Down.Width, 0);
-        //}
-
-        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_addprod_Click_1(object sender, EventArgs e)
         {
-            abrirHerencia(new Start(oUser));
-        }
-
-        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            formPurchaseOrders crearfactura = new formPurchaseOrders(oUser);
-
-            crearfactura.Show(); ;
-        }
-
-        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formProducts());
-        }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formUsers());
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCustomers());
-        }
-
-        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCat());
-        }
-
-        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors());
-        }
-
-        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formStadistic());
-        }
-
-        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formConfig());
+            formProductsAdd prodadd = new formProductsAdd();
+            prodadd.Show();
         }
     }
 }

@@ -57,7 +57,6 @@ namespace PDCLyion
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
         }
 

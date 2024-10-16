@@ -41,7 +41,6 @@
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
             this.btn_add = new RJCodeAdvance.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
-            this.btn_back = new RJCodeAdvance.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_search = new System.Windows.Forms.Label();
             this.txt_search = new System.Windows.Forms.TextBox();
@@ -91,15 +90,15 @@
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_main.Controls.Add(this.panel_mid, 0, 1);
-            this.panel_main.Controls.Add(this.panel_bottom, 0, 2);
+            this.panel_main.Controls.Add(this.panel_mid, 0, 0);
+            this.panel_main.Controls.Add(this.panel_bottom, 0, 1);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Margin = new System.Windows.Forms.Padding(0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.RowCount = 3;
-            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.panel_main.RowCount = 2;
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.Size = new System.Drawing.Size(982, 537);
             this.panel_main.TabIndex = 0;
@@ -112,14 +111,14 @@
             this.panel_mid.Controls.Add(this.panel_midizq, 0, 0);
             this.panel_mid.Controls.Add(this.grid_proveedores, 1, 0);
             this.panel_mid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_mid.Location = new System.Drawing.Point(0, 53);
+            this.panel_mid.Location = new System.Drawing.Point(0, 0);
             this.panel_mid.Margin = new System.Windows.Forms.Padding(0);
             this.panel_mid.Name = "panel_mid";
             this.panel_mid.RowCount = 1;
             this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 464F));
-            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 464F));
-            this.panel_mid.Size = new System.Drawing.Size(982, 464);
+            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 517F));
+            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 517F));
+            this.panel_mid.Size = new System.Drawing.Size(982, 517);
             this.panel_mid.TabIndex = 0;
             // 
             // panel_midizq
@@ -135,7 +134,7 @@
             this.panel_midizq.RowCount = 2;
             this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_midizq.Size = new System.Drawing.Size(294, 464);
+            this.panel_midizq.Size = new System.Drawing.Size(294, 517);
             this.panel_midizq.TabIndex = 28;
             // 
             // panel_btns
@@ -144,15 +143,14 @@
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_btns.Controls.Add(this.btn_add, 0, 0);
             this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
-            this.panel_btns.Controls.Add(this.btn_back, 0, 2);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_btns.Location = new System.Drawing.Point(3, 327);
+            this.panel_btns.Location = new System.Drawing.Point(3, 364);
             this.panel_btns.Name = "panel_btns";
             this.panel_btns.RowCount = 3;
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.Size = new System.Drawing.Size(288, 134);
+            this.panel_btns.Size = new System.Drawing.Size(288, 150);
             this.panel_btns.TabIndex = 16;
             // 
             // btn_add
@@ -193,7 +191,7 @@
             this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
             this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(31, 47);
+            this.btn_actualizar.Location = new System.Drawing.Point(31, 54);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
@@ -201,27 +199,6 @@
             this.btn_actualizar.Text = "Actualizar";
             this.btn_actualizar.TextColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.UseVisualStyleBackColor = false;
-            // 
-            // btn_back
-            // 
-            this.btn_back.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_back.BackColor = System.Drawing.Color.Transparent;
-            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_back.BorderColor = System.Drawing.Color.Red;
-            this.btn_back.BorderRadius = 7;
-            this.btn_back.BorderSize = 2;
-            this.btn_back.FlatAppearance.BorderSize = 0;
-            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.ForeColor = System.Drawing.Color.Red;
-            this.btn_back.Location = new System.Drawing.Point(31, 92);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(225, 38);
-            this.btn_back.TabIndex = 28;
-            this.btn_back.Text = "Regresar";
-            this.btn_back.TextColor = System.Drawing.Color.Red;
-            this.btn_back.UseVisualStyleBackColor = false;
-            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // panel_filter
             // 
@@ -243,7 +220,7 @@
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
-            this.panel_filter.Size = new System.Drawing.Size(294, 324);
+            this.panel_filter.Size = new System.Drawing.Size(294, 361);
             this.panel_filter.TabIndex = 17;
             // 
             // lbl_search
@@ -252,7 +229,7 @@
             this.lbl_search.AutoSize = true;
             this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_search.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_search.Location = new System.Drawing.Point(78, 16);
+            this.lbl_search.Location = new System.Drawing.Point(78, 21);
             this.lbl_search.Name = "lbl_search";
             this.lbl_search.Size = new System.Drawing.Size(137, 25);
             this.lbl_search.TabIndex = 13;
@@ -262,7 +239,7 @@
             // 
             this.txt_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_search.Location = new System.Drawing.Point(21, 44);
+            this.txt_search.Location = new System.Drawing.Point(21, 49);
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(251, 29);
             this.txt_search.TabIndex = 11;
@@ -273,7 +250,7 @@
             this.cb_inactive.AutoSize = true;
             this.cb_inactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_inactive.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactive.Location = new System.Drawing.Point(65, 90);
+            this.cb_inactive.Location = new System.Drawing.Point(65, 103);
             this.cb_inactive.Name = "cb_inactive";
             this.cb_inactive.Size = new System.Drawing.Size(164, 24);
             this.cb_inactive.TabIndex = 18;
@@ -346,7 +323,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.grid_proveedores.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.grid_proveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_proveedores.Size = new System.Drawing.Size(688, 464);
+            this.grid_proveedores.Size = new System.Drawing.Size(688, 517);
             this.grid_proveedores.TabIndex = 27;
             // 
             // cliente_id
@@ -633,15 +610,6 @@
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.DataGridView grid_proveedores;
-        private System.Windows.Forms.TableLayoutPanel panel_midizq;
-        private System.Windows.Forms.TableLayoutPanel panel_btns;
-        private CustomBox.RJControls.RJButton btn_actualizar;
-        private System.Windows.Forms.TableLayoutPanel panel_filter;
-        private System.Windows.Forms.Label lbl_search;
-        private System.Windows.Forms.TextBox txt_search;
-        private System.Windows.Forms.CheckBox cb_inactive;
-        private RJCodeAdvance.RJControls.RJButton btn_add;
-        private RJCodeAdvance.RJControls.RJButton btn_back;
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente_dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente_fullname;
@@ -651,5 +619,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cliente_estado_valor;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
+        private System.Windows.Forms.TableLayoutPanel panel_midizq;
+        private System.Windows.Forms.TableLayoutPanel panel_btns;
+        private RJCodeAdvance.RJControls.RJButton btn_add;
+        private CustomBox.RJControls.RJButton btn_actualizar;
+        private System.Windows.Forms.TableLayoutPanel panel_filter;
+        private System.Windows.Forms.Label lbl_search;
+        private System.Windows.Forms.TextBox txt_search;
+        private System.Windows.Forms.CheckBox cb_inactive;
     }
 }

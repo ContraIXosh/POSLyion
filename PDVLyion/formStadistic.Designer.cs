@@ -28,14 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.panel_update = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_izq = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_back = new CustomBox.RJControls.RJButton();
             this.btn_search = new CustomBox.RJControls.RJButton();
             this.date_hasta = new CustomBox.RJControls.RJDatePicker();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,32 +59,21 @@
             this.date_desde = new CustomBox.RJControls.RJDatePicker();
             this.panel_stadistic = new System.Windows.Forms.TableLayoutPanel();
             this.resumen_stadist = new System.Windows.Forms.Panel();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
-            this.stadist_cartesiano = new LiveCharts.WinForms.CartesianChart();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_Main = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graf_velas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.graf_torta = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel_main.SuspendLayout();
             this.panel_update.SuspendLayout();
             this.panel_mid.SuspendLayout();
             this.panel_izq.SuspendLayout();
             this.panel_stadistic.SuspendLayout();
-            this.menu_sesion.SuspendLayout();
-            this.menu_Main.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.graf_velas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graf_torta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
@@ -82,16 +81,16 @@
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_main.Controls.Add(this.panel_update, 0, 2);
-            this.panel_main.Controls.Add(this.panel_mid, 0, 1);
+            this.panel_main.Controls.Add(this.panel_update, 0, 1);
+            this.panel_main.Controls.Add(this.panel_mid, 0, 0);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Margin = new System.Windows.Forms.Padding(0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.RowCount = 3;
-            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.panel_main.RowCount = 2;
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.Size = new System.Drawing.Size(982, 611);
             this.panel_main.TabIndex = 0;
             // 
@@ -133,12 +132,12 @@
             this.panel_mid.Controls.Add(this.panel_izq, 0, 0);
             this.panel_mid.Controls.Add(this.panel_stadistic, 1, 0);
             this.panel_mid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_mid.Location = new System.Drawing.Point(0, 53);
+            this.panel_mid.Location = new System.Drawing.Point(0, 0);
             this.panel_mid.Margin = new System.Windows.Forms.Padding(0);
             this.panel_mid.Name = "panel_mid";
             this.panel_mid.RowCount = 1;
             this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_mid.Size = new System.Drawing.Size(982, 542);
+            this.panel_mid.Size = new System.Drawing.Size(982, 595);
             this.panel_mid.TabIndex = 36;
             // 
             // panel_izq
@@ -146,7 +145,6 @@
             this.panel_izq.BackColor = System.Drawing.Color.MediumAquamarine;
             this.panel_izq.ColumnCount = 1;
             this.panel_izq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_izq.Controls.Add(this.btn_back, 0, 11);
             this.panel_izq.Controls.Add(this.btn_search, 0, 10);
             this.panel_izq.Controls.Add(this.date_hasta, 0, 9);
             this.panel_izq.Controls.Add(this.label9, 0, 8);
@@ -158,7 +156,7 @@
             this.panel_izq.Controls.Add(this.btn_sql, 0, 1);
             this.panel_izq.Controls.Add(this.label6, 0, 2);
             this.panel_izq.Controls.Add(this.date_desde, 0, 7);
-            this.panel_izq.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel_izq.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_izq.Location = new System.Drawing.Point(0, 0);
             this.panel_izq.Margin = new System.Windows.Forms.Padding(0);
             this.panel_izq.Name = "panel_izq";
@@ -175,29 +173,8 @@
             this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.10765F));
             this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.10765F));
             this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.317279F));
-            this.panel_izq.Size = new System.Drawing.Size(294, 542);
+            this.panel_izq.Size = new System.Drawing.Size(294, 595);
             this.panel_izq.TabIndex = 39;
-            // 
-            // btn_back
-            // 
-            this.btn_back.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_back.BackColor = System.Drawing.Color.Red;
-            this.btn_back.BackgroundColor = System.Drawing.Color.Red;
-            this.btn_back.BorderColor = System.Drawing.Color.Black;
-            this.btn_back.BorderRadius = 10;
-            this.btn_back.BorderSize = 2;
-            this.btn_back.FlatAppearance.BorderSize = 0;
-            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.ForeColor = System.Drawing.Color.Black;
-            this.btn_back.Location = new System.Drawing.Point(41, 503);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(212, 36);
-            this.btn_back.TabIndex = 39;
-            this.btn_back.Text = "Regresar";
-            this.btn_back.TextColor = System.Drawing.Color.Black;
-            this.btn_back.UseVisualStyleBackColor = false;
-            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // btn_search
             // 
@@ -211,7 +188,7 @@
             this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_search.ForeColor = System.Drawing.Color.White;
-            this.btn_search.Location = new System.Drawing.Point(41, 449);
+            this.btn_search.Location = new System.Drawing.Point(41, 501);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(212, 47);
             this.btn_search.TabIndex = 38;
@@ -225,7 +202,7 @@
             this.date_hasta.BorderColor = System.Drawing.Color.DodgerBlue;
             this.date_hasta.BorderSize = 0;
             this.date_hasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.date_hasta.Location = new System.Drawing.Point(28, 401);
+            this.date_hasta.Location = new System.Drawing.Point(28, 447);
             this.date_hasta.MinimumSize = new System.Drawing.Size(4, 35);
             this.date_hasta.Name = "date_hasta";
             this.date_hasta.Size = new System.Drawing.Size(237, 35);
@@ -239,7 +216,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Swis721 Blk BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label9.Location = new System.Drawing.Point(69, 365);
+            this.label9.Location = new System.Drawing.Point(69, 406);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(155, 22);
             this.label9.TabIndex = 36;
@@ -251,7 +228,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Swis721 Blk BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label8.Location = new System.Drawing.Point(69, 279);
+            this.label8.Location = new System.Drawing.Point(69, 310);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(155, 22);
             this.label8.TabIndex = 34;
@@ -269,7 +246,7 @@
             this.cbox_turno.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbox_turno.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_turno.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_turno.Location = new System.Drawing.Point(41, 237);
+            this.cbox_turno.Location = new System.Drawing.Point(41, 264);
             this.cbox_turno.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_turno.Name = "cbox_turno";
             this.cbox_turno.Padding = new System.Windows.Forms.Padding(1);
@@ -283,7 +260,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Swis721 Blk BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label7.Location = new System.Drawing.Point(105, 201);
+            this.label7.Location = new System.Drawing.Point(105, 223);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 22);
             this.label7.TabIndex = 32;
@@ -301,7 +278,7 @@
             this.cbox_user.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbox_user.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_user.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_user.Location = new System.Drawing.Point(41, 156);
+            this.cbox_user.Location = new System.Drawing.Point(41, 174);
             this.cbox_user.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_user.Name = "cbox_user";
             this.cbox_user.Padding = new System.Windows.Forms.Padding(1);
@@ -321,7 +298,7 @@
             this.btn_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_excel.ForeColor = System.Drawing.Color.White;
-            this.btn_excel.Location = new System.Drawing.Point(35, 3);
+            this.btn_excel.Location = new System.Drawing.Point(35, 6);
             this.btn_excel.Name = "btn_excel";
             this.btn_excel.Size = new System.Drawing.Size(224, 47);
             this.btn_excel.TabIndex = 28;
@@ -341,7 +318,7 @@
             this.btn_sql.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sql.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sql.ForeColor = System.Drawing.Color.White;
-            this.btn_sql.Location = new System.Drawing.Point(11, 62);
+            this.btn_sql.Location = new System.Drawing.Point(11, 71);
             this.btn_sql.Name = "btn_sql";
             this.btn_sql.Size = new System.Drawing.Size(272, 47);
             this.btn_sql.TabIndex = 29;
@@ -355,7 +332,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Swis721 Blk BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label6.Location = new System.Drawing.Point(94, 123);
+            this.label6.Location = new System.Drawing.Point(94, 136);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 22);
             this.label6.TabIndex = 30;
@@ -367,7 +344,7 @@
             this.date_desde.BorderColor = System.Drawing.Color.DodgerBlue;
             this.date_desde.BorderSize = 0;
             this.date_desde.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.date_desde.Location = new System.Drawing.Point(28, 315);
+            this.date_desde.Location = new System.Drawing.Point(28, 351);
             this.date_desde.MinimumSize = new System.Drawing.Size(4, 35);
             this.date_desde.Name = "date_desde";
             this.date_desde.Size = new System.Drawing.Size(237, 35);
@@ -381,12 +358,14 @@
             this.panel_stadistic.ColumnCount = 2;
             this.panel_stadistic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_stadistic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_stadistic.Controls.Add(this.resumen_stadist, 0, 3);
-            this.panel_stadistic.Controls.Add(this.pieChart1, 1, 1);
-            this.panel_stadistic.Controls.Add(this.stadist_cartesiano, 0, 1);
+            this.panel_stadistic.Controls.Add(this.label10, 0, 2);
+            this.panel_stadistic.Controls.Add(this.chart1, 0, 3);
+            this.panel_stadistic.Controls.Add(this.graf_torta, 1, 1);
             this.panel_stadistic.Controls.Add(this.label3, 0, 0);
             this.panel_stadistic.Controls.Add(this.label1, 1, 0);
-            this.panel_stadistic.Controls.Add(this.label2, 0, 2);
+            this.panel_stadistic.Controls.Add(this.graf_velas, 0, 1);
+            this.panel_stadistic.Controls.Add(this.label2, 1, 2);
+            this.panel_stadistic.Controls.Add(this.resumen_stadist, 1, 3);
             this.panel_stadistic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_stadistic.Location = new System.Drawing.Point(294, 0);
             this.panel_stadistic.Margin = new System.Windows.Forms.Padding(0);
@@ -396,35 +375,17 @@
             this.panel_stadistic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.36029F));
             this.panel_stadistic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.099265F));
             this.panel_stadistic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.44118F));
-            this.panel_stadistic.Size = new System.Drawing.Size(688, 542);
+            this.panel_stadistic.Size = new System.Drawing.Size(688, 595);
             this.panel_stadistic.TabIndex = 37;
             // 
             // resumen_stadist
             // 
             this.resumen_stadist.BackColor = System.Drawing.Color.WhiteSmoke;
             this.resumen_stadist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resumen_stadist.Location = new System.Drawing.Point(3, 325);
+            this.resumen_stadist.Location = new System.Drawing.Point(347, 357);
             this.resumen_stadist.Name = "resumen_stadist";
-            this.resumen_stadist.Size = new System.Drawing.Size(338, 214);
+            this.resumen_stadist.Size = new System.Drawing.Size(338, 235);
             this.resumen_stadist.TabIndex = 4;
-            // 
-            // pieChart1
-            // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(347, 52);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(338, 218);
-            this.pieChart1.TabIndex = 5;
-            this.pieChart1.Text = "pieChart1";
-            // 
-            // stadist_cartesiano
-            // 
-            this.stadist_cartesiano.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stadist_cartesiano.Location = new System.Drawing.Point(3, 52);
-            this.stadist_cartesiano.Name = "stadist_cartesiano";
-            this.stadist_cartesiano.Size = new System.Drawing.Size(338, 218);
-            this.stadist_cartesiano.TabIndex = 3;
-            this.stadist_cartesiano.Text = "cartesianChart1";
             // 
             // label3
             // 
@@ -432,7 +393,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(56, 12);
+            this.label3.Location = new System.Drawing.Point(56, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(231, 25);
             this.label3.TabIndex = 9;
@@ -445,7 +406,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(399, 12);
+            this.label1.Location = new System.Drawing.Point(399, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(234, 25);
             this.label1.TabIndex = 10;
@@ -458,128 +419,87 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gold;
-            this.label2.Location = new System.Drawing.Point(110, 285);
+            this.label2.Location = new System.Drawing.Point(454, 314);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 25);
             this.label2.TabIndex = 11;
             this.label2.Text = "RESUMEN";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // menu_sesion
+            // graf_velas
             // 
-            this.menu_sesion.DropShadowEnabled = false;
-            this.menu_sesion.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_sesion.IsMainMenu = false;
-            this.menu_sesion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verPerfilToolStripMenuItem,
-            this.inicioAdministradorToolStripMenuItem,
-            this.cerrarSesionToolStripMenuItem});
-            this.menu_sesion.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
-            this.menu_sesion.MenuItemHeight = 25;
-            this.menu_sesion.MenuItemTextColor = System.Drawing.Color.Black;
-            this.menu_sesion.Name = "menu_sesion";
-            this.menu_sesion.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_sesion.Size = new System.Drawing.Size(203, 70);
+            this.graf_velas.BackColor = System.Drawing.Color.Transparent;
+            chartArea10.Name = "ChartArea1";
+            this.graf_velas.ChartAreas.Add(chartArea10);
+            this.graf_velas.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend10.Name = "Legend1";
+            this.graf_velas.Legends.Add(legend10);
+            this.graf_velas.Location = new System.Drawing.Point(3, 57);
+            this.graf_velas.Name = "graf_velas";
+            this.graf_velas.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            series10.Points.Add(dataPoint10);
+            this.graf_velas.Series.Add(series10);
+            this.graf_velas.Size = new System.Drawing.Size(338, 240);
+            this.graf_velas.TabIndex = 12;
+            this.graf_velas.Text = "chart1";
             // 
-            // verPerfilToolStripMenuItem
+            // graf_torta
             // 
-            this.verPerfilToolStripMenuItem.Name = "verPerfilToolStripMenuItem";
-            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.verPerfilToolStripMenuItem.Text = "Ver perfil";
+            this.graf_torta.BackColor = System.Drawing.Color.Transparent;
+            chartArea11.Name = "ChartArea1";
+            this.graf_torta.ChartAreas.Add(chartArea11);
+            this.graf_torta.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend11.Name = "Legend1";
+            this.graf_torta.Legends.Add(legend11);
+            this.graf_torta.Location = new System.Drawing.Point(347, 57);
+            this.graf_torta.Name = "graf_torta";
+            this.graf_torta.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            series11.Points.Add(dataPoint11);
+            this.graf_torta.Series.Add(series11);
+            this.graf_torta.Size = new System.Drawing.Size(338, 240);
+            this.graf_torta.TabIndex = 13;
+            this.graf_torta.Text = "chart2";
             // 
-            // inicioAdministradorToolStripMenuItem
+            // label10
             // 
-            this.inicioAdministradorToolStripMenuItem.Name = "inicioAdministradorToolStripMenuItem";
-            this.inicioAdministradorToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.inicioAdministradorToolStripMenuItem.Text = "Inicio Administrador";
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gold;
+            this.label10.Location = new System.Drawing.Point(46, 314);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(251, 25);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "GRAFICO DE PUNTOS";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cerrarSesionToolStripMenuItem
+            // chart1
             // 
-            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
-            // 
-            // menu_Main
-            // 
-            this.menu_Main.IsMainMenu = true;
-            this.menu_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ventasToolStripMenuItem,
-            this.comprasToolStripMenuItem,
-            this.productosToolStripMenuItem,
-            this.usuariosToolStripMenuItem,
-            this.clientesToolStripMenuItem,
-            this.categoriasToolStripMenuItem,
-            this.proveedoresToolStripMenuItem,
-            this.reportesToolStripMenuItem,
-            this.configuraciónToolStripMenuItem});
-            this.menu_Main.MenuItemHeight = 25;
-            this.menu_Main.MenuItemTextColor = System.Drawing.Color.White;
-            this.menu_Main.Name = "menu_Main";
-            this.menu_Main.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_Main.Size = new System.Drawing.Size(151, 202);
-            // 
-            // ventasToolStripMenuItem
-            // 
-            this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.ventasToolStripMenuItem.Text = "Ventas";
-            this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
-            // 
-            // comprasToolStripMenuItem
-            // 
-            this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.comprasToolStripMenuItem.Text = "Compras";
-            this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
-            // 
-            // productosToolStripMenuItem
-            // 
-            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.productosToolStripMenuItem.Text = "Productos";
-            this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
-            // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
-            // 
-            // categoriasToolStripMenuItem
-            // 
-            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.categoriasToolStripMenuItem.Text = "Categorias";
-            this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
-            // 
-            // proveedoresToolStripMenuItem
-            // 
-            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.proveedoresToolStripMenuItem.Text = "Proveedores";
-            this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
-            // 
-            // reportesToolStripMenuItem
-            // 
-            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.reportesToolStripMenuItem.Text = "Reportes";
-            this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            chartArea12.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea12);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend12.Name = "Legend1";
+            this.chart1.Legends.Add(legend12);
+            this.chart1.Location = new System.Drawing.Point(3, 357);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            series12.Points.Add(dataPoint12);
+            this.chart1.Series.Add(series12);
+            this.chart1.Size = new System.Drawing.Size(338, 235);
+            this.chart1.TabIndex = 16;
+            this.chart1.Text = "chart2";
             // 
             // formStadistic
             // 
@@ -597,8 +517,9 @@
             this.panel_izq.PerformLayout();
             this.panel_stadistic.ResumeLayout(false);
             this.panel_stadistic.PerformLayout();
-            this.menu_sesion.ResumeLayout(false);
-            this.menu_Main.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.graf_velas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graf_torta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -611,7 +532,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel panel_mid;
         private System.Windows.Forms.TableLayoutPanel panel_izq;
-        private CustomBox.RJControls.RJButton btn_back;
         private CustomBox.RJControls.RJButton btn_search;
         private CustomBox.RJControls.RJDatePicker date_hasta;
         private System.Windows.Forms.Label label9;
@@ -625,24 +545,12 @@
         private CustomBox.RJControls.RJDatePicker date_desde;
         private System.Windows.Forms.TableLayoutPanel panel_stadistic;
         private System.Windows.Forms.Panel resumen_stadist;
-        private LiveCharts.WinForms.PieChart pieChart1;
-        private LiveCharts.WinForms.CartesianChart stadist_cartesiano;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private RJCodeAdvance.RJControls.RJDropdownMenu menu_sesion;
-        private System.Windows.Forms.ToolStripMenuItem verPerfilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inicioAdministradorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
-        private RJCodeAdvance.RJControls.RJDropdownMenu menu_Main;
-        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.DataVisualization.Charting.Chart graf_velas;
+        private System.Windows.Forms.DataVisualization.Charting.Chart graf_torta;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

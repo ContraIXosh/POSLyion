@@ -19,92 +19,30 @@ namespace PDCLyion
             InitializeComponent();
         }
 
-        private void abrirHerencia(object formhija)
+        private void RemoverStripMenu()
         {
-            if (this.panel_main.Controls.Count > 0)
+            foreach (Control control in this.Controls)
             {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-
+                if (control is MenuStrip)
+                {
+                    this.Controls.Remove(control);
+                }
             }
         }
-        private void rjButton4_Click(object sender, EventArgs e)
+
+        private void abrirHerencia(Form fh)
         {
 
-        }
+            if (panel_main.Controls.Count > 0)
+                panel_main.Controls.RemoveAt(0);
 
-        private void rjButton4_Click_1(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-            this.panel_izq.Hide();
-        }
+            fh.TopLevel = false;
+            fh.FormBorderStyle = FormBorderStyle.None;
+            fh.Dock = DockStyle.Fill;
 
-        //private void btn_hamb_Click(object sender, EventArgs e)
-        //{
-        //    menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
-        //}
-
-        //private void btn_Down_Click(object sender, EventArgs e)
-        //{
-        //    menu_sesion.Show(btn_Down, btn_Down.Width, 0);
-        //}
-
-        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-        }
-
-        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formPurchaseOrders(oUser));
-        }
-
-        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formProducts());
-        }
-
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formUsers());
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCustomers());
-        }
-
-        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCat());
-        }
-
-        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors());
-        }
-
-        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formStadistic());
-        }
-
-        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formConfig());
-        }
-
-        private void btn_back_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
+            panel_main.Controls.Add(fh);
+            panel_main.Tag = fh;
+            fh.Show();
         }
     }
 }

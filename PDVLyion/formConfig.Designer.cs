@@ -63,7 +63,6 @@
             this.tbtn_logo = new CustomBox.RJControls.RJToggleButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_back = new CustomBox.RJControls.RJButton();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
             this.panel_bottomizq = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_tamaño = new System.Windows.Forms.Label();
@@ -126,14 +125,14 @@
             // 
             this.panel_general.ColumnCount = 1;
             this.panel_general.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_general.Controls.Add(this.panel_main2, 0, 1);
-            this.panel_general.Controls.Add(this.panel_updates, 0, 2);
+            this.panel_general.Controls.Add(this.panel_main2, 0, 0);
+            this.panel_general.Controls.Add(this.panel_updates, 0, 1);
             this.panel_general.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_general.Location = new System.Drawing.Point(0, 0);
             this.panel_general.Name = "panel_general";
-            this.panel_general.RowCount = 3;
-            this.panel_general.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.panel_general.RowCount = 2;
             this.panel_general.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_general.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_general.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_general.Size = new System.Drawing.Size(982, 537);
             this.panel_general.TabIndex = 2;
@@ -147,26 +146,26 @@
             this.panel_main2.Controls.Add(this.panel_ticket, 1, 0);
             this.panel_main2.Controls.Add(this.panel_izq, 0, 0);
             this.panel_main2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_main2.Location = new System.Drawing.Point(0, 53);
+            this.panel_main2.Location = new System.Drawing.Point(0, 0);
             this.panel_main2.Margin = new System.Windows.Forms.Padding(0);
             this.panel_main2.Name = "panel_main2";
             this.panel_main2.RowCount = 1;
             this.panel_main2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.panel_main2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_main2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_main2.Size = new System.Drawing.Size(982, 464);
-            this.panel_main2.TabIndex = 0;
+            this.panel_main2.Size = new System.Drawing.Size(982, 517);
+            this.panel_main2.TabIndex = 3;
             // 
             // panel_ticket
             // 
+            this.panel_ticket.BackColor = System.Drawing.Color.Black;
             this.panel_ticket.ColumnCount = 3;
             this.panel_ticket.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_ticket.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_ticket.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_ticket.Controls.Add(this.hoja_ticket, 1, 1);
             this.panel_ticket.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_ticket.Location = new System.Drawing.Point(568, 0);
-            this.panel_ticket.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_ticket.Location = new System.Drawing.Point(571, 3);
             this.panel_ticket.Name = "panel_ticket";
             this.panel_ticket.RowCount = 3;
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
@@ -176,20 +175,21 @@
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_ticket.Size = new System.Drawing.Size(414, 464);
+            this.panel_ticket.Size = new System.Drawing.Size(408, 511);
             this.panel_ticket.TabIndex = 1;
             // 
             // hoja_ticket
             // 
             this.hoja_ticket.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.hoja_ticket.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hoja_ticket.Location = new System.Drawing.Point(106, 26);
+            this.hoja_ticket.Location = new System.Drawing.Point(105, 28);
             this.hoja_ticket.Name = "hoja_ticket";
-            this.hoja_ticket.Size = new System.Drawing.Size(201, 411);
+            this.hoja_ticket.Size = new System.Drawing.Size(198, 453);
             this.hoja_ticket.TabIndex = 0;
             // 
             // panel_izq
             // 
+            this.panel_izq.BackColor = System.Drawing.Color.Crimson;
             this.panel_izq.ColumnCount = 1;
             this.panel_izq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_izq.Controls.Add(this.panel5, 0, 0);
@@ -203,11 +203,12 @@
             this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.panel_izq.Size = new System.Drawing.Size(568, 464);
+            this.panel_izq.Size = new System.Drawing.Size(568, 517);
             this.panel_izq.TabIndex = 2;
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Controls.Add(this.pb_alignjustify);
             this.panel5.Controls.Add(this.pb_alignder);
             this.panel5.Controls.Add(this.pb_aligncenter);
@@ -220,9 +221,10 @@
             this.panel5.Controls.Add(this.cbox_plantilla);
             this.panel5.Controls.Add(this.lbl_plantillafactura);
             this.panel5.Controls.Add(this.lbl_config);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(559, 156);
+            this.panel5.Size = new System.Drawing.Size(562, 174);
             this.panel5.TabIndex = 4;
             // 
             // pb_alignjustify
@@ -375,6 +377,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.Color.Black;
             this.panel6.Controls.Add(this.lbl_impresion);
             this.panel6.Controls.Add(this.lbl_textlogo);
             this.panel6.Controls.Add(this.lbl_txtlogo);
@@ -387,10 +390,10 @@
             this.panel6.Controls.Add(this.lbl_mostrarlogo);
             this.panel6.Controls.Add(this.tbtn_logo);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 162);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Location = new System.Drawing.Point(3, 180);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(568, 208);
+            this.panel6.Size = new System.Drawing.Size(562, 229);
             this.panel6.TabIndex = 3;
             // 
             // lbl_impresion
@@ -529,54 +532,36 @@
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.panel_bottomizq, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 370);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 412);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(568, 94);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(568, 105);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Black;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.btn_back, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 56);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 63);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(568, 38);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(568, 42);
             this.tableLayoutPanel2.TabIndex = 75;
-            // 
-            // btn_back
-            // 
-            this.btn_back.BackColor = System.Drawing.Color.Transparent;
-            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_back.BorderColor = System.Drawing.Color.Red;
-            this.btn_back.BorderRadius = 7;
-            this.btn_back.BorderSize = 2;
-            this.btn_back.FlatAppearance.BorderSize = 0;
-            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.ForeColor = System.Drawing.Color.Red;
-            this.btn_back.Location = new System.Drawing.Point(429, 3);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(136, 32);
-            this.btn_back.TabIndex = 75;
-            this.btn_back.Text = "Cancelar";
-            this.btn_back.TextColor = System.Drawing.Color.Red;
-            this.btn_back.UseVisualStyleBackColor = false;
             // 
             // btn_guardar
             // 
+            this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
             this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
             this.btn_guardar.BorderColor = System.Drawing.Color.SpringGreen;
@@ -586,9 +571,9 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.SpringGreen;
-            this.btn_guardar.Location = new System.Drawing.Point(287, 3);
+            this.btn_guardar.Location = new System.Drawing.Point(440, 3);
             this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(136, 32);
+            this.btn_guardar.Size = new System.Drawing.Size(113, 32);
             this.btn_guardar.TabIndex = 74;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.TextColor = System.Drawing.Color.SpringGreen;
@@ -596,6 +581,7 @@
             // 
             // panel_bottomizq
             // 
+            this.panel_bottomizq.BackColor = System.Drawing.Color.Black;
             this.panel_bottomizq.ColumnCount = 2;
             this.panel_bottomizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_bottomizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -604,13 +590,13 @@
             this.panel_bottomizq.Controls.Add(this.cbox_tamtira, 0, 1);
             this.panel_bottomizq.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.panel_bottomizq.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_bottomizq.Location = new System.Drawing.Point(0, 0);
-            this.panel_bottomizq.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_bottomizq.Location = new System.Drawing.Point(2, 0);
+            this.panel_bottomizq.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.panel_bottomizq.Name = "panel_bottomizq";
             this.panel_bottomizq.RowCount = 2;
             this.panel_bottomizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.panel_bottomizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.panel_bottomizq.Size = new System.Drawing.Size(568, 56);
+            this.panel_bottomizq.Size = new System.Drawing.Size(564, 61);
             this.panel_bottomizq.TabIndex = 76;
             // 
             // lbl_tamaño
@@ -619,7 +605,7 @@
             this.lbl_tamaño.AutoSize = true;
             this.lbl_tamaño.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tamaño.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_tamaño.Location = new System.Drawing.Point(80, 2);
+            this.lbl_tamaño.Location = new System.Drawing.Point(79, 4);
             this.lbl_tamaño.Name = "lbl_tamaño";
             this.lbl_tamaño.Size = new System.Drawing.Size(124, 20);
             this.lbl_tamaño.TabIndex = 75;
@@ -627,18 +613,20 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Black;
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.txt_margender, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.txt_margenizq, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(284, 22);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(282, 24);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(284, 34);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(282, 37);
             this.tableLayoutPanel3.TabIndex = 80;
             // 
             // txt_margender
@@ -651,8 +639,8 @@
             this.txt_margender.BorderSize = 2;
             this.txt_margender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_margender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_margender.Location = new System.Drawing.Point(43, 4);
-            this.txt_margender.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_margender.Location = new System.Drawing.Point(43, 2);
+            this.txt_margender.Margin = new System.Windows.Forms.Padding(2);
             this.txt_margender.Multiline = false;
             this.txt_margender.Name = "txt_margender";
             this.txt_margender.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -674,8 +662,8 @@
             this.txt_margenizq.BorderSize = 2;
             this.txt_margenizq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_margenizq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_margenizq.Location = new System.Drawing.Point(185, 4);
-            this.txt_margenizq.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_margenizq.Location = new System.Drawing.Point(184, 2);
+            this.txt_margenizq.Margin = new System.Windows.Forms.Padding(2);
             this.txt_margenizq.Multiline = false;
             this.txt_margenizq.Name = "txt_margenizq";
             this.txt_margenizq.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -692,36 +680,38 @@
             this.cbox_tamtira.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbox_tamtira.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cbox_tamtira.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_tamtira.BorderSize = 1;
+            this.cbox_tamtira.BorderSize = 2;
             this.cbox_tamtira.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbox_tamtira.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbox_tamtira.ForeColor = System.Drawing.Color.DimGray;
             this.cbox_tamtira.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbox_tamtira.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_tamtira.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_tamtira.Location = new System.Drawing.Point(42, 25);
+            this.cbox_tamtira.Location = new System.Drawing.Point(41, 26);
+            this.cbox_tamtira.Margin = new System.Windows.Forms.Padding(2);
             this.cbox_tamtira.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_tamtira.Name = "cbox_tamtira";
-            this.cbox_tamtira.Padding = new System.Windows.Forms.Padding(1);
+            this.cbox_tamtira.Padding = new System.Windows.Forms.Padding(2);
             this.cbox_tamtira.Size = new System.Drawing.Size(200, 30);
             this.cbox_tamtira.TabIndex = 74;
             this.cbox_tamtira.Texts = "";
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Black;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.lbl_izq, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lbl_der, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(284, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(282, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(284, 22);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(282, 24);
             this.tableLayoutPanel4.TabIndex = 79;
             // 
             // lbl_izq
@@ -730,7 +720,7 @@
             this.lbl_izq.AutoSize = true;
             this.lbl_izq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_izq.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_izq.Location = new System.Drawing.Point(25, 2);
+            this.lbl_izq.Location = new System.Drawing.Point(25, 4);
             this.lbl_izq.Name = "lbl_izq";
             this.lbl_izq.Size = new System.Drawing.Size(91, 20);
             this.lbl_izq.TabIndex = 78;
@@ -742,7 +732,7 @@
             this.lbl_der.AutoSize = true;
             this.lbl_der.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_der.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_der.Location = new System.Drawing.Point(166, 2);
+            this.lbl_der.Location = new System.Drawing.Point(164, 4);
             this.lbl_der.Name = "lbl_der";
             this.lbl_der.Size = new System.Drawing.Size(94, 20);
             this.lbl_der.TabIndex = 79;
@@ -933,51 +923,9 @@
 
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.TableLayoutPanel panel_general;
-        private System.Windows.Forms.TableLayoutPanel panel_main2;
         private System.Windows.Forms.Panel panel_updates;
         private System.Windows.Forms.Label lbl_updatetime;
         private System.Windows.Forms.Label lbl_updateversion;
-        private System.Windows.Forms.TableLayoutPanel panel_ticket;
-        private CustomBox.RJControls.RJButton btn_back;
-        private System.Windows.Forms.Label lbl_tamaño;
-        private CustomBox.RJControls.RJButton btn_guardar;
-        private System.Windows.Forms.Label lbl_der;
-        private CustomBox.RJControls.RJComboBox cbox_tamtira;
-        private System.Windows.Forms.Panel hoja_ticket;
-        private System.Windows.Forms.Label lbl_izq;
-        private CustomBox.RJControls.RJTextBox txt_margender;
-        private CustomBox.RJControls.RJTextBox txt_margenizq;
-        private System.Windows.Forms.TableLayoutPanel panel_izq;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label lbl_impresion;
-        private System.Windows.Forms.Label lbl_textlogo;
-        private System.Windows.Forms.Label lbl_txtlogo;
-        private System.Windows.Forms.Label lbl_mostrarprecio;
-        private System.Windows.Forms.Label lbl_precioun;
-        private System.Windows.Forms.Label lbl_descimp;
-        private System.Windows.Forms.Label lbl_desc;
-        private CustomBox.RJControls.RJToggleButton tbtn_desc;
-        private System.Windows.Forms.Label lbl_descprod;
-        private System.Windows.Forms.Label lbl_mostrarlogo;
-        private CustomBox.RJControls.RJToggleButton tbtn_logo;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.PictureBox pb_alignjustify;
-        private System.Windows.Forms.PictureBox pb_alignder;
-        private System.Windows.Forms.PictureBox pb_aligncenter;
-        private CustomBox.RJControls.RJRadioButton rb_alignright;
-        private CustomBox.RJControls.RJRadioButton rb_alignjustify;
-        private CustomBox.RJControls.RJRadioButton rb_aligncenter;
-        private System.Windows.Forms.PictureBox pb_alignizq;
-        private CustomBox.RJControls.RJRadioButton rb_alignizq;
-        private System.Windows.Forms.Label lbl_textalign;
-        private CustomBox.RJControls.RJComboBox cbox_plantilla;
-        private System.Windows.Forms.Label lbl_plantillafactura;
-        private System.Windows.Forms.Label lbl_config;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel panel_bottomizq;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private RJCodeAdvance.RJControls.RJDropdownMenu menu_sesion;
         private System.Windows.Forms.ToolStripMenuItem verPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inicioAdministradorToolStripMenuItem;
@@ -992,5 +940,46 @@
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel panel_main2;
+        private System.Windows.Forms.TableLayoutPanel panel_ticket;
+        private System.Windows.Forms.Panel hoja_ticket;
+        private System.Windows.Forms.TableLayoutPanel panel_izq;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pb_alignjustify;
+        private System.Windows.Forms.PictureBox pb_alignder;
+        private System.Windows.Forms.PictureBox pb_aligncenter;
+        private CustomBox.RJControls.RJRadioButton rb_alignright;
+        private CustomBox.RJControls.RJRadioButton rb_alignjustify;
+        private CustomBox.RJControls.RJRadioButton rb_aligncenter;
+        private System.Windows.Forms.PictureBox pb_alignizq;
+        private CustomBox.RJControls.RJRadioButton rb_alignizq;
+        private System.Windows.Forms.Label lbl_textalign;
+        private CustomBox.RJControls.RJComboBox cbox_plantilla;
+        private System.Windows.Forms.Label lbl_plantillafactura;
+        private System.Windows.Forms.Label lbl_config;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label lbl_impresion;
+        private System.Windows.Forms.Label lbl_textlogo;
+        private System.Windows.Forms.Label lbl_txtlogo;
+        private System.Windows.Forms.Label lbl_mostrarprecio;
+        private System.Windows.Forms.Label lbl_precioun;
+        private System.Windows.Forms.Label lbl_descimp;
+        private System.Windows.Forms.Label lbl_desc;
+        private CustomBox.RJControls.RJToggleButton tbtn_desc;
+        private System.Windows.Forms.Label lbl_descprod;
+        private System.Windows.Forms.Label lbl_mostrarlogo;
+        private CustomBox.RJControls.RJToggleButton tbtn_logo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private CustomBox.RJControls.RJButton btn_guardar;
+        private System.Windows.Forms.TableLayoutPanel panel_bottomizq;
+        private System.Windows.Forms.Label lbl_tamaño;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private CustomBox.RJControls.RJTextBox txt_margender;
+        private CustomBox.RJControls.RJTextBox txt_margenizq;
+        private CustomBox.RJControls.RJComboBox cbox_tamtira;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label lbl_izq;
+        private System.Windows.Forms.Label lbl_der;
     }
 }

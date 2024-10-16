@@ -39,9 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_add = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_guardar = new CustomBox.RJControls.RJButton();
-            this.btn_borrar = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_company_name = new CustomBox.RJControls.RJTextBox();
             this.cb_card = new System.Windows.Forms.CheckBox();
@@ -68,7 +65,6 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_update.SuspendLayout();
             this.panel_add.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panelitop.SuspendLayout();
             this.SuspendLayout();
@@ -87,17 +83,17 @@
             this.panel_main.RowCount = 2;
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.panel_main.Size = new System.Drawing.Size(1001, 558);
+            this.panel_main.Size = new System.Drawing.Size(710, 402);
             this.panel_main.TabIndex = 0;
             // 
             // panel_footer
             // 
             this.panel_footer.Controls.Add(this.tableLayoutPanel1);
             this.panel_footer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_footer.Location = new System.Drawing.Point(0, 474);
+            this.panel_footer.Location = new System.Drawing.Point(0, 341);
             this.panel_footer.Margin = new System.Windows.Forms.Padding(0);
             this.panel_footer.Name = "panel_footer";
-            this.panel_footer.Size = new System.Drawing.Size(1001, 84);
+            this.panel_footer.Size = new System.Drawing.Size(710, 61);
             this.panel_footer.TabIndex = 13;
             // 
             // tableLayoutPanel1
@@ -113,7 +109,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1001, 84);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(710, 61);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -131,7 +127,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1001, 64);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 41);
             this.tableLayoutPanel2.TabIndex = 27;
             // 
             // btn_back
@@ -146,9 +142,9 @@
             this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_back.ForeColor = System.Drawing.Color.Red;
-            this.btn_back.Location = new System.Drawing.Point(848, 12);
+            this.btn_back.Location = new System.Drawing.Point(557, 3);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(150, 40);
+            this.btn_back.Size = new System.Drawing.Size(150, 35);
             this.btn_back.TabIndex = 11;
             this.btn_back.Text = "Cancelar";
             this.btn_back.TextColor = System.Drawing.Color.Red;
@@ -167,9 +163,9 @@
             this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton2.ForeColor = System.Drawing.Color.LimeGreen;
-            this.rjButton2.Location = new System.Drawing.Point(648, 12);
+            this.rjButton2.Location = new System.Drawing.Point(357, 3);
             this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(150, 40);
+            this.rjButton2.Size = new System.Drawing.Size(150, 35);
             this.rjButton2.TabIndex = 12;
             this.rjButton2.Text = "Cargar";
             this.rjButton2.TextColor = System.Drawing.Color.LimeGreen;
@@ -203,16 +199,16 @@
             this.panel_update.Controls.Add(this.label2);
             this.panel_update.Controls.Add(this.label1);
             this.panel_update.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_update.Location = new System.Drawing.Point(0, 64);
+            this.panel_update.Location = new System.Drawing.Point(0, 41);
             this.panel_update.Margin = new System.Windows.Forms.Padding(0);
             this.panel_update.Name = "panel_update";
-            this.panel_update.Size = new System.Drawing.Size(1001, 20);
+            this.panel_update.Size = new System.Drawing.Size(710, 20);
             this.panel_update.TabIndex = 16;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(633, 3);
+            this.label2.Location = new System.Drawing.Point(340, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(199, 13);
             this.label2.TabIndex = 1;
@@ -221,7 +217,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(863, 2);
+            this.label1.Location = new System.Drawing.Point(592, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 0;
@@ -232,92 +228,18 @@
             this.panel_add.BackColor = System.Drawing.Color.Green;
             this.panel_add.ColumnCount = 1;
             this.panel_add.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_add.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.panel_add.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.panel_add.Controls.Add(this.panelitop, 0, 0);
             this.panel_add.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_add.Location = new System.Drawing.Point(0, 0);
             this.panel_add.Margin = new System.Windows.Forms.Padding(0);
             this.panel_add.Name = "panel_add";
-            this.panel_add.RowCount = 3;
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.panel_add.RowCount = 2;
+            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.77778F));
             this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_add.Size = new System.Drawing.Size(1001, 474);
+            this.panel_add.Size = new System.Drawing.Size(710, 341);
             this.panel_add.TabIndex = 14;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.btn_guardar, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_borrar, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 425);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1001, 49);
-            this.tableLayoutPanel3.TabIndex = 1;
-            // 
-            // btn_guardar
-            // 
-            this.btn_guardar.BackColor = System.Drawing.Color.Gold;
-            this.btn_guardar.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_guardar.BorderColor = System.Drawing.Color.Black;
-            this.btn_guardar.BorderRadius = 10;
-            this.btn_guardar.BorderSize = 2;
-            this.btn_guardar.FlatAppearance.BorderSize = 0;
-            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_guardar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.ForeColor = System.Drawing.Color.Black;
-            this.btn_guardar.Location = new System.Drawing.Point(3, 3);
-            this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(171, 37);
-            this.btn_guardar.TabIndex = 44;
-            this.btn_guardar.Text = "GUARDAR";
-            this.btn_guardar.TextColor = System.Drawing.Color.Black;
-            this.btn_guardar.UseVisualStyleBackColor = false;
-            // 
-            // btn_borrar
-            // 
-            this.btn_borrar.BackColor = System.Drawing.Color.Gold;
-            this.btn_borrar.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_borrar.BorderColor = System.Drawing.Color.Black;
-            this.btn_borrar.BorderRadius = 10;
-            this.btn_borrar.BorderSize = 2;
-            this.btn_borrar.FlatAppearance.BorderSize = 0;
-            this.btn_borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_borrar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_borrar.ForeColor = System.Drawing.Color.Black;
-            this.btn_borrar.Location = new System.Drawing.Point(200, 0);
-            this.btn_borrar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_borrar.Name = "btn_borrar";
-            this.btn_borrar.Size = new System.Drawing.Size(171, 41);
-            this.btn_borrar.TabIndex = 45;
-            this.btn_borrar.Text = "BORRAR";
-            this.btn_borrar.TextColor = System.Drawing.Color.Black;
-            this.btn_borrar.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel4
             // 
@@ -343,7 +265,7 @@
             this.tableLayoutPanel4.Controls.Add(this.cbox_cat, 1, 5);
             this.tableLayoutPanel4.Controls.Add(this.txt_cuit, 0, 5);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 94);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 75);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 6;
@@ -353,7 +275,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1001, 331);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(710, 266);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // txt_company_name
@@ -366,7 +288,7 @@
             this.txt_company_name.BorderSize = 2;
             this.txt_company_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_company_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_company_name.Location = new System.Drawing.Point(41, 59);
+            this.txt_company_name.Location = new System.Drawing.Point(4, 48);
             this.txt_company_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_company_name.Multiline = false;
             this.txt_company_name.Name = "txt_company_name";
@@ -374,7 +296,7 @@
             this.txt_company_name.PasswordChar = false;
             this.txt_company_name.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_company_name.PlaceholderText = "";
-            this.txt_company_name.Size = new System.Drawing.Size(250, 31);
+            this.txt_company_name.Size = new System.Drawing.Size(228, 31);
             this.txt_company_name.TabIndex = 67;
             this.txt_company_name.Texts = "";
             this.txt_company_name.UnderlinedStyle = false;
@@ -385,7 +307,7 @@
             this.cb_card.AutoSize = true;
             this.cb_card.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_card.ForeColor = System.Drawing.Color.Gold;
-            this.cb_card.Location = new System.Drawing.Point(767, 288);
+            this.cb_card.Location = new System.Drawing.Point(525, 228);
             this.cb_card.Name = "cb_card";
             this.cb_card.Size = new System.Drawing.Size(132, 29);
             this.cb_card.TabIndex = 55;
@@ -398,7 +320,7 @@
             this.cb_efect.AutoSize = true;
             this.cb_efect.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_efect.ForeColor = System.Drawing.Color.Gold;
-            this.cb_efect.Location = new System.Drawing.Point(762, 233);
+            this.cb_efect.Location = new System.Drawing.Point(519, 183);
             this.cb_efect.Name = "cb_efect";
             this.cb_efect.Size = new System.Drawing.Size(143, 29);
             this.cb_efect.TabIndex = 54;
@@ -411,7 +333,7 @@
             this.cb_cred.AutoSize = true;
             this.cb_cred.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_cred.ForeColor = System.Drawing.Color.Gold;
-            this.cb_cred.Location = new System.Drawing.Point(768, 178);
+            this.cb_cred.Location = new System.Drawing.Point(525, 139);
             this.cb_cred.Name = "cb_cred";
             this.cb_cred.Size = new System.Drawing.Size(131, 29);
             this.cb_cred.TabIndex = 56;
@@ -424,7 +346,7 @@
             this.lbl_company_name.AutoSize = true;
             this.lbl_company_name.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_company_name.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_company_name.Location = new System.Drawing.Point(78, 27);
+            this.lbl_company_name.Location = new System.Drawing.Point(30, 16);
             this.lbl_company_name.Name = "lbl_company_name";
             this.lbl_company_name.Size = new System.Drawing.Size(176, 28);
             this.lbl_company_name.TabIndex = 59;
@@ -436,7 +358,7 @@
             this.lbl_phone.AutoSize = true;
             this.lbl_phone.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_phone.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_phone.Location = new System.Drawing.Point(437, 27);
+            this.lbl_phone.Location = new System.Drawing.Point(292, 16);
             this.lbl_phone.Name = "lbl_phone";
             this.lbl_phone.Size = new System.Drawing.Size(124, 28);
             this.lbl_phone.TabIndex = 62;
@@ -452,7 +374,7 @@
             this.txt_phone.BorderSize = 2;
             this.txt_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_phone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_phone.Location = new System.Drawing.Point(374, 59);
+            this.txt_phone.Location = new System.Drawing.Point(240, 48);
             this.txt_phone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_phone.Multiline = false;
             this.txt_phone.Name = "txt_phone";
@@ -460,7 +382,7 @@
             this.txt_phone.PasswordChar = false;
             this.txt_phone.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_phone.PlaceholderText = "";
-            this.txt_phone.Size = new System.Drawing.Size(250, 31);
+            this.txt_phone.Size = new System.Drawing.Size(228, 31);
             this.txt_phone.TabIndex = 52;
             this.txt_phone.Texts = "";
             this.txt_phone.UnderlinedStyle = false;
@@ -475,7 +397,7 @@
             this.txt_email.BorderSize = 2;
             this.txt_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_email.Location = new System.Drawing.Point(374, 169);
+            this.txt_email.Location = new System.Drawing.Point(240, 136);
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Multiline = false;
             this.txt_email.Name = "txt_email";
@@ -483,7 +405,7 @@
             this.txt_email.PasswordChar = false;
             this.txt_email.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_email.PlaceholderText = "";
-            this.txt_email.Size = new System.Drawing.Size(250, 31);
+            this.txt_email.Size = new System.Drawing.Size(228, 31);
             this.txt_email.TabIndex = 63;
             this.txt_email.Texts = "";
             this.txt_email.UnderlinedStyle = false;
@@ -494,7 +416,7 @@
             this.lbl_state.AutoSize = true;
             this.lbl_state.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_state.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_state.Location = new System.Drawing.Point(783, 27);
+            this.lbl_state.Location = new System.Drawing.Point(541, 16);
             this.lbl_state.Name = "lbl_state";
             this.lbl_state.Size = new System.Drawing.Size(100, 28);
             this.lbl_state.TabIndex = 65;
@@ -506,7 +428,7 @@
             this.lbl_email.AutoSize = true;
             this.lbl_email.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_email.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_email.Location = new System.Drawing.Point(459, 137);
+            this.lbl_email.Location = new System.Drawing.Point(314, 104);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(80, 28);
             this.lbl_email.TabIndex = 64;
@@ -524,11 +446,11 @@
             this.cbo_state.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbo_state.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbo_state.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_state.Location = new System.Drawing.Point(709, 58);
+            this.cbo_state.Location = new System.Drawing.Point(475, 47);
             this.cbo_state.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbo_state.Name = "cbo_state";
             this.cbo_state.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_state.Size = new System.Drawing.Size(248, 30);
+            this.cbo_state.Size = new System.Drawing.Size(232, 30);
             this.cbo_state.TabIndex = 66;
             this.cbo_state.Texts = "";
             // 
@@ -538,7 +460,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gold;
-            this.label4.Location = new System.Drawing.Point(108, 137);
+            this.label4.Location = new System.Drawing.Point(60, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 28);
             this.label4.TabIndex = 58;
@@ -554,7 +476,7 @@
             this.txt_empresa.BorderSize = 2;
             this.txt_empresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_empresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_empresa.Location = new System.Drawing.Point(41, 169);
+            this.txt_empresa.Location = new System.Drawing.Point(4, 136);
             this.txt_empresa.Margin = new System.Windows.Forms.Padding(4);
             this.txt_empresa.Multiline = false;
             this.txt_empresa.Name = "txt_empresa";
@@ -562,7 +484,7 @@
             this.txt_empresa.PasswordChar = false;
             this.txt_empresa.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_empresa.PlaceholderText = "";
-            this.txt_empresa.Size = new System.Drawing.Size(250, 31);
+            this.txt_empresa.Size = new System.Drawing.Size(228, 31);
             this.txt_empresa.TabIndex = 51;
             this.txt_empresa.Texts = "";
             this.txt_empresa.UnderlinedStyle = false;
@@ -573,7 +495,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Gold;
-            this.label6.Location = new System.Drawing.Point(430, 247);
+            this.label6.Location = new System.Drawing.Point(285, 192);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(138, 28);
             this.label6.TabIndex = 60;
@@ -585,7 +507,7 @@
             this.lbl_cuit.AutoSize = true;
             this.lbl_cuit.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cuit.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cuit.Location = new System.Drawing.Point(135, 247);
+            this.lbl_cuit.Location = new System.Drawing.Point(87, 192);
             this.lbl_cuit.Name = "lbl_cuit";
             this.lbl_cuit.Size = new System.Drawing.Size(62, 28);
             this.lbl_cuit.TabIndex = 57;
@@ -603,11 +525,11 @@
             this.cbox_cat.IconColor = System.Drawing.Color.DarkViolet;
             this.cbox_cat.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_cat.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_cat.Location = new System.Drawing.Point(374, 278);
+            this.cbox_cat.Location = new System.Drawing.Point(239, 223);
             this.cbox_cat.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_cat.Name = "cbox_cat";
             this.cbox_cat.Padding = new System.Windows.Forms.Padding(2);
-            this.cbox_cat.Size = new System.Drawing.Size(251, 30);
+            this.cbox_cat.Size = new System.Drawing.Size(230, 30);
             this.cbox_cat.TabIndex = 61;
             this.cbox_cat.Texts = "";
             // 
@@ -621,7 +543,7 @@
             this.txt_cuit.BorderSize = 2;
             this.txt_cuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_cuit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_cuit.Location = new System.Drawing.Point(41, 279);
+            this.txt_cuit.Location = new System.Drawing.Point(4, 224);
             this.txt_cuit.Margin = new System.Windows.Forms.Padding(4);
             this.txt_cuit.Multiline = false;
             this.txt_cuit.Name = "txt_cuit";
@@ -629,7 +551,7 @@
             this.txt_cuit.PasswordChar = false;
             this.txt_cuit.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_cuit.PlaceholderText = "";
-            this.txt_cuit.Size = new System.Drawing.Size(250, 31);
+            this.txt_cuit.Size = new System.Drawing.Size(228, 31);
             this.txt_cuit.TabIndex = 50;
             this.txt_cuit.Texts = "";
             this.txt_cuit.UnderlinedStyle = false;
@@ -648,7 +570,7 @@
             this.panelitop.RowCount = 1;
             this.panelitop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panelitop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panelitop.Size = new System.Drawing.Size(1001, 94);
+            this.panelitop.Size = new System.Drawing.Size(710, 75);
             this.panelitop.TabIndex = 3;
             // 
             // lbl_vendedor
@@ -657,20 +579,20 @@
             this.lbl_vendedor.AutoSize = true;
             this.lbl_vendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_vendedor.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_vendedor.Location = new System.Drawing.Point(254, 19);
+            this.lbl_vendedor.Location = new System.Drawing.Point(108, 10);
             this.lbl_vendedor.Name = "lbl_vendedor";
             this.lbl_vendedor.Size = new System.Drawing.Size(493, 55);
             this.lbl_vendedor.TabIndex = 0;
             this.lbl_vendedor.Text = "CREAR VENDEDOR";
             // 
-            // formVendors2
+            // formVendorsAdd
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1001, 558);
+            this.ClientSize = new System.Drawing.Size(710, 402);
             this.Controls.Add(this.panel_main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "formVendors2";
+            this.Name = "formVendorsAdd";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Agregar vendedor";
             this.Load += new System.EventHandler(this.formVendors2_Load);
@@ -681,7 +603,6 @@
             this.panel_update.ResumeLayout(false);
             this.panel_update.PerformLayout();
             this.panel_add.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panelitop.ResumeLayout(false);
@@ -703,9 +624,6 @@
         private RJCodeAdvance.RJControls.RJButton btn_back;
         private RJCodeAdvance.RJControls.RJButton rjButton2;
         private System.Windows.Forms.TableLayoutPanel panel_add;
-        private CustomBox.RJControls.RJButton btn_borrar;
-        private CustomBox.RJControls.RJButton btn_guardar;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private CustomBox.RJControls.RJTextBox txt_company_name;
         private System.Windows.Forms.Label label4;
