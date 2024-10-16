@@ -29,24 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsers));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsers));
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_top = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Down = new CustomBox.RJControls.RJButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_usuario = new System.Windows.Forms.Label();
             this.panel_bottom = new System.Windows.Forms.TableLayoutPanel();
             this.panel_updates = new System.Windows.Forms.Panel();
             this.lbl_updatetime = new System.Windows.Forms.Label();
             this.lbl_updateversion = new System.Windows.Forms.Label();
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.btn_seleccionar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_nombre_completo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_id_rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.data_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
             this.btn_back = new RJCodeAdvance.RJControls.RJButton();
@@ -72,22 +81,14 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_seleccionar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_nombre_completo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_clave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_id_rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.data_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel_top = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
+            this.panel_atras = new System.Windows.Forms.Panel();
+            this.flowpanel_user = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbl_usuario = new System.Windows.Forms.Label();
+            this.btn_Down = new CustomBox.RJControls.RJButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
-            this.panel_top.SuspendLayout();
             this.panel_bottom.SuspendLayout();
             this.panel_updates.SuspendLayout();
             this.panel_mid.SuspendLayout();
@@ -97,6 +98,9 @@
             this.panel_filter.SuspendLayout();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
+            this.panel_top.SuspendLayout();
+            this.panel_atras.SuspendLayout();
+            this.flowpanel_user.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -117,91 +121,6 @@
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.Size = new System.Drawing.Size(1086, 537);
             this.panel_main.TabIndex = 1;
-            // 
-            // panel_top
-            // 
-            this.panel_top.BackColor = System.Drawing.Color.Gold;
-            this.panel_top.ColumnCount = 4;
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_top.Controls.Add(this.btn_Down, 2, 0);
-            this.panel_top.Controls.Add(this.label1, 1, 0);
-            this.panel_top.Controls.Add(this.btn_hamb, 0, 0);
-            this.panel_top.Controls.Add(this.lbl_usuario, 3, 0);
-            this.panel_top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_top.ForeColor = System.Drawing.Color.Black;
-            this.panel_top.Location = new System.Drawing.Point(0, 0);
-            this.panel_top.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_top.Name = "panel_top";
-            this.panel_top.RowCount = 1;
-            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_top.Size = new System.Drawing.Size(1086, 53);
-            this.panel_top.TabIndex = 15;
-            // 
-            // btn_Down
-            // 
-            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
-            this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_Down.BorderColor = System.Drawing.Color.Red;
-            this.btn_Down.BorderRadius = 1;
-            this.btn_Down.BorderSize = 0;
-            this.btn_Down.FlatAppearance.BorderSize = 0;
-            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Down.ForeColor = System.Drawing.Color.White;
-            this.btn_Down.Location = new System.Drawing.Point(750, 13);
-            this.btn_Down.Name = "btn_Down";
-            this.btn_Down.Size = new System.Drawing.Size(30, 27);
-            this.btn_Down.TabIndex = 10;
-            this.btn_Down.TextColor = System.Drawing.Color.White;
-            this.btn_Down.UseVisualStyleBackColor = false;
-            this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Britannic Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 53);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "POSLyion";
-            // 
-            // btn_hamb
-            // 
-            this.btn_hamb.BackColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_hamb.BackgroundImage")));
-            this.btn_hamb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_hamb.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_hamb.BorderRadius = 0;
-            this.btn_hamb.BorderSize = 0;
-            this.btn_hamb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_hamb.FlatAppearance.BorderSize = 0;
-            this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hamb.ForeColor = System.Drawing.Color.White;
-            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
-            this.btn_hamb.Name = "btn_hamb";
-            this.btn_hamb.Size = new System.Drawing.Size(44, 47);
-            this.btn_hamb.TabIndex = 11;
-            this.btn_hamb.TextColor = System.Drawing.Color.White;
-            this.btn_hamb.UseVisualStyleBackColor = false;
-            this.btn_hamb.Click += new System.EventHandler(this.btn_hamb_Click);
-            // 
-            // lbl_usuario
-            // 
-            this.lbl_usuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_usuario.AutoSize = true;
-            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_usuario.Location = new System.Drawing.Point(793, 12);
-            this.lbl_usuario.Name = "lbl_usuario";
-            this.lbl_usuario.Size = new System.Drawing.Size(165, 29);
-            this.lbl_usuario.TabIndex = 12;
-            this.lbl_usuario.Text = "PERSONAL1";
             // 
             // panel_bottom
             // 
@@ -338,6 +257,125 @@
             this.dgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvdata.Size = new System.Drawing.Size(828, 464);
             this.dgvdata.TabIndex = 32;
+            this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick_1);
+            // 
+            // btn_seleccionar
+            // 
+            this.btn_seleccionar.HeaderText = "";
+            this.btn_seleccionar.Name = "btn_seleccionar";
+            this.btn_seleccionar.ReadOnly = true;
+            this.btn_seleccionar.Width = 20;
+            // 
+            // data_id
+            // 
+            this.data_id.FillWeight = 50F;
+            this.data_id.HeaderText = "ID";
+            this.data_id.Name = "data_id";
+            this.data_id.ReadOnly = true;
+            this.data_id.Visible = false;
+            this.data_id.Width = 50;
+            // 
+            // data_dni
+            // 
+            this.data_dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.data_dni.FillWeight = 80F;
+            this.data_dni.HeaderText = "DNI";
+            this.data_dni.Name = "data_dni";
+            this.data_dni.ReadOnly = true;
+            // 
+            // data_nombre_completo
+            // 
+            this.data_nombre_completo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.data_nombre_completo.FillWeight = 150F;
+            this.data_nombre_completo.HeaderText = "NOMBRE";
+            this.data_nombre_completo.Name = "data_nombre_completo";
+            this.data_nombre_completo.ReadOnly = true;
+            // 
+            // data_correo
+            // 
+            this.data_correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.data_correo.FillWeight = 150F;
+            this.data_correo.HeaderText = "CORREO";
+            this.data_correo.Name = "data_correo";
+            this.data_correo.ReadOnly = true;
+            this.data_correo.Visible = false;
+            // 
+            // data_username
+            // 
+            this.data_username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.data_username.FillWeight = 120F;
+            this.data_username.HeaderText = "NOMBRE USUARIO";
+            this.data_username.Name = "data_username";
+            this.data_username.ReadOnly = true;
+            // 
+            // data_clave
+            // 
+            this.data_clave.HeaderText = "CLAVE";
+            this.data_clave.Name = "data_clave";
+            this.data_clave.ReadOnly = true;
+            this.data_clave.Visible = false;
+            // 
+            // data_id_rol
+            // 
+            this.data_id_rol.HeaderText = "IDROL";
+            this.data_id_rol.Name = "data_id_rol";
+            this.data_id_rol.ReadOnly = true;
+            this.data_id_rol.Visible = false;
+            this.data_id_rol.Width = 20;
+            // 
+            // data_rol
+            // 
+            this.data_rol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.data_rol.FillWeight = 40F;
+            this.data_rol.HeaderText = "ROL";
+            this.data_rol.Name = "data_rol";
+            this.data_rol.ReadOnly = true;
+            // 
+            // data_tel
+            // 
+            this.data_tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.data_tel.FillWeight = 80F;
+            this.data_tel.HeaderText = "TELEFONO";
+            this.data_tel.Name = "data_tel";
+            this.data_tel.ReadOnly = true;
+            // 
+            // data_estado
+            // 
+            this.data_estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.data_estado.FillWeight = 80F;
+            this.data_estado.HeaderText = "ESTADO";
+            this.data_estado.Name = "data_estado";
+            this.data_estado.ReadOnly = true;
+            this.data_estado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // data_estado_valor
+            // 
+            this.data_estado_valor.HeaderText = "ESTADO_VALOR";
+            this.data_estado_valor.Name = "data_estado_valor";
+            this.data_estado_valor.ReadOnly = true;
+            this.data_estado_valor.Visible = false;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_editar.FillWeight = 60F;
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btn_editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_eliminar.FillWeight = 60F;
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
+            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel_midizq
             // 
@@ -648,123 +686,108 @@
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
-            // btn_seleccionar
+            // panel_top
             // 
-            this.btn_seleccionar.HeaderText = "";
-            this.btn_seleccionar.Name = "btn_seleccionar";
-            this.btn_seleccionar.ReadOnly = true;
-            this.btn_seleccionar.Width = 20;
+            this.panel_top.BackColor = System.Drawing.Color.Gold;
+            this.panel_top.ColumnCount = 3;
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.panel_top.Controls.Add(this.label1, 1, 0);
+            this.panel_top.Controls.Add(this.btn_hamb, 0, 0);
+            this.panel_top.Controls.Add(this.panel_atras, 2, 0);
+            this.panel_top.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_top.ForeColor = System.Drawing.Color.Black;
+            this.panel_top.Location = new System.Drawing.Point(0, 0);
+            this.panel_top.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_top.Name = "panel_top";
+            this.panel_top.RowCount = 1;
+            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.panel_top.Size = new System.Drawing.Size(1086, 53);
+            this.panel_top.TabIndex = 17;
             // 
-            // data_id
+            // btn_hamb
             // 
-            this.data_id.FillWeight = 50F;
-            this.data_id.HeaderText = "ID";
-            this.data_id.Name = "data_id";
-            this.data_id.ReadOnly = true;
-            this.data_id.Visible = false;
-            this.data_id.Width = 50;
+            this.btn_hamb.BackColor = System.Drawing.Color.Transparent;
+            this.btn_hamb.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_hamb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_hamb.BackgroundImage")));
+            this.btn_hamb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_hamb.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btn_hamb.BorderRadius = 0;
+            this.btn_hamb.BorderSize = 0;
+            this.btn_hamb.FlatAppearance.BorderSize = 0;
+            this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_hamb.ForeColor = System.Drawing.Color.White;
+            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
+            this.btn_hamb.Name = "btn_hamb";
+            this.btn_hamb.Size = new System.Drawing.Size(44, 45);
+            this.btn_hamb.TabIndex = 11;
+            this.btn_hamb.TextColor = System.Drawing.Color.White;
+            this.btn_hamb.UseVisualStyleBackColor = false;
             // 
-            // data_dni
+            // panel_atras
             // 
-            this.data_dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.data_dni.FillWeight = 80F;
-            this.data_dni.HeaderText = "DNI";
-            this.data_dni.Name = "data_dni";
-            this.data_dni.ReadOnly = true;
+            this.panel_atras.Controls.Add(this.flowpanel_user);
+            this.panel_atras.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_atras.Location = new System.Drawing.Point(778, 3);
+            this.panel_atras.Name = "panel_atras";
+            this.panel_atras.Size = new System.Drawing.Size(305, 47);
+            this.panel_atras.TabIndex = 12;
             // 
-            // data_nombre_completo
+            // flowpanel_user
             // 
-            this.data_nombre_completo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.data_nombre_completo.FillWeight = 150F;
-            this.data_nombre_completo.HeaderText = "NOMBRE";
-            this.data_nombre_completo.Name = "data_nombre_completo";
-            this.data_nombre_completo.ReadOnly = true;
+            this.flowpanel_user.Controls.Add(this.lbl_usuario);
+            this.flowpanel_user.Controls.Add(this.btn_Down);
+            this.flowpanel_user.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowpanel_user.Location = new System.Drawing.Point(-3, 10);
+            this.flowpanel_user.Margin = new System.Windows.Forms.Padding(0);
+            this.flowpanel_user.Name = "flowpanel_user";
+            this.flowpanel_user.Size = new System.Drawing.Size(280, 32);
+            this.flowpanel_user.TabIndex = 13;
             // 
-            // data_correo
+            // lbl_usuario
             // 
-            this.data_correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.data_correo.FillWeight = 150F;
-            this.data_correo.HeaderText = "CORREO";
-            this.data_correo.Name = "data_correo";
-            this.data_correo.ReadOnly = true;
-            this.data_correo.Visible = false;
+            this.lbl_usuario.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_usuario.AutoSize = true;
+            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_usuario.Location = new System.Drawing.Point(112, 0);
+            this.lbl_usuario.Name = "lbl_usuario";
+            this.lbl_usuario.Size = new System.Drawing.Size(165, 29);
+            this.lbl_usuario.TabIndex = 12;
+            this.lbl_usuario.Text = "PERSONAL1";
             // 
-            // data_username
+            // btn_Down
             // 
-            this.data_username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.data_username.FillWeight = 120F;
-            this.data_username.HeaderText = "NOMBRE USUARIO";
-            this.data_username.Name = "data_username";
-            this.data_username.ReadOnly = true;
+            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
+            this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_Down.BorderColor = System.Drawing.Color.Red;
+            this.btn_Down.BorderRadius = 0;
+            this.btn_Down.BorderSize = 0;
+            this.btn_Down.FlatAppearance.BorderSize = 0;
+            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Down.ForeColor = System.Drawing.Color.White;
+            this.btn_Down.Location = new System.Drawing.Point(79, 1);
+            this.btn_Down.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Down.Name = "btn_Down";
+            this.btn_Down.Size = new System.Drawing.Size(30, 27);
+            this.btn_Down.TabIndex = 11;
+            this.btn_Down.TextColor = System.Drawing.Color.White;
+            this.btn_Down.UseVisualStyleBackColor = false;
             // 
-            // data_clave
+            // label1
             // 
-            this.data_clave.HeaderText = "CLAVE";
-            this.data_clave.Name = "data_clave";
-            this.data_clave.ReadOnly = true;
-            this.data_clave.Visible = false;
-            // 
-            // data_id_rol
-            // 
-            this.data_id_rol.HeaderText = "IDROL";
-            this.data_id_rol.Name = "data_id_rol";
-            this.data_id_rol.ReadOnly = true;
-            this.data_id_rol.Visible = false;
-            this.data_id_rol.Width = 20;
-            // 
-            // data_rol
-            // 
-            this.data_rol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.data_rol.FillWeight = 40F;
-            this.data_rol.HeaderText = "ROL";
-            this.data_rol.Name = "data_rol";
-            this.data_rol.ReadOnly = true;
-            // 
-            // data_tel
-            // 
-            this.data_tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.data_tel.FillWeight = 80F;
-            this.data_tel.HeaderText = "TELEFONO";
-            this.data_tel.Name = "data_tel";
-            this.data_tel.ReadOnly = true;
-            // 
-            // data_estado
-            // 
-            this.data_estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.data_estado.FillWeight = 80F;
-            this.data_estado.HeaderText = "ESTADO";
-            this.data_estado.Name = "data_estado";
-            this.data_estado.ReadOnly = true;
-            this.data_estado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // data_estado_valor
-            // 
-            this.data_estado_valor.HeaderText = "ESTADO_VALOR";
-            this.data_estado_valor.Name = "data_estado_valor";
-            this.data_estado_valor.ReadOnly = true;
-            this.data_estado_valor.Visible = false;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_editar.FillWeight = 60F;
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.ReadOnly = true;
-            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btn_editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_eliminar.FillWeight = 60F;
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.ReadOnly = true;
-            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Britannic Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(53, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(221, 53);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "POSLyion";
             // 
             // formUsers
             // 
@@ -777,8 +800,6 @@
             this.Load += new System.EventHandler(this.formUsers2_Load);
             this.Resize += new System.EventHandler(this.formUsers2_Resize);
             this.panel_main.ResumeLayout(false);
-            this.panel_top.ResumeLayout(false);
-            this.panel_top.PerformLayout();
             this.panel_bottom.ResumeLayout(false);
             this.panel_updates.ResumeLayout(false);
             this.panel_updates.PerformLayout();
@@ -790,6 +811,11 @@
             this.panel_filter.PerformLayout();
             this.menu_sesion.ResumeLayout(false);
             this.menu_Main.ResumeLayout(false);
+            this.panel_top.ResumeLayout(false);
+            this.panel_top.PerformLayout();
+            this.panel_atras.ResumeLayout(false);
+            this.flowpanel_user.ResumeLayout(false);
+            this.flowpanel_user.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -797,11 +823,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel panel_main;
-        private System.Windows.Forms.TableLayoutPanel panel_top;
-        private CustomBox.RJControls.RJButton btn_Down;
-        private System.Windows.Forms.Label label1;
-        private RJCodeAdvance.RJControls.RJButton btn_hamb;
-        private System.Windows.Forms.Label lbl_usuario;
         private System.Windows.Forms.TableLayoutPanel panel_bottom;
         private System.Windows.Forms.Panel panel_updates;
         private System.Windows.Forms.Label lbl_updatetime;
@@ -847,5 +868,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn data_estado_valor;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
+        private System.Windows.Forms.TableLayoutPanel panel_top;
+        private RJCodeAdvance.RJControls.RJButton btn_hamb;
+        private System.Windows.Forms.Panel panel_atras;
+        private System.Windows.Forms.FlowLayoutPanel flowpanel_user;
+        private System.Windows.Forms.Label lbl_usuario;
+        private CustomBox.RJControls.RJButton btn_Down;
+        private System.Windows.Forms.Label label1;
     }
 }

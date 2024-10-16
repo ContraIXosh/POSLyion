@@ -20,21 +20,30 @@ namespace PDCLyion
             InitializeComponent();
         }
 
-        private void abrirHerencia(Form formhija)
+        //private void abrirHerencia(Form formhija)
+        //{
+        //    if (formhija.Controls.Contains(this.panel_top))
+        //    {
+        //        formhija.Controls.Remove(this.panel_top);
+        //    }
+
+        //    this.panel_main.Controls.Clear();
+        //    formhija.TopLevel = false;
+        //    formhija.FormBorderStyle = FormBorderStyle.None;
+        //    formhija.Dock = DockStyle.Fill;
+
+        //    panel_main.Controls.Add(formhija);
+        //    formhija.Show();
+
+        //}
+        private void abrirHerencia(Form formHijo)
         {
-            if (formhija.Controls.Contains(this.panel_top))
-            {
-                formhija.Controls.Remove(this.panel_top);
-            }
+            if (this.ActiveMdiChild != null)
+                this.ActiveMdiChild.Close(); // Cierra el formulario hijo actual
 
-            this.panel_main.Controls.Clear();
-            formhija.TopLevel = false;
-            formhija.FormBorderStyle = FormBorderStyle.None;
-            formhija.Dock = DockStyle.Fill;
-
-            panel_main.Controls.Add(formhija);
-            formhija.Show();
-
+            formHijo.MdiParent = this; // Establece el formulario hijo como MDI del formulario principal
+            formHijo.Dock = DockStyle.Fill; // Llena todo el espacio disponible
+            formHijo.Show(); // Muestra el nuevo formulario
         }
 
 
@@ -120,15 +129,15 @@ namespace PDCLyion
             }
         }
 
-        private void btn_hamb_Click(object sender, EventArgs e)
-        {
-            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
-        }
+        //private void btn_hamb_Click(object sender, EventArgs e)
+        //{
+        //    menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        //}
 
-        private void btn_Down_Click(object sender, EventArgs e)
-        {
-            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
-        }
+        //private void btn_Down_Click(object sender, EventArgs e)
+        //{
+        //    menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+        //}
 
         private void btn_back_Click(object sender, EventArgs e)
         {

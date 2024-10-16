@@ -47,15 +47,15 @@ namespace PDCLyion
             this.panel_izq.Hide();
         }
 
-        private void btn_hamb_Click(object sender, EventArgs e)
-        {
-            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
-        }
+        //private void btn_hamb_Click(object sender, EventArgs e)
+        //{
+        //    menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        //}
 
-        private void btn_Down_Click(object sender, EventArgs e)
-        {
-            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
-        }
+        //private void btn_Down_Click(object sender, EventArgs e)
+        //{
+        //    menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+        //}
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -29,13 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formStadistic));
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_top = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Down = new CustomBox.RJControls.RJButton();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_usuario = new System.Windows.Forms.Label();
             this.panel_update = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -75,7 +69,6 @@
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_main.SuspendLayout();
-            this.panel_top.SuspendLayout();
             this.panel_update.SuspendLayout();
             this.panel_mid.SuspendLayout();
             this.panel_izq.SuspendLayout();
@@ -89,7 +82,6 @@
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_main.Controls.Add(this.panel_top, 0, 0);
             this.panel_main.Controls.Add(this.panel_update, 0, 2);
             this.panel_main.Controls.Add(this.panel_mid, 0, 1);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -102,90 +94,6 @@
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.panel_main.Size = new System.Drawing.Size(982, 611);
             this.panel_main.TabIndex = 0;
-            // 
-            // panel_top
-            // 
-            this.panel_top.BackColor = System.Drawing.Color.Gold;
-            this.panel_top.ColumnCount = 4;
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_top.Controls.Add(this.btn_Down, 2, 0);
-            this.panel_top.Controls.Add(this.label10, 1, 0);
-            this.panel_top.Controls.Add(this.btn_hamb, 0, 0);
-            this.panel_top.Controls.Add(this.lbl_usuario, 3, 0);
-            this.panel_top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_top.ForeColor = System.Drawing.Color.Black;
-            this.panel_top.Location = new System.Drawing.Point(0, 0);
-            this.panel_top.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_top.Name = "panel_top";
-            this.panel_top.RowCount = 1;
-            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_top.Size = new System.Drawing.Size(982, 53);
-            this.panel_top.TabIndex = 15;
-            // 
-            // btn_Down
-            // 
-            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
-            this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_Down.BorderColor = System.Drawing.Color.Red;
-            this.btn_Down.BorderRadius = 1;
-            this.btn_Down.BorderSize = 0;
-            this.btn_Down.FlatAppearance.BorderSize = 0;
-            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Down.ForeColor = System.Drawing.Color.White;
-            this.btn_Down.Location = new System.Drawing.Point(677, 13);
-            this.btn_Down.Name = "btn_Down";
-            this.btn_Down.Size = new System.Drawing.Size(30, 27);
-            this.btn_Down.TabIndex = 10;
-            this.btn_Down.TextColor = System.Drawing.Color.White;
-            this.btn_Down.UseVisualStyleBackColor = false;
-            this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Britannic Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(53, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(221, 53);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "POSLyion";
-            // 
-            // btn_hamb
-            // 
-            this.btn_hamb.BackColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_hamb.BackgroundImage")));
-            this.btn_hamb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_hamb.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_hamb.BorderRadius = 0;
-            this.btn_hamb.BorderSize = 0;
-            this.btn_hamb.FlatAppearance.BorderSize = 0;
-            this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hamb.ForeColor = System.Drawing.Color.White;
-            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
-            this.btn_hamb.Name = "btn_hamb";
-            this.btn_hamb.Size = new System.Drawing.Size(44, 45);
-            this.btn_hamb.TabIndex = 11;
-            this.btn_hamb.TextColor = System.Drawing.Color.White;
-            this.btn_hamb.UseVisualStyleBackColor = false;
-            this.btn_hamb.Click += new System.EventHandler(this.btn_hamb_Click);
-            // 
-            // lbl_usuario
-            // 
-            this.lbl_usuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_usuario.AutoSize = true;
-            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_usuario.Location = new System.Drawing.Point(720, 12);
-            this.lbl_usuario.Name = "lbl_usuario";
-            this.lbl_usuario.Size = new System.Drawing.Size(165, 29);
-            this.lbl_usuario.TabIndex = 12;
-            this.lbl_usuario.Text = "PERSONAL1";
             // 
             // panel_update
             // 
@@ -682,8 +590,6 @@
             this.Name = "formStadistic";
             this.Text = "formStadistic";
             this.panel_main.ResumeLayout(false);
-            this.panel_top.ResumeLayout(false);
-            this.panel_top.PerformLayout();
             this.panel_update.ResumeLayout(false);
             this.panel_update.PerformLayout();
             this.panel_mid.ResumeLayout(false);
@@ -724,11 +630,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel panel_top;
-        private CustomBox.RJControls.RJButton btn_Down;
-        private System.Windows.Forms.Label label10;
-        private RJCodeAdvance.RJControls.RJButton btn_hamb;
-        private System.Windows.Forms.Label lbl_usuario;
         private RJCodeAdvance.RJControls.RJDropdownMenu menu_sesion;
         private System.Windows.Forms.ToolStripMenuItem verPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inicioAdministradorToolStripMenuItem;

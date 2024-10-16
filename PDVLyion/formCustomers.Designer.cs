@@ -29,19 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formCustomers));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_top = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Down = new CustomBox.RJControls.RJButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_hamb = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_usuario = new System.Windows.Forms.Label();
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_add = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_actualizar = new CustomBox.RJControls.RJButton();
+            this.btn_back = new RJCodeAdvance.RJControls.RJButton();
+            this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_search = new System.Windows.Forms.Label();
+            this.txt_search = new System.Windows.Forms.TextBox();
+            this.cb_inactive = new System.Windows.Forms.CheckBox();
+            this.grid_proveedores = new System.Windows.Forms.DataGridView();
+            this.cliente_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente_dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente_fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente_estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cliente_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_bottom = new System.Windows.Forms.TableLayoutPanel();
             this.panel_update = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,36 +74,16 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grid_proveedores = new System.Windows.Forms.DataGridView();
-            this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_actualizar = new CustomBox.RJControls.RJButton();
-            this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_search = new System.Windows.Forms.Label();
-            this.txt_search = new System.Windows.Forms.TextBox();
-            this.cb_inactive = new System.Windows.Forms.CheckBox();
-            this.btn_add = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_back = new RJCodeAdvance.RJControls.RJButton();
-            this.cliente_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente_dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente_fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente_tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente_estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cliente_estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_main.SuspendLayout();
-            this.panel_top.SuspendLayout();
             this.panel_mid.SuspendLayout();
+            this.panel_midizq.SuspendLayout();
+            this.panel_btns.SuspendLayout();
+            this.panel_filter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_proveedores)).BeginInit();
             this.panel_bottom.SuspendLayout();
             this.panel_update.SuspendLayout();
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_proveedores)).BeginInit();
-            this.panel_midizq.SuspendLayout();
-            this.panel_btns.SuspendLayout();
-            this.panel_filter.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -97,7 +91,6 @@
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_main.Controls.Add(this.panel_top, 0, 0);
             this.panel_main.Controls.Add(this.panel_mid, 0, 1);
             this.panel_main.Controls.Add(this.panel_bottom, 0, 2);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -110,90 +103,6 @@
             this.panel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_main.Size = new System.Drawing.Size(982, 537);
             this.panel_main.TabIndex = 0;
-            // 
-            // panel_top
-            // 
-            this.panel_top.BackColor = System.Drawing.Color.Gold;
-            this.panel_top.ColumnCount = 4;
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.panel_top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_top.Controls.Add(this.btn_Down, 2, 0);
-            this.panel_top.Controls.Add(this.label3, 1, 0);
-            this.panel_top.Controls.Add(this.btn_hamb, 0, 0);
-            this.panel_top.Controls.Add(this.lbl_usuario, 3, 0);
-            this.panel_top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_top.ForeColor = System.Drawing.Color.Black;
-            this.panel_top.Location = new System.Drawing.Point(0, 0);
-            this.panel_top.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_top.Name = "panel_top";
-            this.panel_top.RowCount = 1;
-            this.panel_top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_top.Size = new System.Drawing.Size(982, 53);
-            this.panel_top.TabIndex = 18;
-            // 
-            // btn_Down
-            // 
-            this.btn_Down.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Down.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_Down.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Down.BackgroundImage")));
-            this.btn_Down.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_Down.BorderColor = System.Drawing.Color.Red;
-            this.btn_Down.BorderRadius = 1;
-            this.btn_Down.BorderSize = 0;
-            this.btn_Down.FlatAppearance.BorderSize = 0;
-            this.btn_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Down.ForeColor = System.Drawing.Color.White;
-            this.btn_Down.Location = new System.Drawing.Point(677, 13);
-            this.btn_Down.Name = "btn_Down";
-            this.btn_Down.Size = new System.Drawing.Size(30, 27);
-            this.btn_Down.TabIndex = 10;
-            this.btn_Down.TextColor = System.Drawing.Color.White;
-            this.btn_Down.UseVisualStyleBackColor = false;
-            this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Britannic Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(53, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(221, 53);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "POSLyion";
-            // 
-            // btn_hamb
-            // 
-            this.btn_hamb.BackColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_hamb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_hamb.BackgroundImage")));
-            this.btn_hamb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_hamb.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_hamb.BorderRadius = 0;
-            this.btn_hamb.BorderSize = 0;
-            this.btn_hamb.FlatAppearance.BorderSize = 0;
-            this.btn_hamb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_hamb.ForeColor = System.Drawing.Color.White;
-            this.btn_hamb.Location = new System.Drawing.Point(3, 3);
-            this.btn_hamb.Name = "btn_hamb";
-            this.btn_hamb.Size = new System.Drawing.Size(44, 45);
-            this.btn_hamb.TabIndex = 11;
-            this.btn_hamb.TextColor = System.Drawing.Color.White;
-            this.btn_hamb.UseVisualStyleBackColor = false;
-            this.btn_hamb.Click += new System.EventHandler(this.btn_hamb_Click);
-            // 
-            // lbl_usuario
-            // 
-            this.lbl_usuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_usuario.AutoSize = true;
-            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_usuario.Location = new System.Drawing.Point(720, 12);
-            this.lbl_usuario.Name = "lbl_usuario";
-            this.lbl_usuario.Size = new System.Drawing.Size(165, 29);
-            this.lbl_usuario.TabIndex = 12;
-            this.lbl_usuario.Text = "PERSONAL1";
             // 
             // panel_mid
             // 
@@ -208,10 +117,312 @@
             this.panel_mid.Name = "panel_mid";
             this.panel_mid.RowCount = 1;
             this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 429F));
-            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 429F));
+            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 464F));
+            this.panel_mid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 464F));
             this.panel_mid.Size = new System.Drawing.Size(982, 464);
             this.panel_mid.TabIndex = 0;
+            // 
+            // panel_midizq
+            // 
+            this.panel_midizq.ColumnCount = 1;
+            this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
+            this.panel_midizq.Controls.Add(this.panel_filter, 0, 0);
+            this.panel_midizq.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_midizq.Location = new System.Drawing.Point(0, 0);
+            this.panel_midizq.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_midizq.Name = "panel_midizq";
+            this.panel_midizq.RowCount = 2;
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.panel_midizq.Size = new System.Drawing.Size(294, 464);
+            this.panel_midizq.TabIndex = 28;
+            // 
+            // panel_btns
+            // 
+            this.panel_btns.ColumnCount = 1;
+            this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_btns.Controls.Add(this.btn_add, 0, 0);
+            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
+            this.panel_btns.Controls.Add(this.btn_back, 0, 2);
+            this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_btns.Location = new System.Drawing.Point(3, 327);
+            this.panel_btns.Name = "panel_btns";
+            this.panel_btns.RowCount = 3;
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_btns.Size = new System.Drawing.Size(288, 134);
+            this.panel_btns.TabIndex = 16;
+            // 
+            // btn_add
+            // 
+            this.btn_add.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_add.BackColor = System.Drawing.Color.Transparent;
+            this.btn_add.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_add.BorderColor = System.Drawing.Color.Lime;
+            this.btn_add.BorderRadius = 7;
+            this.btn_add.BorderSize = 2;
+            this.btn_add.FlatAppearance.BorderSize = 0;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_add.ForeColor = System.Drawing.Color.Lime;
+            this.btn_add.Image = ((System.Drawing.Image)(resources.GetObject("btn_add.Image")));
+            this.btn_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_add.Location = new System.Drawing.Point(31, 3);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(225, 38);
+            this.btn_add.TabIndex = 27;
+            this.btn_add.Text = "AGREGAR CLIENTE";
+            this.btn_add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_add.TextColor = System.Drawing.Color.Lime;
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // btn_actualizar
+            // 
+            this.btn_actualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_actualizar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_actualizar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_actualizar.BorderColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_actualizar.BorderRadius = 10;
+            this.btn_actualizar.BorderSize = 2;
+            this.btn_actualizar.FlatAppearance.BorderSize = 0;
+            this.btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_actualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
+            this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_actualizar.Location = new System.Drawing.Point(31, 47);
+            this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_actualizar.Name = "btn_actualizar";
+            this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
+            this.btn_actualizar.TabIndex = 13;
+            this.btn_actualizar.Text = "Actualizar";
+            this.btn_actualizar.TextColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_actualizar.UseVisualStyleBackColor = false;
+            // 
+            // btn_back
+            // 
+            this.btn_back.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_back.BackColor = System.Drawing.Color.Transparent;
+            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_back.BorderColor = System.Drawing.Color.Red;
+            this.btn_back.BorderRadius = 7;
+            this.btn_back.BorderSize = 2;
+            this.btn_back.FlatAppearance.BorderSize = 0;
+            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.ForeColor = System.Drawing.Color.Red;
+            this.btn_back.Location = new System.Drawing.Point(31, 92);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(225, 38);
+            this.btn_back.TabIndex = 28;
+            this.btn_back.Text = "Regresar";
+            this.btn_back.TextColor = System.Drawing.Color.Red;
+            this.btn_back.UseVisualStyleBackColor = false;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
+            // 
+            // panel_filter
+            // 
+            this.panel_filter.ColumnCount = 1;
+            this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_filter.Controls.Add(this.lbl_search, 0, 0);
+            this.panel_filter.Controls.Add(this.txt_search, 0, 1);
+            this.panel_filter.Controls.Add(this.cb_inactive, 0, 2);
+            this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_filter.Location = new System.Drawing.Point(0, 0);
+            this.panel_filter.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_filter.Name = "panel_filter";
+            this.panel_filter.RowCount = 8;
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
+            this.panel_filter.Size = new System.Drawing.Size(294, 324);
+            this.panel_filter.TabIndex = 17;
+            // 
+            // lbl_search
+            // 
+            this.lbl_search.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_search.AutoSize = true;
+            this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_search.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_search.Location = new System.Drawing.Point(78, 16);
+            this.lbl_search.Name = "lbl_search";
+            this.lbl_search.Size = new System.Drawing.Size(137, 25);
+            this.lbl_search.TabIndex = 13;
+            this.lbl_search.Text = "BUSQUEDA";
+            // 
+            // txt_search
+            // 
+            this.txt_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_search.Location = new System.Drawing.Point(21, 44);
+            this.txt_search.Name = "txt_search";
+            this.txt_search.Size = new System.Drawing.Size(251, 29);
+            this.txt_search.TabIndex = 11;
+            // 
+            // cb_inactive
+            // 
+            this.cb_inactive.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cb_inactive.AutoSize = true;
+            this.cb_inactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_inactive.ForeColor = System.Drawing.Color.Gold;
+            this.cb_inactive.Location = new System.Drawing.Point(65, 90);
+            this.cb_inactive.Name = "cb_inactive";
+            this.cb_inactive.Size = new System.Drawing.Size(164, 24);
+            this.cb_inactive.TabIndex = 18;
+            this.cb_inactive.Text = "Mostrar inactivos";
+            this.cb_inactive.UseVisualStyleBackColor = true;
+            // 
+            // grid_proveedores
+            // 
+            this.grid_proveedores.AllowUserToAddRows = false;
+            this.grid_proveedores.AllowUserToDeleteRows = false;
+            this.grid_proveedores.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.grid_proveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.grid_proveedores.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.grid_proveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grid_proveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grid_proveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkViolet;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkViolet;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_proveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grid_proveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cliente_id,
+            this.cliente_dni,
+            this.cliente_fullname,
+            this.cliente_tel,
+            this.cliente_email,
+            this.cliente_estado,
+            this.cliente_estado_valor,
+            this.btn_editar,
+            this.btn_eliminar});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkMagenta;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid_proveedores.DefaultCellStyle = dataGridViewCellStyle3;
+            this.grid_proveedores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid_proveedores.EnableHeadersVisualStyles = false;
+            this.grid_proveedores.GridColor = System.Drawing.SystemColors.Desktop;
+            this.grid_proveedores.Location = new System.Drawing.Point(294, 0);
+            this.grid_proveedores.Margin = new System.Windows.Forms.Padding(0);
+            this.grid_proveedores.MultiSelect = false;
+            this.grid_proveedores.Name = "grid_proveedores";
+            this.grid_proveedores.ReadOnly = true;
+            this.grid_proveedores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkViolet;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid_proveedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.grid_proveedores.RowHeadersVisible = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DarkViolet;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.grid_proveedores.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.grid_proveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grid_proveedores.Size = new System.Drawing.Size(688, 464);
+            this.grid_proveedores.TabIndex = 27;
+            // 
+            // cliente_id
+            // 
+            this.cliente_id.HeaderText = "ID";
+            this.cliente_id.Name = "cliente_id";
+            this.cliente_id.ReadOnly = true;
+            this.cliente_id.Visible = false;
+            // 
+            // cliente_dni
+            // 
+            this.cliente_dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cliente_dni.FillWeight = 80F;
+            this.cliente_dni.HeaderText = "DNI";
+            this.cliente_dni.Name = "cliente_dni";
+            this.cliente_dni.ReadOnly = true;
+            // 
+            // cliente_fullname
+            // 
+            this.cliente_fullname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cliente_fullname.FillWeight = 130F;
+            this.cliente_fullname.HeaderText = "NOMBRE COMPLETO";
+            this.cliente_fullname.Name = "cliente_fullname";
+            this.cliente_fullname.ReadOnly = true;
+            // 
+            // cliente_tel
+            // 
+            this.cliente_tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cliente_tel.FillWeight = 80F;
+            this.cliente_tel.HeaderText = "TELEFONO";
+            this.cliente_tel.Name = "cliente_tel";
+            this.cliente_tel.ReadOnly = true;
+            // 
+            // cliente_email
+            // 
+            this.cliente_email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cliente_email.FillWeight = 80F;
+            this.cliente_email.HeaderText = "EMAIL";
+            this.cliente_email.Name = "cliente_email";
+            this.cliente_email.ReadOnly = true;
+            // 
+            // cliente_estado
+            // 
+            this.cliente_estado.FillWeight = 50F;
+            this.cliente_estado.HeaderText = "ESTADO";
+            this.cliente_estado.Name = "cliente_estado";
+            this.cliente_estado.ReadOnly = true;
+            this.cliente_estado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cliente_estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // cliente_estado_valor
+            // 
+            this.cliente_estado_valor.HeaderText = "ESTADO_VALOR";
+            this.cliente_estado_valor.Name = "cliente_estado_valor";
+            this.cliente_estado_valor.ReadOnly = true;
+            this.cliente_estado_valor.Visible = false;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_editar.FillWeight = 60F;
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_eliminar.FillWeight = 60F;
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
+            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel_bottom
             // 
@@ -314,367 +525,65 @@
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.comprasToolStripMenuItem.Text = "Compras";
             this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.reportesToolStripMenuItem.Text = "Reportes";
             this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
             // 
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
-            // 
-            // grid_proveedores
-            // 
-            this.grid_proveedores.AllowUserToAddRows = false;
-            this.grid_proveedores.AllowUserToDeleteRows = false;
-            this.grid_proveedores.AllowUserToResizeRows = false;
-            dataGridViewCellStyle56.BackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle56.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.Color.White;
-            this.grid_proveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle56;
-            this.grid_proveedores.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.grid_proveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grid_proveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.grid_proveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle57.BackColor = System.Drawing.Color.DarkViolet;
-            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle57.ForeColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.Color.DarkViolet;
-            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_proveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle57;
-            this.grid_proveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cliente_id,
-            this.cliente_dni,
-            this.cliente_fullname,
-            this.cliente_tel,
-            this.cliente_email,
-            this.cliente_estado,
-            this.cliente_estado_valor,
-            this.btn_editar,
-            this.btn_eliminar});
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle58.BackColor = System.Drawing.Color.Violet;
-            dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle58.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.Color.DarkMagenta;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_proveedores.DefaultCellStyle = dataGridViewCellStyle58;
-            this.grid_proveedores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_proveedores.EnableHeadersVisualStyles = false;
-            this.grid_proveedores.GridColor = System.Drawing.SystemColors.Desktop;
-            this.grid_proveedores.Location = new System.Drawing.Point(294, 0);
-            this.grid_proveedores.Margin = new System.Windows.Forms.Padding(0);
-            this.grid_proveedores.MultiSelect = false;
-            this.grid_proveedores.Name = "grid_proveedores";
-            this.grid_proveedores.ReadOnly = true;
-            this.grid_proveedores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle59.BackColor = System.Drawing.Color.Violet;
-            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.Color.DarkViolet;
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_proveedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle59;
-            this.grid_proveedores.RowHeadersVisible = false;
-            dataGridViewCellStyle60.BackColor = System.Drawing.Color.Violet;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle60.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.Color.DarkViolet;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.Color.White;
-            this.grid_proveedores.RowsDefaultCellStyle = dataGridViewCellStyle60;
-            this.grid_proveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_proveedores.Size = new System.Drawing.Size(688, 464);
-            this.grid_proveedores.TabIndex = 27;
-            // 
-            // panel_midizq
-            // 
-            this.panel_midizq.ColumnCount = 1;
-            this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
-            this.panel_midizq.Controls.Add(this.panel_filter, 0, 0);
-            this.panel_midizq.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_midizq.Location = new System.Drawing.Point(0, 0);
-            this.panel_midizq.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_midizq.Name = "panel_midizq";
-            this.panel_midizq.RowCount = 2;
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.panel_midizq.Size = new System.Drawing.Size(294, 464);
-            this.panel_midizq.TabIndex = 28;
-            // 
-            // panel_btns
-            // 
-            this.panel_btns.ColumnCount = 1;
-            this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_add, 0, 0);
-            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
-            this.panel_btns.Controls.Add(this.btn_back, 0, 2);
-            this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_btns.Location = new System.Drawing.Point(3, 327);
-            this.panel_btns.Name = "panel_btns";
-            this.panel_btns.RowCount = 3;
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.Size = new System.Drawing.Size(288, 134);
-            this.panel_btns.TabIndex = 16;
-            // 
-            // btn_actualizar
-            // 
-            this.btn_actualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_actualizar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BorderColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_actualizar.BorderRadius = 10;
-            this.btn_actualizar.BorderSize = 2;
-            this.btn_actualizar.FlatAppearance.BorderSize = 0;
-            this.btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_actualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
-            this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(31, 47);
-            this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_actualizar.Name = "btn_actualizar";
-            this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
-            this.btn_actualizar.TabIndex = 13;
-            this.btn_actualizar.Text = "Actualizar";
-            this.btn_actualizar.TextColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_actualizar.UseVisualStyleBackColor = false;
-            // 
-            // panel_filter
-            // 
-            this.panel_filter.ColumnCount = 1;
-            this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_filter.Controls.Add(this.lbl_search, 0, 0);
-            this.panel_filter.Controls.Add(this.txt_search, 0, 1);
-            this.panel_filter.Controls.Add(this.cb_inactive, 0, 2);
-            this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_filter.Location = new System.Drawing.Point(0, 0);
-            this.panel_filter.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_filter.Name = "panel_filter";
-            this.panel_filter.RowCount = 8;
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
-            this.panel_filter.Size = new System.Drawing.Size(294, 324);
-            this.panel_filter.TabIndex = 17;
-            // 
-            // lbl_search
-            // 
-            this.lbl_search.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_search.AutoSize = true;
-            this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_search.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_search.Location = new System.Drawing.Point(78, 16);
-            this.lbl_search.Name = "lbl_search";
-            this.lbl_search.Size = new System.Drawing.Size(137, 25);
-            this.lbl_search.TabIndex = 13;
-            this.lbl_search.Text = "BUSQUEDA";
-            // 
-            // txt_search
-            // 
-            this.txt_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_search.Location = new System.Drawing.Point(21, 44);
-            this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(251, 29);
-            this.txt_search.TabIndex = 11;
-            // 
-            // cb_inactive
-            // 
-            this.cb_inactive.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cb_inactive.AutoSize = true;
-            this.cb_inactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_inactive.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactive.Location = new System.Drawing.Point(65, 90);
-            this.cb_inactive.Name = "cb_inactive";
-            this.cb_inactive.Size = new System.Drawing.Size(164, 24);
-            this.cb_inactive.TabIndex = 18;
-            this.cb_inactive.Text = "Mostrar inactivos";
-            this.cb_inactive.UseVisualStyleBackColor = true;
-            // 
-            // btn_add
-            // 
-            this.btn_add.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_add.BackColor = System.Drawing.Color.Transparent;
-            this.btn_add.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_add.BorderColor = System.Drawing.Color.Lime;
-            this.btn_add.BorderRadius = 7;
-            this.btn_add.BorderSize = 2;
-            this.btn_add.FlatAppearance.BorderSize = 0;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.ForeColor = System.Drawing.Color.Lime;
-            this.btn_add.Image = ((System.Drawing.Image)(resources.GetObject("btn_add.Image")));
-            this.btn_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_add.Location = new System.Drawing.Point(31, 3);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(225, 38);
-            this.btn_add.TabIndex = 27;
-            this.btn_add.Text = "AGREGAR CLIENTE";
-            this.btn_add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_add.TextColor = System.Drawing.Color.Lime;
-            this.btn_add.UseVisualStyleBackColor = false;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // btn_back
-            // 
-            this.btn_back.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_back.BackColor = System.Drawing.Color.Transparent;
-            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_back.BorderColor = System.Drawing.Color.Red;
-            this.btn_back.BorderRadius = 7;
-            this.btn_back.BorderSize = 2;
-            this.btn_back.FlatAppearance.BorderSize = 0;
-            this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.ForeColor = System.Drawing.Color.Red;
-            this.btn_back.Location = new System.Drawing.Point(31, 92);
-            this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(225, 38);
-            this.btn_back.TabIndex = 28;
-            this.btn_back.Text = "Regresar";
-            this.btn_back.TextColor = System.Drawing.Color.Red;
-            this.btn_back.UseVisualStyleBackColor = false;
-            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
-            // 
-            // cliente_id
-            // 
-            this.cliente_id.HeaderText = "ID";
-            this.cliente_id.Name = "cliente_id";
-            this.cliente_id.ReadOnly = true;
-            this.cliente_id.Visible = false;
-            // 
-            // cliente_dni
-            // 
-            this.cliente_dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cliente_dni.FillWeight = 80F;
-            this.cliente_dni.HeaderText = "DNI";
-            this.cliente_dni.Name = "cliente_dni";
-            this.cliente_dni.ReadOnly = true;
-            // 
-            // cliente_fullname
-            // 
-            this.cliente_fullname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cliente_fullname.FillWeight = 130F;
-            this.cliente_fullname.HeaderText = "NOMBRE COMPLETO";
-            this.cliente_fullname.Name = "cliente_fullname";
-            this.cliente_fullname.ReadOnly = true;
-            // 
-            // cliente_tel
-            // 
-            this.cliente_tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cliente_tel.FillWeight = 80F;
-            this.cliente_tel.HeaderText = "TELEFONO";
-            this.cliente_tel.Name = "cliente_tel";
-            this.cliente_tel.ReadOnly = true;
-            // 
-            // cliente_email
-            // 
-            this.cliente_email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cliente_email.FillWeight = 80F;
-            this.cliente_email.HeaderText = "EMAIL";
-            this.cliente_email.Name = "cliente_email";
-            this.cliente_email.ReadOnly = true;
-            // 
-            // cliente_estado
-            // 
-            this.cliente_estado.FillWeight = 50F;
-            this.cliente_estado.HeaderText = "ESTADO";
-            this.cliente_estado.Name = "cliente_estado";
-            this.cliente_estado.ReadOnly = true;
-            this.cliente_estado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cliente_estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // cliente_estado_valor
-            // 
-            this.cliente_estado_valor.HeaderText = "ESTADO_VALOR";
-            this.cliente_estado_valor.Name = "cliente_estado_valor";
-            this.cliente_estado_valor.ReadOnly = true;
-            this.cliente_estado_valor.Visible = false;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_editar.FillWeight = 60F;
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.ReadOnly = true;
-            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_eliminar.FillWeight = 60F;
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.ReadOnly = true;
-            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // formCustomers
             // 
@@ -686,19 +595,17 @@
             this.Text = "formCustomers";
             this.Load += new System.EventHandler(this.formCustomers_Load);
             this.panel_main.ResumeLayout(false);
-            this.panel_top.ResumeLayout(false);
-            this.panel_top.PerformLayout();
             this.panel_mid.ResumeLayout(false);
+            this.panel_midizq.ResumeLayout(false);
+            this.panel_btns.ResumeLayout(false);
+            this.panel_filter.ResumeLayout(false);
+            this.panel_filter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_proveedores)).EndInit();
             this.panel_bottom.ResumeLayout(false);
             this.panel_update.ResumeLayout(false);
             this.panel_update.PerformLayout();
             this.menu_sesion.ResumeLayout(false);
             this.menu_Main.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grid_proveedores)).EndInit();
-            this.panel_midizq.ResumeLayout(false);
-            this.panel_btns.ResumeLayout(false);
-            this.panel_filter.ResumeLayout(false);
-            this.panel_filter.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -709,11 +616,6 @@
         private System.Windows.Forms.Panel panel_update;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel panel_top;
-        private CustomBox.RJControls.RJButton btn_Down;
-        private System.Windows.Forms.Label label3;
-        private RJCodeAdvance.RJControls.RJButton btn_hamb;
-        private System.Windows.Forms.Label lbl_usuario;
         private System.Windows.Forms.TableLayoutPanel panel_bottom;
         private System.Windows.Forms.TableLayoutPanel panel_mid;
         private RJCodeAdvance.RJControls.RJDropdownMenu menu_sesion;

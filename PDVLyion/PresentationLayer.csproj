@@ -147,6 +147,12 @@
     <Compile Include="formCustomersAdd.Designer.cs">
       <DependentUpon>formCustomersAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="formLogOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogOut.Designer.cs">
+      <DependentUpon>formLogOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="formPermissions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +246,9 @@
     <EmbeddedResource Include="formCustomersAdd.resx">
       <DependentUpon>formCustomersAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formLogOut.resx">
+      <DependentUpon>formLogOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formPermissions.resx">
       <DependentUpon>formPermissions.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,7 +297,6 @@
     </Compile>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
