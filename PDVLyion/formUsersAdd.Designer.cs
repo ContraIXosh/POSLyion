@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel_red = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_editar_permisos = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
@@ -47,14 +46,15 @@
             this.lbl_username = new System.Windows.Forms.Label();
             this.lbl_pass = new System.Windows.Forms.Label();
             this.txt_pass = new CustomBox.RJControls.RJTextBox();
+            this.btn_editar_permisos = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_update = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_id = new RJCodeAdvance.RJControls.RJTextBox();
             this.btn_back = new RJCodeAdvance.RJControls.RJButton();
             this.rjButton1 = new RJCodeAdvance.RJControls.RJButton();
-            this.txt_id = new RJCodeAdvance.RJControls.RJTextBox();
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_crearuser = new System.Windows.Forms.Label();
             this.panel_red.SuspendLayout();
@@ -77,29 +77,9 @@
             this.panel_red.Name = "panel_red";
             this.panel_red.RowCount = 1;
             this.panel_red.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_red.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.panel_red.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 275F));
             this.panel_red.Size = new System.Drawing.Size(710, 275);
             this.panel_red.TabIndex = 44;
-            // 
-            // btn_editar_permisos
-            // 
-            this.btn_editar_permisos.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_editar_permisos.BackColor = System.Drawing.Color.Transparent;
-            this.btn_editar_permisos.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_editar_permisos.BorderColor = System.Drawing.Color.Gold;
-            this.btn_editar_permisos.BorderRadius = 1;
-            this.btn_editar_permisos.BorderSize = 2;
-            this.btn_editar_permisos.FlatAppearance.BorderSize = 0;
-            this.btn_editar_permisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_editar_permisos.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editar_permisos.ForeColor = System.Drawing.Color.Gold;
-            this.btn_editar_permisos.Location = new System.Drawing.Point(120, 3);
-            this.btn_editar_permisos.Name = "btn_editar_permisos";
-            this.btn_editar_permisos.Size = new System.Drawing.Size(187, 33);
-            this.btn_editar_permisos.TabIndex = 58;
-            this.btn_editar_permisos.Text = "EDITAR PERMISOS";
-            this.btn_editar_permisos.TextColor = System.Drawing.Color.Gold;
-            this.btn_editar_permisos.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel4
             // 
@@ -413,6 +393,26 @@
             this.txt_pass.Texts = "";
             this.txt_pass.UnderlinedStyle = false;
             // 
+            // btn_editar_permisos
+            // 
+            this.btn_editar_permisos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_editar_permisos.BackColor = System.Drawing.Color.Transparent;
+            this.btn_editar_permisos.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_editar_permisos.BorderColor = System.Drawing.Color.Gold;
+            this.btn_editar_permisos.BorderRadius = 1;
+            this.btn_editar_permisos.BorderSize = 2;
+            this.btn_editar_permisos.FlatAppearance.BorderSize = 0;
+            this.btn_editar_permisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_editar_permisos.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editar_permisos.ForeColor = System.Drawing.Color.Gold;
+            this.btn_editar_permisos.Location = new System.Drawing.Point(120, 3);
+            this.btn_editar_permisos.Name = "btn_editar_permisos";
+            this.btn_editar_permisos.Size = new System.Drawing.Size(187, 33);
+            this.btn_editar_permisos.TabIndex = 58;
+            this.btn_editar_permisos.Text = "EDITAR PERMISOS";
+            this.btn_editar_permisos.TextColor = System.Drawing.Color.Gold;
+            this.btn_editar_permisos.UseVisualStyleBackColor = false;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -480,6 +480,29 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 39);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
+            // txt_id
+            // 
+            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_id.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_id.BorderRadius = 0;
+            this.txt_id.BorderSize = 2;
+            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_id.Location = new System.Drawing.Point(4, 4);
+            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_id.Multiline = false;
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_id.PasswordChar = false;
+            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_id.PlaceholderText = "";
+            this.txt_id.Size = new System.Drawing.Size(40, 31);
+            this.txt_id.TabIndex = 32;
+            this.txt_id.Texts = "0";
+            this.txt_id.UnderlinedStyle = false;
+            this.txt_id.Visible = false;
+            // 
             // btn_back
             // 
             this.btn_back.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -519,29 +542,6 @@
             this.rjButton1.Text = "Cargar";
             this.rjButton1.TextColor = System.Drawing.Color.LimeGreen;
             this.rjButton1.UseVisualStyleBackColor = false;
-            // 
-            // txt_id
-            // 
-            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_id.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_id.BorderRadius = 0;
-            this.txt_id.BorderSize = 2;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(4, 4);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_id.Multiline = false;
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_id.PasswordChar = false;
-            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_id.PlaceholderText = "";
-            this.txt_id.Size = new System.Drawing.Size(40, 31);
-            this.txt_id.TabIndex = 32;
-            this.txt_id.Texts = "0";
-            this.txt_id.UnderlinedStyle = false;
-            this.txt_id.Visible = false;
             // 
             // panel_main
             // 

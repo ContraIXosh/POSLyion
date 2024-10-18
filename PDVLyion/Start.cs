@@ -121,16 +121,16 @@ namespace PDCLyion
         }
         private void MostrarFacturacion()
         {
-            panel_container.Controls.Clear();
+            panel_resumen.Controls.Clear();
             ListBox lstProductos = new ListBox();
             lstProductos.Items.Add("Producto 1 - $10");
             lstProductos.Items.Add("Producto 2 - $20");
-            panel_container.Controls.Add(lstProductos);
+            panel_resumen.Controls.Add(lstProductos);
         }
 
         private void mostrarHistorialBuy()
         {
-            panel_container.Controls.Clear();
+            panel_resumen.Controls.Clear();
             DataGridView dgvCompra = new DataGridView();
 
 
@@ -151,7 +151,7 @@ namespace PDCLyion
             dgvCompra.Columns.Add("Fecha", "Fecha");
             dgvCompra.Rows.Add("16:52:16", "$1620", "Last product", "10/02/2025");
             dgvCompra.Rows.Add("16:53:42", "$1920", "Last product", "10/02/2025");
-            panel_container.Controls.Add(dgvCompra);
+            panel_resumen.Controls.Add(dgvCompra);
 
             dgvCompra.Columns.Add("Fecha", "Fecha");
             dgvCompra.Columns.Add("Producto", "Producto");
@@ -159,7 +159,6 @@ namespace PDCLyion
 
             dgvCompra.Rows.Add("01/10/2024", "Producto A", "$15");
             dgvCompra.Rows.Add("02/10/2024", "Producto B", "$25");
-            panel_container.Controls.Add(dgvCompra, 0, 0);
 
             DataGridView dgvAmpliar = new DataGridView();
             dgvCompra.Columns.Add("Fecha", "Fecha");
@@ -172,24 +171,7 @@ namespace PDCLyion
             dgvCompra.Rows.Add("Total =", total);
         }
 
-        private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
-        {
-            dgv_productos.Rows.Clear();
-            if (txt_buscarproductos.Text != "")
-            {
-                DataTable products_table = new BL_Products().Search(txt_buscarproductos.Text);
-                foreach (DataRow row in products_table.Rows)
-                {
-                    dgv_productos.Rows.Add(new object[]
-                    {
-                row["ID"],
-                row["Descripcion"],
-                row["Precio"],
-                row["Stock actual"]
-                    });
-                }
-            }
-        }
+      
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoverStripMenu();
@@ -243,5 +225,102 @@ namespace PDCLyion
             logout.Show();
         }
 
+
+        private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+                    decimal total = 0;
+            if (e.RowIndex >= 0)
+            {
+                // Obtiene el nombre y el código del producto seleccionado
+                string desc = dgv_productos.Rows[e.RowIndex].Cells["dgv_desc"].Value.ToString();
+                string precio = dgv_productos.Rows[e.RowIndex].Cells["dgv_precio"].Value.ToString();
+
+                // Verifica si el producto ya está en el dgv_resumen
+                bool productoExiste = false;
+                foreach (DataGridViewRow row in dgv_resumen.Rows)
+                {
+                    if (row.Cells["precio"].Value != null)
+                    {
+                        total += Convert.ToDecimal(row.Cells["precio"].Value);
+                    }
+
+                    if (row.Cells["desc"].Value != null && row.Cells["desc"].Value.ToString() == desc)
+                    {
+                        // Si el producto ya existe, aumenta la cantidad en la misma fila
+                        int cantidadActual = Convert.ToInt32(row.Cells["cantidad"].Value);
+                        row.Cells["cantidad"].Value = cantidadActual + 1;
+
+                        decimal precioActual = Convert.ToDecimal(row.Cells["precio"].Value);
+                        row.Cells["precio"].Value = precioActual + Convert.ToDecimal(precio);
+
+                        productoExiste = true;
+                        break;
+                    }
+                }
+
+                // Si el producto no existe, lo agrega con cantidad inicial de 1
+                if (!productoExiste)
+                {
+                    dgv_resumen.Rows.Add(new object[] { desc, 1, precio });
+                }
+            }
+                        lbl_dinero.Text = "$" + total.ToString("0.00");
+
+        }
+        private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
+        {
+            dgv_productos.Rows.Clear();
+            if (txt_buscarproductos.Text != "")
+            {
+                DataTable products_table = new BL_Products().Search(txt_buscarproductos.Text);
+                foreach (DataRow row in products_table.Rows)
+                {
+                    dgv_productos.Rows.Add(new object[]
+                    {
+                row["ID"],
+                row["Descripcion"],
+                row["Precio"],
+                row["Stock actual"]
+                    });
+                }
+            }
+        }
+        private void btn_factura_Click_1(object sender, EventArgs e)
+        {
+            dgv_resumen.Columns.Clear();
+            dgv_resumen.Columns.Add("desc", "Producto");
+            dgv_resumen.Columns.Add("cantidad", "Cantidad");
+            dgv_resumen.Columns.Add("precio", "Precio");
+            dgv_resumen.Dock = DockStyle.Fill;
+            dgv_resumen.Visible = true;
+        }
+
+        private void btn_compra_Click_1(object sender, EventArgs e)
+        {
+            dgv_resumen.Columns.Clear();
+            dgv_resumen.Columns.Add("fecha", "Fecha");
+            dgv_resumen.Columns.Add("hora", "Hora");
+            dgv_resumen.Columns.Add("empresa", "Empresa");
+            dgv_resumen.Columns.Add("cantidad", "Cantidad");
+
+            DataGridView dgv_ampliar = new DataGridView();
+
+            dgv_ampliar.Columns.Clear();
+            dgv_ampliar.Columns.Add("prod", "Producto");
+            dgv_ampliar.Columns.Add("cantidad", "Cantidad");
+            dgv_ampliar.Columns.Add("precio", "Precio");
+
+            dgv_ampliar.Visible = true;
+            dgv_ampliar.Dock = DockStyle.Fill;
+            dgv_resumen.Visible = true;
+            dgv_resumen.Dock = DockStyle.Fill;
+
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+
+            panel_container.Controls.Add(dgv_resumen, 0, 0);
+            panel_container.Controls.Add(dgv_ampliar, 0, 1);
+
+        }
     }
 }

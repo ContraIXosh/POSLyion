@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuTitle = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
@@ -70,8 +72,15 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_tipoticket = new System.Windows.Forms.Label();
-            this.panel_container = new System.Windows.Forms.TableLayoutPanel();
             this.btn_cerrarventa = new RJCodeAdvance.RJControls.RJButton();
+            this.panel_resumen = new System.Windows.Forms.Panel();
+            this.panel_container = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_resumido = new System.Windows.Forms.Panel();
+            this.dgv_resumen = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_total = new System.Windows.Forms.Label();
+            this.lbl_dinero = new System.Windows.Forms.Label();
+            this.lbl_resumen = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_updates = new System.Windows.Forms.Panel();
             this.lbl_updatetime = new System.Windows.Forms.Label();
@@ -90,6 +99,9 @@
             this.lbl_f8 = new System.Windows.Forms.Label();
             this.btn_cobrar = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_f9 = new System.Windows.Forms.Label();
+            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menu.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -102,6 +114,11 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.panel_resumen.SuspendLayout();
+            this.panel_container.SuspendLayout();
+            this.panel_resumido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).BeginInit();
+            this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.panel_updates.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -124,10 +141,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Gold;
-            this.label1.Font = new System.Drawing.Font("Britannic Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Energy Station", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 36);
+            this.label1.Size = new System.Drawing.Size(133, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = "POSLyion";
             // 
@@ -343,6 +360,7 @@
             this.txt_buscarproductos.Name = "txt_buscarproductos";
             this.txt_buscarproductos.Size = new System.Drawing.Size(676, 26);
             this.txt_buscarproductos.TabIndex = 9;
+            this.txt_buscarproductos.TextChanged += new System.EventHandler(this.txt_buscarproductos_TextChanged);
             // 
             // dgv_productos
             // 
@@ -404,6 +422,7 @@
             this.dgv_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_productos.Size = new System.Drawing.Size(676, 345);
             this.dgv_productos.TabIndex = 10;
+            this.dgv_productos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_productos_CellClick);
             // 
             // dgv_id
             // 
@@ -529,6 +548,7 @@
             this.btn_compra.TabIndex = 1;
             this.btn_compra.Text = "Compra";
             this.btn_compra.UseVisualStyleBackColor = true;
+            this.btn_compra.Click += new System.EventHandler(this.btn_compra_Click_1);
             // 
             // btn_factura
             // 
@@ -540,6 +560,7 @@
             this.btn_factura.TabIndex = 0;
             this.btn_factura.Text = "Facturación";
             this.btn_factura.UseVisualStyleBackColor = true;
+            this.btn_factura.Click += new System.EventHandler(this.btn_factura_Click_1);
             // 
             // tableLayoutPanel8
             // 
@@ -549,8 +570,8 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.panel_container, 1, 2);
             this.tableLayoutPanel8.Controls.Add(this.btn_cerrarventa, 1, 4);
+            this.tableLayoutPanel8.Controls.Add(this.panel_resumen, 1, 2);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 78);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
@@ -596,22 +617,6 @@
             this.lbl_tipoticket.Text = "CONSUMIDOR FINAL";
             this.lbl_tipoticket.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel_container
-            // 
-            this.panel_container.BackColor = System.Drawing.Color.Crimson;
-            this.panel_container.ColumnCount = 1;
-            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
-            this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_container.Location = new System.Drawing.Point(10, 43);
-            this.panel_container.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_container.Name = "panel_container";
-            this.panel_container.RowCount = 2;
-            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.Size = new System.Drawing.Size(280, 225);
-            this.panel_container.TabIndex = 12;
-            // 
             // btn_cerrarventa
             // 
             this.btn_cerrarventa.BackColor = System.Drawing.Color.Black;
@@ -632,6 +637,126 @@
             this.btn_cerrarventa.Text = "CERRAR VENTA";
             this.btn_cerrarventa.TextColor = System.Drawing.Color.Lime;
             this.btn_cerrarventa.UseVisualStyleBackColor = false;
+            // 
+            // panel_resumen
+            // 
+            this.panel_resumen.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.panel_resumen.Controls.Add(this.panel_container);
+            this.panel_resumen.Controls.Add(this.lbl_resumen);
+            this.panel_resumen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_resumen.Location = new System.Drawing.Point(13, 46);
+            this.panel_resumen.Name = "panel_resumen";
+            this.panel_resumen.Size = new System.Drawing.Size(274, 219);
+            this.panel_resumen.TabIndex = 14;
+            // 
+            // panel_container
+            // 
+            this.panel_container.ColumnCount = 1;
+            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_container.Controls.Add(this.panel_resumido, 0, 0);
+            this.panel_container.Controls.Add(this.tableLayoutPanel12, 0, 1);
+            this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_container.Location = new System.Drawing.Point(0, 0);
+            this.panel_container.Name = "panel_container";
+            this.panel_container.RowCount = 2;
+            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.panel_container.Size = new System.Drawing.Size(274, 219);
+            this.panel_container.TabIndex = 1;
+            // 
+            // panel_resumido
+            // 
+            this.panel_resumido.Controls.Add(this.dgv_resumen);
+            this.panel_resumido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_resumido.Location = new System.Drawing.Point(0, 0);
+            this.panel_resumido.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_resumido.Name = "panel_resumido";
+            this.panel_resumido.Size = new System.Drawing.Size(274, 179);
+            this.panel_resumido.TabIndex = 0;
+            // 
+            // dgv_resumen
+            // 
+            this.dgv_resumen.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.dgv_resumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_resumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_resumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_resumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_resumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.desc,
+            this.cantidad,
+            this.precio});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_resumen.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_resumen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_resumen.EnableHeadersVisualStyles = false;
+            this.dgv_resumen.Location = new System.Drawing.Point(0, 0);
+            this.dgv_resumen.Margin = new System.Windows.Forms.Padding(0);
+            this.dgv_resumen.Name = "dgv_resumen";
+            this.dgv_resumen.RowHeadersVisible = false;
+            this.dgv_resumen.Size = new System.Drawing.Size(274, 179);
+            this.dgv_resumen.TabIndex = 3;
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 2;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.Controls.Add(this.lbl_total, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.lbl_dinero, 1, 0);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 179);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 1;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(274, 40);
+            this.tableLayoutPanel12.TabIndex = 1;
+            // 
+            // lbl_total
+            // 
+            this.lbl_total.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_total.AutoSize = true;
+            this.lbl_total.Font = new System.Drawing.Font("Holguin Stamp", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.Location = new System.Drawing.Point(3, 0);
+            this.lbl_total.Name = "lbl_total";
+            this.lbl_total.Size = new System.Drawing.Size(93, 40);
+            this.lbl_total.TabIndex = 2;
+            this.lbl_total.Text = "Total: ";
+            // 
+            // lbl_dinero
+            // 
+            this.lbl_dinero.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_dinero.AutoSize = true;
+            this.lbl_dinero.Font = new System.Drawing.Font("\' Mono Bold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dinero.Location = new System.Drawing.Point(102, 4);
+            this.lbl_dinero.Name = "lbl_dinero";
+            this.lbl_dinero.Size = new System.Drawing.Size(96, 32);
+            this.lbl_dinero.TabIndex = 3;
+            this.lbl_dinero.Text = "$0,00";
+            // 
+            // lbl_resumen
+            // 
+            this.lbl_resumen.AutoSize = true;
+            this.lbl_resumen.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_resumen.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_resumen.Location = new System.Drawing.Point(26, 15);
+            this.lbl_resumen.Name = "lbl_resumen";
+            this.lbl_resumen.Size = new System.Drawing.Size(0, 21);
+            this.lbl_resumen.TabIndex = 0;
             // 
             // tableLayoutPanel6
             // 
@@ -940,6 +1065,26 @@
             this.lbl_f9.TabIndex = 6;
             this.lbl_f9.Text = "F9";
             // 
+            // desc
+            // 
+            this.desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.desc.HeaderText = "Producto";
+            this.desc.Name = "desc";
+            // 
+            // cantidad
+            // 
+            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cantidad.FillWeight = 70F;
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio.FillWeight = 60F;
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -969,6 +1114,13 @@
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            this.panel_resumen.ResumeLayout(false);
+            this.panel_resumen.PerformLayout();
+            this.panel_container.ResumeLayout(false);
+            this.panel_resumido.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).EndInit();
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel_updates.ResumeLayout(false);
             this.panel_updates.PerformLayout();
@@ -1022,7 +1174,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label lbl_tipoticket;
-        private System.Windows.Forms.TableLayoutPanel panel_container;
         private RJCodeAdvance.RJControls.RJButton btn_cerrarventa;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panel_updates;
@@ -1042,5 +1193,16 @@
         private System.Windows.Forms.Label lbl_f8;
         private RJCodeAdvance.RJControls.RJButton btn_cobrar;
         private System.Windows.Forms.Label lbl_f9;
+        private System.Windows.Forms.Panel panel_resumen;
+        private System.Windows.Forms.Label lbl_resumen;
+        private System.Windows.Forms.TableLayoutPanel panel_container;
+        private System.Windows.Forms.Panel panel_resumido;
+        private System.Windows.Forms.DataGridView dgv_resumen;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Label lbl_dinero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
     }
 }
