@@ -13,40 +13,21 @@ namespace PDCLyion
 {
     public partial class formStadistic : Form
     {
-        private static Users oUser = new Users();
 
-        public formStadistic(Users user)
+        public formStadistic()
         {
             InitializeComponent();
-            oUser = user;
         }
 
-        private void abrirHerencia(object formhija)
+        private void RemoverStripMenu()
         {
-            if (this.panel_main.Controls.Count > 0)
+            foreach (Control control in this.Controls)
             {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-
+                if (control is MenuStrip)
+                {
+                    this.Controls.Remove(control);
+                }
             }
-        }
-        private void rjButton4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton4_Click_1(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-            this.panel_izq.Hide();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Shapes;
 
 namespace PDCLyion
 {
@@ -17,39 +18,17 @@ namespace PDCLyion
         private static Users oUser = new Users();
         private List<Products> Products_list;
 
-        public formProducts(Users user)
+        public formProducts()
         {
             InitializeComponent();
             Products_list = new BL_Products().ListAll();
-            oUser = user;
-        }
-        private void abrirHerencia(Form formhija)
-        {
-            this.panel_main.Controls.Clear();
-            formhija.TopLevel = false;
-            formhija.FormBorderStyle = FormBorderStyle.None;
-            formhija.Dock = DockStyle.Fill;
-
-            panel_main.Controls.Add(formhija);
-            formhija.Show();
-        }
-        private void btn_back_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-        }
-
-        private void btn_addprod_Click(object sender, EventArgs e)
-        {
-            formProducts2 crearprod = new formProducts2(oUser);
-
-            crearprod.Show();
         }
 
         private void formProducts_Load(object sender, EventArgs e)
         {
             foreach (Products product in Products_list)
             {
-                grid_prod.Rows.Add(new object[]
+                grid_productos.Rows.Add(new object[]
                 {
                     "",
                     product.Product_id,
@@ -70,30 +49,31 @@ namespace PDCLyion
         private void grid_prod_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            if (grid_prod.Columns[e.ColumnIndex].Name == "btn_editar")
+            if (grid_productos.Columns[e.ColumnIndex].Name == "btn_editar")
             {
                 if (index >= 0)
                 {
                     Products product = new Products()
                     {
-                        Product_id = Convert.ToInt32(grid_prod.Rows[index].Cells["prod_id"].Value),
-                        Bar_code = grid_prod.Rows[index].Cells["prod_cod"].Value.ToString(),
-                        Description = grid_prod.Rows[index].Cells["prod_desc"].Value.ToString(),
+                        Product_id = Convert.ToInt32(grid_productos.Rows[index].Cells["product_id"].Value),
+                        Bar_code = grid_productos.Rows[index].Cells["bar_code"].Value.ToString(),
+                        Description = grid_productos.Rows[index].Cells["description"].Value.ToString(),
                         oProductCategory = new ProductCategories()
                         {
-                            Product_category_id = Convert.ToInt32(grid_prod.Rows[index].Cells["prod_id_cat"].Value),
-                            Description = grid_prod.Rows[index].Cells["prod_cat"].Value.ToString()
+                            Product_category_id = Convert.ToInt32(grid_productos.Rows[index].Cells["product_category_id"].Value),
+                            Description = grid_productos.Rows[index].Cells["category_description"].Value.ToString()
                         },
-                        Current_stock = Convert.ToInt32(grid_prod.Rows[index].Cells["prod_stock"].Value),
-                        Minimum_stock = Convert.ToInt32(grid_prod.Rows[index].Cells["prod_stock_min"].Value),
-                        Cost_price = Convert.ToDecimal(grid_prod.Rows[index].Cells["prod_precio_costo"].Value),
-                        Sale_price = Convert.ToDecimal(grid_prod.Rows[index].Cells["prod_precio_venta"].Value),
-                        State = Convert.ToBoolean(grid_prod.Rows[index].Cells["prod_estado_valor"].Value)
+                        Current_stock = Convert.ToInt32(grid_productos.Rows[index].Cells["current_stock"].Value),
+                        Minimum_stock = Convert.ToInt32(grid_productos.Rows[index].Cells["minimum_stock"].Value),
+                        Cost_price = Convert.ToDecimal(grid_productos.Rows[index].Cells["cost_price"].Value),
+                        Sale_price = Convert.ToDecimal(grid_productos.Rows[index].Cells["sale_price"].Value),
+                        State = Convert.ToBoolean(grid_productos.Rows[index].Cells["state_value"].Value)
                     };
-                    abrirHerencia(new formProducts2(product, oUser));
+                    formProductsAdd frmproductsadd = new formProductsAdd(product);
+                    frmproductsadd.Show();
                 }
             }
-            else if (grid_prod.Columns[e.ColumnIndex].Name == "btn_eliminar")
+            else if (grid_productos.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
                 if (MessageBox.Show("¿Desea eliminar el producto?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -102,7 +82,7 @@ namespace PDCLyion
                         string message = string.Empty;
                         Products product = new Products()
                         {
-                            Product_id = Convert.ToInt32(grid_prod.Rows[index].Cells["prod_id"].Value)
+                            Product_id = Convert.ToInt32(grid_productos.Rows[index].Cells["product_id"].Value)
                         };
                         bool result = new BL_Products().Delete(product, out message);
                         if (!result)
@@ -112,7 +92,6 @@ namespace PDCLyion
                         else
                         {
                             MessageBox.Show("Producto eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            abrirHerencia(new formProducts(oUser));
                         }
                     }
                 }
@@ -121,7 +100,7 @@ namespace PDCLyion
 
         private void cb_stock_CheckedChanged(object sender, EventArgs e)
         {
-            grid_prod.Rows.Clear();
+            grid_productos.Rows.Clear();
             if (cb_stock.Checked)
             {
                 List<Products> products_list = new BL_Products()
@@ -129,7 +108,7 @@ namespace PDCLyion
                 .Where(p => p.Current_stock > 0).ToList();
                 foreach (Products product in products_list)
                 {
-                    grid_prod.Rows.Add(new object[]
+                    grid_productos.Rows.Add(new object[]
                     {
                     "",
                     product.Product_id,
@@ -150,7 +129,7 @@ namespace PDCLyion
             {
                 foreach (Products product in Products_list)
                 {
-                    grid_prod.Rows.Add(new object[]
+                    grid_productos.Rows.Add(new object[]
                     {
                     "",
                     product.Product_id,
@@ -171,13 +150,13 @@ namespace PDCLyion
 
         private void cb_inactive_CheckedChanged(object sender, EventArgs e)
         {
-            grid_prod.Rows.Clear();
+            grid_productos.Rows.Clear();
             if (cb_inactive.Checked)
             {
                 List<Products> products_list = new BL_Products().ListAll().Where(p => p.State == false).ToList();
                 foreach (Products product in products_list)
                 {
-                    grid_prod.Rows.Add(new object[]
+                    grid_productos.Rows.Add(new object[]
                     {
                     "",
                     product.Product_id,
@@ -198,7 +177,7 @@ namespace PDCLyion
             {
                 foreach (Products product in Products_list)
                 {
-                    grid_prod.Rows.Add(new object[]
+                    grid_productos.Rows.Add(new object[]
                     {
                     "",
                     product.Product_id,
@@ -217,9 +196,34 @@ namespace PDCLyion
             }
         }
 
-        private void txt_search_TextChanged(object sender, EventArgs e)
+        private void btn_crear_producto_Click(object sender, EventArgs e)
         {
+            formProductsAdd frmproductadd = new formProductsAdd();
+            frmproductadd.Show();
+        }
 
+        private void btn_actualizar_Click(object sender, EventArgs e)
+        {
+            grid_productos.Rows.Clear();
+            Products_list = new BL_Products().ListAll();
+            foreach (Products product in Products_list)
+            {
+                grid_productos.Rows.Add(new object[]
+                {
+                    "",
+                    product.Product_id,
+                    product.Bar_code,
+                    product.Description,
+                    product.oProductCategory.Product_category_id,
+                    product.oProductCategory.Description,
+                    product.Current_stock,
+                    product.Minimum_stock,
+                    product.Cost_price,
+                    product.Sale_price,
+                    product.State == true ? "Activo" : "Inactivo",
+                    product.State == true ? 1 : 0
+                });
+            }
         }
     }
 }

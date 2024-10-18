@@ -13,18 +13,9 @@ namespace PDCLyion
 {
     public partial class formConfig : Form
     {
-
-        private static Users oUser = new Users();
-
-        public formConfig(Users user)
+        public formConfig()
         {
             InitializeComponent();
-            oUser = user;
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

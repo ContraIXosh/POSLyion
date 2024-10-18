@@ -14,75 +14,23 @@ namespace PDCLyion
 {
     public partial class formCustomers : Form
     {
-        string connectionString = "Data Source = ; Initial Catalog = POSLyion; Integrated Security = True";
         private static Users oUser = new Users();
 
-        public formCustomers(Users user)
+        public formCustomers()
         {
             InitializeComponent();
-            oUser = user;
-        }
-
-        private void abrirHerencia(Form formhija)
-        {
-            this.panel_main.Controls.Clear();
-            formhija.TopLevel = false;
-            formhija.FormBorderStyle = FormBorderStyle.None;
-            formhija.Dock = DockStyle.Fill;
-
-            panel_main.Controls.Add(formhija);
-            formhija.Show();
-        }
-
-        private void btn_addvendedor_Click_1(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCustomers2(oUser));
-        }
-
-        private void btn_viewvendedor_Click_1(object sender, EventArgs e)
-        {
-            abrirHerencia(new formCustomers(oUser));
-        }
-
-        private void btn_back_Click_1(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-        }
-
-        private void panel_footer_Resize_1(object sender, EventArgs e)
-        {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
-            {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Width = 150;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
-            }
-            else
-            {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
-            }
-        }
-
-        private void panel_footer_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void formCustomers_Load(object sender, EventArgs e)
         {
             List<Customers> customer_list = new BL_Customers().ListAll();
-            foreach(Customers customer in customer_list)
+            foreach (Customers customer in customer_list)
             {
-                grid_proveedores.Rows.Add(new object[]
+                grid_clientes.Rows.Add(new object[]
                 {
-                    "",
                     customer.Customer_id,
-                    customer.Full_name,
                     customer.Dni,
+                    customer.Full_name,
                     customer.Phone,
                     customer.Email,
                     customer.State == true ? "Activo" : "Inactivo",
@@ -91,35 +39,50 @@ namespace PDCLyion
             }
         }
 
+        private void panel_footer_Resize_1(object sender, EventArgs e)
+        {
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            }
+        }
+
         private void grid_proveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            if (grid_proveedores.Columns[e.ColumnIndex].Name == "btn_editar")
+            if (grid_clientes.Columns[e.ColumnIndex].Name == "btn_editar")
             {
                 if (index >= 0)
                 {
                     Customers customer = new Customers()
                     {
-                        Customer_id = Convert.ToInt32(grid_proveedores.Rows[index].Cells["cliente_id"].Value),
-                        Dni = grid_proveedores.Rows[index].Cells["cliente_dni"].Value.ToString(),
-                        Full_name = grid_proveedores.Rows[index].Cells["cliente_fullname"].Value.ToString(),
-                        Email = grid_proveedores.Rows[index].Cells["cliente_email"].Value.ToString(),
-                        Phone = grid_proveedores.Rows[index].Cells["cliente_tel"].Value.ToString(),
-                        State = Convert.ToBoolean(grid_proveedores.Rows[index].Cells["cliente_estado_valor"].Value)
+                        Customer_id = Convert.ToInt32(grid_clientes.Rows[index].Cells["id"].Value),
+                        Dni = grid_clientes.Rows[index].Cells["dni"].Value.ToString(),
+                        Full_name = grid_clientes.Rows[index].Cells["full_name"].Value.ToString(),
+                        Email = grid_clientes.Rows[index].Cells["email"].Value.ToString(),
+                        Phone = grid_clientes.Rows[index].Cells["phone"].Value.ToString(),
+                        State = Convert.ToBoolean(grid_clientes.Rows[index].Cells["state_value"].Value)
                     };
-                    abrirHerencia(new formCustomers2(customer));
+                    formCustomersAdd customeradd = new formCustomersAdd(customer);
+                    customeradd.Show();
                 }
             }
-            else if (grid_proveedores.Columns[e.ColumnIndex].Name == "btn_eliminar")
+            else if (grid_clientes.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
-                if (MessageBox.Show("¿Desea eliminar el cliente", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea eliminar el cliente?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (index >= 0)
                     {
                         string message = string.Empty;
                         Customers customer = new Customers()
                         {
-                            Customer_id = Convert.ToInt32(grid_proveedores.Rows[index].Cells["cliente_id"].Value)
+                            Customer_id = Convert.ToInt32(grid_clientes.Rows[index].Cells["id"].Value)
                         };
                         bool result = new BL_Customers().Delete(customer, out message);
                         if (!result)
@@ -129,10 +92,35 @@ namespace PDCLyion
                         else
                         {
                             MessageBox.Show("Cliente eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            abrirHerencia(new formCustomers2(oUser));
+
                         }
                     }
                 }
+            }
+        }
+
+        private void btn_crear_cliente_Click(object sender, EventArgs e)
+        {
+            formCustomersAdd crearcliente = new formCustomersAdd();
+            crearcliente.Show();
+        }
+
+        private void btn_actualizar_Click(object sender, EventArgs e)
+        {
+            grid_clientes.Rows.Clear();
+            List<Customers> customer_list = new BL_Customers().ListAll();
+            foreach (Customers customer in customer_list)
+            {
+                grid_clientes.Rows.Add(new object[]
+                {
+                    customer.Customer_id,
+                    customer.Dni,
+                    customer.Full_name,
+                    customer.Phone,
+                    customer.Email,
+                    customer.State == true ? "Activo" : "Inactivo",
+                    customer.State == true ? 1 : 0
+                });
             }
         }
     }

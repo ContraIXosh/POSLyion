@@ -23,11 +23,6 @@ namespace PDCLyion
             oUser = user;
         }
 
-        private void Cancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void formPurchaseOrders_Load(object sender, EventArgs e)
         {
             cbo_tipo_documento.Items.Add(new OpcionCombo() { Value = "Factura", Text = "Factura" });
@@ -37,5 +32,9 @@ namespace PDCLyion
             cbo_tipo_documento.SelectedIndex = 0;
         }
 
+        private void btn_cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -16,65 +16,9 @@ namespace PDCLyion
     {
         private static Users oUser = new Users();
 
-        public formVendors(Users user)
+        public formVendors()
         {
             InitializeComponent();
-            oUser = user;
-        }
-
-        private void abrirHerencia(object formhija)
-        {
-            if (this.panel_main.Controls.Count > 0)
-            {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-
-            }
-        }
-        private void rjButton2_Click(object sender, EventArgs e)
-        {
-            
-                   abrirHerencia(new Start(oUser));
-
-        }
-
-        private void rjButton5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors2(oUser));
-        }
-
-        private void dataGridView1_Resize(object sender, EventArgs e)
-        {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
-            {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_grid.Left = this.ClientSize.Width - panel_grid.Width;
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Width = 150; 
-                btn_back.Left = this.ClientSize.Width - btn_back.Width; 
-            }
-            else
-            {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_grid.Left = this.ClientSize.Width - panel_grid.Width;
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
-            }
         }
 
         private void formVendors_Load(object sender, EventArgs e)
@@ -91,16 +35,31 @@ namespace PDCLyion
                     vendor.Phone,
                     vendor.State == true ? "Activo" : "Inactivo",
                     vendor.State == true ? 1 : 0
-                }); 
+                });
             }
         }
 
-        private void panel_update_Paint(object sender, PaintEventArgs e)
+        private void dataGridView1_Resize(object sender, EventArgs e)
         {
-
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            }
         }
 
-        private void grid_proveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_crear_proveedor_Click(object sender, EventArgs e)
+        {
+            formVendorsAdd formvendoradd = new formVendorsAdd();
+            formvendoradd.Show();
+        }
+
+        private void grid_proveedores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             if (grid_proveedores.Columns[e.ColumnIndex].Name == "btn_editar")
@@ -116,7 +75,8 @@ namespace PDCLyion
                         Phone = grid_proveedores.Rows[index].Cells["phone"].Value.ToString(),
                         State = Convert.ToBoolean(grid_proveedores.Rows[index].Cells["state_value"].Value)
                     };
-                    abrirHerencia(new formVendors2(vendor, oUser));
+                    formVendorsAdd vendoradd = new formVendorsAdd(vendor);
+                    vendoradd.Show();
                 }
             }
             else if (grid_proveedores.Columns[e.ColumnIndex].Name == "btn_eliminar")
@@ -138,10 +98,29 @@ namespace PDCLyion
                         else
                         {
                             MessageBox.Show("Proveedor eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            abrirHerencia(new formVendors(oUser));
+
                         }
                     }
                 }
+            }
+        }
+
+        private void btn_actualizar_Click(object sender, EventArgs e)
+        {
+            grid_proveedores.Rows.Clear();
+            List<Vendors> vendors_list = new BL_Vendors().ListAll();
+            foreach (Vendors vendor in vendors_list)
+            {
+                grid_proveedores.Rows.Add(new object[]
+                {
+                    vendor.Vendor_id,
+                    vendor.Cuit,
+                    vendor.Company_name,
+                    vendor.Email,
+                    vendor.Phone,
+                    vendor.State == true ? "Activo" : "Inactivo",
+                    vendor.State == true ? 1 : 0
+                });
             }
         }
     }

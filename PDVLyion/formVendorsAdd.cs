@@ -11,92 +11,29 @@ using EntityLayer;
 using BusinessLayer;
 using PDCLyion.Resources;
 using static System.Windows.Forms.AxHost;
-using System.Web.UI;
 
 namespace PDCLyion
 {
 
-    public partial class formVendors2 : Form
+    public partial class formVendorsAdd : Form
     {
         private static Users oUser = new Users();
         private Vendors Vendor;
         private Vendors Old_vendor;
 
-        public formVendors2(Users user)
+        public formVendorsAdd()
         {
             InitializeComponent();
             Vendor = new Vendors();
-            oUser = user;
         }
 
-        public formVendors2(Vendors vendor, Users user)
+        public formVendorsAdd(Vendors vendor)
         {
             InitializeComponent();
             Vendor = vendor;
-            oUser = user;
         }
 
-        private void abrirHerencia(object formhija)
-        {
-            if (this.panel_main.Controls.Count > 0)
-            {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-
-            }
-        }
-        private void rjButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton2_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new Start(oUser));
-        }
-
-        private void rjButton5_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors(oUser));
-        }
-
-        private void panel1_Resize(object sender, EventArgs e)
-        {
-
-
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
-            {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_add.Left = this.ClientSize.Width - panel_add.Width;
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Width = 150;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
-            }
-            else
-            {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_add.Left = this.ClientSize.Width - panel_add.Width;
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
-            }
-        }
-
-        private void btn_viewvendedor_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(new formVendors(oUser));
-        }
-
-        private void formVendors2_Load(object sender, EventArgs e)
+        private void formVendorsAdd_Load(object sender, EventArgs e)
         {
             if (Vendor.Vendor_id == 0)
             {
@@ -108,7 +45,7 @@ namespace PDCLyion
             cbo_state.DisplayMember = "Text";
             cbo_state.ValueMember = "Value";
 
-            if(Vendor.Vendor_id != 0)
+            if (Vendor.Vendor_id != 0)
             {
                 int cbo_state_index = 0;
                 txt_vendor_id.Texts = Vendor.Vendor_id.ToString();
@@ -125,6 +62,27 @@ namespace PDCLyion
                     }
                 }
                 cbo_state.SelectedIndex = cbo_state_index;
+            }
+        }
+
+        private void panel1_Resize(object sender, EventArgs e)
+        {
+            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_add.Left = this.ClientSize.Width - panel_add.Width;
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                btn_back.Width = 150;
+                btn_back.Left = this.ClientSize.Width - btn_back.Width;
+            }
+            else
+            {
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                panel_add.Left = this.ClientSize.Width - panel_add.Width;
+                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
+                btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
         }
 
@@ -149,6 +107,7 @@ namespace PDCLyion
                 {
                     MessageBox.Show("Proveedor generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+                this.Close();
             }
             else
             {
@@ -174,6 +133,11 @@ namespace PDCLyion
                     MessageBox.Show("Proveedor actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

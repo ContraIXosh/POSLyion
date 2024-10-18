@@ -46,7 +46,7 @@
             this.grid_precioun = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grid_subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Cancelar = new CustomBox.RJControls.RJButton();
+            this.btn_cerrar = new CustomBox.RJControls.RJButton();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
             this.btn_imp = new CustomBox.RJControls.RJButton();
             this.rjTextBox9 = new CustomBox.RJControls.RJTextBox();
@@ -311,7 +311,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Controls.Add(this.Cancelar);
+            this.panel2.Controls.Add(this.btn_cerrar);
             this.panel2.Controls.Add(this.btn_guardar);
             this.panel2.Controls.Add(this.btn_imp);
             this.panel2.Controls.Add(this.rjTextBox9);
@@ -326,25 +326,25 @@
             this.panel2.Size = new System.Drawing.Size(982, 100);
             this.panel2.TabIndex = 0;
             // 
-            // Cancelar
+            // btn_cerrar
             // 
-            this.Cancelar.BackColor = System.Drawing.Color.Transparent;
-            this.Cancelar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.Cancelar.BorderColor = System.Drawing.Color.Red;
-            this.Cancelar.BorderRadius = 10;
-            this.Cancelar.BorderSize = 2;
-            this.Cancelar.FlatAppearance.BorderSize = 0;
-            this.Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancelar.ForeColor = System.Drawing.Color.Red;
-            this.Cancelar.Location = new System.Drawing.Point(832, 47);
-            this.Cancelar.Name = "Cancelar";
-            this.Cancelar.Size = new System.Drawing.Size(137, 37);
-            this.Cancelar.TabIndex = 26;
-            this.Cancelar.Text = "Cancelar";
-            this.Cancelar.TextColor = System.Drawing.Color.Red;
-            this.Cancelar.UseVisualStyleBackColor = false;
-            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
+            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderRadius = 10;
+            this.btn_cerrar.BorderSize = 2;
+            this.btn_cerrar.FlatAppearance.BorderSize = 0;
+            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.Location = new System.Drawing.Point(832, 47);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(137, 37);
+            this.btn_cerrar.TabIndex = 26;
+            this.btn_cerrar.Text = "Cerrar";
+            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.UseVisualStyleBackColor = false;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // btn_guardar
             // 
@@ -801,8 +801,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 537);
-            this.ControlBox = false;
             this.Controls.Add(this.panel_main);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "formPurchaseOrders";
             this.Text = "formPurchaseOrders";
             this.Load += new System.EventHandler(this.formPurchaseOrders_Load);
@@ -864,7 +865,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn grid_subtotal;
         private System.Windows.Forms.Label label8;
         private CustomBox.RJControls.RJTextBox rjTextBox7;
-        private CustomBox.RJControls.RJButton Cancelar;
+        private CustomBox.RJControls.RJButton btn_cerrar;
         private CustomBox.RJControls.RJButton btn_guardar;
         private CustomBox.RJControls.RJButton btn_imp;
         private CustomBox.RJControls.RJTextBox rjTextBox9;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPermissions));
             this.panel_main = new System.Windows.Forms.Panel();
             this.combo_rol = new System.Windows.Forms.Panel();
             this.materialCheckedListBox = new MaterialSkin.Controls.MaterialCheckedListBox();
@@ -44,8 +43,6 @@
             this.btn_deshacer = new CustomBox.RJControls.RJButton();
             this.txt_id = new RJCodeAdvance.RJControls.RJTextBox();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
-            this.btn_visualizarUser = new RJCodeAdvance.RJControls.RJButton();
-            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,8 +65,6 @@
             this.panel_main.AutoSize = true;
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.Controls.Add(this.combo_rol);
-            this.panel_main.Controls.Add(this.btn_visualizarUser);
-            this.panel_main.Controls.Add(this.rjButton2);
             this.panel_main.Controls.Add(this.panel3);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
@@ -319,49 +314,6 @@
             this.btn_guardar.TextColor = System.Drawing.Color.Black;
             this.btn_guardar.UseVisualStyleBackColor = false;
             // 
-            // btn_visualizarUser
-            // 
-            this.btn_visualizarUser.BackColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_visualizarUser.BorderColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.BorderRadius = 7;
-            this.btn_visualizarUser.BorderSize = 2;
-            this.btn_visualizarUser.FlatAppearance.BorderSize = 0;
-            this.btn_visualizarUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_visualizarUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_visualizarUser.ForeColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.Image = ((System.Drawing.Image)(resources.GetObject("btn_visualizarUser.Image")));
-            this.btn_visualizarUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_visualizarUser.Location = new System.Drawing.Point(12, 15);
-            this.btn_visualizarUser.Name = "btn_visualizarUser";
-            this.btn_visualizarUser.Size = new System.Drawing.Size(220, 50);
-            this.btn_visualizarUser.TabIndex = 8;
-            this.btn_visualizarUser.Text = "VISUALIZAR USUARIOS";
-            this.btn_visualizarUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_visualizarUser.TextColor = System.Drawing.Color.Gold;
-            this.btn_visualizarUser.UseVisualStyleBackColor = false;
-            this.btn_visualizarUser.Click += new System.EventHandler(this.btn_visualizarUser_Click);
-            // 
-            // rjButton2
-            // 
-            this.rjButton2.BackColor = System.Drawing.Color.Transparent;
-            this.rjButton2.BackgroundColor = System.Drawing.Color.Transparent;
-            this.rjButton2.BorderColor = System.Drawing.Color.Chartreuse;
-            this.rjButton2.BorderRadius = 7;
-            this.rjButton2.BorderSize = 2;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.Lime;
-            this.rjButton2.Location = new System.Drawing.Point(813, 398);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(150, 40);
-            this.rjButton2.TabIndex = 5;
-            this.rjButton2.Text = "Regresar";
-            this.rjButton2.TextColor = System.Drawing.Color.Lime;
-            this.rjButton2.UseVisualStyleBackColor = false;
-            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Khaki;
@@ -538,8 +490,6 @@
         private CustomBox.RJControls.RJButton btn_deshacer;
         private RJCodeAdvance.RJControls.RJTextBox txt_id;
         private CustomBox.RJControls.RJButton btn_guardar;
-        private RJCodeAdvance.RJControls.RJButton btn_visualizarUser;
-        private RJCodeAdvance.RJControls.RJButton rjButton2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
