@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PDCLyion.Modals
+namespace POSLyion.Modals
 {
     public partial class MD_Vendors : Form
     {

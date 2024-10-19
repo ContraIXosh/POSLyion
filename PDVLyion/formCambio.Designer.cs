@@ -1,4 +1,4 @@
-﻿namespace PDCLyion
+﻿namespace POSLyion
 {
     partial class formCambio
     {

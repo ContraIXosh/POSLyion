@@ -1,4 +1,4 @@
-﻿namespace PDCLyion.Modals
+﻿namespace POSLyion.Modals
 {
     partial class MD_Vendors
     {

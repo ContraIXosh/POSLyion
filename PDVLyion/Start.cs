@@ -1,5 +1,5 @@
-﻿using BusinessLayer;
-using EntityLayer;
+﻿using CapaNegocio;
+using CapaEntidad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,21 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PDCLyion
+namespace POSLyion
 {
     public partial class Start : Form
     {
-        private static Users oUser = new Users();
+        private static Usuarios oUser = new Usuarios();
         public Start()
         {
         InitializeComponent();
         }
 
-        public Start(Users user)
+        public Start(Usuarios user)
         {
             InitializeComponent();
             oUser = user;
-            lbl_usuario.Text = user.Full_name;
+            lbl_usuario.Text = user.Nombre_completo;
         }
         List<Producto> productos = new List<Producto>
         {
@@ -177,43 +177,43 @@ namespace PDCLyion
 
         private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            formPurchaseOrders compras = new formPurchaseOrders(oUser);
+            formCompras compras = new formCompras(oUser);
             compras.Show();
         }
 
         private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_prods, new formProducts());
+            abrirHerencia(tsmenu_prods, new formProductos());
         }
 
         private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_users, new formUsers());
+            abrirHerencia(tsmenu_users, new formUsuarios());
         }
 
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_clientes, new formCustomers());
+            abrirHerencia(tsmenu_clientes, new formClientes());
         }
 
         private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_proveedor, new formVendors());
+            abrirHerencia(tsmenu_proveedor, new formProveedores());
         }
 
         private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_reports, new formStadistic());
+            abrirHerencia(tsmenu_reports, new formEstadsticas());
         }
 
         private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_cat, new formCat());
+            abrirHerencia(tsmenu_cat, new formCategorias());
         }
 
         private void configuraciónToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_config, new formConfig());
+            abrirHerencia(tsmenu_config, new formConfiguracion());
         }
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -269,7 +269,7 @@ namespace PDCLyion
             dgv_productos.Rows.Clear();
             if (txt_buscarproductos.Text != "")
             {
-                DataTable products_table = new BL_Products().Search(txt_buscarproductos.Text);
+                DataTable products_table = new CN_Productos().Buscar(txt_buscarproductos.Text);
                 foreach (DataRow row in products_table.Rows)
                 {
                     dgv_productos.Rows.Add(new object[]
