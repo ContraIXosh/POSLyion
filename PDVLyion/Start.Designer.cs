@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuTitle = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
@@ -61,6 +61,8 @@
             this.dgv_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_dinero = new System.Windows.Forms.Label();
             this.panel_right = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_factura = new System.Windows.Forms.Panel();
@@ -77,9 +79,9 @@
             this.panel_container = new System.Windows.Forms.TableLayoutPanel();
             this.panel_resumido = new System.Windows.Forms.Panel();
             this.dgv_resumen = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_total = new System.Windows.Forms.Label();
-            this.lbl_dinero = new System.Windows.Forms.Label();
+            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_resumen = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_updates = new System.Windows.Forms.Panel();
@@ -99,15 +101,13 @@
             this.lbl_f8 = new System.Windows.Forms.Label();
             this.btn_cobrar = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_f9 = new System.Windows.Forms.Label();
-            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menu.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).BeginInit();
+            this.tableLayoutPanel12.SuspendLayout();
             this.panel_right.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.panel_factura.SuspendLayout();
@@ -118,7 +118,6 @@
             this.panel_container.SuspendLayout();
             this.panel_resumido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).BeginInit();
-            this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.panel_updates.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -342,13 +341,15 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.txt_buscarproductos, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.dgv_productos, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel12, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(682, 391);
             this.tableLayoutPanel2.TabIndex = 20;
             // 
@@ -368,59 +369,60 @@
             this.dgv_productos.AllowUserToDeleteRows = false;
             this.dgv_productos.AllowUserToResizeColumns = false;
             this.dgv_productos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orchid;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.Orchid;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.dgv_productos.BackgroundColor = System.Drawing.Color.Black;
             this.dgv_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgv_productos.ColumnHeadersHeight = 35;
             this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_id,
             this.dgv_desc,
             this.dgv_precio,
             this.dgv_stock});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightPink;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_productos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.LightPink;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_productos.DefaultCellStyle = dataGridViewCellStyle21;
             this.dgv_productos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_productos.EnableHeadersVisualStyles = false;
             this.dgv_productos.GridColor = System.Drawing.Color.Crimson;
-            this.dgv_productos.Location = new System.Drawing.Point(3, 43);
+            this.dgv_productos.Location = new System.Drawing.Point(0, 40);
+            this.dgv_productos.Margin = new System.Windows.Forms.Padding(0);
             this.dgv_productos.MultiSelect = false;
             this.dgv_productos.Name = "dgv_productos";
             this.dgv_productos.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgv_productos.RowHeadersVisible = false;
             this.dgv_productos.RowHeadersWidth = 25;
             this.dgv_productos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_productos.RowTemplate.Height = 25;
             this.dgv_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_productos.Size = new System.Drawing.Size(676, 345);
+            this.dgv_productos.Size = new System.Drawing.Size(682, 311);
             this.dgv_productos.TabIndex = 10;
             this.dgv_productos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_productos_CellClick);
             // 
@@ -454,6 +456,33 @@
             this.dgv_stock.HeaderText = "STOCK";
             this.dgv_stock.Name = "dgv_stock";
             this.dgv_stock.ReadOnly = true;
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.BackColor = System.Drawing.Color.HotPink;
+            this.tableLayoutPanel12.ColumnCount = 2;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel12.Controls.Add(this.lbl_dinero, 1, 0);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 351);
+            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 1;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(682, 40);
+            this.tableLayoutPanel12.TabIndex = 11;
+            // 
+            // lbl_dinero
+            // 
+            this.lbl_dinero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_dinero.AutoSize = true;
+            this.lbl_dinero.Font = new System.Drawing.Font("\' Mono Bold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dinero.Location = new System.Drawing.Point(457, 4);
+            this.lbl_dinero.Name = "lbl_dinero";
+            this.lbl_dinero.Size = new System.Drawing.Size(200, 32);
+            this.lbl_dinero.TabIndex = 4;
+            this.lbl_dinero.Text = "Total: $0,00";
             // 
             // panel_right
             // 
@@ -537,6 +566,7 @@
             this.btn_venta.TabIndex = 2;
             this.btn_venta.Text = "Ventas";
             this.btn_venta.UseVisualStyleBackColor = true;
+            this.btn_venta.Click += new System.EventHandler(this.btn_venta_Click_1);
             // 
             // btn_compra
             // 
@@ -610,11 +640,11 @@
             this.lbl_tipoticket.AutoSize = true;
             this.lbl_tipoticket.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tipoticket.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbl_tipoticket.Location = new System.Drawing.Point(23, 6);
+            this.lbl_tipoticket.Location = new System.Drawing.Point(49, 6);
             this.lbl_tipoticket.Name = "lbl_tipoticket";
-            this.lbl_tipoticket.Size = new System.Drawing.Size(234, 28);
+            this.lbl_tipoticket.Size = new System.Drawing.Size(181, 28);
             this.lbl_tipoticket.TabIndex = 0;
-            this.lbl_tipoticket.Text = "CONSUMIDOR FINAL";
+            this.lbl_tipoticket.Text = "Consumidor final";
             this.lbl_tipoticket.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_cerrarventa
@@ -654,13 +684,12 @@
             this.panel_container.ColumnCount = 1;
             this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_container.Controls.Add(this.panel_resumido, 0, 0);
-            this.panel_container.Controls.Add(this.tableLayoutPanel12, 0, 1);
             this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_container.Location = new System.Drawing.Point(0, 0);
             this.panel_container.Name = "panel_container";
             this.panel_container.RowCount = 2;
             this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.panel_container.Size = new System.Drawing.Size(274, 219);
             this.panel_container.TabIndex = 1;
             // 
@@ -671,82 +700,67 @@
             this.panel_resumido.Location = new System.Drawing.Point(0, 0);
             this.panel_resumido.Margin = new System.Windows.Forms.Padding(0);
             this.panel_resumido.Name = "panel_resumido";
-            this.panel_resumido.Size = new System.Drawing.Size(274, 179);
+            this.panel_resumido.Size = new System.Drawing.Size(274, 209);
             this.panel_resumido.TabIndex = 0;
             // 
             // dgv_resumen
             // 
+            this.dgv_resumen.AllowUserToAddRows = false;
+            this.dgv_resumen.AllowUserToDeleteRows = false;
+            this.dgv_resumen.AllowUserToResizeRows = false;
             this.dgv_resumen.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.dgv_resumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_resumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_resumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dgv_resumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_resumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.desc,
             this.cantidad,
             this.precio});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_resumen.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_resumen.DefaultCellStyle = dataGridViewCellStyle24;
             this.dgv_resumen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_resumen.EnableHeadersVisualStyles = false;
             this.dgv_resumen.Location = new System.Drawing.Point(0, 0);
             this.dgv_resumen.Margin = new System.Windows.Forms.Padding(0);
             this.dgv_resumen.Name = "dgv_resumen";
             this.dgv_resumen.RowHeadersVisible = false;
-            this.dgv_resumen.Size = new System.Drawing.Size(274, 179);
+            this.dgv_resumen.Size = new System.Drawing.Size(274, 209);
             this.dgv_resumen.TabIndex = 3;
             // 
-            // tableLayoutPanel12
+            // desc
             // 
-            this.tableLayoutPanel12.ColumnCount = 2;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Controls.Add(this.lbl_total, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.lbl_dinero, 1, 0);
-            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 179);
-            this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 1;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(274, 40);
-            this.tableLayoutPanel12.TabIndex = 1;
+            this.desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.desc.HeaderText = "Producto";
+            this.desc.Name = "desc";
             // 
-            // lbl_total
+            // cantidad
             // 
-            this.lbl_total.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_total.AutoSize = true;
-            this.lbl_total.Font = new System.Drawing.Font("Holguin Stamp", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_total.Location = new System.Drawing.Point(3, 0);
-            this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(93, 40);
-            this.lbl_total.TabIndex = 2;
-            this.lbl_total.Text = "Total: ";
+            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cantidad.FillWeight = 70F;
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
             // 
-            // lbl_dinero
+            // precio
             // 
-            this.lbl_dinero.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_dinero.AutoSize = true;
-            this.lbl_dinero.Font = new System.Drawing.Font("\' Mono Bold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dinero.Location = new System.Drawing.Point(102, 4);
-            this.lbl_dinero.Name = "lbl_dinero";
-            this.lbl_dinero.Size = new System.Drawing.Size(96, 32);
-            this.lbl_dinero.TabIndex = 3;
-            this.lbl_dinero.Text = "$0,00";
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio.FillWeight = 60F;
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
             // 
             // lbl_resumen
             // 
@@ -856,15 +870,15 @@
             // 
             // btn_eventual
             // 
-            this.btn_eventual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btn_eventual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_eventual.AutoSize = true;
             this.btn_eventual.BackColor = System.Drawing.Color.DarkMagenta;
             this.btn_eventual.BackgroundColor = System.Drawing.Color.DarkMagenta;
             this.btn_eventual.BorderColor = System.Drawing.Color.Black;
             this.btn_eventual.BorderRadius = 0;
-            this.btn_eventual.BorderSize = 2;
+            this.btn_eventual.BorderSize = 0;
             this.btn_eventual.FlatAppearance.BorderSize = 0;
             this.btn_eventual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_eventual.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -876,18 +890,19 @@
             this.btn_eventual.Text = "EVENTUAL";
             this.btn_eventual.TextColor = System.Drawing.Color.White;
             this.btn_eventual.UseVisualStyleBackColor = false;
+            this.btn_eventual.Click += new System.EventHandler(this.btn_eventual_Click_1);
             // 
             // btn_cfinal
             // 
-            this.btn_cfinal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btn_cfinal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_cfinal.AutoSize = true;
             this.btn_cfinal.BackColor = System.Drawing.Color.BlueViolet;
             this.btn_cfinal.BackgroundColor = System.Drawing.Color.BlueViolet;
             this.btn_cfinal.BorderColor = System.Drawing.Color.Black;
             this.btn_cfinal.BorderRadius = 0;
-            this.btn_cfinal.BorderSize = 2;
+            this.btn_cfinal.BorderSize = 0;
             this.btn_cfinal.FlatAppearance.BorderSize = 0;
             this.btn_cfinal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cfinal.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -899,6 +914,7 @@
             this.btn_cfinal.Text = "CONSUMIDOR FINAL";
             this.btn_cfinal.TextColor = System.Drawing.Color.White;
             this.btn_cfinal.UseVisualStyleBackColor = false;
+            this.btn_cfinal.Click += new System.EventHandler(this.btn_cfinal_Click_1);
             // 
             // lbl_condicion
             // 
@@ -939,15 +955,15 @@
             // 
             // btn_tipocobro
             // 
-            this.btn_tipocobro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btn_tipocobro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_tipocobro.AutoSize = true;
             this.btn_tipocobro.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btn_tipocobro.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
             this.btn_tipocobro.BorderColor = System.Drawing.Color.Black;
             this.btn_tipocobro.BorderRadius = 0;
-            this.btn_tipocobro.BorderSize = 2;
+            this.btn_tipocobro.BorderSize = 0;
             this.btn_tipocobro.FlatAppearance.BorderSize = 0;
             this.btn_tipocobro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_tipocobro.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -962,15 +978,15 @@
             // 
             // lbl_cerrarcaja
             // 
-            this.lbl_cerrarcaja.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbl_cerrarcaja.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_cerrarcaja.AutoSize = true;
             this.lbl_cerrarcaja.BackColor = System.Drawing.Color.Gold;
             this.lbl_cerrarcaja.BackgroundColor = System.Drawing.Color.Gold;
             this.lbl_cerrarcaja.BorderColor = System.Drawing.Color.Black;
             this.lbl_cerrarcaja.BorderRadius = 0;
-            this.lbl_cerrarcaja.BorderSize = 2;
+            this.lbl_cerrarcaja.BorderSize = 0;
             this.lbl_cerrarcaja.FlatAppearance.BorderSize = 0;
             this.lbl_cerrarcaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_cerrarcaja.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -997,15 +1013,15 @@
             // 
             // btn_desc
             // 
-            this.btn_desc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btn_desc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_desc.AutoSize = true;
             this.btn_desc.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btn_desc.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
             this.btn_desc.BorderColor = System.Drawing.Color.Black;
             this.btn_desc.BorderRadius = 0;
-            this.btn_desc.BorderSize = 2;
+            this.btn_desc.BorderSize = 0;
             this.btn_desc.FlatAppearance.BorderSize = 0;
             this.btn_desc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_desc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1032,15 +1048,15 @@
             // 
             // btn_cobrar
             // 
-            this.btn_cobrar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btn_cobrar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_cobrar.AutoSize = true;
             this.btn_cobrar.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btn_cobrar.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
             this.btn_cobrar.BorderColor = System.Drawing.Color.Black;
             this.btn_cobrar.BorderRadius = 0;
-            this.btn_cobrar.BorderSize = 2;
+            this.btn_cobrar.BorderSize = 0;
             this.btn_cobrar.FlatAppearance.BorderSize = 0;
             this.btn_cobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cobrar.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1065,26 +1081,6 @@
             this.lbl_f9.TabIndex = 6;
             this.lbl_f9.Text = "F9";
             // 
-            // desc
-            // 
-            this.desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.desc.HeaderText = "Producto";
-            this.desc.Name = "desc";
-            // 
-            // cantidad
-            // 
-            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cantidad.FillWeight = 70F;
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio.FillWeight = 60F;
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1106,6 +1102,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).EndInit();
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
             this.panel_right.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
             this.panel_factura.ResumeLayout(false);
@@ -1119,8 +1117,6 @@
             this.panel_container.ResumeLayout(false);
             this.panel_resumido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).EndInit();
-            this.tableLayoutPanel12.ResumeLayout(false);
-            this.tableLayoutPanel12.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel_updates.ResumeLayout(false);
             this.panel_updates.PerformLayout();
@@ -1198,11 +1194,10 @@
         private System.Windows.Forms.TableLayoutPanel panel_container;
         private System.Windows.Forms.Panel panel_resumido;
         private System.Windows.Forms.DataGridView dgv_resumen;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.Label lbl_total;
-        private System.Windows.Forms.Label lbl_dinero;
         private System.Windows.Forms.DataGridViewTextBoxColumn desc;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.Label lbl_dinero;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
     }
 }

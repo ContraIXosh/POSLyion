@@ -1,5 +1,6 @@
 ﻿using CapaNegocio;
 using CapaEntidad;
+using POSLyion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -17,14 +19,14 @@ namespace POSLyion
         private static Usuarios oUser = new Usuarios();
         public Start()
         {
-        InitializeComponent();
+            InitializeComponent();
         }
 
-        public Start(Usuarios user)
+        public Start(Usuarios oUser)
         {
             InitializeComponent();
-            oUser = user;
-            lbl_usuario.Text = user.Nombre_completo;
+            oUser = oUser;
+            lbl_usuario.Text = oUser.Nombre_completo;
         }
         List<Producto> productos = new List<Producto>
         {
@@ -50,7 +52,7 @@ namespace POSLyion
             {
                 if (control is MenuStrip)
                 {
-                    this.Controls.Remove(control); 
+                    this.Controls.Remove(control);
                 }
             }
         }
@@ -168,7 +170,7 @@ namespace POSLyion
             dgvCompra.Rows.Add("Total =", total);
         }
 
-      
+
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoverStripMenu();
@@ -225,7 +227,7 @@ namespace POSLyion
 
         private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-                    decimal total = 0;
+            decimal total = 0;
             if (e.RowIndex >= 0)
             {
                 // Obtiene el nombre y el código del producto seleccionado
@@ -261,7 +263,7 @@ namespace POSLyion
                     dgv_resumen.Rows.Add(new object[] { desc, 1, precio });
                 }
             }
-                        lbl_dinero.Text = "$" + total.ToString("0.00");
+            lbl_dinero.Text = "Total: $" + total.ToString("0.00");
 
         }
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
@@ -282,33 +284,66 @@ namespace POSLyion
                 }
             }
         }
+
+        DataGridView dgv_ampliar = new DataGridView();
+        private void flagdgv()
+        {
+            if (!panel_container.Controls.Container.Contains(dgv_ampliar))
+            {
+                dgv_ampliar.Columns.Clear();
+                dgv_ampliar.Columns.Add("prod", "Producto");
+                dgv_ampliar.Columns.Add("cantidad", "Cantidad");
+                dgv_ampliar.Columns.Add("precio", "Precio");
+
+                lbl_dinero.Visible = true;
+                lbl_dinero.Text = "Total: $0.00";
+                panel_container.Controls.Add(dgv_ampliar, 0, 1);
+                dgv_ampliar.Dock = DockStyle.Fill;
+                dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv_ampliar.BackgroundColor = Color.MediumSlateBlue;
+                dgv_ampliar.BorderStyle = BorderStyle.None;
+                dgv_ampliar.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                dgv_ampliar.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.BackColor = Color.Maroon;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Maroon;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
+                dgv_ampliar.RowHeadersVisible = false;
+                dgv_ampliar.EnableHeadersVisualStyles = false;
+                dgv_ampliar.AllowUserToAddRows = false;
+                dgv_ampliar.AllowUserToDeleteRows = false;
+                dgv_ampliar.AllowUserToResizeRows = false;
+
+            }
+
+        }
         private void btn_factura_Click_1(object sender, EventArgs e)
         {
+            if (panel_container.Controls.Container.Contains(dgv_ampliar))
+            {
+                panel_container.Controls.Remove(dgv_ampliar);
+                lbl_dinero.Visible = true;
+            }
             dgv_resumen.Columns.Clear();
             dgv_resumen.Columns.Add("desc", "Producto");
             dgv_resumen.Columns.Add("cantidad", "Cantidad");
             dgv_resumen.Columns.Add("precio", "Precio");
             dgv_resumen.Dock = DockStyle.Fill;
+            dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_resumen.Visible = true;
         }
 
         private void btn_compra_Click_1(object sender, EventArgs e)
         {
+            flagdgv();
             dgv_resumen.Columns.Clear();
             dgv_resumen.Columns.Add("fecha", "Fecha");
             dgv_resumen.Columns.Add("hora", "Hora");
             dgv_resumen.Columns.Add("empresa", "Empresa");
             dgv_resumen.Columns.Add("cantidad", "Cantidad");
 
-            DataGridView dgv_ampliar = new DataGridView();
-
-            dgv_ampliar.Columns.Clear();
-            dgv_ampliar.Columns.Add("prod", "Producto");
-            dgv_ampliar.Columns.Add("cantidad", "Cantidad");
-            dgv_ampliar.Columns.Add("precio", "Precio");
-
-            dgv_ampliar.Visible = true;
-            dgv_ampliar.Dock = DockStyle.Fill;
+            dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_resumen.Visible = true;
             dgv_resumen.Dock = DockStyle.Fill;
 
@@ -316,8 +351,37 @@ namespace POSLyion
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
 
             panel_container.Controls.Add(dgv_resumen, 0, 0);
-            panel_container.Controls.Add(dgv_ampliar, 0, 1);
+
 
         }
+
+        private void btn_venta_Click_1(object sender, EventArgs e)
+        {
+            flagdgv();
+            dgv_resumen.Columns.Clear();
+            dgv_resumen.Columns.Add("fecha", "Fecha");
+            dgv_resumen.Columns.Add("hora", "Hora");
+            dgv_resumen.Columns.Add("Producto", "Producto");
+            dgv_resumen.Columns.Add("cantidad", "Cantidad de Prods");
+
+            dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_resumen.Visible = true;
+            dgv_resumen.Dock = DockStyle.Fill;
+
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+
+            panel_container.Controls.Add(dgv_resumen, 0, 0);
+        }
+        private void btn_eventual_Click_1(object sender, EventArgs e)
+        {
+            lbl_tipoticket.Text = "Eventual";
+        }
+
+        private void btn_cfinal_Click_1(object sender, EventArgs e)
+        {
+            lbl_tipoticket.Text = "Consumidor Final";
+        }
+
     }
 }
