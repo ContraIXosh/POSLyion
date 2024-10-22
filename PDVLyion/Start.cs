@@ -265,7 +265,7 @@ namespace PDCLyion
                     dgv_resumen.Rows.Add(new object[] { desc, 1, precio });
                 }
             }
-                        lbl_dinero.Text = "Total: $" + total.ToString("0.00");
+                        lbl_dinero.Text = "$" + total.ToString("0.00");
 
         }
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
@@ -385,5 +385,12 @@ namespace PDCLyion
             lbl_tipoticket.Text = "Consumidor Final";
         }
 
+        private void btn_cerrarventa_Click(object sender, EventArgs e)
+        {
+            formCambio cambio = new formCambio();
+            cambio.Show();
+
+            cambio.DineroCambio = lbl_dinero.Text;
+        }
     }
 }
