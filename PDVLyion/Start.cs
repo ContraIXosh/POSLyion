@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLayer;
+using EntityLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,19 +8,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
-using EntityLayer;
-using BusinessLayer;
 
 namespace PDCLyion
 {
     public partial class Start : Form
     {
-
-        private static IconMenuItem activeMenu = null;
+        string connectionString = "Data Source = ; Initial Catalog = POSLyion; Integrated Security = True";
+        private static ToolStripMenuItem activeMenu = null;
         private static Form activeForm = null;
         private static Users oUser = new Users();
+        public Start()
+        {
+        InitializeComponent();
+        }
 
         public Start(Users user)
         {
@@ -26,193 +30,365 @@ namespace PDCLyion
             oUser = user;
             lbl_usuario.Text = user.Full_name;
         }
-        
-        private void abrirHerencia(object formhija)
+        List<Producto> productos = new List<Producto>
         {
-           if(this.panel_main.Controls.Count > 0)
-            {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form; 
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-                
-            }
+            new Producto {}
+
+        };
+        private class Producto
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+            public decimal precio { get; set; }
+
         }
 
-
-        private void Start_Load(object sender, EventArgs e)
+        private void cargarProd()
         {
-            List<Permissions> permissions_list = new BL_Permissions().Read(oUser.User_id);
-            foreach(ToolStripMenuItem menu in menu_Main.Items)
+            dgv_productos.DataSource = productos;
+        }
+
+        private void RemoverStripMenu()
+        {
+            foreach (Control control in this.Controls)
             {
-                bool found = permissions_list.Any(m => m.Menu_name == menu.Name);
-                if (!found)
+                if (control is MenuStrip)
                 {
-                    menu.Visible = false;
+                    this.Controls.Remove(control); 
                 }
             }
         }
 
-        private void OpenForm (IconMenuItem iconmenuitem, Form form)
-        {
-            
-        }
-
-        private void iconmenuitem_sales_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_purchaseorders_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_products_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_users_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_customers_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_vendors_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_statistics_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void iconmenuitem_config_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel1_DockChanged(object sender, EventArgs e)
-        {
-            Dock = DockStyle.Fill;
-        }
-
-        private void rjButton2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_hamb_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void abrirHerencia(ToolStripMenuItem menu, Form fh)
         {
 
+            if (panel_main.Controls.Count > 0)
+                panel_main.Controls.RemoveAt(0);
+
+            fh.TopLevel = false;
+            fh.FormBorderStyle = FormBorderStyle.None;
+            fh.Dock = DockStyle.Fill;
+
+            panel_main.Controls.Add(fh);
+            panel_main.Tag = fh;
+            fh.Show();
         }
 
+
+        private void btn_compra_Click(object sender, EventArgs e)
+        {
+            lbl_titulo.Text = "Facturación";
+            MostrarFacturacion();
+        }
+
+        private void btn_factura_Click(object sender, EventArgs e)
+        {
+            lbl_titulo.Text = "Historial de compra";
+            mostrarHistorialSell();
+        }
+
+        private void btn_venta_Click(object sender, EventArgs e)
+        {
+            lbl_titulo.Text = "Historial de ventas";
+            mostrarHistorialSell();
+        }
+
+        private void btn_cfinal_Click(object sender, EventArgs e)
+        {
+            lbl_tipoticket.Text = "CONSUMIDOR FINAL";
+            btn_cfinal.ForeColor = Color.White;
+            btn_cfinal.BackColor = Color.BlueViolet;
+            btn_cfinal.Enabled = false;
+            if (btn_eventual.Enabled == false)
+            {
+                btn_cfinal.ForeColor = Color.White;
+                btn_cfinal.BackColor = Color.BlueViolet;
+                btn_eventual.Enabled = true;
+            }
+        }
+
+        private void btn_eventual_Click(object sender, EventArgs e)
+        {
+            lbl_tipoticket.Text = "EVENTUAL";
+            btn_eventual.ForeColor = Color.White;
+            btn_eventual.BackColor = Color.DarkMagenta;
+            btn_eventual.Enabled = false;
+            if (btn_cfinal.Enabled == false)
+            {
+                btn_eventual.ForeColor = Color.White;
+                btn_eventual.BackColor = Color.DarkMagenta;
+                btn_cfinal.Enabled = true;
+            }
+        }
+        private void MostrarFacturacion()
+        {
+            panel_resumen.Controls.Clear();
+            ListBox lstProductos = new ListBox();
+            lstProductos.Items.Add("Producto 1 - $10");
+            lstProductos.Items.Add("Producto 2 - $20");
+            panel_resumen.Controls.Add(lstProductos);
+        }
+
+        private void mostrarHistorialBuy()
+        {
+            panel_resumen.Controls.Clear();
+            DataGridView dgvCompra = new DataGridView();
+
+
+        }
+        private void mostrarHistorialSell()
+        {
+            float precio = 0;
+            float total = precio;
+
+            if (precio > 0)
+            {
+
+            }
+            DataGridView dgvCompra = new DataGridView();
+            dgvCompra.Columns.Add("Hora", "Hora");
+            dgvCompra.Columns.Add("Precio", "Precio");
+            dgvCompra.Columns.Add("Productos", "Productos");
+            dgvCompra.Columns.Add("Fecha", "Fecha");
+            dgvCompra.Rows.Add("16:52:16", "$1620", "Last product", "10/02/2025");
+            dgvCompra.Rows.Add("16:53:42", "$1920", "Last product", "10/02/2025");
+            panel_resumen.Controls.Add(dgvCompra);
+
+            dgvCompra.Columns.Add("Fecha", "Fecha");
+            dgvCompra.Columns.Add("Producto", "Producto");
+            dgvCompra.Columns.Add("Precio", "Precio");
+
+            dgvCompra.Rows.Add("01/10/2024", "Producto A", "$15");
+            dgvCompra.Rows.Add("02/10/2024", "Producto B", "$25");
+
+            DataGridView dgvAmpliar = new DataGridView();
+            dgvCompra.Columns.Add("Fecha", "Fecha");
+            dgvCompra.Columns.Add("Producto", "Producto");
+            dgvCompra.Columns.Add("Cantidad", "Cantidad");
+            dgvCompra.Columns.Add("Precio", "precio");
+            dgvCompra.Rows.Add("01/10/2024", "Salsa golf LC", "8", precio = 3999);
+            dgvCompra.Rows.Add("01/10/2024", "Heineken lata 473", "6", precio = 124);
+            dgvCompra.Rows.Add("01/10/2024", "Amstel lata 473", "15", precio = 15);
+            dgvCompra.Rows.Add("Total =", total);
+        }
+
+      
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            RemoverStripMenu();
+            abrirHerencia((ToolStripMenuItem)sender, new Start(oUser));
         }
 
-        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            formPurchaseOrders crearfactura = new formPurchaseOrders();
-
-            crearfactura.Show(); ;
+            formPurchaseOrders compras = new formPurchaseOrders(oUser);
+            compras.Show();
         }
 
-        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formProducts());
+            abrirHerencia(tsmenu_prods, new formProducts());
         }
 
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formUsers2());
+            abrirHerencia(tsmenu_users, new formUsers());
         }
 
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formCustomers());
+            abrirHerencia(tsmenu_clientes, new formCustomers());
         }
 
-        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formVendors());
+            abrirHerencia(tsmenu_proveedor, new formVendors());
         }
 
-        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formStadistic());
+            abrirHerencia(tsmenu_reports, new formStadistic());
         }
 
-        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(new formConfig());
+            abrirHerencia(tsmenu_cat, new formCat());
         }
 
-        private void panel_main_Paint(object sender, PaintEventArgs e)
+        private void configuraciónToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            abrirHerencia(tsmenu_config, new formConfig());
         }
 
-        private void Start_Resize(object sender, EventArgs e)
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if(this.ClientSize.Width > 1000 && this.ClientSize.Height >  700) {
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            panel_right.Width = 500;
-            panel_right.Height = 860;
-            panel_right.Left = this.ClientSize.Width - panel_right.Width;
+            formLogOut logout = new formLogOut();
+            logout.Show();
+        }
 
 
-            }
-            else
+        private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            decimal total = 0;
+            if (e.RowIndex >= 0)
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_right.Width = 280;
-                panel_right.Height = 455;
-                panel_right.Left = this.ClientSize.Width - panel_right.Width;
+                // Obtiene el nombre y el código del producto seleccionado
+                string desc = dgv_productos.Rows[e.RowIndex].Cells["dgv_desc"].Value.ToString();
+                decimal precio = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_precio"].Value);
+
+                // Verifica si el producto ya está en el dgv_resumen
+                bool productoExiste = false;
+                foreach (DataGridViewRow row in dgv_resumen.Rows)
+                {
+                    if (row.Cells["precio"].Value != null)
+                    {
+                        total += Convert.ToDecimal(row.Cells["precio"].Value);
+                    }
+
+                    if (row.Cells["desc"].Value != null && row.Cells["desc"].Value.ToString() == desc)
+                    {
+                        // Si el producto ya existe, aumenta la cantidad en la misma fila
+                        int cantidadActual = Convert.ToInt32(row.Cells["cantidad"].Value);
+                        row.Cells["cantidad"].Value = cantidadActual + 1;
+
+                        decimal precioActual = Convert.ToDecimal(row.Cells["precio"].Value);
+                        row.Cells["precio"].Value = precioActual + Convert.ToDecimal(precio);
+
+                        productoExiste = true;
+                        break;
+                    }
+                }
+
+                // Si el producto no existe, lo agrega con cantidad inicial de 1
+                if (!productoExiste)
+                {
+                    dgv_resumen.Rows.Add(new object[] { desc, 1, precio });
+                }
+            }
+                        lbl_dinero.Text = total.ToString("0.00");
+
+        }
+        private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
+        {
+            dgv_productos.Rows.Clear();
+            if (txt_buscarproductos.Text != "")
+            {
+                DataTable products_table = new BL_Products().Search(txt_buscarproductos.Text);
+                foreach (DataRow row in products_table.Rows)
+                {
+                    dgv_productos.Rows.Add(new object[]
+                    {
+                row["ID"],
+                row["Descripcion"],
+                row["Precio"],
+                row["Stock actual"]
+                    });
+                }
             }
         }
 
-        private void lbl_usuario_Click(object sender, EventArgs e)
+            DataGridView dgv_ampliar = new DataGridView();
+        private void flagdgv()
         {
-    
+            if (!panel_container.Controls.Container.Contains(dgv_ampliar))
+            {
+                dgv_ampliar.Columns.Clear();
+                dgv_ampliar.Columns.Add("prod", "Producto");
+                dgv_ampliar.Columns.Add("cantidad", "Cantidad");
+                dgv_ampliar.Columns.Add("precio", "Precio");
+
+                lbl_dinero.Visible = true;
+                lbl_dinero.Text = "0.00";
+                panel_container.Controls.Add(dgv_ampliar, 0, 1);
+                dgv_ampliar.Dock = DockStyle.Fill;
+                dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv_ampliar.BackgroundColor = Color.MediumSlateBlue;
+                dgv_ampliar.BorderStyle = BorderStyle.None;
+                dgv_ampliar.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                dgv_ampliar.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.BackColor = Color.Maroon;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Maroon;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+                dgv_ampliar.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
+                dgv_ampliar.RowHeadersVisible = false;
+                dgv_ampliar.EnableHeadersVisualStyles = false;
+                dgv_ampliar.AllowUserToAddRows = false;
+                dgv_ampliar.AllowUserToDeleteRows = false;
+                dgv_ampliar.AllowUserToResizeRows = false;
+
+            }
+
+        }
+        private void btn_factura_Click_1(object sender, EventArgs e)
+        {
+            if (panel_container.Controls.Container.Contains(dgv_ampliar))
+            {
+               panel_container.Controls.Remove(dgv_ampliar);
+                lbl_dinero.Visible = true;
+            }
+            dgv_resumen.Columns.Clear();
+            dgv_resumen.Columns.Add("desc", "Producto");
+            dgv_resumen.Columns.Add("cantidad", "Cantidad");
+            dgv_resumen.Columns.Add("precio", "Precio");
+            dgv_resumen.Dock = DockStyle.Fill;
+            dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_resumen.Visible = true;
         }
 
-        private void btn_Down_Click(object sender, EventArgs e)
+        private void btn_compra_Click_1(object sender, EventArgs e)
         {
-            menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+            flagdgv();
+            dgv_resumen.Columns.Clear();
+            dgv_resumen.Columns.Add("fecha", "Fecha");
+            dgv_resumen.Columns.Add("hora", "Hora");
+            dgv_resumen.Columns.Add("empresa", "Empresa");
+            dgv_resumen.Columns.Add("cantidad", "Cantidad");
+
+            dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_resumen.Visible = true;
+            dgv_resumen.Dock = DockStyle.Fill;
+
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+
+            panel_container.Controls.Add(dgv_resumen, 0, 0);
+
+
         }
 
-        private void btn_hamb_Click_1(object sender, EventArgs e)
+        private void btn_venta_Click_1(object sender, EventArgs e)
         {
-            menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+            flagdgv();
+            dgv_resumen.Columns.Clear();
+            dgv_resumen.Columns.Add("fecha", "Fecha");
+            dgv_resumen.Columns.Add("hora", "Hora");
+            dgv_resumen.Columns.Add("Producto", "Producto");
+            dgv_resumen.Columns.Add("cantidad", "Cantidad de Prods");
+
+            dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_resumen.Visible = true;
+            dgv_resumen.Dock = DockStyle.Fill;
+
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+
+            panel_container.Controls.Add(dgv_resumen, 0, 0);
+        }
+        private void btn_eventual_Click_1(object sender, EventArgs e)
+        {
+            lbl_tipoticket.Text = "Eventual";
         }
 
-        private void menu_Main_Opening(object sender, CancelEventArgs e)
+        private void btn_cfinal_Click_1(object sender, EventArgs e)
         {
-
+            lbl_tipoticket.Text = "Consumidor Final";
         }
 
-        private void panel_factura_Paint(object sender, PaintEventArgs e)
+        private void btn_cerrarventa_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel2_Resize(object sender, EventArgs e)
-        {
-           
+            formCambio cambio = new formCambio(Convert.ToDecimal(lbl_dinero.Text));
+            cambio.Show();
         }
     }
 }

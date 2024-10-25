@@ -24,7 +24,6 @@ namespace DataLayer
                     oConnection.Open();
                     SqlCommand command = new SqlCommand("SP_CREATE_PRODUCTCATEGORY", oConnection);
                     command.Parameters.AddWithValue("description", oProductCategory.Description);
-                    command.Parameters.AddWithValue("state", oProductCategory.State);
                     command.Parameters.Add("message", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("created_productcategory_id", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
@@ -61,6 +60,42 @@ namespace DataLayer
                                 Product_category_id = Convert.ToInt32(reader["product_category_id"]),
                                 Description = reader["description"].ToString(),
                                 State = Convert.ToBoolean(reader["state"])
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    list = new List<ProductCategories>();
+                }
+                return list;
+            }
+        }
+
+        public List<ProductCategories> CountProducts()
+        {
+            List<ProductCategories> list = new List<ProductCategories>();
+            using (SqlConnection oConnection = new SqlConnection(Connection.ConnectionString))
+            {
+                try
+                {
+                    oConnection.Open();
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT pc.product_category_id[ProductCategoryId], pc.description[ProductCategoryDescription], ISNULL(COUNT(p.product_id), 0) AS products_quantity");
+                    query.AppendLine("FROM ProductCategories pc");
+                    query.AppendLine("LEFT JOIN Products p ON pc.product_category_id = p.product_category_id");
+                    query.AppendLine("GROUP BY pc.product_category_id, pc.description");
+                    SqlCommand command = new SqlCommand(query.ToString(), oConnection);
+                    command.CommandType = CommandType.Text;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new ProductCategories()
+                            {
+                                Product_category_id = Convert.ToInt32(reader["ProductCategoryId"]),
+                                Description = reader["ProductCategoryDescription"].ToString(),
+                                Quantity = Convert.ToInt32(reader["products_quantity"])
                             });
                         }
                     }

@@ -32,14 +32,13 @@
             this.lblusername = new System.Windows.Forms.Label();
             this.lblpassword = new System.Windows.Forms.Label();
             this.notice = new System.Windows.Forms.Label();
-            this.rjToggleButton1 = new CustomBox.RJControls.RJToggleButton();
             this.rjButton2 = new CustomBox.RJControls.RJButton();
             this.abrir_sesion = new CustomBox.RJControls.RJButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
             this.txtusername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtpassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +49,7 @@
             this.lblusername.BackColor = System.Drawing.Color.Transparent;
             this.lblusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblusername.ForeColor = System.Drawing.Color.Gold;
-            this.lblusername.Location = new System.Drawing.Point(289, 70);
+            this.lblusername.Location = new System.Drawing.Point(292, 64);
             this.lblusername.Name = "lblusername";
             this.lblusername.Size = new System.Drawing.Size(76, 20);
             this.lblusername.TabIndex = 2;
@@ -62,7 +61,7 @@
             this.lblpassword.BackColor = System.Drawing.Color.Transparent;
             this.lblpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpassword.ForeColor = System.Drawing.Color.Gold;
-            this.lblpassword.Location = new System.Drawing.Point(289, 146);
+            this.lblpassword.Location = new System.Drawing.Point(291, 138);
             this.lblpassword.Name = "lblpassword";
             this.lblpassword.Size = new System.Drawing.Size(107, 20);
             this.lblpassword.TabIndex = 3;
@@ -74,28 +73,11 @@
             this.notice.BackColor = System.Drawing.Color.Transparent;
             this.notice.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notice.ForeColor = System.Drawing.Color.White;
-            this.notice.Location = new System.Drawing.Point(295, 18);
+            this.notice.Location = new System.Drawing.Point(295, 210);
             this.notice.Name = "notice";
             this.notice.Size = new System.Drawing.Size(263, 32);
             this.notice.TabIndex = 4;
             this.notice.Text = "Por favor ingrese su usuario y contraseña\r\npara ingresar al sistema";
-            // 
-            // rjToggleButton1
-            // 
-            this.rjToggleButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rjToggleButton1.AutoSize = true;
-            this.rjToggleButton1.BackColor = System.Drawing.Color.Transparent;
-            this.rjToggleButton1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.rjToggleButton1.Location = new System.Drawing.Point(293, 218);
-            this.rjToggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton1.Name = "rjToggleButton1";
-            this.rjToggleButton1.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton1.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton1.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton1.TabIndex = 10;
-            this.rjToggleButton1.UseVisualStyleBackColor = false;
             // 
             // rjButton2
             // 
@@ -135,9 +117,9 @@
             this.abrir_sesion.ForeColor = System.Drawing.Color.Black;
             this.abrir_sesion.Image = ((System.Drawing.Image)(resources.GetObject("abrir_sesion.Image")));
             this.abrir_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.abrir_sesion.Location = new System.Drawing.Point(284, 261);
+            this.abrir_sesion.Location = new System.Drawing.Point(291, 261);
             this.abrir_sesion.Name = "abrir_sesion";
-            this.abrir_sesion.Size = new System.Drawing.Size(146, 31);
+            this.abrir_sesion.Size = new System.Drawing.Size(139, 31);
             this.abrir_sesion.TabIndex = 12;
             this.abrir_sesion.Text = "Iniciar Sesion";
             this.abrir_sesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -172,33 +154,36 @@
             // txtusername
             // 
             this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusername.Location = new System.Drawing.Point(295, 98);
+            this.txtusername.Location = new System.Drawing.Point(298, 92);
             this.txtusername.Multiline = true;
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(262, 31);
             this.txtusername.TabIndex = 16;
+
+            this.txtusername.Text = "admin";
             this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged_1);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(352, 223);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 16);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Guardar contraseña";
             // 
             // txtpassword
             // 
             this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(293, 169);
+            this.txtpassword.Location = new System.Drawing.Point(295, 161);
             this.txtpassword.Multiline = true;
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(262, 31);
             this.txtpassword.TabIndex = 17;
             this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.Location = new System.Drawing.Point(341, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 44);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "POSLyion";
             // 
             // Login
             // 
@@ -214,12 +199,12 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.abrir_sesion);
             this.Controls.Add(this.rjButton2);
-            this.Controls.Add(this.rjToggleButton1);
             this.Controls.Add(this.notice);
             this.Controls.Add(this.lblpassword);
             this.Controls.Add(this.lblusername);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSLyion - Ingreso de usuario";
@@ -234,13 +219,12 @@
         private System.Windows.Forms.Label lblusername;
         private System.Windows.Forms.Label lblpassword;
         private System.Windows.Forms.Label notice;
-        private CustomBox.RJControls.RJToggleButton rjToggleButton1;
         private CustomBox.RJControls.RJButton rjButton2;
         private CustomBox.RJControls.RJButton abrir_sesion;
         private System.Windows.Forms.Panel panel1;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
         private System.Windows.Forms.TextBox txtusername;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtpassword;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -185,6 +185,7 @@ VALUES
 ('33333333', 'Gerente', 'gerente@hotmail.com', 'gerente', '123', 3, '3794333333', 1)
 GO
 
+<<<<<<< HEAD
 CREATE PROC SP_CREATE_USER
 @dni VARCHAR(30),
 @full_name VARCHAR(100),
@@ -346,3 +347,16 @@ SELECT @result
 SELECT @message
 */
 
+=======
+
+SELECT * FROM Products 
+
+USE POSLyion
+GO
+
+INSERT INTO Products(bar_code, description, product_category_id, cost_price, sale_price, current_stock, minimum_stock)
+VALUES
+('111', 'Comida', 1, 10.60, 6.66, 5, 3),
+('222', 'Ropa', 1, 11.60, 7.66, 6, 2),
+('333', 'Electronica', 1, 12.60, 8.66, 7, 1) 
+>>>>>>> 8f251216dc63c30fd18f7e65027b285dfc28cbd3

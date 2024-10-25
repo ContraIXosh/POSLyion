@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Best.EntLib.Graphic, Version=5.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Best.EntLib.Graphic.5.5.2\lib\net46\Best.EntLib.Graphic.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.6.6.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.OrTools, Version=9.11.4210.0, Culture=neutral, PublicKeyToken=53dbb1ea090cbef7, processorArchitecture=MSIL">
+      <HintPath>packages\Google.OrTools.9.11.4210\lib\net462\Google.OrTools.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.28.2.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.28.2\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.Core.0.9.8\lib\net40\LiveCharts.dll</HintPath>
@@ -53,6 +62,15 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=4.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Common.4.11.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=4.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.4.11.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -64,8 +82,8 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="RestSharp, Version=112.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>packages\RestSharp.112.0.0\lib\net48\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=112.1.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.112.1.0\lib\net48\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="RJCodeAdance.RJControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\RJCodeAdvance.RJControl2s.1.0.0\lib\net472\RJCodeAdance.RJControls.dll</HintPath>
@@ -73,35 +91,74 @@
     <Reference Include="RJCodeAdvance.RJControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\RJCodeAdvance.RJControls.1.0.0\lib\net45\RJCodeAdvance.RJControls.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.CodeDom, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.CodeDom.8.0.0\lib\net462\System.CodeDom.dll</HintPath>
     </Reference>
+    <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.8.0.1\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.EventLog, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.EventLog.8.0.1\lib\net462\System.Diagnostics.EventLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.PerformanceCounter, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.PerformanceCounter.8.0.1\lib\net462\System.Diagnostics.PerformanceCounter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.8.0.10\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=8.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.Metadata.8.0.1\lib\net462\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.8.0.0\lib\net462\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encoding.CodePages.8.0.0\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=8.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.8.0.5\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -121,6 +178,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCat.Designer.cs">
+      <DependentUpon>formCat.cs</DependentUpon>
+    </Compile>
     <Compile Include="formConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,11 +196,17 @@
     <Compile Include="formCustomers.Designer.cs">
       <DependentUpon>formCustomers.cs</DependentUpon>
     </Compile>
-    <Compile Include="formCustomers2.cs">
+    <Compile Include="formCustomersAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formCustomers2.Designer.cs">
-      <DependentUpon>formCustomers2.cs</DependentUpon>
+    <Compile Include="formCustomersAdd.Designer.cs">
+      <DependentUpon>formCustomersAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLogOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogOut.Designer.cs">
+      <DependentUpon>formLogOut.cs</DependentUpon>
     </Compile>
     <Compile Include="formPermissions.cs">
       <SubType>Form</SubType>
@@ -151,11 +220,17 @@
     <Compile Include="formProducts.Designer.cs">
       <DependentUpon>formProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="formProducts2.cs">
+    <Compile Include="formProductsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formProducts2.Designer.cs">
-      <DependentUpon>formProducts2.cs</DependentUpon>
+    <Compile Include="formProductsAdd.Designer.cs">
+      <DependentUpon>formProductsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCambio.Designer.cs">
+      <DependentUpon>formCambio.cs</DependentUpon>
     </Compile>
     <Compile Include="formPurchaseOrders.cs">
       <SubType>Form</SubType>
@@ -163,17 +238,17 @@
     <Compile Include="formPurchaseOrders.Designer.cs">
       <DependentUpon>formPurchaseOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="formSales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formSales.Designer.cs">
-      <DependentUpon>formSales.cs</DependentUpon>
-    </Compile>
     <Compile Include="formStadistic.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formStadistic.Designer.cs">
       <DependentUpon>formStadistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUsersAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUsersAdd.Designer.cs">
+      <DependentUpon>formUsersAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="formUsers.cs">
       <SubType>Form</SubType>
@@ -181,29 +256,29 @@
     <Compile Include="formUsers.Designer.cs">
       <DependentUpon>formUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="formUsers2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formUsers2.Designer.cs">
-      <DependentUpon>formUsers2.cs</DependentUpon>
-    </Compile>
     <Compile Include="formVendors.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formVendors.Designer.cs">
       <DependentUpon>formVendors.cs</DependentUpon>
     </Compile>
-    <Compile Include="formVendors2.cs">
+    <Compile Include="formVendorsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formVendors2.Designer.cs">
-      <DependentUpon>formVendors2.cs</DependentUpon>
+    <Compile Include="formVendorsAdd.Designer.cs">
+      <DependentUpon>formVendorsAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modals\MD_Vendors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modals\MD_Vendors.Designer.cs">
+      <DependentUpon>MD_Vendors.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\OpcionCombo.cs" />
     <Compile Include="Start.cs">
@@ -214,14 +289,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formCat.resx">
+      <DependentUpon>formCat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formConfig.resx">
       <DependentUpon>formConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formCustomers.resx">
       <DependentUpon>formCustomers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formCustomers2.resx">
-      <DependentUpon>formCustomers2.cs</DependentUpon>
+    <EmbeddedResource Include="formCustomersAdd.resx">
+      <DependentUpon>formCustomersAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLogOut.resx">
+      <DependentUpon>formLogOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPermissions.resx">
       <DependentUpon>formPermissions.cs</DependentUpon>
@@ -229,32 +310,35 @@
     <EmbeddedResource Include="formProducts.resx">
       <DependentUpon>formProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formProducts2.resx">
-      <DependentUpon>formProducts2.cs</DependentUpon>
+    <EmbeddedResource Include="formProductsAdd.resx">
+      <DependentUpon>formProductsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCambio.resx">
+      <DependentUpon>formCambio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPurchaseOrders.resx">
       <DependentUpon>formPurchaseOrders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formSales.resx">
-      <DependentUpon>formSales.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="formStadistic.resx">
       <DependentUpon>formStadistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUsersAdd.resx">
+      <DependentUpon>formUsersAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUsers.resx">
       <DependentUpon>formUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formUsers2.resx">
-      <DependentUpon>formUsers2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="formVendors.resx">
       <DependentUpon>formVendors.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formVendors2.resx">
-      <DependentUpon>formVendors2.cs</DependentUpon>
+    <EmbeddedResource Include="formVendorsAdd.resx">
+      <DependentUpon>formVendorsAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modals\MD_Vendors.resx">
+      <DependentUpon>MD_Vendors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -269,7 +353,27 @@
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="algorithms\set_cover.proto" />
+    <None Include="bop\bop_parameters.proto" />
+    <None Include="constraint_solver\assignment.proto" />
+    <None Include="constraint_solver\demon_profiler.proto" />
+    <None Include="constraint_solver\routing_enums.proto" />
+    <None Include="constraint_solver\routing_ils.proto" />
+    <None Include="constraint_solver\routing_parameters.proto" />
+    <None Include="constraint_solver\search_limit.proto" />
+    <None Include="constraint_solver\search_stats.proto" />
+    <None Include="constraint_solver\solver_parameters.proto" />
+    <None Include="Fonts\%27 Mono Bold.ttf" />
+    <None Include="Fonts\Dekona.ttf" />
+    <None Include="Fonts\Energy Station.ttf" />
+    <None Include="Fonts\Holguin Stamp.ttf" />
+    <None Include="Fonts\Kitchener.otf" />
+    <None Include="glop\parameters.proto" />
+    <None Include="graph\flow_problem.proto" />
+    <None Include="linear_solver\linear_solver.proto" />
     <None Include="packages.config" />
+    <None Include="pdlp\solvers.proto" />
+    <None Include="pdlp\solve_log.proto" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -279,11 +383,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="sat\boolean_problem.proto" />
+    <None Include="sat\cp_model.proto" />
+    <None Include="sat\cp_model_service.proto" />
+    <None Include="sat\sat_parameters.proto" />
+    <None Include="util\int128.proto" />
+    <None Include="util\optional_boolean.proto" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +449,14 @@
       <Name>EntityLayer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="orLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.3.11.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.3.11.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.3\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets" Condition="Exists('packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.3\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

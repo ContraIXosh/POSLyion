@@ -8,12 +8,12 @@ namespace EntityLayer
 {
     public class Customers
     {
-        public string Customer_id { get; set; }
+        public int Customer_id { get; set; }
         public string Dni { get; set; }
         public string Full_name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string State { get; set; }
+        public bool State { get; set; }
         public string Create_date { get; set; }
         public string Modify_date { get; set; }
     }

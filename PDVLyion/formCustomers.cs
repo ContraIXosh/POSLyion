@@ -7,55 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EntityLayer;
+using BusinessLayer;
 
 namespace PDCLyion
 {
     public partial class formCustomers : Form
     {
+        string connectionString = "Data Source = ; Initial Catalog = POSLyion; Integrated Security = True";
+        private static Users oUser = new Users();
         public formCustomers()
         {
             InitializeComponent();
         }
-        private void abrirHerencia(object formhija)
+        private void abrirHerencia(Form formhija)
         {
-            if (this.panel_main.Controls.Count > 0)
-            {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
+            this.panel_main.Controls.Clear();
+            formhija.TopLevel = false;
+            formhija.FormBorderStyle = FormBorderStyle.None;
+            formhija.Dock = DockStyle.Fill;
 
-            }
-    }
-        private void panel_footer_Resize(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_addvendedor_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_viewvendedor_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_back_Click(object sender, EventArgs e)
-        {
-            
+            panel_main.Controls.Add(formhija);
+            formhija.Show();
         }
 
         private void btn_addvendedor_Click_1(object sender, EventArgs e)
         {
-            abrirHerencia(new formCustomers2());
+            abrirHerencia(new formCustomersAdd());
         }
 
         private void btn_viewvendedor_Click_1(object sender, EventArgs e)
@@ -65,7 +43,7 @@ namespace PDCLyion
 
         private void btn_back_Click_1(object sender, EventArgs e)
         {
-            abrirHerencia(new formSales());
+            abrirHerencia(new Start(oUser));
         }
 
         private void panel_footer_Resize_1(object sender, EventArgs e)
@@ -74,21 +52,108 @@ namespace PDCLyion
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                panel_footer.Left = this.ClientSize.Width - panel_footer.Width;
-                btn_back.Width = 150;
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
             else
             {
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                btn_back.Left = this.ClientSize.Width - btn_back.Width;
             }
         }
 
         private void panel_footer_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void formCustomers_Load(object sender, EventArgs e)
+        {
+            List<Customers> customer_list = new BL_Customers().ListAll();
+            foreach(Customers customer in customer_list)
+            {
+                grid_proveedores.Rows.Add(new object[]
+                {
+                    "",
+                    customer.Customer_id,
+                    customer.Full_name,
+                    customer.Dni,
+                    customer.Phone,
+                    customer.Email,
+                    customer.State == true ? "Activo" : "Inactivo",
+                    customer.State == true ? 1 : 0
+                });
+            }
+        }
+
+        private void grid_proveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        //private void btn_hamb_Click(object sender, EventArgs e)
+        //{
+        //    menu_Main.Show(btn_hamb, btn_hamb.Width, 0);
+        //}
+
+        //private void btn_Down_Click(object sender, EventArgs e)
+        //{
+        //    menu_sesion.Show(btn_Down, btn_Down.Width, 0);
+        //}
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new Start(oUser));
+        }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formPurchaseOrders crearfactura = new formPurchaseOrders(oUser);
+            crearfactura.Show();
+        }
+
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formProducts());
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formUsers());
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCustomers());
+        }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formCat());
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formVendors());
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formStadistic());
+        }
+
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new formConfig());
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            formCustomersAdd crearcliente = new formCustomersAdd();
+            crearcliente.Show();
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            abrirHerencia(new Start(oUser));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,37 +13,36 @@ namespace PDCLyion
 {
     public partial class formStadistic : Form
     {
+        private static Users oUser = new Users();
         public formStadistic()
         {
             InitializeComponent();
         }
 
-        private void abrirHerencia(object formhija)
+        private void RemoverStripMenu()
         {
-            if (this.panel_main.Controls.Count > 0)
+            foreach (Control control in this.Controls)
             {
-                this.panel_main.Controls.RemoveAt(0);
-                Form fh = formhija as Form;
-                fh.TopLevel = false; //dependencia
-                fh.Dock = DockStyle.Fill;
-                fh.FormBorderStyle = FormBorderStyle.None;
-                this.panel_main.Controls.Add(fh);
-                this.panel_main.Tag = fh;
-                fh.BringToFront();
-                this.panel_main.Refresh();
-                fh.Show();
-
+                if (control is MenuStrip)
+                {
+                    this.Controls.Remove(control);
+                }
             }
         }
-        private void rjButton4_Click(object sender, EventArgs e)
+
+        private void abrirHerencia(Form fh)
         {
 
-        }
+            if (panel_main.Controls.Count > 0)
+                panel_main.Controls.RemoveAt(0);
 
-        private void rjButton4_Click_1(object sender, EventArgs e)
-        {
-            abrirHerencia(new formSales());
-            this.panel_izq.Hide();
+            fh.TopLevel = false;
+            fh.FormBorderStyle = FormBorderStyle.None;
+            fh.Dock = DockStyle.Fill;
+
+            panel_main.Controls.Add(fh);
+            panel_main.Tag = fh;
+            fh.Show();
         }
     }
 }
