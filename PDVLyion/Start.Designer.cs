@@ -1,4 +1,4 @@
-﻿namespace PDCLyion
+﻿namespace POSLyion
 {
     partial class Start
     {
@@ -63,7 +63,6 @@
             this.dgv_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_dinero = new System.Windows.Forms.Label();
-            this.lbl_total = new System.Windows.Forms.Label();
             this.panel_right = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_factura = new System.Windows.Forms.Panel();
@@ -141,10 +140,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Gold;
-            this.label1.Font = new System.Drawing.Font("Energy Station", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 39);
+            this.label1.Size = new System.Drawing.Size(160, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "POSLyion";
             // 
@@ -463,9 +462,8 @@
             this.tableLayoutPanel12.BackColor = System.Drawing.Color.HotPink;
             this.tableLayoutPanel12.ColumnCount = 2;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel12.Controls.Add(this.lbl_dinero, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.lbl_total, 0, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 351);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
@@ -477,26 +475,14 @@
             // 
             // lbl_dinero
             // 
-            this.lbl_dinero.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_dinero.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_dinero.AutoSize = true;
-            this.lbl_dinero.Font = new System.Drawing.Font("\' Mono Bold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dinero.Location = new System.Drawing.Point(555, 4);
+            this.lbl_dinero.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dinero.Location = new System.Drawing.Point(472, 4);
             this.lbl_dinero.Name = "lbl_dinero";
-            this.lbl_dinero.Size = new System.Drawing.Size(96, 32);
+            this.lbl_dinero.Size = new System.Drawing.Size(170, 31);
             this.lbl_dinero.TabIndex = 4;
-            this.lbl_dinero.Text = "$0,00";
-            // 
-            // lbl_total
-            // 
-            this.lbl_total.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_total.AutoSize = true;
-            this.lbl_total.Font = new System.Drawing.Font("\' Mono Bold", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lbl_total.Location = new System.Drawing.Point(446, 4);
-            this.lbl_total.Margin = new System.Windows.Forms.Padding(0);
-            this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(106, 32);
-            this.lbl_total.TabIndex = 5;
-            this.lbl_total.Text = "Total:";
+            this.lbl_dinero.Text = "Total: $0,00";
             // 
             // panel_right
             // 
@@ -681,7 +667,7 @@
             this.btn_cerrarventa.Text = "CERRAR VENTA";
             this.btn_cerrarventa.TextColor = System.Drawing.Color.Lime;
             this.btn_cerrarventa.UseVisualStyleBackColor = false;
-            this.btn_cerrarventa.Click += new System.EventHandler(this.btn_cerrarventa_Click);
+            this.btn_cerrarventa.Click += new System.EventHandler(this.btn_cerrarventa_Click_1);
             // 
             // panel_resumen
             // 
@@ -1214,6 +1200,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.Label lbl_dinero;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.Label lbl_total;
     }
 }

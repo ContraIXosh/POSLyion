@@ -1,5 +1,6 @@
-﻿using BusinessLayer;
-using EntityLayer;
+﻿using CapaNegocio;
+using CapaEntidad;
+using POSLyion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,24 +12,24 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 
-namespace PDCLyion
+namespace POSLyion
 {
     public partial class Start : Form
     {
         string connectionString = "Data Source = ; Initial Catalog = POSLyion; Integrated Security = True";
         private static ToolStripMenuItem activeMenu = null;
         private static Form activeForm = null;
-        private static Users oUser = new Users();
+        private static Usuarios oUser = new Usuarios();
         public Start()
         {
-        InitializeComponent();
+            InitializeComponent();
         }
 
-        public Start(Users user)
+        public Start(Usuarios user)
         {
             InitializeComponent();
             oUser = user;
-            lbl_usuario.Text = user.Full_name;
+            lbl_usuario.Text = user.Nombre_completo;
         }
         List<Producto> productos = new List<Producto>
         {
@@ -54,7 +55,7 @@ namespace PDCLyion
             {
                 if (control is MenuStrip)
                 {
-                    this.Controls.Remove(control); 
+                    this.Controls.Remove(control);
                 }
             }
         }
@@ -172,7 +173,7 @@ namespace PDCLyion
             dgvCompra.Rows.Add("Total =", total);
         }
 
-      
+
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoverStripMenu();
@@ -181,43 +182,43 @@ namespace PDCLyion
 
         private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            formPurchaseOrders compras = new formPurchaseOrders(oUser);
+            formCompras compras = new formCompras(oUser);
             compras.Show();
         }
 
         private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_prods, new formProducts());
+            abrirHerencia(tsmenu_prods, new formProductos());
         }
 
         private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_users, new formUsers());
+            abrirHerencia(tsmenu_users, new formUsuarios());
         }
 
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_clientes, new formCustomers());
+            abrirHerencia(tsmenu_clientes, new formClientes());
         }
 
         private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_proveedor, new formVendors());
+            abrirHerencia(tsmenu_proveedor, new formProveedores());
         }
 
         private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_reports, new formStadistic());
+            abrirHerencia(tsmenu_reports, new formEstadsticas());
         }
 
         private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_cat, new formCat());
+            abrirHerencia(tsmenu_cat, new formCategorias());
         }
 
         private void configuraciónToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            abrirHerencia(tsmenu_config, new formConfig());
+            abrirHerencia(tsmenu_config, new formConfiguracion());
         }
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -229,12 +230,12 @@ namespace PDCLyion
 
         private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-                    decimal total = 0;
+            decimal total = 0;
             if (e.RowIndex >= 0)
             {
                 // Obtiene el nombre y el código del producto seleccionado
                 string desc = dgv_productos.Rows[e.RowIndex].Cells["dgv_desc"].Value.ToString();
-                string precio = dgv_productos.Rows[e.RowIndex].Cells["dgv_precio"].Value.ToString();
+                decimal precio = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_precio"].Value);
 
                 // Verifica si el producto ya está en el dgv_resumen
                 bool productoExiste = false;
@@ -265,7 +266,7 @@ namespace PDCLyion
                     dgv_resumen.Rows.Add(new object[] { desc, 1, precio });
                 }
             }
-                        lbl_dinero.Text = "$" + total.ToString("0.00");
+            lbl_dinero.Text = total.ToString("0.00");
 
         }
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
@@ -273,7 +274,7 @@ namespace PDCLyion
             dgv_productos.Rows.Clear();
             if (txt_buscarproductos.Text != "")
             {
-                DataTable products_table = new BL_Products().Search(txt_buscarproductos.Text);
+                DataTable products_table = new CN_Productos().Buscar(txt_buscarproductos.Text);
                 foreach (DataRow row in products_table.Rows)
                 {
                     dgv_productos.Rows.Add(new object[]
@@ -287,7 +288,7 @@ namespace PDCLyion
             }
         }
 
-            DataGridView dgv_ampliar = new DataGridView();
+        DataGridView dgv_ampliar = new DataGridView();
         private void flagdgv()
         {
             if (!panel_container.Controls.Container.Contains(dgv_ampliar))
@@ -298,7 +299,7 @@ namespace PDCLyion
                 dgv_ampliar.Columns.Add("precio", "Precio");
 
                 lbl_dinero.Visible = true;
-                lbl_dinero.Text = "Total: $0.00";
+                lbl_dinero.Text = "0.00";
                 panel_container.Controls.Add(dgv_ampliar, 0, 1);
                 dgv_ampliar.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -324,7 +325,7 @@ namespace PDCLyion
         {
             if (panel_container.Controls.Container.Contains(dgv_ampliar))
             {
-               panel_container.Controls.Remove(dgv_ampliar);
+                panel_container.Controls.Remove(dgv_ampliar);
                 lbl_dinero.Visible = true;
             }
             dgv_resumen.Columns.Clear();
@@ -385,12 +386,10 @@ namespace PDCLyion
             lbl_tipoticket.Text = "Consumidor Final";
         }
 
-        private void btn_cerrarventa_Click(object sender, EventArgs e)
+        private void btn_cerrarventa_Click_1(object sender, EventArgs e)
         {
-            formCambio cambio = new formCambio();
+            formCambio cambio = new formCambio(Convert.ToDecimal(lbl_dinero.Text), oUser);
             cambio.Show();
-
-            cambio.DineroCambio = lbl_dinero.Text;
         }
     }
 }

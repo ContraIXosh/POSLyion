@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PDCLyion.Properties {
+namespace POSLyion.Properties {
     using System;
     
     
