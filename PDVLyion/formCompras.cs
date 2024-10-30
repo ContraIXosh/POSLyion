@@ -25,8 +25,8 @@ namespace POSLyion
 
         private void formPurchaseOrders_Load(object sender, EventArgs e)
         {
-            cbo_tipo_documento.Items.Add(new OpcionCombo() { Value = "Factura", Text = "Factura" });
-            cbo_tipo_documento.Items.Add(new OpcionCombo() { Value = "Boleta", Text = "Boleta" });
+            cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Factura", Texto = "Factura" });
+            cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Boleta", Texto = "Boleta" });
             cbo_tipo_documento.DisplayMember = "Text";
             cbo_tipo_documento.ValueMember = "Value";
             cbo_tipo_documento.SelectedIndex = 0;

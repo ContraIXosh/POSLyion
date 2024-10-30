@@ -41,13 +41,13 @@ namespace POSLyion
             List<Categorias> lista_categorias = new CN_Categorias().Leer();
             foreach (Categorias oCategoria in lista_categorias)
             {
-                cbox_tipo.Items.Add(new OpcionCombo() { Value = oCategoria.Id_categoria, Text = oCategoria.Descripcion });
+                cbox_tipo.Items.Add(new OpcionCombo() { Valor = oCategoria.Id_categoria, Texto = oCategoria.Descripcion });
             }
             cbox_tipo.DisplayMember = "Text";
             cbox_tipo.ValueMember = "Value";
 
-            cbox_estado.Items.Add(new OpcionCombo() { Value = 1, Text = "Activo" });
-            cbox_estado.Items.Add(new OpcionCombo() { Value = 0, Text = "Inactivo" });
+            cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
             cbox_estado.DisplayMember = "Text";
             cbox_estado.ValueMember = "Value";
 
@@ -71,7 +71,7 @@ namespace POSLyion
             {
                 foreach (OpcionCombo opcion_estado in cbox_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Value) == (Producto.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (Producto.Estado == true ? 1 : 0))
                     {
                         cbox_estado_index = cbox_estado.Items.IndexOf(opcion_estado);
                         break;
@@ -81,7 +81,7 @@ namespace POSLyion
 
                 foreach (OpcionCombo opcion_categoria in cbox_tipo.Items)
                 {
-                    if (Convert.ToInt32(opcion_categoria.Value) == Producto.oCategoria.Id_categoria)
+                    if (Convert.ToInt32(opcion_categoria.Valor) == Producto.oCategoria.Id_categoria)
                     {
                         cbox_tipo_index = cbox_tipo.Items.IndexOf(opcion_categoria);
                         break;
@@ -103,7 +103,7 @@ namespace POSLyion
                     Descripcion = txt_descripcion.Texts,
                     oCategoria = new Categorias()
                     {
-                        Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Value)
+                        Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Valor)
                     },
                     Precio_costo = Convert.ToDecimal(txt_precio_costo.Texts),
                     Precio_venta = Convert.ToDecimal(txt_precio_venta.Texts),
@@ -135,12 +135,12 @@ namespace POSLyion
                 Anterior_producto.Estado = Producto.Estado;
                 Producto.Codigo_barras = txt_codigo_barras.Texts;
                 Producto.Descripcion = txt_descripcion.Texts;
-                Producto.oCategoria.Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Value);
+                Producto.oCategoria.Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Valor);
                 Producto.Precio_costo = Convert.ToDecimal(txt_precio_costo.Texts);
                 Producto.Precio_venta = Convert.ToDecimal(txt_precio_venta.Texts);
                 Producto.Stock_actual = Convert.ToInt32(txt_cantidad.Texts);
                 Producto.Stock_minimo = Convert.ToInt32(txt_stock_minimo.Texts);
-                Producto.Estado = Convert.ToBoolean(((OpcionCombo)cbox_estado.SelectedItem).Value);
+                Producto.Estado = Convert.ToBoolean(((OpcionCombo)cbox_estado.SelectedItem).Valor);
                 resultado = new CN_Productos().Modificar(Producto, out mensaje);
                 if (resultado == false)
                 {

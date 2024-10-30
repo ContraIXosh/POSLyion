@@ -16,17 +16,20 @@ namespace POSLyion
 {
     public partial class Start : Form
     {
+        string connectionString = "Data Source = ; Initial Catalog = POSLyion; Integrated Security = True";
+        private static ToolStripMenuItem activeMenu = null;
+        private static Form activeForm = null;
         private static Usuarios oUser = new Usuarios();
         public Start()
         {
             InitializeComponent();
         }
 
-        public Start(Usuarios oUser)
+        public Start(Usuarios user)
         {
             InitializeComponent();
-            oUser = oUser;
-            lbl_usuario.Text = oUser.Nombre_completo;
+            oUser = user;
+            lbl_usuario.Text = user.Nombre_completo;
         }
         List<Producto> productos = new List<Producto>
         {
@@ -232,7 +235,7 @@ namespace POSLyion
             {
                 // Obtiene el nombre y el código del producto seleccionado
                 string desc = dgv_productos.Rows[e.RowIndex].Cells["dgv_desc"].Value.ToString();
-                string precio = dgv_productos.Rows[e.RowIndex].Cells["dgv_precio"].Value.ToString();
+                decimal precio = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_precio"].Value);
 
                 // Verifica si el producto ya está en el dgv_resumen
                 bool productoExiste = false;
@@ -263,7 +266,7 @@ namespace POSLyion
                     dgv_resumen.Rows.Add(new object[] { desc, 1, precio });
                 }
             }
-            lbl_dinero.Text = "Total: $" + total.ToString("0.00");
+            lbl_dinero.Text = total.ToString("0.00");
 
         }
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
@@ -296,7 +299,7 @@ namespace POSLyion
                 dgv_ampliar.Columns.Add("precio", "Precio");
 
                 lbl_dinero.Visible = true;
-                lbl_dinero.Text = "Total: $0.00";
+                lbl_dinero.Text = "0.00";
                 panel_container.Controls.Add(dgv_ampliar, 0, 1);
                 dgv_ampliar.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -383,5 +386,10 @@ namespace POSLyion
             lbl_tipoticket.Text = "Consumidor Final";
         }
 
+        private void btn_cerrarventa_Click_1(object sender, EventArgs e)
+        {
+            formCambio cambio = new formCambio(Convert.ToDecimal(lbl_dinero.Text), oUser);
+            cambio.Show();
+        }
     }
 }

@@ -125,6 +125,7 @@ CREATE TABLE Ventas (
 	id_venta INT IDENTITY(1, 1) NOT NULL,
 	id_usuario INT NOT NULL,
 	id_cliente INT NULL,
+	dni_cliente VARCHAR(40),
 	total DECIMAL(12, 2) NOT NULL,
 	cambio DECIMAL(6, 2) NOT NULL,
 	create_date DATETIME DEFAULT GETDATE() NULL,
@@ -730,4 +731,47 @@ BEGIN
 	BEGIN
 		SET @mensaje = 'No se encuentra el proveedor solicitado.'
 	END
+END
+
+CREATE TYPE [dbo].[EVenta_Detalle] AS TABLE(
+	[Id_Producto] INT NULL,
+	[Precio] DECIMAL(12, 2) NULL,
+	[Cantidad] INT NULL,
+	[Subtotal] DECIMAL(12, 2) NULL
+)
+GO
+
+CREATE PROC SP_ALTA_VENTA(
+	@id_usuario INT,
+	@id_cliente INT,
+	@dni_cliente VARCHAR(40),
+	@nombre_completo_cliente VARCHAR(100),
+	@monto_pago_total DECIMAL(12, 2),
+	@monto_cambio DECIMAL(6, 2),
+	@VentaDetalle [EVenta_Detalle] READONLY,
+	@resultado BIT OUTPUT,
+	@mensaje VARCHAR(360) OUTPUT
+)
+AS
+BEGIN
+	BEGIN TRY
+		DECLARE @id_venta INT = 0
+		SET @resultado = 1
+		SET @mensaje = ''
+
+		BEGIN TRANSACTION REGISTRO_VENTA
+			INSERT INTO Ventas(id_usuario, id_cliente, total, cambio, create_date)
+			VALUES(@id_usuario, @id_cliente, @monto_pago_total, @monto_cambio, GETDATE())
+			SET @id_venta = SCOPE_IDENTITY()
+
+			INSERT INTO Ventas_Detalle(@id_venta, Id_Producto, Precio, Cantidad, Subtotal)
+			SELECT @id_venta, Id_Producto, Precio, Cantidad, Subtotal FROM @VentaDetalle
+
+		COMMIT TRANSACTION REGISTRO_VENTA
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		SET @mensaje = ERROR_MESSAGE()
+		ROLLBACK TRANSACTION REGISTRO_VENTA
+	END CATCH
 END

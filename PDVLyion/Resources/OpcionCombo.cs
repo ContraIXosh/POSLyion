@@ -8,7 +8,7 @@ namespace POSLyion.Resources
 {
     public class OpcionCombo
     {
-        public string Text { get; set; }
-        public object Value { get; set; }
+        public string Texto { get; set; }
+        public object Valor { get; set; }
     }
 }

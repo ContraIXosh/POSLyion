@@ -33,8 +33,8 @@ namespace POSLyion
 
         private void formClientesAlta_Load(object sender, EventArgs e)
         {
-            cbo_estado.Items.Add(new OpcionCombo() { Value = 1, Text = "Activo" });
-            cbo_estado.Items.Add(new OpcionCombo() { Value = 0, Text = "Inactivo" });
+            cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
             cbo_estado.DisplayMember = "Text";
             cbo_estado.ValueMember = "Value";
 
@@ -53,7 +53,7 @@ namespace POSLyion
             {
                 foreach (OpcionCombo opcion_estado in cbo_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Value) == (Cliente.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (Cliente.Estado == true ? 1 : 0))
                     {
                         cbo_estado_index = cbo_estado.Items.IndexOf(opcion_estado);
                         break;
@@ -112,7 +112,7 @@ namespace POSLyion
                 Cliente.Nombre_completo = txt_nombre_completo.Texts;
                 Cliente.Correo = txt_correo.Texts;
                 Cliente.Telefono = txt_telefono.Texts;
-                Cliente.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Value) == 1 ? true : false;
+                Cliente.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1 ? true : false;
                 bool resultado = false;
                 resultado = new CN_Clientes().Modificar(Cliente, out mensaje);
                 if (resultado == false)
