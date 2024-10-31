@@ -16,14 +16,9 @@ namespace POSLyion
 {
     public partial class Start : Form
     {
-        string connectionString = "Data Source = ; Initial Catalog = POSLyion; Integrated Security = True";
-        private static ToolStripMenuItem activeMenu = null;
-        private static Form activeForm = null;
+
         private static Usuarios oUser = new Usuarios();
-        public Start()
-        {
-            InitializeComponent();
-        }
+        private decimal total = 0;
 
         public Start(Usuarios user)
         {
@@ -31,36 +26,238 @@ namespace POSLyion
             oUser = user;
             lbl_usuario.Text = user.Nombre_completo;
         }
-        List<Producto> productos = new List<Producto>
-        {
-            new Producto {}
 
-        };
-        private class Producto
+        private void Start_Load(object sender, EventArgs e)
         {
-            public int id { get; set; }
-            public string name { get; set; }
-            public decimal precio { get; set; }
-
+            txt_buscarproductos.Select();
         }
 
-        private void cargarProd()
+        // <resumen>
+        // Busca productos en la base de datos que coincidan con la descripcion en el textbox
+        // y agrega todos los resultados en dgv_productos
+        // <resumen>
+        private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
-            dgv_productos.DataSource = productos;
-        }
-
-        private void RemoverStripMenu()
-        {
-            foreach (Control control in this.Controls)
+            dgv_productos.Rows.Clear();
+            if (txt_buscarproductos.Text != "")
             {
-                if (control is MenuStrip)
+                DataTable tabla_productos = new CN_Productos().Buscar(txt_buscarproductos.Text);
+                foreach (DataRow fila in tabla_productos.Rows)
                 {
-                    this.Controls.Remove(control);
+                    dgv_productos.Rows.Add(new object[]
+                    {
+                        fila["ID"],
+                        fila["Descripcion"],
+                        fila["Precio"],
+                        fila["Stock actual"],
+                    });
                 }
             }
         }
 
-        private void abrirHerencia(ToolStripMenuItem menu, Form fh)
+        // <resumen>
+        // Si se selecciona una fila en dgv_productos, el producto se agrega al dgv_resumen
+        // <resumen>
+
+        private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            decimal total = 0;
+            int indice_fila = 0;
+            bool productoExiste = false;
+            if (e.RowIndex >= 0)
+            {
+                // Verifica si el producto ya está en el dgv_resumen
+                foreach (DataGridViewRow fila in dgv_resumen.Rows)
+                {
+                    if (fila.Cells["dgv_resumen_id"].Value.ToString() == dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString())
+                    {
+                        productoExiste = true;
+                        indice_fila = fila.Index;
+                        break;
+                    }
+                }
+
+                // Si el producto no existe en dgv_resumen, lo agrega con cantidad inicial de 1
+                if (!productoExiste)
+                {
+                    dgv_resumen.Rows.Add(new object[] 
+                    {
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString(),
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_descripcion"].Value.ToString(),
+                        1,
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
+                        "Editar cantidad",
+                        "Eliminar producto"
+                    });
+                    txt_buscarproductos.Text = "";
+                    dgv_productos.Rows.Clear();
+                    txt_buscarproductos.Select();
+                }
+                // Si el producto ya existe en dgv_resumen, suma a 1 la cantidad 
+                // y vuelve a calcular el subtotal
+                else
+                {
+                    dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value =
+                        Convert.ToInt32(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value) + 1;
+                    dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_subtotal"].Value = 
+                        Convert.ToInt32(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value)
+                        * 
+                        Convert.ToDecimal(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_subtotal"].Value);
+                    txt_buscarproductos.Text = "";
+                    dgv_productos.Rows.Clear();
+                    txt_buscarproductos.Select();
+                }
+            }
+            this.CalcularTotal();
+        }
+
+        private void btn_cerrarventa_Click(object sender, EventArgs e)
+        {
+            if(dgv_resumen.Rows.Count > 0)
+            {
+                using (var formularioCobro = new formCambio(total, oUser))
+                {
+                    formularioCobro.ShowDialog();
+                    // Después de cerrar, se obtiene el valor del vuelto
+                    decimal vuelto = formularioCobro.vuelto;
+                    // Start se suscribe al evento VentanaCerrada en cuanto sea invocado
+                    formularioCobro.VentanaCerrada += formCambio_VentanaCerrada;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar al menos un producto al carrito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void dgv_resumen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_resumen.Columns[e.ColumnIndex].Name == "btn_eliminar")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {
+                    dgv_resumen.Rows.RemoveAt(indice);
+                    this.CalcularTotal();
+                }
+            }
+            if (dgv_resumen.Columns[e.ColumnIndex].Name == "btn_editar")
+            {
+                int indice_columna = dgv_resumen.Columns["dgv_resumen_cantidad"].Index;
+                dgv_resumen.CurrentCell = dgv_resumen.Rows[e.RowIndex].Cells[indice_columna];
+                dgv_resumen.BeginEdit(true);
+            }
+        }
+
+        private void dgv_resumen_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_resumen.Columns[e.ColumnIndex].Name == "dgv_resumen_cantidad")
+            {
+                // Verifica si la cantidad ingresada es mayor a 0 o no es nula
+                if (
+                    Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value) > 0
+                    &&
+                    dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value.ToString() != null
+                    )
+                {
+                    // Vuelve a calcular el subtotal con la nueva cantidad
+                    dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_subtotal"].Value =
+                    Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value)
+                    *
+                    Convert.ToDecimal(dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
+                    // Verificación de si hay 0 a la izquierda
+                    // Obtiene el valor de la celda como texto
+                    string valorCantidad = dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value?.ToString();
+                    // Si el valor no es nulo ni vacío, elimina los ceros a la izquierda
+                    if (!string.IsNullOrEmpty(valorCantidad))
+                    {
+                        // Convierte el valor en un número para eliminar los ceros a la izquierda
+                        if (int.TryParse(valorCantidad, out int cantidadSinCeros))
+                        {
+                            // Actualiza la celda con el valor sin ceros a la izquierda
+                            dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value = cantidadSinCeros.ToString();
+                        }
+                    }
+                    this.CalcularTotal();
+                }
+                else
+                {
+                    var resultado_dialogo = MessageBox.Show("La cantidad ingresada es menor a 1. \n¿Desea eliminar el producto del carrito?", "Mensaje",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if(resultado_dialogo == DialogResult.Yes)
+                    {
+                        dgv_resumen.Rows.RemoveAt(e.RowIndex);
+                        this.CalcularTotal();
+                    }
+                    else
+                    {
+                        dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value = 1;
+                    }
+                }
+            }
+        }
+
+        private void dgv_resumen_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            // Verifica si la columna editada es la de "cantidad"
+            if (dgv_resumen.CurrentCell.ColumnIndex == dgv_resumen.Columns["dgv_resumen_cantidad"].Index)
+            {
+                // Remueve cualquier controlador existente para evitar duplicados
+                e.Control.KeyPress -= new KeyPressEventHandler(ValidarEntradaNumeros);
+                // Agrega el controlador para validar solo números
+                e.Control.KeyPress += new KeyPressEventHandler(ValidarEntradaNumeros);
+            }
+            else
+            {
+                // Remueve el controlador si no es la columna "cantidad"
+                e.Control.KeyPress -= new KeyPressEventHandler(ValidarEntradaNumeros);
+            }
+        }
+
+        private void ValidarEntradaNumeros(object sender, KeyPressEventArgs e)
+        {
+            // Obtiene el control de edición del DataGridView
+            TextBox celda = sender as TextBox;
+            // Bloquea la entrada del "0" si es el primer carácter
+            if (celda != null && celda.Text.Length == 0 && e.KeyChar == '0')
+            {
+                e.Handled = true; 
+            }
+            // Permitir solo números y teclas de control (como retroceso)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Anula la entrada de la tecla si no es un número
+            }
+        }
+
+
+        // Si se invoca el evento VentanaCerrada, se limpia dgv_resumen y el total se vuelve a 0
+        private void formCambio_VentanaCerrada(object sender, EventArgs e)
+        {
+            dgv_resumen.Rows.Clear();
+            this.CalcularTotal();
+        }
+
+        private void CalcularTotal()
+        {
+            total = 0;
+            if (dgv_resumen.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow fila in dgv_resumen.Rows)
+                {
+                    total += Convert.ToDecimal(fila.Cells["dgv_resumen_subtotal"].Value.ToString());
+                }
+                lbl_suma_total.Text = total.ToString();
+            }
+            else
+            {
+                total = 0;
+                lbl_suma_total.Text = "0,00";
+            }
+        }
+
+        private void AbrirVentana(ToolStripMenuItem menu, Form fh)
         {
 
             if (panel_main.Controls.Count > 0)
@@ -75,6 +272,69 @@ namespace POSLyion
             fh.Show();
         }
 
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoverStripMenu();
+            AbrirVentana((ToolStripMenuItem)sender, new Start(oUser));
+        }
+
+        private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            formCompras compras = new formCompras(oUser);
+            compras.Show();
+        }
+
+        private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(tsmenu_prods, new formProductos());
+        }
+
+        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(tsmenu_users, new formUsuarios());
+        }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(tsmenu_clientes, new formClientes());
+        }
+
+        private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(tsmenu_proveedor, new formProveedores());
+        }
+
+        private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(tsmenu_reports, new formEstadsticas());
+        }
+
+        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(tsmenu_cat, new formCategorias());
+        }
+
+        private void configuraciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirVentana(tsmenu_config, new formConfiguracion());
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formLogOut logout = new formLogOut();
+            logout.Show();
+        }
+
+        private void RemoverStripMenu()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is MenuStrip)
+                {
+                    this.Controls.Remove(control);
+                }
+            }
+        }
 
         private void btn_compra_Click(object sender, EventArgs e)
         {
@@ -173,121 +433,6 @@ namespace POSLyion
             dgvCompra.Rows.Add("Total =", total);
         }
 
-
-        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RemoverStripMenu();
-            abrirHerencia((ToolStripMenuItem)sender, new Start(oUser));
-        }
-
-        private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            formCompras compras = new formCompras(oUser);
-            compras.Show();
-        }
-
-        private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(tsmenu_prods, new formProductos());
-        }
-
-        private void usuariosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(tsmenu_users, new formUsuarios());
-        }
-
-        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(tsmenu_clientes, new formClientes());
-        }
-
-        private void proveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(tsmenu_proveedor, new formProveedores());
-        }
-
-        private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(tsmenu_reports, new formEstadsticas());
-        }
-
-        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(tsmenu_cat, new formCategorias());
-        }
-
-        private void configuraciónToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            abrirHerencia(tsmenu_config, new formConfiguracion());
-        }
-
-        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            formLogOut logout = new formLogOut();
-            logout.Show();
-        }
-
-
-        private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            decimal total = 0;
-            if (e.RowIndex >= 0)
-            {
-                // Obtiene el nombre y el código del producto seleccionado
-                string desc = dgv_productos.Rows[e.RowIndex].Cells["dgv_desc"].Value.ToString();
-                decimal precio = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_precio"].Value);
-
-                // Verifica si el producto ya está en el dgv_resumen
-                bool productoExiste = false;
-                foreach (DataGridViewRow row in dgv_resumen.Rows)
-                {
-                    if (row.Cells["precio"].Value != null)
-                    {
-                        total += Convert.ToDecimal(row.Cells["precio"].Value);
-                    }
-
-                    if (row.Cells["desc"].Value != null && row.Cells["desc"].Value.ToString() == desc)
-                    {
-                        // Si el producto ya existe, aumenta la cantidad en la misma fila
-                        int cantidadActual = Convert.ToInt32(row.Cells["cantidad"].Value);
-                        row.Cells["cantidad"].Value = cantidadActual + 1;
-
-                        decimal precioActual = Convert.ToDecimal(row.Cells["precio"].Value);
-                        row.Cells["precio"].Value = precioActual + Convert.ToDecimal(precio);
-
-                        productoExiste = true;
-                        break;
-                    }
-                }
-
-                // Si el producto no existe, lo agrega con cantidad inicial de 1
-                if (!productoExiste)
-                {
-                    dgv_resumen.Rows.Add(new object[] { desc, 1, precio });
-                }
-            }
-            lbl_dinero.Text = total.ToString("0.00");
-
-        }
-        private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
-        {
-            dgv_productos.Rows.Clear();
-            if (txt_buscarproductos.Text != "")
-            {
-                DataTable products_table = new CN_Productos().Buscar(txt_buscarproductos.Text);
-                foreach (DataRow row in products_table.Rows)
-                {
-                    dgv_productos.Rows.Add(new object[]
-                    {
-                row["ID"],
-                row["Descripcion"],
-                row["Precio"],
-                row["Stock actual"]
-                    });
-                }
-            }
-        }
-
         DataGridView dgv_ampliar = new DataGridView();
         private void flagdgv()
         {
@@ -298,8 +443,8 @@ namespace POSLyion
                 dgv_ampliar.Columns.Add("cantidad", "Cantidad");
                 dgv_ampliar.Columns.Add("precio", "Precio");
 
-                lbl_dinero.Visible = true;
-                lbl_dinero.Text = "0.00";
+                lbl_total.Visible = true;
+                lbl_total.Text = "0.00";
                 panel_container.Controls.Add(dgv_ampliar, 0, 1);
                 dgv_ampliar.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -317,16 +462,15 @@ namespace POSLyion
                 dgv_ampliar.AllowUserToAddRows = false;
                 dgv_ampliar.AllowUserToDeleteRows = false;
                 dgv_ampliar.AllowUserToResizeRows = false;
-
             }
-
         }
+
         private void btn_factura_Click_1(object sender, EventArgs e)
         {
             if (panel_container.Controls.Container.Contains(dgv_ampliar))
             {
                 panel_container.Controls.Remove(dgv_ampliar);
-                lbl_dinero.Visible = true;
+                lbl_total.Visible = true;
             }
             dgv_resumen.Columns.Clear();
             dgv_resumen.Columns.Add("desc", "Producto");
@@ -354,8 +498,6 @@ namespace POSLyion
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
 
             panel_container.Controls.Add(dgv_resumen, 0, 0);
-
-
         }
 
         private void btn_venta_Click_1(object sender, EventArgs e)
@@ -374,8 +516,10 @@ namespace POSLyion
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
 
+           
             panel_container.Controls.Add(dgv_resumen, 0, 0);
         }
+
         private void btn_eventual_Click_1(object sender, EventArgs e)
         {
             lbl_tipoticket.Text = "Eventual";
@@ -384,12 +528,6 @@ namespace POSLyion
         private void btn_cfinal_Click_1(object sender, EventArgs e)
         {
             lbl_tipoticket.Text = "Consumidor Final";
-        }
-
-        private void btn_cerrarventa_Click_1(object sender, EventArgs e)
-        {
-            formCambio cambio = new formCambio(Convert.ToDecimal(lbl_dinero.Text), oUser);
-            cambio.Show();
-        }
+        } 
     }
 }
