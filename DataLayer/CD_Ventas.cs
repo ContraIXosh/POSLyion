@@ -13,28 +13,6 @@ namespace DataLayer
 {
     public class CD_Ventas
     {
-        public int ObtenerCorrelativo()
-        {
-            int id_correlativo = 0;
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
-            {
-                try
-                {
-                    StringBuilder consulta = new StringBuilder();
-                    consulta.AppendLine("SELECT COUNT(*) + 1 FROM Ventas");
-                    SqlCommand cmd = new SqlCommand(consulta.ToString(), oConexion);
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    oConexion.Open();
-                    id_correlativo = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-                catch (Exception ex)
-                {
-                    id_correlativo = 0;
-                }
-            }
-            return id_correlativo;
-        }
-
         public bool RestarStock(int id_producto, int cantidad)
         {
             bool respuesta = true;

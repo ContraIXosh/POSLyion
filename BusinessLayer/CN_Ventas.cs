@@ -16,11 +16,6 @@ namespace BusinessLayer
 
         private CD_Ventas oVenta = new CD_Ventas();
 
-        public int ObtenerCorrelativo()
-        {
-            return oVenta.ObtenerCorrelativo();
-        }
-
         public bool RestarStock(int id_producto, int cantidad)
         {
             return oVenta.RestarStock(id_producto, cantidad);

@@ -30,7 +30,7 @@ namespace CapaNegocio
             }
         }
 
-        public List<Proveedores> LeerTodo()
+        public List<Proveedores> Leer()
         {
             return oCD_Proveedor.Leer();
         }
