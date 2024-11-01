@@ -291,7 +291,6 @@
             this.dgv_compras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_compras.Location = new System.Drawing.Point(0, 0);
             this.dgv_compras.Name = "dgv_compras";
-            this.dgv_compras.ReadOnly = true;
             this.dgv_compras.Size = new System.Drawing.Size(594, 299);
             this.dgv_compras.TabIndex = 0;
             this.dgv_compras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_compras_CellContentClick);
