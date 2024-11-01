@@ -178,106 +178,21 @@ namespace POSLyion
             }
         }
 
-        private void dgv_compras_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgv_compras.Columns[e.ColumnIndex].Name == "cantidad")
-            {
-                // Verifica si la cantidad ingresada es mayor a 0 o no es nula
-                if (
-                    Convert.ToInt32(dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value) > 0
-                    &&
-                    dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value.ToString() != null
-                    )
-                {
-                    // Vuelve a calcular el subtotal con la nueva cantidad
-                    dgv_compras.Rows[e.RowIndex].Cells["subtotal"].Value =
-                    Convert.ToInt32(dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value)
-                    *
-                    Convert.ToDecimal(dgv_compras.Rows[e.RowIndex].Cells["precio_costo"].Value);
-                    // Verificación de si hay 0 a la izquierda
-                    // Obtiene el valor de la celda como texto
-                    string valorCantidad = dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value?.ToString();
-                    // Si el valor no es nulo ni vacío, elimina los ceros a la izquierda
-                    if (!string.IsNullOrEmpty(valorCantidad))
-                    {
-                        // Convierte el valor en un número para eliminar los ceros a la izquierda
-                        if (int.TryParse(valorCantidad, out int cantidadSinCeros))
-                        {
-                            // Actualiza la celda con el valor sin ceros a la izquierda
-                            dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value = cantidadSinCeros.ToString();
-                        }
-                    }
-                    this.CalcularTotal();
-                }
-                else
-                {
-                    var resultado_dialogo = MessageBox.Show("La cantidad ingresada es menor a 1. \n¿Desea eliminar el producto del registro?", "Mensaje",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (resultado_dialogo == DialogResult.Yes)
-                    {
-                        dgv_compras.Rows.RemoveAt(e.RowIndex);
-                        this.CalcularTotal();
-                    }
-                    else
-                    {
-                        dgv_compras.Rows[e.RowIndex].Cells["dgv_compras_cantidad"].Value = 1;
-                    }
-                }
-            }
-        }
-
-        private void dgv_compras_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            // Verifica si la columna editada es la de "cantidad"
-            if (dgv_compras.CurrentCell.ColumnIndex == dgv_compras.Columns["cantidad"].Index)
-            {
-                // Remueve cualquier controlador existente para evitar duplicados
-                e.Control.KeyPress -= new KeyPressEventHandler(ValidarEntradaNumeros);
-                // Agrega el controlador para validar solo números
-                e.Control.KeyPress += new KeyPressEventHandler(ValidarEntradaNumeros);
-            }
-            else
-            {
-                // Remueve el controlador si no es la columna "cantidad"
-                e.Control.KeyPress -= new KeyPressEventHandler(ValidarEntradaNumeros);
-            }
-        }
-
-        private void ValidarEntradaNumeros(object sender, KeyPressEventArgs e)
-        {
-            // Obtiene el control de edición del DataGridView
-            TextBox celda = sender as TextBox;
-            // Bloquea la entrada del "0" si es el primer carácter
-            if (celda != null && celda.Text.Length == 0 && e.KeyChar == '0')
-            {
-                e.Handled = true;
-            }
-            // Permitir solo números y teclas de control (como retroceso)
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true; // Anula la entrada de la tecla si no es un número
-            }
-        }
-
         // <resumen>
         // Guarda el registro de una compra
-        // 1. Se verifica si existe al menos un producto ingresado
-        // 2. Se crea un DataTable para almacenar todos los productos 
-        // agregados al DGV y llevarlo a una tabla temporal en la base de datos [ECompra_Detalle]
-        // 3. Se crea el registro Compra "cabecera"
-        // 4. Se intenta registrar la compra mediante la capa de negocios, se eliminan todos los datos
-        // y se vuelve a dejar el total en 0
         // <resumen>
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            // 1.
+            int? id_proveedor = null;
+            // Se verifica si existe al menos un producto ingresado
             if (dgv_compras.Rows.Count < 1)
             {
                 MessageBox.Show("Debe ingresar al menos un producto en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            //2.
+            // Se crea un DataTable para almacenar todos los productos 
+            // agregados al DGV y llevarlo a una tabla temporal en la base de datos [ECompra_Detalle]
             DataTable datatable_compra_detalle = new DataTable();
             datatable_compra_detalle.Columns.Add("Id_Producto", typeof(int));
             datatable_compra_detalle.Columns.Add("Precio", typeof(decimal));
@@ -294,19 +209,24 @@ namespace POSLyion
                     fila.Cells["subtotal"].Value.ToString()
                 });
             }
-
-            //3.
+            
+            if(txt_id_proveedor.Text != "")
+            {
+                id_proveedor = Convert.ToInt32(txt_id_proveedor.Text);
+            }
+            // Se crea el registro Compra "cabecera"
             oCompra = new Compras()
             {
                 oUsuario = new Usuarios() { Id_usuario = oUsuario.Id_usuario },
-                oProveedor = new Proveedores() { Descripcion = txt_descripcion_proveedor.Text },
+                oProveedor = new Proveedores() { Id_proveedor = id_proveedor},
                 Total = Convert.ToDecimal(lbl_suma_total.Text),
                 Tipo_documento = ((OpcionCombo)cbo_tipo_documento.SelectedItem).Texto,
                 Numero_documento = txt_numero_documento.Text,
                 Fecha_documento = date_fecha_doc.Value.ToString("yyyy/MM/dd")
             };
 
-            // 4.
+            // Se intenta registrar la compra mediante la capa de negocios, 
+            // se eliminan todos los datos y se vuelve a dejar el total en 0
             string mensaje = string.Empty;
             bool respuesta = new CN_Compras().Crear(oCompra, datatable_compra_detalle, out mensaje);
             if (respuesta)
@@ -327,14 +247,6 @@ namespace POSLyion
 
         // <resumen>
         // Se agrega el producto seleccionado al DGV
-        // 1. Se realizan verificaciones antes de insertarlo al DGV
-        // 2. Si el producto que se intenta insertar al DGV no fué agregado anteriormente,
-        // se inserta de forma normal, se limpian los campos escritos y se calcula el total
-        // 3. Si el producto que se intenta insertar al DGV ya fué agregado anteriormente,
-        // se recorre todas las filas del DGV para verificar que el id del producto agregado 
-        // corresponde con el que se intenta insertar, y si lo encuentra, se suma la cantidad
-        // de producto solicitada y se vuelve a calcular el subtotal, luego se limpian los campos
-        // y se calcula el total nuevamente.
         // <resumen>
         private void btn_agregar_producto_Click(object sender, EventArgs e)
         {
@@ -343,7 +255,7 @@ namespace POSLyion
             decimal precio_costo = 0;
             string mensaje = string.Empty;
 
-            // 1.
+            // Se realizan verificaciones antes de insertarlo al DGV
             if (txt_id_producto.Text == "")
             {
                 MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -374,7 +286,8 @@ namespace POSLyion
                 }
             }
 
-            // 2.
+            // Si el producto que se intenta insertar al DGV no fué agregado anteriormente,
+            // se inserta de forma normal, se limpian los campos escritos y se calcula el total
             if (!producto_existe && mensaje == string.Empty)
             {
                 precio_costo = Convert.ToDecimal(txt_precio_costo.Text);
@@ -393,8 +306,10 @@ namespace POSLyion
                 this.CalcularTotal();
                 txt_codigo_barras.Select();
             }
-            // 3.
-            else if(producto_existe)
+            // Si el producto que se intenta insertar al DGV ya fué agregado anteriormente, se suma la cantidad
+            // de producto solicitada y se vuelve a calcular el subtotal, luego se limpian los campos
+            // y se calcula el total nuevamente.
+            else if (producto_existe)
             {
                 decimal cantidad = 0;
                 decimal precio_unitario = 0;

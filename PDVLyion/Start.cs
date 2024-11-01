@@ -198,11 +198,24 @@ namespace POSLyion
                 int id_producto_editado = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_id"].Value);
                 string descripcion_producto = dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_descripcion"].Value.ToString();
                 int cantidad_actual = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value);
+                int stock_actual = new CN_Productos().BuscarUnProducto(id_producto_editado).Stock_actual;
+                bool edicion_completada = false;
                 int nueva_cantidad = 0;
-                using (var md_editarCantidad = new MD_EditarCantidad(descripcion_producto, cantidad_actual))
+                while(!edicion_completada)
                 {
-                    md_editarCantidad.ShowDialog();
-                    nueva_cantidad = md_editarCantidad.nueva_cantidad;
+                    using (var md_editarCantidad = new MD_EditarCantidad(descripcion_producto, cantidad_actual))
+                    {
+                        md_editarCantidad.ShowDialog();
+                        if (md_editarCantidad.nueva_cantidad > (stock_actual + cantidad_actual))
+                        {
+                            MessageBox.Show("La cantidad no puede ser mayor a " + (stock_actual + cantidad_actual), "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            nueva_cantidad = md_editarCantidad.nueva_cantidad;
+                            edicion_completada = true;
+                        }
+                    }
                 }
                 // Verifica si la cantidad ingresada es mayor a 0 o no es nula
                 if (nueva_cantidad > 0)
@@ -248,8 +261,12 @@ namespace POSLyion
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resultado_dialogo == DialogResult.Yes)
                     {
-                        dgv_resumen.Rows.RemoveAt(e.RowIndex);
-                        this.CalcularTotal();
+                        bool respuesta = new CN_Ventas().SumarStock(id_producto_editado, cantidad_actual);
+                        if(respuesta)
+                        {
+                            dgv_resumen.Rows.RemoveAt(e.RowIndex);
+                            this.CalcularTotal();
+                        }
                     }
                     else
                     {

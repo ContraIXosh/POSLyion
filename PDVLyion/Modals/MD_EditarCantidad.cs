@@ -20,6 +20,7 @@ namespace PDCLyion.Modals
         {
             InitializeComponent();
             lbl_descripcion_producto.Text = descripcion_producto;
+            nueva_cantidad = cantidad_actual;
             num_nueva_cantidad.Text = cantidad_actual.ToString();
         }
 

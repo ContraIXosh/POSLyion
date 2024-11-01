@@ -35,8 +35,8 @@ namespace POSLyion
         {
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
-            cbo_estado.DisplayMember = "Text";
-            cbo_estado.ValueMember = "Value";
+            cbo_estado.DisplayMember = "Texto";
+            cbo_estado.ValueMember = "Valor";
 
             txt_id.Texts = Cliente.Id_cliente.ToString();
             txt_nombre_completo.Texts = Cliente.Nombre_completo;

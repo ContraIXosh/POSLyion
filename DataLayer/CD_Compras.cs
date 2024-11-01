@@ -22,7 +22,7 @@ namespace CapaDatos
                 {
                     SqlCommand cmd = new SqlCommand("SP_ALTA_COMPRA", oConexion);
                     cmd.Parameters.AddWithValue("id_usuario", oCompra.oUsuario.Id_usuario);
-                    cmd.Parameters.AddWithValue("proveedor", oCompra.oProveedor.Descripcion);
+                    cmd.Parameters.AddWithValue("id_proveedor", oCompra.oProveedor.Id_proveedor);
                     cmd.Parameters.AddWithValue("total", oCompra.Total);
                     cmd.Parameters.AddWithValue("tipo_documento", oCompra.Tipo_documento);
                     cmd.Parameters.AddWithValue("numero_documento", oCompra.Numero_documento);

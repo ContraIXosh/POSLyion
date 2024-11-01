@@ -96,7 +96,7 @@ GO
 CREATE TABLE Compras (
 	id_compra INT IDENTITY(1, 1) NOT NULL,
 	id_usuario INT NOT NULL,
-	proveedor VARCHAR(100) NULL,
+	id_proveedor INT NULL,
 	total DECIMAL (12, 2) NOT NULL,
 	tipo_documento VARCHAR(20) NOT NULL,
 	numero_documento VARCHAR(50) NULL,
@@ -104,6 +104,7 @@ CREATE TABLE Compras (
 	create_date DATETIME DEFAULT GETDATE() NULL,
 	CONSTRAINT PK_id_compra PRIMARY KEY (id_compra),
 	CONSTRAINT FK_Compras_Usuarios FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+	CONSTRAINT FK_Compras_Proveedores FOREIGN KEY (id_usuario) REFERENCES Proveedores(id_proveedor)
 );
 GO
 
@@ -742,7 +743,7 @@ GO
 
 CREATE PROC SP_ALTA_COMPRA(
 	@id_usuario INT,
-	@proveedor VARCHAR(100),
+	@id_proveedor INT = NULL,
 	@total DECIMAL(12, 2),
 	@tipo_documento VARCHAR(20),
 	@numero_documento VARCHAR(50),
@@ -759,8 +760,8 @@ BEGIN
 		SET @mensaje = ''
 
 		BEGIN TRANSACTION REGISTRO_COMPRA
-			INSERT INTO Compras(id_usuario, proveedor, total, tipo_documento, numero_documento, fecha_documento)
-			VALUES(@id_usuario, @proveedor, @total, @tipo_documento, @numero_documento, @fecha_documento)
+			INSERT INTO Compras(id_usuario, id_proveedor, total, tipo_documento, numero_documento, fecha_documento)
+			VALUES(@id_usuario, @id_proveedor, @total, @tipo_documento, @numero_documento, @fecha_documento)
 			SET @id_compra = SCOPE_IDENTITY()
 
 			INSERT INTO Compras_Detalle(id_compra, id_producto, precio, cantidad, subtotal)
