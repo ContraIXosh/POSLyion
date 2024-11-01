@@ -125,7 +125,7 @@ CREATE TABLE Ventas (
 	id_usuario INT NOT NULL,
 	id_cliente INT NULL,
 	total DECIMAL(12, 2) NOT NULL,
-	cambio DECIMAL(6, 2) NOT NULL,
+	vuelto DECIMAL(6, 2) NOT NULL,
 	create_date DATETIME DEFAULT GETDATE() NULL,
 	modify_date DATETIME NULL,
 	CONSTRAINT PK_id_venta PRIMARY KEY (id_venta),	
@@ -790,9 +790,9 @@ GO
 
 CREATE PROC SP_ALTA_VENTA(
 	@id_usuario INT,
-	@id_cliente INT,
+	@id_cliente INT = NULL,
 	@total DECIMAL(12, 2),
-	@cambio DECIMAL(6, 2),
+	@vuelto DECIMAL(6, 2),
 	@VentaDetalle [EVenta_Detalle] READONLY,
 	@resultado BIT OUTPUT,
 	@mensaje VARCHAR(360) OUTPUT
@@ -805,8 +805,8 @@ BEGIN
 		SET @mensaje = ''
 
 		BEGIN TRANSACTION REGISTRO_VENTA
-			INSERT INTO Ventas(id_usuario, id_cliente, total, cambio)
-			VALUES(@id_usuario, @id_cliente, @total, @cambio)
+			INSERT INTO Ventas(id_usuario, id_cliente, total, vuelto)
+			VALUES(@id_usuario, @id_cliente, @total, @vuelto)
 			SET @id_venta = SCOPE_IDENTITY()
 
 			INSERT INTO Ventas_Detalle(id_venta, Id_Producto, Precio, Cantidad, Subtotal)

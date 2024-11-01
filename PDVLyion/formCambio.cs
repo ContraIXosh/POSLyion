@@ -15,17 +15,20 @@ namespace POSLyion
 {
     public partial class formCambio : Form
     {
-        decimal total = 1000m;
         decimal montoEfectivo = 0m;
         decimal montoTarjeta = 0m;
         decimal montoMP = 0m;
-        decimal dinero = 0;
+        decimal total = 0;
         private Usuarios UsuarioActual;
+        public decimal vuelto = 0;
+        // Evento que se invoca al realizar el cobro
+        // para que formulario Start se suscriba
+        public bool venta_cerrada = false;
 
-        public formCambio(decimal p_dinero, Usuarios usuarioActual)
+        public formCambio(decimal p_total, Usuarios usuarioActual)
         {
             InitializeComponent();
-            dinero = p_dinero;
+            total = p_total;
             UsuarioActual = usuarioActual;
         }
 
@@ -34,18 +37,14 @@ namespace POSLyion
             cbox_tipocambio.Items.Add("Efectivo");
             cbox_tipocambio.Items.Add("Mercado pago");
             cbox_tipocambio.Items.Add("Tarjeta");
-
             cbox_tipocambio.SelectedIndex = 0;
-            lbl_total.Text = Convert.ToString(dinero);
+            lbl_suma_total.Text = Convert.ToString(total);
         }
-
-
 
         // Variables para almacenar los importes parciales
         private decimal importeEfectivo = 0;
         private decimal importeTarjeta = 0;
         private decimal importeMP = 0;
-
 
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -56,12 +55,7 @@ namespace POSLyion
         private void btn_cobrar_Click(object sender, EventArgs e)
         {
             string metodoPago = cbox_tipocambio.SelectedItem.ToString();
-            decimal importeParcial;
-
-            if (!decimal.TryParse(nbud_precio.Text.Replace("$", ""), out importeParcial))
-            {
-            }
-
+            decimal importeParcial = Convert.ToDecimal(txt_dinero_entregado.Text);
             switch (metodoPago)
             {
                 case "Efectivo":
@@ -77,19 +71,46 @@ namespace POSLyion
                     lbl_mp.Text = $"QR: {importeMP:C}";
                     break;
             }
+            venta_cerrada = true;
+            this.Close();
+        }
 
-            // Calcular el total pagado
-            decimal totalPagado = importeEfectivo + importeTarjeta + importeMP;
-            decimal diferencia = dinero - totalPagado;
-            if (diferencia > 0)
+        private void txt_dinero_entregado_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_dinero_entregado.Text != "")
             {
-                lbl_total.Text = $"Falta: {diferencia:C}";
-                lbl_vuelto.Text = "Vuelto: $0";
+                vuelto = Convert.ToDecimal(txt_dinero_entregado.Text) - total;
+                lbl_vuelto.Text = vuelto >= 0 ? "Vuelto: $" + vuelto.ToString() : "Monto entregado insuficiente";
             }
             else
             {
-                lbl_total.Text = "Total pagado.";
-                lbl_vuelto.Text = $"Vuelto: {-diferencia:C}";
+                lbl_vuelto.Text = "Vuelto: $0,00";
+            }
+        }
+
+        private void txt_dinero_entregado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (txt_dinero_entregado.Text.Trim().Length == 0 && e.KeyChar.ToString() == ",")
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ",")
+                    {
+                        e.Handled = false;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                    }
+                }
             }
         }
 

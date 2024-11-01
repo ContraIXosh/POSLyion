@@ -57,12 +57,13 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_buscarproductos = new System.Windows.Forms.TextBox();
             this.dgv_productos = new System.Windows.Forms.DataGridView();
-            this.dgv_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_dinero = new System.Windows.Forms.Label();
+            this.lbl_suma_total = new System.Windows.Forms.Label();
+            this.lbl_total = new System.Windows.Forms.Label();
             this.panel_right = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_factura = new System.Windows.Forms.Panel();
@@ -79,9 +80,13 @@
             this.panel_container = new System.Windows.Forms.TableLayoutPanel();
             this.panel_resumido = new System.Windows.Forms.Panel();
             this.dgv_resumen = new System.Windows.Forms.DataGridView();
-            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_resumen = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_updates = new System.Windows.Forms.Panel();
@@ -389,10 +394,10 @@
             this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_productos.ColumnHeadersHeight = 35;
             this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgv_id,
-            this.dgv_desc,
-            this.dgv_precio,
-            this.dgv_stock});
+            this.dgv_productos_id,
+            this.dgv_productos_descripcion,
+            this.dgv_productos_precio,
+            this.dgv_productos_stock});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightPink;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -426,44 +431,46 @@
             this.dgv_productos.TabIndex = 10;
             this.dgv_productos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_productos_CellClick);
             // 
-            // dgv_id
+            // dgv_productos_id
             // 
-            this.dgv_id.HeaderText = "ID";
-            this.dgv_id.Name = "dgv_id";
-            this.dgv_id.ReadOnly = true;
-            this.dgv_id.Visible = false;
+            this.dgv_productos_id.HeaderText = "ID";
+            this.dgv_productos_id.Name = "dgv_productos_id";
+            this.dgv_productos_id.ReadOnly = true;
+            this.dgv_productos_id.Visible = false;
             // 
-            // dgv_desc
+            // dgv_productos_descripcion
             // 
-            this.dgv_desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_desc.FillWeight = 120F;
-            this.dgv_desc.HeaderText = "DESCRIPCION";
-            this.dgv_desc.Name = "dgv_desc";
-            this.dgv_desc.ReadOnly = true;
+            this.dgv_productos_descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_productos_descripcion.FillWeight = 120F;
+            this.dgv_productos_descripcion.HeaderText = "DESCRIPCION";
+            this.dgv_productos_descripcion.Name = "dgv_productos_descripcion";
+            this.dgv_productos_descripcion.ReadOnly = true;
             // 
-            // dgv_precio
+            // dgv_productos_precio
             // 
-            this.dgv_precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_precio.FillWeight = 60F;
-            this.dgv_precio.HeaderText = "PRECIO";
-            this.dgv_precio.Name = "dgv_precio";
-            this.dgv_precio.ReadOnly = true;
+            this.dgv_productos_precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_productos_precio.FillWeight = 60F;
+            this.dgv_productos_precio.HeaderText = "PRECIO";
+            this.dgv_productos_precio.Name = "dgv_productos_precio";
+            this.dgv_productos_precio.ReadOnly = true;
             // 
-            // dgv_stock
+            // dgv_productos_stock
             // 
-            this.dgv_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_stock.FillWeight = 60F;
-            this.dgv_stock.HeaderText = "STOCK";
-            this.dgv_stock.Name = "dgv_stock";
-            this.dgv_stock.ReadOnly = true;
+            this.dgv_productos_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_productos_stock.FillWeight = 60F;
+            this.dgv_productos_stock.HeaderText = "STOCK";
+            this.dgv_productos_stock.Name = "dgv_productos_stock";
+            this.dgv_productos_stock.ReadOnly = true;
             // 
             // tableLayoutPanel12
             // 
             this.tableLayoutPanel12.BackColor = System.Drawing.Color.HotPink;
-            this.tableLayoutPanel12.ColumnCount = 2;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.ColumnCount = 3;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.94244F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel12.Controls.Add(this.lbl_dinero, 1, 0);
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.05755F));
+            this.tableLayoutPanel12.Controls.Add(this.lbl_suma_total, 2, 0);
+            this.tableLayoutPanel12.Controls.Add(this.lbl_total, 1, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 351);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
@@ -473,16 +480,29 @@
             this.tableLayoutPanel12.Size = new System.Drawing.Size(682, 40);
             this.tableLayoutPanel12.TabIndex = 11;
             // 
-            // lbl_dinero
+            // lbl_suma_total
             // 
-            this.lbl_dinero.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_dinero.AutoSize = true;
-            this.lbl_dinero.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dinero.Location = new System.Drawing.Point(472, 4);
-            this.lbl_dinero.Name = "lbl_dinero";
-            this.lbl_dinero.Size = new System.Drawing.Size(170, 31);
-            this.lbl_dinero.TabIndex = 4;
-            this.lbl_dinero.Text = "Total: $0,00";
+            this.lbl_suma_total.AutoSize = true;
+            this.lbl_suma_total.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbl_suma_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_suma_total.Location = new System.Drawing.Point(563, 0);
+            this.lbl_suma_total.Name = "lbl_suma_total";
+            this.lbl_suma_total.Size = new System.Drawing.Size(71, 40);
+            this.lbl_suma_total.TabIndex = 6;
+            this.lbl_suma_total.Text = "0,00";
+            this.lbl_suma_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_total
+            // 
+            this.lbl_total.AutoSize = true;
+            this.lbl_total.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.Location = new System.Drawing.Point(444, 0);
+            this.lbl_total.Name = "lbl_total";
+            this.lbl_total.Size = new System.Drawing.Size(113, 40);
+            this.lbl_total.TabIndex = 4;
+            this.lbl_total.Text = "Total: $";
+            this.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel_right
             // 
@@ -667,7 +687,7 @@
             this.btn_cerrarventa.Text = "CERRAR VENTA";
             this.btn_cerrarventa.TextColor = System.Drawing.Color.Lime;
             this.btn_cerrarventa.UseVisualStyleBackColor = false;
-            this.btn_cerrarventa.Click += new System.EventHandler(this.btn_cerrarventa_Click_1);
+            this.btn_cerrarventa.Click += new System.EventHandler(this.btn_cerrarventa_Click);
             // 
             // panel_resumen
             // 
@@ -723,9 +743,13 @@
             this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_resumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_resumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.desc,
-            this.cantidad,
-            this.precio});
+            this.dgv_resumen_id,
+            this.dgv_resumen_descripcion,
+            this.dgv_resumen_cantidad,
+            this.dgv_resumen_precio,
+            this.dgv_resumen_subtotal,
+            this.btn_editar,
+            this.btn_eliminar});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -739,29 +763,59 @@
             this.dgv_resumen.Location = new System.Drawing.Point(0, 0);
             this.dgv_resumen.Margin = new System.Windows.Forms.Padding(0);
             this.dgv_resumen.Name = "dgv_resumen";
+            this.dgv_resumen.ReadOnly = true;
             this.dgv_resumen.RowHeadersVisible = false;
             this.dgv_resumen.Size = new System.Drawing.Size(274, 209);
             this.dgv_resumen.TabIndex = 3;
+            this.dgv_resumen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_resumen_CellContentClick);
             // 
-            // desc
+            // dgv_resumen_id
             // 
-            this.desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.desc.HeaderText = "Producto";
-            this.desc.Name = "desc";
+            this.dgv_resumen_id.HeaderText = "ID";
+            this.dgv_resumen_id.Name = "dgv_resumen_id";
+            this.dgv_resumen_id.ReadOnly = true;
+            this.dgv_resumen_id.Visible = false;
             // 
-            // cantidad
+            // dgv_resumen_descripcion
             // 
-            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cantidad.FillWeight = 70F;
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
+            this.dgv_resumen_descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_resumen_descripcion.HeaderText = "Producto";
+            this.dgv_resumen_descripcion.Name = "dgv_resumen_descripcion";
+            this.dgv_resumen_descripcion.ReadOnly = true;
             // 
-            // precio
+            // dgv_resumen_cantidad
             // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio.FillWeight = 60F;
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
+            this.dgv_resumen_cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_resumen_cantidad.FillWeight = 70F;
+            this.dgv_resumen_cantidad.HeaderText = "Cantidad";
+            this.dgv_resumen_cantidad.Name = "dgv_resumen_cantidad";
+            this.dgv_resumen_cantidad.ReadOnly = true;
+            // 
+            // dgv_resumen_precio
+            // 
+            this.dgv_resumen_precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_resumen_precio.FillWeight = 60F;
+            this.dgv_resumen_precio.HeaderText = "Precio";
+            this.dgv_resumen_precio.Name = "dgv_resumen_precio";
+            this.dgv_resumen_precio.ReadOnly = true;
+            // 
+            // dgv_resumen_subtotal
+            // 
+            this.dgv_resumen_subtotal.HeaderText = "Subtotal";
+            this.dgv_resumen_subtotal.Name = "dgv_resumen_subtotal";
+            this.dgv_resumen_subtotal.ReadOnly = true;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.HeaderText = "";
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.HeaderText = "";
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
             // 
             // lbl_resumen
             // 
@@ -1095,6 +1149,7 @@
             this.Name = "Start";
             this.Text = "POSLyion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Start_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.panel_main.ResumeLayout(false);
@@ -1156,10 +1211,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox txt_buscarproductos;
         private System.Windows.Forms.DataGridView dgv_productos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_desc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_stock;
         private System.Windows.Forms.TableLayoutPanel panel_right;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Panel panel_factura;
@@ -1195,10 +1246,19 @@
         private System.Windows.Forms.TableLayoutPanel panel_container;
         private System.Windows.Forms.Panel panel_resumido;
         private System.Windows.Forms.DataGridView dgv_resumen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
-        private System.Windows.Forms.Label lbl_dinero;
+        private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label lbl_suma_total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_subtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn btn_editar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn btn_eliminar;
     }
 }

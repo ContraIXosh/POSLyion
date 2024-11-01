@@ -13,6 +13,7 @@ using POSLyion.Modals;
 using CapaNegocio;
 using LiveCharts.Helpers;
 using Google.Protobuf.WellKnownTypes;
+using PDCLyion.Modals;
 
 namespace POSLyion
 {
@@ -145,6 +146,36 @@ namespace POSLyion
                     this.CalcularTotal();
                 }
             }
+            if (dgv_compras.Columns[e.ColumnIndex].Name == "btn_editar")
+            {
+                string descripcion_producto = dgv_compras.Rows[e.RowIndex].Cells["descripcion_producto"].Value.ToString();
+                int cantidad_actual = Convert.ToInt32(dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value);
+                int nueva_cantidad = 0;
+                using (var md_editarCantidad = new MD_EditarCantidad(descripcion_producto, cantidad_actual))
+                {
+                    md_editarCantidad.ShowDialog();
+                    nueva_cantidad = md_editarCantidad.nueva_cantidad;
+                }
+                // Verifica si la cantidad ingresada es mayor a 0 o no es nula
+                if (nueva_cantidad < 1)
+                {
+                    var resultado_dialogo = MessageBox.Show("La cantidad ingresada es menor a 1. \n¿Desea eliminar el producto del registro?", "Mensaje",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resultado_dialogo == DialogResult.Yes)
+                    {
+                        dgv_compras.Rows.RemoveAt(e.RowIndex);
+                        this.CalcularTotal();
+                    }
+                    else
+                    {
+                        dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value = 1;
+                    }
+                }
+                else
+                {
+                    dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value = nueva_cantidad;
+                }
+            }
         }
 
         // <resumen>
@@ -216,7 +247,7 @@ namespace POSLyion
         // <resumen>
         // Se agrega el producto seleccionado al DGV
         // 1. Se realizan verificaciones antes de insertarlo al DGV
-        // 2. Si el producto que se intenta insertar al DGV ya no fué agregado anteriormente,
+        // 2. Si el producto que se intenta insertar al DGV no fué agregado anteriormente,
         // se inserta de forma normal, se limpian los campos escritos y se calcula el total
         // 3. Si el producto que se intenta insertar al DGV ya fué agregado anteriormente,
         // se recorre todas las filas del DGV para verificar que el id del producto agregado 
@@ -227,6 +258,7 @@ namespace POSLyion
         private void btn_agregar_producto_Click(object sender, EventArgs e)
         {
             bool producto_existe = false;
+            int indice_fila = 0;
             decimal precio_costo = 0;
             string mensaje = string.Empty;
 
@@ -256,6 +288,7 @@ namespace POSLyion
                 if (fila.Cells["id_producto"].Value.ToString() == txt_id_producto.Text)
                 {
                     producto_existe = true;
+                    indice_fila = fila.Index;
                     break;
                 }
             }
@@ -272,6 +305,7 @@ namespace POSLyion
                     num_cantidad.Value.ToString(),
                     precio_costo.ToString(),
                     (num_cantidad.Value * precio_costo).ToString("0.00"),
+                    "Editar cantidad",
                     "Eliminar producto"
                 });
                 this.LimpiarProductos();
@@ -284,18 +318,15 @@ namespace POSLyion
                 decimal cantidad = 0;
                 decimal precio_unitario = 0;
                 decimal subtotal = 0;
+                precio_unitario = Convert.ToDecimal(dgv_compras.Rows[indice_fila].Cells["precio_costo"].Value.ToString());
+                cantidad = 
+                    Convert.ToInt32(dgv_compras.Rows[indice_fila].Cells["cantidad"].Value.ToString())
+                    + 
+                    num_cantidad.Value;
+                subtotal = cantidad * precio_unitario;
+                dgv_compras.Rows[indice_fila].Cells["cantidad"].Value = cantidad.ToString();
+                dgv_compras.Rows[indice_fila].Cells["subtotal"].Value = subtotal.ToString("0.00");
 
-                foreach(DataGridViewRow fila in dgv_compras.Rows)
-                {
-                    if (fila.Cells["id_producto"].Value.ToString() == txt_id_producto.Text)
-                    {
-                        precio_unitario = Convert.ToDecimal(dgv_compras.Rows[fila.Index].Cells["precio_costo"].Value.ToString());
-                        cantidad = Convert.ToInt32(fila.Cells["cantidad"].Value.ToString()) + num_cantidad.Value;
-                        subtotal = cantidad * precio_unitario;
-                        dgv_compras.Rows[fila.Index].Cells["cantidad"].Value = cantidad.ToString();
-                        dgv_compras.Rows[fila.Index].Cells["subtotal"].Value = subtotal.ToString("0.00");
-                    }
-                }
                 this.LimpiarProductos();
                 this.CalcularTotal();
                 txt_codigo_barras.Select();
@@ -325,16 +356,24 @@ namespace POSLyion
         // <resumen>
         // Validaciones necesarias para evitar que el usuario
         // ingrese caracteres que no se deben en este textbox
+        // o cantidades con 0 por izquierda
         // <resumen>
         private void txt_precio_costo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
-                e.Handled = false;
+                if(txt_precio_costo.Text.Trim().Length == 0 && (e.KeyChar.ToString() == "0"))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                }
             }
             else
             {
-                if (txt_precio_costo.Text.Trim().Length == 0 && e.KeyChar.ToString() == ",")
+                if (txt_precio_costo.Text.Trim().Length == 0 && (e.KeyChar.ToString() == ","))
                 {
                     e.Handled = true;
                 }
