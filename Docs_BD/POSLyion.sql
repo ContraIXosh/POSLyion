@@ -104,7 +104,7 @@ CREATE TABLE Compras (
 	create_date DATETIME DEFAULT GETDATE() NULL,
 	CONSTRAINT PK_id_compra PRIMARY KEY (id_compra),
 	CONSTRAINT FK_Compras_Usuarios FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
-	CONSTRAINT FK_Compras_Proveedores FOREIGN KEY (id_proveedor) REFERENCES Proveedores(id_proveedor)
+	CONSTRAINT FK_Compras_Proveedores FOREIGN KEY (id_usuario) REFERENCES Proveedores(id_proveedor)
 );
 GO
 
@@ -125,9 +125,8 @@ CREATE TABLE Ventas (
 	id_venta INT IDENTITY(1, 1) NOT NULL,
 	id_usuario INT NOT NULL,
 	id_cliente INT NULL,
-	dni_cliente VARCHAR(40),
 	total DECIMAL(12, 2) NOT NULL,
-	cambio DECIMAL(6, 2) NOT NULL,
+	vuelto DECIMAL(6, 2) NOT NULL,
 	create_date DATETIME DEFAULT GETDATE() NULL,
 	modify_date DATETIME NULL,
 	CONSTRAINT PK_id_venta PRIMARY KEY (id_venta),	
@@ -732,8 +731,9 @@ BEGIN
 		SET @mensaje = 'No se encuentra el proveedor solicitado.'
 	END
 END
+GO
 
-CREATE TYPE [dbo].[EVenta_Detalle] AS TABLE(
+CREATE TYPE [dbo].[ECompra_Detalle] AS TABLE(
 	[Id_Producto] INT NULL,
 	[Precio] DECIMAL(12, 2) NULL,
 	[Cantidad] INT NULL,
@@ -741,13 +741,59 @@ CREATE TYPE [dbo].[EVenta_Detalle] AS TABLE(
 )
 GO
 
+CREATE PROC SP_ALTA_COMPRA(
+	@id_usuario INT,
+	@id_proveedor INT = NULL,
+	@total DECIMAL(12, 2),
+	@tipo_documento VARCHAR(20),
+	@numero_documento VARCHAR(50),
+	@fecha_documento DATETIME,
+	@CompraDetalle [ECompra_Detalle] READONLY,
+	@resultado BIT OUTPUT,
+	@mensaje VARCHAR(360) OUTPUT
+)
+AS
+BEGIN
+	BEGIN TRY
+		DECLARE @id_compra INT = 0
+		SET @resultado = 1
+		SET @mensaje = ''
+
+		BEGIN TRANSACTION REGISTRO_COMPRA
+			INSERT INTO Compras(id_usuario, id_proveedor, total, tipo_documento, numero_documento, fecha_documento)
+			VALUES(@id_usuario, @id_proveedor, @total, @tipo_documento, @numero_documento, @fecha_documento)
+			SET @id_compra = SCOPE_IDENTITY()
+
+			INSERT INTO Compras_Detalle(id_compra, id_producto, precio, cantidad, subtotal)
+			SELECT @id_compra, Id_Producto, Precio, Cantidad, Subtotal FROM @CompraDetalle
+
+			UPDATE p
+			SET p.stock_actual = p.stock_actual + cd.Cantidad
+			FROM Productos p
+			INNER JOIN @CompraDetalle cd ON cd.Id_Producto = p.id_producto
+		COMMIT TRANSACTION REGISTRO_COMPRA
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		SET @mensaje = ERROR_MESSAGE()
+		ROLLBACK TRANSACTION REGISTRO_COMPRA
+	END CATCH
+END
+GO
+
+CREATE TYPE [dbo].[EVenta_Detalle] AS TABLE(
+	[Id_Producto] INT NULL,
+	[Precio] DECIMAL(9, 2) NULL,
+	[Cantidad] INT NULL,
+	[Subtotal] DECIMAL(12, 2) NULL
+)
+GO
+
 CREATE PROC SP_ALTA_VENTA(
 	@id_usuario INT,
-	@id_cliente INT,
-	@dni_cliente VARCHAR(40),
-	@nombre_completo_cliente VARCHAR(100),
-	@monto_pago_total DECIMAL(12, 2),
-	@monto_cambio DECIMAL(6, 2),
+	@id_cliente INT = NULL,
+	@total DECIMAL(12, 2),
+	@vuelto DECIMAL(6, 2),
 	@VentaDetalle [EVenta_Detalle] READONLY,
 	@resultado BIT OUTPUT,
 	@mensaje VARCHAR(360) OUTPUT
@@ -760,11 +806,11 @@ BEGIN
 		SET @mensaje = ''
 
 		BEGIN TRANSACTION REGISTRO_VENTA
-			INSERT INTO Ventas(id_usuario, id_cliente, total, cambio, create_date)
-			VALUES(@id_usuario, @id_cliente, @monto_pago_total, @monto_cambio, GETDATE())
+			INSERT INTO Ventas(id_usuario, id_cliente, total, vuelto)
+			VALUES(@id_usuario, @id_cliente, @total, @vuelto)
 			SET @id_venta = SCOPE_IDENTITY()
 
-			INSERT INTO Ventas_Detalle(@id_venta, Id_Producto, Precio, Cantidad, Subtotal)
+			INSERT INTO Ventas_Detalle(id_venta, Id_Producto, Precio, Cantidad, Subtotal)
 			SELECT @id_venta, Id_Producto, Precio, Cantidad, Subtotal FROM @VentaDetalle
 
 		COMMIT TRANSACTION REGISTRO_VENTA

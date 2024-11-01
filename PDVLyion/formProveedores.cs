@@ -23,7 +23,7 @@ namespace POSLyion
 
         private void formProveedores_Load(object sender, EventArgs e)
         {
-            List<Proveedores> lista_proveedores = new CN_Proveedores().LeerTodo();
+            List<Proveedores> lista_proveedores = new CN_Proveedores().Leer();
             foreach (Proveedores oProveedor in lista_proveedores)
             {
                 grid_proveedores.Rows.Add(new object[]
@@ -108,7 +108,7 @@ namespace POSLyion
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
             grid_proveedores.Rows.Clear();
-            List<Proveedores> lista_proveedores = new CN_Proveedores().LeerTodo();
+            List<Proveedores> lista_proveedores = new CN_Proveedores().Leer();
             foreach (Proveedores oProveedor in lista_proveedores)
             {
                 grid_proveedores.Rows.Add(new object[]

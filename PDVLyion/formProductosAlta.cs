@@ -43,13 +43,13 @@ namespace POSLyion
             {
                 cbox_tipo.Items.Add(new OpcionCombo() { Valor = oCategoria.Id_categoria, Texto = oCategoria.Descripcion });
             }
-            cbox_tipo.DisplayMember = "Text";
-            cbox_tipo.ValueMember = "Value";
+            cbox_tipo.DisplayMember = "Texto";
+            cbox_tipo.ValueMember = "Valor";
 
             cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
-            cbox_estado.DisplayMember = "Text";
-            cbox_estado.ValueMember = "Value";
+            cbox_estado.DisplayMember = "Texto";
+            cbox_estado.ValueMember = "Valor";
 
             txt_id.Texts = Producto.Id_producto.ToString();
             txt_codigo_barras.Texts = Producto.Codigo_barras;

@@ -280,11 +280,23 @@
     <Compile Include="Modals\MD_Clientes.Designer.cs">
       <DependentUpon>MD_Clientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modals\MD_Vendors.cs">
+    <Compile Include="Modals\MD_EditarCantidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modals\MD_Vendors.Designer.cs">
-      <DependentUpon>MD_Vendors.cs</DependentUpon>
+    <Compile Include="Modals\MD_EditarCantidad.Designer.cs">
+      <DependentUpon>MD_EditarCantidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modals\MD_Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modals\MD_Productos.Designer.cs">
+      <DependentUpon>MD_Productos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modals\MD_Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modals\MD_Proveedores.Designer.cs">
+      <DependentUpon>MD_Proveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\OpcionCombo.cs" />
     <Compile Include="Start.cs">
@@ -346,8 +358,14 @@
     <EmbeddedResource Include="Modals\MD_Clientes.resx">
       <DependentUpon>MD_Clientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modals\MD_Vendors.resx">
-      <DependentUpon>MD_Vendors.cs</DependentUpon>
+    <EmbeddedResource Include="Modals\MD_EditarCantidad.resx">
+      <DependentUpon>MD_EditarCantidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modals\MD_Productos.resx">
+      <DependentUpon>MD_Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modals\MD_Proveedores.resx">
+      <DependentUpon>MD_Proveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

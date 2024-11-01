@@ -44,13 +44,13 @@ namespace POSLyion
             {
                 cbo_rol.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
             }
-            cbo_rol.DisplayMember = "Text";
-            cbo_rol.ValueMember = "Value";
+            cbo_rol.DisplayMember = "Texto";
+            cbo_rol.ValueMember = "Valor";
 
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
-            cbo_estado.DisplayMember = "Text";
-            cbo_estado.ValueMember = "Value";
+            cbo_estado.DisplayMember = "Texto";
+            cbo_estado.ValueMember = "Valor";
 
             txt_id.Texts = Usuario.Id_usuario.ToString();
             txt_nombre_completo.Texts = Usuario.Nombre_completo;

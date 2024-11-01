@@ -47,6 +47,11 @@ namespace CapaNegocio
             return oCD_Producto.Leer();
         }
 
+        public Productos BuscarUnProducto(int id)
+        {
+            return oCD_Producto.BuscarUnProducto(id);
+        }
+
         public DataTable Buscar(string texto)
         {
             return oCD_Producto.Buscar(texto);

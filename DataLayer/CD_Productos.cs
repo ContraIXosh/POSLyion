@@ -88,6 +88,36 @@ namespace CapaDatos
             }
         }
 
+        public Productos BuscarUnProducto(int id)
+        {
+            Productos producto = new Productos();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    oConexion.Open();
+                    string query = "SELECT id_producto, descripcion, precio_venta, stock_actual FROM Productos WHERE estado = 1 AND id_producto = " + id;
+                    SqlCommand command = new SqlCommand(query.ToString(), oConexion);
+                    command.CommandType = CommandType.Text;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            producto.Id_producto = Convert.ToInt32(reader["id_producto"]);
+                            producto.Descripcion = reader["descripcion"].ToString();
+                            producto.Precio_venta = Convert.ToDecimal(reader["precio_venta"]);
+                            producto.Stock_actual = Convert.ToInt32(reader["stock_actual"]);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    producto = new Productos();
+                }
+                return producto;
+            }
+        }
+
         public DataTable Buscar(string texto)
         {
             DataTable tabla_datos = new DataTable();

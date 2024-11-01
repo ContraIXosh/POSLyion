@@ -9,17 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer
+namespace CapaNegocio
 {
     public class CN_Ventas
     {
 
         private CD_Ventas oVenta = new CD_Ventas();
-
-        public int ObtenerCorrelativo()
-        {
-            return oVenta.ObtenerCorrelativo();
-        }
 
         public bool RestarStock(int id_producto, int cantidad)
         {

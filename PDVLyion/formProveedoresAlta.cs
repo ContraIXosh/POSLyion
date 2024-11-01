@@ -42,13 +42,13 @@ namespace POSLyion
             }
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
-            cbo_estado.DisplayMember = "Text";
-            cbo_estado.ValueMember = "Value";
+            cbo_estado.DisplayMember = "Texto";
+            cbo_estado.ValueMember = "Valor";
 
             if (Proveedor.Id_proveedor != 0)
             {
                 int cbo_state_index = 0;
-                txt_id.Texts = Proveedor.Id_proveedor.ToString();
+                txt_id.Text = Proveedor.Id_proveedor.ToString();
                 txt_cuit.Texts = Proveedor.Cuit;
                 txt_descripcion.Texts = Proveedor.Descripcion;
                 txt_correo.Texts = Proveedor.Correo;
@@ -89,7 +89,7 @@ namespace POSLyion
         private void btn_guardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
-            if (Convert.ToInt32(txt_id.Texts) == 0)
+            if (txt_id.Text == "0")
             {
                 Proveedor = new Proveedores()
                 {

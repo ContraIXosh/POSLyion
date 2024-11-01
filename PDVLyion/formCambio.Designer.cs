@@ -39,21 +39,21 @@
             this.btn_buscar_cliente = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_vuelto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_total = new System.Windows.Forms.Label();
+            this.lbl_suma_total = new System.Windows.Forms.Label();
             this.btn_cobrar = new CustomBox.RJControls.RJButton();
             this.btn_cancelar = new CustomBox.RJControls.RJButton();
+            this.lbl_total = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.nbud_precio = new System.Windows.Forms.NumericUpDown();
             this.cbox_tipocambio = new RJCodeAdvance.RJControls.RJComboBox();
+            this.txt_dinero_entregado = new System.Windows.Forms.TextBox();
             this.panel_main.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_eftarqr.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nbud_precio)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
@@ -70,6 +70,7 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.panel_eftarqr, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.lbl_vuelto, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 3);
@@ -212,13 +213,15 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel1.Controls.Add(this.lbl_suma_total, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_cobrar, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_cancelar, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbl_total, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_cobrar, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_cancelar, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 301);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -228,17 +231,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(779, 61);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
-            // lbl_total
+            // lbl_suma_total
             // 
-            this.lbl_total.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_total.AutoSize = true;
-            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_total.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_total.Location = new System.Drawing.Point(3, 10);
-            this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(249, 51);
-            this.lbl_total.TabIndex = 10;
-            this.lbl_total.Text = "Total: $0,00";
+            this.lbl_suma_total.AutoSize = true;
+            this.lbl_suma_total.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_suma_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_suma_total.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_suma_total.Location = new System.Drawing.Point(186, 0);
+            this.lbl_suma_total.Name = "lbl_suma_total";
+            this.lbl_suma_total.Size = new System.Drawing.Size(269, 61);
+            this.lbl_suma_total.TabIndex = 11;
+            this.lbl_suma_total.Text = "0,00";
+            this.lbl_suma_total.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_cobrar
             // 
@@ -252,7 +256,7 @@
             this.btn_cobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cobrar.ForeColor = System.Drawing.Color.Gold;
-            this.btn_cobrar.Location = new System.Drawing.Point(462, 18);
+            this.btn_cobrar.Location = new System.Drawing.Point(461, 18);
             this.btn_cobrar.Name = "btn_cobrar";
             this.btn_cobrar.Size = new System.Drawing.Size(154, 40);
             this.btn_cobrar.TabIndex = 7;
@@ -273,7 +277,7 @@
             this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancelar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cancelar.Location = new System.Drawing.Point(622, 18);
+            this.btn_cancelar.Location = new System.Drawing.Point(621, 18);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(154, 40);
             this.btn_cancelar.TabIndex = 8;
@@ -281,6 +285,19 @@
             this.btn_cancelar.TextColor = System.Drawing.Color.Red;
             this.btn_cancelar.UseVisualStyleBackColor = false;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            // 
+            // lbl_total
+            // 
+            this.lbl_total.AutoSize = true;
+            this.lbl_total.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_total.Location = new System.Drawing.Point(15, 0);
+            this.lbl_total.Name = "lbl_total";
+            this.lbl_total.Size = new System.Drawing.Size(165, 61);
+            this.lbl_total.TabIndex = 10;
+            this.lbl_total.Text = "Total: $";
+            this.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tableLayoutPanel3
             // 
@@ -316,8 +333,8 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.nbud_precio, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.cbox_tipocambio, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txt_dinero_entregado, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -327,15 +344,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(779, 40);
             this.tableLayoutPanel4.TabIndex = 12;
-            // 
-            // nbud_precio
-            // 
-            this.nbud_precio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nbud_precio.Location = new System.Drawing.Point(15, 3);
-            this.nbud_precio.Margin = new System.Windows.Forms.Padding(15, 3, 3, 3);
-            this.nbud_precio.Name = "nbud_precio";
-            this.nbud_precio.Size = new System.Drawing.Size(299, 31);
-            this.nbud_precio.TabIndex = 15;
             // 
             // cbox_tipocambio
             // 
@@ -356,6 +364,15 @@
             this.cbox_tipocambio.TabIndex = 14;
             this.cbox_tipocambio.Texts = "";
             // 
+            // txt_dinero_entregado
+            // 
+            this.txt_dinero_entregado.Location = new System.Drawing.Point(3, 3);
+            this.txt_dinero_entregado.Name = "txt_dinero_entregado";
+            this.txt_dinero_entregado.Size = new System.Drawing.Size(350, 20);
+            this.txt_dinero_entregado.TabIndex = 15;
+            this.txt_dinero_entregado.TextChanged += new System.EventHandler(this.txt_dinero_entregado_TextChanged);
+            this.txt_dinero_entregado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_dinero_entregado_KeyPress);
+            // 
             // formCambio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -374,7 +391,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nbud_precio)).EndInit();
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -382,23 +399,24 @@
         #endregion
 
         private System.Windows.Forms.Panel panel_main;
-        private System.Windows.Forms.Label lbl_tarjeta;
-        private System.Windows.Forms.Label lbl_efectivo;
-        private System.Windows.Forms.Label lbl_mp;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbl_vuelto;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel panel_eftarqr;
         private RJCodeAdvance.RJControls.RJButton btn_elimtj;
         private RJCodeAdvance.RJControls.RJButton btn_elimef;
-        private System.Windows.Forms.TableLayoutPanel panel_eftarqr;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label lbl_efectivo;
+        private System.Windows.Forms.Label lbl_tarjeta;
+        private System.Windows.Forms.Label lbl_mp;
+        private RJCodeAdvance.RJControls.RJButton btn_buscar_cliente;
+        private System.Windows.Forms.Label lbl_vuelto;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Label lbl_suma_total;
         private CustomBox.RJControls.RJButton btn_cobrar;
         private CustomBox.RJControls.RJButton btn_cancelar;
+        private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.NumericUpDown nbud_precio;
         private RJCodeAdvance.RJControls.RJComboBox cbox_tipocambio;
-        private RJCodeAdvance.RJControls.RJButton btn_buscar_cliente;
+        private System.Windows.Forms.TextBox txt_dinero_entregado;
     }
 }

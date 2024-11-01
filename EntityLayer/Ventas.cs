@@ -13,7 +13,7 @@ namespace CapaEntidad
         public List<Ventas_Detalle> oVentas_detalle { get; set; }
         public Clientes oCliente { get; set; }
         public decimal Total { get; set; }
-        public decimal Cambio { get; set; }
+        public decimal Vuelto { get; set; }
         public string Create_date { get; set; }
         public string Modify_date { get; set; }
     }

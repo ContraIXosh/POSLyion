@@ -34,7 +34,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
             this.btn_guardar = new RJCodeAdvance.RJControls.RJButton();
-            this.txt_id = new CustomBox.RJControls.RJTextBox();
             this.panel_update = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.lbl_estado = new System.Windows.Forms.Label();
             this.panelitop = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_vendedor = new System.Windows.Forms.Label();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.panel_main.SuspendLayout();
             this.panel_footer.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -167,29 +167,6 @@
             this.btn_guardar.TextColor = System.Drawing.Color.LimeGreen;
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
-            // 
-            // txt_id
-            // 
-            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_id.BorderColor = System.Drawing.Color.DarkViolet;
-            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_id.BorderRadius = 0;
-            this.txt_id.BorderSize = 2;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(4, 4);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_id.Multiline = false;
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_id.PasswordChar = false;
-            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_id.PlaceholderText = "";
-            this.txt_id.Size = new System.Drawing.Size(34, 31);
-            this.txt_id.TabIndex = 27;
-            this.txt_id.Texts = "0";
-            this.txt_id.UnderlinedStyle = false;
-            this.txt_id.Visible = false;
             // 
             // panel_update
             // 
@@ -512,6 +489,14 @@
             this.lbl_vendedor.TabIndex = 0;
             this.lbl_vendedor.Text = "CREAR VENDEDOR";
             // 
+            // txt_id
+            // 
+            this.txt_id.Location = new System.Drawing.Point(3, 3);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(26, 20);
+            this.txt_id.TabIndex = 13;
+            this.txt_id.Text = "0";
+            // 
             // formProveedoresAlta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -527,6 +512,7 @@
             this.panel_footer.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.panel_update.ResumeLayout(false);
             this.panel_update.PerformLayout();
             this.panel_add.ResumeLayout(false);
@@ -542,7 +528,6 @@
 
         private System.Windows.Forms.TableLayoutPanel panel_main;
         private System.Windows.Forms.Panel panel_footer;
-        private CustomBox.RJControls.RJTextBox txt_id;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel_update;
         private System.Windows.Forms.Label label2;
@@ -567,5 +552,6 @@
         private System.Windows.Forms.Label lbl_email;
         private System.Windows.Forms.TableLayoutPanel panelitop;
         private System.Windows.Forms.Label lbl_vendedor;
+        private System.Windows.Forms.TextBox txt_id;
     }
 }
