@@ -30,5 +30,10 @@ namespace CapaNegocio
         {
             return oVenta.Crear(_oVenta, VentaDetalle, out mensaje);
         }
+
+        public List<Ventas> Leer(string fecha_inicio, string fecha_fin)
+        {
+            return oVenta.Leer(fecha_inicio, fecha_fin);
+        }
     }
 }

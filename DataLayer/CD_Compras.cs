@@ -44,5 +44,41 @@ namespace CapaDatos
             }
             return respuesta;
         }
+
+        public List<Compras> Leer(string fecha_inicio, string fecha_fin)
+        {
+            List<Compras> lista_compras = new List<Compras>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    string query = "SELECT id_compra, id_proveedor, total, numero_documento, fecha_documento FROM Compras WHERE fecha_documento BETWEEN @fecha_inicio AND @fecha_fin";
+                    SqlCommand cmd = new SqlCommand(query, oConexion);
+                    cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
+                    cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);
+                    cmd.CommandType = CommandType.Text;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista_compras.Add(new Compras()
+                            {
+                                Id_compra = Convert.ToInt32(reader["id_compra"].ToString()),
+                                oProveedor = new Proveedores() { Id_proveedor = Convert.ToInt32(reader["id_proveedor"].ToString()) },
+                                Total = Convert.ToDecimal(reader["total"].ToString()),
+                                Numero_documento = reader["numero_documento"].ToString(),
+                                Fecha_documento = reader["fecha_documento"].ToString()
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista_compras = new List<Compras>();
+                }
+            }
+            return lista_compras;
+        }
     }
 }

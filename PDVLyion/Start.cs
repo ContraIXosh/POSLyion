@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using PDCLyion.Modals;
+using System.Runtime.Serialization;
 
 namespace POSLyion
 {
@@ -21,7 +22,8 @@ namespace POSLyion
         private static Usuarios oUser = new Usuarios();
         private decimal total = 0;
         private decimal vuelto = 0;
-        private List<ProductosBackup> productosBackup = new List<ProductosBackup>();
+        private string dgv_activo = "factura";
+        private List<Ventas_Detalle> respaldo_carrito = new List<Ventas_Detalle>();
 
         public Start(Usuarios user)
         {
@@ -64,88 +66,69 @@ namespace POSLyion
         // <resumen>
         private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Convert.ToInt32(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_stock"].Value) > 0)
+            int indice_fila = 0;
+            bool productoExiste = false;
+            if (e.RowIndex >= 0)
             {
-                decimal total = 0;
-                int indice_fila = 0;
-                bool productoExiste = false;
-                if (e.RowIndex >= 0)
+                // Verifica si el producto ya está en el dgv_resumen
+                foreach (DataGridViewRow fila in dgv_resumen.Rows)
                 {
-                    // Verifica si el producto ya está en el dgv_resumen
-                    foreach (DataGridViewRow fila in dgv_resumen.Rows)
+                    if (fila.Cells["dgv_resumen_id"].Value.ToString() == dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString())
                     {
-                        if (fila.Cells["dgv_resumen_id"].Value.ToString() == dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString())
-                        {
-                            productoExiste = true;
-                            indice_fila = fila.Index;
-                            break;
-                        }
-                    }
-
-                    // Si el producto no existe en dgv_resumen, lo agrega con cantidad inicial de 1
-                    if (!productoExiste)
-                    {
-                        bool respuesta = new CN_Ventas().
-                            RestarStock(Convert.ToInt32(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value), 1);
-
-                        // Si el producto se resta del stock de forma temporal correctamente, entonces se añade al dgv_resumen
-                        // y a la lista de respaldo de productos
-                        if (respuesta)
-                        {
-                            dgv_resumen.Rows.Add(new object[]
-                            {
-                                dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString(),
-                                dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_descripcion"].Value.ToString(),
-                                1,
-                                dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
-                                dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
-                                "Editar cantidad",
-                                "Eliminar producto"
-                            });
-
-                            productosBackup.Add(new ProductosBackup
-                            {
-                                Id = Convert.ToInt32(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value),
-                                Cantidad = 1
-                            });
-
-                            txt_buscarproductos.Text = "";
-                            dgv_productos.Rows.Clear();
-                            txt_buscarproductos.Select();
-                        }
-                    }
-                    // Si el producto ya existe en dgv_resumen, suma a 1 la cantidad en dgv_resumen y en el listado de respaldo,
-                    // y vuelve a calcular el subtotal
-                    else
-                    {
-                        bool respuesta = new CN_Ventas().
-                            RestarStock(Convert.ToInt32(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value), 1);
-                        if (respuesta)
-                        {
-                            dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value =
-                            Convert.ToInt32(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value) + 1;
-                            dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_subtotal"].Value =
-                                Convert.ToInt32(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value)
-                                *
-                                Convert.ToDecimal(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_subtotal"].Value);
-
-                            productosBackup.FirstOrDefault
-                                (p => p.Id == Convert.ToInt32(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_id"].Value)).Cantidad++;
-
-                            txt_buscarproductos.Text = "";
-                            dgv_productos.Rows.Clear();
-                            txt_buscarproductos.Select();
-                        }
+                        productoExiste = true;
+                        indice_fila = fila.Index;
+                        break;
                     }
                 }
-                this.CalcularTotal();
+
+                // Si el producto no existe en dgv_resumen, lo agrega con cantidad inicial de 1
+                if (!productoExiste)
+                {
+                    bool respuesta = new CN_Ventas().
+                        RestarStock(Convert.ToInt32(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value), 1);
+
+                    // Si el producto se resta del stock de forma temporal correctamente, entonces se añade al dgv_resumen
+                    // y a la lista de respaldo de productos
+                    if (respuesta)
+                    {
+                        dgv_resumen.Rows.Add(new object[]
+                        {
+                            dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString(),
+                            dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_descripcion"].Value.ToString(),
+                            1,
+                            dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
+                            dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
+                            "Editar cantidad",
+                            "Eliminar producto"
+                        });
+
+                        txt_buscarproductos.Text = "";
+                        dgv_productos.Rows.Clear();
+                        txt_buscarproductos.Select();
+                    }
+                }
+                // Si el producto ya existe en dgv_resumen, suma a 1 la cantidad en dgv_resumen y en el listado de respaldo,
+                // y vuelve a calcular el subtotal
+                else
+                {
+                    bool respuesta = new CN_Ventas().
+                        RestarStock(Convert.ToInt32(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value), 1);
+                    if (respuesta)
+                    {
+                        dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value =
+                        Convert.ToInt32(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value) + 1;
+                        dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_subtotal"].Value =
+                            Convert.ToInt32(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_cantidad"].Value)
+                            *
+                            Convert.ToDecimal(dgv_resumen.Rows[indice_fila].Cells["dgv_resumen_precio"].Value);
+
+                        txt_buscarproductos.Text = "";
+                        dgv_productos.Rows.Clear();
+                        txt_buscarproductos.Select();
+                    }
+                }
             }
-            else
-            {
-                MessageBox.Show("Producto sin stock", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt_buscarproductos.Clear();
-                dgv_productos.Rows.Clear();
-            }
+            this.CalcularTotal();
         }
 
         private void btn_cerrarventa_Click(object sender, EventArgs e)
@@ -199,23 +182,11 @@ namespace POSLyion
                 string descripcion_producto = dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_descripcion"].Value.ToString();
                 int cantidad_actual = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value);
                 int stock_actual = new CN_Productos().BuscarUnProducto(id_producto_editado).Stock_actual;
-                bool edicion_completada = false;
                 int nueva_cantidad = 0;
-                while(!edicion_completada)
+                using (var md_editarCantidad = new MD_EditarCantidad(descripcion_producto, cantidad_actual))
                 {
-                    using (var md_editarCantidad = new MD_EditarCantidad(descripcion_producto, cantidad_actual))
-                    {
-                        md_editarCantidad.ShowDialog();
-                        if (md_editarCantidad.nueva_cantidad > (stock_actual + cantidad_actual))
-                        {
-                            MessageBox.Show("La cantidad no puede ser mayor a " + (stock_actual + cantidad_actual), "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else
-                        {
-                            nueva_cantidad = md_editarCantidad.nueva_cantidad;
-                            edicion_completada = true;
-                        }
-                    }
+                    md_editarCantidad.ShowDialog();
+                    nueva_cantidad = md_editarCantidad.nueva_cantidad;
                 }
                 // Verifica si la cantidad ingresada es mayor a 0 o no es nula
                 if (nueva_cantidad > 0)
@@ -274,6 +245,22 @@ namespace POSLyion
                     }
                 }
             }
+            if (dgv_resumen.Columns[e.ColumnIndex].Name == "btn_ver_detalle")
+            {
+                if(dgv_activo == "compras")
+                {
+                    int id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_compra"].Value);
+                    MD_Detalle modalDetalle = new MD_Detalle(id, 1);
+                    modalDetalle.ShowDialog();
+                }
+                else if (dgv_activo == "ventas")
+                {
+                    int id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_venta"].Value);
+                    MD_Detalle modalDetalle = new MD_Detalle(id, 2);
+                    modalDetalle.ShowDialog();
+                }
+                
+            }
         }
 
         // Si se invoca el evento VentanaCerrada, se limpia dgv_resumen y el respaldo de productos
@@ -300,7 +287,7 @@ namespace POSLyion
             Ventas oVenta = new Ventas()
             {
                 oUsuario = new Usuarios() { Id_usuario = oUser.Id_usuario },
-                oCliente = new Clientes() { Id_cliente = null },
+                oCliente = new Clientes() { Id_cliente = 1 },
                 Total = Convert.ToDecimal(lbl_suma_total.Text),
                 Vuelto = vuelto,
             };
@@ -312,7 +299,6 @@ namespace POSLyion
             {
                 MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgv_resumen.Rows.Clear();
-                productosBackup.Clear();
                 this.CalcularTotal();
             }
             else
@@ -418,198 +404,275 @@ namespace POSLyion
             }
         }
 
-        private void btn_compra_Click(object sender, EventArgs e)
-        {
-            lbl_titulo.Text = "Facturación";
-            MostrarFacturacion();
-        }
+        //private void btn_compra_Click(object sender, EventArgs e)
+        //{
+        //    lbl_titulo.Text = "Facturación";
+        //    MostrarFacturacion();
+        //}
+
+        //private void btn_factura_Click(object sender, EventArgs e)
+        //{
+        //    lbl_titulo.Text = "Historial de compra";
+        //    mostrarHistorialSell();
+        //}
+
+        //private void btn_venta_Click(object sender, EventArgs e)
+        //{
+        //    lbl_titulo.Text = "Historial de ventas";
+        //    mostrarHistorialSell();
+        //}
+
+        //private void btn_cfinal_Click(object sender, EventArgs e)
+        //{
+        //    lbl_tipoticket.Text = "CONSUMIDOR FINAL";
+        //    btn_cfinal.ForeColor = Color.White;
+        //    btn_cfinal.BackColor = Color.BlueViolet;
+        //    btn_cfinal.Enabled = false;
+        //    if (btn_eventual.Enabled == false)
+        //    {
+        //        btn_cfinal.ForeColor = Color.White;
+        //        btn_cfinal.BackColor = Color.BlueViolet;
+        //        btn_eventual.Enabled = true;
+        //    }
+        //}
+
+        //private void btn_eventual_Click(object sender, EventArgs e)
+        //{
+        //    lbl_tipoticket.Text = "EVENTUAL";
+        //    btn_eventual.ForeColor = Color.White;
+        //    btn_eventual.BackColor = Color.DarkMagenta;
+        //    btn_eventual.Enabled = false;
+        //    if (btn_cfinal.Enabled == false)
+        //    {
+        //        btn_eventual.ForeColor = Color.White;
+        //        btn_eventual.BackColor = Color.DarkMagenta;
+        //        btn_cfinal.Enabled = true;
+        //    }
+        //}
+        //private void MostrarFacturacion()
+        //{
+        //    panel_resumen.Controls.Clear();
+        //    ListBox lstProductos = new ListBox();
+        //    lstProductos.Items.Add("Producto 1 - $10");
+        //    lstProductos.Items.Add("Producto 2 - $20");
+        //    panel_resumen.Controls.Add(lstProductos);
+        //}
+
+        //private void mostrarHistorialBuy()
+        //{
+        //    panel_resumen.Controls.Clear();
+        //    DataGridView dgvCompra = new DataGridView();
+        //}
+
+        //private void mostrarHistorialSell()
+        //{
+        //    float precio = 0;
+        //    float total = precio;
+
+        //    if (precio > 0)
+        //    {
+
+        //    }
+        //    DataGridView dgvCompra = new DataGridView();
+        //    dgvCompra.Columns.Add("Hora", "Hora");
+        //    dgvCompra.Columns.Add("Precio", "Precio");
+        //    dgvCompra.Columns.Add("Productos", "Productos");
+        //    dgvCompra.Columns.Add("Fecha", "Fecha");
+        //    dgvCompra.Rows.Add("16:52:16", "$1620", "Last product", "10/02/2025");
+        //    dgvCompra.Rows.Add("16:53:42", "$1920", "Last product", "10/02/2025");
+        //    panel_resumen.Controls.Add(dgvCompra);
+
+        //    dgvCompra.Columns.Add("Fecha", "Fecha");
+        //    dgvCompra.Columns.Add("Producto", "Producto");
+        //    dgvCompra.Columns.Add("Precio", "Precio");
+
+        //    dgvCompra.Rows.Add("01/10/2024", "Producto A", "$15");
+        //    dgvCompra.Rows.Add("02/10/2024", "Producto B", "$25");
+
+        //    DataGridView dgvAmpliar = new DataGridView();
+        //    dgvCompra.Columns.Add("Fecha", "Fecha");
+        //    dgvCompra.Columns.Add("Producto", "Producto");
+        //    dgvCompra.Columns.Add("Cantidad", "Cantidad");
+        //    dgvCompra.Columns.Add("Precio", "precio");
+        //    dgvCompra.Rows.Add("01/10/2024", "Salsa golf LC", "8", precio = 3999);
+        //    dgvCompra.Rows.Add("01/10/2024", "Heineken lata 473", "6", precio = 124);
+        //    dgvCompra.Rows.Add("01/10/2024", "Amstel lata 473", "15", precio = 15);
+        //    dgvCompra.Rows.Add("Total =", total);
+        //}
+
+        //DataGridView dgv_ampliar = new DataGridView();
+        //private void flagdgv()
+        //{
+        //    if (!panel_container.Controls.Container.Contains(dgv_ampliar))
+        //    {
+        //        dgv_ampliar.Columns.Clear();
+        //        dgv_ampliar.Columns.Add("prod", "Producto");
+        //        dgv_ampliar.Columns.Add("cantidad", "Cantidad");
+        //        dgv_ampliar.Columns.Add("precio", "Precio");
+
+        //        lbl_total.Visible = true;
+        //        lbl_total.Text = "0.00";
+        //        panel_container.Controls.Add(dgv_ampliar, 0, 1);
+        //        dgv_ampliar.Dock = DockStyle.Fill;
+        //        dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        //        dgv_ampliar.BackgroundColor = Color.MediumSlateBlue;
+        //        dgv_ampliar.BorderStyle = BorderStyle.None;
+        //        dgv_ampliar.CellBorderStyle = DataGridViewCellBorderStyle.None;
+        //        dgv_ampliar.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+        //        dgv_ampliar.ColumnHeadersDefaultCellStyle.BackColor = Color.Maroon;
+        //        dgv_ampliar.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        //        dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Maroon;
+        //        dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+        //        dgv_ampliar.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
+        //        dgv_ampliar.RowHeadersVisible = false;
+        //        dgv_ampliar.EnableHeadersVisualStyles = false;
+        //        dgv_ampliar.AllowUserToAddRows = false;
+        //        dgv_ampliar.AllowUserToDeleteRows = false;
+        //        dgv_ampliar.AllowUserToResizeRows = false;
+        //    }
+        //}
 
         private void btn_factura_Click(object sender, EventArgs e)
         {
-            lbl_titulo.Text = "Historial de compra";
-            mostrarHistorialSell();
-        }
-
-        private void btn_venta_Click(object sender, EventArgs e)
-        {
-            lbl_titulo.Text = "Historial de ventas";
-            mostrarHistorialSell();
-        }
-
-        private void btn_cfinal_Click(object sender, EventArgs e)
-        {
-            lbl_tipoticket.Text = "CONSUMIDOR FINAL";
-            btn_cfinal.ForeColor = Color.White;
-            btn_cfinal.BackColor = Color.BlueViolet;
-            btn_cfinal.Enabled = false;
-            if (btn_eventual.Enabled == false)
-            {
-                btn_cfinal.ForeColor = Color.White;
-                btn_cfinal.BackColor = Color.BlueViolet;
-                btn_eventual.Enabled = true;
-            }
-        }
-
-        private void btn_eventual_Click(object sender, EventArgs e)
-        {
-            lbl_tipoticket.Text = "EVENTUAL";
-            btn_eventual.ForeColor = Color.White;
-            btn_eventual.BackColor = Color.DarkMagenta;
-            btn_eventual.Enabled = false;
-            if (btn_cfinal.Enabled == false)
-            {
-                btn_eventual.ForeColor = Color.White;
-                btn_eventual.BackColor = Color.DarkMagenta;
-                btn_cfinal.Enabled = true;
-            }
-        }
-        private void MostrarFacturacion()
-        {
-            panel_resumen.Controls.Clear();
-            ListBox lstProductos = new ListBox();
-            lstProductos.Items.Add("Producto 1 - $10");
-            lstProductos.Items.Add("Producto 2 - $20");
-            panel_resumen.Controls.Add(lstProductos);
-        }
-
-        private void mostrarHistorialBuy()
-        {
-            panel_resumen.Controls.Clear();
-            DataGridView dgvCompra = new DataGridView();
-
-
-        }
-        private void mostrarHistorialSell()
-        {
-            float precio = 0;
-            float total = precio;
-
-            if (precio > 0)
-            {
-
-            }
-            DataGridView dgvCompra = new DataGridView();
-            dgvCompra.Columns.Add("Hora", "Hora");
-            dgvCompra.Columns.Add("Precio", "Precio");
-            dgvCompra.Columns.Add("Productos", "Productos");
-            dgvCompra.Columns.Add("Fecha", "Fecha");
-            dgvCompra.Rows.Add("16:52:16", "$1620", "Last product", "10/02/2025");
-            dgvCompra.Rows.Add("16:53:42", "$1920", "Last product", "10/02/2025");
-            panel_resumen.Controls.Add(dgvCompra);
-
-            dgvCompra.Columns.Add("Fecha", "Fecha");
-            dgvCompra.Columns.Add("Producto", "Producto");
-            dgvCompra.Columns.Add("Precio", "Precio");
-
-            dgvCompra.Rows.Add("01/10/2024", "Producto A", "$15");
-            dgvCompra.Rows.Add("02/10/2024", "Producto B", "$25");
-
-            DataGridView dgvAmpliar = new DataGridView();
-            dgvCompra.Columns.Add("Fecha", "Fecha");
-            dgvCompra.Columns.Add("Producto", "Producto");
-            dgvCompra.Columns.Add("Cantidad", "Cantidad");
-            dgvCompra.Columns.Add("Precio", "precio");
-            dgvCompra.Rows.Add("01/10/2024", "Salsa golf LC", "8", precio = 3999);
-            dgvCompra.Rows.Add("01/10/2024", "Heineken lata 473", "6", precio = 124);
-            dgvCompra.Rows.Add("01/10/2024", "Amstel lata 473", "15", precio = 15);
-            dgvCompra.Rows.Add("Total =", total);
-        }
-
-        DataGridView dgv_ampliar = new DataGridView();
-        private void flagdgv()
-        {
-            if (!panel_container.Controls.Container.Contains(dgv_ampliar))
-            {
-                dgv_ampliar.Columns.Clear();
-                dgv_ampliar.Columns.Add("prod", "Producto");
-                dgv_ampliar.Columns.Add("cantidad", "Cantidad");
-                dgv_ampliar.Columns.Add("precio", "Precio");
-
-                lbl_total.Visible = true;
-                lbl_total.Text = "0.00";
-                panel_container.Controls.Add(dgv_ampliar, 0, 1);
-                dgv_ampliar.Dock = DockStyle.Fill;
-                dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgv_ampliar.BackgroundColor = Color.MediumSlateBlue;
-                dgv_ampliar.BorderStyle = BorderStyle.None;
-                dgv_ampliar.CellBorderStyle = DataGridViewCellBorderStyle.None;
-                dgv_ampliar.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-                dgv_ampliar.ColumnHeadersDefaultCellStyle.BackColor = Color.Maroon;
-                dgv_ampliar.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Maroon;
-                dgv_ampliar.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
-                dgv_ampliar.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
-                dgv_ampliar.RowHeadersVisible = false;
-                dgv_ampliar.EnableHeadersVisualStyles = false;
-                dgv_ampliar.AllowUserToAddRows = false;
-                dgv_ampliar.AllowUserToDeleteRows = false;
-                dgv_ampliar.AllowUserToResizeRows = false;
-            }
-        }
-
-        private void btn_factura_Click_1(object sender, EventArgs e)
-        {
-            if (panel_container.Controls.Container.Contains(dgv_ampliar))
-            {
-                panel_container.Controls.Remove(dgv_ampliar);
-                lbl_total.Visible = true;
-            }
+            dgv_activo = "factura";
+            //if (panel_container.Controls.Container.Contains(dgv_ampliar))
+            //{
+            //    panel_container.Controls.Remove(dgv_ampliar);
+            //    lbl_total.Visible = true;
+            //}
             dgv_resumen.Columns.Clear();
-            dgv_resumen.Columns.Add("desc", "Producto");
-            dgv_resumen.Columns.Add("cantidad", "Cantidad");
-            dgv_resumen.Columns.Add("precio", "Precio");
+            dgv_resumen.Columns.Add("dgv_resumen_id", "ID");
+            dgv_resumen.Columns.Add("dgv_resumen_descripcion", "Producto");
+            dgv_resumen.Columns.Add("dgv_resumen_cantidad", "Cantidad");
+            dgv_resumen.Columns.Add("dgv_resumen_precio", "Precio");
+            dgv_resumen.Columns.Add("dgv_resumen_subtotal", "Subtotal");
+            dgv_resumen.Columns.Add("btn_editar", "");
+            dgv_resumen.Columns.Add("btn_eliminar", "");
+            if (respaldo_carrito.Count > 0)
+            {
+                this.MostrarCarrito();
+            }
             dgv_resumen.Dock = DockStyle.Fill;
             dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_resumen.Visible = true;
         }
 
-        private void btn_compra_Click_1(object sender, EventArgs e)
+        private void btn_compra_Click(object sender, EventArgs e)
         {
-            flagdgv();
+            if(dgv_resumen.Rows.Count > 0 && dgv_activo == "factura")
+            {
+                this.GuardarCarrito();
+            }
+            dgv_activo = "compras";
+            DateTime fecha_hoy = DateTime.Now;
+            string formato_fecha_hoy = fecha_hoy.ToString("yyyy-MM-dd");
+            List<Compras> lista_compras = new CN_Compras().Leer(formato_fecha_hoy, formato_fecha_hoy);
+            //flagdgv();
             dgv_resumen.Columns.Clear();
-            dgv_resumen.Columns.Add("fecha", "Fecha");
-            dgv_resumen.Columns.Add("hora", "Hora");
-            dgv_resumen.Columns.Add("empresa", "Empresa");
-            dgv_resumen.Columns.Add("cantidad", "Cantidad");
-
-            dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_resumen.Columns.Add("id_compra", "Nro. Compra");
+            dgv_resumen.Columns.Add("fecha_documento", "Fecha");
+            dgv_resumen.Columns.Add("numero_documento", "Nro. Documento");
+            dgv_resumen.Columns.Add("total", "Total");
+            dgv_resumen.Columns.Add("btn_ver_detalle", "");
+            //dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_resumen.Visible = true;
             dgv_resumen.Dock = DockStyle.Fill;
-
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-
             panel_container.Controls.Add(dgv_resumen, 0, 0);
+            foreach(Compras compra in lista_compras)
+            {
+                dgv_resumen.Rows.Add(new object[]
+                {
+                    compra.Id_compra,
+                    compra.Fecha_documento,
+                    compra.Numero_documento,
+                    compra.Total,
+                    "Ver detalle"
+                });
+            }
         }
 
-        private void btn_venta_Click_1(object sender, EventArgs e)
+        private void btn_venta_Click(object sender, EventArgs e)
         {
-            flagdgv();
+            if (dgv_resumen.Rows.Count > 0 && dgv_activo == "factura")
+            {
+                this.GuardarCarrito();
+            }
+            dgv_activo = "ventas";
+            DateTime fecha_hoy = DateTime.Now;
+            string formato_fecha_hoy = fecha_hoy.ToString("yyyy-MM-dd");
+            List<Ventas> lista_ventas = new CN_Ventas().Leer(formato_fecha_hoy, formato_fecha_hoy);
+            //flagdgv();
             dgv_resumen.Columns.Clear();
-            dgv_resumen.Columns.Add("fecha", "Fecha");
-            dgv_resumen.Columns.Add("hora", "Hora");
-            dgv_resumen.Columns.Add("Producto", "Producto");
-            dgv_resumen.Columns.Add("cantidad", "Cantidad de Prods");
-
-            dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_resumen.Columns.Add("id_venta", "Nro. Venta");
+            dgv_resumen.Columns.Add("fecha_venta", "Fecha y hora");
+            dgv_resumen.Columns.Add("nombre_cliente", "Cliente");
+            dgv_resumen.Columns.Add("total", "Total");
+            dgv_resumen.Columns.Add("btn_ver_detalle", "Ver detalle");
+            //dgv_ampliar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_resumen.Visible = true;
             dgv_resumen.Dock = DockStyle.Fill;
-
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-
-           
             panel_container.Controls.Add(dgv_resumen, 0, 0);
+            foreach (Ventas venta in lista_ventas)
+            {
+                dgv_resumen.Rows.Add(new object[]
+                {
+                    venta.Id_venta,
+                    venta.Create_date,
+                    venta.oCliente.Nombre_completo,
+                    venta.Total,
+                    "Ver detalle"
+                });
+            }
         }
 
-        private void btn_eventual_Click_1(object sender, EventArgs e)
+        private void GuardarCarrito()
         {
-            lbl_tipoticket.Text = "Eventual";
+            foreach (DataGridViewRow producto in dgv_resumen.Rows)
+            {
+                respaldo_carrito.Add(new Ventas_Detalle()
+                {
+                    oProducto = new Productos()
+                    {
+                        Id_producto = Convert.ToInt32(producto.Cells["dgv_resumen_id"].Value),
+                        Descripcion = producto.Cells["dgv_resumen_descripcion"].Value.ToString()
+                    },
+                    Cantidad = Convert.ToInt32(producto.Cells["dgv_resumen_cantidad"].Value),
+                    Precio = Convert.ToDecimal(producto.Cells["dgv_resumen_precio"].Value),
+                    Subtotal = Convert.ToDecimal(producto.Cells["dgv_resumen_subtotal"].Value)
+                });
+            }
         }
 
-        private void btn_cfinal_Click_1(object sender, EventArgs e)
+        private void MostrarCarrito()
         {
-            lbl_tipoticket.Text = "Consumidor Final";
+            foreach(Ventas_Detalle producto in respaldo_carrito)
+            {
+                dgv_resumen.Rows.Add(new object[]
+                {
+                    producto.oProducto.Id_producto,
+                    producto.oProducto.Descripcion,
+                    producto.Cantidad,
+                    producto.Precio,
+                    producto.Subtotal,
+                    "Editar cantidad",
+                    "Eliminar producto"
+                });
+            }
+            respaldo_carrito.Clear();
         }
+
+        //private void btn_eventual_Click_1(object sender, EventArgs e)
+        //{
+        //    lbl_tipoticket.Text = "Eventual";
+        //}
+
+        //private void btn_cfinal_Click_1(object sender, EventArgs e)
+        //{
+        //    lbl_tipoticket.Text = "Consumidor Final";
+        //}
     }
 }

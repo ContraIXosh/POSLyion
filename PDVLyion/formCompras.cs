@@ -222,7 +222,7 @@ namespace POSLyion
                 Total = Convert.ToDecimal(lbl_suma_total.Text),
                 Tipo_documento = ((OpcionCombo)cbo_tipo_documento.SelectedItem).Texto,
                 Numero_documento = txt_numero_documento.Text,
-                Fecha_documento = date_fecha_doc.Value.ToString("yyyy/MM/dd")
+                Fecha_documento = date_fecha_doc.Value.ToString("yyyy-MM-dd")
             };
 
             // Se intenta registrar la compra mediante la capa de negocios, 
