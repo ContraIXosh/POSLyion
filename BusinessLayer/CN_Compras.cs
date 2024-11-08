@@ -17,5 +17,10 @@ namespace CapaNegocio
         {
             return oCompra.Crear(_oCompra, CompraDetalle, out mensaje);
         }
+
+        public List<Compras> Leer(string fecha_inicio, string fecha_fin)
+        {
+            return oCompra.Leer(fecha_inicio, fecha_fin);
+        }
     }
 }

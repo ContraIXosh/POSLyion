@@ -91,5 +91,40 @@ namespace DataLayer
             }
             return respuesta;
         }
+
+        public List<Ventas> Leer(string fecha_inicio, string fecha_fin)
+        {
+            List<Ventas> lista_ventas = new List<Ventas>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    string query = "SELECT id_venta[NumeroVenta], v.create_date[FechaVenta], c.nombre_completo[NombreCliente], total[Total] FROM Ventas v INNER JOIN Clientes c ON v.id_cliente = c.id_cliente WHERE CONVERT(DATE,v.create_date) BETWEEN '2024-11-07' AND '2024-11-07'";
+                    SqlCommand cmd = new SqlCommand(query, oConexion);
+                    cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
+                    cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);
+                    cmd.CommandType = CommandType.Text;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista_ventas.Add(new Ventas()
+                            {
+                                Id_venta = Convert.ToInt32(reader["NumeroVenta"].ToString()),
+                                Create_date = reader["FechaVenta"].ToString(),
+                                oCliente = new Clientes() { Nombre_completo = reader["NombreCliente"].ToString() },
+                                Total = Convert.ToDecimal(reader["Total"].ToString())
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista_ventas = new List<Ventas>();
+                }
+            }
+            return lista_ventas;
+        }
     }
 }

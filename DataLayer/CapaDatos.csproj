@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CD_Compras.cs" />
+    <Compile Include="CD_Reportes.cs" />
     <Compile Include="CD_Ventas.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="CD_Clientes.cs" />

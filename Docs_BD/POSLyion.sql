@@ -96,7 +96,7 @@ GO
 CREATE TABLE Compras (
 	id_compra INT IDENTITY(1, 1) NOT NULL,
 	id_usuario INT NOT NULL,
-	id_proveedor INT NULL,
+	id_proveedor INT NOT NULL,
 	total DECIMAL (12, 2) NOT NULL,
 	tipo_documento VARCHAR(20) NOT NULL,
 	numero_documento VARCHAR(50) NULL,
@@ -124,7 +124,7 @@ GO
 CREATE TABLE Ventas (
 	id_venta INT IDENTITY(1, 1) NOT NULL,
 	id_usuario INT NOT NULL,
-	id_cliente INT NULL,
+	id_cliente INT NOT NULL,
 	total DECIMAL(12, 2) NOT NULL,
 	vuelto DECIMAL(6, 2) NOT NULL,
 	create_date DATETIME DEFAULT GETDATE() NULL,
@@ -189,6 +189,14 @@ VALUES
 (4, 'configuracionToolStripMenuItem')
 GO
 
+INSERT INTO Proveedores(descripcion)
+VALUES('Sin asignar')
+GO
+
+INSERT INTO Clientes(nombre_completo)
+VALUES('Consumidor final')
+GO
+
 INSERT INTO Usuarios(dni, nombre_completo, correo, nombre_usuario, clave, id_rol, telefono)
 VALUES
 ('11111111', 'Administrador', 'administrador@hotmail.com', 'admin', '123', 1, '3794111111'),
@@ -196,11 +204,6 @@ VALUES
 ('33333333', 'Gerente', 'gerente@hotmail.com', 'gerente', '123', 3, '3794333333'),
 ('44444444', 'Gerente general', 'gerentegeneral@hotmail.com', 'gerentegeneral', '123', 4, '3794444444')
 GO
-
-INSERT INTO Clientes(dni, nombre_completo, correo, telefono)
-VALUES
-('111', 'Cliente1', 'cliente1@hotmail.com', '3794111111'),
-('222', 'Cliente2', 'cliente2@hotmail.com', '3794222222')
 
 INSERT INTO Categorias(descripcion)
 VALUES('General')
@@ -743,7 +746,7 @@ GO
 
 CREATE PROC SP_ALTA_COMPRA(
 	@id_usuario INT,
-	@id_proveedor INT = NULL,
+	@id_proveedor INT,
 	@total DECIMAL(12, 2),
 	@tipo_documento VARCHAR(20),
 	@numero_documento VARCHAR(50),
@@ -791,7 +794,7 @@ GO
 
 CREATE PROC SP_ALTA_VENTA(
 	@id_usuario INT,
-	@id_cliente INT = NULL,
+	@id_cliente INT,
 	@total DECIMAL(12, 2),
 	@vuelto DECIMAL(6, 2),
 	@VentaDetalle [EVenta_Detalle] READONLY,
@@ -821,3 +824,48 @@ BEGIN
 		ROLLBACK TRANSACTION REGISTRO_VENTA
 	END CATCH
 END
+GO
+
+CREATE PROC SP_HISTORIAL_COMPRAS(
+	@id_compra INT
+)
+AS
+BEGIN
+	SELECT
+		p.codigo_barras[CodigoBarras],
+		p.descripcion[NombreProducto],
+		ca.descripcion[NombreCategoria],
+		cd.precio[PrecioUnitario],
+		cd.cantidad[Cantidad],
+		cd.subtotal[Subtotal]
+	FROM Compras c
+	INNER JOIN Usuarios u ON u.id_usuario = c.id_usuario
+	INNER JOIN Proveedores pr ON pr.id_proveedor = c.id_proveedor
+	INNER JOIN Compras_Detalle cd ON cd.id_compra = c.id_compra
+	INNER JOIN Productos p ON p.id_producto = cd.id_producto
+	INNER JOIN Categorias ca ON ca.id_categoria = p.id_categoria
+	WHERE c.id_compra = @id_compra
+END
+GO
+
+CREATE PROC SP_HISTORIAL_VENTAS(
+	@id_venta INT
+)
+AS
+BEGIN
+	SELECT
+		p.codigo_barras[CodigoBarras],
+		p.descripcion[NombreProducto],
+		ca.descripcion[NombreCategoria],
+		vd.precio[PrecioUnitario],
+		vd.cantidad[Cantidad],
+		vd.subtotal[Subtotal]
+	FROM Ventas v
+	INNER JOIN Usuarios u ON u.id_usuario = v.id_usuario
+	INNER JOIN Clientes c ON c.id_cliente = v.id_cliente
+	INNER JOIN Ventas_Detalle vd ON v.id_venta = vd.id_venta
+	INNER JOIN Productos p ON p.id_producto = vd.id_producto
+	INNER JOIN Categorias ca ON ca.id_categoria = p.id_categoria
+	WHERE v.id_venta = @id_venta
+END
+
