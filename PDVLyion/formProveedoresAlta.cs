@@ -25,6 +25,7 @@ namespace POSLyion
         {
             InitializeComponent();
             Proveedor = new Proveedores();
+            txt_id.Text = "0";
         }
 
         public formProveedoresAlta(Proveedores oProveedor)

@@ -280,12 +280,6 @@
     <Compile Include="Modals\MD_Clientes.Designer.cs">
       <DependentUpon>MD_Clientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modals\MD_Detalle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modals\MD_Detalle.Designer.cs">
-      <DependentUpon>MD_Detalle.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modals\MD_EditarCantidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,9 +357,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modals\MD_Clientes.resx">
       <DependentUpon>MD_Clientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modals\MD_Detalle.resx">
-      <DependentUpon>MD_Detalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modals\MD_EditarCantidad.resx">
       <DependentUpon>MD_EditarCantidad.cs</DependentUpon>

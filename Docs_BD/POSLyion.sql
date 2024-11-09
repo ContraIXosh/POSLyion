@@ -827,45 +827,57 @@ END
 GO
 
 CREATE PROC SP_HISTORIAL_COMPRAS(
+	@fecha_inicio VARCHAR(10),
+	@fecha_fin VARCHAR(10),
 	@id_compra INT
 )
 AS
 BEGIN
 	SELECT
+		c.id_compra[NumeroCompra],
 		p.codigo_barras[CodigoBarras],
 		p.descripcion[NombreProducto],
 		ca.descripcion[NombreCategoria],
 		cd.precio[PrecioUnitario],
 		cd.cantidad[Cantidad],
-		cd.subtotal[Subtotal]
+		cd.subtotal[Subtotal],
+		u.nombre_completo[UsuarioRegistro],
+		c.fecha_documento[FechaDocumento]
 	FROM Compras c
 	INNER JOIN Usuarios u ON u.id_usuario = c.id_usuario
 	INNER JOIN Proveedores pr ON pr.id_proveedor = c.id_proveedor
 	INNER JOIN Compras_Detalle cd ON cd.id_compra = c.id_compra
 	INNER JOIN Productos p ON p.id_producto = cd.id_producto
 	INNER JOIN Categorias ca ON ca.id_categoria = p.id_categoria
-	WHERE c.id_compra = @id_compra
+	WHERE CONVERT(DATE, c.create_date) BETWEEN @fecha_inicio AND @fecha_fin
+	AND c.id_compra = IIF(@id_compra = 0, c.id_compra, @id_compra)
 END
 GO
 
 CREATE PROC SP_HISTORIAL_VENTAS(
+	@fecha_inicio VARCHAR(10),
+	@fecha_fin VARCHAR(10),
 	@id_venta INT
 )
 AS
 BEGIN
 	SELECT
+		v.id_venta[NumeroVenta],
 		p.codigo_barras[CodigoBarras],
 		p.descripcion[NombreProducto],
 		ca.descripcion[NombreCategoria],
 		vd.precio[PrecioUnitario],
 		vd.cantidad[Cantidad],
-		vd.subtotal[Subtotal]
+		vd.subtotal[Subtotal],
+		u.nombre_completo[UsuarioRegistro],
+		v.create_date[FechaVenta]
 	FROM Ventas v
 	INNER JOIN Usuarios u ON u.id_usuario = v.id_usuario
 	INNER JOIN Clientes c ON c.id_cliente = v.id_cliente
 	INNER JOIN Ventas_Detalle vd ON v.id_venta = vd.id_venta
 	INNER JOIN Productos p ON p.id_producto = vd.id_producto
 	INNER JOIN Categorias ca ON ca.id_categoria = p.id_categoria
-	WHERE v.id_venta = @id_venta
+	WHERE CONVERT(DATE, v.create_date) BETWEEN @fecha_inicio AND @fecha_fin
+	AND v.id_venta = IIF(@id_venta = 0, v.id_venta, @id_venta)
 END
 

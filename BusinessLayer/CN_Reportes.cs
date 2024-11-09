@@ -13,14 +13,14 @@ namespace CapaNegocio
     {
         private CD_Reportes oReporte = new CD_Reportes();
 
-        public List<ReportesDetalle> Compra_Detalle(int id_compra)
+        public List<ReportesDetalle> Compra_Detalle(string fecha_inicio, string fecha_fin, int id_compra)
         {
-            return oReporte.Compra_Detalle(id_compra);
+            return oReporte.Compra_Detalle(fecha_inicio, fecha_fin, id_compra);
         }
 
-        public List<ReportesDetalle> Venta_Detalle(int id_venta)
+        public List<ReportesDetalle> Venta_Detalle(string fecha_inicio, string fecha_fin, int id_venta)
         {
-            return oReporte.Venta_Detalle(id_venta);
+            return oReporte.Venta_Detalle(fecha_inicio, fecha_fin, id_venta);
         }
     }
 }
