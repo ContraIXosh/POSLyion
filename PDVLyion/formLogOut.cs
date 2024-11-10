@@ -1,5 +1,4 @@
-﻿using CapaEntidad;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +10,6 @@ using System.Windows.Forms;
 
 namespace POSLyion
 {
-<<<<<<<< HEAD:PDVLyion/formConfiguracion.cs
-    public partial class formConfiguracion : Form
-    {
-        public formConfiguracion()
-        {
-            InitializeComponent();
-        }
-========
     public partial class formLogOut : Form
     {
         public formLogOut()
@@ -35,6 +26,5 @@ namespace POSLyion
         {
             this.Close();
         }
->>>>>>>> e3e94cf8613f0271301ae551d0025610fe3b89c5:PDVLyion/formLogOut.cs
     }
 }

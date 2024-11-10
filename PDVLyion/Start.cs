@@ -429,7 +429,11 @@ namespace POSLyion
             formLogOut logout = new formLogOut();
             logout.Show();
         }
-
+        private void lbl_cerrarcaja_Click(object sender, EventArgs e)
+        {
+            formCierre cierrecaja = new formCierre();
+            cierrecaja.Show();
+        }
         private void RemoverStripMenu()
         {
             foreach (Control control in this.Controls)
@@ -548,8 +552,6 @@ namespace POSLyion
                 dgv_detalle.Columns.Add("dgv_detalle_precio", "Precio unitario");
                 dgv_detalle.Columns.Add("dgv_detalle_cantidad", "Cantidad");
                 dgv_detalle.Columns.Add("dgv_detalle_subtotal", "Subtotal");
-                lbl_total.Visible = true;
-                lbl_total.Text = "Total: $";
                 panel_container.Controls.Add(dgv_detalle, 0, 1);
                 dgv_detalle.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -594,7 +596,6 @@ namespace POSLyion
                 if (panel_container.Controls.Container.Contains(dgv_detalle))
                 {
                     panel_container.Controls.Remove(dgv_detalle);
-                    lbl_total.Visible = true;
                 }
                 if (btn_cerrarventa.Visible == false)
                 {
@@ -733,6 +734,8 @@ namespace POSLyion
             }
             respaldo_carrito.Clear();
         }
+
+
 
         //private void btn_eventual_Click_1(object sender, EventArgs e)
         //{

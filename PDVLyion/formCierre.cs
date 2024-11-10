@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace PDCLyion
+namespace POSLyion
 {
     public partial class formCierre : Form
     {
