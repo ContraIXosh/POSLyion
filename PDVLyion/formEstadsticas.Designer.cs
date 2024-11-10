@@ -35,7 +35,6 @@
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_izq = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_busqueda_usuario = new System.Windows.Forms.Label();
-            this.btn_sql = new CustomBox.RJControls.RJButton();
             this.btn_excel = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_ver_compras = new CustomBox.RJControls.RJButton();
@@ -128,7 +127,6 @@
             this.panel_izq.ColumnCount = 1;
             this.panel_izq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_izq.Controls.Add(this.lbl_busqueda_usuario, 0, 7);
-            this.panel_izq.Controls.Add(this.btn_sql, 0, 2);
             this.panel_izq.Controls.Add(this.btn_excel, 0, 1);
             this.panel_izq.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.panel_izq.Controls.Add(this.txt_busqueda_producto, 0, 10);
@@ -174,26 +172,6 @@
             this.lbl_busqueda_usuario.TabIndex = 44;
             this.lbl_busqueda_usuario.Text = "NOMBRE DE USUARIO";
             // 
-            // btn_sql
-            // 
-            this.btn_sql.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_sql.BackColor = System.Drawing.Color.Green;
-            this.btn_sql.BackgroundColor = System.Drawing.Color.Green;
-            this.btn_sql.BorderColor = System.Drawing.Color.Red;
-            this.btn_sql.BorderRadius = 10;
-            this.btn_sql.BorderSize = 0;
-            this.btn_sql.FlatAppearance.BorderSize = 0;
-            this.btn_sql.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_sql.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sql.ForeColor = System.Drawing.Color.White;
-            this.btn_sql.Location = new System.Drawing.Point(11, 125);
-            this.btn_sql.Name = "btn_sql";
-            this.btn_sql.Size = new System.Drawing.Size(272, 27);
-            this.btn_sql.TabIndex = 29;
-            this.btn_sql.Text = "EXPORTAR BASE DE DATOS";
-            this.btn_sql.TextColor = System.Drawing.Color.White;
-            this.btn_sql.UseVisualStyleBackColor = false;
-            // 
             // btn_excel
             // 
             this.btn_excel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -213,6 +191,7 @@
             this.btn_excel.Text = "EXPORTAR EXCEL";
             this.btn_excel.TextColor = System.Drawing.Color.White;
             this.btn_excel.UseVisualStyleBackColor = false;
+            this.btn_excel.Click += new System.EventHandler(this.btn_excel_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -376,9 +355,12 @@
             // 
             // dgv_historial
             // 
+            this.dgv_historial.AllowUserToAddRows = false;
+            this.dgv_historial.AllowUserToDeleteRows = false;
             this.dgv_historial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_historial.Location = new System.Drawing.Point(297, 3);
             this.dgv_historial.Name = "dgv_historial";
+            this.dgv_historial.ReadOnly = true;
             this.dgv_historial.Size = new System.Drawing.Size(682, 589);
             this.dgv_historial.TabIndex = 40;
             // 
@@ -416,7 +398,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private CustomBox.RJControls.RJButton btn_excel;
-        private CustomBox.RJControls.RJButton btn_sql;
         private CustomBox.RJControls.RJDatePicker date_desde;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private CustomBox.RJControls.RJButton btn_ver_compras;

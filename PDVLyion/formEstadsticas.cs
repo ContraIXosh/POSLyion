@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaEntidad.Filtros;
 using CapaNegocio;
+using ClosedXML.Excel;
 using EntityLayer.Filtros;
 using POSLyion.Resources;
 using System;
@@ -265,6 +266,71 @@ namespace POSLyion
                 _lista = new CN_Reportes().Venta_Detalle(filtros);
             }
             this.MostrarReporte();
-        } 
+        }
+
+
+        public void ExportarDataGridViewAExcel(DataGridView dataGridView)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel Workbook|*.xlsx";
+                sfd.Title = "Guardar archivo Excel";
+                string nombre_archivo = (dgv_activo == "ventas" ? "ReporteVentas_" : "ReporteCompras_");
+                sfd.FileName = nombre_archivo + DateTime.Now.ToString("ddMMyyyyhhmmss");
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (XLWorkbook workbook = new XLWorkbook())
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Crear columnas en el DataTable
+                            foreach (DataGridViewColumn column in dataGridView.Columns)
+                            {
+                                dt.Columns.Add(column.HeaderText);
+                            }
+
+                            // Añadir filas al DataTable
+                            foreach (DataGridViewRow row in dataGridView.Rows)
+                            {
+                                if (row.IsNewRow) continue;
+                                DataRow dataRow = dt.NewRow();
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    dataRow[cell.ColumnIndex] = cell.Value;
+                                }
+                                dt.Rows.Add(dataRow);
+                            }
+
+                            // Añadir el DataTable al libro Excel
+                            workbook.Worksheets.Add(dt, "Productos");
+
+                            // Guardar el archivo Excel
+                            workbook.SaveAs(sfd.FileName);
+                        }
+                        MessageBox.Show("Datos exportados exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al exportar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
+        private void btn_excel_Click(object sender, EventArgs e)
+        {
+            if(dgv_historial.Rows.Count > 0)
+            {
+                ExportarDataGridViewAExcel(dgv_historial);
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para exportar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

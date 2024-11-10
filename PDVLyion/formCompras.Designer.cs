@@ -31,6 +31,7 @@
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lbox_productos = new System.Windows.Forms.ListBox();
             this.txt_precio_costo = new System.Windows.Forms.TextBox();
             this.txt_codigo_barras = new System.Windows.Forms.TextBox();
             this.txt_id_producto = new System.Windows.Forms.TextBox();
@@ -108,6 +109,7 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.lbox_productos);
             this.panel5.Controls.Add(this.txt_precio_costo);
             this.panel5.Controls.Add(this.txt_codigo_barras);
             this.panel5.Controls.Add(this.txt_id_producto);
@@ -124,6 +126,17 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(389, 299);
             this.panel5.TabIndex = 2;
+            // 
+            // lbox_productos
+            // 
+            this.lbox_productos.FormattingEnabled = true;
+            this.lbox_productos.Location = new System.Drawing.Point(119, 115);
+            this.lbox_productos.Name = "lbox_productos";
+            this.lbox_productos.Size = new System.Drawing.Size(265, 95);
+            this.lbox_productos.TabIndex = 38;
+            this.lbox_productos.Visible = false;
+            this.lbox_productos.Click += new System.EventHandler(this.lbox_productos_Click);
+            this.lbox_productos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lbox_productos_KeyPress);
             // 
             // txt_precio_costo
             // 
@@ -182,6 +195,8 @@
             this.txt_descripcion_producto.Name = "txt_descripcion_producto";
             this.txt_descripcion_producto.Size = new System.Drawing.Size(170, 20);
             this.txt_descripcion_producto.TabIndex = 31;
+            this.txt_descripcion_producto.TextChanged += new System.EventHandler(this.txt_descripcion_producto_TextChanged);
+            this.txt_descripcion_producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_descripcion_producto_KeyDown);
             // 
             // lbl_codigo_barras
             // 
@@ -688,5 +703,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_eliminar;
         private System.Windows.Forms.ComboBox cbox_proveedores;
+        private System.Windows.Forms.ListBox lbox_productos;
     }
 }
