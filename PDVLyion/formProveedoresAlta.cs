@@ -35,17 +35,18 @@ namespace POSLyion
 
         private void formProveedoresAlta_Load(object sender, EventArgs e)
         {
-            if (Proveedor.Id_proveedor == 0)
-            {
-                cbo_estado.Visible = false;
-                lbl_estado.Visible = false;
-            }
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
             cbo_estado.DisplayMember = "Texto";
             cbo_estado.ValueMember = "Valor";
 
-            if (Proveedor.Id_proveedor != 0)
+            if (Proveedor.Id_proveedor == null)
+            {
+                txt_id.Text = "0";
+                cbo_estado.Visible = false;
+                lbl_estado.Visible = false;
+            }
+            else
             {
                 int cbo_state_index = 0;
                 txt_id.Text = Proveedor.Id_proveedor.ToString();
@@ -106,8 +107,8 @@ namespace POSLyion
                 else
                 {
                     MessageBox.Show("Proveedor generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Close();
                 }
-                this.Close();
             }
             else
             {

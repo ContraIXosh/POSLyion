@@ -38,19 +38,19 @@ namespace POSLyion
             cbo_estado.DisplayMember = "Texto";
             cbo_estado.ValueMember = "Valor";
 
-            txt_id.Texts = Cliente.Id_cliente.ToString();
-            txt_nombre_completo.Texts = Cliente.Nombre_completo;
-            txt_correo.Texts = Cliente.Correo;
-            txt_dni.Texts = Cliente.Dni;
-            txt_telefono.Texts = Cliente.Telefono;
             int cbo_estado_index = 0;
 
-            if (Convert.ToInt32(txt_id.Texts) == 0)
+            if (Cliente.Id_cliente == null)
             {
                 cbo_estado.SelectedIndex = 0;
             }
             else
             {
+                txt_id.Text = Cliente.Id_cliente.ToString();
+                txt_nombre_completo.Texts = Cliente.Nombre_completo;
+                txt_correo.Texts = Cliente.Correo;
+                txt_dni.Texts = Cliente.Dni;
+                txt_telefono.Texts = Cliente.Telefono;
                 foreach (OpcionCombo opcion_estado in cbo_estado.Items)
                 {
                     if (Convert.ToInt32(opcion_estado.Valor) == (Cliente.Estado == true ? 1 : 0))
@@ -80,7 +80,7 @@ namespace POSLyion
         private void btn_guardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
-            if (Convert.ToInt32(txt_id.Texts) == 0)
+            if (Convert.ToInt32(txt_id.Text) == 0)
             {
                 Clientes oCliente = new Clientes()
                 {

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
+using CapaEntidad.Filtros;
 
 namespace PDCLyion.Modals
 {
@@ -37,7 +38,8 @@ namespace PDCLyion.Modals
             cbo_filtro.ValueMember = "Valor";
             cbo_filtro.SelectedIndex = 0;
 
-            List<Clientes> lista_clientes = new CN_Clientes().Leer();
+            FiltrosCliente filtros = new FiltrosCliente();
+            List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros);
 
             foreach (Clientes cliente in lista_clientes)
             {

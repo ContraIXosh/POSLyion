@@ -31,11 +31,11 @@
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lbox_productos = new System.Windows.Forms.ListBox();
             this.txt_precio_costo = new System.Windows.Forms.TextBox();
             this.txt_codigo_barras = new System.Windows.Forms.TextBox();
             this.txt_id_producto = new System.Windows.Forms.TextBox();
             this.num_cantidad = new System.Windows.Forms.NumericUpDown();
-            this.lbox_productos = new System.Windows.Forms.ListBox();
             this.btn_buscar_producto = new CustomBox.RJControls.RJButton();
             this.txt_descripcion_producto = new System.Windows.Forms.TextBox();
             this.lbl_codigo_barras = new System.Windows.Forms.Label();
@@ -60,19 +60,16 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tlpanel_3 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_cuit_proveedor = new RJCodeAdvance.RJControls.RJTextBox();
-            this.txt_id_proveedor = new System.Windows.Forms.TextBox();
             this.tlpanel_2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_fecha_doc = new System.Windows.Forms.Label();
             this.lbl_tipo_doc = new System.Windows.Forms.Label();
             this.cbo_tipo_documento = new CustomBox.RJControls.RJComboBox();
             this.date_fecha_doc = new CustomBox.RJControls.RJDatePicker();
             this.tlpanel_primera = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_descripcion_proveedor = new System.Windows.Forms.TextBox();
-            this.rjTextBox2 = new CustomBox.RJControls.RJTextBox();
-            this.lbl_guion = new System.Windows.Forms.Label();
             this.txt_numero_documento = new CustomBox.RJControls.RJTextBox();
             this.lbl_nro_doc = new System.Windows.Forms.Label();
             this.lbl_proveedor = new System.Windows.Forms.Label();
+            this.cbox_proveedores = new System.Windows.Forms.ComboBox();
             this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -112,11 +109,11 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.lbox_productos);
             this.panel5.Controls.Add(this.txt_precio_costo);
             this.panel5.Controls.Add(this.txt_codigo_barras);
             this.panel5.Controls.Add(this.txt_id_producto);
             this.panel5.Controls.Add(this.num_cantidad);
-            this.panel5.Controls.Add(this.lbox_productos);
             this.panel5.Controls.Add(this.btn_buscar_producto);
             this.panel5.Controls.Add(this.txt_descripcion_producto);
             this.panel5.Controls.Add(this.lbl_codigo_barras);
@@ -129,6 +126,17 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(389, 299);
             this.panel5.TabIndex = 2;
+            // 
+            // lbox_productos
+            // 
+            this.lbox_productos.FormattingEnabled = true;
+            this.lbox_productos.Location = new System.Drawing.Point(119, 115);
+            this.lbox_productos.Name = "lbox_productos";
+            this.lbox_productos.Size = new System.Drawing.Size(265, 95);
+            this.lbox_productos.TabIndex = 38;
+            this.lbox_productos.Visible = false;
+            this.lbox_productos.Click += new System.EventHandler(this.lbox_productos_Click);
+            this.lbox_productos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lbox_productos_KeyPress);
             // 
             // txt_precio_costo
             // 
@@ -152,6 +160,7 @@
             this.txt_id_producto.Name = "txt_id_producto";
             this.txt_id_producto.Size = new System.Drawing.Size(69, 20);
             this.txt_id_producto.TabIndex = 35;
+            this.txt_id_producto.Visible = false;
             // 
             // num_cantidad
             // 
@@ -159,16 +168,6 @@
             this.num_cantidad.Name = "num_cantidad";
             this.num_cantidad.Size = new System.Drawing.Size(250, 20);
             this.num_cantidad.TabIndex = 34;
-            // 
-            // lbox_productos
-            // 
-            this.lbox_productos.FormattingEnabled = true;
-            this.lbox_productos.Location = new System.Drawing.Point(120, 112);
-            this.lbox_productos.Name = "lbox_productos";
-            this.lbox_productos.ScrollAlwaysVisible = true;
-            this.lbox_productos.Size = new System.Drawing.Size(250, 121);
-            this.lbox_productos.TabIndex = 33;
-            this.lbox_productos.Visible = false;
             // 
             // btn_buscar_producto
             // 
@@ -196,6 +195,8 @@
             this.txt_descripcion_producto.Name = "txt_descripcion_producto";
             this.txt_descripcion_producto.Size = new System.Drawing.Size(170, 20);
             this.txt_descripcion_producto.TabIndex = 31;
+            this.txt_descripcion_producto.TextChanged += new System.EventHandler(this.txt_descripcion_producto_TextChanged);
+            this.txt_descripcion_producto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_descripcion_producto_KeyDown);
             // 
             // lbl_codigo_barras
             // 
@@ -297,6 +298,7 @@
             // 
             // id_producto
             // 
+            this.id_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.id_producto.HeaderText = "ID Producto";
             this.id_producto.Name = "id_producto";
             this.id_producto.ReadOnly = true;
@@ -305,42 +307,49 @@
             // 
             // codigo_barras
             // 
+            this.codigo_barras.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.codigo_barras.HeaderText = "Cod. de barras";
             this.codigo_barras.Name = "codigo_barras";
             this.codigo_barras.ReadOnly = true;
             // 
             // descripcion_producto
             // 
+            this.descripcion_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descripcion_producto.HeaderText = "Descripción";
             this.descripcion_producto.Name = "descripcion_producto";
             this.descripcion_producto.ReadOnly = true;
             // 
             // cantidad
             // 
+            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.cantidad.HeaderText = "Cantidad";
             this.cantidad.Name = "cantidad";
             this.cantidad.ReadOnly = true;
             // 
             // precio_costo
             // 
+            this.precio_costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.precio_costo.HeaderText = "Precio Unit.";
             this.precio_costo.Name = "precio_costo";
             this.precio_costo.ReadOnly = true;
             // 
             // subtotal
             // 
+            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.subtotal.HeaderText = "Subtotal";
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             // 
             // btn_editar
             // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.btn_editar.HeaderText = "";
             this.btn_editar.Name = "btn_editar";
             this.btn_editar.ReadOnly = true;
             // 
             // btn_eliminar
             // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.btn_eliminar.HeaderText = "";
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.ReadOnly = true;
@@ -432,7 +441,6 @@
             this.tlpanel_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.22036F));
             this.tlpanel_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.18468F));
             this.tlpanel_3.Controls.Add(this.txt_cuit_proveedor, 1, 0);
-            this.tlpanel_3.Controls.Add(this.txt_id_proveedor, 0, 0);
             this.tlpanel_3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpanel_3.Location = new System.Drawing.Point(0, 92);
             this.tlpanel_3.Margin = new System.Windows.Forms.Padding(0);
@@ -463,14 +471,7 @@
             this.txt_cuit_proveedor.TabIndex = 1;
             this.txt_cuit_proveedor.Texts = "";
             this.txt_cuit_proveedor.UnderlinedStyle = false;
-            // 
-            // txt_id_proveedor
-            // 
-            this.txt_id_proveedor.Location = new System.Drawing.Point(3, 3);
-            this.txt_id_proveedor.Name = "txt_id_proveedor";
-            this.txt_id_proveedor.Size = new System.Drawing.Size(100, 20);
-            this.txt_id_proveedor.TabIndex = 2;
-            this.txt_id_proveedor.Text = "1";
+            this.txt_cuit_proveedor.Visible = false;
             // 
             // tlpanel_2
             // 
@@ -553,19 +554,17 @@
             // 
             // tlpanel_primera
             // 
-            this.tlpanel_primera.ColumnCount = 6;
+            this.tlpanel_primera.ColumnCount = 4;
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.03024F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.99784F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.59827F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.01512F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.159827F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.19871F));
-            this.tlpanel_primera.Controls.Add(this.txt_descripcion_proveedor, 0, 0);
-            this.tlpanel_primera.Controls.Add(this.rjTextBox2, 5, 0);
-            this.tlpanel_primera.Controls.Add(this.lbl_guion, 4, 0);
             this.tlpanel_primera.Controls.Add(this.txt_numero_documento, 3, 0);
             this.tlpanel_primera.Controls.Add(this.lbl_nro_doc, 2, 0);
             this.tlpanel_primera.Controls.Add(this.lbl_proveedor, 0, 0);
+            this.tlpanel_primera.Controls.Add(this.cbox_proveedores, 1, 0);
             this.tlpanel_primera.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpanel_primera.Location = new System.Drawing.Point(0, 0);
             this.tlpanel_primera.Margin = new System.Windows.Forms.Padding(0);
@@ -575,49 +574,6 @@
             this.tlpanel_primera.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tlpanel_primera.Size = new System.Drawing.Size(984, 46);
             this.tlpanel_primera.TabIndex = 17;
-            // 
-            // txt_descripcion_proveedor
-            // 
-            this.txt_descripcion_proveedor.Location = new System.Drawing.Point(219, 3);
-            this.txt_descripcion_proveedor.Name = "txt_descripcion_proveedor";
-            this.txt_descripcion_proveedor.Size = new System.Drawing.Size(250, 20);
-            this.txt_descripcion_proveedor.TabIndex = 32;
-            this.txt_descripcion_proveedor.Click += new System.EventHandler(this.txt_descripcion_proveedor_Click);
-            // 
-            // rjTextBox2
-            // 
-            this.rjTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.rjTextBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox2.BorderColor = System.Drawing.Color.Orange;
-            this.rjTextBox2.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.rjTextBox2.BorderRadius = 0;
-            this.rjTextBox2.BorderSize = 2;
-            this.rjTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.rjTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox2.Location = new System.Drawing.Point(826, 7);
-            this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox2.Multiline = false;
-            this.rjTextBox2.Name = "rjTextBox2";
-            this.rjTextBox2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox2.PasswordChar = false;
-            this.rjTextBox2.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox2.PlaceholderText = "";
-            this.rjTextBox2.Size = new System.Drawing.Size(143, 31);
-            this.rjTextBox2.TabIndex = 21;
-            this.rjTextBox2.Texts = "";
-            this.rjTextBox2.UnderlinedStyle = false;
-            // 
-            // lbl_guion
-            // 
-            this.lbl_guion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_guion.AutoSize = true;
-            this.lbl_guion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_guion.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_guion.Location = new System.Drawing.Point(804, 11);
-            this.lbl_guion.Name = "lbl_guion";
-            this.lbl_guion.Size = new System.Drawing.Size(15, 24);
-            this.lbl_guion.TabIndex = 20;
-            this.lbl_guion.Text = "-";
             // 
             // txt_numero_documento
             // 
@@ -629,7 +585,7 @@
             this.txt_numero_documento.BorderSize = 2;
             this.txt_numero_documento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_numero_documento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_numero_documento.Location = new System.Drawing.Point(697, 7);
+            this.txt_numero_documento.Location = new System.Drawing.Point(854, 7);
             this.txt_numero_documento.Margin = new System.Windows.Forms.Padding(4);
             this.txt_numero_documento.Multiline = false;
             this.txt_numero_documento.Name = "txt_numero_documento";
@@ -648,7 +604,7 @@
             this.lbl_nro_doc.AutoSize = true;
             this.lbl_nro_doc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nro_doc.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_nro_doc.Location = new System.Drawing.Point(499, 11);
+            this.lbl_nro_doc.Location = new System.Drawing.Point(656, 11);
             this.lbl_nro_doc.Name = "lbl_nro_doc";
             this.lbl_nro_doc.Size = new System.Drawing.Size(191, 24);
             this.lbl_nro_doc.TabIndex = 18;
@@ -660,11 +616,19 @@
             this.lbl_proveedor.AutoSize = true;
             this.lbl_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_proveedor.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_proveedor.Location = new System.Drawing.Point(54, 11);
+            this.lbl_proveedor.Location = new System.Drawing.Point(79, 11);
             this.lbl_proveedor.Name = "lbl_proveedor";
             this.lbl_proveedor.Size = new System.Drawing.Size(107, 24);
             this.lbl_proveedor.TabIndex = 16;
             this.lbl_proveedor.Text = "Proveedor";
+            // 
+            // cbox_proveedores
+            // 
+            this.cbox_proveedores.FormattingEnabled = true;
+            this.cbox_proveedores.Location = new System.Drawing.Point(268, 3);
+            this.cbox_proveedores.Name = "cbox_proveedores";
+            this.cbox_proveedores.Size = new System.Drawing.Size(121, 21);
+            this.cbox_proveedores.TabIndex = 20;
             // 
             // formCompras
             // 
@@ -688,7 +652,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tlpanel_3.ResumeLayout(false);
-            this.tlpanel_3.PerformLayout();
             this.tlpanel_2.ResumeLayout(false);
             this.tlpanel_2.PerformLayout();
             this.tlpanel_primera.ResumeLayout(false);
@@ -718,24 +681,19 @@
         private CustomBox.RJControls.RJComboBox cbo_tipo_documento;
         private CustomBox.RJControls.RJDatePicker date_fecha_doc;
         private System.Windows.Forms.TableLayoutPanel tlpanel_primera;
-        private CustomBox.RJControls.RJTextBox rjTextBox2;
-        private System.Windows.Forms.Label lbl_guion;
         private CustomBox.RJControls.RJTextBox txt_numero_documento;
         private System.Windows.Forms.Label lbl_nro_doc;
         private System.Windows.Forms.Label lbl_proveedor;
         private System.Windows.Forms.Label lbl_suma_total;
         private CustomBox.RJControls.RJButton btn_agregar_producto;
         private System.Windows.Forms.Label lbl_codigo_barras;
-        private RJCodeAdvance.RJControls.RJTextBox txt_cuit_proveedor;
         private System.Windows.Forms.TextBox txt_descripcion_producto;
-        private System.Windows.Forms.TextBox txt_descripcion_proveedor;
         private CustomBox.RJControls.RJButton btn_buscar_producto;
-        private System.Windows.Forms.ListBox lbox_productos;
         private System.Windows.Forms.NumericUpDown num_cantidad;
         private System.Windows.Forms.TextBox txt_precio_costo;
         private System.Windows.Forms.TextBox txt_codigo_barras;
         private System.Windows.Forms.TextBox txt_id_producto;
-        private System.Windows.Forms.TextBox txt_id_proveedor;
+        private RJCodeAdvance.RJControls.RJTextBox txt_cuit_proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo_barras;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion_producto;
@@ -744,5 +702,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_eliminar;
+        private System.Windows.Forms.ComboBox cbox_proveedores;
+        private System.Windows.Forms.ListBox lbox_productos;
     }
 }

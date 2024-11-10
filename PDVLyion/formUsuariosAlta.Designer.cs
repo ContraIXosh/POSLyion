@@ -39,7 +39,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txt_telefono = new CustomBox.RJControls.RJTextBox();
             this.lbl_rol = new System.Windows.Forms.Label();
-            this.cbo_rol = new RJCodeAdvance.RJControls.RJComboBox();
+            this.cbo_roles = new RJCodeAdvance.RJControls.RJComboBox();
             this.txt_correo = new CustomBox.RJControls.RJTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_nombre_usuario = new CustomBox.RJControls.RJTextBox();
@@ -95,7 +95,7 @@
             this.tableLayoutPanel4.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel4.Controls.Add(this.txt_telefono, 0, 5);
             this.tableLayoutPanel4.Controls.Add(this.lbl_rol, 0, 6);
-            this.tableLayoutPanel4.Controls.Add(this.cbo_rol, 0, 7);
+            this.tableLayoutPanel4.Controls.Add(this.cbo_roles, 0, 7);
             this.tableLayoutPanel4.Controls.Add(this.txt_correo, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txt_nombre_usuario, 1, 3);
@@ -268,25 +268,25 @@
             this.lbl_rol.TabIndex = 89;
             this.lbl_rol.Text = "ROL";
             // 
-            // cbo_rol
+            // cbo_roles
             // 
-            this.cbo_rol.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbo_rol.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbo_rol.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_rol.BorderSize = 1;
-            this.cbo_rol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbo_rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbo_rol.ForeColor = System.Drawing.Color.DimGray;
-            this.cbo_rol.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_rol.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbo_rol.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_rol.Location = new System.Drawing.Point(53, 241);
-            this.cbo_rol.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbo_rol.Name = "cbo_rol";
-            this.cbo_rol.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_rol.Size = new System.Drawing.Size(249, 30);
-            this.cbo_rol.TabIndex = 88;
-            this.cbo_rol.Texts = "";
+            this.cbo_roles.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbo_roles.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbo_roles.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_roles.BorderSize = 1;
+            this.cbo_roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbo_roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbo_roles.ForeColor = System.Drawing.Color.DimGray;
+            this.cbo_roles.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_roles.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbo_roles.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbo_roles.Location = new System.Drawing.Point(53, 241);
+            this.cbo_roles.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbo_roles.Name = "cbo_roles";
+            this.cbo_roles.Padding = new System.Windows.Forms.Padding(1);
+            this.cbo_roles.Size = new System.Drawing.Size(249, 30);
+            this.cbo_roles.TabIndex = 88;
+            this.cbo_roles.Texts = "";
             // 
             // txt_correo
             // 
@@ -626,7 +626,7 @@
         private System.Windows.Forms.Label label6;
         private CustomBox.RJControls.RJTextBox txt_telefono;
         private System.Windows.Forms.Label lbl_rol;
-        private RJCodeAdvance.RJControls.RJComboBox cbo_rol;
+        private RJCodeAdvance.RJControls.RJComboBox cbo_roles;
         private CustomBox.RJControls.RJTextBox txt_correo;
         private System.Windows.Forms.Label label7;
         private CustomBox.RJControls.RJTextBox txt_nombre_usuario;

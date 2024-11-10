@@ -166,6 +166,7 @@
             this.Controls.Add(this.cbo_filtro);
             this.Controls.Add(this.dgv_modal_productos);
             this.Name = "MD_Productos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MD_Productos";
             this.Load += new System.EventHandler(this.MD_Productos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_modal_productos)).EndInit();

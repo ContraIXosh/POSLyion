@@ -211,9 +211,15 @@ GO
 
 INSERT INTO Productos(codigo_barras, descripcion, id_categoria, precio_costo, precio_venta, stock_actual, stock_minimo)
 VALUES
-('111', 'Comida', 1, 10.60, 6.66, 5, 3),
-('222', 'Ropa', 1, 11.60, 7.66, 6, 2),
-('333', 'Electronica', 1, 12.60, 8.66, 7, 1)
+('111', 'Pan', 1, 6.60, 6.66, 5, 3),
+('222', 'Harina ', 1, 11.60, 7.66, 6, 2),
+('333', 'Fideo', 1, 9.60, 10.33, 5, 3),
+('444', 'Arroz', 1, 5.80, 8.66, 2, 4),
+('555', 'Agua', 1, 6.70, 10.46, -5, 2),
+('666', 'Gaseosa', 1, 4.55, 15.79, -4, 6),
+('777', 'Garrafa', 1, 12.32, 13.66, 0, 3),
+('888', 'Helado', 1, 5.75, 19.99, 4, 4),
+('999', 'Golosina', 1, 7.13, 10.01, -10, 5)
 GO
 
 CREATE PROC SP_ALTA_PRODUCTO
@@ -547,7 +553,7 @@ AS
 BEGIN
 	SET @mensaje = ''
 	SET @id_generada_cliente = 0
-	IF NOT EXISTS (SELECT * FROM Clientes WHERE dni = @dni)
+	IF NOT EXISTS (SELECT * FROM Clientes WHERE nombre_completo = @nombre_completo)
 	BEGIN
 		INSERT INTO Clientes(dni, nombre_completo, correo, telefono)
 		VALUES(@dni, @nombre_completo, @correo, @telefono)
@@ -555,7 +561,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		SET @mensaje = 'Ya existe un cliente con el mismo DNI.'
+		SET @mensaje = 'Ya existe un cliente con el mismo nombre.'
 	END
 END
 GO
@@ -827,45 +833,73 @@ END
 GO
 
 CREATE PROC SP_HISTORIAL_COMPRAS(
-	@id_compra INT
+	@fecha_desde VARCHAR(10),
+	@fecha_hasta VARCHAR(10),
+	@id_compra INT,
+	@id_usuario INT,
+	@id_proveedor INT,
+	@nombre_producto VARCHAR(60)
 )
 AS
 BEGIN
 	SELECT
+		c.id_compra[NumeroCompra],
 		p.codigo_barras[CodigoBarras],
 		p.descripcion[NombreProducto],
 		ca.descripcion[NombreCategoria],
 		cd.precio[PrecioUnitario],
 		cd.cantidad[Cantidad],
-		cd.subtotal[Subtotal]
+		pr.descripcion[NombreProveedor],
+		cd.subtotal[Subtotal],
+		u.nombre_completo[UsuarioRegistro],
+		c.fecha_documento[FechaDocumento],
+		c.create_date[FechaRegistro]
 	FROM Compras c
 	INNER JOIN Usuarios u ON u.id_usuario = c.id_usuario
 	INNER JOIN Proveedores pr ON pr.id_proveedor = c.id_proveedor
 	INNER JOIN Compras_Detalle cd ON cd.id_compra = c.id_compra
 	INNER JOIN Productos p ON p.id_producto = cd.id_producto
 	INNER JOIN Categorias ca ON ca.id_categoria = p.id_categoria
-	WHERE c.id_compra = @id_compra
+	WHERE (CONVERT(DATE, c.create_date) BETWEEN @fecha_desde AND @fecha_hasta)
+	AND (c.id_compra = IIF(@id_compra = 0, c.id_compra, @id_compra))
+	AND (u.id_usuario = IIF(@id_usuario = 0, u.id_usuario, @id_usuario))
+	AND (pr.id_proveedor = IIF(@id_proveedor = 0, pr.id_proveedor, @id_proveedor))
+	AND (p.descripcion LIKE '%' + @nombre_producto + '%' OR @nombre_producto = '')
 END
 GO
 
 CREATE PROC SP_HISTORIAL_VENTAS(
-	@id_venta INT
+	@fecha_desde VARCHAR(10),
+	@fecha_hasta VARCHAR(10),
+	@id_venta INT,
+	@id_usuario INT,
+	@id_cliente INT,
+	@nombre_producto VARCHAR(60)
 )
 AS
 BEGIN
 	SELECT
+		v.id_venta[NumeroVenta],
 		p.codigo_barras[CodigoBarras],
 		p.descripcion[NombreProducto],
 		ca.descripcion[NombreCategoria],
 		vd.precio[PrecioUnitario],
 		vd.cantidad[Cantidad],
-		vd.subtotal[Subtotal]
+		c.nombre_completo[NombreCliente],
+		vd.subtotal[Subtotal],
+		u.nombre_completo[UsuarioRegistro],
+		v.create_date[FechaRegistro]
 	FROM Ventas v
 	INNER JOIN Usuarios u ON u.id_usuario = v.id_usuario
 	INNER JOIN Clientes c ON c.id_cliente = v.id_cliente
 	INNER JOIN Ventas_Detalle vd ON v.id_venta = vd.id_venta
 	INNER JOIN Productos p ON p.id_producto = vd.id_producto
 	INNER JOIN Categorias ca ON ca.id_categoria = p.id_categoria
-	WHERE v.id_venta = @id_venta
+	WHERE (CONVERT(DATE, v.create_date) BETWEEN @fecha_desde AND @fecha_hasta)
+	AND (v.id_venta = IIF(@id_venta = 0, v.id_venta, @id_venta))
+	AND (u.id_usuario = IIF(@id_usuario = 0, u.id_usuario, @id_usuario))
+	AND (c.id_cliente = IIF(@id_cliente = 0, c.id_cliente, @id_cliente))
+	AND (p.descripcion LIKE '%' + @nombre_producto + '%' OR @nombre_producto = '')
 END
+
 

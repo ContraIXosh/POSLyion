@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
+using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,14 +14,14 @@ namespace CapaNegocio
     {
         private CD_Reportes oReporte = new CD_Reportes();
 
-        public List<ReportesDetalle> Compra_Detalle(int id_compra)
+        public List<ReportesDetalle> Compra_Detalle(FiltrosReportes filtros)
         {
-            return oReporte.Compra_Detalle(id_compra);
+            return oReporte.Compra_Detalle(filtros);
         }
 
-        public List<ReportesDetalle> Venta_Detalle(int id_venta)
+        public List<ReportesDetalle> Venta_Detalle(FiltrosReportes filtros)
         {
-            return oReporte.Venta_Detalle(id_venta);
+            return oReporte.Venta_Detalle(filtros);
         }
     }
 }

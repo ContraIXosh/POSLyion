@@ -99,7 +99,7 @@ namespace DataLayer
             {
                 try
                 {
-                    string query = "SELECT id_venta[NumeroVenta], v.create_date[FechaVenta], c.nombre_completo[NombreCliente], total[Total] FROM Ventas v INNER JOIN Clientes c ON v.id_cliente = c.id_cliente WHERE CONVERT(DATE,v.create_date) BETWEEN '2024-11-07' AND '2024-11-07'";
+                    string query = "SELECT id_venta[NumeroVenta], v.create_date[FechaVenta], c.nombre_completo[NombreCliente], total[Total] FROM Ventas v INNER JOIN Clientes c ON v.id_cliente = c.id_cliente WHERE CONVERT(DATE,v.create_date) BETWEEN @fecha_inicio AND @fecha_fin";
                     SqlCommand cmd = new SqlCommand(query, oConexion);
                     cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
                     cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);

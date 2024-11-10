@@ -33,24 +33,12 @@
             this.btn_cerrar = new CustomBox.RJControls.RJButton();
             this.panel_crimactividad = new System.Windows.Forms.Panel();
             this.panel_actividad = new System.Windows.Forms.Panel();
-            this.cb_res = new System.Windows.Forms.CheckBox();
-            this.cb_applyion = new System.Windows.Forms.CheckBox();
-            this.cb_fraccion = new System.Windows.Forms.CheckBox();
-            this.lbl_actividad = new System.Windows.Forms.Label();
             this.panel_crimconfg = new System.Windows.Forms.Panel();
             this.panel_config = new System.Windows.Forms.Panel();
-            this.txt_descuento = new CustomBox.RJControls.RJTextBox();
-            this.cbox_iva = new CustomBox.RJControls.RJComboBox();
-            this.txt_precio2 = new CustomBox.RJControls.RJTextBox();
             this.txt_precio_venta = new CustomBox.RJControls.RJTextBox();
-            this.txt_ganancia = new CustomBox.RJControls.RJTextBox();
             this.txt_precio_costo = new CustomBox.RJControls.RJTextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.lbl_config = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel_crimdesc = new System.Windows.Forms.Panel();
@@ -70,7 +58,6 @@
             this.lbl_tipoprod = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
             this.panel_crimactividad.SuspendLayout();
-            this.panel_actividad.SuspendLayout();
             this.panel_crimconfg.SuspendLayout();
             this.panel_config.SuspendLayout();
             this.panel_crimdesc.SuspendLayout();
@@ -144,61 +131,10 @@
             // panel_actividad
             // 
             this.panel_actividad.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel_actividad.Controls.Add(this.cb_res);
-            this.panel_actividad.Controls.Add(this.cb_applyion);
-            this.panel_actividad.Controls.Add(this.cb_fraccion);
-            this.panel_actividad.Controls.Add(this.lbl_actividad);
             this.panel_actividad.Location = new System.Drawing.Point(3, 3);
             this.panel_actividad.Name = "panel_actividad";
             this.panel_actividad.Size = new System.Drawing.Size(859, 93);
             this.panel_actividad.TabIndex = 0;
-            // 
-            // cb_res
-            // 
-            this.cb_res.AutoSize = true;
-            this.cb_res.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_res.ForeColor = System.Drawing.Color.Gold;
-            this.cb_res.Location = new System.Drawing.Point(664, 53);
-            this.cb_res.Name = "cb_res";
-            this.cb_res.Size = new System.Drawing.Size(154, 28);
-            this.cb_res.TabIndex = 14;
-            this.cb_res.Text = "RES. 5329/23";
-            this.cb_res.UseVisualStyleBackColor = true;
-            // 
-            // cb_applyion
-            // 
-            this.cb_applyion.AutoSize = true;
-            this.cb_applyion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_applyion.ForeColor = System.Drawing.Color.Gold;
-            this.cb_applyion.Location = new System.Drawing.Point(301, 53);
-            this.cb_applyion.Name = "cb_applyion";
-            this.cb_applyion.Size = new System.Drawing.Size(268, 28);
-            this.cb_applyion.TabIndex = 13;
-            this.cb_applyion.Text = "PUBLICAR EN APPLYION";
-            this.cb_applyion.UseVisualStyleBackColor = true;
-            // 
-            // cb_fraccion
-            // 
-            this.cb_fraccion.AutoSize = true;
-            this.cb_fraccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_fraccion.ForeColor = System.Drawing.Color.Gold;
-            this.cb_fraccion.Location = new System.Drawing.Point(28, 53);
-            this.cb_fraccion.Name = "cb_fraccion";
-            this.cb_fraccion.Size = new System.Drawing.Size(178, 28);
-            this.cb_fraccion.TabIndex = 12;
-            this.cb_fraccion.Text = "FRACCIONADO";
-            this.cb_fraccion.UseVisualStyleBackColor = true;
-            // 
-            // lbl_actividad
-            // 
-            this.lbl_actividad.AutoSize = true;
-            this.lbl_actividad.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actividad.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_actividad.Location = new System.Drawing.Point(3, 10);
-            this.lbl_actividad.Name = "lbl_actividad";
-            this.lbl_actividad.Size = new System.Drawing.Size(281, 26);
-            this.lbl_actividad.TabIndex = 10;
-            this.lbl_actividad.Text = "ACTIVIDAD DEL PRODUCTO";
             // 
             // panel_crimconfg
             // 
@@ -212,86 +148,15 @@
             // panel_config
             // 
             this.panel_config.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel_config.Controls.Add(this.txt_descuento);
-            this.panel_config.Controls.Add(this.cbox_iva);
-            this.panel_config.Controls.Add(this.txt_precio2);
             this.panel_config.Controls.Add(this.txt_precio_venta);
-            this.panel_config.Controls.Add(this.txt_ganancia);
             this.panel_config.Controls.Add(this.txt_precio_costo);
-            this.panel_config.Controls.Add(this.label10);
             this.panel_config.Controls.Add(this.lbl_config);
-            this.panel_config.Controls.Add(this.label5);
             this.panel_config.Controls.Add(this.label6);
-            this.panel_config.Controls.Add(this.label7);
-            this.panel_config.Controls.Add(this.label8);
             this.panel_config.Controls.Add(this.label9);
             this.panel_config.Location = new System.Drawing.Point(3, 3);
             this.panel_config.Name = "panel_config";
             this.panel_config.Size = new System.Drawing.Size(859, 216);
             this.panel_config.TabIndex = 0;
-            // 
-            // txt_descuento
-            // 
-            this.txt_descuento.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_descuento.BorderColor = System.Drawing.Color.Crimson;
-            this.txt_descuento.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.txt_descuento.BorderRadius = 0;
-            this.txt_descuento.BorderSize = 2;
-            this.txt_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_descuento.Location = new System.Drawing.Point(625, 173);
-            this.txt_descuento.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_descuento.Multiline = false;
-            this.txt_descuento.Name = "txt_descuento";
-            this.txt_descuento.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_descuento.PasswordChar = false;
-            this.txt_descuento.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_descuento.PlaceholderText = "";
-            this.txt_descuento.Size = new System.Drawing.Size(213, 31);
-            this.txt_descuento.TabIndex = 17;
-            this.txt_descuento.Texts = "";
-            this.txt_descuento.UnderlinedStyle = false;
-            // 
-            // cbox_iva
-            // 
-            this.cbox_iva.BackColor = System.Drawing.Color.Crimson;
-            this.cbox_iva.BorderColor = System.Drawing.Color.GhostWhite;
-            this.cbox_iva.BorderSize = 1;
-            this.cbox_iva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_iva.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_iva.IconColor = System.Drawing.Color.GhostWhite;
-            this.cbox_iva.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbox_iva.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_iva.Location = new System.Drawing.Point(625, 95);
-            this.cbox_iva.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbox_iva.Name = "cbox_iva";
-            this.cbox_iva.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_iva.Size = new System.Drawing.Size(213, 30);
-            this.cbox_iva.TabIndex = 13;
-            this.cbox_iva.Texts = "";
-            // 
-            // txt_precio2
-            // 
-            this.txt_precio2.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_precio2.BorderColor = System.Drawing.Color.Crimson;
-            this.txt_precio2.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.txt_precio2.BorderRadius = 0;
-            this.txt_precio2.BorderSize = 2;
-            this.txt_precio2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_precio2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_precio2.Location = new System.Drawing.Point(340, 173);
-            this.txt_precio2.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_precio2.Multiline = false;
-            this.txt_precio2.Name = "txt_precio2";
-            this.txt_precio2.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_precio2.PasswordChar = false;
-            this.txt_precio2.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_precio2.PlaceholderText = "";
-            this.txt_precio2.Size = new System.Drawing.Size(213, 31);
-            this.txt_precio2.TabIndex = 16;
-            this.txt_precio2.Texts = "";
-            this.txt_precio2.UnderlinedStyle = false;
             // 
             // txt_precio_venta
             // 
@@ -315,28 +180,6 @@
             this.txt_precio_venta.Texts = "";
             this.txt_precio_venta.UnderlinedStyle = false;
             // 
-            // txt_ganancia
-            // 
-            this.txt_ganancia.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_ganancia.BorderColor = System.Drawing.Color.Crimson;
-            this.txt_ganancia.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.txt_ganancia.BorderRadius = 0;
-            this.txt_ganancia.BorderSize = 2;
-            this.txt_ganancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_ganancia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_ganancia.Location = new System.Drawing.Point(8, 173);
-            this.txt_ganancia.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_ganancia.Multiline = false;
-            this.txt_ganancia.Name = "txt_ganancia";
-            this.txt_ganancia.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_ganancia.PasswordChar = false;
-            this.txt_ganancia.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_ganancia.PlaceholderText = "";
-            this.txt_ganancia.Size = new System.Drawing.Size(213, 31);
-            this.txt_ganancia.TabIndex = 14;
-            this.txt_ganancia.Texts = "";
-            this.txt_ganancia.UnderlinedStyle = false;
-            // 
             // txt_precio_costo
             // 
             this.txt_precio_costo.BackColor = System.Drawing.SystemColors.Window;
@@ -359,17 +202,6 @@
             this.txt_precio_costo.Texts = "";
             this.txt_precio_costo.UnderlinedStyle = false;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gold;
-            this.label10.Location = new System.Drawing.Point(620, 53);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(239, 26);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "CONDICIÓN DE IVA (%)";
-            // 
             // lbl_config
             // 
             this.lbl_config.AutoSize = true;
@@ -381,17 +213,6 @@
             this.lbl_config.TabIndex = 10;
             this.lbl_config.Text = "CONFIGURACIÓN DEL PRODUCTO";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Gold;
-            this.label5.Location = new System.Drawing.Point(620, 143);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(162, 26);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "DESC. MAXIMO";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -402,28 +223,6 @@
             this.label6.Size = new System.Drawing.Size(80, 26);
             this.label6.TabIndex = 1;
             this.label6.Text = "COSTO";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Gold;
-            this.label7.Location = new System.Drawing.Point(335, 143);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 26);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "PRECIO 2";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Gold;
-            this.label8.Location = new System.Drawing.Point(3, 143);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(191, 26);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "GANANCIA EN (%)";
             // 
             // label9
             // 
@@ -706,8 +505,6 @@
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
             this.panel_crimactividad.ResumeLayout(false);
-            this.panel_actividad.ResumeLayout(false);
-            this.panel_actividad.PerformLayout();
             this.panel_crimconfg.ResumeLayout(false);
             this.panel_config.ResumeLayout(false);
             this.panel_config.PerformLayout();
@@ -734,28 +531,16 @@
         private System.Windows.Forms.Panel panel_crimconfg;
         private System.Windows.Forms.Panel panel_config;
         private System.Windows.Forms.Label lbl_config;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
-        private CustomBox.RJControls.RJTextBox txt_precio2;
         private CustomBox.RJControls.RJTextBox txt_precio_venta;
-        private CustomBox.RJControls.RJTextBox txt_ganancia;
         private CustomBox.RJControls.RJTextBox txt_precio_costo;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lbl_stock_minimo;
         private System.Windows.Forms.Panel panel_crimactividad;
         private System.Windows.Forms.Panel panel_actividad;
-        private System.Windows.Forms.Label lbl_actividad;
-        private CustomBox.RJControls.RJTextBox txt_descuento;
-        private CustomBox.RJControls.RJComboBox cbox_iva;
         private CustomBox.RJControls.RJButton btn_guardar;
         private CustomBox.RJControls.RJButton btn_cerrar;
-        private System.Windows.Forms.CheckBox cb_res;
-        private System.Windows.Forms.CheckBox cb_applyion;
-        private System.Windows.Forms.CheckBox cb_fraccion;
         private CustomBox.RJControls.RJTextBox txt_id;
         private CustomBox.RJControls.RJComboBox cbox_estado;
         private System.Windows.Forms.Label lbl_estado;

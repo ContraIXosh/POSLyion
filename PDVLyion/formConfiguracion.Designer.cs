@@ -90,6 +90,8 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btb_backup_bd = new CustomBox.RJControls.RJButton();
+            this.btn_restaurar_bd = new CustomBox.RJControls.RJButton();
             this.panel_main.SuspendLayout();
             this.panel_general.SuspendLayout();
             this.panel_main2.SuspendLayout();
@@ -108,7 +110,6 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.panel_updates.SuspendLayout();
             this.menu_sesion.SuspendLayout();
-            this.menu_Main.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -543,11 +544,13 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Black;
-            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.btn_restaurar_bd, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btb_backup_bd, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 63);
@@ -570,7 +573,7 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.SpringGreen;
-            this.btn_guardar.Location = new System.Drawing.Point(440, 3);
+            this.btn_guardar.Location = new System.Drawing.Point(416, 3);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(113, 32);
             this.btn_guardar.TabIndex = 74;
@@ -780,20 +783,127 @@
             this.menu_sesion.MenuItemTextColor = System.Drawing.Color.Black;
             this.menu_sesion.Name = "menu_sesion";
             this.menu_sesion.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_sesion.Size = new System.Drawing.Size(203, 70);
+            this.menu_sesion.Size = new System.Drawing.Size(132, 70);
             // 
             // verPerfilToolStripMenuItem
             // 
             this.verPerfilToolStripMenuItem.Name = "verPerfilToolStripMenuItem";
-            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.verPerfilToolStripMenuItem.Text = "Ver perfil";
-            // formConfig
+            // 
+            // inicioAdministradorToolStripMenuItem
+            // 
+            this.inicioAdministradorToolStripMenuItem.Name = "inicioAdministradorToolStripMenuItem";
+            this.inicioAdministradorToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            // 
+            // cerrarSesionToolStripMenuItem
+            // 
+            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            // 
+            // menu_Main
+            // 
+            this.menu_Main.IsMainMenu = false;
+            this.menu_Main.MenuItemHeight = 25;
+            this.menu_Main.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.menu_Main.Name = "menu_Main";
+            this.menu_Main.PrimaryColor = System.Drawing.Color.Empty;
+            this.menu_Main.Size = new System.Drawing.Size(61, 4);
+            // 
+            // ventasToolStripMenuItem
+            // 
+            this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // comprasToolStripMenuItem
+            // 
+            this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // productosToolStripMenuItem
+            // 
+            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // proveedoresToolStripMenuItem
+            // 
+            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // btb_backup_bd
+            // 
+            this.btb_backup_bd.BackColor = System.Drawing.Color.Transparent;
+            this.btb_backup_bd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btb_backup_bd.BorderColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.BorderRadius = 7;
+            this.btb_backup_bd.BorderSize = 2;
+            this.btb_backup_bd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btb_backup_bd.FlatAppearance.BorderSize = 0;
+            this.btb_backup_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btb_backup_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btb_backup_bd.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.Location = new System.Drawing.Point(3, 3);
+            this.btb_backup_bd.Name = "btb_backup_bd";
+            this.btb_backup_bd.Size = new System.Drawing.Size(183, 36);
+            this.btb_backup_bd.TabIndex = 75;
+            this.btb_backup_bd.Text = "Backup BD";
+            this.btb_backup_bd.TextColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.UseVisualStyleBackColor = false;
+            this.btb_backup_bd.Click += new System.EventHandler(this.btb_exportar_bd_Click);
+            // 
+            // btn_restaurar_bd
+            // 
+            this.btn_restaurar_bd.BackColor = System.Drawing.Color.Transparent;
+            this.btn_restaurar_bd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_restaurar_bd.BorderColor = System.Drawing.Color.SpringGreen;
+            this.btn_restaurar_bd.BorderRadius = 7;
+            this.btn_restaurar_bd.BorderSize = 2;
+            this.btn_restaurar_bd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_restaurar_bd.FlatAppearance.BorderSize = 0;
+            this.btn_restaurar_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_restaurar_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_restaurar_bd.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btn_restaurar_bd.Location = new System.Drawing.Point(192, 3);
+            this.btn_restaurar_bd.Name = "btn_restaurar_bd";
+            this.btn_restaurar_bd.Size = new System.Drawing.Size(183, 36);
+            this.btn_restaurar_bd.TabIndex = 76;
+            this.btn_restaurar_bd.Text = "Restaurar BD";
+            this.btn_restaurar_bd.TextColor = System.Drawing.Color.SpringGreen;
+            this.btn_restaurar_bd.UseVisualStyleBackColor = false;
+            this.btn_restaurar_bd.Click += new System.EventHandler(this.btn_restaurar_bd_Click);
+            // 
+            // formConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 537);
             this.Controls.Add(this.panel_main);
-            this.Name = "formConfig";
+            this.Name = "formConfiguracion";
             this.Text = "formConfig";
             this.panel_main.ResumeLayout(false);
             this.panel_general.ResumeLayout(false);
@@ -818,7 +928,6 @@
             this.panel_updates.ResumeLayout(false);
             this.panel_updates.PerformLayout();
             this.menu_sesion.ResumeLayout(false);
-            this.menu_Main.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -885,5 +994,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lbl_izq;
         private System.Windows.Forms.Label lbl_der;
+        private CustomBox.RJControls.RJButton btn_restaurar_bd;
+        private CustomBox.RJControls.RJButton btb_backup_bd;
     }
 }

@@ -52,7 +52,7 @@ namespace CapaDatos
             {
                 try
                 {
-                    string query = "SELECT id_compra, id_proveedor, total, numero_documento, fecha_documento FROM Compras WHERE fecha_documento BETWEEN @fecha_inicio AND @fecha_fin";
+                    string query = "SELECT id_compra, id_proveedor, total, numero_documento, fecha_documento FROM Compras WHERE (CONVERT(DATE,create_date) BETWEEN @fecha_inicio AND @fecha_fin)";
                     SqlCommand cmd = new SqlCommand(query, oConexion);
                     cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
                     cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);

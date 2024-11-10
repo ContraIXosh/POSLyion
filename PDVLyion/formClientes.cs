@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidad;
+using CapaEntidad.Filtros;
 using CapaNegocio;
+using Google.OrTools.ConstraintSolver;
 
 namespace POSLyion
 {
     public partial class formClientes : Form
     {
         private static Usuarios oUsuario = new Usuarios();
+        private FiltrosCliente filtros = new FiltrosCliente();
 
         public formClientes()
         {
@@ -23,20 +26,7 @@ namespace POSLyion
 
         private void formClientes_Load(object sender, EventArgs e)
         {
-            List<Clientes> lista_clientes = new CN_Clientes().Leer();
-            foreach (Clientes oCliente in lista_clientes)
-            {
-                grid_clientes.Rows.Add(new object[]
-                {
-                    oCliente.Id_cliente,
-                    oCliente.Dni,
-                    oCliente.Nombre_completo,
-                    oCliente.Telefono,
-                    oCliente.Correo,
-                    oCliente.Estado == true ? "Activo" : "Inactivo",
-                    oCliente.Estado == true ? 1 : 0
-                });
-            }
+            this.MostrarClientes();
         }
 
         private void panel_footer_Resize_1(object sender, EventArgs e)
@@ -56,24 +46,24 @@ namespace POSLyion
         private void grid_proveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            if (grid_clientes.Columns[e.ColumnIndex].Name == "btn_editar")
+            if (dgv_clientes.Columns[e.ColumnIndex].Name == "btn_editar")
             {
                 if (index >= 0)
                 {
                     Clientes oCliente = new Clientes()
                     {
-                        Id_cliente = Convert.ToInt32(grid_clientes.Rows[index].Cells["id"].Value),
-                        Dni = grid_clientes.Rows[index].Cells["dni"].Value.ToString(),
-                        Nombre_completo = grid_clientes.Rows[index].Cells["nombre_completo"].Value.ToString(),
-                        Correo = grid_clientes.Rows[index].Cells["correo"].Value.ToString(),
-                        Telefono = grid_clientes.Rows[index].Cells["telefono"].Value.ToString(),
-                        Estado = Convert.ToBoolean(grid_clientes.Rows[index].Cells["estado_valor"].Value)
+                        Id_cliente = Convert.ToInt32(dgv_clientes.Rows[index].Cells["id"].Value),
+                        Dni = dgv_clientes.Rows[index].Cells["dni"].Value.ToString(),
+                        Nombre_completo = dgv_clientes.Rows[index].Cells["nombre_completo"].Value.ToString(),
+                        Correo = dgv_clientes.Rows[index].Cells["correo"].Value.ToString(),
+                        Telefono = dgv_clientes.Rows[index].Cells["telefono"].Value.ToString(),
+                        Estado = Convert.ToBoolean(dgv_clientes.Rows[index].Cells["estado_valor"].Value)
                     };
                     formClientesAlta formClientesAlta = new formClientesAlta(oCliente);
                     formClientesAlta.Show();
                 }
             }
-            else if (grid_clientes.Columns[e.ColumnIndex].Name == "btn_eliminar")
+            else if (dgv_clientes.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
                 if (MessageBox.Show("¿Desea eliminar el cliente?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -82,7 +72,7 @@ namespace POSLyion
                         string mensaje = string.Empty;
                         Clientes oCliente = new Clientes()
                         {
-                            Id_cliente = Convert.ToInt32(grid_clientes.Rows[index].Cells["id"].Value)
+                            Id_cliente = Convert.ToInt32(dgv_clientes.Rows[index].Cells["id"].Value)
                         };
                         bool resultado = new CN_Clientes().Eliminar(oCliente, out mensaje);
                         if (!resultado)
@@ -107,11 +97,19 @@ namespace POSLyion
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            grid_clientes.Rows.Clear();
-            List<Clientes> lista_clientes = new CN_Clientes().Leer();
+            this.MostrarClientes();
+        }
+
+        private void MostrarClientes()
+        {
+            if(dgv_clientes.Rows.Count > 0)
+            {
+                dgv_clientes.Rows.Clear();
+            }
+            List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros);
             foreach (Clientes oCliente in lista_clientes)
             {
-                grid_clientes.Rows.Add(new object[]
+                dgv_clientes.Rows.Add(new object[]
                 {
                     oCliente.Id_cliente,
                     oCliente.Dni,
@@ -122,6 +120,22 @@ namespace POSLyion
                     oCliente.Estado == true ? 1 : 0
                 });
             }
+        }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+            filtros = new FiltrosCliente()
+            {
+                Nombre_cliente = txt_busqueda.Text,
+                Estado = cb_inactivo.Checked ? 0 : 1
+            };
+            this.MostrarClientes();
+        }
+
+        private void btn_limpiar_filtros_Click(object sender, EventArgs e)
+        {
+            txt_busqueda.Text = "";
+            cb_inactivo.Checked = false;
         }
     }
 }

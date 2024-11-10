@@ -63,6 +63,7 @@
             this.dgv_productos_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_suma_total = new System.Windows.Forms.Label();
+            this.lbl_total = new System.Windows.Forms.Label();
             this.panel_right = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_factura = new System.Windows.Forms.Panel();
@@ -469,6 +470,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.05755F));
             this.tableLayoutPanel12.Controls.Add(this.lbl_suma_total, 2, 0);
+            this.tableLayoutPanel12.Controls.Add(this.lbl_total, 1, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 351);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
@@ -489,6 +491,18 @@
             this.lbl_suma_total.TabIndex = 6;
             this.lbl_suma_total.Text = "0,00";
             this.lbl_suma_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_total
+            // 
+            this.lbl_total.AutoSize = true;
+            this.lbl_total.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.Location = new System.Drawing.Point(444, 0);
+            this.lbl_total.Name = "lbl_total";
+            this.lbl_total.Size = new System.Drawing.Size(113, 40);
+            this.lbl_total.TabIndex = 4;
+            this.lbl_total.Text = "Total: $";
+            this.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel_right
             // 
@@ -1037,7 +1051,6 @@
             this.lbl_cerrarcaja.Text = "CERRAR CAJA";
             this.lbl_cerrarcaja.TextColor = System.Drawing.Color.Black;
             this.lbl_cerrarcaja.UseVisualStyleBackColor = false;
-            this.lbl_cerrarcaja.Click += new System.EventHandler(this.lbl_cerrarcaja_Click);
             // 
             // lbl_f10
             // 
@@ -1231,6 +1244,7 @@
         private System.Windows.Forms.TableLayoutPanel panel_container;
         private System.Windows.Forms.Panel panel_resumido;
         private System.Windows.Forms.DataGridView dgv_resumen;
+        private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label lbl_suma_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_id;

@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
+using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,9 @@ namespace CapaNegocio
             }
         }
 
-        public List<Clientes> Leer()
+        public List<Clientes> Leer(FiltrosCliente filtros)
         {
-            return oCD_Cliente.Leer();
+            return oCD_Cliente.Leer(filtros);
         }
 
         public bool Modificar(Clientes oCliente, out string message)

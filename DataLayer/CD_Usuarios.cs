@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using CapaEntidad;
+using EntityLayer.Filtros;
 
 namespace CapaDatos
 {
@@ -46,7 +47,7 @@ namespace CapaDatos
             return id_generada_usuario;
         }
 
-        public List<Usuarios> Leer()
+        public List<Usuarios> Leer(FiltrosUsuario filtros)
         {
             List<Usuarios> lista_usuarios = new List<Usuarios>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
@@ -57,7 +58,13 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
                     query.AppendLine("SELECT u.id_usuario, u.dni, u.nombre_completo, u.correo, u.nombre_usuario, u.clave, u.telefono, u.estado, r.id_rol, r.descripcion FROM Usuarios u");
                     query.AppendLine("INNER JOIN Roles r ON r.id_rol = u.id_rol");
+                    query.AppendLine("WHERE (u.nombre_usuario LIKE '%' + @nombre_usuario + '%')");
+                    query.AppendLine("AND (u.id_rol = IIF(@id_rol = 0, u.id_rol, @id_rol))");
+                    query.AppendLine("AND (u.estado = @estado)");
                     SqlCommand command = new SqlCommand(query.ToString(), oConexion);
+                    command.Parameters.AddWithValue("@nombre_usuario", filtros.Nombre_usuario);
+                    command.Parameters.AddWithValue("@id_rol", filtros.Id_rol);
+                    command.Parameters.AddWithValue("@estado", filtros.Estado);
                     command.CommandType = CommandType.Text;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

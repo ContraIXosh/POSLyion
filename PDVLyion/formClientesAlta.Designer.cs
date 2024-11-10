@@ -46,7 +46,7 @@
             this.txt_correo = new CustomBox.RJControls.RJTextBox();
             this.lbl_state = new System.Windows.Forms.Label();
             this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
-            this.txt_id = new CustomBox.RJControls.RJTextBox();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.panel_main.SuspendLayout();
             this.panel_btttmm.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -379,27 +379,11 @@
             // 
             // txt_id
             // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_id.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_id.BorderRadius = 0;
-            this.txt_id.BorderSize = 2;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(572, 219);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_id.Multiline = false;
+            this.txt_id.Location = new System.Drawing.Point(479, 204);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_id.PasswordChar = false;
-            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_id.PlaceholderText = "";
-            this.txt_id.Size = new System.Drawing.Size(45, 31);
+            this.txt_id.Size = new System.Drawing.Size(100, 20);
             this.txt_id.TabIndex = 59;
-            this.txt_id.Texts = "";
-            this.txt_id.UnderlinedStyle = false;
-            this.txt_id.Visible = false;
+            this.txt_id.Text = "0";
             // 
             // formClientesAlta
             // 
@@ -438,9 +422,9 @@
         private CustomBox.RJControls.RJTextBox txt_correo;
         private System.Windows.Forms.Label lbl_state;
         private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
-        private CustomBox.RJControls.RJTextBox txt_id;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private RJCodeAdvance.RJControls.RJButton btn_cerrar;
         private RJCodeAdvance.RJControls.RJButton btn_guardar;
+        private System.Windows.Forms.TextBox txt_id;
     }
 }

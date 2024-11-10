@@ -493,7 +493,7 @@
             // 
             this.txt_id.Location = new System.Drawing.Point(3, 3);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(26, 20);
+            this.txt_id.Size = new System.Drawing.Size(100, 20);
             this.txt_id.TabIndex = 13;
             this.txt_id.Text = "0";
             // 
