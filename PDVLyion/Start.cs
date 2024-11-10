@@ -13,6 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using PDCLyion.Modals;
 using System.Runtime.Serialization;
+using PDCLyion;
 
 namespace POSLyion
 {
@@ -392,7 +393,11 @@ namespace POSLyion
             formLogOut logout = new formLogOut();
             logout.Show();
         }
-
+        private void lbl_cerrarcaja_Click(object sender, EventArgs e)
+        {
+            formCierre cierrecaja = new formCierre();
+            cierrecaja.Show();
+        }
         private void RemoverStripMenu()
         {
             foreach (Control control in this.Controls)
@@ -510,8 +515,6 @@ namespace POSLyion
                 dgv_ampliar.Columns.Add("cantidad", "Cantidad");
                 dgv_ampliar.Columns.Add("precio", "Precio");
 
-                lbl_total.Visible = true;
-                lbl_total.Text = "0.00";
                 panel_container.Controls.Add(dgv_ampliar, 0, 1);
                 dgv_ampliar.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -538,7 +541,6 @@ namespace POSLyion
             if (panel_container.Controls.Container.Contains(dgv_ampliar))
             {
                 panel_container.Controls.Remove(dgv_ampliar);
-                lbl_total.Visible = true;
             }
             dgv_resumen.Columns.Clear();
             dgv_resumen.Columns.Add("dgv_resumen_id", "ID");
@@ -664,6 +666,8 @@ namespace POSLyion
             }
             respaldo_carrito.Clear();
         }
+
+
 
         //private void btn_eventual_Click_1(object sender, EventArgs e)
         //{

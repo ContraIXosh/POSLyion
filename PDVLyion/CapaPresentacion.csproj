@@ -184,6 +184,12 @@
     <Compile Include="formCategorias.Designer.cs">
       <DependentUpon>formCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="formCierre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCierre.Designer.cs">
+      <DependentUpon>formCierre.cs</DependentUpon>
+    </Compile>
     <Compile Include="formConfiguracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="formCategorias.resx">
       <DependentUpon>formCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCierre.resx">
+      <DependentUpon>formCierre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formConfiguracion.resx">
       <DependentUpon>formConfiguracion.cs</DependentUpon>
