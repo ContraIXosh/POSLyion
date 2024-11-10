@@ -42,10 +42,10 @@ namespace POSLyion
             List<Roles> lista_roles = new CN_Roles().Leer();
             foreach (Roles oRol in lista_roles)
             {
-                cbo_rol.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
+                cbo_roles.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
             }
-            cbo_rol.DisplayMember = "Texto";
-            cbo_rol.ValueMember = "Valor";
+            cbo_roles.DisplayMember = "Texto";
+            cbo_roles.ValueMember = "Valor";
 
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
@@ -65,7 +65,7 @@ namespace POSLyion
             if (Convert.ToInt32(txt_id.Texts) == 0)
             {
                 cbo_estado.SelectedIndex = 0;
-                cbo_rol.SelectedIndex = 0;
+                cbo_roles.SelectedIndex = 0;
             }
             else
             {
@@ -79,15 +79,15 @@ namespace POSLyion
                 }
                 cbo_estado.SelectedIndex = cbo_estado_index;
 
-                foreach (OpcionCombo opcion_rol in cbo_rol.Items)
+                foreach (OpcionCombo opcion_rol in cbo_roles.Items)
                 {
                     if (Convert.ToInt32(opcion_rol.Valor) == Usuario.oRol.Id_rol)
                     {
-                        cbo_rol_index = cbo_rol.Items.IndexOf(opcion_rol);
+                        cbo_rol_index = cbo_roles.Items.IndexOf(opcion_rol);
                         break;
                     }
                 }
-                cbo_rol.SelectedIndex = cbo_rol_index;
+                cbo_roles.SelectedIndex = cbo_rol_index;
             }
         }
 
@@ -159,7 +159,7 @@ namespace POSLyion
                     Clave = txt_clave.Texts,
                     oRol = new Roles()
                     {
-                        Id_rol = Convert.ToInt32(((OpcionCombo)cbo_rol.SelectedItem).Valor),
+                        Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor),
                     },
                     Telefono = txt_telefono.Texts,
                     Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1 ? true : false
@@ -191,7 +191,7 @@ namespace POSLyion
                 Usuario.Correo = txt_correo.Texts;
                 Usuario.Nombre_usuario = txt_nombre_usuario.Texts;
                 Usuario.Clave = txt_clave.Texts;
-                Usuario.oRol.Id_rol = Convert.ToInt32(((OpcionCombo)cbo_rol.SelectedItem).Valor);
+                Usuario.oRol.Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor);
                 Usuario.Telefono = txt_telefono.Texts;
                 Usuario.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1 ? true : false;
                 bool resultado = new CN_Usuarios().Modificar(Usuario, out mensaje);

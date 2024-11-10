@@ -1,4 +1,5 @@
 ﻿using CapaEntidad;
+using CapaEntidad.Filtros;
 using CapaNegocio;
 using POSLyion.Resources;
 using System;
@@ -37,7 +38,8 @@ namespace POSLyion.Modals
             cbo_filtro.ValueMember = "Valor";
             cbo_filtro.SelectedIndex = 1;
 
-            List<Proveedores> lista_proveedores = new CN_Proveedores().Leer();
+            FiltrosProveedor filtros = new FiltrosProveedor();
+            List<Proveedores> lista_proveedores = new CN_Proveedores().Leer(filtros);
 
             foreach (Proveedores proveedor in lista_proveedores)
             {

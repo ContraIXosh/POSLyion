@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using PDCLyion.Modals;
 using System.Runtime.Serialization;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using CapaEntidad.Filtros;
 
 namespace POSLyion
 {
@@ -252,23 +253,32 @@ namespace POSLyion
             }
             if (dgv_resumen.Columns[e.ColumnIndex].Name == "btn_ver_detalle")
             {
+                int id = 0;
+                if(dgv_activo == "compras")
+                {
+                    id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_compra"].Value);
+                }
+                else if (dgv_activo == "ventas")
+                {
+                    id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_venta"].Value);
+                }
+                FiltrosReportes filtros = new FiltrosReportes()
+                {
+                    Id = id
+                };
                 if(dgv_detalle.Rows.Count > 0)
                 {
                     dgv_detalle.Rows.Clear();
                 }
                 List<ReportesDetalle> _lista_detalle = new List<ReportesDetalle>();
-                DateTime fecha_hoy = DateTime.Now;
-                string fecha_hoy_formato = fecha_hoy.ToString("yyyy-MM-dd");
                 if (dgv_activo == "compras")
                 {
-                    int id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_compra"].Value);
-                    _lista_detalle = new CN_Reportes().Compra_Detalle(fecha_hoy_formato, fecha_hoy_formato, id);
+                    _lista_detalle = new CN_Reportes().Compra_Detalle(filtros);
                     this.VerDetalle(_lista_detalle);
                 }
                 else if (dgv_activo == "ventas")
                 {
-                    int id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_venta"].Value);
-                    _lista_detalle = new CN_Reportes().Venta_Detalle(fecha_hoy_formato, fecha_hoy_formato, id);
+                    _lista_detalle = new CN_Reportes().Venta_Detalle(filtros);
                     this.VerDetalle(_lista_detalle);
                 }
             }

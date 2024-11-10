@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
 using CapaEntidad;
+using EntityLayer.Filtros;
 
 namespace POSLyion
 {
@@ -28,8 +29,9 @@ namespace POSLyion
 
         private void btn_abrir_sesion_Click(object sender, EventArgs e)
         {
+            FiltrosUsuario filtros = new FiltrosUsuario();
             Usuarios oUsuario = new CN_Usuarios()
-                .Leer()
+                .Leer(filtros)
                 .Where(u => u.Nombre_usuario == txt_nombre_usuario.Text && u.Clave == txt_clave.Text).FirstOrDefault();
 
             if (txt_clave.Text == "" && txt_nombre_usuario.Text == "")

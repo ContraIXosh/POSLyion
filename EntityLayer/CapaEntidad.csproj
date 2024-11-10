@@ -42,6 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clientes.cs" />
+    <Compile Include="Filtros\FiltrosCliente.cs" />
+    <Compile Include="Filtros\FiltrosProducto.cs" />
+    <Compile Include="Filtros\FiltrosProveedor.cs" />
+    <Compile Include="Filtros\FiltrosReportes.cs" />
+    <Compile Include="Filtros\FiltrosUsuario.cs" />
     <Compile Include="Permisos.cs" />
     <Compile Include="Categorias.cs" />
     <Compile Include="Productos.cs" />

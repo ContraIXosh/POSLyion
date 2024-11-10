@@ -1,4 +1,5 @@
 ﻿using CapaEntidad;
+using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -44,7 +45,7 @@ namespace CapaDatos
             }
         }
 
-        public List<Productos> Leer()
+        public List<Productos> Leer(FiltrosProducto filtros)
         {
             List<Productos> lista_productos = new List<Productos>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
@@ -55,7 +56,15 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
                     query.AppendLine("SELECT id_producto, codigo_barras, p.descripcion, precio_costo, precio_venta, stock_actual, stock_minimo, p.estado, pc.id_categoria, pc.descripcion[DescripcionCategoria] FROM Productos as p");
                     query.AppendLine("INNER JOIN Categorias as pc ON p.id_categoria = pc.id_categoria ");
+                    query.AppendLine("WHERE (p.descripcion LIKE '%' + @nombre_producto + '%' OR @nombre_producto = '')");
+                    query.AppendLine("AND (p.codigo_barras = IIF(@codigo_barras = '', p.codigo_barras, @codigo_barras))");
+                    query.AppendLine("AND (p.id_categoria = IIF(@id_categoria = 0, p.id_categoria, @id_categoria))");
+                    query.AppendLine("AND ((@estado = 1 AND p.estado = 1) OR (@estado = 0 AND p.estado = 0) OR @estado = 0)");
                     SqlCommand command = new SqlCommand(query.ToString(), oConexion);
+                    command.Parameters.AddWithValue("@nombre_producto", filtros.Nombre_producto);
+                    command.Parameters.AddWithValue("@codigo_barras", filtros.Codigo_barras);
+                    command.Parameters.AddWithValue("@id_categoria", filtros.Id_categoria);
+                    command.Parameters.AddWithValue("@estado", filtros.Estado);
                     command.CommandType = CommandType.Text;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

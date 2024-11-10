@@ -36,20 +36,32 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formProductos));
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
-            this.grid_productos = new System.Windows.Forms.DataGridView();
+            this.dgv_productos = new System.Windows.Forms.DataGridView();
+            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo_barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_actual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_crear_producto = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
+            this.btn_buscar = new RJCodeAdvance.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lbl_search = new System.Windows.Forms.Label();
-            this.txt_search = new System.Windows.Forms.TextBox();
-            this.cbox_empresa = new CustomBox.RJControls.RJComboBox();
+            this.btn_crear_producto = new RJCodeAdvance.RJControls.RJButton();
+            this.lbl_busqueda = new System.Windows.Forms.Label();
+            this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.lbl_cat = new System.Windows.Forms.Label();
-            this.cbox_cat = new CustomBox.RJControls.RJComboBox();
-            this.cb_inactive = new System.Windows.Forms.CheckBox();
-            this.cb_stock = new System.Windows.Forms.CheckBox();
+            this.cbo_categorias = new CustomBox.RJControls.RJComboBox();
+            this.cb_estado = new System.Windows.Forms.CheckBox();
             this.panel_bottom = new System.Windows.Forms.TableLayoutPanel();
             this.panel_updates = new System.Windows.Forms.Panel();
             this.lbl_updatetime = new System.Windows.Forms.Label();
@@ -69,22 +81,8 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_seleccionar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo_barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_actual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio_costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio_venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_mid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_productos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).BeginInit();
             this.panel_midizq.SuspendLayout();
             this.panel_btns.SuspendLayout();
             this.panel_filter.SuspendLayout();
@@ -100,7 +98,7 @@
             this.panel_mid.ColumnCount = 2;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.19048F));
-            this.panel_mid.Controls.Add(this.grid_productos, 1, 0);
+            this.panel_mid.Controls.Add(this.dgv_productos, 1, 0);
             this.panel_mid.Controls.Add(this.panel_midizq, 0, 0);
             this.panel_mid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_mid.Location = new System.Drawing.Point(3, 3);
@@ -110,20 +108,20 @@
             this.panel_mid.Size = new System.Drawing.Size(1080, 511);
             this.panel_mid.TabIndex = 1;
             // 
-            // grid_productos
+            // dgv_productos
             // 
-            this.grid_productos.AllowUserToAddRows = false;
-            this.grid_productos.AllowUserToDeleteRows = false;
-            this.grid_productos.AllowUserToResizeRows = false;
+            this.dgv_productos.AllowUserToAddRows = false;
+            this.dgv_productos.AllowUserToDeleteRows = false;
+            this.dgv_productos.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.MediumTurquoise;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.CadetBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.grid_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.grid_productos.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.grid_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grid_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.grid_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgv_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_productos.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgv_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -131,10 +129,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.grid_productos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btn_seleccionar,
+            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_productos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_producto,
             this.codigo_barras,
             this.descripcion_producto,
@@ -155,15 +152,15 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkTurquoise;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_productos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.grid_productos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_productos.EnableHeadersVisualStyles = false;
-            this.grid_productos.GridColor = System.Drawing.Color.LightSkyBlue;
-            this.grid_productos.Location = new System.Drawing.Point(257, 0);
-            this.grid_productos.Margin = new System.Windows.Forms.Padding(0);
-            this.grid_productos.MultiSelect = false;
-            this.grid_productos.Name = "grid_productos";
-            this.grid_productos.ReadOnly = true;
+            this.dgv_productos.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_productos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_productos.EnableHeadersVisualStyles = false;
+            this.dgv_productos.GridColor = System.Drawing.Color.LightSkyBlue;
+            this.dgv_productos.Location = new System.Drawing.Point(257, 0);
+            this.dgv_productos.Margin = new System.Windows.Forms.Padding(0);
+            this.dgv_productos.MultiSelect = false;
+            this.dgv_productos.Name = "dgv_productos";
+            this.dgv_productos.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -171,19 +168,123 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.grid_productos.RowHeadersVisible = false;
-            this.grid_productos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_productos.RowHeadersVisible = false;
+            this.dgv_productos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.CornflowerBlue;
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.CadetBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.grid_productos.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.grid_productos.RowTemplate.Height = 25;
-            this.grid_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_productos.Size = new System.Drawing.Size(823, 511);
-            this.grid_productos.TabIndex = 13;
-            this.grid_productos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_productos_CellContentClick);
+            this.dgv_productos.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_productos.RowTemplate.Height = 25;
+            this.dgv_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_productos.Size = new System.Drawing.Size(823, 511);
+            this.dgv_productos.TabIndex = 13;
+            this.dgv_productos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_productos_CellContentClick);
+            // 
+            // id_producto
+            // 
+            this.id_producto.HeaderText = "ID";
+            this.id_producto.Name = "id_producto";
+            this.id_producto.ReadOnly = true;
+            this.id_producto.Visible = false;
+            // 
+            // codigo_barras
+            // 
+            this.codigo_barras.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.codigo_barras.HeaderText = "COD. BARRAS";
+            this.codigo_barras.Name = "codigo_barras";
+            this.codigo_barras.ReadOnly = true;
+            // 
+            // descripcion_producto
+            // 
+            this.descripcion_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion_producto.FillWeight = 150F;
+            this.descripcion_producto.HeaderText = "DESCRIPCIÓN";
+            this.descripcion_producto.Name = "descripcion_producto";
+            this.descripcion_producto.ReadOnly = true;
+            // 
+            // id_categoria
+            // 
+            this.id_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id_categoria.FillWeight = 5F;
+            this.id_categoria.HeaderText = "ID CATEGORIA";
+            this.id_categoria.Name = "id_categoria";
+            this.id_categoria.ReadOnly = true;
+            this.id_categoria.Visible = false;
+            // 
+            // descripcion_categoria
+            // 
+            this.descripcion_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion_categoria.HeaderText = "CATEGORÍA";
+            this.descripcion_categoria.Name = "descripcion_categoria";
+            this.descripcion_categoria.ReadOnly = true;
+            // 
+            // stock_actual
+            // 
+            this.stock_actual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_actual.HeaderText = "STOCK ACTUAL";
+            this.stock_actual.Name = "stock_actual";
+            this.stock_actual.ReadOnly = true;
+            // 
+            // stock_minimo
+            // 
+            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_minimo.HeaderText = "STOCK MIN";
+            this.stock_minimo.Name = "stock_minimo";
+            this.stock_minimo.ReadOnly = true;
+            // 
+            // precio_costo
+            // 
+            this.precio_costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio_costo.FillWeight = 80F;
+            this.precio_costo.HeaderText = "PRECIO COSTO";
+            this.precio_costo.Name = "precio_costo";
+            this.precio_costo.ReadOnly = true;
+            // 
+            // precio_venta
+            // 
+            this.precio_venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio_venta.FillWeight = 80F;
+            this.precio_venta.HeaderText = "PRECIO VENTA";
+            this.precio_venta.Name = "precio_venta";
+            this.precio_venta.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.estado.FillWeight = 80F;
+            this.estado.HeaderText = "ESTADO";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            // 
+            // estado_valor
+            // 
+            this.estado_valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.estado_valor.HeaderText = "ESTADO VALOR";
+            this.estado_valor.Name = "estado_valor";
+            this.estado_valor.ReadOnly = true;
+            this.estado_valor.Visible = false;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_editar.FillWeight = 80F;
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_eliminar.FillWeight = 90F;
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
+            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel_midizq
             // 
@@ -205,8 +306,9 @@
             // 
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_crear_producto, 0, 0);
-            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
+            this.panel_btns.Controls.Add(this.btn_limpiar_filtros, 0, 1);
+            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 0);
+            this.panel_btns.Controls.Add(this.btn_buscar, 0, 2);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_btns.Location = new System.Drawing.Point(3, 360);
             this.panel_btns.Name = "panel_btns";
@@ -214,33 +316,33 @@
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_btns.Size = new System.Drawing.Size(251, 148);
             this.panel_btns.TabIndex = 16;
             // 
-            // btn_crear_producto
+            // btn_limpiar_filtros
             // 
-            this.btn_crear_producto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_crear_producto.BackColor = System.Drawing.Color.Transparent;
-            this.btn_crear_producto.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_crear_producto.BorderColor = System.Drawing.Color.LawnGreen;
-            this.btn_crear_producto.BorderRadius = 7;
-            this.btn_crear_producto.BorderSize = 2;
-            this.btn_crear_producto.FlatAppearance.BorderSize = 0;
-            this.btn_crear_producto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_crear_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_producto.ForeColor = System.Drawing.Color.Chartreuse;
-            this.btn_crear_producto.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_producto.Image")));
-            this.btn_crear_producto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_crear_producto.Location = new System.Drawing.Point(13, 4);
-            this.btn_crear_producto.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_crear_producto.Name = "btn_crear_producto";
-            this.btn_crear_producto.Size = new System.Drawing.Size(225, 40);
-            this.btn_crear_producto.TabIndex = 15;
-            this.btn_crear_producto.Text = "AGREGAR PRODUCTO";
-            this.btn_crear_producto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_crear_producto.TextColor = System.Drawing.Color.Chartreuse;
-            this.btn_crear_producto.UseVisualStyleBackColor = false;
-            this.btn_crear_producto.Click += new System.EventHandler(this.btn_crear_producto_Click);
+            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_limpiar_filtros.BorderRadius = 10;
+            this.btn_limpiar_filtros.BorderSize = 2;
+            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
+            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
+            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(13, 54);
+            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
+            this.btn_limpiar_filtros.Size = new System.Drawing.Size(225, 38);
+            this.btn_limpiar_filtros.TabIndex = 20;
+            this.btn_limpiar_filtros.Text = "Limpiar filtros";
+            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
+            this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
             // 
             // btn_actualizar
             // 
@@ -256,7 +358,7 @@
             this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
             this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(13, 54);
+            this.btn_actualizar.Location = new System.Drawing.Point(13, 5);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
@@ -266,18 +368,41 @@
             this.btn_actualizar.UseVisualStyleBackColor = false;
             this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
             // 
+            // btn_buscar
+            // 
+            this.btn_buscar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_buscar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_buscar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_buscar.BorderColor = System.Drawing.Color.LawnGreen;
+            this.btn_buscar.BorderRadius = 7;
+            this.btn_buscar.BorderSize = 2;
+            this.btn_buscar.FlatAppearance.BorderSize = 0;
+            this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buscar.ForeColor = System.Drawing.Color.Chartreuse;
+            this.btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscar.Image")));
+            this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_buscar.Location = new System.Drawing.Point(13, 103);
+            this.btn_buscar.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(225, 40);
+            this.btn_buscar.TabIndex = 19;
+            this.btn_buscar.Text = "Buscar";
+            this.btn_buscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_buscar.TextColor = System.Drawing.Color.Chartreuse;
+            this.btn_buscar.UseVisualStyleBackColor = false;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
+            // 
             // panel_filter
             // 
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_filter.Controls.Add(this.label3, 0, 2);
-            this.panel_filter.Controls.Add(this.lbl_search, 0, 0);
-            this.panel_filter.Controls.Add(this.txt_search, 0, 1);
-            this.panel_filter.Controls.Add(this.cbox_empresa, 0, 3);
-            this.panel_filter.Controls.Add(this.lbl_cat, 0, 4);
-            this.panel_filter.Controls.Add(this.cbox_cat, 0, 5);
-            this.panel_filter.Controls.Add(this.cb_inactive, 0, 7);
-            this.panel_filter.Controls.Add(this.cb_stock, 0, 6);
+            this.panel_filter.Controls.Add(this.btn_crear_producto, 0, 7);
+            this.panel_filter.Controls.Add(this.lbl_busqueda, 0, 0);
+            this.panel_filter.Controls.Add(this.txt_busqueda, 0, 1);
+            this.panel_filter.Controls.Add(this.lbl_cat, 0, 2);
+            this.panel_filter.Controls.Add(this.cbo_categorias, 0, 3);
+            this.panel_filter.Controls.Add(this.cb_estado, 0, 4);
             this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_filter.Location = new System.Drawing.Point(0, 0);
             this.panel_filter.Margin = new System.Windows.Forms.Padding(0);
@@ -294,58 +419,51 @@
             this.panel_filter.Size = new System.Drawing.Size(257, 357);
             this.panel_filter.TabIndex = 17;
             // 
-            // label3
+            // btn_crear_producto
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(67, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 25);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "EMPRESA";
+            this.btn_crear_producto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_crear_producto.BackColor = System.Drawing.Color.Transparent;
+            this.btn_crear_producto.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_crear_producto.BorderColor = System.Drawing.Color.LawnGreen;
+            this.btn_crear_producto.BorderRadius = 7;
+            this.btn_crear_producto.BorderSize = 2;
+            this.btn_crear_producto.FlatAppearance.BorderSize = 0;
+            this.btn_crear_producto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_crear_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_crear_producto.ForeColor = System.Drawing.Color.Chartreuse;
+            this.btn_crear_producto.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_producto.Image")));
+            this.btn_crear_producto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_crear_producto.Location = new System.Drawing.Point(16, 316);
+            this.btn_crear_producto.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_crear_producto.Name = "btn_crear_producto";
+            this.btn_crear_producto.Size = new System.Drawing.Size(225, 40);
+            this.btn_crear_producto.TabIndex = 15;
+            this.btn_crear_producto.Text = "AGREGAR PRODUCTO";
+            this.btn_crear_producto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_crear_producto.TextColor = System.Drawing.Color.Chartreuse;
+            this.btn_crear_producto.UseVisualStyleBackColor = false;
+            this.btn_crear_producto.Click += new System.EventHandler(this.btn_crear_producto_Click);
             // 
-            // lbl_search
+            // lbl_busqueda
             // 
-            this.lbl_search.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_search.AutoSize = true;
-            this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_search.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_search.Location = new System.Drawing.Point(60, 20);
-            this.lbl_search.Name = "lbl_search";
-            this.lbl_search.Size = new System.Drawing.Size(137, 25);
-            this.lbl_search.TabIndex = 13;
-            this.lbl_search.Text = "BUSQUEDA";
+            this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_busqueda.AutoSize = true;
+            this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_busqueda.Location = new System.Drawing.Point(19, 25);
+            this.lbl_busqueda.Name = "lbl_busqueda";
+            this.lbl_busqueda.Size = new System.Drawing.Size(218, 20);
+            this.lbl_busqueda.TabIndex = 13;
+            this.lbl_busqueda.Text = "NOMBRE DE PRODUCTO";
             // 
-            // txt_search
+            // txt_busqueda
             // 
-            this.txt_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_search.Location = new System.Drawing.Point(3, 48);
-            this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(251, 29);
-            this.txt_search.TabIndex = 11;
-            // 
-            // cbox_empresa
-            // 
-            this.cbox_empresa.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbox_empresa.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_empresa.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_empresa.BorderSize = 1;
-            this.cbox_empresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_empresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_empresa.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_empresa.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_empresa.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbox_empresa.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_empresa.Location = new System.Drawing.Point(3, 138);
-            this.cbox_empresa.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbox_empresa.Name = "cbox_empresa";
-            this.cbox_empresa.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_empresa.Size = new System.Drawing.Size(251, 30);
-            this.cbox_empresa.TabIndex = 15;
-            this.cbox_empresa.Texts = "";
+            this.txt_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_busqueda.Location = new System.Drawing.Point(3, 48);
+            this.txt_busqueda.Name = "txt_busqueda";
+            this.txt_busqueda.Size = new System.Drawing.Size(251, 29);
+            this.txt_busqueda.TabIndex = 11;
             // 
             // lbl_cat
             // 
@@ -353,57 +471,44 @@
             this.lbl_cat.AutoSize = true;
             this.lbl_cat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cat.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cat.Location = new System.Drawing.Point(57, 200);
+            this.lbl_cat.Location = new System.Drawing.Point(57, 110);
             this.lbl_cat.Name = "lbl_cat";
             this.lbl_cat.Size = new System.Drawing.Size(143, 25);
             this.lbl_cat.TabIndex = 14;
             this.lbl_cat.Text = "CATEGORIA";
             // 
-            // cbox_cat
+            // cbo_categorias
             // 
-            this.cbox_cat.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbox_cat.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_cat.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_cat.BorderSize = 1;
-            this.cbox_cat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_cat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_cat.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_cat.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_cat.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbox_cat.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_cat.Location = new System.Drawing.Point(3, 228);
-            this.cbox_cat.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbox_cat.Name = "cbox_cat";
-            this.cbox_cat.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_cat.Size = new System.Drawing.Size(251, 30);
-            this.cbox_cat.TabIndex = 12;
-            this.cbox_cat.Texts = "";
+            this.cbo_categorias.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbo_categorias.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbo_categorias.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_categorias.BorderSize = 1;
+            this.cbo_categorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbo_categorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbo_categorias.ForeColor = System.Drawing.Color.DimGray;
+            this.cbo_categorias.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbo_categorias.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbo_categorias.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbo_categorias.Location = new System.Drawing.Point(3, 138);
+            this.cbo_categorias.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbo_categorias.Name = "cbo_categorias";
+            this.cbo_categorias.Padding = new System.Windows.Forms.Padding(1);
+            this.cbo_categorias.Size = new System.Drawing.Size(251, 30);
+            this.cbo_categorias.TabIndex = 12;
+            this.cbo_categorias.Texts = "";
             // 
-            // cb_inactive
+            // cb_estado
             // 
-            this.cb_inactive.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cb_inactive.AutoSize = true;
-            this.cb_inactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_inactive.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactive.Location = new System.Drawing.Point(46, 324);
-            this.cb_inactive.Name = "cb_inactive";
-            this.cb_inactive.Size = new System.Drawing.Size(164, 24);
-            this.cb_inactive.TabIndex = 18;
-            this.cb_inactive.Text = "Mostrar inactivos";
-            this.cb_inactive.UseVisualStyleBackColor = true;
-            // 
-            // cb_stock
-            // 
-            this.cb_stock.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cb_stock.AutoSize = true;
-            this.cb_stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_stock.ForeColor = System.Drawing.Color.Gold;
-            this.cb_stock.Location = new System.Drawing.Point(24, 280);
-            this.cb_stock.Name = "cb_stock";
-            this.cb_stock.Size = new System.Drawing.Size(209, 24);
-            this.cb_stock.TabIndex = 17;
-            this.cb_stock.Text = "Mostrar solo con stock";
-            this.cb_stock.UseVisualStyleBackColor = true;
+            this.cb_estado.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cb_estado.AutoSize = true;
+            this.cb_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_estado.ForeColor = System.Drawing.Color.Gold;
+            this.cb_estado.Location = new System.Drawing.Point(46, 190);
+            this.cb_estado.Name = "cb_estado";
+            this.cb_estado.Size = new System.Drawing.Size(164, 24);
+            this.cb_estado.TabIndex = 18;
+            this.cb_estado.Text = "Mostrar inactivos";
+            this.cb_estado.UseVisualStyleBackColor = true;
             // 
             // panel_bottom
             // 
@@ -576,117 +681,6 @@
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
-            // btn_seleccionar
-            // 
-            this.btn_seleccionar.HeaderText = "";
-            this.btn_seleccionar.Name = "btn_seleccionar";
-            this.btn_seleccionar.ReadOnly = true;
-            this.btn_seleccionar.Width = 20;
-            // 
-            // id_producto
-            // 
-            this.id_producto.HeaderText = "ID";
-            this.id_producto.Name = "id_producto";
-            this.id_producto.ReadOnly = true;
-            this.id_producto.Visible = false;
-            // 
-            // codigo_barras
-            // 
-            this.codigo_barras.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.codigo_barras.HeaderText = "COD. BARRAS";
-            this.codigo_barras.Name = "codigo_barras";
-            this.codigo_barras.ReadOnly = true;
-            // 
-            // descripcion_producto
-            // 
-            this.descripcion_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion_producto.FillWeight = 150F;
-            this.descripcion_producto.HeaderText = "DESCRIPCIÓN";
-            this.descripcion_producto.Name = "descripcion_producto";
-            this.descripcion_producto.ReadOnly = true;
-            // 
-            // id_categoria
-            // 
-            this.id_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.id_categoria.FillWeight = 5F;
-            this.id_categoria.HeaderText = "ID CATEGORIA";
-            this.id_categoria.Name = "id_categoria";
-            this.id_categoria.ReadOnly = true;
-            this.id_categoria.Visible = false;
-            // 
-            // descripcion_categoria
-            // 
-            this.descripcion_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion_categoria.HeaderText = "CATEGORÍA";
-            this.descripcion_categoria.Name = "descripcion_categoria";
-            this.descripcion_categoria.ReadOnly = true;
-            // 
-            // stock_actual
-            // 
-            this.stock_actual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_actual.HeaderText = "STOCK ACTUAL";
-            this.stock_actual.Name = "stock_actual";
-            this.stock_actual.ReadOnly = true;
-            // 
-            // stock_minimo
-            // 
-            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_minimo.HeaderText = "STOCK MIN";
-            this.stock_minimo.Name = "stock_minimo";
-            this.stock_minimo.ReadOnly = true;
-            // 
-            // precio_costo
-            // 
-            this.precio_costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio_costo.FillWeight = 80F;
-            this.precio_costo.HeaderText = "PRECIO COSTO";
-            this.precio_costo.Name = "precio_costo";
-            this.precio_costo.ReadOnly = true;
-            // 
-            // precio_venta
-            // 
-            this.precio_venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio_venta.FillWeight = 80F;
-            this.precio_venta.HeaderText = "PRECIO VENTA";
-            this.precio_venta.Name = "precio_venta";
-            this.precio_venta.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.estado.FillWeight = 80F;
-            this.estado.HeaderText = "ESTADO";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
-            // estado_valor
-            // 
-            this.estado_valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.estado_valor.HeaderText = "ESTADO VALOR";
-            this.estado_valor.Name = "estado_valor";
-            this.estado_valor.ReadOnly = true;
-            this.estado_valor.Visible = false;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_editar.FillWeight = 80F;
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.ReadOnly = true;
-            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_eliminar.FillWeight = 90F;
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.ReadOnly = true;
-            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // formProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -697,7 +691,7 @@
             this.Text = "formProducts";
             this.Load += new System.EventHandler(this.formProducts_Load);
             this.panel_mid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grid_productos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).EndInit();
             this.panel_midizq.ResumeLayout(false);
             this.panel_btns.ResumeLayout(false);
             this.panel_filter.ResumeLayout(false);
@@ -720,20 +714,17 @@
         private RJCodeAdvance.RJControls.RJButton btn_crear_producto;
         private CustomBox.RJControls.RJButton btn_actualizar;
         private System.Windows.Forms.TableLayoutPanel panel_filter;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbl_search;
-        private System.Windows.Forms.TextBox txt_search;
-        private CustomBox.RJControls.RJComboBox cbox_empresa;
+        private System.Windows.Forms.Label lbl_busqueda;
+        private System.Windows.Forms.TextBox txt_busqueda;
         private System.Windows.Forms.Label lbl_cat;
-        private CustomBox.RJControls.RJComboBox cbox_cat;
-        private System.Windows.Forms.CheckBox cb_inactive;
-        private System.Windows.Forms.CheckBox cb_stock;
+        private CustomBox.RJControls.RJComboBox cbo_categorias;
+        private System.Windows.Forms.CheckBox cb_estado;
         private System.Windows.Forms.TableLayoutPanel panel_bottom;
         private System.Windows.Forms.Panel panel_updates;
         private System.Windows.Forms.Label lbl_updatetime;
         private System.Windows.Forms.Label lbl_updateversion;
         private System.Windows.Forms.TableLayoutPanel panel_main;
-        private System.Windows.Forms.DataGridView grid_productos;
+        private System.Windows.Forms.DataGridView dgv_productos;
         private RJCodeAdvance.RJControls.RJDropdownMenu menu_sesion;
         private System.Windows.Forms.ToolStripMenuItem verPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inicioAdministradorToolStripMenuItem;
@@ -748,7 +739,6 @@
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn btn_seleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo_barras;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion_producto;
@@ -762,5 +752,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn estado_valor;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
+        private RJCodeAdvance.RJControls.RJButton btn_buscar;
+        private CustomBox.RJControls.RJButton btn_limpiar_filtros;
     }
 }

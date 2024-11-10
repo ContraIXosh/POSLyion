@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CapaEntidad.Filtros;
 
 namespace CapaDatos
 {
@@ -41,7 +42,7 @@ namespace CapaDatos
             }
         }
 
-        public List<Clientes> Leer()
+        public List<Clientes> Leer(FiltrosCliente filtros)
         {
             List<Clientes> lista_clientes = new List<Clientes>();
             using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
@@ -49,9 +50,14 @@ namespace CapaDatos
                 try
                 {
                     oConexion.Open();
-                    string query = "SELECT id_cliente, dni, nombre_completo, correo, telefono, estado FROM Clientes";
-                    SqlCommand command = new SqlCommand(query, oConexion);
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT id_cliente, dni, nombre_completo, correo, telefono, estado FROM Clientes");
+                    query.AppendLine("WHERE (nombre_completo LIKE '%' + @nombre_cliente + '%')");
+                    query.AppendLine("AND (estado = @estado)");
+                    SqlCommand command = new SqlCommand(query.ToString(), oConexion);
                     command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@nombre_cliente", filtros.Nombre_cliente);
+                    command.Parameters.AddWithValue("@estado", filtros.Estado);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

@@ -1,5 +1,6 @@
 ﻿using POSLyion.Resources;
 using CapaEntidad;
+using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,25 +38,35 @@ namespace POSLyion
             cbo_tipo_documento.DisplayMember = "Texto";
             cbo_tipo_documento.ValueMember = "Valor";
             cbo_tipo_documento.SelectedIndex = 0;
+
+            FiltrosProveedor filtros_proveedor = new FiltrosProveedor();
+            List<Proveedores> lista_proveedores = new CN_Proveedores().Leer(filtros_proveedor);
+            foreach (Proveedores oProveedor in lista_proveedores)
+            {
+                cbox_proveedores.Items.Add(new OpcionCombo() { Valor = oProveedor.Id_proveedor, Texto = oProveedor.Descripcion });
+            }
+            cbox_proveedores.DisplayMember = "Texto";
+            cbox_proveedores.ValueMember = "Valor";
+            cbox_proveedores.SelectedIndex = 0;
             txt_codigo_barras.Select();
         }
 
         // <resumen>
         // Busca un proveedor mediante un modal
         // <resumen>
-        private void txt_descripcion_proveedor_Click(object sender, EventArgs e)
-        {
-            using (var modal = new MD_Proveedores())
-            {
-                var resultado = modal.ShowDialog();
-                if (resultado == DialogResult.OK)
-                {
-                    txt_id_proveedor.Text = modal.oProveedor.Id_proveedor.ToString();
-                    txt_descripcion_proveedor.Text = modal.oProveedor.Descripcion.ToString();
-                    txt_cuit_proveedor.Text = modal.oProveedor.Cuit.ToString();
-                }
-            }
-        }
+        //private void txt_descripcion_proveedor_Click(object sender, EventArgs e)
+        //{
+        //    using (var modal = new MD_Proveedores())
+        //    {
+        //        var resultado = modal.ShowDialog();
+        //        if (resultado == DialogResult.OK)
+        //        {
+        //            txt_id_proveedor.Text = modal.oProveedor.Id_proveedor.ToString();
+        //            txt_descripcion_proveedor.Text = modal.oProveedor.Descripcion.ToString();
+        //            txt_cuit_proveedor.Text = modal.oProveedor.Cuit.ToString();
+        //        }
+        //    }
+        //}
 
         // <resumen>
         // Busca un producto mediante un modal
@@ -71,7 +82,7 @@ namespace POSLyion
                     txt_id_producto.Text = modal.oProducto.Id_producto.ToString();
                     txt_descripcion_producto.Text = modal.oProducto.Descripcion.ToString();
                     num_cantidad.Select();
-                    lbox_productos.Visible = false;
+                    //lbox_productos.Visible = false;
                 }
             }
         }
@@ -85,7 +96,11 @@ namespace POSLyion
         {
             if (e.KeyData == Keys.Enter)
             {
-                Productos oProducto = new CN_Productos().Leer().Where(p => p.Codigo_barras == txt_codigo_barras.Text && p.Estado == true).FirstOrDefault();
+                FiltrosProducto filtros = new FiltrosProducto()
+                {
+                    Codigo_barras = txt_codigo_barras.Text
+                };
+                Productos oProducto = new CN_Productos().Leer(filtros).FirstOrDefault();
                 if (oProducto != null)
                 {
                     txt_codigo_barras.BackColor = Color.Honeydew;
@@ -173,7 +188,10 @@ namespace POSLyion
                 }
                 else
                 {
+                    decimal precio_unitario = Convert.ToDecimal(dgv_compras.Rows[e.RowIndex].Cells["precio_costo"].Value);
                     dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value = nueva_cantidad;
+                    dgv_compras.Rows[e.RowIndex].Cells["subtotal"].Value = nueva_cantidad * precio_unitario;
+                    this.CalcularTotal();
                 }
             }
         }
@@ -183,65 +201,67 @@ namespace POSLyion
         // <resumen>
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            int? id_proveedor = null;
             // Se verifica si existe al menos un producto ingresado
             if (dgv_compras.Rows.Count < 1)
             {
                 MessageBox.Show("Debe ingresar al menos un producto en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            // Se crea un DataTable para almacenar todos los productos 
-            // agregados al DGV y llevarlo a una tabla temporal en la base de datos [ECompra_Detalle]
-            DataTable datatable_compra_detalle = new DataTable();
-            datatable_compra_detalle.Columns.Add("Id_Producto", typeof(int));
-            datatable_compra_detalle.Columns.Add("Precio", typeof(decimal));
-            datatable_compra_detalle.Columns.Add("Cantidad", typeof(int));
-            datatable_compra_detalle.Columns.Add("Subtotal", typeof(decimal));
-
-            foreach (DataGridViewRow fila in dgv_compras.Rows)
-            {
-                datatable_compra_detalle.Rows.Add(new object[]
-                {
-                    Convert.ToInt32(fila.Cells["id_producto"].Value.ToString()),
-                    fila.Cells["precio_costo"].Value.ToString(),
-                    fila.Cells["cantidad"].Value.ToString(),
-                    fila.Cells["subtotal"].Value.ToString()
-                });
-            }
-            
-            if(txt_id_proveedor.Text != "")
-            {
-                id_proveedor = Convert.ToInt32(txt_id_proveedor.Text);
-            }
-            // Se crea el registro Compra "cabecera"
-            oCompra = new Compras()
-            {
-                oUsuario = new Usuarios() { Id_usuario = oUsuario.Id_usuario },
-                oProveedor = new Proveedores() { Id_proveedor = id_proveedor},
-                Total = Convert.ToDecimal(lbl_suma_total.Text),
-                Tipo_documento = ((OpcionCombo)cbo_tipo_documento.SelectedItem).Texto,
-                Numero_documento = txt_numero_documento.Text,
-                Fecha_documento = date_fecha_doc.Value.ToString("yyyy-MM-dd")
-            };
-
-            // Se intenta registrar la compra mediante la capa de negocios, 
-            // se eliminan todos los datos y se vuelve a dejar el total en 0
-            string mensaje = string.Empty;
-            bool respuesta = new CN_Compras().Crear(oCompra, datatable_compra_detalle, out mensaje);
-            if (respuesta)
-            {
-                MessageBox.Show("Compra registrada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txt_id_proveedor.Text = "";
-                txt_descripcion_proveedor.Text = "";
-                cbo_tipo_documento.SelectedIndex = 0;
-                txt_cuit_proveedor.Text = "";
-                dgv_compras.Rows.Clear();
-                this.CalcularTotal();
             }
             else
             {
-                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Recolección de datos 
+                int id_proveedor = Convert.ToInt32(((OpcionCombo)cbox_proveedores.SelectedItem).Valor);
+                decimal total = Convert.ToDecimal(lbl_suma_total.Text);
+                string tipo_documento = ((OpcionCombo)cbo_tipo_documento.SelectedItem).Texto;
+                string numero_documento = txt_numero_documento.Texts;
+                string fecha_documento = date_fecha_doc.Value.ToString("yyyy-MM-dd");
+                // Se crea un DataTable para almacenar todos los productos 
+                // agregados al DGV y llevarlo a una tabla temporal en la base de datos [ECompra_Detalle]
+                DataTable datatable_compra_detalle = new DataTable();
+                datatable_compra_detalle.Columns.Add("Id_Producto", typeof(int));
+                datatable_compra_detalle.Columns.Add("Precio", typeof(decimal));
+                datatable_compra_detalle.Columns.Add("Cantidad", typeof(int));
+                datatable_compra_detalle.Columns.Add("Subtotal", typeof(decimal));
+
+                foreach (DataGridViewRow fila in dgv_compras.Rows)
+                {
+                    datatable_compra_detalle.Rows.Add(new object[]
+                    {
+                        Convert.ToInt32(fila.Cells["id_producto"].Value.ToString()),
+                        fila.Cells["precio_costo"].Value.ToString(),
+                        fila.Cells["cantidad"].Value.ToString(),
+                        fila.Cells["subtotal"].Value.ToString()
+                    });
+                }
+
+                // Se crea el registro Compra "cabecera"
+                oCompra = new Compras()
+                {
+                    oUsuario = new Usuarios() { Id_usuario = oUsuario.Id_usuario },
+                    oProveedor = new Proveedores() { Id_proveedor = id_proveedor },
+                    Total = total,
+                    Tipo_documento = tipo_documento,
+                    Numero_documento = numero_documento,
+                    Fecha_documento = fecha_documento
+                };
+
+                // Se intenta registrar la compra mediante la capa de negocios, 
+                // se eliminan todos los datos y se vuelve a dejar el total en 0
+                string mensaje = string.Empty;
+                bool respuesta = new CN_Compras().Crear(oCompra, datatable_compra_detalle, out mensaje);
+                if (respuesta)
+                {
+                    MessageBox.Show("Compra registrada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cbox_proveedores.SelectedIndex = 0;
+                    txt_numero_documento.Texts = "";
+                    cbo_tipo_documento.SelectedIndex = 0;
+                    txt_cuit_proveedor.Text = "";
+                    dgv_compras.Rows.Clear();
+                    this.CalcularTotal();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -275,7 +295,7 @@ namespace POSLyion
             {
                 MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
+            // Verifica si el producto ya existe en el DGV.
             foreach (DataGridViewRow fila in dgv_compras.Rows)
             {
                 if (fila.Cells["id_producto"].Value.ToString() == txt_id_producto.Text)
@@ -326,26 +346,6 @@ namespace POSLyion
                 this.LimpiarProductos();
                 this.CalcularTotal();
                 txt_codigo_barras.Select();
-            }
-        }
-
-        private void lbox_productos_MouseMove(object sender, MouseEventArgs e)
-        {
-            int x = lbox_productos.IndexFromPoint(e.Location);
-            if (x != index)
-            {
-                index = x;
-                lbox_productos.Invalidate();
-            }
-        }
-
-        private void lbox_productos_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index == index)
-            {
-                e.Graphics.FillRectangle(Brushes.Crimson, e.Bounds);
-                e.Graphics.DrawString(lbox_productos.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds);
             }
         }
 
@@ -418,5 +418,25 @@ namespace POSLyion
         {
             this.Close();
         }
+
+        //private void lbox_productos_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    int x = lbox_productos.IndexFromPoint(e.Location);
+        //    if (x != index)
+        //    {
+        //        index = x;
+        //        lbox_productos.Invalidate();
+        //    }
+        //}
+
+        //private void lbox_productos_DrawItem(object sender, DrawItemEventArgs e)
+        //{
+        //    e.DrawBackground();
+        //    if (e.Index == index)
+        //    {
+        //        e.Graphics.FillRectangle(Brushes.Crimson, e.Bounds);
+        //        e.Graphics.DrawString(lbox_productos.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds);
+        //    }
+        //}
     }
 }

@@ -14,8 +14,10 @@ namespace CapaEntidad
         public string Nombre_categoria { get; set; }
         public decimal Precio_unitario { get; set; }
         public int Cantidad { get; set; }
+        public string Campo_adicional { get; set; }
         public decimal Subtotal { get; set; }
         public string UsuarioRegistro { get; set; }
-        public string Fecha { get; set; }
+        public string FechaDocumento { get; set; }
+        public string FechaRegistro { get; set; }
     }
 }

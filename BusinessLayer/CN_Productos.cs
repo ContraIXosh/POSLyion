@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
+using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,9 +43,9 @@ namespace CapaNegocio
             }
         }
 
-        public List<Productos> Leer()
+        public List<Productos> Leer(FiltrosProducto filtros)
         {
-            return oCD_Producto.Leer();
+            return oCD_Producto.Leer(filtros);
         }
 
         public Productos BuscarUnProducto(int id)

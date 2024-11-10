@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
 using CapaEntidad;
+using EntityLayer.Filtros;
 
 namespace CapaNegocio
 {
@@ -37,9 +38,9 @@ namespace CapaNegocio
             }
         }
 
-        public List<Usuarios> Leer()
+        public List<Usuarios> Leer(FiltrosUsuario filtros)
         {
-            return oCD_Usuario.Leer();
+            return oCD_Usuario.Leer(filtros);
         }
 
         public bool Modificar(Usuarios oUsuario, out string mensaje)

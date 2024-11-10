@@ -1,4 +1,5 @@
 ﻿using CapaEntidad;
+using CapaEntidad.Filtros;
 using CapaNegocio;
 using POSLyion.Resources;
 using System;
@@ -36,8 +37,8 @@ namespace POSLyion.Modals
             cbo_filtro.DisplayMember = "Texto";
             cbo_filtro.ValueMember = "Valor";
             cbo_filtro.SelectedIndex = 1;
-
-            List<Productos> lista_productos = new CN_Productos().Leer();
+            FiltrosProducto filtros = new FiltrosProducto();
+            List<Productos> lista_productos = new CN_Productos().Leer(filtros);
             foreach (Productos oProducto in lista_productos)
             {
                 dgv_modal_productos.Rows.Add(new object[]
