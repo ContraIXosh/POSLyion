@@ -136,6 +136,12 @@ namespace POSLyion
             txt_busqueda.Text = "";
             cb_inactivo.Checked = false;
         }
+
+        private void btn_crear_proveedor_Click_1(object sender, EventArgs e)
+        {
+            formProveedoresAlta formalta = new formProveedoresAlta();
+            formalta.Show();
+        }
     }
 }
    

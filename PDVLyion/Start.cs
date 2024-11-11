@@ -15,6 +15,7 @@ using PDCLyion.Modals;
 using System.Runtime.Serialization;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using CapaEntidad.Filtros;
+using PDCLyion;
 
 namespace POSLyion
 {
@@ -26,12 +27,14 @@ namespace POSLyion
         private decimal vuelto = 0;
         private string dgv_activo = "factura";
         private List<Ventas_Detalle> respaldo_carrito = new List<Ventas_Detalle>();
+        private ToolStripMenuItem currentSelectedMenuItem;
 
         public Start(Usuarios user)
         {
             InitializeComponent();
             oUser = user;
             lbl_usuario.Text = user.Nombre_completo;
+            this.KeyPreview = true;
         }
 
         private void Start_Load(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace POSLyion
         // <resumen>
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
+            txt_buscarproductos.Select();
             dgv_productos.Rows.Clear();
             if (txt_buscarproductos.Text != "")
             {
@@ -104,8 +108,8 @@ namespace POSLyion
                             1,
                             dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
                             dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
-                            "Editar cantidad",
-                            "Eliminar producto"
+                            "Editar",
+                            "Eliminar"
                         });
 
                         txt_buscarproductos.Text = "";
@@ -141,6 +145,7 @@ namespace POSLyion
         {
             if(dgv_resumen.Rows.Count > 0)
             {
+                
                 using (var formularioCobro = new formCambio(total, oUser))
                 {
                     formularioCobro.ShowDialog();
@@ -159,7 +164,7 @@ namespace POSLyion
             }
         }
 
-        private void dgv_resumen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void dgv_resumen_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Si el botón presionado es "eliminar", se devuelve al stock la 
             // cantidad que estaba agregada al carrito
@@ -286,7 +291,7 @@ namespace POSLyion
 
         // Si se invoca el evento VentanaCerrada, se limpia dgv_resumen y el respaldo de productos
         // el total se vuelve a 0
-        private void CrearVenta()
+        public void CrearVenta()
         {
             DataTable ventaDetalle = new DataTable();
             ventaDetalle.Columns.Add("Id_Producto", typeof(int));
@@ -328,7 +333,7 @@ namespace POSLyion
             }
         }
 
-        private void CalcularTotal()
+        public void CalcularTotal()
         {
             total = 0;
             if (dgv_resumen.Rows.Count > 0)
@@ -346,7 +351,7 @@ namespace POSLyion
             }
         }
 
-        private void VerDetalle(List<ReportesDetalle> lista_detalle)
+        public void VerDetalle(List<ReportesDetalle> lista_detalle)
         {
             foreach (ReportesDetalle item in lista_detalle)
             {
@@ -375,6 +380,14 @@ namespace POSLyion
             panel_main.Controls.Add(fh);
             panel_main.Tag = fh;
             fh.Show();
+            
+            if (currentSelectedMenuItem != null)
+            {
+                currentSelectedMenuItem.BackColor = Color.Transparent; 
+            } 
+            menu.BackColor = Color.Teal;
+            currentSelectedMenuItem = menu;
+            tsmenu_venta.BackColor = Color.Transparent;
         }
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -428,6 +441,12 @@ namespace POSLyion
         {
             formLogOut logout = new formLogOut();
             logout.Show();
+
+            if (currentSelectedMenuItem != null)
+            {
+                currentSelectedMenuItem.BackColor = SystemColors.Control;
+                currentSelectedMenuItem = null;
+            }
         }
         private void lbl_cerrarcaja_Click(object sender, EventArgs e)
         {
@@ -444,104 +463,16 @@ namespace POSLyion
                 }
             }
         }
-
-        //private void btn_compra_Click(object sender, EventArgs e)
-        //{
-        //    lbl_titulo.Text = "Facturación";
-        //    MostrarFacturacion();
-        //}
-
-        //private void btn_factura_Click(object sender, EventArgs e)
-        //{
-        //    lbl_titulo.Text = "Historial de compra";
-        //    mostrarHistorialSell();
-        //}
-
-        //private void btn_venta_Click(object sender, EventArgs e)
-        //{
-        //    lbl_titulo.Text = "Historial de ventas";
-        //    mostrarHistorialSell();
-        //}
-
-        //private void btn_cfinal_Click(object sender, EventArgs e)
-        //{
-        //    lbl_tipoticket.Text = "CONSUMIDOR FINAL";
-        //    btn_cfinal.ForeColor = Color.White;
-        //    btn_cfinal.BackColor = Color.BlueViolet;
-        //    btn_cfinal.Enabled = false;
-        //    if (btn_eventual.Enabled == false)
-        //    {
-        //        btn_cfinal.ForeColor = Color.White;
-        //        btn_cfinal.BackColor = Color.BlueViolet;
-        //        btn_eventual.Enabled = true;
-        //    }
-        //}
-
-        //private void btn_eventual_Click(object sender, EventArgs e)
-        //{
-        //    lbl_tipoticket.Text = "EVENTUAL";
-        //    btn_eventual.ForeColor = Color.White;
-        //    btn_eventual.BackColor = Color.DarkMagenta;
-        //    btn_eventual.Enabled = false;
-        //    if (btn_cfinal.Enabled == false)
-        //    {
-        //        btn_eventual.ForeColor = Color.White;
-        //        btn_eventual.BackColor = Color.DarkMagenta;
-        //        btn_cfinal.Enabled = true;
-        //    }
-        //}
-        //private void MostrarFacturacion()
-        //{
-        //    panel_resumen.Controls.Clear();
-        //    ListBox lstProductos = new ListBox();
-        //    lstProductos.Items.Add("Producto 1 - $10");
-        //    lstProductos.Items.Add("Producto 2 - $20");
-        //    panel_resumen.Controls.Add(lstProductos);
-        //}
-
-        //private void mostrarHistorialBuy()
-        //{
-        //    panel_resumen.Controls.Clear();
-        //    DataGridView dgvCompra = new DataGridView();
-        //}
-
-        //private void mostrarHistorialSell()
-        //{
-        //    float precio = 0;
-        //    float total = precio;
-
-        //    if (precio > 0)
-        //    {
-
-        //    }
-        //    DataGridView dgvCompra = new DataGridView();
-        //    dgvCompra.Columns.Add("Hora", "Hora");
-        //    dgvCompra.Columns.Add("Precio", "Precio");
-        //    dgvCompra.Columns.Add("Productos", "Productos");
-        //    dgvCompra.Columns.Add("Fecha", "Fecha");
-        //    dgvCompra.Rows.Add("16:52:16", "$1620", "Last product", "10/02/2025");
-        //    dgvCompra.Rows.Add("16:53:42", "$1920", "Last product", "10/02/2025");
-        //    panel_resumen.Controls.Add(dgvCompra);
-
-        //    dgvCompra.Columns.Add("Fecha", "Fecha");
-        //    dgvCompra.Columns.Add("Producto", "Producto");
-        //    dgvCompra.Columns.Add("Precio", "Precio");
-
-        //    dgvCompra.Rows.Add("01/10/2024", "Producto A", "$15");
-        //    dgvCompra.Rows.Add("02/10/2024", "Producto B", "$25");
-
-        //    DataGridView dgvAmpliar = new DataGridView();
-        //    dgvCompra.Columns.Add("Fecha", "Fecha");
-        //    dgvCompra.Columns.Add("Producto", "Producto");
-        //    dgvCompra.Columns.Add("Cantidad", "Cantidad");
-        //    dgvCompra.Columns.Add("Precio", "precio");
-        //    dgvCompra.Rows.Add("01/10/2024", "Salsa golf LC", "8", precio = 3999);
-        //    dgvCompra.Rows.Add("01/10/2024", "Heineken lata 473", "6", precio = 124);
-        //    dgvCompra.Rows.Add("01/10/2024", "Amstel lata 473", "15", precio = 15);
-        //    dgvCompra.Rows.Add("Total =", total);
-        //}
-
-        private void flagdgv()
+        private void ActualizarColorSeleccionado(ToolStripMenuItem menuItem)
+        {
+            if (currentSelectedMenuItem != null)
+            {
+                currentSelectedMenuItem.BackColor = Color.Transparent; 
+            } 
+            menuItem.BackColor = Color.Teal; 
+            currentSelectedMenuItem = menuItem; 
+        }
+                private void flagdgv()
         {
             if (!panel_container.Controls.Container.Contains(dgv_detalle))
             {
@@ -728,13 +659,30 @@ namespace POSLyion
                     producto.Cantidad,
                     producto.Precio,
                     producto.Subtotal,
-                    "Editar cantidad",
-                    "Eliminar producto"
+                    "Editar",
+                    "Eliminar"
                 });
             }
             respaldo_carrito.Clear();
         }
 
+        private void btn_desc_Click(object sender, EventArgs e)
+        {
+            formDescuento descuento = new formDescuento();
+            descuento.Show();
+        }
+
+        private void Start_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                btn_desc.PerformClick();
+            }
+            if (e.KeyCode == Keys.F10)
+            {
+                btn_cerrarventa.PerformClick();
+            }
+        }
 
 
         //private void btn_eventual_Click_1(object sender, EventArgs e)

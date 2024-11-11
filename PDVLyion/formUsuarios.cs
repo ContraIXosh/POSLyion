@@ -161,5 +161,11 @@ namespace POSLyion
             cbo_roles.SelectedIndex = 0;
             cb_inactivos.Checked = false;
         }
+
+        private void btn_crear_usuario_Click_1(object sender, EventArgs e)
+        {
+            formUsuariosAlta formalta = new formUsuariosAlta();
+            formalta.Show();
+        }
     }
 }

@@ -48,9 +48,6 @@
             this.txt_clave = new CustomBox.RJControls.RJTextBox();
             this.btn_editar_permisos = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_update = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_id = new RJCodeAdvance.RJControls.RJTextBox();
             this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
@@ -60,7 +57,6 @@
             this.panel_red.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel_update.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.SuspendLayout();
@@ -405,60 +401,28 @@
             this.btn_editar_permisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editar_permisos.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editar_permisos.ForeColor = System.Drawing.Color.Gold;
-            this.btn_editar_permisos.Location = new System.Drawing.Point(120, 3);
+            this.btn_editar_permisos.Location = new System.Drawing.Point(120, 13);
             this.btn_editar_permisos.Name = "btn_editar_permisos";
             this.btn_editar_permisos.Size = new System.Drawing.Size(187, 33);
             this.btn_editar_permisos.TabIndex = 58;
             this.btn_editar_permisos.Text = "EDITAR PERMISOS";
             this.btn_editar_permisos.TextColor = System.Drawing.Color.Gold;
             this.btn_editar_permisos.UseVisualStyleBackColor = false;
-            this.btn_editar_permisos.Click += new System.EventHandler(this.btn_editar_permisos_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel_update, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 343);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(710, 59);
             this.tableLayoutPanel1.TabIndex = 43;
-            // 
-            // panel_update
-            // 
-            this.panel_update.BackColor = System.Drawing.Color.Khaki;
-            this.panel_update.Controls.Add(this.label2);
-            this.panel_update.Controls.Add(this.label1);
-            this.panel_update.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_update.Location = new System.Drawing.Point(0, 39);
-            this.panel_update.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_update.Name = "panel_update";
-            this.panel_update.Size = new System.Drawing.Size(710, 20);
-            this.panel_update.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(375, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(592, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Actualizacion: v1.0.0.5";
             // 
             // tableLayoutPanel2
             // 
@@ -479,7 +443,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 39);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 59);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // txt_id
@@ -517,7 +481,7 @@
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cerrar.Location = new System.Drawing.Point(557, 3);
+            this.btn_cerrar.Location = new System.Drawing.Point(557, 13);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 33);
             this.btn_cerrar.TabIndex = 11;
@@ -538,7 +502,7 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btn_guardar.Location = new System.Drawing.Point(357, 3);
+            this.btn_guardar.Location = new System.Drawing.Point(357, 13);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 33);
             this.btn_guardar.TabIndex = 12;
@@ -596,8 +560,6 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel_update.ResumeLayout(false);
-            this.panel_update.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
@@ -610,9 +572,6 @@
         private System.Windows.Forms.TableLayoutPanel panel_red;
         private CustomBox.RJControls.RJButton btn_editar_permisos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel_update;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private RJCodeAdvance.RJControls.RJButton btn_cerrar;
         private RJCodeAdvance.RJControls.RJButton btn_guardar;

@@ -381,9 +381,10 @@
             // 
             this.txt_id.Location = new System.Drawing.Point(479, 204);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(100, 20);
+            this.txt_id.Size = new System.Drawing.Size(48, 20);
             this.txt_id.TabIndex = 59;
             this.txt_id.Text = "0";
+            this.txt_id.Visible = false;
             // 
             // formClientesAlta
             // 

@@ -31,8 +31,6 @@
             this.panel_main = new System.Windows.Forms.Panel();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
             this.btn_cerrar = new CustomBox.RJControls.RJButton();
-            this.panel_crimactividad = new System.Windows.Forms.Panel();
-            this.panel_actividad = new System.Windows.Forms.Panel();
             this.panel_crimconfg = new System.Windows.Forms.Panel();
             this.panel_config = new System.Windows.Forms.Panel();
             this.txt_precio_venta = new CustomBox.RJControls.RJTextBox();
@@ -57,7 +55,6 @@
             this.txt_descripcion = new CustomBox.RJControls.RJTextBox();
             this.lbl_tipoprod = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
-            this.panel_crimactividad.SuspendLayout();
             this.panel_crimconfg.SuspendLayout();
             this.panel_config.SuspendLayout();
             this.panel_crimdesc.SuspendLayout();
@@ -69,14 +66,13 @@
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_main.Controls.Add(this.btn_guardar);
             this.panel_main.Controls.Add(this.btn_cerrar);
-            this.panel_main.Controls.Add(this.panel_crimactividad);
             this.panel_main.Controls.Add(this.panel_crimconfg);
             this.panel_main.Controls.Add(this.label3);
             this.panel_main.Controls.Add(this.panel_crimdesc);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(889, 647);
+            this.panel_main.Size = new System.Drawing.Size(889, 514);
             this.panel_main.TabIndex = 0;
             // 
             // btn_guardar
@@ -90,7 +86,7 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.Lime;
-            this.btn_guardar.Location = new System.Drawing.Point(558, 607);
+            this.btn_guardar.Location = new System.Drawing.Point(554, 468);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 36);
             this.btn_guardar.TabIndex = 14;
@@ -110,7 +106,7 @@
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cerrar.Location = new System.Drawing.Point(724, 607);
+            this.btn_cerrar.Location = new System.Drawing.Point(727, 468);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 36);
             this.btn_cerrar.TabIndex = 13;
@@ -119,30 +115,13 @@
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
-            // panel_crimactividad
-            // 
-            this.panel_crimactividad.BackColor = System.Drawing.Color.Crimson;
-            this.panel_crimactividad.Controls.Add(this.panel_actividad);
-            this.panel_crimactividad.Location = new System.Drawing.Point(12, 500);
-            this.panel_crimactividad.Name = "panel_crimactividad";
-            this.panel_crimactividad.Size = new System.Drawing.Size(865, 101);
-            this.panel_crimactividad.TabIndex = 12;
-            // 
-            // panel_actividad
-            // 
-            this.panel_actividad.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel_actividad.Location = new System.Drawing.Point(3, 3);
-            this.panel_actividad.Name = "panel_actividad";
-            this.panel_actividad.Size = new System.Drawing.Size(859, 93);
-            this.panel_actividad.TabIndex = 0;
-            // 
             // panel_crimconfg
             // 
             this.panel_crimconfg.BackColor = System.Drawing.Color.Crimson;
             this.panel_crimconfg.Controls.Add(this.panel_config);
             this.panel_crimconfg.Location = new System.Drawing.Point(12, 272);
             this.panel_crimconfg.Name = "panel_crimconfg";
-            this.panel_crimconfg.Size = new System.Drawing.Size(865, 222);
+            this.panel_crimconfg.Size = new System.Drawing.Size(865, 174);
             this.panel_crimconfg.TabIndex = 11;
             // 
             // panel_config
@@ -155,7 +134,7 @@
             this.panel_config.Controls.Add(this.label9);
             this.panel_config.Location = new System.Drawing.Point(3, 3);
             this.panel_config.Name = "panel_config";
-            this.panel_config.Size = new System.Drawing.Size(859, 216);
+            this.panel_config.Size = new System.Drawing.Size(859, 166);
             this.panel_config.TabIndex = 0;
             // 
             // txt_precio_venta
@@ -167,7 +146,7 @@
             this.txt_precio_venta.BorderSize = 2;
             this.txt_precio_venta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_precio_venta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_precio_venta.Location = new System.Drawing.Point(340, 94);
+            this.txt_precio_venta.Location = new System.Drawing.Point(340, 83);
             this.txt_precio_venta.Margin = new System.Windows.Forms.Padding(4);
             this.txt_precio_venta.Multiline = false;
             this.txt_precio_venta.Name = "txt_precio_venta";
@@ -495,7 +474,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 647);
+            this.ClientSize = new System.Drawing.Size(889, 514);
             this.Controls.Add(this.panel_main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -504,7 +483,6 @@
             this.Load += new System.EventHandler(this.formProductosAlta_Load);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
-            this.panel_crimactividad.ResumeLayout(false);
             this.panel_crimconfg.ResumeLayout(false);
             this.panel_config.ResumeLayout(false);
             this.panel_config.PerformLayout();
@@ -537,8 +515,6 @@
         private CustomBox.RJControls.RJTextBox txt_precio_venta;
         private CustomBox.RJControls.RJTextBox txt_precio_costo;
         private System.Windows.Forms.Label lbl_stock_minimo;
-        private System.Windows.Forms.Panel panel_crimactividad;
-        private System.Windows.Forms.Panel panel_actividad;
         private CustomBox.RJControls.RJButton btn_guardar;
         private CustomBox.RJControls.RJButton btn_cerrar;
         private CustomBox.RJControls.RJTextBox txt_id;

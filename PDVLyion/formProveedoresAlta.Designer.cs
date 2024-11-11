@@ -30,13 +30,6 @@
         {
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.panel_footer = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_guardar = new RJCodeAdvance.RJControls.RJButton();
-            this.panel_update = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel_add = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_descripcion = new CustomBox.RJControls.RJTextBox();
@@ -54,15 +47,18 @@
             this.lbl_estado = new System.Windows.Forms.Label();
             this.panelitop = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_vendedor = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_id = new System.Windows.Forms.TextBox();
+            this.btn_guardar = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_main.SuspendLayout();
             this.panel_footer.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel_update.SuspendLayout();
             this.panel_add.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panelitop.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -91,112 +87,6 @@
             this.panel_footer.Name = "panel_footer";
             this.panel_footer.Size = new System.Drawing.Size(710, 61);
             this.panel_footer.TabIndex = 13;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel_update, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(710, 61);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txt_id, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 41);
-            this.tableLayoutPanel2.TabIndex = 27;
-            // 
-            // btn_cerrar
-            // 
-            this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
-            this.btn_cerrar.BorderRadius = 7;
-            this.btn_cerrar.BorderSize = 2;
-            this.btn_cerrar.FlatAppearance.BorderSize = 0;
-            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cerrar.Location = new System.Drawing.Point(557, 3);
-            this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(150, 35);
-            this.btn_cerrar.TabIndex = 11;
-            this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
-            this.btn_cerrar.UseVisualStyleBackColor = false;
-            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
-            // 
-            // btn_guardar
-            // 
-            this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BorderColor = System.Drawing.Color.LimeGreen;
-            this.btn_guardar.BorderRadius = 7;
-            this.btn_guardar.BorderSize = 2;
-            this.btn_guardar.FlatAppearance.BorderSize = 0;
-            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btn_guardar.Location = new System.Drawing.Point(357, 3);
-            this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(150, 35);
-            this.btn_guardar.TabIndex = 12;
-            this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.TextColor = System.Drawing.Color.LimeGreen;
-            this.btn_guardar.UseVisualStyleBackColor = false;
-            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
-            // 
-            // panel_update
-            // 
-            this.panel_update.BackColor = System.Drawing.Color.Khaki;
-            this.panel_update.Controls.Add(this.label2);
-            this.panel_update.Controls.Add(this.label1);
-            this.panel_update.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_update.Location = new System.Drawing.Point(0, 41);
-            this.panel_update.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_update.Name = "panel_update";
-            this.panel_update.Size = new System.Drawing.Size(710, 20);
-            this.panel_update.TabIndex = 16;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(340, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(592, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Actualizacion: v1.0.0.5";
             // 
             // panel_add
             // 
@@ -489,13 +379,89 @@
             this.lbl_vendedor.TabIndex = 0;
             this.lbl_vendedor.Text = "CREAR VENDEDOR";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txt_id, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 61);
+            this.tableLayoutPanel2.TabIndex = 27;
+            // 
             // txt_id
             // 
             this.txt_id.Location = new System.Drawing.Point(3, 3);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(100, 20);
+            this.txt_id.Size = new System.Drawing.Size(45, 20);
             this.txt_id.TabIndex = 13;
             this.txt_id.Text = "0";
+            this.txt_id.Visible = false;
+            // 
+            // btn_guardar
+            // 
+            this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_guardar.BorderColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.BorderRadius = 7;
+            this.btn_guardar.BorderSize = 2;
+            this.btn_guardar.FlatAppearance.BorderSize = 0;
+            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.Location = new System.Drawing.Point(357, 13);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(150, 35);
+            this.btn_guardar.TabIndex = 12;
+            this.btn_guardar.Text = "Guardar";
+            this.btn_guardar.TextColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            // 
+            // btn_cerrar
+            // 
+            this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderRadius = 7;
+            this.btn_cerrar.BorderSize = 2;
+            this.btn_cerrar.FlatAppearance.BorderSize = 0;
+            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.Location = new System.Drawing.Point(557, 13);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(150, 35);
+            this.btn_cerrar.TabIndex = 11;
+            this.btn_cerrar.Text = "Cerrar";
+            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.UseVisualStyleBackColor = false;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(710, 61);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // formProveedoresAlta
             // 
@@ -510,16 +476,14 @@
             this.Load += new System.EventHandler(this.formProveedoresAlta_Load);
             this.panel_main.ResumeLayout(false);
             this.panel_footer.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.panel_update.ResumeLayout(false);
-            this.panel_update.PerformLayout();
             this.panel_add.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.panelitop.ResumeLayout(false);
             this.panelitop.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -528,13 +492,6 @@
 
         private System.Windows.Forms.TableLayoutPanel panel_main;
         private System.Windows.Forms.Panel panel_footer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel_update;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private RJCodeAdvance.RJControls.RJButton btn_cerrar;
-        private RJCodeAdvance.RJControls.RJButton btn_guardar;
         private System.Windows.Forms.TableLayoutPanel panel_add;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private CustomBox.RJControls.RJTextBox txt_descripcion;
@@ -552,6 +509,10 @@
         private System.Windows.Forms.Label lbl_email;
         private System.Windows.Forms.TableLayoutPanel panelitop;
         private System.Windows.Forms.Label lbl_vendedor;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private RJCodeAdvance.RJControls.RJButton btn_cerrar;
+        private RJCodeAdvance.RJControls.RJButton btn_guardar;
         private System.Windows.Forms.TextBox txt_id;
     }
 }

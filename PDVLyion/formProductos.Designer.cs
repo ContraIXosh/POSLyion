@@ -156,8 +156,8 @@
             this.dgv_productos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_productos.EnableHeadersVisualStyles = false;
             this.dgv_productos.GridColor = System.Drawing.Color.LightSkyBlue;
-            this.dgv_productos.Location = new System.Drawing.Point(257, 0);
-            this.dgv_productos.Margin = new System.Windows.Forms.Padding(0);
+            this.dgv_productos.Location = new System.Drawing.Point(257, 5);
+            this.dgv_productos.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
             this.dgv_productos.MultiSelect = false;
             this.dgv_productos.Name = "dgv_productos";
             this.dgv_productos.ReadOnly = true;
@@ -178,7 +178,7 @@
             this.dgv_productos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_productos.RowTemplate.Height = 25;
             this.dgv_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_productos.Size = new System.Drawing.Size(823, 511);
+            this.dgv_productos.Size = new System.Drawing.Size(818, 501);
             this.dgv_productos.TabIndex = 13;
             this.dgv_productos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_productos_CellContentClick);
             // 
@@ -288,6 +288,7 @@
             // 
             // panel_midizq
             // 
+            this.panel_midizq.BackColor = System.Drawing.Color.Crimson;
             this.panel_midizq.ColumnCount = 1;
             this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
@@ -297,27 +298,30 @@
             this.panel_midizq.Margin = new System.Windows.Forms.Padding(0);
             this.panel_midizq.Name = "panel_midizq";
             this.panel_midizq.RowCount = 2;
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.panel_midizq.Size = new System.Drawing.Size(257, 511);
             this.panel_midizq.TabIndex = 14;
             // 
             // panel_btns
             // 
+            this.panel_btns.BackColor = System.Drawing.Color.Black;
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_limpiar_filtros, 0, 1);
-            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 0);
-            this.panel_btns.Controls.Add(this.btn_buscar, 0, 2);
+            this.panel_btns.Controls.Add(this.btn_crear_producto, 0, 0);
+            this.panel_btns.Controls.Add(this.btn_buscar, 0, 3);
+            this.panel_btns.Controls.Add(this.btn_limpiar_filtros, 0, 2);
+            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_btns.Location = new System.Drawing.Point(3, 360);
+            this.panel_btns.Location = new System.Drawing.Point(5, 306);
+            this.panel_btns.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel_btns.Name = "panel_btns";
-            this.panel_btns.RowCount = 3;
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_btns.Size = new System.Drawing.Size(251, 148);
+            this.panel_btns.RowCount = 4;
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.panel_btns.Size = new System.Drawing.Size(247, 200);
             this.panel_btns.TabIndex = 16;
             // 
             // btn_limpiar_filtros
@@ -334,7 +338,7 @@
             this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
             this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(13, 54);
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(11, 106);
             this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
             this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
             this.btn_limpiar_filtros.Size = new System.Drawing.Size(225, 38);
@@ -358,7 +362,7 @@
             this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
             this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(13, 5);
+            this.btn_actualizar.Location = new System.Drawing.Point(11, 56);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
@@ -382,30 +386,29 @@
             this.btn_buscar.ForeColor = System.Drawing.Color.Chartreuse;
             this.btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscar.Image")));
             this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_buscar.Location = new System.Drawing.Point(13, 103);
+            this.btn_buscar.Location = new System.Drawing.Point(11, 155);
             this.btn_buscar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(225, 40);
             this.btn_buscar.TabIndex = 19;
             this.btn_buscar.Text = "Buscar";
-            this.btn_buscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_buscar.TextColor = System.Drawing.Color.Chartreuse;
             this.btn_buscar.UseVisualStyleBackColor = false;
             this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
             // panel_filter
             // 
+            this.panel_filter.BackColor = System.Drawing.Color.Black;
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_filter.Controls.Add(this.btn_crear_producto, 0, 7);
             this.panel_filter.Controls.Add(this.lbl_busqueda, 0, 0);
             this.panel_filter.Controls.Add(this.txt_busqueda, 0, 1);
             this.panel_filter.Controls.Add(this.lbl_cat, 0, 2);
             this.panel_filter.Controls.Add(this.cbo_categorias, 0, 3);
             this.panel_filter.Controls.Add(this.cb_estado, 0, 4);
             this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_filter.Location = new System.Drawing.Point(0, 0);
-            this.panel_filter.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_filter.Location = new System.Drawing.Point(5, 5);
+            this.panel_filter.Margin = new System.Windows.Forms.Padding(5);
             this.panel_filter.Name = "panel_filter";
             this.panel_filter.RowCount = 8;
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
@@ -416,7 +419,7 @@
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
-            this.panel_filter.Size = new System.Drawing.Size(257, 357);
+            this.panel_filter.Size = new System.Drawing.Size(247, 296);
             this.panel_filter.TabIndex = 17;
             // 
             // btn_crear_producto
@@ -433,7 +436,7 @@
             this.btn_crear_producto.ForeColor = System.Drawing.Color.Chartreuse;
             this.btn_crear_producto.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_producto.Image")));
             this.btn_crear_producto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_crear_producto.Location = new System.Drawing.Point(16, 316);
+            this.btn_crear_producto.Location = new System.Drawing.Point(11, 5);
             this.btn_crear_producto.Margin = new System.Windows.Forms.Padding(0);
             this.btn_crear_producto.Name = "btn_crear_producto";
             this.btn_crear_producto.Size = new System.Drawing.Size(225, 40);
@@ -450,7 +453,7 @@
             this.lbl_busqueda.AutoSize = true;
             this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_busqueda.Location = new System.Drawing.Point(19, 25);
+            this.lbl_busqueda.Location = new System.Drawing.Point(14, 17);
             this.lbl_busqueda.Name = "lbl_busqueda";
             this.lbl_busqueda.Size = new System.Drawing.Size(218, 20);
             this.lbl_busqueda.TabIndex = 13;
@@ -460,9 +463,9 @@
             // 
             this.txt_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_busqueda.Location = new System.Drawing.Point(3, 48);
+            this.txt_busqueda.Location = new System.Drawing.Point(3, 40);
             this.txt_busqueda.Name = "txt_busqueda";
-            this.txt_busqueda.Size = new System.Drawing.Size(251, 29);
+            this.txt_busqueda.Size = new System.Drawing.Size(241, 29);
             this.txt_busqueda.TabIndex = 11;
             // 
             // lbl_cat
@@ -471,7 +474,7 @@
             this.lbl_cat.AutoSize = true;
             this.lbl_cat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cat.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cat.Location = new System.Drawing.Point(57, 110);
+            this.lbl_cat.Location = new System.Drawing.Point(52, 86);
             this.lbl_cat.Name = "lbl_cat";
             this.lbl_cat.Size = new System.Drawing.Size(143, 25);
             this.lbl_cat.TabIndex = 14;
@@ -489,11 +492,11 @@
             this.cbo_categorias.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbo_categorias.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbo_categorias.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_categorias.Location = new System.Drawing.Point(3, 138);
+            this.cbo_categorias.Location = new System.Drawing.Point(3, 114);
             this.cbo_categorias.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbo_categorias.Name = "cbo_categorias";
             this.cbo_categorias.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_categorias.Size = new System.Drawing.Size(251, 30);
+            this.cbo_categorias.Size = new System.Drawing.Size(241, 30);
             this.cbo_categorias.TabIndex = 12;
             this.cbo_categorias.Texts = "";
             // 
@@ -503,7 +506,7 @@
             this.cb_estado.AutoSize = true;
             this.cb_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_estado.ForeColor = System.Drawing.Color.Gold;
-            this.cb_estado.Location = new System.Drawing.Point(46, 190);
+            this.cb_estado.Location = new System.Drawing.Point(41, 154);
             this.cb_estado.Name = "cb_estado";
             this.cb_estado.Size = new System.Drawing.Size(164, 24);
             this.cb_estado.TabIndex = 18;
@@ -558,7 +561,7 @@
             // 
             // panel_main
             // 
-            this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_main.BackColor = System.Drawing.Color.Crimson;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_main.Controls.Add(this.panel_bottom, 0, 1);

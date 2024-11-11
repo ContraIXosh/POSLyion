@@ -212,10 +212,5 @@ namespace POSLyion
             this.Close();
         }
 
-        private void btn_editar_permisos_Click(object sender, EventArgs e)
-        {
-            formPermisos formPermisos = new formPermisos(Usuario);
-            formPermisos.Show();
-        }
     }
 }

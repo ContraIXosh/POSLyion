@@ -129,10 +129,11 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Crimson;
             this.panel1.Controls.Add(this.rjCircularPictureBox1);
-            this.panel1.Location = new System.Drawing.Point(-7, 0);
+            this.panel1.Location = new System.Drawing.Point(-1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(285, 408);
+            this.panel1.Size = new System.Drawing.Size(273, 306);
             this.panel1.TabIndex = 15;
             // 
             // rjCircularPictureBox1
@@ -144,7 +145,7 @@
             this.rjCircularPictureBox1.BorderSize = 2;
             this.rjCircularPictureBox1.GradientAngle = 50F;
             this.rjCircularPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("rjCircularPictureBox1.Image")));
-            this.rjCircularPictureBox1.Location = new System.Drawing.Point(19, 18);
+            this.rjCircularPictureBox1.Location = new System.Drawing.Point(6, 21);
             this.rjCircularPictureBox1.Name = "rjCircularPictureBox1";
             this.rjCircularPictureBox1.Size = new System.Drawing.Size(255, 255);
             this.rjCircularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

@@ -50,23 +50,23 @@
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel_retoque = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_updates = new System.Windows.Forms.Panel();
-            this.lbl_updatetime = new System.Windows.Forms.Label();
+            this.panel_bot = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_updateversion = new System.Windows.Forms.Label();
+            this.lbl_updatetime = new System.Windows.Forms.Label();
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
             this.btn_crear_categoria = new RJCodeAdvance.RJControls.RJButton();
             this.txt_descripcion = new CustomBox.RJControls.RJTextBox();
+            this.txt_categoryedit = new CustomBox.RJControls.RJTextBox();
+            this.lbl_crear = new System.Windows.Forms.Label();
+            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
             this.lbl_search = new System.Windows.Forms.Label();
             this.txt_search = new System.Windows.Forms.TextBox();
-            this.txt_categoryedit = new CustomBox.RJControls.RJTextBox();
-            this.rjButton2 = new RJCodeAdvance.RJControls.RJButton();
             this.txt_id = new CustomBox.RJControls.RJTextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.grid_categoria = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,7 +77,7 @@
             this.menu_Main.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.panel_retoque.SuspendLayout();
-            this.panel_updates.SuspendLayout();
+            this.panel_bot.SuspendLayout();
             this.panel_mid.SuspendLayout();
             this.panel_midizq.SuspendLayout();
             this.panel_btns.SuspendLayout();
@@ -208,7 +208,7 @@
             this.panel_retoque.ColumnCount = 1;
             this.panel_retoque.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_retoque.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_retoque.Controls.Add(this.panel_updates, 0, 1);
+            this.panel_retoque.Controls.Add(this.panel_bot, 0, 1);
             this.panel_retoque.Controls.Add(this.panel_mid, 0, 0);
             this.panel_retoque.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_retoque.Location = new System.Drawing.Point(0, 0);
@@ -220,38 +220,51 @@
             this.panel_retoque.Size = new System.Drawing.Size(982, 537);
             this.panel_retoque.TabIndex = 0;
             // 
-            // panel_updates
+            // panel_bot
             // 
-            this.panel_updates.BackColor = System.Drawing.Color.Khaki;
-            this.panel_updates.Controls.Add(this.lbl_updatetime);
-            this.panel_updates.Controls.Add(this.lbl_updateversion);
-            this.panel_updates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_updates.Location = new System.Drawing.Point(0, 517);
-            this.panel_updates.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_updates.Name = "panel_updates";
-            this.panel_updates.Size = new System.Drawing.Size(982, 20);
-            this.panel_updates.TabIndex = 18;
-            // 
-            // lbl_updatetime
-            // 
-            this.lbl_updatetime.AutoSize = true;
-            this.lbl_updatetime.Location = new System.Drawing.Point(633, 3);
-            this.lbl_updatetime.Name = "lbl_updatetime";
-            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
-            this.lbl_updatetime.TabIndex = 1;
-            this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
+            this.panel_bot.BackColor = System.Drawing.Color.Black;
+            this.panel_bot.ColumnCount = 3;
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.panel_bot.Controls.Add(this.lbl_updateversion, 2, 0);
+            this.panel_bot.Controls.Add(this.lbl_updatetime, 1, 0);
+            this.panel_bot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_bot.Location = new System.Drawing.Point(0, 517);
+            this.panel_bot.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_bot.Name = "panel_bot";
+            this.panel_bot.RowCount = 1;
+            this.panel_bot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_bot.Size = new System.Drawing.Size(982, 20);
+            this.panel_bot.TabIndex = 18;
             // 
             // lbl_updateversion
             // 
+            this.lbl_updateversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updateversion.AutoSize = true;
-            this.lbl_updateversion.Location = new System.Drawing.Point(863, 2);
+            this.lbl_updateversion.BackColor = System.Drawing.Color.Black;
+            this.lbl_updateversion.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_updateversion.Location = new System.Drawing.Point(785, 3);
             this.lbl_updateversion.Name = "lbl_updateversion";
             this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
-            this.lbl_updateversion.TabIndex = 0;
+            this.lbl_updateversion.TabIndex = 2;
             this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
+            // 
+            // lbl_updatetime
+            // 
+            this.lbl_updatetime.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_updatetime.AutoSize = true;
+            this.lbl_updatetime.BackColor = System.Drawing.Color.Black;
+            this.lbl_updatetime.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_updatetime.Location = new System.Drawing.Point(535, 3);
+            this.lbl_updatetime.Name = "lbl_updatetime";
+            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
+            this.lbl_updatetime.TabIndex = 3;
+            this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
             // 
             // panel_mid
             // 
+            this.panel_mid.BackColor = System.Drawing.Color.Crimson;
             this.panel_mid.ColumnCount = 2;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -268,6 +281,7 @@
             // 
             // panel_midizq
             // 
+            this.panel_midizq.BackColor = System.Drawing.Color.Crimson;
             this.panel_midizq.ColumnCount = 1;
             this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
@@ -277,27 +291,49 @@
             this.panel_midizq.Margin = new System.Windows.Forms.Padding(0);
             this.panel_midizq.Name = "panel_midizq";
             this.panel_midizq.RowCount = 2;
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.panel_midizq.Size = new System.Drawing.Size(294, 517);
             this.panel_midizq.TabIndex = 29;
             // 
             // panel_btns
             // 
+            this.panel_btns.BackColor = System.Drawing.Color.Black;
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 2);
-            this.panel_btns.Controls.Add(this.btn_crear_categoria, 0, 1);
-            this.panel_btns.Controls.Add(this.txt_descripcion, 0, 0);
+            this.panel_btns.Controls.Add(this.label4, 0, 0);
+            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 6);
+            this.panel_btns.Controls.Add(this.btn_crear_categoria, 0, 5);
+            this.panel_btns.Controls.Add(this.txt_descripcion, 0, 4);
+            this.panel_btns.Controls.Add(this.txt_categoryedit, 0, 1);
+            this.panel_btns.Controls.Add(this.lbl_crear, 0, 3);
+            this.panel_btns.Controls.Add(this.rjButton2, 0, 2);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_btns.Location = new System.Drawing.Point(3, 364);
+            this.panel_btns.Location = new System.Drawing.Point(5, 108);
+            this.panel_btns.Margin = new System.Windows.Forms.Padding(5);
             this.panel_btns.Name = "panel_btns";
-            this.panel_btns.RowCount = 3;
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_btns.Size = new System.Drawing.Size(288, 150);
+            this.panel_btns.RowCount = 7;
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.panel_btns.Size = new System.Drawing.Size(284, 404);
             this.panel_btns.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gold;
+            this.label4.Location = new System.Drawing.Point(90, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 25);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "EDICION";
             // 
             // btn_actualizar
             // 
@@ -313,7 +349,7 @@
             this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
             this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(31, 105);
+            this.btn_actualizar.Location = new System.Drawing.Point(29, 354);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 37);
@@ -337,18 +373,18 @@
             this.btn_crear_categoria.ForeColor = System.Drawing.Color.Lime;
             this.btn_crear_categoria.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_categoria.Image")));
             this.btn_crear_categoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_crear_categoria.Location = new System.Drawing.Point(31, 52);
+            this.btn_crear_categoria.Location = new System.Drawing.Point(16, 288);
             this.btn_crear_categoria.Name = "btn_crear_categoria";
-            this.btn_crear_categoria.Size = new System.Drawing.Size(225, 31);
+            this.btn_crear_categoria.Size = new System.Drawing.Size(251, 31);
             this.btn_crear_categoria.TabIndex = 27;
             this.btn_crear_categoria.Text = "AGREGAR CATEGORIA";
-            this.btn_crear_categoria.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_crear_categoria.TextColor = System.Drawing.Color.Lime;
             this.btn_crear_categoria.UseVisualStyleBackColor = false;
             this.btn_crear_categoria.Click += new System.EventHandler(this.btn_crear_categoria_Click);
             // 
             // txt_descripcion
             // 
+            this.txt_descripcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_descripcion.BackColor = System.Drawing.SystemColors.Window;
             this.txt_descripcion.BorderColor = System.Drawing.Color.SeaGreen;
             this.txt_descripcion.BorderFocusColor = System.Drawing.Color.HotPink;
@@ -356,7 +392,7 @@
             this.txt_descripcion.BorderSize = 2;
             this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_descripcion.Location = new System.Drawing.Point(4, 4);
+            this.txt_descripcion.Location = new System.Drawing.Point(4, 232);
             this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txt_descripcion.Multiline = false;
             this.txt_descripcion.Name = "txt_descripcion";
@@ -364,27 +400,81 @@
             this.txt_descripcion.PasswordChar = false;
             this.txt_descripcion.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_descripcion.PlaceholderText = "";
-            this.txt_descripcion.Size = new System.Drawing.Size(278, 31);
+            this.txt_descripcion.Size = new System.Drawing.Size(276, 31);
             this.txt_descripcion.TabIndex = 39;
             this.txt_descripcion.Texts = "";
             this.txt_descripcion.UnderlinedStyle = false;
             // 
+            // txt_categoryedit
+            // 
+            this.txt_categoryedit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_categoryedit.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_categoryedit.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txt_categoryedit.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_categoryedit.BorderRadius = 0;
+            this.txt_categoryedit.BorderSize = 2;
+            this.txt_categoryedit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_categoryedit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_categoryedit.Location = new System.Drawing.Point(4, 61);
+            this.txt_categoryedit.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_categoryedit.Multiline = false;
+            this.txt_categoryedit.Name = "txt_categoryedit";
+            this.txt_categoryedit.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_categoryedit.PasswordChar = false;
+            this.txt_categoryedit.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_categoryedit.PlaceholderText = "";
+            this.txt_categoryedit.Size = new System.Drawing.Size(276, 31);
+            this.txt_categoryedit.TabIndex = 42;
+            this.txt_categoryedit.Texts = "";
+            this.txt_categoryedit.UnderlinedStyle = false;
+            // 
+            // lbl_crear
+            // 
+            this.lbl_crear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_crear.AutoSize = true;
+            this.lbl_crear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_crear.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_crear.Location = new System.Drawing.Point(19, 208);
+            this.lbl_crear.Name = "lbl_crear";
+            this.lbl_crear.Size = new System.Drawing.Size(246, 20);
+            this.lbl_crear.TabIndex = 44;
+            this.lbl_crear.Text = "CREAR NUEVA CATEGORÍA";
+            // 
+            // rjButton2
+            // 
+            this.rjButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rjButton2.BackColor = System.Drawing.Color.Transparent;
+            this.rjButton2.BackgroundColor = System.Drawing.Color.Transparent;
+            this.rjButton2.BorderColor = System.Drawing.Color.Lime;
+            this.rjButton2.BorderRadius = 6;
+            this.rjButton2.BorderSize = 2;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.ForeColor = System.Drawing.Color.Lime;
+            this.rjButton2.Image = ((System.Drawing.Image)(resources.GetObject("rjButton2.Image")));
+            this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rjButton2.Location = new System.Drawing.Point(23, 117);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(238, 28);
+            this.rjButton2.TabIndex = 41;
+            this.rjButton2.Text = "EDITAR CATEGORÍA";
+            this.rjButton2.TextColor = System.Drawing.Color.Lime;
+            this.rjButton2.UseVisualStyleBackColor = false;
+            // 
             // panel_filter
             // 
+            this.panel_filter.BackColor = System.Drawing.Color.Black;
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_filter.Controls.Add(this.label4, 0, 3);
             this.panel_filter.Controls.Add(this.lbl_search, 0, 0);
             this.panel_filter.Controls.Add(this.txt_search, 0, 1);
-            this.panel_filter.Controls.Add(this.txt_categoryedit, 0, 4);
-            this.panel_filter.Controls.Add(this.rjButton2, 0, 5);
             this.panel_filter.Controls.Add(this.txt_id, 0, 2);
-            this.panel_filter.Controls.Add(this.label5, 0, 7);
             this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_filter.Location = new System.Drawing.Point(0, 0);
-            this.panel_filter.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_filter.Location = new System.Drawing.Point(5, 5);
+            this.panel_filter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.panel_filter.Name = "panel_filter";
-            this.panel_filter.RowCount = 8;
+            this.panel_filter.RowCount = 3;
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
@@ -393,20 +483,8 @@
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
-            this.panel_filter.Size = new System.Drawing.Size(294, 361);
+            this.panel_filter.Size = new System.Drawing.Size(284, 98);
             this.panel_filter.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gold;
-            this.label4.Location = new System.Drawing.Point(95, 159);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 25);
-            this.label4.TabIndex = 43;
-            this.label4.Text = "EDICION";
             // 
             // lbl_search
             // 
@@ -414,7 +492,7 @@
             this.lbl_search.AutoSize = true;
             this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_search.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_search.Location = new System.Drawing.Point(78, 21);
+            this.lbl_search.Location = new System.Drawing.Point(73, 7);
             this.lbl_search.Name = "lbl_search";
             this.lbl_search.Size = new System.Drawing.Size(137, 25);
             this.lbl_search.TabIndex = 13;
@@ -424,55 +502,10 @@
             // 
             this.txt_search.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_search.Location = new System.Drawing.Point(21, 49);
+            this.txt_search.Location = new System.Drawing.Point(16, 35);
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(251, 29);
             this.txt_search.TabIndex = 11;
-            // 
-            // txt_categoryedit
-            // 
-            this.txt_categoryedit.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_categoryedit.BorderColor = System.Drawing.Color.SeaGreen;
-            this.txt_categoryedit.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_categoryedit.BorderRadius = 0;
-            this.txt_categoryedit.BorderSize = 2;
-            this.txt_categoryedit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_categoryedit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_categoryedit.Location = new System.Drawing.Point(4, 188);
-            this.txt_categoryedit.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_categoryedit.Multiline = false;
-            this.txt_categoryedit.Name = "txt_categoryedit";
-            this.txt_categoryedit.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_categoryedit.PasswordChar = false;
-            this.txt_categoryedit.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_categoryedit.PlaceholderText = "";
-            this.txt_categoryedit.Size = new System.Drawing.Size(278, 31);
-            this.txt_categoryedit.TabIndex = 42;
-            this.txt_categoryedit.Texts = "";
-            this.txt_categoryedit.UnderlinedStyle = false;
-            // 
-            // rjButton2
-            // 
-            this.rjButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rjButton2.BackColor = System.Drawing.Color.Transparent;
-            this.rjButton2.BackgroundColor = System.Drawing.Color.Transparent;
-            this.rjButton2.BorderColor = System.Drawing.Color.Lime;
-            this.rjButton2.BorderRadius = 7;
-            this.rjButton2.BorderSize = 2;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.Lime;
-            this.rjButton2.Image = ((System.Drawing.Image)(resources.GetObject("rjButton2.Image")));
-            this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rjButton2.Location = new System.Drawing.Point(34, 233);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(225, 28);
-            this.rjButton2.TabIndex = 41;
-            this.rjButton2.Text = "EDITAR CATEGORÍA";
-            this.rjButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton2.TextColor = System.Drawing.Color.Lime;
-            this.rjButton2.UseVisualStyleBackColor = false;
             // 
             // txt_id
             // 
@@ -483,7 +516,7 @@
             this.txt_id.BorderSize = 2;
             this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(4, 96);
+            this.txt_id.Location = new System.Drawing.Point(4, 68);
             this.txt_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_id.Multiline = false;
             this.txt_id.Name = "txt_id";
@@ -496,18 +529,6 @@
             this.txt_id.Texts = "0";
             this.txt_id.UnderlinedStyle = false;
             this.txt_id.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Gold;
-            this.label5.Location = new System.Drawing.Point(24, 341);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(246, 20);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "CREAR NUEVA CATEGORÍA";
             // 
             // grid_categoria
             // 
@@ -533,6 +554,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.grid_categoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grid_categoria.ColumnHeadersHeight = 30;
             this.grid_categoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.descripcion,
@@ -550,8 +572,8 @@
             this.grid_categoria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_categoria.EnableHeadersVisualStyles = false;
             this.grid_categoria.GridColor = System.Drawing.Color.Magenta;
-            this.grid_categoria.Location = new System.Drawing.Point(294, 0);
-            this.grid_categoria.Margin = new System.Windows.Forms.Padding(0);
+            this.grid_categoria.Location = new System.Drawing.Point(294, 5);
+            this.grid_categoria.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
             this.grid_categoria.MultiSelect = false;
             this.grid_categoria.Name = "grid_categoria";
             this.grid_categoria.ReadOnly = true;
@@ -567,7 +589,7 @@
             this.grid_categoria.RowTemplate.ReadOnly = true;
             this.grid_categoria.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.grid_categoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_categoria.Size = new System.Drawing.Size(688, 517);
+            this.grid_categoria.Size = new System.Drawing.Size(683, 507);
             this.grid_categoria.TabIndex = 17;
             this.grid_categoria.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_category_CellContentClick);
             // 
@@ -611,24 +633,25 @@
             this.btn_eliminar.ReadOnly = true;
             this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // formCat
+            // formCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 537);
             this.Controls.Add(this.panel_main);
-            this.Name = "formCat";
+            this.Name = "formCategorias";
             this.Text = "formCat";
             this.Load += new System.EventHandler(this.formCat_Load);
             this.menu_sesion.ResumeLayout(false);
             this.menu_Main.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
             this.panel_retoque.ResumeLayout(false);
-            this.panel_updates.ResumeLayout(false);
-            this.panel_updates.PerformLayout();
+            this.panel_bot.ResumeLayout(false);
+            this.panel_bot.PerformLayout();
             this.panel_mid.ResumeLayout(false);
             this.panel_midizq.ResumeLayout(false);
             this.panel_btns.ResumeLayout(false);
+            this.panel_btns.PerformLayout();
             this.panel_filter.ResumeLayout(false);
             this.panel_filter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_categoria)).EndInit();
@@ -659,7 +682,7 @@
         private RJCodeAdvance.RJControls.RJButton btn_crear_categoria;
         private CustomBox.RJControls.RJButton btn_actualizar;
         private System.Windows.Forms.TableLayoutPanel panel_filter;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_crear;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_search;
         private System.Windows.Forms.TextBox txt_search;
@@ -668,13 +691,13 @@
         private RJCodeAdvance.RJControls.RJButton rjButton2;
         private CustomBox.RJControls.RJTextBox txt_id;
         private System.Windows.Forms.DataGridView grid_categoria;
-        private System.Windows.Forms.Panel panel_updates;
-        private System.Windows.Forms.Label lbl_updatetime;
-        private System.Windows.Forms.Label lbl_updateversion;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
+        private System.Windows.Forms.TableLayoutPanel panel_bot;
+        private System.Windows.Forms.Label lbl_updateversion;
+        private System.Windows.Forms.Label lbl_updatetime;
     }
 }

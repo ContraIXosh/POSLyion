@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formConfiguracion));
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel_general = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_bot = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_updateversion = new System.Windows.Forms.Label();
+            this.lbl_updatetime = new System.Windows.Forms.Label();
             this.panel_main2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_ticket = new System.Windows.Forms.TableLayoutPanel();
             this.hoja_ticket = new System.Windows.Forms.Panel();
@@ -46,8 +49,6 @@
             this.pb_alignizq = new System.Windows.Forms.PictureBox();
             this.rb_alignizq = new CustomBox.RJControls.RJRadioButton();
             this.lbl_textalign = new System.Windows.Forms.Label();
-            this.cbox_plantilla = new CustomBox.RJControls.RJComboBox();
-            this.lbl_plantillafactura = new System.Windows.Forms.Label();
             this.lbl_config = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lbl_impresion = new System.Windows.Forms.Label();
@@ -63,19 +64,9 @@
             this.tbtn_logo = new CustomBox.RJControls.RJToggleButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_restaurar_bd = new CustomBox.RJControls.RJButton();
+            this.btb_backup_bd = new CustomBox.RJControls.RJButton();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
-            this.panel_bottomizq = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_tamaño = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_margender = new CustomBox.RJControls.RJTextBox();
-            this.txt_margenizq = new CustomBox.RJControls.RJTextBox();
-            this.cbox_tamtira = new CustomBox.RJControls.RJComboBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_izq = new System.Windows.Forms.Label();
-            this.lbl_der = new System.Windows.Forms.Label();
-            this.panel_updates = new System.Windows.Forms.Panel();
-            this.lbl_updatetime = new System.Windows.Forms.Label();
-            this.lbl_updateversion = new System.Windows.Forms.Label();
             this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,10 +81,24 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btb_backup_bd = new CustomBox.RJControls.RJButton();
-            this.btn_restaurar_bd = new CustomBox.RJControls.RJButton();
+            this.panel_bottomizq = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_tamaño = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_margender = new CustomBox.RJControls.RJTextBox();
+            this.txt_margenizq = new CustomBox.RJControls.RJTextBox();
+            this.cbox_tamtira = new CustomBox.RJControls.RJComboBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_izq = new System.Windows.Forms.Label();
+            this.lbl_der = new System.Windows.Forms.Label();
+            this.panel_labels = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_backupBD = new System.Windows.Forms.Label();
+            this.lbl_restaurarBD = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rjToggleButton1 = new CustomBox.RJControls.RJToggleButton();
+            this.lbl_mostrarme = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
             this.panel_general.SuspendLayout();
+            this.panel_bot.SuspendLayout();
             this.panel_main2.SuspendLayout();
             this.panel_ticket.SuspendLayout();
             this.panel_izq.SuspendLayout();
@@ -105,11 +110,11 @@
             this.panel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.menu_sesion.SuspendLayout();
             this.panel_bottomizq.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.panel_updates.SuspendLayout();
-            this.menu_sesion.SuspendLayout();
+            this.panel_labels.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -126,8 +131,8 @@
             // 
             this.panel_general.ColumnCount = 1;
             this.panel_general.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_general.Controls.Add(this.panel_bot, 0, 1);
             this.panel_general.Controls.Add(this.panel_main2, 0, 0);
-            this.panel_general.Controls.Add(this.panel_updates, 0, 1);
             this.panel_general.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_general.Location = new System.Drawing.Point(0, 0);
             this.panel_general.Name = "panel_general";
@@ -138,8 +143,51 @@
             this.panel_general.Size = new System.Drawing.Size(982, 537);
             this.panel_general.TabIndex = 2;
             // 
+            // panel_bot
+            // 
+            this.panel_bot.BackColor = System.Drawing.Color.Black;
+            this.panel_bot.ColumnCount = 3;
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.panel_bot.Controls.Add(this.lbl_updateversion, 2, 0);
+            this.panel_bot.Controls.Add(this.lbl_updatetime, 1, 0);
+            this.panel_bot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_bot.Location = new System.Drawing.Point(0, 517);
+            this.panel_bot.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_bot.Name = "panel_bot";
+            this.panel_bot.RowCount = 1;
+            this.panel_bot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_bot.Size = new System.Drawing.Size(982, 20);
+            this.panel_bot.TabIndex = 4;
+            // 
+            // lbl_updateversion
+            // 
+            this.lbl_updateversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_updateversion.AutoSize = true;
+            this.lbl_updateversion.BackColor = System.Drawing.Color.Black;
+            this.lbl_updateversion.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_updateversion.Location = new System.Drawing.Point(785, 3);
+            this.lbl_updateversion.Name = "lbl_updateversion";
+            this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
+            this.lbl_updateversion.TabIndex = 2;
+            this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
+            // 
+            // lbl_updatetime
+            // 
+            this.lbl_updatetime.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_updatetime.AutoSize = true;
+            this.lbl_updatetime.BackColor = System.Drawing.Color.Black;
+            this.lbl_updatetime.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_updatetime.Location = new System.Drawing.Point(535, 3);
+            this.lbl_updatetime.Name = "lbl_updatetime";
+            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
+            this.lbl_updatetime.TabIndex = 3;
+            this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
+            // 
             // panel_main2
             // 
+            this.panel_main2.BackColor = System.Drawing.Color.Crimson;
             this.panel_main2.ColumnCount = 2;
             this.panel_main2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.94297F));
             this.panel_main2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.05703F));
@@ -165,7 +213,8 @@
             this.panel_ticket.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_ticket.Controls.Add(this.hoja_ticket, 1, 1);
             this.panel_ticket.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_ticket.Location = new System.Drawing.Point(571, 3);
+            this.panel_ticket.Location = new System.Drawing.Point(568, 5);
+            this.panel_ticket.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
             this.panel_ticket.Name = "panel_ticket";
             this.panel_ticket.RowCount = 3;
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
@@ -175,7 +224,7 @@
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_ticket.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_ticket.Size = new System.Drawing.Size(408, 511);
+            this.panel_ticket.Size = new System.Drawing.Size(409, 507);
             this.panel_ticket.TabIndex = 1;
             // 
             // hoja_ticket
@@ -184,7 +233,7 @@
             this.hoja_ticket.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hoja_ticket.Location = new System.Drawing.Point(105, 28);
             this.hoja_ticket.Name = "hoja_ticket";
-            this.hoja_ticket.Size = new System.Drawing.Size(198, 453);
+            this.hoja_ticket.Size = new System.Drawing.Size(198, 450);
             this.hoja_ticket.TabIndex = 0;
             // 
             // panel_izq
@@ -200,9 +249,9 @@
             this.panel_izq.Margin = new System.Windows.Forms.Padding(0);
             this.panel_izq.Name = "panel_izq";
             this.panel_izq.RowCount = 3;
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.90476F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
             this.panel_izq.Size = new System.Drawing.Size(568, 517);
             this.panel_izq.TabIndex = 2;
             // 
@@ -218,20 +267,18 @@
             this.panel5.Controls.Add(this.pb_alignizq);
             this.panel5.Controls.Add(this.rb_alignizq);
             this.panel5.Controls.Add(this.lbl_textalign);
-            this.panel5.Controls.Add(this.cbox_plantilla);
-            this.panel5.Controls.Add(this.lbl_plantillafactura);
             this.panel5.Controls.Add(this.lbl_config);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(562, 174);
+            this.panel5.Size = new System.Drawing.Size(562, 92);
             this.panel5.TabIndex = 4;
             // 
             // pb_alignjustify
             // 
             this.pb_alignjustify.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_alignjustify.BackgroundImage")));
             this.pb_alignjustify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pb_alignjustify.Location = new System.Drawing.Point(300, 117);
+            this.pb_alignjustify.Location = new System.Drawing.Point(299, 53);
             this.pb_alignjustify.Name = "pb_alignjustify";
             this.pb_alignjustify.Size = new System.Drawing.Size(40, 36);
             this.pb_alignjustify.TabIndex = 64;
@@ -241,7 +288,7 @@
             // 
             this.pb_alignder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_alignder.BackgroundImage")));
             this.pb_alignder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pb_alignder.Location = new System.Drawing.Point(221, 117);
+            this.pb_alignder.Location = new System.Drawing.Point(220, 53);
             this.pb_alignder.Name = "pb_alignder";
             this.pb_alignder.Size = new System.Drawing.Size(40, 36);
             this.pb_alignder.TabIndex = 63;
@@ -251,7 +298,7 @@
             // 
             this.pb_aligncenter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_aligncenter.BackgroundImage")));
             this.pb_aligncenter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pb_aligncenter.Location = new System.Drawing.Point(141, 117);
+            this.pb_aligncenter.Location = new System.Drawing.Point(140, 53);
             this.pb_aligncenter.Name = "pb_aligncenter";
             this.pb_aligncenter.Size = new System.Drawing.Size(40, 36);
             this.pb_aligncenter.TabIndex = 62;
@@ -261,7 +308,7 @@
             // 
             this.rb_alignright.AutoSize = true;
             this.rb_alignright.CheckedColor = System.Drawing.Color.MediumSlateBlue;
-            this.rb_alignright.Location = new System.Drawing.Point(198, 124);
+            this.rb_alignright.Location = new System.Drawing.Point(197, 60);
             this.rb_alignright.MinimumSize = new System.Drawing.Size(0, 21);
             this.rb_alignright.Name = "rb_alignright";
             this.rb_alignright.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -275,7 +322,7 @@
             // 
             this.rb_alignjustify.AutoSize = true;
             this.rb_alignjustify.CheckedColor = System.Drawing.Color.MediumSlateBlue;
-            this.rb_alignjustify.Location = new System.Drawing.Point(278, 124);
+            this.rb_alignjustify.Location = new System.Drawing.Point(277, 60);
             this.rb_alignjustify.MinimumSize = new System.Drawing.Size(0, 21);
             this.rb_alignjustify.Name = "rb_alignjustify";
             this.rb_alignjustify.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -289,7 +336,7 @@
             // 
             this.rb_aligncenter.AutoSize = true;
             this.rb_aligncenter.CheckedColor = System.Drawing.Color.MediumSlateBlue;
-            this.rb_aligncenter.Location = new System.Drawing.Point(118, 124);
+            this.rb_aligncenter.Location = new System.Drawing.Point(117, 60);
             this.rb_aligncenter.MinimumSize = new System.Drawing.Size(0, 21);
             this.rb_aligncenter.Name = "rb_aligncenter";
             this.rb_aligncenter.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -303,7 +350,7 @@
             // 
             this.pb_alignizq.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pb_alignizq.BackgroundImage")));
             this.pb_alignizq.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pb_alignizq.Location = new System.Drawing.Point(62, 117);
+            this.pb_alignizq.Location = new System.Drawing.Point(61, 53);
             this.pb_alignizq.Name = "pb_alignizq";
             this.pb_alignizq.Size = new System.Drawing.Size(40, 36);
             this.pb_alignizq.TabIndex = 58;
@@ -313,7 +360,7 @@
             // 
             this.rb_alignizq.AutoSize = true;
             this.rb_alignizq.CheckedColor = System.Drawing.Color.MediumSlateBlue;
-            this.rb_alignizq.Location = new System.Drawing.Point(39, 124);
+            this.rb_alignizq.Location = new System.Drawing.Point(38, 60);
             this.rb_alignizq.MinimumSize = new System.Drawing.Size(0, 21);
             this.rb_alignizq.Name = "rb_alignizq";
             this.rb_alignizq.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -328,41 +375,11 @@
             this.lbl_textalign.AutoSize = true;
             this.lbl_textalign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_textalign.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_textalign.Location = new System.Drawing.Point(35, 95);
+            this.lbl_textalign.Location = new System.Drawing.Point(31, 30);
             this.lbl_textalign.Name = "lbl_textalign";
             this.lbl_textalign.Size = new System.Drawing.Size(291, 20);
             this.lbl_textalign.TabIndex = 56;
             this.lbl_textalign.Text = "Elige la alineación del texto de la factura";
-            // 
-            // cbox_plantilla
-            // 
-            this.cbox_plantilla.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_plantilla.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_plantilla.BorderSize = 1;
-            this.cbox_plantilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_plantilla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_plantilla.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_plantilla.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_plantilla.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbox_plantilla.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_plantilla.Location = new System.Drawing.Point(39, 57);
-            this.cbox_plantilla.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbox_plantilla.Name = "cbox_plantilla";
-            this.cbox_plantilla.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_plantilla.Size = new System.Drawing.Size(200, 30);
-            this.cbox_plantilla.TabIndex = 55;
-            this.cbox_plantilla.Texts = "";
-            // 
-            // lbl_plantillafactura
-            // 
-            this.lbl_plantillafactura.AutoSize = true;
-            this.lbl_plantillafactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_plantillafactura.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_plantillafactura.Location = new System.Drawing.Point(35, 28);
-            this.lbl_plantillafactura.Name = "lbl_plantillafactura";
-            this.lbl_plantillafactura.Size = new System.Drawing.Size(346, 20);
-            this.lbl_plantillafactura.TabIndex = 54;
-            this.lbl_plantillafactura.Text = "Elige la plantilla para la impresión de tus factuas";
             // 
             // lbl_config
             // 
@@ -378,6 +395,9 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Controls.Add(this.lbl_mostrarme);
+            this.panel6.Controls.Add(this.rjToggleButton1);
+            this.panel6.Controls.Add(this.panel_bottomizq);
             this.panel6.Controls.Add(this.lbl_impresion);
             this.panel6.Controls.Add(this.lbl_textlogo);
             this.panel6.Controls.Add(this.lbl_txtlogo);
@@ -390,10 +410,10 @@
             this.panel6.Controls.Add(this.lbl_mostrarlogo);
             this.panel6.Controls.Add(this.tbtn_logo);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 180);
+            this.panel6.Location = new System.Drawing.Point(3, 98);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(562, 229);
+            this.panel6.Size = new System.Drawing.Size(562, 317);
             this.panel6.TabIndex = 3;
             // 
             // lbl_impresion
@@ -412,7 +432,7 @@
             this.lbl_textlogo.AutoSize = true;
             this.lbl_textlogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_textlogo.ForeColor = System.Drawing.Color.Silver;
-            this.lbl_textlogo.Location = new System.Drawing.Point(54, 156);
+            this.lbl_textlogo.Location = new System.Drawing.Point(54, 184);
             this.lbl_textlogo.Name = "lbl_textlogo";
             this.lbl_textlogo.Size = new System.Drawing.Size(179, 16);
             this.lbl_textlogo.TabIndex = 85;
@@ -423,7 +443,7 @@
             this.lbl_txtlogo.AutoSize = true;
             this.lbl_txtlogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_txtlogo.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_txtlogo.Location = new System.Drawing.Point(31, 128);
+            this.lbl_txtlogo.Location = new System.Drawing.Point(31, 156);
             this.lbl_txtlogo.Name = "lbl_txtlogo";
             this.lbl_txtlogo.Size = new System.Drawing.Size(320, 20);
             this.lbl_txtlogo.TabIndex = 84;
@@ -504,7 +524,7 @@
             this.lbl_mostrarlogo.AutoSize = true;
             this.lbl_mostrarlogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_mostrarlogo.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_mostrarlogo.Location = new System.Drawing.Point(87, 180);
+            this.lbl_mostrarlogo.Location = new System.Drawing.Point(78, 208);
             this.lbl_mostrarlogo.Name = "lbl_mostrarlogo";
             this.lbl_mostrarlogo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbl_mostrarlogo.Size = new System.Drawing.Size(97, 20);
@@ -514,7 +534,7 @@
             // tbtn_logo
             // 
             this.tbtn_logo.AutoSize = true;
-            this.tbtn_logo.Location = new System.Drawing.Point(35, 178);
+            this.tbtn_logo.Location = new System.Drawing.Point(29, 206);
             this.tbtn_logo.MinimumSize = new System.Drawing.Size(45, 22);
             this.tbtn_logo.Name = "tbtn_logo";
             this.tbtn_logo.OffBackColor = System.Drawing.Color.Gray;
@@ -530,15 +550,15 @@
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.panel_bottomizq, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.panel_labels, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 412);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 418);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(568, 105);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(568, 99);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -553,221 +573,75 @@
             this.tableLayoutPanel2.Controls.Add(this.btb_backup_bd, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 63);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 59);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(568, 42);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(562, 37);
             this.tableLayoutPanel2.TabIndex = 75;
+            // 
+            // btn_restaurar_bd
+            // 
+            this.btn_restaurar_bd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_restaurar_bd.BackColor = System.Drawing.Color.Transparent;
+            this.btn_restaurar_bd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_restaurar_bd.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_restaurar_bd.BorderRadius = 6;
+            this.btn_restaurar_bd.BorderSize = 2;
+            this.btn_restaurar_bd.FlatAppearance.BorderSize = 0;
+            this.btn_restaurar_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_restaurar_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_restaurar_bd.ForeColor = System.Drawing.Color.LightCyan;
+            this.btn_restaurar_bd.Location = new System.Drawing.Point(190, 3);
+            this.btn_restaurar_bd.Name = "btn_restaurar_bd";
+            this.btn_restaurar_bd.Size = new System.Drawing.Size(181, 31);
+            this.btn_restaurar_bd.TabIndex = 76;
+            this.btn_restaurar_bd.Text = "Restaurar BD";
+            this.btn_restaurar_bd.TextColor = System.Drawing.Color.LightCyan;
+            this.btn_restaurar_bd.UseVisualStyleBackColor = false;
+            this.btn_restaurar_bd.Click += new System.EventHandler(this.btn_restaurar_bd_Click);
+            // 
+            // btb_backup_bd
+            // 
+            this.btb_backup_bd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btb_backup_bd.BackColor = System.Drawing.Color.Transparent;
+            this.btb_backup_bd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btb_backup_bd.BorderColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.BorderRadius = 6;
+            this.btb_backup_bd.BorderSize = 2;
+            this.btb_backup_bd.FlatAppearance.BorderSize = 0;
+            this.btb_backup_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btb_backup_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btb_backup_bd.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.Location = new System.Drawing.Point(3, 3);
+            this.btb_backup_bd.Name = "btb_backup_bd";
+            this.btb_backup_bd.Size = new System.Drawing.Size(181, 31);
+            this.btb_backup_bd.TabIndex = 75;
+            this.btb_backup_bd.Text = "Backup BD";
+            this.btb_backup_bd.TextColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.UseVisualStyleBackColor = false;
+            this.btb_backup_bd.Click += new System.EventHandler(this.btb_exportar_bd_Click);
             // 
             // btn_guardar
             // 
             this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
             this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BorderColor = System.Drawing.Color.SpringGreen;
-            this.btn_guardar.BorderRadius = 7;
+            this.btn_guardar.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btn_guardar.BorderRadius = 6;
             this.btn_guardar.BorderSize = 2;
             this.btn_guardar.FlatAppearance.BorderSize = 0;
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.ForeColor = System.Drawing.Color.SpringGreen;
-            this.btn_guardar.Location = new System.Drawing.Point(416, 3);
+            this.btn_guardar.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btn_guardar.Location = new System.Drawing.Point(404, 3);
             this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(113, 32);
+            this.btn_guardar.Size = new System.Drawing.Size(128, 31);
             this.btn_guardar.TabIndex = 74;
             this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.TextColor = System.Drawing.Color.SpringGreen;
+            this.btn_guardar.TextColor = System.Drawing.Color.ForestGreen;
             this.btn_guardar.UseVisualStyleBackColor = false;
-            // 
-            // panel_bottomizq
-            // 
-            this.panel_bottomizq.BackColor = System.Drawing.Color.Black;
-            this.panel_bottomizq.ColumnCount = 2;
-            this.panel_bottomizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_bottomizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_bottomizq.Controls.Add(this.lbl_tamaño, 0, 0);
-            this.panel_bottomizq.Controls.Add(this.tableLayoutPanel3, 1, 1);
-            this.panel_bottomizq.Controls.Add(this.cbox_tamtira, 0, 1);
-            this.panel_bottomizq.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.panel_bottomizq.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_bottomizq.Location = new System.Drawing.Point(2, 0);
-            this.panel_bottomizq.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.panel_bottomizq.Name = "panel_bottomizq";
-            this.panel_bottomizq.RowCount = 2;
-            this.panel_bottomizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.panel_bottomizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.panel_bottomizq.Size = new System.Drawing.Size(564, 61);
-            this.panel_bottomizq.TabIndex = 76;
-            // 
-            // lbl_tamaño
-            // 
-            this.lbl_tamaño.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_tamaño.AutoSize = true;
-            this.lbl_tamaño.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tamaño.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_tamaño.Location = new System.Drawing.Point(79, 4);
-            this.lbl_tamaño.Name = "lbl_tamaño";
-            this.lbl_tamaño.Size = new System.Drawing.Size(124, 20);
-            this.lbl_tamaño.TabIndex = 75;
-            this.lbl_tamaño.Text = "Tamaño de tirilla";
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Black;
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.txt_margender, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.txt_margenizq, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(282, 24);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(282, 37);
-            this.tableLayoutPanel3.TabIndex = 80;
-            // 
-            // txt_margender
-            // 
-            this.txt_margender.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_margender.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_margender.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txt_margender.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_margender.BorderRadius = 0;
-            this.txt_margender.BorderSize = 2;
-            this.txt_margender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_margender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_margender.Location = new System.Drawing.Point(43, 2);
-            this.txt_margender.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_margender.Multiline = false;
-            this.txt_margender.Name = "txt_margender";
-            this.txt_margender.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_margender.PasswordChar = false;
-            this.txt_margender.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_margender.PlaceholderText = "";
-            this.txt_margender.Size = new System.Drawing.Size(55, 31);
-            this.txt_margender.TabIndex = 77;
-            this.txt_margender.Texts = "";
-            this.txt_margender.UnderlinedStyle = false;
-            // 
-            // txt_margenizq
-            // 
-            this.txt_margenizq.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_margenizq.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_margenizq.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txt_margenizq.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_margenizq.BorderRadius = 0;
-            this.txt_margenizq.BorderSize = 2;
-            this.txt_margenizq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_margenizq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_margenizq.Location = new System.Drawing.Point(184, 2);
-            this.txt_margenizq.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_margenizq.Multiline = false;
-            this.txt_margenizq.Name = "txt_margenizq";
-            this.txt_margenizq.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_margenizq.PasswordChar = false;
-            this.txt_margenizq.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_margenizq.PlaceholderText = "";
-            this.txt_margenizq.Size = new System.Drawing.Size(55, 31);
-            this.txt_margenizq.TabIndex = 76;
-            this.txt_margenizq.Texts = "";
-            this.txt_margenizq.UnderlinedStyle = false;
-            // 
-            // cbox_tamtira
-            // 
-            this.cbox_tamtira.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbox_tamtira.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_tamtira.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_tamtira.BorderSize = 2;
-            this.cbox_tamtira.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_tamtira.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_tamtira.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_tamtira.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbox_tamtira.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbox_tamtira.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_tamtira.Location = new System.Drawing.Point(41, 26);
-            this.cbox_tamtira.Margin = new System.Windows.Forms.Padding(2);
-            this.cbox_tamtira.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbox_tamtira.Name = "cbox_tamtira";
-            this.cbox_tamtira.Padding = new System.Windows.Forms.Padding(2);
-            this.cbox_tamtira.Size = new System.Drawing.Size(200, 30);
-            this.cbox_tamtira.TabIndex = 74;
-            this.cbox_tamtira.Texts = "";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Black;
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.lbl_izq, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.lbl_der, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(282, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(282, 24);
-            this.tableLayoutPanel4.TabIndex = 79;
-            // 
-            // lbl_izq
-            // 
-            this.lbl_izq.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_izq.AutoSize = true;
-            this.lbl_izq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_izq.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_izq.Location = new System.Drawing.Point(25, 4);
-            this.lbl_izq.Name = "lbl_izq";
-            this.lbl_izq.Size = new System.Drawing.Size(91, 20);
-            this.lbl_izq.TabIndex = 78;
-            this.lbl_izq.Text = "Margen izq.";
-            // 
-            // lbl_der
-            // 
-            this.lbl_der.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_der.AutoSize = true;
-            this.lbl_der.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_der.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.lbl_der.Location = new System.Drawing.Point(164, 4);
-            this.lbl_der.Name = "lbl_der";
-            this.lbl_der.Size = new System.Drawing.Size(94, 20);
-            this.lbl_der.TabIndex = 79;
-            this.lbl_der.Text = "Margen der.";
-            // 
-            // panel_updates
-            // 
-            this.panel_updates.BackColor = System.Drawing.Color.Khaki;
-            this.panel_updates.Controls.Add(this.lbl_updatetime);
-            this.panel_updates.Controls.Add(this.lbl_updateversion);
-            this.panel_updates.Location = new System.Drawing.Point(0, 517);
-            this.panel_updates.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_updates.Name = "panel_updates";
-            this.panel_updates.Size = new System.Drawing.Size(982, 20);
-            this.panel_updates.TabIndex = 2;
-            // 
-            // lbl_updatetime
-            // 
-            this.lbl_updatetime.AutoSize = true;
-            this.lbl_updatetime.Location = new System.Drawing.Point(633, 3);
-            this.lbl_updatetime.Name = "lbl_updatetime";
-            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
-            this.lbl_updatetime.TabIndex = 1;
-            this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
-            // 
-            // lbl_updateversion
-            // 
-            this.lbl_updateversion.AutoSize = true;
-            this.lbl_updateversion.Location = new System.Drawing.Point(863, 2);
-            this.lbl_updateversion.Name = "lbl_updateversion";
-            this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
-            this.lbl_updateversion.TabIndex = 0;
-            this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
             // 
             // menu_sesion
             // 
@@ -855,47 +729,246 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
-            // btb_backup_bd
+            // panel_bottomizq
             // 
-            this.btb_backup_bd.BackColor = System.Drawing.Color.Transparent;
-            this.btb_backup_bd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btb_backup_bd.BorderColor = System.Drawing.Color.SpringGreen;
-            this.btb_backup_bd.BorderRadius = 7;
-            this.btb_backup_bd.BorderSize = 2;
-            this.btb_backup_bd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btb_backup_bd.FlatAppearance.BorderSize = 0;
-            this.btb_backup_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btb_backup_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btb_backup_bd.ForeColor = System.Drawing.Color.SpringGreen;
-            this.btb_backup_bd.Location = new System.Drawing.Point(3, 3);
-            this.btb_backup_bd.Name = "btb_backup_bd";
-            this.btb_backup_bd.Size = new System.Drawing.Size(183, 36);
-            this.btb_backup_bd.TabIndex = 75;
-            this.btb_backup_bd.Text = "Backup BD";
-            this.btb_backup_bd.TextColor = System.Drawing.Color.SpringGreen;
-            this.btb_backup_bd.UseVisualStyleBackColor = false;
-            this.btb_backup_bd.Click += new System.EventHandler(this.btb_exportar_bd_Click);
+            this.panel_bottomizq.BackColor = System.Drawing.Color.Black;
+            this.panel_bottomizq.ColumnCount = 2;
+            this.panel_bottomizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_bottomizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_bottomizq.Controls.Add(this.lbl_tamaño, 0, 0);
+            this.panel_bottomizq.Controls.Add(this.tableLayoutPanel3, 1, 1);
+            this.panel_bottomizq.Controls.Add(this.cbox_tamtira, 0, 1);
+            this.panel_bottomizq.Controls.Add(this.tableLayoutPanel4, 1, 0);
+            this.panel_bottomizq.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_bottomizq.Location = new System.Drawing.Point(0, 234);
+            this.panel_bottomizq.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            this.panel_bottomizq.Name = "panel_bottomizq";
+            this.panel_bottomizq.RowCount = 2;
+            this.panel_bottomizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.panel_bottomizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.panel_bottomizq.Size = new System.Drawing.Size(562, 83);
+            this.panel_bottomizq.TabIndex = 87;
             // 
-            // btn_restaurar_bd
+            // lbl_tamaño
             // 
-            this.btn_restaurar_bd.BackColor = System.Drawing.Color.Transparent;
-            this.btn_restaurar_bd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_restaurar_bd.BorderColor = System.Drawing.Color.SpringGreen;
-            this.btn_restaurar_bd.BorderRadius = 7;
-            this.btn_restaurar_bd.BorderSize = 2;
-            this.btn_restaurar_bd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_restaurar_bd.FlatAppearance.BorderSize = 0;
-            this.btn_restaurar_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_restaurar_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_restaurar_bd.ForeColor = System.Drawing.Color.SpringGreen;
-            this.btn_restaurar_bd.Location = new System.Drawing.Point(192, 3);
-            this.btn_restaurar_bd.Name = "btn_restaurar_bd";
-            this.btn_restaurar_bd.Size = new System.Drawing.Size(183, 36);
-            this.btn_restaurar_bd.TabIndex = 76;
-            this.btn_restaurar_bd.Text = "Restaurar BD";
-            this.btn_restaurar_bd.TextColor = System.Drawing.Color.SpringGreen;
-            this.btn_restaurar_bd.UseVisualStyleBackColor = false;
-            this.btn_restaurar_bd.Click += new System.EventHandler(this.btn_restaurar_bd_Click);
+            this.lbl_tamaño.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_tamaño.AutoSize = true;
+            this.lbl_tamaño.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tamaño.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lbl_tamaño.Location = new System.Drawing.Point(78, 13);
+            this.lbl_tamaño.Name = "lbl_tamaño";
+            this.lbl_tamaño.Size = new System.Drawing.Size(124, 20);
+            this.lbl_tamaño.TabIndex = 75;
+            this.lbl_tamaño.Text = "Tamaño de tirilla";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.txt_margender, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txt_margenizq, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(281, 33);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(281, 50);
+            this.tableLayoutPanel3.TabIndex = 80;
+            // 
+            // txt_margender
+            // 
+            this.txt_margender.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_margender.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_margender.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_margender.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_margender.BorderRadius = 0;
+            this.txt_margender.BorderSize = 2;
+            this.txt_margender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_margender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_margender.Location = new System.Drawing.Point(42, 2);
+            this.txt_margender.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_margender.Multiline = false;
+            this.txt_margender.Name = "txt_margender";
+            this.txt_margender.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_margender.PasswordChar = false;
+            this.txt_margender.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_margender.PlaceholderText = "";
+            this.txt_margender.Size = new System.Drawing.Size(55, 31);
+            this.txt_margender.TabIndex = 77;
+            this.txt_margender.Texts = "";
+            this.txt_margender.UnderlinedStyle = false;
+            // 
+            // txt_margenizq
+            // 
+            this.txt_margenizq.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_margenizq.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_margenizq.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txt_margenizq.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_margenizq.BorderRadius = 0;
+            this.txt_margenizq.BorderSize = 2;
+            this.txt_margenizq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_margenizq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_margenizq.Location = new System.Drawing.Point(183, 2);
+            this.txt_margenizq.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_margenizq.Multiline = false;
+            this.txt_margenizq.Name = "txt_margenizq";
+            this.txt_margenizq.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_margenizq.PasswordChar = false;
+            this.txt_margenizq.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_margenizq.PlaceholderText = "";
+            this.txt_margenizq.Size = new System.Drawing.Size(55, 31);
+            this.txt_margenizq.TabIndex = 76;
+            this.txt_margenizq.Texts = "";
+            this.txt_margenizq.UnderlinedStyle = false;
+            // 
+            // cbox_tamtira
+            // 
+            this.cbox_tamtira.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbox_tamtira.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbox_tamtira.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_tamtira.BorderSize = 2;
+            this.cbox_tamtira.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbox_tamtira.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbox_tamtira.ForeColor = System.Drawing.Color.DimGray;
+            this.cbox_tamtira.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_tamtira.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbox_tamtira.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbox_tamtira.Location = new System.Drawing.Point(40, 35);
+            this.cbox_tamtira.Margin = new System.Windows.Forms.Padding(2);
+            this.cbox_tamtira.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbox_tamtira.Name = "cbox_tamtira";
+            this.cbox_tamtira.Padding = new System.Windows.Forms.Padding(2);
+            this.cbox_tamtira.Size = new System.Drawing.Size(200, 30);
+            this.cbox_tamtira.TabIndex = 74;
+            this.cbox_tamtira.Texts = "";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.lbl_izq, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lbl_der, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(281, 0);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(281, 33);
+            this.tableLayoutPanel4.TabIndex = 79;
+            // 
+            // lbl_izq
+            // 
+            this.lbl_izq.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_izq.AutoSize = true;
+            this.lbl_izq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_izq.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lbl_izq.Location = new System.Drawing.Point(24, 13);
+            this.lbl_izq.Name = "lbl_izq";
+            this.lbl_izq.Size = new System.Drawing.Size(91, 20);
+            this.lbl_izq.TabIndex = 78;
+            this.lbl_izq.Text = "Margen izq.";
+            // 
+            // lbl_der
+            // 
+            this.lbl_der.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_der.AutoSize = true;
+            this.lbl_der.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_der.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lbl_der.Location = new System.Drawing.Point(163, 13);
+            this.lbl_der.Name = "lbl_der";
+            this.lbl_der.Size = new System.Drawing.Size(94, 20);
+            this.lbl_der.TabIndex = 79;
+            this.lbl_der.Text = "Margen der.";
+            // 
+            // panel_labels
+            // 
+            this.panel_labels.BackColor = System.Drawing.Color.Black;
+            this.panel_labels.ColumnCount = 3;
+            this.panel_labels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_labels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_labels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_labels.Controls.Add(this.label1, 0, 0);
+            this.panel_labels.Controls.Add(this.lbl_backupBD, 0, 1);
+            this.panel_labels.Controls.Add(this.lbl_restaurarBD, 1, 1);
+            this.panel_labels.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_labels.Location = new System.Drawing.Point(5, 0);
+            this.panel_labels.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.panel_labels.Name = "panel_labels";
+            this.panel_labels.RowCount = 2;
+            this.panel_labels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_labels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_labels.Size = new System.Drawing.Size(558, 59);
+            this.panel_labels.TabIndex = 76;
+            // 
+            // lbl_backupBD
+            // 
+            this.lbl_backupBD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_backupBD.AutoSize = true;
+            this.lbl_backupBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_backupBD.ForeColor = System.Drawing.Color.White;
+            this.lbl_backupBD.Location = new System.Drawing.Point(62, 35);
+            this.lbl_backupBD.Name = "lbl_backupBD";
+            this.lbl_backupBD.Size = new System.Drawing.Size(62, 18);
+            this.lbl_backupBD.TabIndex = 0;
+            this.lbl_backupBD.Text = "Backup ";
+            // 
+            // lbl_restaurarBD
+            // 
+            this.lbl_restaurarBD.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_restaurarBD.AutoSize = true;
+            this.lbl_restaurarBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_restaurarBD.ForeColor = System.Drawing.Color.White;
+            this.lbl_restaurarBD.Location = new System.Drawing.Point(231, 35);
+            this.lbl_restaurarBD.Name = "lbl_restaurarBD";
+            this.lbl_restaurarBD.Size = new System.Drawing.Size(96, 18);
+            this.lbl_restaurarBD.TabIndex = 1;
+            this.lbl_restaurarBD.Text = "Restauración";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Crimson;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 29);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Base de datos";
+            // 
+            // rjToggleButton1
+            // 
+            this.rjToggleButton1.AutoSize = true;
+            this.rjToggleButton1.Location = new System.Drawing.Point(29, 131);
+            this.rjToggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButton1.Name = "rjToggleButton1";
+            this.rjToggleButton1.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButton1.OnBackColor = System.Drawing.Color.Crimson;
+            this.rjToggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButton1.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButton1.TabIndex = 88;
+            this.rjToggleButton1.UseVisualStyleBackColor = true;
+            // 
+            // lbl_mostrarme
+            // 
+            this.lbl_mostrarme.AutoSize = true;
+            this.lbl_mostrarme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mostrarme.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.lbl_mostrarme.Location = new System.Drawing.Point(83, 133);
+            this.lbl_mostrarme.Name = "lbl_mostrarme";
+            this.lbl_mostrarme.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lbl_mostrarme.Size = new System.Drawing.Size(110, 20);
+            this.lbl_mostrarme.TabIndex = 89;
+            this.lbl_mostrarme.Text = "Mostrar precio";
             // 
             // formConfiguracion
             // 
@@ -907,6 +980,8 @@
             this.Text = "formConfig";
             this.panel_main.ResumeLayout(false);
             this.panel_general.ResumeLayout(false);
+            this.panel_bot.ResumeLayout(false);
+            this.panel_bot.PerformLayout();
             this.panel_main2.ResumeLayout(false);
             this.panel_ticket.ResumeLayout(false);
             this.panel_izq.ResumeLayout(false);
@@ -920,14 +995,14 @@
             this.panel6.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.menu_sesion.ResumeLayout(false);
             this.panel_bottomizq.ResumeLayout(false);
             this.panel_bottomizq.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.panel_updates.ResumeLayout(false);
-            this.panel_updates.PerformLayout();
-            this.menu_sesion.ResumeLayout(false);
+            this.panel_labels.ResumeLayout(false);
+            this.panel_labels.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -936,9 +1011,6 @@
 
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.TableLayoutPanel panel_general;
-        private System.Windows.Forms.Panel panel_updates;
-        private System.Windows.Forms.Label lbl_updatetime;
-        private System.Windows.Forms.Label lbl_updateversion;
         private RJCodeAdvance.RJControls.RJDropdownMenu menu_sesion;
         private System.Windows.Forms.ToolStripMenuItem verPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inicioAdministradorToolStripMenuItem;
@@ -967,8 +1039,6 @@
         private System.Windows.Forms.PictureBox pb_alignizq;
         private CustomBox.RJControls.RJRadioButton rb_alignizq;
         private System.Windows.Forms.Label lbl_textalign;
-        private CustomBox.RJControls.RJComboBox cbox_plantilla;
-        private System.Windows.Forms.Label lbl_plantillafactura;
         private System.Windows.Forms.Label lbl_config;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lbl_impresion;
@@ -985,6 +1055,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private CustomBox.RJControls.RJButton btn_guardar;
+        private CustomBox.RJControls.RJButton btn_restaurar_bd;
+        private CustomBox.RJControls.RJButton btb_backup_bd;
+        private System.Windows.Forms.TableLayoutPanel panel_bot;
+        private System.Windows.Forms.Label lbl_updateversion;
+        private System.Windows.Forms.Label lbl_updatetime;
         private System.Windows.Forms.TableLayoutPanel panel_bottomizq;
         private System.Windows.Forms.Label lbl_tamaño;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -994,7 +1069,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lbl_izq;
         private System.Windows.Forms.Label lbl_der;
-        private CustomBox.RJControls.RJButton btn_restaurar_bd;
-        private CustomBox.RJControls.RJButton btb_backup_bd;
+        private System.Windows.Forms.TableLayoutPanel panel_labels;
+        private System.Windows.Forms.Label lbl_mostrarme;
+        private CustomBox.RJControls.RJToggleButton rjToggleButton1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_backupBD;
+        private System.Windows.Forms.Label lbl_restaurarBD;
     }
 }

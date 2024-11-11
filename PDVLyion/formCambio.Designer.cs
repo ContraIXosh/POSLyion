@@ -31,12 +31,10 @@
             this.panel_main = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_eftarqr = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_elimtj = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_elimef = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_efectivo = new System.Windows.Forms.Label();
+            this.btn_buscar_cliente = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_tarjeta = new System.Windows.Forms.Label();
             this.lbl_mp = new System.Windows.Forms.Label();
-            this.btn_buscar_cliente = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_vuelto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_suma_total = new System.Windows.Forms.Label();
@@ -46,8 +44,8 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.cbox_tipocambio = new RJCodeAdvance.RJControls.RJComboBox();
             this.txt_dinero_entregado = new System.Windows.Forms.TextBox();
+            this.cbox_tipocambio = new System.Windows.Forms.ComboBox();
             this.panel_main.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_eftarqr.SuspendLayout();
@@ -93,12 +91,10 @@
             this.panel_eftarqr.ColumnCount = 2;
             this.panel_eftarqr.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.panel_eftarqr.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_eftarqr.Controls.Add(this.btn_elimtj, 1, 1);
-            this.panel_eftarqr.Controls.Add(this.btn_elimef, 1, 0);
             this.panel_eftarqr.Controls.Add(this.lbl_efectivo, 0, 0);
+            this.panel_eftarqr.Controls.Add(this.btn_buscar_cliente, 1, 2);
             this.panel_eftarqr.Controls.Add(this.lbl_tarjeta, 0, 1);
             this.panel_eftarqr.Controls.Add(this.lbl_mp, 0, 2);
-            this.panel_eftarqr.Controls.Add(this.btn_buscar_cliente, 1, 2);
             this.panel_eftarqr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_eftarqr.Location = new System.Drawing.Point(0, 80);
             this.panel_eftarqr.Margin = new System.Windows.Forms.Padding(0);
@@ -110,43 +106,6 @@
             this.panel_eftarqr.Size = new System.Drawing.Size(779, 181);
             this.panel_eftarqr.TabIndex = 16;
             // 
-            // btn_elimtj
-            // 
-            this.btn_elimtj.BackColor = System.Drawing.Color.OrangeRed;
-            this.btn_elimtj.BackgroundColor = System.Drawing.Color.OrangeRed;
-            this.btn_elimtj.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_elimtj.BorderRadius = 3;
-            this.btn_elimtj.BorderSize = 0;
-            this.btn_elimtj.FlatAppearance.BorderSize = 0;
-            this.btn_elimtj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_elimtj.ForeColor = System.Drawing.Color.White;
-            this.btn_elimtj.Location = new System.Drawing.Point(128, 62);
-            this.btn_elimtj.Name = "btn_elimtj";
-            this.btn_elimtj.Size = new System.Drawing.Size(28, 28);
-            this.btn_elimtj.TabIndex = 14;
-            this.btn_elimtj.TextColor = System.Drawing.Color.White;
-            this.btn_elimtj.UseVisualStyleBackColor = false;
-            this.btn_elimtj.Click += new System.EventHandler(this.btn_elimtj_Click);
-            // 
-            // btn_elimef
-            // 
-            this.btn_elimef.BackColor = System.Drawing.Color.OrangeRed;
-            this.btn_elimef.BackgroundColor = System.Drawing.Color.OrangeRed;
-            this.btn_elimef.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btn_elimef.BorderRadius = 3;
-            this.btn_elimef.BorderSize = 0;
-            this.btn_elimef.FlatAppearance.BorderSize = 0;
-            this.btn_elimef.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_elimef.Font = new System.Drawing.Font("Vivaldi", 8.25F);
-            this.btn_elimef.ForeColor = System.Drawing.Color.White;
-            this.btn_elimef.Location = new System.Drawing.Point(128, 3);
-            this.btn_elimef.Name = "btn_elimef";
-            this.btn_elimef.Size = new System.Drawing.Size(28, 28);
-            this.btn_elimef.TabIndex = 15;
-            this.btn_elimef.TextColor = System.Drawing.Color.White;
-            this.btn_elimef.UseVisualStyleBackColor = false;
-            this.btn_elimef.Click += new System.EventHandler(this.btn_elimef_Click);
-            // 
             // lbl_efectivo
             // 
             this.lbl_efectivo.AutoSize = true;
@@ -157,28 +116,6 @@
             this.lbl_efectivo.Size = new System.Drawing.Size(119, 33);
             this.lbl_efectivo.TabIndex = 4;
             this.lbl_efectivo.Text = "Efectivo";
-            // 
-            // lbl_tarjeta
-            // 
-            this.lbl_tarjeta.AutoSize = true;
-            this.lbl_tarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tarjeta.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_tarjeta.Location = new System.Drawing.Point(3, 59);
-            this.lbl_tarjeta.Name = "lbl_tarjeta";
-            this.lbl_tarjeta.Size = new System.Drawing.Size(106, 33);
-            this.lbl_tarjeta.TabIndex = 5;
-            this.lbl_tarjeta.Text = "Tarjeta";
-            // 
-            // lbl_mp
-            // 
-            this.lbl_mp.AutoSize = true;
-            this.lbl_mp.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mp.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lbl_mp.Location = new System.Drawing.Point(3, 119);
-            this.lbl_mp.Name = "lbl_mp";
-            this.lbl_mp.Size = new System.Drawing.Size(59, 33);
-            this.lbl_mp.TabIndex = 7;
-            this.lbl_mp.Text = "QR";
             // 
             // btn_buscar_cliente
             // 
@@ -198,6 +135,28 @@
             this.btn_buscar_cliente.TextColor = System.Drawing.Color.White;
             this.btn_buscar_cliente.UseVisualStyleBackColor = false;
             this.btn_buscar_cliente.Click += new System.EventHandler(this.btn_buscar_cliente_Click);
+            // 
+            // lbl_tarjeta
+            // 
+            this.lbl_tarjeta.AutoSize = true;
+            this.lbl_tarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tarjeta.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbl_tarjeta.Location = new System.Drawing.Point(3, 59);
+            this.lbl_tarjeta.Name = "lbl_tarjeta";
+            this.lbl_tarjeta.Size = new System.Drawing.Size(106, 33);
+            this.lbl_tarjeta.TabIndex = 17;
+            this.lbl_tarjeta.Text = "Tarjeta";
+            // 
+            // lbl_mp
+            // 
+            this.lbl_mp.AutoSize = true;
+            this.lbl_mp.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mp.ForeColor = System.Drawing.Color.Cyan;
+            this.lbl_mp.Location = new System.Drawing.Point(3, 119);
+            this.lbl_mp.Name = "lbl_mp";
+            this.lbl_mp.Size = new System.Drawing.Size(59, 33);
+            this.lbl_mp.TabIndex = 18;
+            this.lbl_mp.Text = "QR";
             // 
             // lbl_vuelto
             // 
@@ -333,8 +292,8 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.cbox_tipocambio, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.txt_dinero_entregado, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.cbox_tipocambio, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -345,33 +304,24 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(779, 40);
             this.tableLayoutPanel4.TabIndex = 12;
             // 
-            // cbox_tipocambio
-            // 
-            this.cbox_tipocambio.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_tipocambio.BorderColor = System.Drawing.Color.Crimson;
-            this.cbox_tipocambio.BorderSize = 1;
-            this.cbox_tipocambio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_tipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_tipocambio.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_tipocambio.IconColor = System.Drawing.Color.Crimson;
-            this.cbox_tipocambio.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbox_tipocambio.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbox_tipocambio.Location = new System.Drawing.Point(392, 3);
-            this.cbox_tipocambio.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbox_tipocambio.Name = "cbox_tipocambio";
-            this.cbox_tipocambio.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_tipocambio.Size = new System.Drawing.Size(311, 30);
-            this.cbox_tipocambio.TabIndex = 14;
-            this.cbox_tipocambio.Texts = "";
-            // 
             // txt_dinero_entregado
             // 
+            this.txt_dinero_entregado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_dinero_entregado.Location = new System.Drawing.Point(3, 3);
             this.txt_dinero_entregado.Name = "txt_dinero_entregado";
-            this.txt_dinero_entregado.Size = new System.Drawing.Size(350, 20);
+            this.txt_dinero_entregado.Size = new System.Drawing.Size(350, 26);
             this.txt_dinero_entregado.TabIndex = 15;
             this.txt_dinero_entregado.TextChanged += new System.EventHandler(this.txt_dinero_entregado_TextChanged);
             this.txt_dinero_entregado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_dinero_entregado_KeyPress);
+            // 
+            // cbox_tipocambio
+            // 
+            this.cbox_tipocambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbox_tipocambio.FormattingEnabled = true;
+            this.cbox_tipocambio.Location = new System.Drawing.Point(392, 3);
+            this.cbox_tipocambio.Name = "cbox_tipocambio";
+            this.cbox_tipocambio.Size = new System.Drawing.Size(304, 28);
+            this.cbox_tipocambio.TabIndex = 16;
             // 
             // formCambio
             // 
@@ -401,11 +351,7 @@
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel panel_eftarqr;
-        private RJCodeAdvance.RJControls.RJButton btn_elimtj;
-        private RJCodeAdvance.RJControls.RJButton btn_elimef;
         private System.Windows.Forms.Label lbl_efectivo;
-        private System.Windows.Forms.Label lbl_tarjeta;
-        private System.Windows.Forms.Label lbl_mp;
         private RJCodeAdvance.RJControls.RJButton btn_buscar_cliente;
         private System.Windows.Forms.Label lbl_vuelto;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -416,7 +362,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private RJCodeAdvance.RJControls.RJComboBox cbox_tipocambio;
         private System.Windows.Forms.TextBox txt_dinero_entregado;
+        private System.Windows.Forms.Label lbl_tarjeta;
+        private System.Windows.Forms.Label lbl_mp;
+        private System.Windows.Forms.ComboBox cbox_tipocambio;
     }
 }

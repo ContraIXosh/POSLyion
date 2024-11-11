@@ -81,6 +81,8 @@ namespace POSLyion
             }
             this.panel_izq.Controls.Add(_lbl_busqueda_cliente, 0, 11);
             this.panel_izq.Controls.Add(_cbox_clientes, 0, 12);
+            this.panel_izq.Controls.Add(btn_buscar, 0, 13);
+            dgv_historial.Dock = DockStyle.Fill;
         }
 
         private void btn_ver_compras_Click(object sender, EventArgs e)
@@ -91,9 +93,12 @@ namespace POSLyion
             {
                 this.panel_izq.Controls.Remove(_lbl_busqueda_cliente);
                 this.panel_izq.Controls.Remove(_cbox_clientes);
+
             }
             this.panel_izq.Controls.Add(_lbl_busqueda_proveedor, 0, 11);
             this.panel_izq.Controls.Add(_cbox_proveedores, 0, 12);
+            this.panel_izq.Controls.Add(btn_buscar, 0, 13);
+            dgv_historial.Dock = DockStyle.Fill;
         }
 
         private void CrearDgv(int caso)
@@ -128,13 +133,17 @@ namespace POSLyion
             }
             dgv_historial.Columns.Add("subtotal", "Subtotal");
             dgv_historial.Columns.Add("usuario_registro", "Usuario");
-            if(dgv_activo == "compras")
+            if (dgv_activo == "compras")
             {
                 dgv_historial.Columns.Add("fecha_documento", "Fecha de documento");
             }
             dgv_historial.Columns.Add("fecha_registro", "Fecha y hora");
             dgv_historial.Visible = true;
             dgv_historial.Dock = DockStyle.Fill;
+            dgv_historial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_historial.ColumnHeadersHeight = 50;
+            dgv_historial.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); 
+            dgv_historial.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void CrearControlesCompras()

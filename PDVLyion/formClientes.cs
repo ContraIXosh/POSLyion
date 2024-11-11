@@ -137,5 +137,11 @@ namespace POSLyion
             txt_busqueda.Text = "";
             cb_inactivo.Checked = false;
         }
+
+        private void btn_crear_Click(object sender, EventArgs e)
+        {
+            formClientesAlta formalta = new formClientesAlta();
+            formalta.Show();
+        }
     }
 }
