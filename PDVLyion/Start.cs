@@ -1,38 +1,31 @@
-﻿using CapaNegocio;
-using CapaEntidad;
-using POSLyion;
+﻿using CapaEntidad;
+using CapaEntidad.Filtros;
+using CapaNegocio;
+using PDCLyion;
+using PDCLyion.Modals;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using PDCLyion.Modals;
-using System.Runtime.Serialization;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using CapaEntidad.Filtros;
-using PDCLyion;
 
 namespace POSLyion
 {
     public partial class Start : Form
     {
         DataGridView dgv_detalle = new DataGridView();
-        private static Usuarios oUser = new Usuarios();
+        private static Usuarios oUsuario = new Usuarios();
         private decimal total = 0;
         private decimal vuelto = 0;
         private string dgv_activo = "factura";
         private List<Ventas_Detalle> respaldo_carrito = new List<Ventas_Detalle>();
         private ToolStripMenuItem currentSelectedMenuItem;
+        public Clientes Cliente = new Clientes();
 
         public Start(Usuarios user)
         {
             InitializeComponent();
-            oUser = user;
+            oUsuario = user;
             lbl_usuario.Text = user.Nombre_completo;
             this.KeyPreview = true;
         }
@@ -76,7 +69,7 @@ namespace POSLyion
             bool productoExiste = false;
             if (e.RowIndex >= 0)
             {
-                if(!String.Equals(dgv_activo, "factura"))
+                if (!String.Equals(dgv_activo, "factura"))
                 {
                     this.btn_factura_Click("Facturación", e);
                 }
@@ -143,18 +136,18 @@ namespace POSLyion
 
         private void btn_cerrarventa_Click(object sender, EventArgs e)
         {
-            if(dgv_resumen.Rows.Count > 0)
+            if (dgv_resumen.Rows.Count > 0)
             {
-                
-                using (var formularioCobro = new formCambio(total, oUser))
+                using (var formularioCobro = new formCambio(total, oUsuario, Cliente))
                 {
                     formularioCobro.ShowDialog();
                     // Después de cerrar, se obtiene el valor del vuelto
                     vuelto = formularioCobro.vuelto;
                     // Start se suscribe al evento VentanaCerrada en cuanto sea invocado
-                    if(formularioCobro.venta_cerrada)
+                    if (formularioCobro.venta_cerrada)
                     {
-                        this.CrearVenta();
+                        decimal total_con_descuento = (formularioCobro.total != Convert.ToDecimal(lbl_suma_total.Text) ? formularioCobro.total : Convert.ToDecimal(lbl_suma_total.Text));
+                        this.CrearVenta(total_con_descuento);
                     }
                 }
             }
@@ -244,7 +237,7 @@ namespace POSLyion
                     if (resultado_dialogo == DialogResult.Yes)
                     {
                         bool respuesta = new CN_Ventas().SumarStock(id_producto_editado, cantidad_actual);
-                        if(respuesta)
+                        if (respuesta)
                         {
                             dgv_resumen.Rows.RemoveAt(e.RowIndex);
                             this.CalcularTotal();
@@ -259,7 +252,7 @@ namespace POSLyion
             if (dgv_resumen.Columns[e.ColumnIndex].Name == "btn_ver_detalle")
             {
                 int id = 0;
-                if(dgv_activo == "compras")
+                if (dgv_activo == "compras")
                 {
                     id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_compra"].Value);
                 }
@@ -271,7 +264,7 @@ namespace POSLyion
                 {
                     Id = id
                 };
-                if(dgv_detalle.Rows.Count > 0)
+                if (dgv_detalle.Rows.Count > 0)
                 {
                     dgv_detalle.Rows.Clear();
                 }
@@ -291,7 +284,7 @@ namespace POSLyion
 
         // Si se invoca el evento VentanaCerrada, se limpia dgv_resumen y el respaldo de productos
         // el total se vuelve a 0
-        public void CrearVenta()
+        public void CrearVenta(decimal total_con_descuento)
         {
             DataTable ventaDetalle = new DataTable();
             ventaDetalle.Columns.Add("Id_Producto", typeof(int));
@@ -312,19 +305,42 @@ namespace POSLyion
 
             Ventas oVenta = new Ventas()
             {
-                oUsuario = new Usuarios() { Id_usuario = oUser.Id_usuario },
-                oCliente = new Clientes() { Id_cliente = 1 },
-                Total = Convert.ToDecimal(lbl_suma_total.Text),
+                oUsuario = new Usuarios() { Id_usuario = oUsuario.Id_usuario },
+                oCliente = new Clientes() { Id_cliente = (Cliente.Id_cliente == null ? 1 : Cliente.Id_cliente) },
+                Total = total_con_descuento,
                 Vuelto = vuelto,
             };
 
             string mensaje = string.Empty;
-            bool respuesta = new CN_Ventas().Crear(oVenta, ventaDetalle, out mensaje);
+            int id_venta_generado = 0;
+            bool respuesta = new CN_Ventas().Crear(oVenta, ventaDetalle, out mensaje, out id_venta_generado);
 
             if (respuesta)
             {
+                classTicket.CreaTicket Ticket1 = new classTicket.CreaTicket();
+                Ticket1.TextoCentro("Empresa xxxxx ");
+                Ticket1.TextoCentro("**********************************");
+                Ticket1.TextoIzquierda("");
+                Ticket1.TextoCentro("Factura de Venta");
+                Ticket1.TextoIzquierda("No Fac:" + id_venta_generado);
+                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
+                Ticket1.TextoIzquierda("Le Atendio: " + oUsuario.Nombre_completo);
+                Ticket1.TextoIzquierda("");
+                classTicket.CreaTicket.LineasGuion();
+                classTicket.CreaTicket.EncabezadoVenta(dgv_resumen);
+                classTicket.CreaTicket.LineasGuion();
+                classTicket.CreaTicket.LineasGuion();
+                Ticket1.TextoIzquierda(" ");
+                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(total_con_descuento));
+                Ticket1.TextoIzquierda(" ");
+                Ticket1.TextoIzquierda(" ");
+                string impresora = "Microsoft Print to PDF";
+                Ticket1.ImprimirTiket(impresora);
+
                 MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgv_resumen.Rows.Clear();
+                lbl_tipoticket.Text = "Consumidor final";
+                Cliente = new Clientes();
                 this.CalcularTotal();
             }
             else
@@ -380,11 +396,11 @@ namespace POSLyion
             panel_main.Controls.Add(fh);
             panel_main.Tag = fh;
             fh.Show();
-            
+
             if (currentSelectedMenuItem != null)
             {
-                currentSelectedMenuItem.BackColor = Color.Transparent; 
-            } 
+                currentSelectedMenuItem.BackColor = Color.Transparent;
+            }
             menu.BackColor = Color.Teal;
             currentSelectedMenuItem = menu;
             tsmenu_venta.BackColor = Color.Transparent;
@@ -393,12 +409,12 @@ namespace POSLyion
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoverStripMenu();
-            AbrirVentana((ToolStripMenuItem)sender, new Start(oUser));
+            AbrirVentana((ToolStripMenuItem)sender, new Start(oUsuario));
         }
 
         private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            formCompras compras = new formCompras(oUser);
+            formCompras compras = new formCompras(oUsuario);
             compras.Show();
         }
 
@@ -424,7 +440,7 @@ namespace POSLyion
 
         private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AbrirVentana(tsmenu_reports, new formEstadsticas());
+            AbrirVentana(tsmenu_reports, new formReportes());
         }
 
         private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -442,18 +458,20 @@ namespace POSLyion
         {
             formLogOut logout = new formLogOut();
             logout.Show();
-
-            if (currentSelectedMenuItem != null)
-            {
-                currentSelectedMenuItem.BackColor = SystemColors.Control;
-                currentSelectedMenuItem = null;
-            }
         }
+
         private void lbl_cerrarcaja_Click(object sender, EventArgs e)
         {
-            formCierre cierrecaja = new formCierre();
-            cierrecaja.Show();
+            using (var formCierreCaja = new formCierre(oUsuario.Id_usuario))
+            {
+                formCierreCaja.ShowDialog();
+                if (formCierreCaja._caja_cerrada)
+                {
+                    Application.Restart();
+                }
+            }
         }
+
         private void RemoverStripMenu()
         {
             foreach (Control control in this.Controls)
@@ -468,12 +486,12 @@ namespace POSLyion
         {
             if (currentSelectedMenuItem != null)
             {
-                currentSelectedMenuItem.BackColor = Color.Transparent; 
-            } 
-            menuItem.BackColor = Color.Teal; 
-            currentSelectedMenuItem = menuItem; 
+                currentSelectedMenuItem.BackColor = Color.Transparent;
+            }
+            menuItem.BackColor = Color.Teal;
+            currentSelectedMenuItem = menuItem;
         }
-                private void flagdgv()
+        private void flagdgv()
         {
             if (!panel_container.Controls.Container.Contains(dgv_detalle))
             {
@@ -510,7 +528,7 @@ namespace POSLyion
             string dgv_anterior = dgv_activo.ToString();
             dgv_activo = p_dgv_activo;
 
-            if(String.Equals(p_dgv_activo, "compras") || String.Equals(p_dgv_activo, "ventas"))
+            if (String.Equals(p_dgv_activo, "compras") || String.Equals(p_dgv_activo, "ventas"))
             {
                 dgv_detalle.Rows.Clear();
                 if (btn_cerrarventa.Visible == true)
@@ -651,7 +669,7 @@ namespace POSLyion
 
         private void MostrarCarrito()
         {
-            foreach(Ventas_Detalle producto in respaldo_carrito)
+            foreach (Ventas_Detalle producto in respaldo_carrito)
             {
                 dgv_resumen.Rows.Add(new object[]
                 {
@@ -669,8 +687,27 @@ namespace POSLyion
 
         private void btn_desc_Click(object sender, EventArgs e)
         {
-            formDescuento descuento = new formDescuento();
-            descuento.Show();
+            using (var formDescuento = new formDescuento())
+            {
+                formDescuento.ShowDialog();
+                if(formDescuento.Cliente_seleccionado)
+                {
+                    MessageBox.Show("Cliente seleccionado:" + formDescuento.Cliente.Nombre_completo, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Cliente.Id_cliente = formDescuento.Cliente.Id_cliente;
+                    this.Cliente.Dni = formDescuento.Cliente.Dni;
+                    this.Cliente.Nombre_completo = formDescuento.Cliente.Nombre_completo;
+                    this.Cliente.Telefono = formDescuento.Cliente.Telefono;
+                    this.Cliente.Descuento = formDescuento.Cliente.Descuento;
+                    if(this.Cliente.Nombre_completo != "Consumidor final")
+                    {
+                        lbl_tipoticket.Text = "Cliente: " + this.Cliente.Nombre_completo;
+                    }
+                    else
+                    {
+                        lbl_tipoticket.Text = "Consumidor final";
+                    }
+                }
+            }
         }
 
         private void Start_KeyDown(object sender, KeyEventArgs e)
@@ -684,7 +721,6 @@ namespace POSLyion
                 btn_cerrarventa.PerformClick();
             }
         }
-
 
         //private void btn_eventual_Click_1(object sender, EventArgs e)
         //{

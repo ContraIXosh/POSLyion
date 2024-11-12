@@ -14,6 +14,7 @@ namespace CapaEntidad
         public string Correo { get; set; }
         public string Telefono { get; set; }
         public bool Estado { get; set; }
+        public int Descuento { get; set; }
         public string Create_date { get; set; }
         public string Modify_date { get; set; }
     }

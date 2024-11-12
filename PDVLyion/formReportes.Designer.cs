@@ -1,6 +1,6 @@
 ﻿namespace POSLyion
 {
-    partial class formEstadsticas
+    partial class formReportes
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.lbl_busqueda_usuario = new System.Windows.Forms.Label();
             this.btn_excel = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_ver_cierres = new CustomBox.RJControls.RJButton();
             this.btn_ver_compras = new CustomBox.RJControls.RJButton();
             this.btn_ver_ventas = new CustomBox.RJControls.RJButton();
             this.txt_busqueda_producto = new System.Windows.Forms.TextBox();
@@ -196,9 +197,11 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.btn_ver_cierres, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_ver_compras, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_ver_ventas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -209,6 +212,27 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(278, 67);
             this.tableLayoutPanel1.TabIndex = 39;
+            // 
+            // btn_ver_cierres
+            // 
+            this.btn_ver_cierres.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_ver_cierres.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_ver_cierres.BackgroundColor = System.Drawing.Color.DarkOrange;
+            this.btn_ver_cierres.BorderColor = System.Drawing.Color.Red;
+            this.btn_ver_cierres.BorderRadius = 10;
+            this.btn_ver_cierres.BorderSize = 0;
+            this.btn_ver_cierres.FlatAppearance.BorderSize = 0;
+            this.btn_ver_cierres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ver_cierres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ver_cierres.ForeColor = System.Drawing.Color.Black;
+            this.btn_ver_cierres.Location = new System.Drawing.Point(188, 11);
+            this.btn_ver_cierres.Name = "btn_ver_cierres";
+            this.btn_ver_cierres.Size = new System.Drawing.Size(86, 44);
+            this.btn_ver_cierres.TabIndex = 31;
+            this.btn_ver_cierres.Text = "Cierres";
+            this.btn_ver_cierres.TextColor = System.Drawing.Color.Black;
+            this.btn_ver_cierres.UseVisualStyleBackColor = false;
+            this.btn_ver_cierres.Click += new System.EventHandler(this.btn_ver_cierres_Click);
             // 
             // btn_ver_compras
             // 
@@ -222,9 +246,9 @@
             this.btn_ver_compras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ver_compras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_compras.ForeColor = System.Drawing.Color.Black;
-            this.btn_ver_compras.Location = new System.Drawing.Point(142, 11);
+            this.btn_ver_compras.Location = new System.Drawing.Point(95, 11);
             this.btn_ver_compras.Name = "btn_ver_compras";
-            this.btn_ver_compras.Size = new System.Drawing.Size(133, 44);
+            this.btn_ver_compras.Size = new System.Drawing.Size(86, 44);
             this.btn_ver_compras.TabIndex = 30;
             this.btn_ver_compras.Text = "Compras";
             this.btn_ver_compras.TextColor = System.Drawing.Color.Black;
@@ -245,7 +269,7 @@
             this.btn_ver_ventas.ForeColor = System.Drawing.Color.Black;
             this.btn_ver_ventas.Location = new System.Drawing.Point(3, 11);
             this.btn_ver_ventas.Name = "btn_ver_ventas";
-            this.btn_ver_ventas.Size = new System.Drawing.Size(133, 44);
+            this.btn_ver_ventas.Size = new System.Drawing.Size(86, 44);
             this.btn_ver_ventas.TabIndex = 29;
             this.btn_ver_ventas.Text = "Ventas";
             this.btn_ver_ventas.TextColor = System.Drawing.Color.Black;
@@ -385,13 +409,13 @@
             this.dgv_historial.Size = new System.Drawing.Size(683, 585);
             this.dgv_historial.TabIndex = 40;
             // 
-            // formEstadsticas
+            // formReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 611);
             this.Controls.Add(this.panel_main);
-            this.Name = "formEstadsticas";
+            this.Name = "formReportes";
             this.Text = "formStadistic";
             this.Load += new System.EventHandler(this.formEstadsticas_Load);
             this.panel_main.ResumeLayout(false);
@@ -428,5 +452,6 @@
         private System.Windows.Forms.TextBox txt_busqueda_producto;
         private System.Windows.Forms.Label lbl_busqueda_usuario;
         private System.Windows.Forms.ComboBox cbox_usuarios;
+        private CustomBox.RJControls.RJButton btn_ver_cierres;
     }
 }

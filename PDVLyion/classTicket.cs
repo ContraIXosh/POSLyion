@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PDCLyion
 {
@@ -25,10 +26,20 @@ namespace PDCLyion
             }
 
 
-            public static void EncabezadoVenta()
+            public static void EncabezadoVenta(DataGridView dgv)
             {
-                string LineEncavesado = "Articulo       Cant   P.Unit    Valor";  
+                string LineEncavesado = "Articulo       Cant   P.Unit    Valor";
+                string venta_detalle = string.Empty;
                 line.AppendLine(LineEncavesado);
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    venta_detalle =
+                        row.Cells["dgv_resumen_descripcion"].Value.ToString() + "\t" +
+                        row.Cells["dgv_resumen_cantidad"].Value.ToString() + "\t" +
+                        row.Cells["dgv_resumen_precio"].Value.ToString() + "\t" +
+                        row.Cells["dgv_resumen_subtotal"].Value.ToString() + "\t";
+                    line.AppendLine(venta_detalle);
+                }
             }
             public void TextoIzquierda(string par1)                   
             {

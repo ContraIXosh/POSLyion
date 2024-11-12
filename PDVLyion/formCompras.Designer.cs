@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_izq = new System.Windows.Forms.Panel();
+            this.txt_id_producto = new System.Windows.Forms.TextBox();
             this.lbox_productos = new System.Windows.Forms.ListBox();
             this.txt_precio_costo = new System.Windows.Forms.TextBox();
             this.txt_codigo_barras = new System.Windows.Forms.TextBox();
@@ -70,8 +71,7 @@
             this.txt_numero_documento = new CustomBox.RJControls.RJTextBox();
             this.lbl_nro_doc = new System.Windows.Forms.Label();
             this.lbl_proveedor = new System.Windows.Forms.Label();
-            this.cbox_proveedores = new System.Windows.Forms.ComboBox();
-            this.txt_id_producto = new System.Windows.Forms.TextBox();
+            this.cbox_proveedores = new CustomBox.RJControls.RJComboBox();
             this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel_izq.SuspendLayout();
@@ -130,6 +130,15 @@
             this.panel_izq.Name = "panel_izq";
             this.panel_izq.Size = new System.Drawing.Size(390, 299);
             this.panel_izq.TabIndex = 2;
+            // 
+            // txt_id_producto
+            // 
+            this.txt_id_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_id_producto.Location = new System.Drawing.Point(324, 3);
+            this.txt_id_producto.Name = "txt_id_producto";
+            this.txt_id_producto.Size = new System.Drawing.Size(53, 29);
+            this.txt_id_producto.TabIndex = 39;
+            this.txt_id_producto.Visible = false;
             // 
             // lbox_productos
             // 
@@ -285,14 +294,14 @@
             this.dgv_compras.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_compras.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_compras.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_compras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_compras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_compras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_compras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_producto,
@@ -600,10 +609,10 @@
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.01512F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.159827F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.19871F));
+            this.tlpanel_primera.Controls.Add(this.cbox_proveedores, 0, 0);
             this.tlpanel_primera.Controls.Add(this.txt_numero_documento, 3, 0);
             this.tlpanel_primera.Controls.Add(this.lbl_nro_doc, 2, 0);
             this.tlpanel_primera.Controls.Add(this.lbl_proveedor, 0, 0);
-            this.tlpanel_primera.Controls.Add(this.cbox_proveedores, 1, 0);
             this.tlpanel_primera.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpanel_primera.Location = new System.Drawing.Point(0, 0);
             this.tlpanel_primera.Margin = new System.Windows.Forms.Padding(0);
@@ -663,12 +672,23 @@
             // 
             // cbox_proveedores
             // 
-            this.cbox_proveedores.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbox_proveedores.FormattingEnabled = true;
-            this.cbox_proveedores.Location = new System.Drawing.Point(268, 12);
+            this.cbox_proveedores.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbox_proveedores.BorderColor = System.Drawing.Color.Orange;
+            this.cbox_proveedores.BorderSize = 2;
+            this.cbox_proveedores.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbox_proveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbox_proveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbox_proveedores.ForeColor = System.Drawing.Color.DimGray;
+            this.cbox_proveedores.IconColor = System.Drawing.Color.Orange;
+            this.cbox_proveedores.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbox_proveedores.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbox_proveedores.Location = new System.Drawing.Point(268, 3);
+            this.cbox_proveedores.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_proveedores.Name = "cbox_proveedores";
-            this.cbox_proveedores.Size = new System.Drawing.Size(239, 21);
-            this.cbox_proveedores.TabIndex = 20;
+            this.cbox_proveedores.Padding = new System.Windows.Forms.Padding(2);
+            this.cbox_proveedores.Size = new System.Drawing.Size(239, 40);
+            this.cbox_proveedores.TabIndex = 23;
+            this.cbox_proveedores.Texts = "";
             // 
             // txt_id_producto
             // 
@@ -742,7 +762,6 @@
         private System.Windows.Forms.TextBox txt_precio_costo;
         private System.Windows.Forms.TextBox txt_codigo_barras;
         private RJCodeAdvance.RJControls.RJTextBox txt_cuit_proveedor;
-        private System.Windows.Forms.ComboBox cbox_proveedores;
         private System.Windows.Forms.ListBox lbox_productos;
         private System.Windows.Forms.Label lbl_cuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
@@ -754,5 +773,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_eliminar;
         private System.Windows.Forms.TextBox txt_id_producto;
+        private CustomBox.RJControls.RJComboBox cbox_proveedores;
     }
 }

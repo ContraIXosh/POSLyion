@@ -51,15 +51,6 @@
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.lbl_busqueda = new System.Windows.Forms.Label();
             this.dgv_clientes = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_completo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +65,16 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_completo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_main.SuspendLayout();
             this.panel_bot.SuspendLayout();
             this.panel_mid.SuspendLayout();
@@ -323,16 +324,15 @@
             // 
             // cb_inactivo
             // 
-            this.cb_inactivo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cb_inactivo.AutoSize = true;
-            this.cb_inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_inactivo.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactivo.Location = new System.Drawing.Point(60, 83);
-            this.cb_inactivo.Name = "cb_inactivo";
-            this.cb_inactivo.Size = new System.Drawing.Size(164, 24);
-            this.cb_inactivo.TabIndex = 18;
-            this.cb_inactivo.Text = "Mostrar inactivos";
-            this.cb_inactivo.UseVisualStyleBackColor = true;
+            this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_busqueda.AutoSize = true;
+            this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_busqueda.Location = new System.Drawing.Point(17, 13);
+            this.lbl_busqueda.Name = "lbl_busqueda";
+            this.lbl_busqueda.Size = new System.Drawing.Size(250, 25);
+            this.lbl_busqueda.TabIndex = 13;
+            this.lbl_busqueda.Text = "NOMBRE DE CLIENTE";
             // 
             // txt_busqueda
             // 
@@ -345,15 +345,16 @@
             // 
             // lbl_busqueda
             // 
-            this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_busqueda.AutoSize = true;
-            this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_busqueda.Location = new System.Drawing.Point(17, 13);
-            this.lbl_busqueda.Name = "lbl_busqueda";
-            this.lbl_busqueda.Size = new System.Drawing.Size(250, 25);
-            this.lbl_busqueda.TabIndex = 13;
-            this.lbl_busqueda.Text = "NOMBRE DE CLIENTE";
+            this.cb_inactivo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cb_inactivo.AutoSize = true;
+            this.cb_inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_inactivo.ForeColor = System.Drawing.Color.Gold;
+            this.cb_inactivo.Location = new System.Drawing.Point(60, 83);
+            this.cb_inactivo.Name = "cb_inactivo";
+            this.cb_inactivo.Size = new System.Drawing.Size(164, 24);
+            this.cb_inactivo.TabIndex = 18;
+            this.cb_inactivo.Text = "Mostrar inactivos";
+            this.cb_inactivo.UseVisualStyleBackColor = true;
             // 
             // dgv_clientes
             // 
@@ -386,6 +387,7 @@
             this.correo,
             this.estado,
             this.estado_valor,
+            this.descuento,
             this.btn_editar,
             this.btn_eliminar});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -424,80 +426,6 @@
             this.dgv_clientes.Size = new System.Drawing.Size(683, 507);
             this.dgv_clientes.TabIndex = 27;
             this.dgv_clientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_proveedores_CellContentClick);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // dni
-            // 
-            this.dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dni.FillWeight = 80F;
-            this.dni.HeaderText = "DNI";
-            this.dni.Name = "dni";
-            this.dni.ReadOnly = true;
-            // 
-            // nombre_completo
-            // 
-            this.nombre_completo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombre_completo.FillWeight = 130F;
-            this.nombre_completo.HeaderText = "NOMBRE COMPLETO";
-            this.nombre_completo.Name = "nombre_completo";
-            this.nombre_completo.ReadOnly = true;
-            // 
-            // telefono
-            // 
-            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.telefono.FillWeight = 80F;
-            this.telefono.HeaderText = "TELEFONO";
-            this.telefono.Name = "telefono";
-            this.telefono.ReadOnly = true;
-            // 
-            // correo
-            // 
-            this.correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.correo.FillWeight = 80F;
-            this.correo.HeaderText = "EMAIL";
-            this.correo.Name = "correo";
-            this.correo.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.FillWeight = 50F;
-            this.estado.HeaderText = "ESTADO";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            this.estado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // estado_valor
-            // 
-            this.estado_valor.HeaderText = "ESTADO_VALOR";
-            this.estado_valor.Name = "estado_valor";
-            this.estado_valor.ReadOnly = true;
-            this.estado_valor.Visible = false;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_editar.FillWeight = 60F;
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.ReadOnly = true;
-            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_eliminar.FillWeight = 60F;
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.ReadOnly = true;
-            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // menu_sesion
             // 
@@ -597,6 +525,86 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // dni
+            // 
+            this.dni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dni.FillWeight = 80F;
+            this.dni.HeaderText = "DNI";
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
+            // 
+            // nombre_completo
+            // 
+            this.nombre_completo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombre_completo.FillWeight = 130F;
+            this.nombre_completo.HeaderText = "NOMBRE COMPLETO";
+            this.nombre_completo.Name = "nombre_completo";
+            this.nombre_completo.ReadOnly = true;
+            // 
+            // telefono
+            // 
+            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.telefono.FillWeight = 80F;
+            this.telefono.HeaderText = "TELEFONO";
+            this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
+            // 
+            // correo
+            // 
+            this.correo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.correo.FillWeight = 80F;
+            this.correo.HeaderText = "EMAIL";
+            this.correo.Name = "correo";
+            this.correo.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.FillWeight = 50F;
+            this.estado.HeaderText = "ESTADO";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            this.estado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // estado_valor
+            // 
+            this.estado_valor.HeaderText = "ESTADO_VALOR";
+            this.estado_valor.Name = "estado_valor";
+            this.estado_valor.ReadOnly = true;
+            this.estado_valor.Visible = false;
+            // 
+            // descuento
+            // 
+            this.descuento.HeaderText = "DESCUENTO";
+            this.descuento.Name = "descuento";
+            this.descuento.ReadOnly = true;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_editar.FillWeight = 60F;
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_eliminar.FillWeight = 60F;
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
+            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // formClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,6 +655,12 @@
         private System.Windows.Forms.Label lbl_busqueda;
         private System.Windows.Forms.TextBox txt_busqueda;
         private System.Windows.Forms.CheckBox cb_inactivo;
+        private RJCodeAdvance.RJControls.RJButton btn_buscar;
+        private CustomBox.RJControls.RJButton btn_limpiar_filtros;
+        private System.Windows.Forms.TableLayoutPanel panel_bot;
+        private System.Windows.Forms.Label lbl_updateversion;
+        private System.Windows.Forms.Label lbl_updatetime;
+        private RJCodeAdvance.RJControls.RJButton btn_crear;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_completo;
@@ -654,13 +668,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn correo;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado_valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descuento;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
-        private RJCodeAdvance.RJControls.RJButton btn_buscar;
-        private CustomBox.RJControls.RJButton btn_limpiar_filtros;
-        private System.Windows.Forms.TableLayoutPanel panel_bot;
-        private System.Windows.Forms.Label lbl_updateversion;
-        private System.Windows.Forms.Label lbl_updatetime;
-        private RJCodeAdvance.RJControls.RJButton btn_crear;
     }
 }

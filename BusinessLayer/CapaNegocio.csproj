@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_CierreCaja.cs" />
     <Compile Include="CN_Clientes.cs" />
     <Compile Include="CN_Compras.cs" />
     <Compile Include="CN_Permisos.cs" />

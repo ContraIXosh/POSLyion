@@ -38,7 +38,10 @@
             this.panel_bot = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_updateversion = new System.Windows.Forms.Label();
             this.lbl_updatetime = new System.Windows.Forms.Label();
+            this.panelgrid = new System.Windows.Forms.TableLayoutPanel();
+            this.dgv_clientes = new System.Windows.Forms.DataGridView();
             this.panel_ttop = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelgrid = new System.Windows.Forms.TableLayoutPanel();
@@ -47,12 +50,14 @@
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_completo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_container.SuspendLayout();
             this.panel_color.SuspendLayout();
             this.panel_bot.SuspendLayout();
             this.panel_ttop.SuspendLayout();
             this.panelgrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).BeginInit();
+            this.panel_ttop.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_container
@@ -199,7 +204,8 @@
             this.id,
             this.dni,
             this.nombre_completo,
-            this.telefono});
+            this.telefono,
+            this.descuento});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Violet;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -235,6 +241,39 @@
             this.dgv_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_clientes.Size = new System.Drawing.Size(792, 522);
             this.dgv_clientes.TabIndex = 31;
+            this.dgv_clientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_clientes_CellClick);
+            // 
+            // panel_ttop
+            // 
+            this.panel_ttop.BackColor = System.Drawing.Color.Black;
+            this.panel_ttop.Controls.Add(this.label1);
+            this.panel_ttop.Controls.Add(this.txt_busqueda);
+            this.panel_ttop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_ttop.Location = new System.Drawing.Point(3, 3);
+            this.panel_ttop.Name = "panel_ttop";
+            this.panel_ttop.Size = new System.Drawing.Size(796, 44);
+            this.panel_ttop.TabIndex = 30;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.Location = new System.Drawing.Point(22, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 24);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Busqueda";
+            // 
+            // txt_busqueda
+            // 
+            this.txt_busqueda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txt_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_busqueda.Location = new System.Drawing.Point(144, 8);
+            this.txt_busqueda.Name = "txt_busqueda";
+            this.txt_busqueda.Size = new System.Drawing.Size(646, 29);
+            this.txt_busqueda.TabIndex = 31;
+            this.txt_busqueda.TextChanged += new System.EventHandler(this.txt_busqueda_TextChanged);
             // 
             // id
             // 
@@ -267,6 +306,13 @@
             this.telefono.Name = "telefono";
             this.telefono.ReadOnly = true;
             // 
+            // descuento
+            // 
+            this.descuento.HeaderText = "DESCUENTO";
+            this.descuento.Name = "descuento";
+            this.descuento.ReadOnly = true;
+            this.descuento.Visible = false;
+            // 
             // formDescuento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +330,8 @@
             this.panel_ttop.PerformLayout();
             this.panelgrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).EndInit();
+            this.panel_ttop.ResumeLayout(false);
+            this.panel_ttop.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -297,12 +345,13 @@
         private System.Windows.Forms.Label lbl_updatetime;
         private System.Windows.Forms.TableLayoutPanel panelgrid;
         private System.Windows.Forms.DataGridView dgv_clientes;
+        private System.Windows.Forms.Panel panel_ttop;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_busqueda;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_completo;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
-        private System.Windows.Forms.Panel panel_ttop;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_busqueda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descuento;
     }
 }

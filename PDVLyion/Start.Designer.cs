@@ -1,4 +1,6 @@
-﻿namespace POSLyion
+﻿using System;
+
+namespace POSLyion
 {
     partial class Start
     {
@@ -136,10 +138,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Crimson;
             this.label1.Enabled = false;
-            this.label1.Font = new System.Drawing.Font("Energy Station", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 39);
+            this.label1.Size = new System.Drawing.Size(168, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "POSLyion";
             // 

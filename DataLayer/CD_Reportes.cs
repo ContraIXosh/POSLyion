@@ -3,6 +3,7 @@ using CapaEntidad;
 using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
                     cmd.Parameters.AddWithValue("@id_proveedor", filtros.Campo_adicional);
                     cmd.Parameters.AddWithValue("@nombre_producto", filtros.Nombre_producto);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -74,7 +75,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
                     cmd.Parameters.AddWithValue("@id_cliente", filtros.Campo_adicional);
                     cmd.Parameters.AddWithValue("@nombre_producto", filtros.Nombre_producto);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -104,6 +105,43 @@ namespace CapaDatos
             }
             return lista_venta_detalle;
         }
+
+        public List<ReportesCierre> Cierres(FiltrosReportes filtros)
+        {
+            List<ReportesCierre> lista_cierre_caja = new List<ReportesCierre>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    SqlCommand cmd = new SqlCommand("SP_HISTORIAL_CIERRES_CAJA", oConexion);
+                    cmd.Parameters.AddWithValue("@fecha_desde", filtros.Fecha_desde);
+                    cmd.Parameters.AddWithValue("@fecha_hasta", filtros.Fecha_hasta);
+                    cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista_cierre_caja.Add(new ReportesCierre()
+                            {
+                                Id_cierre = Convert.ToInt32(reader["id_cierre"].ToString()),
+                                Nombre_usuario = reader["nombre_usuario"].ToString(),
+                                Monto_ventas = Convert.ToDecimal(reader["monto_ventas"].ToString()),
+                                Monto_caja = Convert.ToDecimal(reader["monto_caja"].ToString()),
+                                Fecha_inicio_turno = reader["fecha_inicio_turno"].ToString(),
+                                Fecha_fin_turno = reader["fecha_fin_turno"].ToString()
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista_cierre_caja = new List<ReportesCierre>();
+                }
+                return lista_cierre_caja;
+            }
+        }
     }
- 
 }

@@ -117,7 +117,8 @@ namespace POSLyion
                     oCliente.Telefono,
                     oCliente.Correo,
                     oCliente.Estado == true ? "Activo" : "Inactivo",
-                    oCliente.Estado == true ? 1 : 0
+                    oCliente.Estado == true ? 1 : 0,
+                    oCliente.Descuento
                 });
             }
         }

@@ -47,11 +47,14 @@
             this.lbl_state = new System.Windows.Forms.Label();
             this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
             this.txt_id = new System.Windows.Forms.TextBox();
+            this.lbl_descuento = new System.Windows.Forms.Label();
+            this.num_descuento = new System.Windows.Forms.NumericUpDown();
             this.panel_main.SuspendLayout();
             this.panel_btttmm.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_createclient.SuspendLayout();
             this.panel_create.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_descuento)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
@@ -94,6 +97,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txt_id, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -182,6 +186,7 @@
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.panel_create.Controls.Add(this.lbl_descuento, 2, 2);
             this.panel_create.Controls.Add(this.lbl_full_name, 0, 0);
             this.panel_create.Controls.Add(this.txt_nombre_completo, 0, 1);
             this.panel_create.Controls.Add(this.lbl_dni, 0, 2);
@@ -192,7 +197,7 @@
             this.panel_create.Controls.Add(this.txt_correo, 2, 1);
             this.panel_create.Controls.Add(this.lbl_state, 1, 0);
             this.panel_create.Controls.Add(this.cbo_estado, 1, 1);
-            this.panel_create.Controls.Add(this.txt_id, 2, 3);
+            this.panel_create.Controls.Add(this.num_descuento, 2, 3);
             this.panel_create.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_create.Location = new System.Drawing.Point(0, 76);
             this.panel_create.Margin = new System.Windows.Forms.Padding(0);
@@ -202,6 +207,7 @@
             this.panel_create.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_create.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_create.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.panel_create.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_create.Size = new System.Drawing.Size(714, 269);
             this.panel_create.TabIndex = 36;
             // 
@@ -379,12 +385,31 @@
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(479, 204);
+            this.txt_id.Location = new System.Drawing.Point(3, 3);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(48, 20);
             this.txt_id.TabIndex = 59;
             this.txt_id.Text = "0";
             this.txt_id.Visible = false;
+            // 
+            // lbl_descuento
+            // 
+            this.lbl_descuento.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_descuento.AutoSize = true;
+            this.lbl_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_descuento.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_descuento.Location = new System.Drawing.Point(519, 176);
+            this.lbl_descuento.Name = "lbl_descuento";
+            this.lbl_descuento.Size = new System.Drawing.Size(152, 25);
+            this.lbl_descuento.TabIndex = 59;
+            this.lbl_descuento.Text = "DESCUENTO";
+            // 
+            // num_descuento
+            // 
+            this.num_descuento.Location = new System.Drawing.Point(479, 204);
+            this.num_descuento.Name = "num_descuento";
+            this.num_descuento.Size = new System.Drawing.Size(231, 20);
+            this.num_descuento.TabIndex = 60;
             // 
             // formClientesAlta
             // 
@@ -398,10 +423,12 @@
             this.panel_main.ResumeLayout(false);
             this.panel_btttmm.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.panel_createclient.ResumeLayout(false);
             this.panel_createclient.PerformLayout();
             this.panel_create.ResumeLayout(false);
             this.panel_create.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_descuento)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -427,5 +454,7 @@
         private RJCodeAdvance.RJControls.RJButton btn_cerrar;
         private RJCodeAdvance.RJControls.RJButton btn_guardar;
         private System.Windows.Forms.TextBox txt_id;
+        private System.Windows.Forms.Label lbl_descuento;
+        private System.Windows.Forms.NumericUpDown num_descuento;
     }
 }

@@ -88,6 +88,7 @@ namespace POSLyion
                     Nombre_completo = txt_nombre_completo.Texts,
                     Correo = txt_correo.Texts,
                     Telefono = txt_telefono.Texts,
+                    Descuento = Convert.ToInt32(num_descuento.Value)
                 };
                 int id_generada_cliente = new CN_Clientes().Crear(oCliente, out mensaje);
                 if (id_generada_cliente == 0)
@@ -113,6 +114,7 @@ namespace POSLyion
                 Cliente.Correo = txt_correo.Texts;
                 Cliente.Telefono = txt_telefono.Texts;
                 Cliente.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1 ? true : false;
+                Cliente.Descuento = Convert.ToInt32(num_descuento.Value);
                 bool resultado = false;
                 resultado = new CN_Clientes().Modificar(Cliente, out mensaje);
                 if (resultado == false)

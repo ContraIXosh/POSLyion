@@ -17,7 +17,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace POSLyion
 {
-    public partial class formEstadsticas : Form
+    public partial class formReportes : Form
     {
 
         private string dgv_activo = string.Empty;
@@ -26,8 +26,9 @@ namespace POSLyion
         private Label _lbl_busqueda_cliente = new Label();
         private ComboBox _cbox_proveedores = new ComboBox();
         private ComboBox _cbox_clientes = new ComboBox();
+        private FiltrosReportes _filtros = new FiltrosReportes();
 
-        public formEstadsticas()
+        public formReportes()
         {
             InitializeComponent();
         }
@@ -101,13 +102,41 @@ namespace POSLyion
             dgv_historial.Dock = DockStyle.Fill;
         }
 
+        private void btn_ver_cierres_Click(object sender, EventArgs e)
+        {
+            dgv_activo = "cierres";
+            this.CrearDgv(3);
+            if (this.panel_izq.Controls.Container.Contains(_lbl_busqueda_cliente))
+            {
+                this.panel_izq.Controls.Remove(_lbl_busqueda_cliente);
+                this.panel_izq.Controls.Remove(_cbox_clientes);
+            }
+            if (this.panel_izq.Controls.Container.Contains(_lbl_busqueda_proveedor))
+            {
+                this.panel_izq.Controls.Remove(_lbl_busqueda_proveedor);
+                this.panel_izq.Controls.Remove(_cbox_proveedores);
+            }
+        }
+
         private void CrearDgv(int caso)
         {
+            dgv_historial.Columns.Clear();
+            dgv_historial.Rows.Clear();
+            if (caso == 3)
+            {
+                dgv_historial.Columns.Add("id_cierre", "Numero de turno");
+                dgv_historial.Columns.Add("nombre_usuario", "Usuario");
+                dgv_historial.Columns.Add("monto_ventas", "Total vendido");
+                dgv_historial.Columns.Add("monto_caja", "Dinero en caja");
+                dgv_historial.Columns.Add("fecha_inicio_turno", "Fecha de inicio de turno");
+                dgv_historial.Columns.Add("fecha_fin_turno", "Fecha de fin de turno");
+                dgv_historial.Visible = true;
+                dgv_historial.Dock = DockStyle.Fill;
+                return;
+            }
             string id = string.Empty;
             string campo_adicional_name = string.Empty;
             string campo_adicional_header = string.Empty;
-            dgv_historial.Columns.Clear();
-            dgv_historial.Rows.Clear();
             if (dgv_activo == "ventas")
             {   
                 this.CrearControlesVentas();
@@ -206,40 +235,58 @@ namespace POSLyion
             }
             if(dgv_activo == "ventas")
             {
+                _lista = new CN_Reportes().Venta_Detalle(_filtros);
                 foreach (ReportesDetalle item in _lista)
                 {
                     dgv_historial.Rows.Add(new object[]
                     {
-                    item.Id,
-                    item.Codigo_barras,
-                    item.Nombre_producto,
-                    item.Nombre_categoria,
-                    item.Precio_unitario,
-                    item.Cantidad,
-                    item.Campo_adicional,
-                    item.Subtotal,
-                    item.UsuarioRegistro,
-                    item.FechaRegistro
+                        item.Id,
+                        item.Codigo_barras,
+                        item.Nombre_producto,
+                        item.Nombre_categoria,
+                        item.Precio_unitario,
+                        item.Cantidad,
+                        item.Campo_adicional,
+                        item.Subtotal,
+                        item.UsuarioRegistro,
+                        item.FechaRegistro
                     });
                 }
             }
             else if (dgv_activo == "compras")
             {
+                _lista = new CN_Reportes().Compra_Detalle(_filtros);
                 foreach (ReportesDetalle item in _lista)
                 {
                     dgv_historial.Rows.Add(new object[]
                     {
-                    item.Id,
-                    item.Codigo_barras,
-                    item.Nombre_producto,
-                    item.Nombre_categoria,
-                    item.Precio_unitario,
-                    item.Cantidad,
-                    item.Campo_adicional,
-                    item.Subtotal,
-                    item.UsuarioRegistro,
-                    item.FechaDocumento,
-                    item.FechaRegistro
+                        item.Id,
+                        item.Codigo_barras,
+                        item.Nombre_producto,
+                        item.Nombre_categoria,
+                        item.Precio_unitario,
+                        item.Cantidad,
+                        item.Campo_adicional,
+                        item.Subtotal,
+                        item.UsuarioRegistro,
+                        item.FechaDocumento,
+                        item.FechaRegistro
+                    });
+                }
+            }
+            else if (dgv_activo == "cierres")
+            {
+                List<ReportesCierre> lista_cierres = new CN_Reportes().Cierres(_filtros);
+                foreach (ReportesCierre cierre in lista_cierres)
+                {
+                    dgv_historial.Rows.Add(new object[]
+                    {
+                        cierre.Id_cierre,
+                        cierre.Nombre_usuario,
+                        cierre.Monto_ventas,
+                        cierre.Monto_caja,
+                        cierre.Fecha_inicio_turno,
+                        cierre.Fecha_fin_turno
                     });
                 }
             }
@@ -249,15 +296,20 @@ namespace POSLyion
         {
             if(dgv_activo == String.Empty)
             {
-                MessageBox.Show("Debe seleccionar Ventas o Compras", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar ver ventas, compras o cierres de caja", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            this.CargarFiltros();
+            this.MostrarReporte();
+        }
 
+        public void CargarFiltros()
+        {
             string fecha_desde = date_desde.Value.ToString("yyyy-MM-dd");
             string fecha_hasta = date_hasta.Value.ToString("yyyy-MM-dd");
             int campo_adicional = (dgv_activo == "ventas" ? Convert.ToInt32(((OpcionCombo)_cbox_clientes.SelectedItem).Valor) : Convert.ToInt32(((OpcionCombo)_cbox_proveedores.SelectedItem).Valor));
 
-            FiltrosReportes filtros = new FiltrosReportes()
+            _filtros = new FiltrosReportes()
             {
                 Fecha_desde = fecha_desde,
                 Fecha_hasta = fecha_hasta,
@@ -265,16 +317,6 @@ namespace POSLyion
                 Campo_adicional = campo_adicional,
                 Nombre_producto = txt_busqueda_producto.Text,
             };
-
-            if (String.Equals(dgv_activo, "compras"))
-            {
-                _lista = new CN_Reportes().Compra_Detalle(filtros);
-            }
-            else if(String.Equals(dgv_activo, "ventas"))
-            {
-                _lista = new CN_Reportes().Venta_Detalle(filtros);
-            }
-            this.MostrarReporte();
         }
 
 
@@ -284,7 +326,15 @@ namespace POSLyion
             {
                 sfd.Filter = "Excel Workbook|*.xlsx";
                 sfd.Title = "Guardar archivo Excel";
-                string nombre_archivo = (dgv_activo == "ventas" ? "ReporteVentas_" : "ReporteCompras_");
+                var nombreArchivos = new Dictionary<string, string>
+                {
+                    { "ventas", "ReporteVentas_" },
+                    { "compras", "ReporteCompras_" },
+                    { "cierres", "ReporteCierres_" }
+                };
+
+                string nombre_archivo = nombreArchivos.ContainsKey(dgv_activo) ? nombreArchivos[dgv_activo] : string.Empty;
+
                 sfd.FileName = nombre_archivo + DateTime.Now.ToString("ddMMyyyyhhmmss");
 
                 if (sfd.ShowDialog() == DialogResult.OK)

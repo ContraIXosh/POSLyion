@@ -70,6 +70,7 @@ CREATE TABLE Clientes (
 	correo VARCHAR(155) NULL,
 	telefono VARCHAR(60) NULL,
 	estado BIT DEFAULT 1 NULL,
+	descuento INT DEFAULT 0 NULL,
 	create_date DATETIME DEFAULT GETDATE() NULL,
 	modify_date DATETIME NULL,
 	CONSTRAINT PK_id_cliente PRIMARY KEY (id_cliente)
@@ -145,6 +146,18 @@ CREATE TABLE Ventas_Detalle (
 	CONSTRAINT PK_id_venta_detalle PRIMARY KEY (id_venta_detalle),
 	CONSTRAINT FK_Ventas_Detalle_Ventas FOREIGN KEY (id_venta) REFERENCES Ventas(id_venta),
 	CONSTRAINT FK_Ventas_Detalle_Productos FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
+);
+GO
+
+CREATE TABLE Cierre_Caja (
+	id_cierre INT IDENTITY(1, 1) NOT NULL,
+	id_usuario INT NOT NULL,
+	monto_ventas DECIMAL (12, 2) NOT NULL,
+	monto_caja DECIMAL (12, 2) NOT NULL,
+	fecha_inicio_turno DATETIME NOT NULL,
+	fecha_fin_turno DATETIME NOT NULL,
+	CONSTRAINT PK_id_cierre PRIMARY KEY (id_cierre),
+	CONSTRAINT FK_Cierre_Caja_Usuarios FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
 );
 GO
 
@@ -547,6 +560,7 @@ CREATE PROC SP_ALTA_CLIENTE
 	@nombre_completo VARCHAR(100),
 	@correo VARCHAR(155),
 	@telefono VARCHAR(60),
+	@descuento INT,
 	@mensaje VARCHAR(360) OUTPUT,
 	@id_generada_cliente INT OUTPUT
 AS
@@ -555,8 +569,8 @@ BEGIN
 	SET @id_generada_cliente = 0
 	IF NOT EXISTS (SELECT * FROM Clientes WHERE nombre_completo = @nombre_completo)
 	BEGIN
-		INSERT INTO Clientes(dni, nombre_completo, correo, telefono)
-		VALUES(@dni, @nombre_completo, @correo, @telefono)
+		INSERT INTO Clientes(dni, nombre_completo, correo, telefono, descuento)
+		VALUES(@dni, @nombre_completo, @correo, @telefono, @descuento)
 		SET @id_generada_cliente = SCOPE_IDENTITY()
 	END
 	ELSE
@@ -573,13 +587,14 @@ CREATE PROC SP_MODIFICAR_CLIENTE
 	@correo VARCHAR(155),
 	@telefono VARCHAR(60),
 	@estado BIT,
+	@descuento INT,
 	@mensaje VARCHAR(360) OUTPUT,
 	@resultado BIT OUTPUT
 AS
 BEGIN
 	SET @mensaje = ''
 	SET @resultado = 0
-	IF NOT EXISTS (SELECT * FROM Clientes WHERE dni = @dni AND id_cliente != @id_cliente)
+	IF NOT EXISTS (SELECT * FROM Clientes WHERE nombre_completo = @nombre_completo AND id_cliente != @id_cliente)
 	BEGIN
 		UPDATE Clientes
 		SET
@@ -588,13 +603,14 @@ BEGIN
 		correo = @correo,
 		telefono = @telefono,
 		estado = @estado,
+		descuento = @descuento,
 		modify_date = GETDATE()
 		WHERE id_cliente = @id_cliente
 		SET @resultado = 1
 	END
 	ELSE
 	BEGIN
-		SET @mensaje = 'Ya existe un cliente con el mismo DNI.'
+		SET @mensaje = 'Ya existe un cliente con el mismo nombre.'
 	END
 END
 GO
@@ -805,6 +821,7 @@ CREATE PROC SP_ALTA_VENTA(
 	@vuelto DECIMAL(6, 2),
 	@VentaDetalle [EVenta_Detalle] READONLY,
 	@resultado BIT OUTPUT,
+	@id_venta_generado INT OUTPUT,
 	@mensaje VARCHAR(360) OUTPUT
 )
 AS
@@ -818,6 +835,7 @@ BEGIN
 			INSERT INTO Ventas(id_usuario, id_cliente, total, vuelto)
 			VALUES(@id_usuario, @id_cliente, @total, @vuelto)
 			SET @id_venta = SCOPE_IDENTITY()
+			SET @id_venta_generado = @id_venta
 
 			INSERT INTO Ventas_Detalle(id_venta, Id_Producto, Precio, Cantidad, Subtotal)
 			SELECT @id_venta, Id_Producto, Precio, Cantidad, Subtotal FROM @VentaDetalle
@@ -901,5 +919,48 @@ BEGIN
 	AND (c.id_cliente = IIF(@id_cliente = 0, c.id_cliente, @id_cliente))
 	AND (p.descripcion LIKE '%' + @nombre_producto + '%' OR @nombre_producto = '')
 END
+GO
 
+CREATE PROC SP_ALTA_CAJA (
+	@id_usuario INT,
+	@monto_ventas DECIMAL(12, 2),
+	@monto_caja DECIMAL(12, 2),
+	@fecha_inicio_turno DATETIME,
+	@fecha_fin_turno DATETIME,
+	@id_generado_cierre_caja BIT OUTPUT,
+	@mensaje VARCHAR(360) OUTPUT
+)
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION ALTA_CAJA
+			SET @id_generado_cierre_caja = 0
+			SET @mensaje = ''
 
+			INSERT INTO Cierre_Caja(id_usuario, monto_ventas, monto_caja, fecha_inicio_turno, fecha_fin_turno)
+			VALUES(@id_usuario, @monto_ventas, @monto_caja, @fecha_inicio_turno, @fecha_fin_turno)
+
+			SET @id_generado_cierre_caja = SCOPE_IDENTITY()
+		COMMIT TRANSACTION ALTA_CAJA
+	END TRY
+	BEGIN CATCH
+		SET @mensaje = ERROR_MESSAGE()
+		ROLLBACK TRANSACTION ALTA_CAJA
+	END CATCH
+END
+GO
+
+CREATE PROC SP_HISTORIAL_CIERRES_CAJA(
+	@fecha_desde VARCHAR(10),
+	@fecha_hasta VARCHAR(10),
+	@id_usuario INT
+)
+AS
+BEGIN
+	SELECT id_cierre, nombre_usuario, monto_ventas, monto_caja, fecha_inicio_turno, fecha_fin_turno FROM Cierre_Caja c
+	INNER JOIN Usuarios u ON c.id_usuario = u.id_usuario
+	WHERE (CONVERT(DATE, fecha_inicio_turno) >= @fecha_desde)
+	AND (CONVERT(DATE, fecha_fin_turno) <= @fecha_hasta)
+	AND (u.id_usuario = IIF(@id_usuario = 0, u.id_usuario, @id_usuario))
+END
+GO

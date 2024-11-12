@@ -61,10 +61,11 @@ namespace DataLayer
             return respuesta;
         }
 
-        public bool Crear(Ventas oVenta, DataTable VentaDetalle, out string mensaje)
+        public bool Crear(Ventas oVenta, DataTable VentaDetalle, out string mensaje, out int id_venta_generado)
         {
             bool respuesta = false;
             mensaje = string.Empty;
+            id_venta_generado = 0;
             try
             {
                 using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
@@ -77,11 +78,13 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("VentaDetalle", VentaDetalle);
                     cmd.Parameters.Add("resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("id_venta_generado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
                     cmd.ExecuteNonQuery();
                     respuesta = Convert.ToBoolean(cmd.Parameters["resultado"].Value);
                     mensaje = cmd.Parameters["mensaje"].Value.ToString();
+                    id_venta_generado = Convert.ToInt32(cmd.Parameters["id_venta_generado"].Value);
                 }
             }
             catch (Exception ex)
@@ -125,6 +128,38 @@ namespace DataLayer
                 }
             }
             return lista_ventas;
+        }
+
+        public Ventas VerTotalVentasDesde(string fecha, int id_usuario)
+        {
+            Ventas ventas = new Ventas();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT SUM(total)[Total] FROM Ventas");
+                    query.AppendLine("WHERE CONVERT(DATETIME, create_date) > @fecha");
+                    query.AppendLine("AND id_usuario = @id_usuario");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
+                    cmd.Parameters.AddWithValue("@fecha", fecha);
+                    cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
+                    cmd.CommandType = CommandType.Text;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if(reader.Read())
+                        {
+                            ventas.Total = Convert.ToDecimal(reader["Total"].ToString());
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ventas = new Ventas();
+                }
+            }
+            return ventas;
         }
     }
 }

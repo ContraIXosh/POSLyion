@@ -26,6 +26,7 @@ namespace CapaDatos
                     command.Parameters.AddWithValue("nombre_completo", oCliente.Nombre_completo);
                     command.Parameters.AddWithValue("correo", oCliente.Correo);
                     command.Parameters.AddWithValue("telefono", oCliente.Telefono);
+                    command.Parameters.AddWithValue("descuento", oCliente.Descuento);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("id_generada_cliente", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
@@ -51,7 +52,7 @@ namespace CapaDatos
                 {
                     oConexion.Open();
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT id_cliente, dni, nombre_completo, correo, telefono, estado FROM Clientes");
+                    query.AppendLine("SELECT id_cliente, dni, nombre_completo, correo, telefono, estado, descuento FROM Clientes");
                     query.AppendLine("WHERE (nombre_completo LIKE '%' + @nombre_cliente + '%')");
                     query.AppendLine("AND (estado = @estado)");
                     SqlCommand command = new SqlCommand(query.ToString(), oConexion);
@@ -69,7 +70,8 @@ namespace CapaDatos
                                 Nombre_completo = reader["nombre_completo"].ToString(),
                                 Correo = reader["correo"].ToString(),
                                 Telefono = reader["telefono"].ToString(),
-                                Estado = Convert.ToBoolean(reader["estado"])
+                                Estado = Convert.ToBoolean(reader["estado"]),
+                                Descuento = Convert.ToInt32(reader["descuento"])
                             });
                         }
                     }
@@ -98,6 +100,7 @@ namespace CapaDatos
                     command.Parameters.AddWithValue("correo", oCliente.Correo);
                     command.Parameters.AddWithValue("telefono", oCliente.Telefono);
                     command.Parameters.AddWithValue("estado", oCliente.Estado);
+                    command.Parameters.AddWithValue("descuento", oCliente.Descuento);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;

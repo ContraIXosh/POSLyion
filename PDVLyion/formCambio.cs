@@ -19,26 +19,31 @@ namespace POSLyion
         decimal montoEfectivo = 0m;
         decimal montoTarjeta = 0m;
         decimal montoMP = 0m;
-        decimal total = 0;
+        public decimal total = 0;
         private Usuarios UsuarioActual;
         public decimal vuelto = 0;
         // Evento que se invoca al realizar el cobro
         // para que formulario Start se suscriba
         public bool venta_cerrada = false;
+        private Clientes Cliente;
 
-        public formCambio(decimal p_total, Usuarios usuarioActual)
+        public formCambio(decimal p_total, Usuarios usuarioActual, Clientes cliente)
         {
             InitializeComponent();
-            total = p_total;
+            total = p_total - (p_total * (Convert.ToDecimal(cliente.Descuento) / 100));
             UsuarioActual = usuarioActual;
+            Cliente = cliente;
+            lbl_suma_total.Text = Convert.ToString(total);
         }
 
-
-        // Variables para almacenar los importes parciales
-        private decimal importeEfectivo = 0;
-        private decimal importeTarjeta = 0;
-        private decimal importeMP = 0;
-
+        private void formCambio_Load(object sender, EventArgs e)
+        {
+            if(Cliente.Descuento != 0)
+            {
+                lbl_descuento_aplicado.Text = "Descuento aplicado por cliente: " + Cliente.Nombre_completo;
+                lbl_descuento_aplicado.Visible = true;
+            }
+        }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
@@ -47,52 +52,8 @@ namespace POSLyion
 
         private void btn_cobrar_Click(object sender, EventArgs e)
         {
-            string metodoPago = cbox_tipocambio.SelectedItem.ToString();
             decimal importeParcial = Convert.ToDecimal(txt_dinero_entregado.Text);
-            switch (metodoPago)
-            {
-                case "Efectivo":
-                    importeEfectivo += importeParcial;
-                    lbl_efectivo.Text = $"Efectivo: {importeEfectivo:C}";
-                    break;
-                case "Tarjeta":
-                    importeTarjeta += importeParcial;
-                    lbl_tarjeta.Text = $"Tarjeta: {importeTarjeta:C}";
-                    break;
-                case "Mercado Pago":
-                    importeMP += importeParcial;
-                    lbl_mp.Text = $"QR: {importeMP:C}";
-                    break;
-            }
             venta_cerrada = true;
-            this.Close();
-
-            classTicket.CreaTicket Ticket1 = new classTicket.CreaTicket();
-
-            Ticket1.TextoCentro("Empresa xxxxx ");
-            Ticket1.TextoCentro("**********************************");
-
-            Ticket1.TextoIzquierda("");
-            Ticket1.TextoCentro("Factura de Venta"); 
-            Ticket1.TextoIzquierda("No Fac:");
-            Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-            Ticket1.TextoIzquierda("Le Atendio: xxxx");
-            Ticket1.TextoIzquierda("");
-            classTicket.CreaTicket.LineasGuion();
-
-            classTicket.CreaTicket.EncabezadoVenta();
-            classTicket.CreaTicket.LineasGuion();
-
-
-            classTicket.CreaTicket.LineasGuion();
-            Ticket1.TextoIzquierda(" ");
-            Ticket1.AgregaTotales("Total", double.Parse(lbl_suma_total.Text));
-            Ticket1.TextoIzquierda(" ");
-
-            Ticket1.TextoIzquierda(" ");
-            string impresora = "Microsoft XPS Document Writer";
-            Ticket1.ImprimirTiket(impresora);
-
             this.Close();
         }
 
@@ -144,7 +105,6 @@ namespace POSLyion
 
         private void btn_elimtj_Click(object sender, EventArgs e)
         {
-            lbl_tarjeta.Text = "Tarjeta: $0.00";
         }
 
         private void btn_buscar_cliente_Click(object sender, EventArgs e)
@@ -158,15 +118,6 @@ namespace POSLyion
                     //txt_nombre_completo_cliente.Text = modal.oCliente.Nombre_completo;
                 }
             }
-        }
-
-        private void formCambio_Load(object sender, EventArgs e)
-        {
-            cbox_tipocambio.Items.Add("Efectivo");
-            cbox_tipocambio.Items.Add("Mercado pago");
-            cbox_tipocambio.Items.Add("Tarjeta");
-            cbox_tipocambio.SelectedIndex = 0;
-            lbl_suma_total.Text = Convert.ToString(total);
         }
     }
 }

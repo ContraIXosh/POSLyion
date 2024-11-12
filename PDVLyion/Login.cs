@@ -52,6 +52,7 @@ namespace POSLyion
             }
             else
             {
+                VariablesGlobales.Inicio_sesion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 Start formStart = new Start(oUsuario);
                 formStart.Show();
                 this.Hide();

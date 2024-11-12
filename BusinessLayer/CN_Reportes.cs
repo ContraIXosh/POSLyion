@@ -23,5 +23,10 @@ namespace CapaNegocio
         {
             return oReporte.Venta_Detalle(filtros);
         }
+
+        public List<ReportesCierre> Cierres(FiltrosReportes filtros)
+        {
+            return oReporte.Cierres(filtros);
+        }
     }
 }

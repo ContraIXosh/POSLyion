@@ -39,6 +39,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_restaurar_bd = new CustomBox.RJControls.RJButton();
+            this.btb_backup_bd = new CustomBox.RJControls.RJButton();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
             this.panel_info = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -232,6 +234,48 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(549, 66);
             this.tableLayoutPanel2.TabIndex = 81;
             // 
+            // btn_restaurar_bd
+            // 
+            this.btn_restaurar_bd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_restaurar_bd.BackColor = System.Drawing.Color.Transparent;
+            this.btn_restaurar_bd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_restaurar_bd.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_restaurar_bd.BorderRadius = 6;
+            this.btn_restaurar_bd.BorderSize = 2;
+            this.btn_restaurar_bd.FlatAppearance.BorderSize = 0;
+            this.btn_restaurar_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_restaurar_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_restaurar_bd.ForeColor = System.Drawing.Color.LightCyan;
+            this.btn_restaurar_bd.Location = new System.Drawing.Point(190, 3);
+            this.btn_restaurar_bd.Name = "btn_restaurar_bd";
+            this.btn_restaurar_bd.Size = new System.Drawing.Size(181, 31);
+            this.btn_restaurar_bd.TabIndex = 76;
+            this.btn_restaurar_bd.Text = "Restaurar BD";
+            this.btn_restaurar_bd.TextColor = System.Drawing.Color.LightCyan;
+            this.btn_restaurar_bd.UseVisualStyleBackColor = false;
+            this.btn_restaurar_bd.Click += new System.EventHandler(this.btn_restaurar_bd_Click);
+            // 
+            // btb_backup_bd
+            // 
+            this.btb_backup_bd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btb_backup_bd.BackColor = System.Drawing.Color.Transparent;
+            this.btb_backup_bd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btb_backup_bd.BorderColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.BorderRadius = 6;
+            this.btb_backup_bd.BorderSize = 2;
+            this.btb_backup_bd.FlatAppearance.BorderSize = 0;
+            this.btb_backup_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btb_backup_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btb_backup_bd.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.Location = new System.Drawing.Point(3, 3);
+            this.btb_backup_bd.Name = "btb_backup_bd";
+            this.btb_backup_bd.Size = new System.Drawing.Size(181, 31);
+            this.btb_backup_bd.TabIndex = 75;
+            this.btb_backup_bd.Text = "Backup BD";
+            this.btb_backup_bd.TextColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.UseVisualStyleBackColor = false;
+            this.btb_backup_bd.Click += new System.EventHandler(this.btb_exportar_bd_Click);
+            // 
             // btn_guardar
             // 
             this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -356,23 +400,7 @@
             this.lbl_configuracion.TabIndex = 2;
             this.lbl_configuracion.Text = "Configuración";
             // 
-            // menu_sesion
-            // 
-            this.menu_sesion.DropShadowEnabled = false;
-            this.menu_sesion.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_sesion.IsMainMenu = false;
-            this.menu_sesion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verPerfilToolStripMenuItem,
-            this.inicioAdministradorToolStripMenuItem,
-            this.cerrarSesionToolStripMenuItem});
-            this.menu_sesion.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
-            this.menu_sesion.MenuItemHeight = 25;
-            this.menu_sesion.MenuItemTextColor = System.Drawing.Color.Black;
-            this.menu_sesion.Name = "menu_sesion";
-            this.menu_sesion.PrimaryColor = System.Drawing.Color.Gold;
-            this.menu_sesion.Size = new System.Drawing.Size(132, 70);
-            // 
-            // verPerfilToolStripMenuItem
+            // rjToggleButton1
             // 
             this.verPerfilToolStripMenuItem.Name = "verPerfilToolStripMenuItem";
             this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
@@ -494,7 +522,7 @@
             this.lbl_bdd.TabIndex = 77;
             this.lbl_bdd.Text = "Base de datos";
             // 
-            // btn_restaurar_bd
+            // lbl_mostrarme
             // 
             this.btn_restaurar_bd.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_restaurar_bd.BackColor = System.Drawing.Color.Transparent;
