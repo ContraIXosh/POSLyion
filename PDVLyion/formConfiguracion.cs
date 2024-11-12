@@ -13,6 +13,8 @@ using Microsoft.SqlServer.Management.Common;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows;
+using PDCLyion;
+using static POSLyion.formConfiguracion;
 
 namespace POSLyion
 {
@@ -21,6 +23,7 @@ namespace POSLyion
         public formConfiguracion()
         {
             InitializeComponent();
+
         }
 
 
@@ -72,7 +75,7 @@ namespace POSLyion
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
 
@@ -103,6 +106,12 @@ namespace POSLyion
                     RestaurarBD("POSLyion", ofd.FileName);
                 }
             }
+        }
+
+        private void btn_añadir_Click(object sender, EventArgs e)
+        {
+          LoginPOS loginPOS = new LoginPOS();
+            loginPOS.Show();
         }
     }
 }

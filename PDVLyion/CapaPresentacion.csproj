@@ -420,6 +420,12 @@
     <Compile Include="formEstadsticas.Designer.cs">
       <DependentUpon>formEstadsticas.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginPOS.Designer.cs">
+      <DependentUpon>LoginPOS.cs</DependentUpon>
+    </Compile>
     <Compile Include="formUsuariosAlta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -518,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formEstadsticas.resx">
       <DependentUpon>formEstadsticas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPOS.resx">
+      <DependentUpon>LoginPOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUsuariosAlta.resx">
       <DependentUpon>formUsuariosAlta.cs</DependentUpon>

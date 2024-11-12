@@ -234,6 +234,7 @@ namespace PDCLyion
 
             }
         }
+        //API Printer
         public class RawPrinterHelper
         {
 
@@ -276,7 +277,7 @@ namespace PDCLyion
                 DOCINFOA di = new DOCINFOA();
                 bool bSuccess = false;
 
-                di.pDocName = "My C#.NET RAW Document";
+                di.pDocName = "Documento de impresion";
                 di.pDataType = "RAW";
 
                 if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero))

@@ -434,7 +434,8 @@ namespace POSLyion
 
         private void configuraciónToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AbrirVentana(tsmenu_config, new formConfiguracion());
+            formConfiguracion config = new formConfiguracion();
+            config.Show();
         }
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)

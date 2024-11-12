@@ -697,6 +697,7 @@
             // 
             // panel_container
             // 
+            this.panel_container.BackColor = System.Drawing.Color.Black;
             this.panel_container.ColumnCount = 1;
             this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_container.Controls.Add(this.panel_resumido, 0, 0);
@@ -724,7 +725,7 @@
             this.dgv_resumen.AllowUserToAddRows = false;
             this.dgv_resumen.AllowUserToDeleteRows = false;
             this.dgv_resumen.AllowUserToResizeRows = false;
-            this.dgv_resumen.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.dgv_resumen.BackgroundColor = System.Drawing.Color.Black;
             this.dgv_resumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_resumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_resumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
