@@ -956,7 +956,7 @@ namespace POSLyion
             this.btn_desc.Name = "btn_desc";
             this.btn_desc.Size = new System.Drawing.Size(165, 31);
             this.btn_desc.TabIndex = 6;
-            this.btn_desc.Text = "DESCUENTOS";
+            this.btn_desc.Text = "CLIENTE";
             this.btn_desc.TextColor = System.Drawing.Color.White;
             this.btn_desc.UseVisualStyleBackColor = false;
             this.btn_desc.Click += new System.EventHandler(this.btn_desc_Click);
