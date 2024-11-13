@@ -52,9 +52,19 @@ namespace POSLyion
 
         private void btn_cobrar_Click(object sender, EventArgs e)
         {
-            decimal importeParcial = Convert.ToDecimal(txt_dinero_entregado.Text);
-            venta_cerrada = true;
-            this.Close();
+            decimal suma_total = Convert.ToDecimal(lbl_suma_total.Text);
+            decimal dinero_entregado = Convert.ToDecimal(txt_dinero_entregado.Text);
+            if (suma_total > dinero_entregado)
+            {
+                MessageBox.Show("Dinero entregado insuficiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_dinero_entregado.Focus();
+            }
+            else
+            {
+                decimal importeParcial = Convert.ToDecimal(txt_dinero_entregado.Text);
+                venta_cerrada = true;
+                this.Close();
+            }
         }
 
         private void txt_dinero_entregado_TextChanged(object sender, EventArgs e)

@@ -1,12 +1,14 @@
 ﻿using CapaEntidad;
 using CapaEntidad.Filtros;
 using CapaNegocio;
+using FontAwesome.Sharp;
 using PDCLyion;
 using PDCLyion.Modals;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -34,6 +36,15 @@ namespace POSLyion
 
         private void Start_Load(object sender, EventArgs e)
         {
+            List<Permisos> lista_permisos = new CN_Permisos().Leer(oUsuario.Id_usuario);
+            foreach(ToolStripMenuItem item in menu.Items)
+            {
+                bool encontrado = lista_permisos.Any(m => m.Nombre_menu == item.Name);
+                if(encontrado == false)
+                {
+                    item.Visible = false;
+                }
+            }
             txt_buscarproductos.Select();
         }
 
@@ -336,7 +347,7 @@ namespace POSLyion
                 Ticket1.AgregaTotales("Total: ", Convert.ToDouble(total_con_descuento));
                 Ticket1.TextoIzquierda(" ");
                 Ticket1.TextoIzquierda(" ");
-                string impresora = "Microsoft Print to PDF";
+                string impresora = "Microsoft XPS Document Writer v4";
                 Ticket1.ImprimirTiket(impresora);
 
                 MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
