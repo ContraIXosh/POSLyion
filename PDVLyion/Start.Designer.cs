@@ -1029,6 +1029,7 @@ namespace POSLyion
             this.Name = "Start";
             this.Text = "POSLyion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Start_FormClosing);
             this.Load += new System.EventHandler(this.Start_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Start_KeyDown);
             this.menu.ResumeLayout(false);

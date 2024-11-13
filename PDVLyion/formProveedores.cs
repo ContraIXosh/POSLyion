@@ -17,7 +17,7 @@ namespace POSLyion
     {
         private static Usuarios oUsuario = new Usuarios();
         private FiltrosProveedor filtros = new FiltrosProveedor();
-
+        private formProveedoresAlta formProveedor;
         public formProveedores()
         {
             InitializeComponent();
@@ -139,8 +139,23 @@ namespace POSLyion
 
         private void btn_crear_proveedor_Click_1(object sender, EventArgs e)
         {
-            formProveedoresAlta formalta = new formProveedoresAlta();
-            formalta.Show();
+            if(formProveedor == null || formProveedor.IsDisposed)
+            {
+                formProveedor  = new formProveedoresAlta();
+                formProveedor.Show();
+            }
+            else
+            {
+                formProveedor.Focus();
+            }
+        }
+
+        private void formProveedores_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(formProveedor != null && !formProveedor.IsDisposed)
+            {
+                formProveedor.Close();
+            }
         }
     }
 }

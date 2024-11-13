@@ -21,6 +21,8 @@ namespace POSLyion
         private List<Ventas_Detalle> respaldo_carrito = new List<Ventas_Detalle>();
         private ToolStripMenuItem currentSelectedMenuItem;
         public Clientes Cliente = new Clientes();
+        private formConfiguracion formConfiguracion;
+        private formCompras formCompras;
 
         public Start(Usuarios user)
         {
@@ -414,8 +416,15 @@ namespace POSLyion
 
         private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            formCompras compras = new formCompras(oUsuario);
-            compras.Show();
+            if (formCompras == null || formCompras.IsDisposed)
+            {
+                formCompras = new formCompras(oUsuario);
+                formCompras.Show();
+            }
+            else
+            {
+                formCompras.Focus();
+            }
         }
 
         private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -450,8 +459,15 @@ namespace POSLyion
 
         private void configuraciónToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            formConfiguracion config = new formConfiguracion();
-            config.Show();
+            if(formConfiguracion == null || formConfiguracion.IsDisposed)
+            {
+                formConfiguracion = new formConfiguracion();
+                formConfiguracion.Show();
+            }
+            else
+            {
+                formConfiguracion.Focus();
+            }
         }
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -719,6 +735,18 @@ namespace POSLyion
             if (e.KeyCode == Keys.F10)
             {
                 btn_cerrarventa.PerformClick();
+            }
+        }
+
+        private void Start_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (formConfiguracion != null && !formConfiguracion.IsDisposed)
+            {
+                formConfiguracion.Close();
+            }
+            if(formCompras != null && !formCompras.IsDisposed)
+            {
+                formCompras.Close();
             }
         }
 

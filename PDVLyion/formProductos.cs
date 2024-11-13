@@ -20,6 +20,7 @@ namespace POSLyion
         private static Usuarios oUsuario = new Usuarios();
         FiltrosProducto filtros = new FiltrosProducto();
         private List<Productos> _lista_productos;
+        private formProductosAlta formProducto;
 
         public formProductos()
         {
@@ -96,8 +97,15 @@ namespace POSLyion
 
         private void btn_crear_producto_Click(object sender, EventArgs e)
         {
-            formProductosAlta formProductosAlta = new formProductosAlta();
-            formProductosAlta.Show();
+            if(formProducto == null || formProducto.IsDisposed)
+            {
+                formProducto = new formProductosAlta();
+                formProducto.Show();
+            }
+            else
+            {
+                formProducto.Focus();
+            }
         }
 
         private void btn_actualizar_Click(object sender, EventArgs e)
@@ -151,6 +159,14 @@ namespace POSLyion
             txt_busqueda.Text = "";
             cbo_categorias.SelectedIndex = 0;
             cb_estado.Checked = false;
+        }
+
+        private void formProductos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(formProducto != null && formProducto.IsDisposed)
+            {
+                formProducto.Close();
+            }
         }
     }
 }

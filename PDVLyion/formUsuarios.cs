@@ -19,7 +19,7 @@ namespace POSLyion
     {
         private static Usuarios oUsuario = new Usuarios();
         FiltrosUsuario filtros = new FiltrosUsuario();
-
+        private formUsuariosAlta formUsuario;
         public formUsuarios()
         {
             InitializeComponent();
@@ -105,12 +105,6 @@ namespace POSLyion
             }
         }
 
-        private void btn_crear_usuario_Click(object sender, EventArgs e)
-        {
-            formUsuariosAlta formUsuariosAlta = new formUsuariosAlta();
-            formUsuariosAlta.Show();
-        }
-
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
             dgv_usuarios.Rows.Clear();
@@ -164,8 +158,11 @@ namespace POSLyion
 
         private void btn_crear_usuario_Click_1(object sender, EventArgs e)
         {
-            formUsuariosAlta formalta = new formUsuariosAlta();
-            formalta.Show();
+            if(formUsuario == null || formUsuario.IsDisposed)
+            {
+                formUsuario = new formUsuariosAlta();
+                formUsuario.Show();
+            }
         }
     }
 }

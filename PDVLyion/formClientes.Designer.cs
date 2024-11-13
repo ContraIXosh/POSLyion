@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formClientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formClientes));
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.panel_bot = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_updateversion = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.btn_crear = new RJCodeAdvance.RJControls.RJButton();
             this.btn_buscar = new RJCodeAdvance.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
@@ -74,7 +75,6 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.panel_main.SuspendLayout();
             this.panel_bot.SuspendLayout();
             this.panel_mid.SuspendLayout();
@@ -203,6 +203,29 @@
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_btns.Size = new System.Drawing.Size(284, 202);
             this.panel_btns.TabIndex = 16;
+            // 
+            // btn_limpiar_filtros
+            // 
+            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.BorderRadius = 10;
+            this.btn_limpiar_filtros.BorderSize = 2;
+            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
+            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
+            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 106);
+            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
+            this.btn_limpiar_filtros.Size = new System.Drawing.Size(223, 38);
+            this.btn_limpiar_filtros.TabIndex = 30;
+            this.btn_limpiar_filtros.Text = "Limpiar filtros";
+            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
             // 
             // btn_crear
             // 
@@ -582,29 +605,6 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             // 
-            // btn_limpiar_filtros
-            // 
-            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.BorderRadius = 10;
-            this.btn_limpiar_filtros.BorderSize = 2;
-            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
-            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
-            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 106);
-            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
-            this.btn_limpiar_filtros.Size = new System.Drawing.Size(223, 38);
-            this.btn_limpiar_filtros.TabIndex = 30;
-            this.btn_limpiar_filtros.Text = "Limpiar filtros";
-            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
-            // 
             // formClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -613,6 +613,7 @@
             this.Controls.Add(this.panel_main);
             this.Name = "formClientes";
             this.Text = "formCustomers";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formClientes_FormClosing);
             this.Load += new System.EventHandler(this.formClientes_Load);
             this.panel_main.ResumeLayout(false);
             this.panel_bot.ResumeLayout(false);

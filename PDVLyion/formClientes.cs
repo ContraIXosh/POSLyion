@@ -18,7 +18,7 @@ namespace POSLyion
     {
         private static Usuarios oUsuario = new Usuarios();
         private FiltrosCliente filtros = new FiltrosCliente();
-
+        private formClientesAlta formClienteAlta;
         public formClientes()
         {
             InitializeComponent();
@@ -141,8 +141,23 @@ namespace POSLyion
 
         private void btn_crear_Click(object sender, EventArgs e)
         {
-            formClientesAlta formalta = new formClientesAlta();
-            formalta.Show();
+            if(formClienteAlta == null || formClienteAlta.IsDisposed)
+            {
+                formClienteAlta = new formClientesAlta();
+                formClienteAlta.Show();
+            }
+            else
+            {
+                formClienteAlta.Focus();
+            }
+        }
+
+        private void formClientes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (formClienteAlta != null && !formClienteAlta.IsDisposed) 
+            {
+                formClienteAlta.Close();
+            }
         }
     }
 }
