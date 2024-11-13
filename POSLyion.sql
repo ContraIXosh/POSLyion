@@ -189,7 +189,7 @@ GO
 
 INSERT INTO Permisos(id_rol, nombre_menu)
 VALUES
-(1, 'Start'),
+(1, 'tsmenu_venta'),
 (1, 'tsmenu_compras'),
 (1, 'tsmenu_prods'),
 (1, 'tsmenu_users'),
@@ -199,13 +199,13 @@ VALUES
 (1, 'tsmenu_reports'),
 (1, 'tsmenu_config'),
 (1, 'cerrarSesionToolStripMenuItem'),
-(2, 'Start'),
+(2, 'tsmenu_venta'),
 (2, 'tsmenu_compras'),
 (2, 'tsmenu_clientes'),
 (2, 'tsmenu_reports'),
 (2, 'tsmenu_config'),
 (2, 'cerrarSesionToolStripMenuItem'),
-(3, 'Start'),
+(3, 'tsmenu_venta'),
 (3, 'tsmenu_compras'),
 (3, 'tsmenu_prods'),
 (3, 'tsmenu_clientes'),
@@ -213,7 +213,7 @@ VALUES
 (3, 'tsmenu_reports'),
 (3, 'tsmenu_config'),
 (3, 'cerrarSesionToolStripMenuItem'),
-(4, 'Start'),
+(4, 'tsmenu_venta'),
 (4, 'tsmenu_compras'),
 (4, 'tsmenu_prods'),
 (4, 'tsmenu_clientes'),
@@ -223,10 +223,6 @@ VALUES
 (4, 'tsmenu_config'),
 (4, 'cerrarSesionToolStripMenuItem')
 GO
-
-UPDATE Permisos
-SET nombre_menu = 'tsmenu_venta'
-WHERE nombre_menu = 'tsmenu_ventas'
 
 INSERT INTO Proveedores(descripcion)
 VALUES('Sin asignar'),
@@ -800,7 +796,8 @@ CREATE TYPE [dbo].[ECompra_Detalle] AS TABLE(
 	[Id_Producto] INT NULL,
 	[Precio] DECIMAL(12, 2) NULL,
 	[Cantidad] INT NULL,
-	[Subtotal] DECIMAL(12, 2) NULL
+	[Subtotal] DECIMAL(12, 2) NULL,
+	[NuevoCosto] DECIMAL(12,2) NULL
 )
 GO
 
@@ -831,7 +828,9 @@ BEGIN
 			SELECT @id_compra, Id_Producto, Precio, Cantidad, Subtotal FROM @CompraDetalle
 
 			UPDATE p
-			SET p.stock_actual = p.stock_actual + cd.Cantidad
+			SET 
+				p.stock_actual = p.stock_actual + cd.Cantidad,
+				p.precio_costo = cd.NuevoCosto
 			FROM Productos p
 			INNER JOIN @CompraDetalle cd ON cd.Id_Producto = p.id_producto
 		COMMIT TRANSACTION REGISTRO_COMPRA

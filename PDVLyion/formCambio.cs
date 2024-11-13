@@ -53,7 +53,17 @@ namespace POSLyion
         private void btn_cobrar_Click(object sender, EventArgs e)
         {
             decimal suma_total = Convert.ToDecimal(lbl_suma_total.Text);
-            decimal dinero_entregado = Convert.ToDecimal(txt_dinero_entregado.Text);
+            decimal dinero_entregado = 0;
+            if(txt_dinero_entregado.Text != "")
+            {
+                dinero_entregado = Convert.ToDecimal(txt_dinero_entregado.Text);
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un monto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
             if (suma_total > dinero_entregado)
             {
                 MessageBox.Show("Dinero entregado insuficiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);

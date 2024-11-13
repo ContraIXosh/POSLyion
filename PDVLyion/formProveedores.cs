@@ -108,8 +108,10 @@ namespace POSLyion
             List<Proveedores> lista_proveedores = new CN_Proveedores().Leer(filtros);
             foreach (Proveedores oProveedor in lista_proveedores)
             {
-                dgv_proveedores.Rows.Add(new object[]
+                if(oProveedor.Id_proveedor != 1)
                 {
+                    dgv_proveedores.Rows.Add(new object[]
+                                    {
                     oProveedor.Id_proveedor,
                     oProveedor.Cuit,
                     oProveedor.Descripcion,
@@ -117,7 +119,8 @@ namespace POSLyion
                     oProveedor.Telefono,
                     oProveedor.Estado == true ? "Activo" : "Inactivo",
                     oProveedor.Estado == true ? 1 : 0
-                });
+                                    });
+                }    
             }
         }
 

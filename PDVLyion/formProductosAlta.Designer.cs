@@ -149,6 +149,7 @@
             // 
             // txt_costo
             // 
+            this.txt_costo.Enabled = false;
             this.txt_costo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_costo.Location = new System.Drawing.Point(8, 85);
             this.txt_costo.Name = "txt_costo";
@@ -206,7 +207,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Gold;
-            this.label9.Location = new System.Drawing.Point(335, 53);
+            this.label9.Location = new System.Drawing.Point(306, 53);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 26);
             this.label9.TabIndex = 5;

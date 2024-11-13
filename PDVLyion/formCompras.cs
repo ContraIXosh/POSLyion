@@ -296,6 +296,11 @@ namespace POSLyion
         // Guarda el registro de una compra
         private void btn_guardar_Click(object sender, EventArgs e)
         {
+            if(Convert.ToInt32(((OpcionCombo)cbox_proveedores.SelectedItem).Valor) == 1)
+            {
+                MessageBox.Show("Debe elegir un proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            } 
             // Se verifica si existe al menos un producto ingresado
             if (dgv_compras.Rows.Count < 1)
             {
@@ -316,15 +321,27 @@ namespace POSLyion
                 datatable_compra_detalle.Columns.Add("Precio", typeof(decimal));
                 datatable_compra_detalle.Columns.Add("Cantidad", typeof(int));
                 datatable_compra_detalle.Columns.Add("Subtotal", typeof(decimal));
+                datatable_compra_detalle.Columns.Add("NuevoCosto", typeof(decimal));
+
+                decimal calculo_costo = 0;
 
                 foreach (DataGridViewRow fila in dgv_compras.Rows)
                 {
+                    Productos producto = new CN_Productos().BuscarUnProducto(Convert.ToInt32(fila.Cells["id_producto"].Value));
+                    decimal costo_anterior = producto.Precio_costo;
+                    decimal costo_nuevo = Convert.ToDecimal(fila.Cells["precio_costo"].Value);
+                    int cantidad_anterior = producto.Stock_actual;
+                    int cantidad_nueva = Convert.ToInt32(fila.Cells["cantidad"].Value);
+                    decimal operacion1 = ((costo_anterior * Math.Abs(cantidad_anterior)) + (costo_nuevo * cantidad_nueva));
+                    decimal operacion2 = (Math.Abs(cantidad_anterior) + cantidad_nueva);
+                    calculo_costo = operacion1 / operacion2;
                     datatable_compra_detalle.Rows.Add(new object[]
                     {
                         Convert.ToInt32(fila.Cells["id_producto"].Value.ToString()),
                         fila.Cells["precio_costo"].Value.ToString(),
                         fila.Cells["cantidad"].Value.ToString(),
-                        fila.Cells["subtotal"].Value.ToString()
+                        fila.Cells["subtotal"].Value.ToString(),
+                        calculo_costo
                     });
                 }
 

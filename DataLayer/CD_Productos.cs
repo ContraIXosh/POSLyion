@@ -105,7 +105,7 @@ namespace CapaDatos
                 try
                 {
                     oConexion.Open();
-                    string query = "SELECT id_producto, descripcion, precio_venta, stock_actual FROM Productos WHERE estado = 1 AND id_producto = " + id;
+                    string query = "SELECT id_producto, descripcion, precio_costo, precio_venta, stock_actual FROM Productos WHERE estado = 1 AND id_producto = " + id;
                     SqlCommand command = new SqlCommand(query.ToString(), oConexion);
                     command.CommandType = CommandType.Text;
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -114,6 +114,7 @@ namespace CapaDatos
                         {
                             producto.Id_producto = Convert.ToInt32(reader["id_producto"]);
                             producto.Descripcion = reader["descripcion"].ToString();
+                            producto.Precio_costo = Convert.ToDecimal(reader["precio_costo"]);
                             producto.Precio_venta = Convert.ToDecimal(reader["precio_venta"]);
                             producto.Stock_actual = Convert.ToInt32(reader["stock_actual"]);
                         }
