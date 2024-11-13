@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
+using CapaEntidad.GraficosVentas;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -160,6 +161,75 @@ namespace DataLayer
                 }
             }
             return ventas;
+        }
+
+        public List<DatosGraficoMensual> VentasMensuales()
+        {
+            List<DatosGraficoMensual> lista_ventas = new List<DatosGraficoMensual>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT DATEPART(MONTH, create_date)[mes], COUNT(*)[cantidad_ventas] FROM Ventas");
+                    query.AppendLine("GROUP BY  DATEPART(MONTH, create_date) ORDER BY mes;");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
+                    cmd.CommandType = CommandType.Text;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista_ventas.Add(new DatosGraficoMensual()
+                            {
+                                Mes = Convert.ToInt32(reader["mes"].ToString()),
+                                Cantidad = Convert.ToInt32(reader["cantidad_ventas"].ToString())
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista_ventas = new List<DatosGraficoMensual>();
+                }
+            }
+            return lista_ventas;
+        }
+
+        public List<DatosGraficoUsuarios> VentasMensualesUsuarios()
+        {
+            List<DatosGraficoUsuarios> lista_ventas = new List<DatosGraficoUsuarios>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT u.nombre_usuario[NombreUsuario], COUNT(v.id_usuario)[CantidadVentas], DATEPART(MONTH, v.create_date)[Mes]");
+                    query.AppendLine("FROM Ventas v INNER JOIN Usuarios u ON v.id_usuario = u.id_usuario");
+                    query.AppendLine("WHERE v.create_date >= '2024-01-01' AND v.create_date < '2024-12-31'");
+                    query.AppendLine("GROUP BY u.nombre_usuario, DATEPART(MONTH, v.create_date) ORDER BY u.nombre_usuario;");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
+                    cmd.CommandType = CommandType.Text;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista_ventas.Add(new DatosGraficoUsuarios()
+                            {
+                                Nombre_usuario = reader["NombreUsuario"].ToString(),
+                                Mes = Convert.ToInt32(reader["Mes"].ToString()),
+                                Cantidad = Convert.ToInt32(reader["CantidadVentas"].ToString())
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista_ventas = new List<DatosGraficoUsuarios>();
+                }
+            }
+            return lista_ventas;
         }
     }
 }

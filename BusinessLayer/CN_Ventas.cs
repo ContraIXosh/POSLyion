@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
+using CapaEntidad.GraficosVentas;
 using DataLayer;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,16 @@ namespace CapaNegocio
         public Ventas VerTotalVentasDesde(string fecha_inicio, int id_usuario)
         {
             return oVenta.VerTotalVentasDesde(fecha_inicio, id_usuario);
+        }
+
+        public List<DatosGraficoMensual> VentasMensuales()
+        {
+            return oVenta.VentasMensuales();
+        }
+
+        public List<DatosGraficoUsuarios> VentasMensualesUsuarios()
+        {
+            return oVenta.VentasMensualesUsuarios();
         }
     }
 }

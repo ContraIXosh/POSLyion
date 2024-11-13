@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaEntidad.Filtros;
+using CapaEntidad.GraficosVentas;
 using CapaNegocio;
 using ClosedXML.Excel;
 using EntityLayer.Filtros;
@@ -35,6 +36,15 @@ namespace POSLyion
 
         private void formEstadsticas_Load(object sender, EventArgs e)
         {
+            label1.Visible = false;
+            label6.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            chart1.Visible = false;
+            chart2.Visible = false;
+            chart3.Visible = false;
+            chart4.Visible = false;
+
             FiltrosUsuario filtros_usuario = new FiltrosUsuario();
             cbox_usuarios.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Cualquier usuario" });
             List<Usuarios> lista_usuarios = new CN_Usuarios().Leer(filtros_usuario);
@@ -84,6 +94,24 @@ namespace POSLyion
             this.panel_izq.Controls.Add(_cbox_clientes, 0, 12);
             this.panel_izq.Controls.Add(btn_buscar, 0, 13);
             dgv_historial.Dock = DockStyle.Fill;
+            chart1.Series.Clear();
+            chart2.Series.Clear();
+            chart3.Series.Clear();
+            chart4.Series.Clear();
+            label1.Visible = true;
+            label6.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            chart1.Visible = true;
+            chart2.Visible = true;
+            chart3.Visible = true;
+            chart4.Visible = true;
+            label1.Text = "VENTAS MENSUALES";
+            label6.Text = "VENTAS POR USUARIO";
+            label2.Text = "VENTAS MENSUALES - GRAFICO DONA";
+            label3.Text = "VENTAS POR USUARIO - GRAFICO DONA";
+            this.DatosVentas();
+            this.VentasUsuarios();
         }
 
         private void btn_ver_compras_Click(object sender, EventArgs e)
@@ -100,6 +128,24 @@ namespace POSLyion
             this.panel_izq.Controls.Add(_cbox_proveedores, 0, 12);
             this.panel_izq.Controls.Add(btn_buscar, 0, 13);
             dgv_historial.Dock = DockStyle.Fill;
+            chart1.Series.Clear();
+            chart2.Series.Clear();
+            chart3.Series.Clear();
+            chart4.Series.Clear();
+            label1.Visible = true;
+            label6.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            chart1.Visible = true;
+            chart2.Visible = true;
+            chart3.Visible = true;
+            chart4.Visible = true;
+            label1.Text = "COMPRAS MENSUALES";
+            label6.Text = "COMPRAS POR USUARIO";
+            label2.Text = "COMPRAS MENSUALES - GRAFICO DONA";
+            label3.Text = "COMPRAS POR USUARIO - GRAFICO DONA";
+            this.DatosCompras();
+            this.ComprasUsuarios();
         }
 
         private void btn_ver_cierres_Click(object sender, EventArgs e)
@@ -116,6 +162,14 @@ namespace POSLyion
                 this.panel_izq.Controls.Remove(_lbl_busqueda_proveedor);
                 this.panel_izq.Controls.Remove(_cbox_proveedores);
             }
+            label1.Visible = false;
+            label6.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            chart1.Visible = false;
+            chart2.Visible = false;
+            chart3.Visible = false;
+            chart4.Visible = false;
             dgv_historial.Dock = DockStyle.Fill;
         }
 
@@ -395,6 +449,299 @@ namespace POSLyion
             {
                 MessageBox.Show("No hay datos para exportar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void VentasUsuarios()
+        {
+            List<DatosGraficoUsuarios> lista_ventas_usuarios = new CN_Ventas().VentasMensualesUsuarios();
+            List<string> usuario = lista_ventas_usuarios.Select(v => v.Nombre_usuario).ToList();
+            List<int> cantidades = lista_ventas_usuarios.Select(v => v.Cantidad).ToList();
+            this.ConfigurarVentasUsuariosBarra(cantidades, usuario);
+            this.ConfigurarVentasUsuariosDona(cantidades, usuario);
+        }
+
+        private void ConfigurarVentasUsuariosBarra(List<int> cantidad, List<string> usuario)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Ventas Mensuales por Usuario")
+            {
+                ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.String,
+                YValueType = ChartValueType.Int32,
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < usuario.Count; i++)
+            {
+                series.Points.AddXY(usuario[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart4.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart4.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart4.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart4.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+            // Configurar el Chart
+            chart4.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart4.Series.Add(series);
+            chart4.ChartAreas[0].AxisX.Title = "Usuarios";
+            chart4.ChartAreas[0].AxisY.Title = "Cantidad";
+            chart4.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada usuario
+            // Refrescar el gráfico
+            chart4.Invalidate();
+        }
+
+        private void ConfigurarVentasUsuariosDona(List<int> cantidad, List<string> usuario)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Ventas Mensuales por Usuario")
+            {
+                ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.String,
+                YValueType = ChartValueType.Int32,
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < usuario.Count; i++)
+            {
+                series.Points.AddXY(usuario[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart3.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart3.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart3.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart3.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+            // Configurar el Chart
+            chart3.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart3.Series.Add(series);
+            chart3.ChartAreas[0].AxisX.Title = "Usuarios";
+            chart3.ChartAreas[0].AxisY.Title = "Cantidad";
+            chart3.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada usuario
+            // Refrescar el gráfico
+            chart3.Invalidate();
+        }
+
+        private void DatosVentas()
+        {
+            List<DatosGraficoMensual> lista_ventas_mensuales = new CN_Ventas().VentasMensuales();
+            List<int> meses = lista_ventas_mensuales.Select(v => v.Mes).ToList();
+            List<int> cantidades = lista_ventas_mensuales.Select(v => v.Cantidad).ToList();
+            this.ConfigurarVentasMensualesBarra(meses, cantidades);
+            this.ConfigurarVentasMensualesDona(meses, cantidades);
+        }
+
+        private void ConfigurarVentasMensualesBarra(List<int> meses, List<int> cantidad)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Ventas Mensuales")
+            {
+                ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.Int32,
+                YValueType = ChartValueType.Int32
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < meses.Count; i++)
+            {
+                series.Points.AddXY(meses[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart1.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart1.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart1.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart1.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+
+            // Configurar el Chart
+            chart1.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart1.Series.Add(series);
+            chart1.ChartAreas[0].AxisX.Title = "Mes";
+            chart1.ChartAreas[0].AxisY.Title = "Cantidad de Ventas";
+            chart1.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada mes
+            // Refrescar el gráfico
+            chart1.Invalidate();
+        }
+
+        private void ConfigurarVentasMensualesDona(List<int> meses, List<int> cantidad)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Ventas Mensuales")
+            {
+                ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.Int32,
+                YValueType = ChartValueType.Int32
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < meses.Count; i++)
+            {
+                series.Points.AddXY("Mes n°:" + meses[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart2.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart2.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart2.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart2.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+            // Configurar el Chart
+            chart2.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart2.Series.Add(series);
+            chart2.ChartAreas[0].AxisX.Title = "Mes";
+            chart2.ChartAreas[0].AxisY.Title = "Cantidad de Ventas";
+            chart2.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada mes
+            // Refrescar el gráfico
+            chart2.Invalidate();
+        }
+
+        private void DatosCompras()
+        {
+            List<DatosGraficoMensual> lista_compras_mensuales = new CN_Compras().ComprasMensuales();
+            List<int> meses = lista_compras_mensuales.Select(v => v.Mes).ToList();
+            List<int> cantidades = lista_compras_mensuales.Select(v => v.Cantidad).ToList();
+            this.ConfigurarComprasMensualesBarra(meses, cantidades);
+            this.ConfigurarComprasMensualesDona(meses, cantidades);
+        }
+
+        private void ConfigurarComprasMensualesBarra(List<int> meses, List<int> cantidad)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Compras Mensuales")
+            {
+                ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.Int32,
+                YValueType = ChartValueType.Int32
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < meses.Count; i++)
+            {
+                series.Points.AddXY(meses[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart1.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart1.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart1.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart1.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+            // Configurar el Chart
+            chart1.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart1.Series.Add(series);
+            chart1.ChartAreas[0].AxisX.Title = "Mes";
+            chart1.ChartAreas[0].AxisY.Title = "Cantidad de Compras";
+            chart1.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada mes
+            // Refrescar el gráfico
+            chart1.Invalidate();
+        }
+
+        private void ConfigurarComprasMensualesDona(List<int> meses, List<int> cantidad)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Compras Mensuales")
+            {
+                ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.Int32,
+                YValueType = ChartValueType.Int32
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < meses.Count; i++)
+            {
+                series.Points.AddXY("Mes n°:" + meses[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart2.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart2.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart2.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart2.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+            // Configurar el Chart
+            chart2.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart2.Series.Add(series);
+            chart2.ChartAreas[0].AxisX.Title = "Mes";
+            chart2.ChartAreas[0].AxisY.Title = "Cantidad de Compras";
+            chart2.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada mes
+            // Refrescar el gráfico
+            chart2.Invalidate();
+        }
+
+        private void ComprasUsuarios()
+        {
+            List<DatosGraficoUsuarios> lista_compras_usuarios = new CN_Compras().ComprasMensualesUsuarios();
+            List<string> usuario = lista_compras_usuarios.Select(v => v.Nombre_usuario).ToList();
+            List<int> cantidades = lista_compras_usuarios.Select(v => v.Cantidad).ToList();
+            this.ConfigurarComprasUsuariosBarra(cantidades, usuario);
+            this.ConfigurarComprasUsuariosDona(cantidades, usuario);
+        }
+
+        private void ConfigurarComprasUsuariosBarra(List<int> cantidad, List<string> usuario)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Compras Mensuales por Usuario")
+            {
+                ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.String,
+                YValueType = ChartValueType.Int32,
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < usuario.Count; i++)
+            {
+                series.Points.AddXY(usuario[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart4.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart4.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart4.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart4.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+            // Configurar el Chart
+            chart4.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart4.Series.Add(series);
+            chart4.ChartAreas[0].AxisX.Title = "Usuarios";
+            chart4.ChartAreas[0].AxisY.Title = "Cantidad";
+            chart4.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada usuario
+            // Refrescar el gráfico
+            chart4.Invalidate();
+        }
+
+        private void ConfigurarComprasUsuariosDona(List<int> cantidad, List<string> usuario)
+        {
+            // Crear una nueva serie
+            Series series = new Series("Compras Mensuales por Usuario")
+            {
+                ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
+                XValueType = ChartValueType.String,
+                YValueType = ChartValueType.Int32,
+            };
+
+            // Añadir puntos a la serie
+            for (int i = 0; i < usuario.Count; i++)
+            {
+                series.Points.AddXY(usuario[i], cantidad[i]);
+            }
+
+            // Configuración para ajustar automáticamente los ejes
+            chart3.ChartAreas[0].AxisY.IsStartedFromZero = true;
+            chart3.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
+            chart3.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart3.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
+
+            // Configurar el Chart
+            chart3.Series.Clear(); // Limpiar series anteriores si es necesario
+            chart3.Series.Add(series);
+            chart3.ChartAreas[0].AxisX.Title = "Usuarios";
+            chart3.ChartAreas[0].AxisY.Title = "Cantidad";
+            chart3.ChartAreas[0].AxisX.Interval = 1; // Opcional, para que muestre cada usuario
+            // Refrescar el gráfico
+            chart3.Invalidate();
         }
     }
 }

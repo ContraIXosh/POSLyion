@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using CapaEntidad.GraficosVentas;
 
 namespace CapaNegocio
 {
@@ -21,6 +22,16 @@ namespace CapaNegocio
         public List<Compras> Leer(string fecha_inicio, string fecha_fin)
         {
             return oCompra.Leer(fecha_inicio, fecha_fin);
+        }
+
+        public List<DatosGraficoMensual> ComprasMensuales()
+        {
+            return oCompra.ComprasMensuales();
+        }
+
+        public List<DatosGraficoUsuarios> ComprasMensualesUsuarios()
+        {
+            return oCompra.ComprasMensualesUsuarios();
         }
     }
 }

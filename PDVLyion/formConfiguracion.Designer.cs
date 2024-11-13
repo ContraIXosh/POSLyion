@@ -252,6 +252,7 @@
             this.btb_backup_bd.Text = "Backup BD";
             this.btb_backup_bd.TextColor = System.Drawing.Color.SpringGreen;
             this.btb_backup_bd.UseVisualStyleBackColor = false;
+            this.btb_backup_bd.Visible = false;
             this.btb_backup_bd.Click += new System.EventHandler(this.btb_exportar_bd_Click);
             // 
             // lbl_bdd
@@ -265,6 +266,7 @@
             this.lbl_bdd.Size = new System.Drawing.Size(180, 29);
             this.lbl_bdd.TabIndex = 77;
             this.lbl_bdd.Text = "Base de datos";
+            this.lbl_bdd.Visible = false;
             // 
             // btn_restaurar_bd
             // 
@@ -285,6 +287,7 @@
             this.btn_restaurar_bd.Text = "Restaurar BD";
             this.btn_restaurar_bd.TextColor = System.Drawing.Color.LightCyan;
             this.btn_restaurar_bd.UseVisualStyleBackColor = false;
+            this.btn_restaurar_bd.Visible = false;
             this.btn_restaurar_bd.Click += new System.EventHandler(this.btn_restaurar_bd_Click);
             // 
             // tableLayoutPanel2

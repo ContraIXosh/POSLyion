@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
+using CapaEntidad.GraficosVentas;
+using System.Reflection;
 
 namespace CapaDatos
 {
@@ -76,6 +78,75 @@ namespace CapaDatos
                 catch (Exception ex)
                 {
                     lista_compras = new List<Compras>();
+                }
+            }
+            return lista_compras;
+        }
+
+        public List<DatosGraficoMensual> ComprasMensuales()
+        {
+            List<DatosGraficoMensual> lista_compras = new List<DatosGraficoMensual>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT DATEPART(MONTH, create_date)[mes], COUNT(*)[cantidad_compras] FROM Compras");
+                    query.AppendLine("GROUP BY  DATEPART(MONTH, create_date) ORDER BY mes;");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
+                    cmd.CommandType = CommandType.Text;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista_compras.Add(new DatosGraficoMensual()
+                            {
+                                Mes = Convert.ToInt32(reader["mes"].ToString()),
+                                Cantidad = Convert.ToInt32(reader["cantidad_compras"].ToString())
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista_compras = new List<DatosGraficoMensual>();
+                }
+            }
+            return lista_compras;
+        }
+
+        public List<DatosGraficoUsuarios> ComprasMensualesUsuarios()
+        {
+            List<DatosGraficoUsuarios> lista_compras = new List<DatosGraficoUsuarios>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT u.nombre_usuario[NombreUsuario], COUNT(c.id_usuario)[CantidadCompras], DATEPART(MONTH, c.create_date)[Mes]");
+                    query.AppendLine("FROM Compras c INNER JOIN Usuarios u ON c.id_usuario = u.id_usuario");
+                    query.AppendLine("WHERE c.create_date >= '2024-01-01' AND c.create_date < '2024-12-31'");
+                    query.AppendLine("GROUP BY u.nombre_usuario, DATEPART(MONTH, c.create_date) ORDER BY u.nombre_usuario;");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
+                    cmd.CommandType = CommandType.Text;
+                    oConexion.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista_compras.Add(new DatosGraficoUsuarios()
+                            {
+                                Nombre_usuario = reader["NombreUsuario"].ToString(),
+                                Mes = Convert.ToInt32(reader["Mes"].ToString()),
+                                Cantidad = Convert.ToInt32(reader["CantidadCompras"].ToString())
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista_compras = new List<DatosGraficoUsuarios>();
                 }
             }
             return lista_compras;

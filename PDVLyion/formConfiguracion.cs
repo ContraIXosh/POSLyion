@@ -32,7 +32,13 @@ namespace POSLyion
         {
             try
             {
-                Server servidor = new Server(new ServerConnection(Environment.MachineName));
+                string serverName = Environment.MachineName; // Nombre por defecto de la máquina
+                string instanceName = "SQLExpress"; // Ejemplo de nombre de instancia nombrada
+
+                // Combinación del nombre del servidor con el nombre de la instancia si es necesario
+                string fullServerName = $@"{serverName}\{instanceName}";
+
+                Server servidor = new Server(new ServerConnection(fullServerName));
                 Backup backup = new Backup
                 {
                     Action = BackupActionType.Database,
