@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PDCLyion.Modals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,46 +8,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static PDCLyion.formCambio;
+using static POSLyion.formCambio;
+using CapaEntidad;
+using PDCLyion;
 
-namespace PDCLyion
+namespace POSLyion
 {
-
     public partial class formCambio : Form
     {
-        decimal total = 1000m;
         decimal montoEfectivo = 0m;
         decimal montoTarjeta = 0m;
         decimal montoMP = 0m;
-        decimal dinero = 0;
- 
-        public formCambio(decimal p_dinero)
+        public decimal total = 0;
+        private Usuarios UsuarioActual;
+        public decimal vuelto = 0;
+        // Evento que se invoca al realizar el cobro
+        // para que formulario Start se suscriba
+        public bool venta_cerrada = false;
+        private Clientes Cliente;
+
+        public formCambio(decimal p_total, Usuarios usuarioActual, Clientes cliente)
         {
             InitializeComponent();
-            dinero = p_dinero;
+            total = p_total - (p_total * (Convert.ToDecimal(cliente.Descuento) / 100));
+            UsuarioActual = usuarioActual;
+            Cliente = cliente;
+            lbl_suma_total.Text = Convert.ToString(total);
         }
-
-
-
 
         private void formCambio_Load(object sender, EventArgs e)
         {
-            cbox_tipocambio.Items.Add("Efectivo");
-            cbox_tipocambio.Items.Add("Mercado pago");
-            cbox_tipocambio.Items.Add("Tarjeta");
-
-            cbox_tipocambio.SelectedIndex = 0;
-            lbl_total.Text = Convert.ToString(dinero);
+            if(Cliente.Descuento != 0)
+            {
+                lbl_descuento_aplicado.Text = "Descuento aplicado por cliente: " + Cliente.Nombre_completo;
+                lbl_descuento_aplicado.Visible = true;
+            }
         }
-
-
-
-        // Variables para almacenar los importes parciales
-        private decimal importeEfectivo = 0;
-        private decimal importeTarjeta = 0;
-        private decimal importeMP = 0;
-
- 
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
@@ -55,55 +52,74 @@ namespace PDCLyion
 
         private void btn_cobrar_Click(object sender, EventArgs e)
         {
-            string metodoPago = cbox_tipocambio.SelectedItem.ToString();
-            decimal importeParcial;
+            decimal importeParcial = Convert.ToDecimal(txt_dinero_entregado.Text);
+            venta_cerrada = true;
+            this.Close();
+        }
 
-            if (!decimal.TryParse(nbud_precio.Text.Replace("$", ""), out importeParcial))
+        private void txt_dinero_entregado_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_dinero_entregado.Text != "")
             {
-            }
-
-            switch (metodoPago)
-            {
-                case "Efectivo":
-                    importeEfectivo += importeParcial;
-                    lbl_efectivo.Text = $"Efectivo: {importeEfectivo:C}";
-                    break;
-                case "Tarjeta":
-                    importeTarjeta += importeParcial;
-                    lbl_tarjeta.Text = $"Tarjeta: {importeTarjeta:C}";
-                    break;
-                case "Mercado Pago":
-                    importeMP += importeParcial;
-                    lbl_mp.Text = $"QR: {importeMP:C}";
-                    break;
-            }
-
-            // Calcular el total pagado
-            decimal totalPagado = importeEfectivo + importeTarjeta + importeMP;
-            decimal diferencia = dinero - totalPagado;
-            if (diferencia > 0)
-            {
-                lbl_total.Text = $"Falta: {diferencia:C}";
-                lbl_vuelto.Text = "Vuelto: $0";
+                vuelto = Convert.ToDecimal(txt_dinero_entregado.Text) - total;
+                lbl_vuelto.Text = vuelto >= 0 ? "Vuelto: $" + vuelto.ToString() : "Monto entregado insuficiente";
             }
             else
             {
-                lbl_total.Text = "Total pagado.";
-                lbl_vuelto.Text = $"Vuelto: {-diferencia:C}";
+                lbl_vuelto.Text = "Vuelto: $0,00";
+            }
+            txt_dinero_entregado.Select();
+        }
+
+        private void txt_dinero_entregado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (txt_dinero_entregado.Text.Trim().Length == 0 && e.KeyChar.ToString() == ",")
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ",")
+                    {
+                        e.Handled = false;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                    }
+                }
             }
         }
 
         private void btn_elimef_Click(object sender, EventArgs e)
         {
-            lbl_efectivo.Text = string.Empty ;
+            lbl_efectivo.Text = string.Empty;
             lbl_efectivo.Text = "Efectivo: $0.00";
         }
 
         private void btn_elimtj_Click(object sender, EventArgs e)
         {
-            lbl_tarjeta.Text = "Tarjeta: $0.00";
+        }
+
+        private void btn_buscar_cliente_Click(object sender, EventArgs e)
+        {
+            using (var modal = new MD_Clientes())
+            {
+                var resultado = modal.ShowDialog();
+                if(resultado == DialogResult.OK)
+                {
+                    //txt_dni_cliente.Text = modal.oCliente.Dni;
+                    //txt_nombre_completo_cliente.Text = modal.oCliente.Nombre_completo;
+                }
+            }
         }
     }
 }
 
- 
+

@@ -1,4 +1,6 @@
-﻿namespace PDCLyion
+﻿using System;
+
+namespace POSLyion
 {
     partial class Start
     {
@@ -42,8 +44,6 @@
             this.tsmenu_compras = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_prods = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_users = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmenu_admin = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmenu_alternar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_clientes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_proveedor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_reports = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,13 +57,13 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_buscarproductos = new System.Windows.Forms.TextBox();
             this.dgv_productos = new System.Windows.Forms.DataGridView();
-            this.dgv_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_dinero = new System.Windows.Forms.Label();
-            this.lbl_total = new System.Windows.Forms.Label();
+            this.lbl_suma_total = new System.Windows.Forms.Label();
+            this.lbl_totale = new System.Windows.Forms.Label();
             this.panel_right = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_factura = new System.Windows.Forms.Panel();
@@ -80,28 +80,25 @@
             this.panel_container = new System.Windows.Forms.TableLayoutPanel();
             this.panel_resumido = new System.Windows.Forms.Panel();
             this.dgv_resumen = new System.Windows.Forms.DataGridView();
-            this.desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_resumen = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_updates = new System.Windows.Forms.Panel();
-            this.lbl_updatetime = new System.Windows.Forms.Label();
-            this.lbl_updateversion = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_eventual = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_cfinal = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_condicion = new System.Windows.Forms.Label();
             this.panel_bottom = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_tipocobro = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_cerrarcaja = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_f10 = new System.Windows.Forms.Label();
             this.btn_desc = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_f8 = new System.Windows.Forms.Label();
-            this.btn_cobrar = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_f9 = new System.Windows.Forms.Label();
+            this.lbl_f2 = new System.Windows.Forms.Label();
+            this.panel_bot = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_updateversion = new System.Windows.Forms.Label();
+            this.lbl_updatetime = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -120,17 +117,16 @@
             this.panel_resumido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
-            this.panel_updates.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.panel_bottom.SuspendLayout();
+            this.panel_bot.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuTitle
             // 
             this.menuTitle.AutoSize = false;
-            this.menuTitle.BackColor = System.Drawing.Color.Gold;
+            this.menuTitle.BackColor = System.Drawing.Color.Crimson;
             this.menuTitle.Location = new System.Drawing.Point(0, 0);
             this.menuTitle.Name = "menuTitle";
             this.menuTitle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -140,11 +136,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Gold;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BackColor = System.Drawing.Color.Crimson;
+            this.label1.Enabled = false;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 37);
+            this.label1.Size = new System.Drawing.Size(168, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "POSLyion";
             // 
@@ -170,8 +167,10 @@
             // 
             // tsmenu_venta
             // 
+            this.tsmenu_venta.BackColor = System.Drawing.Color.Teal;
             this.tsmenu_venta.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_venta.Image")));
             this.tsmenu_venta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_venta.MergeIndex = 1;
             this.tsmenu_venta.Name = "tsmenu_venta";
             this.tsmenu_venta.Size = new System.Drawing.Size(73, 67);
             this.tsmenu_venta.Text = "Ventas";
@@ -182,6 +181,7 @@
             // 
             this.tsmenu_compras.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_compras.Image")));
             this.tsmenu_compras.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_compras.MergeIndex = 2;
             this.tsmenu_compras.Name = "tsmenu_compras";
             this.tsmenu_compras.Size = new System.Drawing.Size(67, 67);
             this.tsmenu_compras.Text = "Compras";
@@ -192,6 +192,7 @@
             // 
             this.tsmenu_prods.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_prods.Image")));
             this.tsmenu_prods.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_prods.MergeIndex = 3;
             this.tsmenu_prods.Name = "tsmenu_prods";
             this.tsmenu_prods.Size = new System.Drawing.Size(73, 67);
             this.tsmenu_prods.Text = "Productos";
@@ -200,33 +201,21 @@
             // 
             // tsmenu_users
             // 
-            this.tsmenu_users.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmenu_admin,
-            this.tsmenu_alternar});
+            this.tsmenu_users.BackColor = System.Drawing.Color.Gold;
             this.tsmenu_users.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_users.Image")));
             this.tsmenu_users.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_users.MergeIndex = 4;
             this.tsmenu_users.Name = "tsmenu_users";
             this.tsmenu_users.Size = new System.Drawing.Size(64, 67);
             this.tsmenu_users.Text = "Usuarios";
             this.tsmenu_users.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsmenu_users.Click += new System.EventHandler(this.usuariosToolStripMenuItem1_Click);
             // 
-            // tsmenu_admin
-            // 
-            this.tsmenu_admin.Name = "tsmenu_admin";
-            this.tsmenu_admin.Size = new System.Drawing.Size(158, 22);
-            this.tsmenu_admin.Text = "Administrar";
-            // 
-            // tsmenu_alternar
-            // 
-            this.tsmenu_alternar.Name = "tsmenu_alternar";
-            this.tsmenu_alternar.Size = new System.Drawing.Size(158, 22);
-            this.tsmenu_alternar.Text = "Alternar usuario";
-            // 
             // tsmenu_clientes
             // 
             this.tsmenu_clientes.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_clientes.Image")));
             this.tsmenu_clientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_clientes.MergeIndex = 5;
             this.tsmenu_clientes.Name = "tsmenu_clientes";
             this.tsmenu_clientes.Size = new System.Drawing.Size(61, 67);
             this.tsmenu_clientes.Text = "Clientes";
@@ -237,6 +226,7 @@
             // 
             this.tsmenu_proveedor.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_proveedor.Image")));
             this.tsmenu_proveedor.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_proveedor.MergeIndex = 6;
             this.tsmenu_proveedor.Name = "tsmenu_proveedor";
             this.tsmenu_proveedor.Size = new System.Drawing.Size(84, 67);
             this.tsmenu_proveedor.Text = "Proveedores";
@@ -247,6 +237,7 @@
             // 
             this.tsmenu_reports.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_reports.Image")));
             this.tsmenu_reports.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_reports.MergeIndex = 7;
             this.tsmenu_reports.Name = "tsmenu_reports";
             this.tsmenu_reports.Size = new System.Drawing.Size(65, 67);
             this.tsmenu_reports.Text = "Reportes";
@@ -257,6 +248,7 @@
             // 
             this.tsmenu_cat.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_cat.Image")));
             this.tsmenu_cat.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_cat.MergeIndex = 8;
             this.tsmenu_cat.Name = "tsmenu_cat";
             this.tsmenu_cat.Size = new System.Drawing.Size(75, 67);
             this.tsmenu_cat.Text = "Categorias";
@@ -267,6 +259,7 @@
             // 
             this.tsmenu_config.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_config.Image")));
             this.tsmenu_config.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_config.MergeIndex = 9;
             this.tsmenu_config.Name = "tsmenu_config";
             this.tsmenu_config.Size = new System.Drawing.Size(95, 67);
             this.tsmenu_config.Text = "Configuración";
@@ -275,17 +268,22 @@
             // 
             // cerrarSesionToolStripMenuItem
             // 
+            this.cerrarSesionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cerrarSesionToolStripMenuItem.Image")));
+            this.cerrarSesionToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cerrarSesionToolStripMenuItem.MergeIndex = 10;
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(87, 67);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
+            this.cerrarSesionToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
             // lbl_usuario
             // 
             this.lbl_usuario.AutoSize = true;
-            this.lbl_usuario.BackColor = System.Drawing.Color.Gold;
+            this.lbl_usuario.BackColor = System.Drawing.Color.Crimson;
+            this.lbl_usuario.Enabled = false;
             this.lbl_usuario.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_usuario.Location = new System.Drawing.Point(793, 21);
+            this.lbl_usuario.Location = new System.Drawing.Point(741, 13);
             this.lbl_usuario.Name = "lbl_usuario";
             this.lbl_usuario.Size = new System.Drawing.Size(100, 28);
             this.lbl_usuario.TabIndex = 24;
@@ -361,7 +359,7 @@
             this.txt_buscarproductos.Location = new System.Drawing.Point(3, 3);
             this.txt_buscarproductos.Name = "txt_buscarproductos";
             this.txt_buscarproductos.Size = new System.Drawing.Size(676, 26);
-            this.txt_buscarproductos.TabIndex = 9;
+            this.txt_buscarproductos.TabIndex = 1;
             this.txt_buscarproductos.TextChanged += new System.EventHandler(this.txt_buscarproductos_TextChanged);
             // 
             // dgv_productos
@@ -390,10 +388,10 @@
             this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_productos.ColumnHeadersHeight = 35;
             this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgv_id,
-            this.dgv_desc,
-            this.dgv_precio,
-            this.dgv_stock});
+            this.dgv_productos_id,
+            this.dgv_productos_descripcion,
+            this.dgv_productos_precio,
+            this.dgv_productos_stock});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightPink;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -427,45 +425,46 @@
             this.dgv_productos.TabIndex = 10;
             this.dgv_productos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_productos_CellClick);
             // 
-            // dgv_id
+            // dgv_productos_id
             // 
-            this.dgv_id.HeaderText = "ID";
-            this.dgv_id.Name = "dgv_id";
-            this.dgv_id.ReadOnly = true;
-            this.dgv_id.Visible = false;
+            this.dgv_productos_id.HeaderText = "ID";
+            this.dgv_productos_id.Name = "dgv_productos_id";
+            this.dgv_productos_id.ReadOnly = true;
+            this.dgv_productos_id.Visible = false;
             // 
-            // dgv_desc
+            // dgv_productos_descripcion
             // 
-            this.dgv_desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_desc.FillWeight = 120F;
-            this.dgv_desc.HeaderText = "DESCRIPCION";
-            this.dgv_desc.Name = "dgv_desc";
-            this.dgv_desc.ReadOnly = true;
+            this.dgv_productos_descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_productos_descripcion.FillWeight = 120F;
+            this.dgv_productos_descripcion.HeaderText = "DESCRIPCION";
+            this.dgv_productos_descripcion.Name = "dgv_productos_descripcion";
+            this.dgv_productos_descripcion.ReadOnly = true;
             // 
-            // dgv_precio
+            // dgv_productos_precio
             // 
-            this.dgv_precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_precio.FillWeight = 60F;
-            this.dgv_precio.HeaderText = "PRECIO";
-            this.dgv_precio.Name = "dgv_precio";
-            this.dgv_precio.ReadOnly = true;
+            this.dgv_productos_precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_productos_precio.FillWeight = 60F;
+            this.dgv_productos_precio.HeaderText = "PRECIO";
+            this.dgv_productos_precio.Name = "dgv_productos_precio";
+            this.dgv_productos_precio.ReadOnly = true;
             // 
-            // dgv_stock
+            // dgv_productos_stock
             // 
-            this.dgv_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_stock.FillWeight = 60F;
-            this.dgv_stock.HeaderText = "STOCK";
-            this.dgv_stock.Name = "dgv_stock";
-            this.dgv_stock.ReadOnly = true;
+            this.dgv_productos_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_productos_stock.FillWeight = 60F;
+            this.dgv_productos_stock.HeaderText = "STOCK";
+            this.dgv_productos_stock.Name = "dgv_productos_stock";
+            this.dgv_productos_stock.ReadOnly = true;
             // 
             // tableLayoutPanel12
             // 
             this.tableLayoutPanel12.BackColor = System.Drawing.Color.HotPink;
-            this.tableLayoutPanel12.ColumnCount = 2;
+            this.tableLayoutPanel12.ColumnCount = 3;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel12.Controls.Add(this.lbl_dinero, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.lbl_total, 0, 0);
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel12.Controls.Add(this.lbl_suma_total, 2, 0);
+            this.tableLayoutPanel12.Controls.Add(this.lbl_totale, 1, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(0, 351);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
@@ -475,28 +474,30 @@
             this.tableLayoutPanel12.Size = new System.Drawing.Size(682, 40);
             this.tableLayoutPanel12.TabIndex = 11;
             // 
-            // lbl_dinero
+            // lbl_suma_total
             // 
-            this.lbl_dinero.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_dinero.AutoSize = true;
-            this.lbl_dinero.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dinero.Location = new System.Drawing.Point(555, 4);
-            this.lbl_dinero.Name = "lbl_dinero";
-            this.lbl_dinero.Size = new System.Drawing.Size(87, 31);
-            this.lbl_dinero.TabIndex = 4;
-            this.lbl_dinero.Text = "$0,00";
+            this.lbl_suma_total.AutoSize = true;
+            this.lbl_suma_total.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbl_suma_total.Enabled = false;
+            this.lbl_suma_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_suma_total.Location = new System.Drawing.Point(608, 0);
+            this.lbl_suma_total.Name = "lbl_suma_total";
+            this.lbl_suma_total.Size = new System.Drawing.Size(71, 40);
+            this.lbl_suma_total.TabIndex = 6;
+            this.lbl_suma_total.Text = "0,00";
+            this.lbl_suma_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbl_total
+            // lbl_totale
             // 
-            this.lbl_total.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_total.AutoSize = true;
-            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lbl_total.Location = new System.Drawing.Point(463, 4);
-            this.lbl_total.Margin = new System.Windows.Forms.Padding(0);
-            this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(89, 31);
-            this.lbl_total.TabIndex = 5;
-            this.lbl_total.Text = "Total:";
+            this.lbl_totale.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_totale.AutoSize = true;
+            this.lbl_totale.Enabled = false;
+            this.lbl_totale.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.lbl_totale.Location = new System.Drawing.Point(489, 4);
+            this.lbl_totale.Name = "lbl_totale";
+            this.lbl_totale.Size = new System.Drawing.Size(113, 31);
+            this.lbl_totale.TabIndex = 9;
+            this.lbl_totale.Text = "Total: $";
             // 
             // panel_right
             // 
@@ -545,6 +546,7 @@
             // 
             this.lbl_titulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_titulo.AutoSize = true;
+            this.lbl_titulo.Enabled = false;
             this.lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_titulo.Location = new System.Drawing.Point(34, 12);
             this.lbl_titulo.Name = "lbl_titulo";
@@ -577,10 +579,10 @@
             this.btn_venta.Margin = new System.Windows.Forms.Padding(0);
             this.btn_venta.Name = "btn_venta";
             this.btn_venta.Size = new System.Drawing.Size(102, 23);
-            this.btn_venta.TabIndex = 2;
+            this.btn_venta.TabIndex = 4;
             this.btn_venta.Text = "Ventas";
             this.btn_venta.UseVisualStyleBackColor = true;
-            this.btn_venta.Click += new System.EventHandler(this.btn_venta_Click_1);
+            this.btn_venta.Click += new System.EventHandler(this.btn_venta_Click);
             // 
             // btn_compra
             // 
@@ -589,10 +591,10 @@
             this.btn_compra.Margin = new System.Windows.Forms.Padding(0);
             this.btn_compra.Name = "btn_compra";
             this.btn_compra.Size = new System.Drawing.Size(99, 23);
-            this.btn_compra.TabIndex = 1;
+            this.btn_compra.TabIndex = 3;
             this.btn_compra.Text = "Compra";
             this.btn_compra.UseVisualStyleBackColor = true;
-            this.btn_compra.Click += new System.EventHandler(this.btn_compra_Click_1);
+            this.btn_compra.Click += new System.EventHandler(this.btn_compra_Click);
             // 
             // btn_factura
             // 
@@ -601,10 +603,10 @@
             this.btn_factura.Margin = new System.Windows.Forms.Padding(0);
             this.btn_factura.Name = "btn_factura";
             this.btn_factura.Size = new System.Drawing.Size(99, 23);
-            this.btn_factura.TabIndex = 0;
+            this.btn_factura.TabIndex = 2;
             this.btn_factura.Text = "Facturación";
             this.btn_factura.UseVisualStyleBackColor = true;
-            this.btn_factura.Click += new System.EventHandler(this.btn_factura_Click_1);
+            this.btn_factura.Click += new System.EventHandler(this.btn_factura_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -652,6 +654,7 @@
             // 
             this.lbl_tipoticket.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_tipoticket.AutoSize = true;
+            this.lbl_tipoticket.Enabled = false;
             this.lbl_tipoticket.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tipoticket.ForeColor = System.Drawing.SystemColors.Control;
             this.lbl_tipoticket.Location = new System.Drawing.Point(49, 6);
@@ -665,21 +668,21 @@
             // 
             this.btn_cerrarventa.BackColor = System.Drawing.Color.Black;
             this.btn_cerrarventa.BackgroundColor = System.Drawing.Color.Black;
-            this.btn_cerrarventa.BorderColor = System.Drawing.Color.Lime;
+            this.btn_cerrarventa.BorderColor = System.Drawing.Color.Gold;
             this.btn_cerrarventa.BorderRadius = 5;
             this.btn_cerrarventa.BorderSize = 2;
             this.btn_cerrarventa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_cerrarventa.FlatAppearance.BorderSize = 0;
             this.btn_cerrarventa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrarventa.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrarventa.ForeColor = System.Drawing.Color.Lime;
+            this.btn_cerrarventa.ForeColor = System.Drawing.Color.Gold;
             this.btn_cerrarventa.Location = new System.Drawing.Point(10, 273);
             this.btn_cerrarventa.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.btn_cerrarventa.Name = "btn_cerrarventa";
             this.btn_cerrarventa.Size = new System.Drawing.Size(280, 37);
-            this.btn_cerrarventa.TabIndex = 7;
-            this.btn_cerrarventa.Text = "CERRAR VENTA";
-            this.btn_cerrarventa.TextColor = System.Drawing.Color.Lime;
+            this.btn_cerrarventa.TabIndex = 5;
+            this.btn_cerrarventa.Text = "CERRAR VENTA (F10)";
+            this.btn_cerrarventa.TextColor = System.Drawing.Color.Gold;
             this.btn_cerrarventa.UseVisualStyleBackColor = false;
             this.btn_cerrarventa.Click += new System.EventHandler(this.btn_cerrarventa_Click);
             // 
@@ -696,6 +699,7 @@
             // 
             // panel_container
             // 
+            this.panel_container.BackColor = System.Drawing.Color.Black;
             this.panel_container.ColumnCount = 1;
             this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_container.Controls.Add(this.panel_resumido, 0, 0);
@@ -723,7 +727,7 @@
             this.dgv_resumen.AllowUserToAddRows = false;
             this.dgv_resumen.AllowUserToDeleteRows = false;
             this.dgv_resumen.AllowUserToResizeRows = false;
-            this.dgv_resumen.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.dgv_resumen.BackgroundColor = System.Drawing.Color.Black;
             this.dgv_resumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_resumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_resumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -737,12 +741,16 @@
             this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_resumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_resumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.desc,
-            this.cantidad,
-            this.precio});
+            this.dgv_resumen_id,
+            this.dgv_resumen_descripcion,
+            this.dgv_resumen_cantidad,
+            this.dgv_resumen_precio,
+            this.dgv_resumen_subtotal,
+            this.btn_editar,
+            this.btn_eliminar});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -753,29 +761,63 @@
             this.dgv_resumen.Location = new System.Drawing.Point(0, 0);
             this.dgv_resumen.Margin = new System.Windows.Forms.Padding(0);
             this.dgv_resumen.Name = "dgv_resumen";
+            this.dgv_resumen.ReadOnly = true;
             this.dgv_resumen.RowHeadersVisible = false;
             this.dgv_resumen.Size = new System.Drawing.Size(274, 209);
-            this.dgv_resumen.TabIndex = 3;
+            this.dgv_resumen.TabIndex = 8;
+            this.dgv_resumen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_resumen_CellContentClick);
             // 
-            // desc
+            // dgv_resumen_id
             // 
-            this.desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.desc.HeaderText = "Producto";
-            this.desc.Name = "desc";
+            this.dgv_resumen_id.HeaderText = "ID";
+            this.dgv_resumen_id.Name = "dgv_resumen_id";
+            this.dgv_resumen_id.ReadOnly = true;
+            this.dgv_resumen_id.Visible = false;
             // 
-            // cantidad
+            // dgv_resumen_descripcion
             // 
-            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cantidad.FillWeight = 70F;
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
+            this.dgv_resumen_descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_resumen_descripcion.FillWeight = 200F;
+            this.dgv_resumen_descripcion.HeaderText = "Producto";
+            this.dgv_resumen_descripcion.Name = "dgv_resumen_descripcion";
+            this.dgv_resumen_descripcion.ReadOnly = true;
             // 
-            // precio
+            // dgv_resumen_cantidad
             // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio.FillWeight = 60F;
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
+            this.dgv_resumen_cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_resumen_cantidad.HeaderText = "Cantidad";
+            this.dgv_resumen_cantidad.Name = "dgv_resumen_cantidad";
+            this.dgv_resumen_cantidad.ReadOnly = true;
+            // 
+            // dgv_resumen_precio
+            // 
+            this.dgv_resumen_precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_resumen_precio.HeaderText = "Precio";
+            this.dgv_resumen_precio.Name = "dgv_resumen_precio";
+            this.dgv_resumen_precio.ReadOnly = true;
+            // 
+            // dgv_resumen_subtotal
+            // 
+            this.dgv_resumen_subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_resumen_subtotal.HeaderText = "Subtotal";
+            this.dgv_resumen_subtotal.Name = "dgv_resumen_subtotal";
+            this.dgv_resumen_subtotal.ReadOnly = true;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_editar.FillWeight = 60F;
+            this.btn_editar.HeaderText = "";
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_eliminar.FillWeight = 60F;
+            this.btn_eliminar.HeaderText = "";
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
             // 
             // lbl_resumen
             // 
@@ -792,8 +834,8 @@
             this.tableLayoutPanel6.BackColor = System.Drawing.Color.Crimson;
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.panel_updates, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.panel_bot, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 391);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
@@ -803,36 +845,6 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(982, 100);
             this.tableLayoutPanel6.TabIndex = 22;
-            // 
-            // panel_updates
-            // 
-            this.panel_updates.BackColor = System.Drawing.Color.Khaki;
-            this.panel_updates.Controls.Add(this.lbl_updatetime);
-            this.panel_updates.Controls.Add(this.lbl_updateversion);
-            this.panel_updates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_updates.Location = new System.Drawing.Point(0, 80);
-            this.panel_updates.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_updates.Name = "panel_updates";
-            this.panel_updates.Size = new System.Drawing.Size(982, 20);
-            this.panel_updates.TabIndex = 1;
-            // 
-            // lbl_updatetime
-            // 
-            this.lbl_updatetime.AutoSize = true;
-            this.lbl_updatetime.Location = new System.Drawing.Point(633, 3);
-            this.lbl_updatetime.Name = "lbl_updatetime";
-            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
-            this.lbl_updatetime.TabIndex = 1;
-            this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
-            // 
-            // lbl_updateversion
-            // 
-            this.lbl_updateversion.AutoSize = true;
-            this.lbl_updateversion.Location = new System.Drawing.Point(863, 2);
-            this.lbl_updateversion.Name = "lbl_updateversion";
-            this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
-            this.lbl_updateversion.TabIndex = 0;
-            this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
             // 
             // tableLayoutPanel7
             // 
@@ -856,7 +868,6 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.lbl_condicion, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -872,8 +883,6 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel5.Controls.Add(this.btn_eventual, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btn_cfinal, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 37);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -883,66 +892,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(292, 37);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
-            // btn_eventual
-            // 
-            this.btn_eventual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_eventual.AutoSize = true;
-            this.btn_eventual.BackColor = System.Drawing.Color.DarkMagenta;
-            this.btn_eventual.BackgroundColor = System.Drawing.Color.DarkMagenta;
-            this.btn_eventual.BorderColor = System.Drawing.Color.Black;
-            this.btn_eventual.BorderRadius = 0;
-            this.btn_eventual.BorderSize = 0;
-            this.btn_eventual.FlatAppearance.BorderSize = 0;
-            this.btn_eventual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_eventual.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eventual.ForeColor = System.Drawing.Color.White;
-            this.btn_eventual.Location = new System.Drawing.Point(178, 3);
-            this.btn_eventual.Name = "btn_eventual";
-            this.btn_eventual.Size = new System.Drawing.Size(111, 31);
-            this.btn_eventual.TabIndex = 1;
-            this.btn_eventual.Text = "EVENTUAL";
-            this.btn_eventual.TextColor = System.Drawing.Color.White;
-            this.btn_eventual.UseVisualStyleBackColor = false;
-            this.btn_eventual.Click += new System.EventHandler(this.btn_eventual_Click_1);
-            // 
-            // btn_cfinal
-            // 
-            this.btn_cfinal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cfinal.AutoSize = true;
-            this.btn_cfinal.BackColor = System.Drawing.Color.BlueViolet;
-            this.btn_cfinal.BackgroundColor = System.Drawing.Color.BlueViolet;
-            this.btn_cfinal.BorderColor = System.Drawing.Color.Black;
-            this.btn_cfinal.BorderRadius = 0;
-            this.btn_cfinal.BorderSize = 0;
-            this.btn_cfinal.FlatAppearance.BorderSize = 0;
-            this.btn_cfinal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cfinal.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cfinal.ForeColor = System.Drawing.Color.White;
-            this.btn_cfinal.Location = new System.Drawing.Point(3, 3);
-            this.btn_cfinal.Name = "btn_cfinal";
-            this.btn_cfinal.Size = new System.Drawing.Size(169, 31);
-            this.btn_cfinal.TabIndex = 0;
-            this.btn_cfinal.Text = "CONSUMIDOR FINAL";
-            this.btn_cfinal.TextColor = System.Drawing.Color.White;
-            this.btn_cfinal.UseVisualStyleBackColor = false;
-            this.btn_cfinal.Click += new System.EventHandler(this.btn_cfinal_Click_1);
-            // 
-            // lbl_condicion
-            // 
-            this.lbl_condicion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_condicion.AutoSize = true;
-            this.lbl_condicion.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_condicion.ForeColor = System.Drawing.Color.FloralWhite;
-            this.lbl_condicion.Location = new System.Drawing.Point(82, 8);
-            this.lbl_condicion.Name = "lbl_condicion";
-            this.lbl_condicion.Size = new System.Drawing.Size(127, 21);
-            this.lbl_condicion.TabIndex = 2;
-            this.lbl_condicion.Text = "TIPO DE TICKET";
-            // 
             // panel_bottom
             // 
             this.panel_bottom.BackColor = System.Drawing.Color.Crimson;
@@ -951,13 +900,9 @@
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.panel_bottom.Controls.Add(this.btn_tipocobro, 0, 1);
             this.panel_bottom.Controls.Add(this.lbl_cerrarcaja, 3, 1);
-            this.panel_bottom.Controls.Add(this.lbl_f10, 0, 0);
             this.panel_bottom.Controls.Add(this.btn_desc, 2, 1);
-            this.panel_bottom.Controls.Add(this.lbl_f8, 2, 0);
-            this.panel_bottom.Controls.Add(this.btn_cobrar, 1, 1);
-            this.panel_bottom.Controls.Add(this.lbl_f9, 1, 0);
+            this.panel_bottom.Controls.Add(this.lbl_f2, 2, 0);
             this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_bottom.Location = new System.Drawing.Point(292, 0);
             this.panel_bottom.Margin = new System.Windows.Forms.Padding(0);
@@ -967,29 +912,6 @@
             this.panel_bottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_bottom.Size = new System.Drawing.Size(684, 74);
             this.panel_bottom.TabIndex = 9;
-            // 
-            // btn_tipocobro
-            // 
-            this.btn_tipocobro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_tipocobro.AutoSize = true;
-            this.btn_tipocobro.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn_tipocobro.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn_tipocobro.BorderColor = System.Drawing.Color.Black;
-            this.btn_tipocobro.BorderRadius = 0;
-            this.btn_tipocobro.BorderSize = 0;
-            this.btn_tipocobro.FlatAppearance.BorderSize = 0;
-            this.btn_tipocobro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tipocobro.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tipocobro.ForeColor = System.Drawing.Color.White;
-            this.btn_tipocobro.Location = new System.Drawing.Point(3, 40);
-            this.btn_tipocobro.Name = "btn_tipocobro";
-            this.btn_tipocobro.Size = new System.Drawing.Size(165, 31);
-            this.btn_tipocobro.TabIndex = 7;
-            this.btn_tipocobro.Text = "TIPO COBRO";
-            this.btn_tipocobro.TextColor = System.Drawing.Color.White;
-            this.btn_tipocobro.UseVisualStyleBackColor = false;
             // 
             // lbl_cerrarcaja
             // 
@@ -1009,22 +931,11 @@
             this.lbl_cerrarcaja.Location = new System.Drawing.Point(516, 40);
             this.lbl_cerrarcaja.Name = "lbl_cerrarcaja";
             this.lbl_cerrarcaja.Size = new System.Drawing.Size(165, 31);
-            this.lbl_cerrarcaja.TabIndex = 4;
+            this.lbl_cerrarcaja.TabIndex = 7;
             this.lbl_cerrarcaja.Text = "CERRAR CAJA";
             this.lbl_cerrarcaja.TextColor = System.Drawing.Color.Black;
             this.lbl_cerrarcaja.UseVisualStyleBackColor = false;
-            // 
-            // lbl_f10
-            // 
-            this.lbl_f10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_f10.AutoSize = true;
-            this.lbl_f10.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_f10.ForeColor = System.Drawing.Color.FloralWhite;
-            this.lbl_f10.Location = new System.Drawing.Point(66, 7);
-            this.lbl_f10.Name = "lbl_f10";
-            this.lbl_f10.Size = new System.Drawing.Size(39, 22);
-            this.lbl_f10.TabIndex = 5;
-            this.lbl_f10.Text = "F10";
+            this.lbl_cerrarcaja.Click += new System.EventHandler(this.lbl_cerrarcaja_Click);
             // 
             // btn_desc
             // 
@@ -1044,57 +955,66 @@
             this.btn_desc.Location = new System.Drawing.Point(345, 40);
             this.btn_desc.Name = "btn_desc";
             this.btn_desc.Size = new System.Drawing.Size(165, 31);
-            this.btn_desc.TabIndex = 3;
+            this.btn_desc.TabIndex = 6;
             this.btn_desc.Text = "DESCUENTOS";
             this.btn_desc.TextColor = System.Drawing.Color.White;
             this.btn_desc.UseVisualStyleBackColor = false;
+            this.btn_desc.Click += new System.EventHandler(this.btn_desc_Click);
             // 
-            // lbl_f8
+            // lbl_f2
             // 
-            this.lbl_f8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_f8.AutoSize = true;
-            this.lbl_f8.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_f8.ForeColor = System.Drawing.Color.FloralWhite;
-            this.lbl_f8.Location = new System.Drawing.Point(413, 7);
-            this.lbl_f8.Name = "lbl_f8";
-            this.lbl_f8.Size = new System.Drawing.Size(29, 22);
-            this.lbl_f8.TabIndex = 8;
-            this.lbl_f8.Text = "F8";
+            this.lbl_f2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_f2.AutoSize = true;
+            this.lbl_f2.Enabled = false;
+            this.lbl_f2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_f2.ForeColor = System.Drawing.Color.FloralWhite;
+            this.lbl_f2.Location = new System.Drawing.Point(413, 7);
+            this.lbl_f2.Name = "lbl_f2";
+            this.lbl_f2.Size = new System.Drawing.Size(29, 22);
+            this.lbl_f2.TabIndex = 8;
+            this.lbl_f2.Text = "F2";
             // 
-            // btn_cobrar
+            // panel_bot
             // 
-            this.btn_cobrar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cobrar.AutoSize = true;
-            this.btn_cobrar.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn_cobrar.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn_cobrar.BorderColor = System.Drawing.Color.Black;
-            this.btn_cobrar.BorderRadius = 0;
-            this.btn_cobrar.BorderSize = 0;
-            this.btn_cobrar.FlatAppearance.BorderSize = 0;
-            this.btn_cobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cobrar.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cobrar.ForeColor = System.Drawing.Color.White;
-            this.btn_cobrar.Location = new System.Drawing.Point(174, 40);
-            this.btn_cobrar.Name = "btn_cobrar";
-            this.btn_cobrar.Size = new System.Drawing.Size(165, 31);
-            this.btn_cobrar.TabIndex = 2;
-            this.btn_cobrar.Text = "COBRAR";
-            this.btn_cobrar.TextColor = System.Drawing.Color.White;
-            this.btn_cobrar.UseVisualStyleBackColor = false;
+            this.panel_bot.BackColor = System.Drawing.Color.Black;
+            this.panel_bot.ColumnCount = 3;
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.panel_bot.Controls.Add(this.lbl_updateversion, 2, 0);
+            this.panel_bot.Controls.Add(this.lbl_updatetime, 1, 0);
+            this.panel_bot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_bot.Location = new System.Drawing.Point(0, 80);
+            this.panel_bot.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_bot.Name = "panel_bot";
+            this.panel_bot.RowCount = 1;
+            this.panel_bot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_bot.Size = new System.Drawing.Size(982, 20);
+            this.panel_bot.TabIndex = 3;
             // 
-            // lbl_f9
+            // lbl_updateversion
             // 
-            this.lbl_f9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_f9.AutoSize = true;
-            this.lbl_f9.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_f9.ForeColor = System.Drawing.Color.FloralWhite;
-            this.lbl_f9.Location = new System.Drawing.Point(242, 7);
-            this.lbl_f9.Name = "lbl_f9";
-            this.lbl_f9.Size = new System.Drawing.Size(29, 22);
-            this.lbl_f9.TabIndex = 6;
-            this.lbl_f9.Text = "F9";
+            this.lbl_updateversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_updateversion.AutoSize = true;
+            this.lbl_updateversion.BackColor = System.Drawing.Color.Black;
+            this.lbl_updateversion.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_updateversion.Location = new System.Drawing.Point(864, 3);
+            this.lbl_updateversion.Name = "lbl_updateversion";
+            this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
+            this.lbl_updateversion.TabIndex = 2;
+            this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
+            // 
+            // lbl_updatetime
+            // 
+            this.lbl_updatetime.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_updatetime.AutoSize = true;
+            this.lbl_updatetime.BackColor = System.Drawing.Color.Black;
+            this.lbl_updatetime.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_updatetime.Location = new System.Drawing.Point(659, 3);
+            this.lbl_updatetime.Name = "lbl_updatetime";
+            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
+            this.lbl_updatetime.TabIndex = 3;
+            this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
             // 
             // Start
             // 
@@ -1109,6 +1029,8 @@
             this.Name = "Start";
             this.Text = "POSLyion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Start_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Start_KeyDown);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.panel_main.ResumeLayout(false);
@@ -1133,15 +1055,12 @@
             this.panel_resumido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
-            this.panel_updates.ResumeLayout(false);
-            this.panel_updates.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.panel_bottom.ResumeLayout(false);
             this.panel_bottom.PerformLayout();
+            this.panel_bot.ResumeLayout(false);
+            this.panel_bot.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1160,9 +1079,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmenu_reports;
         private System.Windows.Forms.ToolStripMenuItem tsmenu_cat;
         private System.Windows.Forms.ToolStripMenuItem tsmenu_config;
-        private System.Windows.Forms.ToolStripMenuItem tsmenu_admin;
         private System.Windows.Forms.Label lbl_usuario;
-        private System.Windows.Forms.ToolStripMenuItem tsmenu_alternar;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -1170,10 +1087,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox txt_buscarproductos;
         private System.Windows.Forms.DataGridView dgv_productos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_desc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_stock;
         private System.Windows.Forms.TableLayoutPanel panel_right;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Panel panel_factura;
@@ -1187,33 +1100,34 @@
         private System.Windows.Forms.Label lbl_tipoticket;
         private RJCodeAdvance.RJControls.RJButton btn_cerrarventa;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Panel panel_updates;
-        private System.Windows.Forms.Label lbl_updatetime;
-        private System.Windows.Forms.Label lbl_updateversion;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private RJCodeAdvance.RJControls.RJButton btn_eventual;
-        private RJCodeAdvance.RJControls.RJButton btn_cfinal;
-        private System.Windows.Forms.Label lbl_condicion;
         private System.Windows.Forms.TableLayoutPanel panel_bottom;
-        private RJCodeAdvance.RJControls.RJButton btn_tipocobro;
         private RJCodeAdvance.RJControls.RJButton lbl_cerrarcaja;
-        private System.Windows.Forms.Label lbl_f10;
         private RJCodeAdvance.RJControls.RJButton btn_desc;
-        private System.Windows.Forms.Label lbl_f8;
-        private RJCodeAdvance.RJControls.RJButton btn_cobrar;
-        private System.Windows.Forms.Label lbl_f9;
+        private System.Windows.Forms.Label lbl_f2;
         private System.Windows.Forms.Panel panel_resumen;
         private System.Windows.Forms.Label lbl_resumen;
         private System.Windows.Forms.TableLayoutPanel panel_container;
         private System.Windows.Forms.Panel panel_resumido;
         private System.Windows.Forms.DataGridView dgv_resumen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
-        private System.Windows.Forms.Label lbl_dinero;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Label lbl_suma_total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_stock;
+        private System.Windows.Forms.TableLayoutPanel panel_bot;
+        private System.Windows.Forms.Label lbl_updateversion;
+        private System.Windows.Forms.Label lbl_updatetime;
+        private System.Windows.Forms.Label lbl_totale;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_subtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn btn_editar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn btn_eliminar;
     }
 }

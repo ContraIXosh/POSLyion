@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BusinessLayer;
-using EntityLayer;
+using CapaNegocio;
+using CapaEntidad;
+using EntityLayer.Filtros;
 
-namespace PDCLyion
+namespace POSLyion
 {
     public partial class Login : Form
     {
@@ -19,88 +20,54 @@ namespace PDCLyion
             InitializeComponent();
         }
 
-        private void btnlogin_Click(object sender, EventArgs e)
-        {
-
-            
-           
-        }
-
-        private void btncancel_Click(object sender, EventArgs e)
-        {
-        }
-
         public void form_closing(object sender, FormClosingEventArgs e)
         {
-            txtusername.Text = "";
-            txtpassword.Text = "";
+            txt_nombre_usuario.Text = "";
+            txt_clave.Text = "";
             this.Show();
         }
 
-        private void rjButton2_Click(object sender, EventArgs e)
+        private void btn_abrir_sesion_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
+            FiltrosUsuario filtros = new FiltrosUsuario();
+            Usuarios oUsuario = new CN_Usuarios()
+                .Leer(filtros)
+                .Where(u => u.Nombre_usuario == txt_nombre_usuario.Text && u.Clave == txt_clave.Text).FirstOrDefault();
 
-        private void rjButton1_Click(object sender, EventArgs e)
-        {
-            Users oUser = new BL_Users()
-                .ListAll()
-                .Where(u => u.Username == txtusername.Text && u.Password == txtpassword.Text).FirstOrDefault();
-
-            if (txtpassword.Text == "" && txtusername.Text == "")
+            if (txt_clave.Text == "" && txt_nombre_usuario.Text == "")
             {
                 MessageBox.Show("Ingrese un usuario y contraseña", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (txtusername.Text == "")
+            else if (txt_nombre_usuario.Text == "")
             {
                 MessageBox.Show("Ingrese un usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (txtpassword.Text == "")
+            else if (txt_clave.Text == "")
             {
                 MessageBox.Show("Ingrese una contraseña", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (oUser == null)
+            else if (oUsuario == null)
             {
                 MessageBox.Show("Usuario no encontrado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                Start form = new Start(oUser);
-                form.Show();
+                VariablesGlobales.Inicio_sesion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                Start formStart = new Start(oUsuario);
+                formStart.Show();
                 this.Hide();
-                form.FormClosing += form_closing;
+                formStart.FormClosing += form_closing;
             }
         }
 
-        private void txtpassword_TextChanged(object sender, EventArgs e)
+        private void btn_cerrar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void txtusername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtusername__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtpassword_TextChanged_1(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void txtpassword_TextChanged_2(object sender, EventArgs e)
         {
-            txtpassword.PasswordChar = '*';
-        }
-
-        private void txtusername_TextChanged_1(object sender, EventArgs e)
-        {
-
+            txt_clave.PasswordChar = '*';
         }
     }
 }

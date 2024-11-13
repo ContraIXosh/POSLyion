@@ -1,4 +1,4 @@
-﻿namespace PDCLyion
+﻿namespace POSLyion
 {
     partial class Login
     {
@@ -29,43 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.lblusername = new System.Windows.Forms.Label();
-            this.lblpassword = new System.Windows.Forms.Label();
+            this.lbl_nombre_usuario = new System.Windows.Forms.Label();
+            this.lbl_clave = new System.Windows.Forms.Label();
             this.notice = new System.Windows.Forms.Label();
-            this.rjButton2 = new CustomBox.RJControls.RJButton();
-            this.abrir_sesion = new CustomBox.RJControls.RJButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
-            this.txtusername = new System.Windows.Forms.TextBox();
-            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.txt_nombre_usuario = new System.Windows.Forms.TextBox();
+            this.txt_clave = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.rjCircularPictureBox1 = new RJCodeAdvance.RJControls.RJCircularPictureBox();
+            this.btn_iniciar_sesion = new CustomBox.RJControls.RJButton();
+            this.btn_cerrar = new CustomBox.RJControls.RJButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblusername
+            // lbl_nombre_usuario
             // 
-            this.lblusername.AutoSize = true;
-            this.lblusername.BackColor = System.Drawing.Color.Transparent;
-            this.lblusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblusername.ForeColor = System.Drawing.Color.Gold;
-            this.lblusername.Location = new System.Drawing.Point(292, 64);
-            this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(76, 20);
-            this.lblusername.TabIndex = 2;
-            this.lblusername.Text = "Usuario:";
+            this.lbl_nombre_usuario.AutoSize = true;
+            this.lbl_nombre_usuario.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_nombre_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nombre_usuario.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_nombre_usuario.Location = new System.Drawing.Point(292, 64);
+            this.lbl_nombre_usuario.Name = "lbl_nombre_usuario";
+            this.lbl_nombre_usuario.Size = new System.Drawing.Size(76, 20);
+            this.lbl_nombre_usuario.TabIndex = 2;
+            this.lbl_nombre_usuario.Text = "Usuario:";
             // 
-            // lblpassword
+            // lbl_clave
             // 
-            this.lblpassword.AutoSize = true;
-            this.lblpassword.BackColor = System.Drawing.Color.Transparent;
-            this.lblpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpassword.ForeColor = System.Drawing.Color.Gold;
-            this.lblpassword.Location = new System.Drawing.Point(291, 138);
-            this.lblpassword.Name = "lblpassword";
-            this.lblpassword.Size = new System.Drawing.Size(107, 20);
-            this.lblpassword.TabIndex = 3;
-            this.lblpassword.Text = "Contraseña:";
+            this.lbl_clave.AutoSize = true;
+            this.lbl_clave.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_clave.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_clave.Location = new System.Drawing.Point(291, 138);
+            this.lbl_clave.Name = "lbl_clave";
+            this.lbl_clave.Size = new System.Drawing.Size(107, 20);
+            this.lbl_clave.TabIndex = 3;
+            this.lbl_clave.Text = "Contraseña:";
             // 
             // notice
             // 
@@ -79,60 +79,13 @@
             this.notice.TabIndex = 4;
             this.notice.Text = "Por favor ingrese su usuario y contraseña\r\npara ingresar al sistema";
             // 
-            // rjButton2
-            // 
-            this.rjButton2.BackColor = System.Drawing.Color.Crimson;
-            this.rjButton2.BackgroundColor = System.Drawing.Color.Crimson;
-            this.rjButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.rjButton2.BorderColor = System.Drawing.Color.Red;
-            this.rjButton2.BorderRadius = 10;
-            this.rjButton2.BorderSize = 0;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton2.ForeColor = System.Drawing.Color.White;
-            this.rjButton2.Image = ((System.Drawing.Image)(resources.GetObject("rjButton2.Image")));
-            this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rjButton2.Location = new System.Drawing.Point(447, 261);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(111, 31);
-            this.rjButton2.TabIndex = 11;
-            this.rjButton2.Text = "Cancelar";
-            this.rjButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton2.TextColor = System.Drawing.Color.White;
-            this.rjButton2.UseVisualStyleBackColor = false;
-            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
-            // 
-            // abrir_sesion
-            // 
-            this.abrir_sesion.BackColor = System.Drawing.Color.Gold;
-            this.abrir_sesion.BackgroundColor = System.Drawing.Color.Gold;
-            this.abrir_sesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.abrir_sesion.BorderColor = System.Drawing.Color.Red;
-            this.abrir_sesion.BorderRadius = 10;
-            this.abrir_sesion.BorderSize = 0;
-            this.abrir_sesion.FlatAppearance.BorderSize = 0;
-            this.abrir_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abrir_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.abrir_sesion.ForeColor = System.Drawing.Color.Black;
-            this.abrir_sesion.Image = ((System.Drawing.Image)(resources.GetObject("abrir_sesion.Image")));
-            this.abrir_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.abrir_sesion.Location = new System.Drawing.Point(291, 261);
-            this.abrir_sesion.Name = "abrir_sesion";
-            this.abrir_sesion.Size = new System.Drawing.Size(139, 31);
-            this.abrir_sesion.TabIndex = 12;
-            this.abrir_sesion.Text = "Iniciar Sesion";
-            this.abrir_sesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.abrir_sesion.TextColor = System.Drawing.Color.Black;
-            this.abrir_sesion.UseVisualStyleBackColor = false;
-            this.abrir_sesion.Click += new System.EventHandler(this.rjButton1_Click);
-            // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Crimson;
             this.panel1.Controls.Add(this.rjCircularPictureBox1);
-            this.panel1.Location = new System.Drawing.Point(-7, 0);
+            this.panel1.Location = new System.Drawing.Point(-1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(285, 408);
+            this.panel1.Size = new System.Drawing.Size(273, 306);
             this.panel1.TabIndex = 15;
             // 
             // rjCircularPictureBox1
@@ -144,34 +97,35 @@
             this.rjCircularPictureBox1.BorderSize = 2;
             this.rjCircularPictureBox1.GradientAngle = 50F;
             this.rjCircularPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("rjCircularPictureBox1.Image")));
-            this.rjCircularPictureBox1.Location = new System.Drawing.Point(19, 18);
+            this.rjCircularPictureBox1.Location = new System.Drawing.Point(6, 21);
             this.rjCircularPictureBox1.Name = "rjCircularPictureBox1";
             this.rjCircularPictureBox1.Size = new System.Drawing.Size(255, 255);
             this.rjCircularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.rjCircularPictureBox1.TabIndex = 0;
             this.rjCircularPictureBox1.TabStop = false;
             // 
-            // txtusername
+            // txt_nombre_usuario
             // 
-            this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusername.Location = new System.Drawing.Point(298, 92);
-            this.txtusername.Multiline = true;
-            this.txtusername.Name = "txtusername";
-            this.txtusername.Size = new System.Drawing.Size(262, 31);
-            this.txtusername.TabIndex = 16;
-
-            this.txtusername.Text = "admin";
-            this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged_1);
+            this.txt_nombre_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre_usuario.ForeColor = System.Drawing.Color.Gray;
+            this.txt_nombre_usuario.Location = new System.Drawing.Point(298, 92);
+            this.txt_nombre_usuario.Multiline = true;
+            this.txt_nombre_usuario.Name = "txt_nombre_usuario";
+            this.txt_nombre_usuario.Size = new System.Drawing.Size(262, 31);
+            this.txt_nombre_usuario.TabIndex = 16;
+            this.txt_nombre_usuario.Text = "usuario@mercadorojo";
             // 
-            // txtpassword
+            // txt_clave
             // 
-            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(295, 161);
-            this.txtpassword.Multiline = true;
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(262, 31);
-            this.txtpassword.TabIndex = 17;
-            this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
+            this.txt_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_clave.ForeColor = System.Drawing.Color.Gray;
+            this.txt_clave.Location = new System.Drawing.Point(295, 161);
+            this.txt_clave.Multiline = true;
+            this.txt_clave.Name = "txt_clave";
+            this.txt_clave.Size = new System.Drawing.Size(262, 31);
+            this.txt_clave.TabIndex = 17;
+            this.txt_clave.Text = "contraseña123";
+            this.txt_clave.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
             // 
             // label1
             // 
@@ -185,6 +139,70 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "POSLyion";
             // 
+            // rjCircularPictureBox1
+            // 
+            this.rjCircularPictureBox1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjCircularPictureBox1.BorderColor = System.Drawing.Color.Gold;
+            this.rjCircularPictureBox1.BorderColor2 = System.Drawing.Color.Crimson;
+            this.rjCircularPictureBox1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjCircularPictureBox1.BorderSize = 2;
+            this.rjCircularPictureBox1.GradientAngle = 50F;
+            this.rjCircularPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("rjCircularPictureBox1.Image")));
+            this.rjCircularPictureBox1.Location = new System.Drawing.Point(6, 21);
+            this.rjCircularPictureBox1.Name = "rjCircularPictureBox1";
+            this.rjCircularPictureBox1.Size = new System.Drawing.Size(255, 255);
+            this.rjCircularPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjCircularPictureBox1.TabIndex = 0;
+            this.rjCircularPictureBox1.TabStop = false;
+            // 
+            // btn_iniciar_sesion
+            // 
+            this.btn_iniciar_sesion.BackColor = System.Drawing.Color.Gold;
+            this.btn_iniciar_sesion.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_iniciar_sesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_iniciar_sesion.BorderColor = System.Drawing.Color.Red;
+            this.btn_iniciar_sesion.BorderRadius = 10;
+            this.btn_iniciar_sesion.BorderSize = 0;
+            this.btn_iniciar_sesion.FlatAppearance.BorderSize = 0;
+            this.btn_iniciar_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_iniciar_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_iniciar_sesion.ForeColor = System.Drawing.Color.Black;
+            this.btn_iniciar_sesion.Image = ((System.Drawing.Image)(resources.GetObject("btn_iniciar_sesion.Image")));
+            this.btn_iniciar_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_iniciar_sesion.Location = new System.Drawing.Point(291, 261);
+            this.btn_iniciar_sesion.Name = "btn_iniciar_sesion";
+            this.btn_iniciar_sesion.Size = new System.Drawing.Size(139, 31);
+            this.btn_iniciar_sesion.TabIndex = 12;
+            this.btn_iniciar_sesion.Text = "Iniciar Sesion";
+            this.btn_iniciar_sesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_iniciar_sesion.TextColor = System.Drawing.Color.Black;
+            this.btn_iniciar_sesion.UseVisualStyleBackColor = false;
+            this.btn_iniciar_sesion.Click += new System.EventHandler(this.btn_abrir_sesion_Click);
+            // 
+            // btn_cerrar
+            // 
+            this.btn_cerrar.BackColor = System.Drawing.Color.Crimson;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Crimson;
+            this.btn_cerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderRadius = 10;
+            this.btn_cerrar.BorderSize = 0;
+            this.btn_cerrar.FlatAppearance.BorderSize = 0;
+            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.ForeColor = System.Drawing.Color.White;
+            this.btn_cerrar.Image = ((System.Drawing.Image)(resources.GetObject("btn_cerrar.Image")));
+            this.btn_cerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cerrar.Location = new System.Drawing.Point(447, 261);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(111, 31);
+            this.btn_cerrar.TabIndex = 11;
+            this.btn_cerrar.Text = "Cerrar";
+            this.btn_cerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_cerrar.TextColor = System.Drawing.Color.White;
+            this.btn_cerrar.UseVisualStyleBackColor = false;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,14 +212,14 @@
             this.ClientSize = new System.Drawing.Size(588, 304);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtpassword);
-            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.txt_clave);
+            this.Controls.Add(this.txt_nombre_usuario);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.abrir_sesion);
-            this.Controls.Add(this.rjButton2);
+            this.Controls.Add(this.btn_iniciar_sesion);
+            this.Controls.Add(this.btn_cerrar);
             this.Controls.Add(this.notice);
-            this.Controls.Add(this.lblpassword);
-            this.Controls.Add(this.lblusername);
+            this.Controls.Add(this.lbl_clave);
+            this.Controls.Add(this.lbl_nombre_usuario);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -216,15 +234,15 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblusername;
-        private System.Windows.Forms.Label lblpassword;
+        private System.Windows.Forms.Label lbl_nombre_usuario;
+        private System.Windows.Forms.Label lbl_clave;
         private System.Windows.Forms.Label notice;
-        private CustomBox.RJControls.RJButton rjButton2;
-        private CustomBox.RJControls.RJButton abrir_sesion;
+        private CustomBox.RJControls.RJButton btn_cerrar;
+        private CustomBox.RJControls.RJButton btn_iniciar_sesion;
         private System.Windows.Forms.Panel panel1;
         private RJCodeAdvance.RJControls.RJCircularPictureBox rjCircularPictureBox1;
-        private System.Windows.Forms.TextBox txtusername;
-        private System.Windows.Forms.TextBox txtpassword;
+        private System.Windows.Forms.TextBox txt_nombre_usuario;
+        private System.Windows.Forms.TextBox txt_clave;
         private System.Windows.Forms.Label label1;
     }
 }
