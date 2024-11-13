@@ -51,6 +51,7 @@
     <Compile Include="CN_Roles.cs" />
     <Compile Include="CN_Usuarios.cs" />
     <Compile Include="CN_Proveedores.cs" />
+    <Compile Include="CN_UsuariosPOS.cs" />
     <Compile Include="CN_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

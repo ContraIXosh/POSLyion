@@ -110,8 +110,17 @@ namespace POSLyion
 
         private void btn_añadir_Click(object sender, EventArgs e)
         {
-          LoginPOS loginPOS = new LoginPOS();
-            loginPOS.Show();
+            using (var formLoginPOS = new LoginPOS())
+            {
+                formLoginPOS.ShowDialog();
+                if(formLoginPOS.sesion_iniciada == true)
+                {
+                    lbl_informe.Text = "Usuario: " + formLoginPOS.UsuarioPOS.Nombre + " - Empresa: " + formLoginPOS.UsuarioPOS.Nombre_empresa + " - Número de sucursales: " + formLoginPOS.UsuarioPOS.Cantidad_sucursales;
+                    lbl_fecha_vencimiento.Text = "Fecha de vencimiento de pago: " + formLoginPOS.UsuarioPOS.Fecha_vencimiento;
+                    lbl_informe.Visible = true;
+                    lbl_fecha_vencimiento.Visible = true;
+                }
+            }
         }
 
         private void btn_cerrar_Click(object sender, EventArgs e)

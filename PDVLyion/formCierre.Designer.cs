@@ -37,7 +37,6 @@
             this.lbl_total = new System.Windows.Forms.Label();
             this.btn_cancelar = new CustomBox.RJControls.RJButton();
             this.btn_cierre = new CustomBox.RJControls.RJButton();
-            this.lbl_diff = new System.Windows.Forms.Label();
             this.lbl_caja = new System.Windows.Forms.Label();
             this.lbl_diff = new System.Windows.Forms.Label();
             this.lbl_cierre = new System.Windows.Forms.Label();

@@ -43,10 +43,11 @@
             this.lbl_bdd = new System.Windows.Forms.Label();
             this.btn_restaurar_bd = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
             this.panel_info = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_informe = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_fecha_vencimiento = new System.Windows.Forms.Label();
             this.btn_añadir = new CustomBox.RJControls.RJButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_configuracion = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main.SuspendLayout();
             this.panel_general.SuspendLayout();
             this.panel_bot.SuspendLayout();
@@ -305,6 +305,27 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(549, 66);
             this.tableLayoutPanel2.TabIndex = 81;
             // 
+            // btn_cerrar
+            // 
+            this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderRadius = 7;
+            this.btn_cerrar.BorderSize = 2;
+            this.btn_cerrar.FlatAppearance.BorderSize = 0;
+            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.Location = new System.Drawing.Point(396, 13);
+            this.btn_cerrar.Name = "btn_cerrar";
+            this.btn_cerrar.Size = new System.Drawing.Size(150, 40);
+            this.btn_cerrar.TabIndex = 12;
+            this.btn_cerrar.Text = "Cerrar";
+            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.UseVisualStyleBackColor = false;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
+            // 
             // panel_info
             // 
             this.panel_info.BackColor = System.Drawing.Color.Black;
@@ -313,7 +334,7 @@
             this.panel_info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.panel_info.Controls.Add(this.label2, 0, 0);
             this.panel_info.Controls.Add(this.lbl_informe, 0, 1);
-            this.panel_info.Controls.Add(this.label5, 0, 2);
+            this.panel_info.Controls.Add(this.lbl_fecha_vencimiento, 0, 2);
             this.panel_info.Controls.Add(this.btn_añadir, 1, 2);
             this.panel_info.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_info.Location = new System.Drawing.Point(0, 163);
@@ -347,17 +368,19 @@
             this.lbl_informe.Size = new System.Drawing.Size(207, 13);
             this.lbl_informe.TabIndex = 1;
             this.lbl_informe.Text = "nombredueño-nombreempresa-nrosucursal";
+            this.lbl_informe.Visible = false;
             // 
-            // label5
+            // lbl_fecha_vencimiento
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 154);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "fecha de vencimiento de pago";
+            this.lbl_fecha_vencimiento.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_fecha_vencimiento.AutoSize = true;
+            this.lbl_fecha_vencimiento.ForeColor = System.Drawing.Color.White;
+            this.lbl_fecha_vencimiento.Location = new System.Drawing.Point(3, 154);
+            this.lbl_fecha_vencimiento.Name = "lbl_fecha_vencimiento";
+            this.lbl_fecha_vencimiento.Size = new System.Drawing.Size(151, 13);
+            this.lbl_fecha_vencimiento.TabIndex = 3;
+            this.lbl_fecha_vencimiento.Text = "fecha de vencimiento de pago";
+            this.lbl_fecha_vencimiento.Visible = false;
             // 
             // btn_añadir
             // 
@@ -488,27 +511,6 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
-            // btn_cerrar
-            // 
-            this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
-            this.btn_cerrar.BorderRadius = 7;
-            this.btn_cerrar.BorderSize = 2;
-            this.btn_cerrar.FlatAppearance.BorderSize = 0;
-            this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cerrar.Location = new System.Drawing.Point(396, 13);
-            this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(150, 40);
-            this.btn_cerrar.TabIndex = 12;
-            this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
-            this.btn_cerrar.UseVisualStyleBackColor = false;
-            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
-            // 
             // formConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,7 +569,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lbl_informe;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_fecha_vencimiento;
         private CustomBox.RJControls.RJButton btn_añadir;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private CustomBox.RJControls.RJButton btb_backup_bd;

@@ -24,6 +24,10 @@ namespace POSLyion
 
         private void formCat_Load(object sender, EventArgs e)
         {
+            lbl_edicion.Visible = false;
+            txt_categoryedit.Visible = false;
+            btn_editar_categoria.Visible = false;
+            btn_cancelar.Visible = false;
             List<Categorias> lista_categorias = new CN_Categorias().ContarProductos();
             foreach(Categorias oCategoria in lista_categorias)
             {
@@ -43,7 +47,14 @@ namespace POSLyion
             {
                 if (index >= 0)
                 {
-                    txt_descripcion.Texts = grid_categoria.Rows[index].Cells["descripcion"].Value.ToString();
+                    lbl_crear.Visible = false;
+                    txt_descripcion.Visible = false;
+                    btn_crear_categoria.Visible = false;
+                    lbl_edicion.Visible = true;
+                    txt_categoryedit.Visible = true;
+                    btn_editar_categoria.Visible = true;
+                    btn_cancelar.Visible = true;
+                    txt_categoryedit.Texts = grid_categoria.Rows[index].Cells["descripcion"].Value.ToString();
                     txt_id.Texts = grid_categoria.Rows[index].Cells["id"].Value.ToString();
                 }
             }
@@ -90,21 +101,7 @@ namespace POSLyion
                     MessageBox.Show("Categoría creada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
-            {
-                oCategoria.Id_categoria = Convert.ToInt32(txt_id.Texts);
-                oCategoria.Descripcion = txt_descripcion.Texts;
-                bool resultado = false;
-                resultado = new CN_Categorias().Modificar(oCategoria, out mensaje);
-                if (resultado == false)
-                {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    MessageBox.Show("Categoría actualizada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
+            txt_descripcion.Texts = "";
         }
 
         private void btn_actualizar_Click(object sender, EventArgs e)
@@ -125,6 +122,44 @@ namespace POSLyion
         private void btn_buscar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_editar_categoria_Click(object sender, EventArgs e)
+        {
+            Categorias oCategoria = new Categorias();
+            string mensaje = string.Empty;
+            oCategoria.Id_categoria = Convert.ToInt32(txt_id.Texts);
+            oCategoria.Descripcion = txt_categoryedit.Texts;
+            bool resultado = false;
+            resultado = new CN_Categorias().Modificar(oCategoria, out mensaje);
+            if (resultado == false)
+            {
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Categoría actualizada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            this.TerminarEdicion();
+
+        }
+
+        private void TerminarEdicion()
+        {
+            txt_id.Texts = "0";
+            txt_categoryedit.Text = "";
+            lbl_edicion.Visible = false;
+            txt_categoryedit.Visible = false;
+            btn_editar_categoria.Visible = false;
+            btn_cancelar.Visible = false;
+            lbl_crear.Visible = true;
+            txt_descripcion.Visible = true;
+            btn_crear_categoria.Visible = true;
+        }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            this.TerminarEdicion();
         }
     }
 }

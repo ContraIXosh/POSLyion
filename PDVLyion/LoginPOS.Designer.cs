@@ -119,6 +119,7 @@
             this.btn_iniciar_sesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_iniciar_sesion.TextColor = System.Drawing.Color.Black;
             this.btn_iniciar_sesion.UseVisualStyleBackColor = false;
+            this.btn_iniciar_sesion.Click += new System.EventHandler(this.btn_iniciar_sesion_Click);
             // 
             // btn_cerrar
             // 
@@ -142,6 +143,7 @@
             this.btn_cerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_cerrar.TextColor = System.Drawing.Color.White;
             this.btn_cerrar.UseVisualStyleBackColor = false;
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // notice
             // 

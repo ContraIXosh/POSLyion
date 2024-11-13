@@ -27,6 +27,22 @@ namespace PDCLyion
             InitializeComponent();
         }
 
+        private void formDescuento_Load(object sender, EventArgs e)
+        {
+            FiltrosCliente filtros = new FiltrosCliente();
+            List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros).Where(c => c.Nombre_completo.ToLower().Contains(txt_busqueda.Text)).ToList();
+            foreach (Clientes cliente in lista_clientes)
+            {
+                dgv_clientes.Rows.Add(new object[]
+                {
+                        cliente.Id_cliente,
+                        cliente.Dni,
+                        cliente.Nombre_completo,
+                        cliente.Telefono,
+                        cliente.Descuento
+                });
+            }
+        }
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
         {
@@ -47,6 +63,10 @@ namespace PDCLyion
                         cliente.Descuento
                     });
                 }
+            }
+            else
+            {
+                this.formDescuento_Load(sender, e);
             }
             txt_busqueda.Select();
         }
