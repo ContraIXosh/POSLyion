@@ -293,6 +293,59 @@ namespace POSLyion
                     this.VerDetalle(_lista_detalle);
                 }
             }
+            if (dgv_resumen.Columns[e.ColumnIndex].Name == "btn_imprimir")
+            {
+                if(dgv_detalle.Rows.Count == 0)
+                {
+                    MessageBox.Show("Debe presionar el boton Ver Detalle primero", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                // Obtiene el ID de la fila seleccionada
+                int id = Convert.ToInt32(dgv_resumen.Rows[e.RowIndex].Cells["id_venta"].Value);
+                decimal total = 0;
+
+                // Inicializa un nuevo DataGridView para el resumen
+                DataGridView dgv = new DataGridView();
+                dgv.AllowUserToAddRows = false; // No permitir al usuario añadir filas manualmente
+                dgv.AllowUserToDeleteRows = false; // No permitir al usuario eliminar filas manualmente
+                dgv.ReadOnly = true; // Hacer que el DataGridView sea de solo lectura si es necesario
+                dgv.Columns.Add("dgv_resumen_descripcion", "Descripción");
+                dgv.Columns.Add("dgv_resumen_cantidad", "Cantidad");
+                dgv.Columns.Add("dgv_resumen_precio", "Precio Unitario");
+                dgv.Columns.Add("dgv_resumen_subtotal", "Subtotal");
+
+                // Itera sobre las filas del DataGridView original
+                foreach (DataGridViewRow row in dgv_detalle.Rows)
+                {
+                    // Compara el ID de la venta
+                    // Agrega las filas coincidentes al nuevo DataGridView
+                    dgv.Rows.Add(new object[]
+                    {
+                        row.Cells["dgv_detalle_producto"].Value.ToString(),
+                        row.Cells["dgv_detalle_cantidad"].Value.ToString(),
+                        row.Cells["dgv_detalle_precio"].Value.ToString(),
+                        row.Cells["dgv_detalle_subtotal"].Value.ToString()
+                    });
+                    total += Convert.ToDecimal(row.Cells["dgv_detalle_subtotal"].Value);
+                }
+                classTicket.CreaTicket Ticket1 = new classTicket.CreaTicket();
+                Ticket1.TextoCentro("Empresa xxxxx ");
+                Ticket1.TextoCentro("**********************************");
+                Ticket1.TextoIzquierda("");
+                Ticket1.TextoCentro("Factura de Venta");
+                Ticket1.TextoIzquierda("No Fac:" + id);
+                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
+                classTicket.CreaTicket.LineasGuion();
+                classTicket.CreaTicket.EncabezadoVenta(dgv);
+                classTicket.CreaTicket.LineasGuion();
+                classTicket.CreaTicket.LineasGuion();
+                Ticket1.TextoIzquierda(" ");
+                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(total));
+                Ticket1.TextoIzquierda(" ");
+                Ticket1.TextoIzquierda(" ");
+                string impresora = "Microsoft XPS Document Writer";
+                Ticket1.ImprimirTiket(impresora);
+            }
         }
 
         // Si se invoca el evento VentanaCerrada, se limpia dgv_resumen y el respaldo de productos
@@ -656,6 +709,7 @@ namespace POSLyion
                 dgv_resumen.Columns.Add("nombre_cliente", "Cliente");
                 dgv_resumen.Columns.Add("total", "Total");
                 dgv_resumen.Columns.Add("btn_ver_detalle", "");
+                dgv_resumen.Columns.Add("btn_imprimir", "");
                 dgv_detalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgv_resumen.Visible = true;
                 dgv_resumen.Dock = DockStyle.Fill;
@@ -670,7 +724,8 @@ namespace POSLyion
                     venta.Create_date,
                     venta.oCliente.Nombre_completo,
                     venta.Total,
-                    "Ver detalle"
+                    "Ver detalle",
+                    "Imprimir ticket"
                     });
                 }
             }
