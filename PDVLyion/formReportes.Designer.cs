@@ -515,6 +515,7 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.chart4.ChartAreas.Add(chartArea1);
+            this.chart4.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chart4.Legends.Add(legend1);
             this.chart4.Location = new System.Drawing.Point(3, 197);
@@ -524,7 +525,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart4.Series.Add(series1);
-            this.chart4.Size = new System.Drawing.Size(285, 92);
+            this.chart4.Size = new System.Drawing.Size(286, 93);
             this.chart4.TabIndex = 7;
             this.chart4.Text = "c_ventausuarioBarra";
             // 
@@ -532,6 +533,7 @@
             // 
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
+            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(295, 51);
@@ -542,7 +544,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(285, 92);
+            this.chart2.Size = new System.Drawing.Size(287, 92);
             this.chart2.TabIndex = 5;
             this.chart2.Text = "c_ventageneralDona";
             // 
@@ -572,6 +574,7 @@
             // 
             chartArea3.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea3);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             legend3.Name = "Legend1";
             this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(3, 51);
@@ -581,7 +584,7 @@
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(285, 92);
+            this.chart1.Size = new System.Drawing.Size(286, 92);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "c_ventageneralBarra";
             // 
@@ -611,6 +614,7 @@
             // 
             chartArea4.Name = "ChartArea1";
             this.chart3.ChartAreas.Add(chartArea4);
+            this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
             legend4.Name = "Legend1";
             this.chart3.Legends.Add(legend4);
             this.chart3.Location = new System.Drawing.Point(295, 197);
@@ -621,7 +625,7 @@
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             this.chart3.Series.Add(series4);
-            this.chart3.Size = new System.Drawing.Size(285, 93);
+            this.chart3.Size = new System.Drawing.Size(287, 93);
             this.chart3.TabIndex = 6;
             this.chart3.Text = "c_ventausuarioDona";
             // 
