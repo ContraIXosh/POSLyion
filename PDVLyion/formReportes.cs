@@ -4,7 +4,7 @@ using CapaEntidad.GraficosVentas;
 using CapaNegocio;
 using ClosedXML.Excel;
 using EntityLayer.Filtros;
-using PDCLyion;
+using POSLyion;
 using POSLyion.Resources;
 using System;
 using System.Collections.Generic;

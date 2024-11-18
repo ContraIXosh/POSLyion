@@ -12,7 +12,7 @@ using CapaEntidad;
 using CapaNegocio;
 using CapaEntidad.Filtros;
 
-namespace PDCLyion.Modals
+namespace POSLyion.Modals
 {
     public partial class MD_Clientes : Form
     {

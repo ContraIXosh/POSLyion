@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PDCLyion
+namespace POSLyion
 {
     public partial class formDescuento : Form
     {

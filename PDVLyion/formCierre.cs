@@ -16,7 +16,6 @@ namespace POSLyion
     public partial class formCierre : Form
     {
         private Ventas _total_ventas = new Ventas();
-        private int _id_usuario_actual = 0;
         private double[] valoresBilletes = { 10, 20, 50, 100, 200, 500, 1000, 2000, 10000};
         private double monto_caja = 0;
         public bool _caja_cerrada = false;
@@ -26,7 +25,6 @@ namespace POSLyion
             InitializeComponent();
             lbl_resultado.Visible = false;
             lbl_diff.Visible = false;
-            _id_usuario_actual = id_usuario;
             _total_ventas = new CN_Ventas().VerTotalVentasDesde(VariablesGlobales.Inicio_sesion, id_usuario);
             lbl_caja.Text = _total_ventas.Total.ToString();
         }
@@ -36,7 +34,7 @@ namespace POSLyion
             string mensaje = string.Empty;
             CierreCaja cierreCaja = new CierreCaja()
             {
-                Id_usuario = _id_usuario_actual,
+                Id_usuario = VariablesGlobales.Usuario_actual.Id_usuario,
                 Monto_ventas = _total_ventas.Total,
                 Monto_caja = Convert.ToDecimal(monto_caja),
                 Fecha_inicio_turno = VariablesGlobales.Inicio_sesion,

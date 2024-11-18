@@ -53,7 +53,8 @@ namespace POSLyion
             else
             {
                 VariablesGlobales.Inicio_sesion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                Start formStart = new Start(oUsuario);
+                VariablesGlobales.Usuario_actual = oUsuario;
+                Start formStart = new Start();
                 formStart.Show();
                 this.Hide();
                 formStart.FormClosing += form_closing;

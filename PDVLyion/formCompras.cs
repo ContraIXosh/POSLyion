@@ -14,25 +14,23 @@ using POSLyion.Modals;
 using CapaNegocio;
 using LiveCharts.Helpers;
 using Google.Protobuf.WellKnownTypes;
-using PDCLyion.Modals;
+using POSLyion.Modals;
 
 namespace POSLyion
 {
     public partial class formCompras : Form
     {
 
-        private static Usuarios oUsuario = new Usuarios();
         private static Compras oCompra;
         private int index = -1;
         private List<Productos> _lista_productos = new List<Productos>();
         private bool _flag_descripcion_producto_TextChanged = false;
 
-        public formCompras(Usuarios usuario)
+        public formCompras()
         {
             InitializeComponent();
             FiltrosProducto filtros_producto = new FiltrosProducto();
             _lista_productos = new CN_Productos().Leer(filtros_producto);
-            oUsuario = usuario;
         }
 
         private void formCompras_Load(object sender, EventArgs e)
@@ -348,7 +346,7 @@ namespace POSLyion
                 // Se crea el registro Compra "cabecera"
                 oCompra = new Compras()
                 {
-                    oUsuario = new Usuarios() { Id_usuario = oUsuario.Id_usuario },
+                    oUsuario = new Usuarios() { Id_usuario = VariablesGlobales.Usuario_actual.Id_usuario },
                     oProveedor = new Proveedores() { Id_proveedor = id_proveedor },
                     Total = total,
                     Tipo_documento = tipo_documento,

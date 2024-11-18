@@ -420,6 +420,12 @@
     <Compile Include="formReportes.Designer.cs">
       <DependentUpon>formReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="formVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formVentas.Designer.cs">
+      <DependentUpon>formVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPOS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -480,6 +486,7 @@
     <Compile Include="Modals\MD_Proveedores.Designer.cs">
       <DependentUpon>MD_Proveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\FormManager.cs" />
     <Compile Include="Resources\OpcionCombo.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
@@ -524,6 +531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formReportes.resx">
       <DependentUpon>formReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formVentas.resx">
+      <DependentUpon>formVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPOS.resx">
       <DependentUpon>LoginPOS.cs</DependentUpon>

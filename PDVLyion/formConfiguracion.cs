@@ -13,7 +13,7 @@ using Microsoft.SqlServer.Management.Common;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows;
-using PDCLyion;
+using POSLyion;
 using static POSLyion.formConfiguracion;
 
 namespace POSLyion

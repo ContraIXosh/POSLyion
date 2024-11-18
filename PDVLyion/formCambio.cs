@@ -1,4 +1,4 @@
-﻿using PDCLyion.Modals;
+﻿using POSLyion.Modals;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static POSLyion.formCambio;
 using CapaEntidad;
-using PDCLyion;
+using POSLyion;
 
 namespace POSLyion
 {
@@ -20,18 +20,16 @@ namespace POSLyion
         decimal montoTarjeta = 0m;
         decimal montoMP = 0m;
         public decimal total = 0;
-        private Usuarios UsuarioActual;
         public decimal vuelto = 0;
         // Evento que se invoca al realizar el cobro
         // para que formulario Start se suscriba
         public bool venta_cerrada = false;
         private Clientes Cliente;
 
-        public formCambio(decimal p_total, Usuarios usuarioActual, Clientes cliente)
+        public formCambio(decimal p_total, Clientes cliente)
         {
             InitializeComponent();
             total = p_total - (p_total * (Convert.ToDecimal(cliente.Descuento) / 100));
-            UsuarioActual = usuarioActual;
             Cliente = cliente;
             lbl_suma_total.Text = Convert.ToString(total);
         }
