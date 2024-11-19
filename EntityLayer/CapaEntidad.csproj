@@ -59,6 +59,7 @@
     <Compile Include="ReportesCierre.cs" />
     <Compile Include="ReportesDetalle.cs" />
     <Compile Include="Roles.cs" />
+    <Compile Include="Ticket.cs" />
     <Compile Include="UsuariosPOS.cs" />
     <Compile Include="VariablesGlobales.cs" />
     <Compile Include="Ventas_Detalle.cs" />

@@ -112,7 +112,7 @@
             this.txt_nombre_usuario.Name = "txt_nombre_usuario";
             this.txt_nombre_usuario.Size = new System.Drawing.Size(262, 26);
             this.txt_nombre_usuario.TabIndex = 16;
-            this.txt_nombre_usuario.Text = "usuario@mercadorojo";
+            this.txt_nombre_usuario.Text = "admin";
             // 
             // txt_clave
             // 
@@ -122,7 +122,7 @@
             this.txt_clave.Name = "txt_clave";
             this.txt_clave.Size = new System.Drawing.Size(262, 26);
             this.txt_clave.TabIndex = 17;
-            this.txt_clave.Text = "contraseña123";
+            this.txt_clave.Text = "123";
             this.txt_clave.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
             // 
             // label1

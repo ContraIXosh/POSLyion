@@ -488,6 +488,7 @@
     </Compile>
     <Compile Include="Resources\FormManager.cs" />
     <Compile Include="Resources\OpcionCombo.cs" />
+    <Compile Include="Resources\TicketManager.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
