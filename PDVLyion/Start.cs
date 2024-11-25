@@ -1,30 +1,24 @@
 ﻿using CapaEntidad;
-using POSLyion.Resources;
-using CapaEntidad.Filtros;
 using CapaNegocio;
-using FontAwesome.Sharp;
-using POSLyion;
-using POSLyion.Modals;
+using POSLyion.Resources;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Web.UI.Design;
 using System.Windows.Forms;
 
 namespace POSLyion
 {
     public partial class Start : Form
     {
-        private static List<Form> oFormList = new List<Form>();
+        private static readonly List<Form> oFormList = new List<Form>();
         private ToolStripMenuItem currentSelectedMenuItem;
 
         public Start()
         {
             InitializeComponent();
             lbl_usuario.Text = VariablesGlobales.Usuario_actual.Nombre_completo;
-            this.KeyPreview = true;
+            KeyPreview = true;
             AbrirFormularios();
             RegistrarEventos();
             FormManager.Instance.MostrarFormularioPrincipal(0);
@@ -46,10 +40,10 @@ namespace POSLyion
 
         private void Start_Load(object sender, EventArgs e)
         {
-            List<Permisos> lista_permisos = new CN_Permisos().Leer(VariablesGlobales.Usuario_actual.Id_usuario);
+            var lista_permisos = new CN_Permisos().Leer(VariablesGlobales.Usuario_actual.Id_usuario);
             foreach (ToolStripMenuItem item in menu.Items)
             {
-                bool encontrado = lista_permisos.Any(m => m.Nombre_menu == item.Name);
+                var encontrado = lista_permisos.Any(m => m.Nombre_menu == item.Name);
                 if (encontrado == false)
                 {
                     item.Visible = false;
@@ -65,7 +59,7 @@ namespace POSLyion
             if (menuSeleccionado != null)
             {
                 // Definir un diccionario para mapear nombres de menús a índices
-                Dictionary<string, int> menuIndices = new Dictionary<string, int>
+                var menuIndices = new Dictionary<string, int>
                 {
                     { "tsmenu_venta", 0 },
                     { "tsmenu_compras", 1 },
@@ -81,7 +75,7 @@ namespace POSLyion
 
                 if (menuIndices.ContainsKey(menuSeleccionado.Name))
                 {
-                    int index = menuIndices[menuSeleccionado.Name];
+                    var index = menuIndices[menuSeleccionado.Name];
 
                     if (FormManager.Instance.formulariosPrincipales.ContainsKey(index))
                     {
@@ -97,13 +91,13 @@ namespace POSLyion
 
         private void AbrirFormularios()
         {
-            formVentas formVentas = new formVentas();
-            formProductos formProductos = new formProductos();
-            formUsuarios formUsuarios = new formUsuarios();
-            formClientes formClientes = new formClientes();
-            formProveedores formProveedores = new formProveedores();
-            formReportes formReportes = new formReportes();
-            formCategorias formCategorias = new formCategorias();
+            var formVentas = new formVentas();
+            var formProductos = new formProductos();
+            var formUsuarios = new formUsuarios();
+            var formClientes = new formClientes();
+            var formProveedores = new formProveedores();
+            var formReportes = new formReportes();
+            var formCategorias = new formCategorias();
 
             panel_formularios.Controls.Add(ConfigurarFormularios(formVentas));
             panel_formularios.Controls.Add(ConfigurarFormularios(formProductos));
@@ -118,7 +112,7 @@ namespace POSLyion
             FormManager.Instance.RegistrarFormularioPrincipal(3, formUsuarios);
             FormManager.Instance.RegistrarFormularioPrincipal(4, formClientes);
             FormManager.Instance.RegistrarFormularioPrincipal(5, formProveedores);
-            FormManager.Instance.RegistrarFormularioPrincipal(6,formReportes);
+            FormManager.Instance.RegistrarFormularioPrincipal(6, formReportes);
             FormManager.Instance.RegistrarFormularioPrincipal(7, formCategorias);
 
             FormManager.Instance.RegistrarFormularioDialogo(1, new formCompras());

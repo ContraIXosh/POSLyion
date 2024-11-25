@@ -1,14 +1,7 @@
-﻿using CapaNegocio;
-using CapaEntidad;
+﻿using CapaEntidad;
+using CapaNegocio;
 using POSLyion.Resources;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -38,16 +31,16 @@ namespace POSLyion
                 cbox_estado.Visible = false;
                 lbl_estado.Visible = false;
             }
-            List<Categorias> lista_categorias = new CN_Categorias().Leer();
-            foreach (Categorias oCategoria in lista_categorias)
+            var lista_categorias = new CN_Categorias().Leer();
+            foreach (var oCategoria in lista_categorias)
             {
-                cbox_tipo.Items.Add(new OpcionCombo() { Valor = oCategoria.Id_categoria, Texto = oCategoria.Descripcion });
+                _ = cbox_tipo.Items.Add(new OpcionCombo() { Valor = oCategoria.Id_categoria, Texto = oCategoria.Descripcion });
             }
             cbox_tipo.DisplayMember = "Texto";
             cbox_tipo.ValueMember = "Valor";
 
-            cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
-            cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
             cbox_estado.DisplayMember = "Texto";
             cbox_estado.ValueMember = "Valor";
 
@@ -59,8 +52,8 @@ namespace POSLyion
             txt_costo.Text = Producto.Precio_costo.ToString();
             txt_precio.Text = Producto.Precio_venta.ToString();
 
-            int cbox_tipo_index = 0;
-            int cbox_estado_index = 0;
+            var cbox_tipo_index = 0;
+            var cbox_estado_index = 0;
 
             if (Convert.ToInt32(txt_id.Texts) == 0)
             {
@@ -93,10 +86,9 @@ namespace POSLyion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            string mensaje = String.Empty;
-            if(Convert.ToInt32(txt_id.Texts) == 0)
+            string mensaje;
+            if (Convert.ToInt32(txt_id.Texts) == 0)
             {
-                int id_generada_producto = 0;
                 Producto = new Productos()
                 {
                     Codigo_barras = txt_codigo_barras.Text,
@@ -110,30 +102,31 @@ namespace POSLyion
                     Stock_actual = Convert.ToInt32(txt_cantidad.Text),
                     Stock_minimo = Convert.ToInt32(txt_stock_minimo.Text),
                 };
-                id_generada_producto = new CN_Productos().Create(Producto, out mensaje);
+                var id_generada_producto = new CN_Productos().Create(Producto, out mensaje);
                 if (id_generada_producto == 0)
                 {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    MessageBox.Show("Producto generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
+                    _ = MessageBox.Show("Producto generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Close();
                 }
             }
             else
             {
-                bool resultado = false;
-                Anterior_producto = new Productos();
-                Anterior_producto.Id_producto = Producto.Id_producto;
-                Anterior_producto.Codigo_barras = Producto.Codigo_barras;
-                Anterior_producto.Descripcion = Producto.Descripcion;
-                Anterior_producto.oCategoria = new Categorias() { Id_categoria = Producto.oCategoria.Id_categoria };
-                Anterior_producto.Precio_costo = Producto.Precio_costo;
-                Anterior_producto.Precio_venta = Producto.Precio_venta;
-                Anterior_producto.Stock_actual = Producto.Stock_actual;
-                Anterior_producto.Stock_minimo = Producto.Stock_minimo;
-                Anterior_producto.Estado = Producto.Estado;
+                Anterior_producto = new Productos
+                {
+                    Id_producto = Producto.Id_producto,
+                    Codigo_barras = Producto.Codigo_barras,
+                    Descripcion = Producto.Descripcion,
+                    oCategoria = new Categorias() { Id_categoria = Producto.oCategoria.Id_categoria },
+                    Precio_costo = Producto.Precio_costo,
+                    Precio_venta = Producto.Precio_venta,
+                    Stock_actual = Producto.Stock_actual,
+                    Stock_minimo = Producto.Stock_minimo,
+                    Estado = Producto.Estado
+                };
                 Producto.Codigo_barras = txt_codigo_barras.Text;
                 Producto.Descripcion = txt_descripcion.Text;
                 Producto.oCategoria.Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Valor);
@@ -142,22 +135,22 @@ namespace POSLyion
                 Producto.Stock_actual = Convert.ToInt32(txt_cantidad.Text);
                 Producto.Stock_minimo = Convert.ToInt32(txt_stock_minimo.Text);
                 Producto.Estado = Convert.ToBoolean(((OpcionCombo)cbox_estado.SelectedItem).Valor);
-                resultado = new CN_Productos().Modificar(Producto, out mensaje);
+                var resultado = new CN_Productos().Modificar(Producto, out mensaje);
                 if (resultado == false)
                 {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    MessageBox.Show("Producto actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
+                    _ = MessageBox.Show("Producto actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Close();
                 }
             }
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
 
@@ -165,7 +158,7 @@ namespace POSLyion
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
             }
         }
@@ -174,7 +167,7 @@ namespace POSLyion
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
             }
         }
@@ -183,7 +176,7 @@ namespace POSLyion
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
             }
         }
@@ -192,14 +185,14 @@ namespace POSLyion
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
             {
-                e.Handled = true; 
-            } 
-            else 
+                e.Handled = true;
+            }
+            else
             {
-                if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf(',') > -1) 
-                { 
-                    e.Handled = true; 
-                } 
+                if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf(',') > -1)
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

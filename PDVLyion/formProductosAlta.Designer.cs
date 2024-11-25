@@ -68,6 +68,7 @@
             this.panel_main.Controls.Add(this.btn_guardar);
             this.panel_main.Controls.Add(this.btn_cerrar);
             this.panel_main.Controls.Add(this.panel_crimconfg);
+            this.panel_main.Controls.Add(this.txt_id);
             this.panel_main.Controls.Add(this.label3);
             this.panel_main.Controls.Add(this.panel_crimdesc);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -131,7 +132,6 @@
             this.panel_config.Controls.Add(this.txt_precio);
             this.panel_config.Controls.Add(this.txt_costo);
             this.panel_config.Controls.Add(this.lbl_config);
-            this.panel_config.Controls.Add(this.txt_id);
             this.panel_config.Controls.Add(this.label6);
             this.panel_config.Controls.Add(this.label9);
             this.panel_config.Location = new System.Drawing.Point(3, 3);
@@ -177,7 +177,7 @@
             this.txt_id.BorderSize = 2;
             this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(653, 83);
+            this.txt_id.Location = new System.Drawing.Point(15, 468);
             this.txt_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_id.Multiline = false;
             this.txt_id.Name = "txt_id";

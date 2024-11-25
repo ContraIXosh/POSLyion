@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POSLyion.Resources
@@ -45,7 +42,7 @@ namespace POSLyion.Resources
         {
             if (formulariosDialogo.ContainsKey(index))
             {
-                formulariosDialogo[index].ShowDialog();
+                _ = formulariosDialogo[index].ShowDialog();
             }
         }
     }

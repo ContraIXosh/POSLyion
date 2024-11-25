@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using CapaDatos;
+﻿using CapaDatos;
 using CapaEntidad;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 using CapaEntidad.GraficosVentas;
+using System.Collections.Generic;
+using System.Data;
 
 namespace CapaNegocio
 {
     public class CN_Compras
     {
-        private CD_Compras oCompra = new CD_Compras();
+        private readonly CD_Compras oCompra = new CD_Compras();
 
         public bool Crear(Compras _oCompra, DataTable CompraDetalle, out string mensaje)
         {

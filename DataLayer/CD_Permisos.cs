@@ -1,11 +1,9 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -13,21 +11,21 @@ namespace CapaDatos
     {
         public List<Permisos> Leer(int id_usuario)
         {
-            List<Permisos> lista_permisos = new List<Permisos>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_permisos = new List<Permisos>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
                     oConexion.Open();
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT p.id_rol, p.nombre_menu FROM Permisos p");
-                    query.AppendLine("INNER JOIN Roles r ON r.id_rol = p.id_rol");
-                    query.AppendLine("INNER JOIN Usuarios u ON u.id_rol = r.id_rol");
-                    query.AppendLine("WHERE u.id_usuario = @id_usuario");
-                    SqlCommand command = new SqlCommand(query.ToString(), oConexion);
-                    command.Parameters.AddWithValue("@id_usuario", id_usuario);
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT p.id_rol, p.nombre_menu FROM Permisos p");
+                    _ = query.AppendLine("INNER JOIN Roles r ON r.id_rol = p.id_rol");
+                    _ = query.AppendLine("INNER JOIN Usuarios u ON u.id_rol = r.id_rol");
+                    _ = query.AppendLine("WHERE u.id_usuario = @id_usuario");
+                    var command = new SqlCommand(query.ToString(), oConexion);
+                    _ = command.Parameters.AddWithValue("@id_usuario", id_usuario);
                     command.CommandType = CommandType.Text;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -42,7 +40,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_permisos = new List<Permisos>();
                 }
@@ -52,21 +50,21 @@ namespace CapaDatos
 
         public List<Permisos> LeerTodo(int id_usuario)
         {
-            List<Permisos> lista_permisos = new List<Permisos>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_permisos = new List<Permisos>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
                     oConexion.Open();
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT p.id_rol, p.nombre_menu FROM Permisos p");
-                    query.AppendLine("INNER JOIN Roles r ON r.id_rol = p.id_rol");
-                    query.AppendLine("INNER JOIN Usuarios u ON u.id_rol = r.id_rol");
-                    query.AppendLine("WHERE u.id_usuario = @id_usuario");
-                    SqlCommand command = new SqlCommand(query.ToString(), oConexion);
-                    command.Parameters.AddWithValue("@id_usuario", id_usuario);
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT p.id_rol, p.nombre_menu FROM Permisos p");
+                    _ = query.AppendLine("INNER JOIN Roles r ON r.id_rol = p.id_rol");
+                    _ = query.AppendLine("INNER JOIN Usuarios u ON u.id_rol = r.id_rol");
+                    _ = query.AppendLine("WHERE u.id_usuario = @id_usuario");
+                    var command = new SqlCommand(query.ToString(), oConexion);
+                    _ = command.Parameters.AddWithValue("@id_usuario", id_usuario);
                     command.CommandType = CommandType.Text;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -81,7 +79,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_permisos = new List<Permisos>();
                 }

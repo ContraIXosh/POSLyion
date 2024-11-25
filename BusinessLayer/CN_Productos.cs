@@ -1,18 +1,14 @@
 ﻿using CapaDatos;
 using CapaEntidad;
 using CapaEntidad.Filtros;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
     public class CN_Productos
     {
-        private CD_Productos oCD_Producto = new CD_Productos();
+        private readonly CD_Productos oCD_Producto = new CD_Productos();
 
         public int Create(Productos oProducto, out string mensaje)
         {
@@ -25,14 +21,7 @@ namespace CapaNegocio
             {
                 mensaje += "Es necesario la descripción del producto.\n";
             }
-            if (mensaje != string.Empty)
-            {
-                return 0;
-            }
-            else
-            {
-                return oCD_Producto.Crear(oProducto, out mensaje);
-            }
+            return mensaje != string.Empty ? 0 : oCD_Producto.Crear(oProducto, out mensaje);
         }
 
         public List<Productos> Leer(FiltrosProducto filtros)
@@ -69,14 +58,7 @@ namespace CapaNegocio
             {
                 mensaje += "Es necesario el precio de venta del producto.\n";
             }
-            if (mensaje != string.Empty)
-            {
-                return false;
-            }
-            else
-            {
-                return oCD_Producto.Modificar(oProducto, out mensaje);
-            }
+            return mensaje == string.Empty && oCD_Producto.Modificar(oProducto, out mensaje);
         }
 
         public bool Eliminar(Productos oProducto, out string mensaje)

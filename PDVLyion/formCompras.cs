@@ -1,20 +1,14 @@
-﻿using POSLyion.Resources;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaEntidad.Filtros;
+using CapaNegocio;
+using POSLyion.Modals;
+using POSLyion.Resources;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using POSLyion.Modals;
-using CapaNegocio;
-using LiveCharts.Helpers;
-using Google.Protobuf.WellKnownTypes;
-using POSLyion.Modals;
 
 namespace POSLyion
 {
@@ -22,30 +16,30 @@ namespace POSLyion
     {
 
         private static Compras oCompra;
-        private int index = -1;
-        private List<Productos> _lista_productos = new List<Productos>();
+        private readonly int index = -1;
+        private readonly List<Productos> _lista_productos = new List<Productos>();
         private bool _flag_descripcion_producto_TextChanged = false;
 
         public formCompras()
         {
             InitializeComponent();
-            FiltrosProducto filtros_producto = new FiltrosProducto();
+            var filtros_producto = new FiltrosProducto();
             _lista_productos = new CN_Productos().Leer(filtros_producto);
         }
 
         private void formCompras_Load(object sender, EventArgs e)
         {
-            cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Factura", Texto = "Factura" });
-            cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Boleta", Texto = "Boleta" });
+            _ = cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Factura", Texto = "Factura" });
+            _ = cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Boleta", Texto = "Boleta" });
             cbo_tipo_documento.DisplayMember = "Texto";
             cbo_tipo_documento.ValueMember = "Valor";
             cbo_tipo_documento.SelectedIndex = 0;
 
-            FiltrosProveedor filtros_proveedor = new FiltrosProveedor();
-            List<Proveedores> lista_proveedores = new CN_Proveedores().Leer(filtros_proveedor);
-            foreach (Proveedores oProveedor in lista_proveedores)
+            var filtros_proveedor = new FiltrosProveedor();
+            var lista_proveedores = new CN_Proveedores().Leer(filtros_proveedor);
+            foreach (var oProveedor in lista_proveedores)
             {
-                cbox_proveedores.Items.Add(new OpcionCombo() { Valor = oProveedor.Id_proveedor, Texto = oProveedor.Descripcion });
+                _ = cbox_proveedores.Items.Add(new OpcionCombo() { Valor = oProveedor.Id_proveedor, Texto = oProveedor.Descripcion });
             }
             cbox_proveedores.DisplayMember = "Texto";
             cbox_proveedores.ValueMember = "Valor";
@@ -78,7 +72,7 @@ namespace POSLyion
         {
             if (e.KeyData == Keys.Enter)
             {
-                Productos oProducto = _lista_productos.Where(p => p.Codigo_barras == txt_codigo_barras.Text).FirstOrDefault();
+                var oProducto = _lista_productos.Where(p => p.Codigo_barras == txt_codigo_barras.Text).FirstOrDefault();
                 if (oProducto != null)
                 {
                     txt_codigo_barras.BackColor = Color.Honeydew;
@@ -102,25 +96,25 @@ namespace POSLyion
 
         private void txt_descripcion_producto_TextChanged(object sender, EventArgs e)
         {
-            if(_flag_descripcion_producto_TextChanged == true)
+            if (_flag_descripcion_producto_TextChanged == true)
             {
                 return;
             }
-            if(txt_descripcion_producto.Text == "")
+            if (txt_descripcion_producto.Text == "")
             {
                 lbox_productos.Visible = false;
                 return;
             }
             // Convertir el texto ingresado a minúsculas
-            string filtro = txt_descripcion_producto.Text.ToLower();
+            var filtro = txt_descripcion_producto.Text.ToLower();
 
             // Filtrar los productos que coinciden con la descripción ingresada
-            List<Productos> productosFiltrados = _lista_productos
+            var productosFiltrados = _lista_productos
                 .Where(p => p.Descripcion.ToLower().Contains(filtro))
                 .ToList();
 
             // Almacenar las descripciones de los productos filtrados
-            List<string> nombres_producto = productosFiltrados
+            var nombres_producto = productosFiltrados
                 .Select(p => p.Descripcion)
                 .ToList();
 
@@ -136,7 +130,7 @@ namespace POSLyion
         {
             if (lbox_productos.SelectedItem != null)
             {
-                this.SeleccionarProducto();
+                SeleccionarProducto();
             }
         }
 
@@ -144,10 +138,10 @@ namespace POSLyion
         {
             if (e.KeyCode == Keys.Down)
             {
-                if(lbox_productos.Items.Count > 0)
+                if (lbox_productos.Items.Count > 0)
                 {
                     lbox_productos.SelectedIndex = 0;
-                    lbox_productos.Focus();
+                    _ = lbox_productos.Focus();
                 }
             }
         }
@@ -156,7 +150,7 @@ namespace POSLyion
         {
             if (e.KeyChar == (char)Keys.Enter && lbox_productos.Focused)
             {
-                this.SeleccionarProducto();
+                SeleccionarProducto();
             }
         }
 
@@ -170,20 +164,20 @@ namespace POSLyion
 
         private void btn_agregar_producto_Click(object sender, EventArgs e)
         {
-            bool producto_existe = false;
-            int indice_fila = 0;
-            decimal precio_costo = 0;
-            string mensaje = string.Empty;
+            var producto_existe = false;
+            var indice_fila = 0;
+            var mensaje = string.Empty;
 
             // Se realizan verificaciones antes de insertarlo al DGV
             if (txt_id_producto.Text == "")
             {
-                MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                _ = MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (!decimal.TryParse(txt_precio_costo.Text, out precio_costo))
+
+            if (!decimal.TryParse(txt_precio_costo.Text, out _))
             {
-                MessageBox.Show("Formato de moneda incorrecto en precio de costo", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                _ = MessageBox.Show("Formato de moneda incorrecto en precio de costo", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txt_precio_costo.Select();
                 return;
             }
@@ -193,7 +187,7 @@ namespace POSLyion
             }
             if (mensaje != string.Empty)
             {
-                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             // Verifica si el producto ya existe en el DGV.
             foreach (DataGridViewRow fila in dgv_compras.Rows)
@@ -210,8 +204,8 @@ namespace POSLyion
             // se inserta de forma normal, se limpian los campos escritos y se calcula el total
             if (!producto_existe && mensaje == string.Empty)
             {
-                precio_costo = Convert.ToDecimal(txt_precio_costo.Text);
-                dgv_compras.Rows.Add(new object[]
+                var precio_costo = Convert.ToDecimal(txt_precio_costo.Text);
+                _ = dgv_compras.Rows.Add(new object[]
                 {
                     txt_id_producto.Text,
                     txt_codigo_barras.Text,
@@ -222,22 +216,19 @@ namespace POSLyion
                     "Editar cantidad",
                     "Eliminar producto"
                 });
-                this.Limpiar();
+                Limpiar();
             }
             // Si el producto que se intenta insertar al DGV ya fué agregado anteriormente, se suma la cantidad
             // de producto solicitada y se vuelve a calcular el subtotal, luego se limpian los campos
             // y se calcula el total nuevamente.
             else if (producto_existe)
             {
-                decimal cantidad = 0;
-                decimal precio_unitario = 0;
-                decimal subtotal = 0;
-                precio_unitario = Convert.ToDecimal(dgv_compras.Rows[indice_fila].Cells["precio_costo"].Value.ToString());
-                cantidad = 
-                    Convert.ToInt32(dgv_compras.Rows[indice_fila].Cells["cantidad"].Value.ToString())
-                    + 
-                    num_cantidad.Value;
-                subtotal = cantidad * precio_unitario;
+                var precio_unitario = Convert.ToDecimal(dgv_compras.Rows[indice_fila].Cells["precio_costo"].Value.ToString());
+                var cantidad =
+    Convert.ToInt32(dgv_compras.Rows[indice_fila].Cells["cantidad"].Value.ToString())
+    +
+    num_cantidad.Value;
+                var subtotal = cantidad * precio_unitario;
                 dgv_compras.Rows[indice_fila].Cells["cantidad"].Value = cantidad.ToString();
                 dgv_compras.Rows[indice_fila].Cells["subtotal"].Value = subtotal.ToString("0.00");
             }
@@ -249,21 +240,21 @@ namespace POSLyion
         {
             if (dgv_compras.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
-                int indice = e.RowIndex;
+                var indice = e.RowIndex;
                 if (indice >= 0)
                 {
                     dgv_compras.Rows.RemoveAt(indice);
-                    this.CalcularTotal();
+                    CalcularTotal();
                 }
             }
             if (dgv_compras.Columns[e.ColumnIndex].Name == "btn_editar")
             {
-                string descripcion_producto = dgv_compras.Rows[e.RowIndex].Cells["descripcion_producto"].Value.ToString();
-                int cantidad_actual = Convert.ToInt32(dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value);
-                int nueva_cantidad = 0;
+                var descripcion_producto = dgv_compras.Rows[e.RowIndex].Cells["descripcion_producto"].Value.ToString();
+                var cantidad_actual = Convert.ToInt32(dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value);
+                var nueva_cantidad = 0;
                 using (var md_editarCantidad = new MD_EditarCantidad(descripcion_producto, cantidad_actual))
                 {
-                    md_editarCantidad.ShowDialog();
+                    _ = md_editarCantidad.ShowDialog();
                     nueva_cantidad = md_editarCantidad.nueva_cantidad;
                 }
                 // Verifica si la cantidad ingresada es mayor a 0 o no es nula
@@ -274,7 +265,7 @@ namespace POSLyion
                     if (resultado_dialogo == DialogResult.Yes)
                     {
                         dgv_compras.Rows.RemoveAt(e.RowIndex);
-                        this.CalcularTotal();
+                        CalcularTotal();
                     }
                     else
                     {
@@ -283,10 +274,10 @@ namespace POSLyion
                 }
                 else
                 {
-                    decimal precio_unitario = Convert.ToDecimal(dgv_compras.Rows[e.RowIndex].Cells["precio_costo"].Value);
+                    var precio_unitario = Convert.ToDecimal(dgv_compras.Rows[e.RowIndex].Cells["precio_costo"].Value);
                     dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value = nueva_cantidad;
                     dgv_compras.Rows[e.RowIndex].Cells["subtotal"].Value = nueva_cantidad * precio_unitario;
-                    this.CalcularTotal();
+                    CalcularTotal();
                 }
             }
         }
@@ -294,46 +285,43 @@ namespace POSLyion
         // Guarda el registro de una compra
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            if(Convert.ToInt32(((OpcionCombo)cbox_proveedores.SelectedItem).Valor) == 1)
+            if (Convert.ToInt32(((OpcionCombo)cbox_proveedores.SelectedItem).Valor) == 1)
             {
-                MessageBox.Show("Debe elegir un proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                _ = MessageBox.Show("Debe elegir un proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
-            } 
+            }
             // Se verifica si existe al menos un producto ingresado
             if (dgv_compras.Rows.Count < 1)
             {
-                MessageBox.Show("Debe ingresar al menos un producto en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                _ = MessageBox.Show("Debe ingresar al menos un producto en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 // Recolección de datos 
-                int id_proveedor = Convert.ToInt32(((OpcionCombo)cbox_proveedores.SelectedItem).Valor);
-                decimal total = Convert.ToDecimal(lbl_suma_total.Text);
-                string tipo_documento = ((OpcionCombo)cbo_tipo_documento.SelectedItem).Texto;
-                string numero_documento = txt_numero_documento.Texts;
-                string fecha_documento = date_fecha_doc.Value.ToString("yyyy-MM-dd");
+                var id_proveedor = Convert.ToInt32(((OpcionCombo)cbox_proveedores.SelectedItem).Valor);
+                var total = Convert.ToDecimal(lbl_suma_total.Text);
+                var tipo_documento = ((OpcionCombo)cbo_tipo_documento.SelectedItem).Texto;
+                var numero_documento = txt_numero_documento.Texts;
+                var fecha_documento = date_fecha_doc.Value.ToString("yyyy-MM-dd");
                 // Se crea un DataTable para almacenar todos los productos 
                 // agregados al DGV y llevarlo a una tabla temporal en la base de datos [ECompra_Detalle]
-                DataTable datatable_compra_detalle = new DataTable();
-                datatable_compra_detalle.Columns.Add("Id_Producto", typeof(int));
-                datatable_compra_detalle.Columns.Add("Precio", typeof(decimal));
-                datatable_compra_detalle.Columns.Add("Cantidad", typeof(int));
-                datatable_compra_detalle.Columns.Add("Subtotal", typeof(decimal));
-                datatable_compra_detalle.Columns.Add("NuevoCosto", typeof(decimal));
-
-                decimal calculo_costo = 0;
-
+                var datatable_compra_detalle = new DataTable();
+                _ = datatable_compra_detalle.Columns.Add("Id_Producto", typeof(int));
+                _ = datatable_compra_detalle.Columns.Add("Precio", typeof(decimal));
+                _ = datatable_compra_detalle.Columns.Add("Cantidad", typeof(int));
+                _ = datatable_compra_detalle.Columns.Add("Subtotal", typeof(decimal));
+                _ = datatable_compra_detalle.Columns.Add("NuevoCosto", typeof(decimal));
                 foreach (DataGridViewRow fila in dgv_compras.Rows)
                 {
-                    Productos producto = new CN_Productos().BuscarUnProducto(Convert.ToInt32(fila.Cells["id_producto"].Value));
-                    decimal costo_anterior = producto.Precio_costo;
-                    decimal costo_nuevo = Convert.ToDecimal(fila.Cells["precio_costo"].Value);
-                    int cantidad_anterior = producto.Stock_actual;
-                    int cantidad_nueva = Convert.ToInt32(fila.Cells["cantidad"].Value);
-                    decimal operacion1 = ((costo_anterior * Math.Abs(cantidad_anterior)) + (costo_nuevo * cantidad_nueva));
-                    decimal operacion2 = (Math.Abs(cantidad_anterior) + cantidad_nueva);
-                    calculo_costo = operacion1 / operacion2;
-                    datatable_compra_detalle.Rows.Add(new object[]
+                    var producto = new CN_Productos().BuscarUnProducto(Convert.ToInt32(fila.Cells["id_producto"].Value));
+                    var costo_anterior = producto.Precio_costo;
+                    var costo_nuevo = Convert.ToDecimal(fila.Cells["precio_costo"].Value);
+                    var cantidad_anterior = producto.Stock_actual;
+                    var cantidad_nueva = Convert.ToInt32(fila.Cells["cantidad"].Value);
+                    var operacion1 = (costo_anterior * Math.Abs(cantidad_anterior)) + (costo_nuevo * cantidad_nueva);
+                    decimal operacion2 = Math.Abs(cantidad_anterior) + cantidad_nueva;
+                    var calculo_costo = operacion1 / operacion2;
+                    _ = datatable_compra_detalle.Rows.Add(new object[]
                     {
                         Convert.ToInt32(fila.Cells["id_producto"].Value.ToString()),
                         fila.Cells["precio_costo"].Value.ToString(),
@@ -356,22 +344,21 @@ namespace POSLyion
 
                 // Se intenta registrar la compra mediante la capa de negocios, 
                 // se eliminan todos los datos y se vuelve a dejar el total en 0
-                string mensaje = string.Empty;
-                bool respuesta = new CN_Compras().Crear(oCompra, datatable_compra_detalle, out mensaje);
+                var respuesta = new CN_Compras().Crear(oCompra, datatable_compra_detalle, out var mensaje);
                 if (respuesta)
                 {
-                    MessageBox.Show("Compra registrada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _ = MessageBox.Show("Compra registrada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cbox_proveedores.SelectedIndex = 0;
                     txt_numero_documento.Texts = "";
                     cbo_tipo_documento.SelectedIndex = 0;
                     txt_cuit_proveedor.Text = "";
                     dgv_compras.Rows.Clear();
-                    this.CalcularTotal();
-                    this.Close();
+                    CalcularTotal();
+                    Close();
                 }
                 else
                 {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -380,11 +367,11 @@ namespace POSLyion
         // o cantidades con 0 por izquierda
         private void txt_precio_costo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (char.IsDigit(e.KeyChar))
             {
-                if(txt_precio_costo.Text.Trim().Length == 0 && (e.KeyChar.ToString() == "0"))
+                if (txt_precio_costo.Text.Trim().Length == 0 && (e.KeyChar.ToString() == "0"))
                 {
-                    MessageBox.Show("Ingrese solo valores numericos mayores a 0", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning); e.Handled = true;
+                    _ = MessageBox.Show("Ingrese solo valores numericos mayores a 0", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning); e.Handled = true;
                 }
                 else
                 {
@@ -395,25 +382,25 @@ namespace POSLyion
             {
                 if (txt_precio_costo.Text.Trim().Length == 0 && (e.KeyChar.ToString() == ","))
                 {
-                    MessageBox.Show("Ingrese solo valores numericos mayores a 0", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning); e.Handled = true;
+                    _ = MessageBox.Show("Ingrese solo valores numericos mayores a 0", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning); e.Handled = true;
                     e.Handled = true;
                 }
                 else
                 {
-                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ",")
+                    if (char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ",")
                     {
 
                         e.Handled = false;
                     }
                     else
                     {
-                        MessageBox.Show("Ingrese solo valores numericos mayores a 0", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning); e.Handled = true;
+                        _ = MessageBox.Show("Ingrese solo valores numericos mayores a 0", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning); e.Handled = true;
 
                         e.Handled = true;
                     }
-                    if(e.KeyChar == 13)
+                    if (e.KeyChar == 13)
                     {
-                        this.btn_agregar_producto_Click(sender, e);
+                        btn_agregar_producto_Click(sender, e);
                     }
                 }
             }
@@ -422,9 +409,9 @@ namespace POSLyion
         private void Limpiar()
         {
             _flag_descripcion_producto_TextChanged = true;
-            this.LimpiarProductos();
+            LimpiarProductos();
             _flag_descripcion_producto_TextChanged = false;
-            this.CalcularTotal();
+            CalcularTotal();
             txt_codigo_barras.Select();
         }
 
@@ -450,14 +437,13 @@ namespace POSLyion
             }
             else
             {
-                total = 0;
                 lbl_suma_total.Text = "0,00";
             }
         }
 
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         // Busca un proveedor mediante un modal

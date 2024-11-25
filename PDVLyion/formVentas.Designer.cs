@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle111 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle112 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle113 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle114 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_principal = new System.Windows.Forms.Panel();
             this.tlp_principal = new System.Windows.Forms.TableLayoutPanel();
             this.tlp_productos_carrito = new System.Windows.Forms.TableLayoutPanel();
@@ -47,7 +47,6 @@
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_suma_total = new System.Windows.Forms.Label();
             this.lbl_totale = new System.Windows.Forms.Label();
-            this.tlp_tickets = new System.Windows.Forms.TableLayoutPanel();
             this.panel_right = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_factura = new System.Windows.Forms.Panel();
@@ -84,6 +83,8 @@
             this.panel_bot = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_updateversion = new System.Windows.Forms.Label();
             this.lbl_updatetime = new System.Windows.Forms.Label();
+            this.flp_tickets = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_eliminar_ticket = new RJCodeAdvance.RJControls.RJButton();
             this.panel_principal.SuspendLayout();
             this.tlp_principal.SuspendLayout();
             this.tlp_productos_carrito.SuspendLayout();
@@ -159,7 +160,7 @@
             this.tlp_productos.Controls.Add(this.txt_buscarproductos, 0, 1);
             this.tlp_productos.Controls.Add(this.dgv_productos, 0, 2);
             this.tlp_productos.Controls.Add(this.tableLayoutPanel12, 0, 3);
-            this.tlp_productos.Controls.Add(this.tlp_tickets, 0, 0);
+            this.tlp_productos.Controls.Add(this.flp_tickets, 0, 0);
             this.tlp_productos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_productos.Location = new System.Drawing.Point(0, 0);
             this.tlp_productos.Margin = new System.Windows.Forms.Padding(0);
@@ -188,38 +189,38 @@
             this.dgv_productos.AllowUserToDeleteRows = false;
             this.dgv_productos.AllowUserToResizeColumns = false;
             this.dgv_productos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle109.BackColor = System.Drawing.Color.Orchid;
-            dataGridViewCellStyle109.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle109.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle109.SelectionBackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle109.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle109;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Orchid;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgv_productos.BackgroundColor = System.Drawing.Color.Black;
             this.dgv_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle110.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle110.BackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle110.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle110.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle110.SelectionBackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle110.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle110.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle110;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgv_productos.ColumnHeadersHeight = 35;
             this.dgv_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_productos_id,
             this.dgv_productos_descripcion,
             this.dgv_productos_precio,
             this.dgv_productos_stock});
-            dataGridViewCellStyle111.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle111.BackColor = System.Drawing.Color.LightPink;
-            dataGridViewCellStyle111.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle111.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle111.SelectionBackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle111.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle111.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_productos.DefaultCellStyle = dataGridViewCellStyle111;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.LightPink;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_productos.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgv_productos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_productos.EnableHeadersVisualStyles = false;
             this.dgv_productos.GridColor = System.Drawing.Color.Crimson;
@@ -228,14 +229,14 @@
             this.dgv_productos.MultiSelect = false;
             this.dgv_productos.Name = "dgv_productos";
             this.dgv_productos.ReadOnly = true;
-            dataGridViewCellStyle112.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle112.BackColor = System.Drawing.Color.HotPink;
-            dataGridViewCellStyle112.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle112.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle112.SelectionBackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle112.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle112.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle112;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.HotPink;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Mongolian Baiti", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_productos.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgv_productos.RowHeadersVisible = false;
             this.dgv_productos.RowHeadersWidth = 25;
             this.dgv_productos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -318,19 +319,6 @@
             this.lbl_totale.Size = new System.Drawing.Size(113, 31);
             this.lbl_totale.TabIndex = 9;
             this.lbl_totale.Text = "Total: $";
-            // 
-            // tlp_tickets
-            // 
-            this.tlp_tickets.AutoScroll = true;
-            this.tlp_tickets.ColumnCount = 1;
-            this.tlp_tickets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlp_tickets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_tickets.Location = new System.Drawing.Point(3, 3);
-            this.tlp_tickets.Name = "tlp_tickets";
-            this.tlp_tickets.RowCount = 1;
-            this.tlp_tickets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_tickets.Size = new System.Drawing.Size(612, 34);
-            this.tlp_tickets.TabIndex = 12;
             // 
             // panel_right
             // 
@@ -564,14 +552,14 @@
             this.dgv_resumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_resumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_resumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle113.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle113.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle113.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle113.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle113.SelectionBackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle113.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle113.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle113;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgv_resumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_resumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_resumen_id,
@@ -581,14 +569,14 @@
             this.dgv_resumen_subtotal,
             this.btn_editar,
             this.btn_eliminar});
-            dataGridViewCellStyle114.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle114.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle114.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle114.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle114.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle114.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle114.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_resumen.DefaultCellStyle = dataGridViewCellStyle114;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_resumen.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgv_resumen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_resumen.EnableHeadersVisualStyles = false;
             this.dgv_resumen.Location = new System.Drawing.Point(0, 0);
@@ -733,6 +721,7 @@
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.panel_bottom.Controls.Add(this.btn_eliminar_ticket, 0, 1);
             this.panel_bottom.Controls.Add(this.lbl_cerrarcaja, 3, 1);
             this.panel_bottom.Controls.Add(this.btn_desc, 2, 1);
             this.panel_bottom.Controls.Add(this.lbl_f2, 2, 0);
@@ -871,6 +860,35 @@
             this.lbl_updatetime.TabIndex = 3;
             this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
             // 
+            // flp_tickets
+            // 
+            this.flp_tickets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flp_tickets.Location = new System.Drawing.Point(3, 3);
+            this.flp_tickets.Name = "flp_tickets";
+            this.flp_tickets.Size = new System.Drawing.Size(612, 34);
+            this.flp_tickets.TabIndex = 12;
+            // 
+            // btn_eliminar_ticket
+            // 
+            this.btn_eliminar_ticket.AutoSize = true;
+            this.btn_eliminar_ticket.BackColor = System.Drawing.Color.Maroon;
+            this.btn_eliminar_ticket.BackgroundColor = System.Drawing.Color.Maroon;
+            this.btn_eliminar_ticket.BorderColor = System.Drawing.Color.Black;
+            this.btn_eliminar_ticket.BorderRadius = 0;
+            this.btn_eliminar_ticket.BorderSize = 0;
+            this.btn_eliminar_ticket.FlatAppearance.BorderSize = 0;
+            this.btn_eliminar_ticket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eliminar_ticket.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminar_ticket.ForeColor = System.Drawing.Color.White;
+            this.btn_eliminar_ticket.Location = new System.Drawing.Point(3, 40);
+            this.btn_eliminar_ticket.Name = "btn_eliminar_ticket";
+            this.btn_eliminar_ticket.Size = new System.Drawing.Size(149, 31);
+            this.btn_eliminar_ticket.TabIndex = 10;
+            this.btn_eliminar_ticket.Text = "ELIMINAR TICKET";
+            this.btn_eliminar_ticket.TextColor = System.Drawing.Color.White;
+            this.btn_eliminar_ticket.UseVisualStyleBackColor = false;
+            this.btn_eliminar_ticket.Click += new System.EventHandler(this.btn_eliminar_ticket_Click);
+            // 
             // formVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -965,6 +983,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label lbl_suma_total;
         private System.Windows.Forms.Label lbl_totale;
-        private System.Windows.Forms.TableLayoutPanel tlp_tickets;
+        private System.Windows.Forms.FlowLayoutPanel flp_tickets;
+        private RJCodeAdvance.RJControls.RJButton btn_eliminar_ticket;
     }
 }

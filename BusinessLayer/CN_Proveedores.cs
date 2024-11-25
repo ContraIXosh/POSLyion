@@ -1,18 +1,13 @@
 ﻿using CapaDatos;
 using CapaEntidad;
 using CapaEntidad.Filtros;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
     public class CN_Proveedores
     {
-        private CD_Proveedores oCD_Proveedor = new CD_Proveedores();
+        private readonly CD_Proveedores oCD_Proveedor = new CD_Proveedores();
 
         public int Crear(Proveedores oProveedor, out string mensaje)
         {
@@ -21,14 +16,7 @@ namespace CapaNegocio
             {
                 mensaje += "Es necesario el nombre de la empresa o proveedor.\n";
             }
-            if (mensaje != string.Empty)
-            {
-                return 0;
-            }
-            else
-            {
-                return oCD_Proveedor.Crear(oProveedor, out mensaje);
-            }
+            return mensaje != string.Empty ? 0 : oCD_Proveedor.Crear(oProveedor, out mensaje);
         }
 
         public List<Proveedores> Leer(FiltrosProveedor filtros)
@@ -43,14 +31,7 @@ namespace CapaNegocio
             {
                 mensaje += "Es necesario el nombre de la empresa o proveedor.\n";
             }
-            if (mensaje != string.Empty)
-            {
-                return false;
-            }
-            else
-            {
-                return oCD_Proveedor.Modificar(oProveedor, out mensaje);
-            }
+            return mensaje == string.Empty && oCD_Proveedor.Modificar(oProveedor, out mensaje);
         }
 
         public bool Eliminar(Proveedores oProveedor, out string mensaje)

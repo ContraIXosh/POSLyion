@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaEntidad;
-using CapaEntidad.Filtros;
+﻿using CapaEntidad;
 using CapaNegocio;
-using DocumentFormat.OpenXml.Spreadsheet;
-using POSLyion.Resources;
+using System;
+using System.Windows.Forms;
 
 namespace POSLyion
 {
@@ -28,10 +18,10 @@ namespace POSLyion
             txt_categoryedit.Visible = false;
             btn_editar_categoria.Visible = false;
             btn_cancelar.Visible = false;
-            List<Categorias> lista_categorias = new CN_Categorias().ContarProductos();
-            foreach(Categorias oCategoria in lista_categorias)
+            var lista_categorias = new CN_Categorias().ContarProductos();
+            foreach (var oCategoria in lista_categorias)
             {
-                grid_categoria.Rows.Add(new object[]
+                _ = grid_categoria.Rows.Add(new object[]
                 {
                     oCategoria.Id_categoria,
                     oCategoria.Descripcion,
@@ -42,7 +32,7 @@ namespace POSLyion
 
         private void grid_category_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+            var index = e.RowIndex;
             if (grid_categoria.Columns[e.ColumnIndex].Name == "btn_editar")
             {
                 if (index >= 0)
@@ -64,20 +54,14 @@ namespace POSLyion
                 {
                     if (index >= 0)
                     {
-                        string mensaje = string.Empty;
-                        Categorias oCategoria = new Categorias()
+                        var oCategoria = new Categorias()
                         {
                             Id_categoria = Convert.ToInt32(grid_categoria.Rows[index].Cells["id"].Value)
                         };
-                        bool resultado = new CN_Categorias().Eliminar(oCategoria, out mensaje);
-                        if (!resultado)
-                        {
-                            MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Categoría eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                        var resultado = new CN_Categorias().Eliminar(oCategoria, out var mensaje);
+                        _ = !resultado
+                            ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            : MessageBox.Show("Categoría eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
@@ -85,21 +69,15 @@ namespace POSLyion
 
         private void btn_crear_categoria_Click(object sender, EventArgs e)
         {
-            Categorias oCategoria = new Categorias();
-            string mensaje = string.Empty;
+            var oCategoria = new Categorias();
             if (Convert.ToInt32(txt_id.Texts) == 0)
             {
 
                 oCategoria.Descripcion = txt_descripcion.Texts;
-                int created_productcategory_id = new CN_Categorias().Crear(oCategoria, out mensaje);
-                if (created_productcategory_id == 0)
-                {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    MessageBox.Show("Categoría creada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                var created_productcategory_id = new CN_Categorias().Crear(oCategoria, out var mensaje);
+                _ = created_productcategory_id == 0
+                    ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    : MessageBox.Show("Categoría creada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             txt_descripcion.Texts = "";
         }
@@ -107,10 +85,10 @@ namespace POSLyion
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
             grid_categoria.Rows.Clear();
-            List<Categorias> lista_categorias = new CN_Categorias().ContarProductos();
-            foreach (Categorias oCategoria in lista_categorias)
+            var lista_categorias = new CN_Categorias().ContarProductos();
+            foreach (var oCategoria in lista_categorias)
             {
-                grid_categoria.Rows.Add(new object[]
+                _ = grid_categoria.Rows.Add(new object[]
                 {
                     oCategoria.Id_categoria,
                     oCategoria.Descripcion,
@@ -126,21 +104,16 @@ namespace POSLyion
 
         private void btn_editar_categoria_Click(object sender, EventArgs e)
         {
-            Categorias oCategoria = new Categorias();
-            string mensaje = string.Empty;
-            oCategoria.Id_categoria = Convert.ToInt32(txt_id.Texts);
-            oCategoria.Descripcion = txt_categoryedit.Texts;
-            bool resultado = false;
-            resultado = new CN_Categorias().Modificar(oCategoria, out mensaje);
-            if (resultado == false)
+            var oCategoria = new Categorias
             {
-                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                MessageBox.Show("Categoría actualizada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            this.TerminarEdicion();
+                Id_categoria = Convert.ToInt32(txt_id.Texts),
+                Descripcion = txt_categoryedit.Texts
+            };
+            var resultado = new CN_Categorias().Modificar(oCategoria, out var mensaje);
+            _ = resultado == false
+                ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                : MessageBox.Show("Categoría actualizada con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            TerminarEdicion();
 
         }
 
@@ -159,7 +132,7 @@ namespace POSLyion
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            this.TerminarEdicion();
+            TerminarEdicion();
         }
     }
 }

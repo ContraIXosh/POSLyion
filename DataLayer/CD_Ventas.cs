@@ -5,10 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer
 {
@@ -16,21 +13,21 @@ namespace DataLayer
     {
         public bool RestarStock(int id_producto, int cantidad)
         {
-            bool respuesta = true;
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var respuesta = true;
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder consulta = new StringBuilder();
-                    consulta.AppendLine("UPDATE Productos SET stock_actual = stock_actual - @cantidad WHERE id_producto = @id_producto");
-                    SqlCommand cmd = new SqlCommand(consulta.ToString(), oConexion);
-                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
-                    cmd.Parameters.AddWithValue("@id_producto", id_producto);
+                    var consulta = new StringBuilder();
+                    _ = consulta.AppendLine("UPDATE Productos SET stock_actual = stock_actual - @cantidad WHERE id_producto = @id_producto");
+                    var cmd = new SqlCommand(consulta.ToString(), oConexion);
+                    _ = cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                    _ = cmd.Parameters.AddWithValue("@id_producto", id_producto);
                     cmd.CommandType = CommandType.Text;
                     oConexion.Open();
-                    respuesta = cmd.ExecuteNonQuery() > 0 ? true : false;
+                    respuesta = cmd.ExecuteNonQuery() > 0;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     respuesta = false;
                 }
@@ -40,21 +37,21 @@ namespace DataLayer
 
         public bool SumarStock(int id_producto, int cantidad)
         {
-            bool respuesta = true;
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var respuesta = true;
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder consulta = new StringBuilder();
-                    consulta.AppendLine("UPDATE Productos SET stock_actual = stock_actual + @cantidad WHERE id_producto = @id_producto");
-                    SqlCommand cmd = new SqlCommand(consulta.ToString(), oConexion);
-                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
-                    cmd.Parameters.AddWithValue("@id_producto", id_producto);
+                    var consulta = new StringBuilder();
+                    _ = consulta.AppendLine("UPDATE Productos SET stock_actual = stock_actual + @cantidad WHERE id_producto = @id_producto");
+                    var cmd = new SqlCommand(consulta.ToString(), oConexion);
+                    _ = cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                    _ = cmd.Parameters.AddWithValue("@id_producto", id_producto);
                     cmd.CommandType = CommandType.Text;
                     oConexion.Open();
-                    respuesta = cmd.ExecuteNonQuery() > 0 ? true : false;
+                    respuesta = cmd.ExecuteNonQuery() > 0;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     respuesta = false;
                 }
@@ -64,25 +61,25 @@ namespace DataLayer
 
         public bool Crear(Ventas oVenta, DataTable VentaDetalle, out string mensaje, out int id_venta_generado)
         {
-            bool respuesta = false;
+            var respuesta = false;
             mensaje = string.Empty;
             id_venta_generado = 0;
             try
             {
-                using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+                using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
                 {
-                    SqlCommand cmd = new SqlCommand("SP_ALTA_VENTA", oConexion);
-                    cmd.Parameters.AddWithValue("id_usuario", oVenta.oUsuario.Id_usuario);
-                    cmd.Parameters.AddWithValue("id_cliente", oVenta.oCliente.Id_cliente);
-                    cmd.Parameters.AddWithValue("total", oVenta.Total);
-                    cmd.Parameters.AddWithValue("vuelto", oVenta.Vuelto);
-                    cmd.Parameters.AddWithValue("VentaDetalle", VentaDetalle);
+                    var cmd = new SqlCommand("SP_ALTA_VENTA", oConexion);
+                    _ = cmd.Parameters.AddWithValue("id_usuario", oVenta.oUsuario.Id_usuario);
+                    _ = cmd.Parameters.AddWithValue("id_cliente", oVenta.oCliente.Id_cliente);
+                    _ = cmd.Parameters.AddWithValue("total", oVenta.Total);
+                    _ = cmd.Parameters.AddWithValue("vuelto", oVenta.Vuelto);
+                    _ = cmd.Parameters.AddWithValue("VentaDetalle", VentaDetalle);
                     cmd.Parameters.Add("resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("id_venta_generado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
-                    cmd.ExecuteNonQuery();
+                    _ = cmd.ExecuteNonQuery();
                     respuesta = Convert.ToBoolean(cmd.Parameters["resultado"].Value);
                     mensaje = cmd.Parameters["mensaje"].Value.ToString();
                     id_venta_generado = Convert.ToInt32(cmd.Parameters["id_venta_generado"].Value);
@@ -98,18 +95,18 @@ namespace DataLayer
 
         public List<Ventas> Leer(string fecha_inicio, string fecha_fin)
         {
-            List<Ventas> lista_ventas = new List<Ventas>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_ventas = new List<Ventas>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    string query = "SELECT id_venta[NumeroVenta], v.create_date[FechaVenta], c.nombre_completo[NombreCliente], total[Total] FROM Ventas v INNER JOIN Clientes c ON v.id_cliente = c.id_cliente WHERE CONVERT(DATE,v.create_date) BETWEEN @fecha_inicio AND @fecha_fin";
-                    SqlCommand cmd = new SqlCommand(query, oConexion);
-                    cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
-                    cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);
+                    var query = "SELECT id_venta[NumeroVenta], v.create_date[FechaVenta], c.nombre_completo[NombreCliente], total[Total] FROM Ventas v INNER JOIN Clientes c ON v.id_cliente = c.id_cliente WHERE CONVERT(DATE,v.create_date) BETWEEN @fecha_inicio AND @fecha_fin";
+                    var cmd = new SqlCommand(query, oConexion);
+                    _ = cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
+                    _ = cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);
                     cmd.CommandType = CommandType.Text;
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -123,7 +120,7 @@ namespace DataLayer
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_ventas = new List<Ventas>();
                 }
@@ -133,29 +130,29 @@ namespace DataLayer
 
         public Ventas VerTotalVentasDesde(string fecha, int id_usuario)
         {
-            Ventas ventas = new Ventas();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var ventas = new Ventas();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT SUM(total)[Total] FROM Ventas");
-                    query.AppendLine("WHERE CONVERT(DATETIME, create_date) > @fecha");
-                    query.AppendLine("AND id_usuario = @id_usuario");
-                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
-                    cmd.Parameters.AddWithValue("@fecha", fecha);
-                    cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT SUM(total)[Total] FROM Ventas");
+                    _ = query.AppendLine("WHERE CONVERT(DATETIME, create_date) > @fecha");
+                    _ = query.AppendLine("AND id_usuario = @id_usuario");
+                    var cmd = new SqlCommand(query.ToString(), oConexion);
+                    _ = cmd.Parameters.AddWithValue("@fecha", fecha);
+                    _ = cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
                     cmd.CommandType = CommandType.Text;
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        if(reader.Read())
+                        if (reader.Read())
                         {
                             ventas.Total = Convert.ToDecimal(reader["Total"].ToString());
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     ventas = new Ventas();
                 }
@@ -165,18 +162,20 @@ namespace DataLayer
 
         public List<DatosGraficoMensual> VentasMensuales()
         {
-            List<DatosGraficoMensual> lista_ventas = new List<DatosGraficoMensual>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_ventas = new List<DatosGraficoMensual>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT DATEPART(MONTH, create_date)[mes], COUNT(*)[cantidad_ventas] FROM Ventas");
-                    query.AppendLine("GROUP BY  DATEPART(MONTH, create_date) ORDER BY mes;");
-                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
-                    cmd.CommandType = CommandType.Text;
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT DATEPART(MONTH, create_date)[mes], COUNT(*)[cantidad_ventas] FROM Ventas");
+                    _ = query.AppendLine("GROUP BY  DATEPART(MONTH, create_date) ORDER BY mes;");
+                    var cmd = new SqlCommand(query.ToString(), oConexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -188,7 +187,7 @@ namespace DataLayer
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_ventas = new List<DatosGraficoMensual>();
                 }
@@ -198,20 +197,22 @@ namespace DataLayer
 
         public List<DatosGraficoUsuarios> VentasMensualesUsuarios()
         {
-            List<DatosGraficoUsuarios> lista_ventas = new List<DatosGraficoUsuarios>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_ventas = new List<DatosGraficoUsuarios>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.nombre_usuario[NombreUsuario], COUNT(v.id_usuario)[CantidadVentas], DATEPART(MONTH, v.create_date)[Mes]");
-                    query.AppendLine("FROM Ventas v INNER JOIN Usuarios u ON v.id_usuario = u.id_usuario");
-                    query.AppendLine("WHERE v.create_date >= '2024-01-01' AND v.create_date < '2024-12-31'");
-                    query.AppendLine("GROUP BY u.nombre_usuario, DATEPART(MONTH, v.create_date) ORDER BY u.nombre_usuario;");
-                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
-                    cmd.CommandType = CommandType.Text;
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT u.nombre_usuario[NombreUsuario], COUNT(v.id_usuario)[CantidadVentas], DATEPART(MONTH, v.create_date)[Mes]");
+                    _ = query.AppendLine("FROM Ventas v INNER JOIN Usuarios u ON v.id_usuario = u.id_usuario");
+                    _ = query.AppendLine("WHERE v.create_date >= '2024-01-01' AND v.create_date < '2024-12-31'");
+                    _ = query.AppendLine("GROUP BY u.nombre_usuario, DATEPART(MONTH, v.create_date) ORDER BY u.nombre_usuario;");
+                    var cmd = new SqlCommand(query.ToString(), oConexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -224,7 +225,7 @@ namespace DataLayer
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_ventas = new List<DatosGraficoUsuarios>();
                 }

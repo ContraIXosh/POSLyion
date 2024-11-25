@@ -1,11 +1,8 @@
-﻿using System;
+﻿using CapaEntidad;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using CapaEntidad;
 
 namespace CapaDatos
 {
@@ -13,16 +10,18 @@ namespace CapaDatos
     {
         public List<Roles> Leer()
         {
-            List<Roles> lista_roles = new List<Roles>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_roles = new List<Roles>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
                     oConexion.Open();
-                    string query = "SELECT id_rol, descripcion FROM Roles";
-                    SqlCommand command = new SqlCommand(query, oConexion);
-                    command.CommandType = CommandType.Text;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    var query = "SELECT id_rol, descripcion FROM Roles";
+                    var command = new SqlCommand(query, oConexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -34,7 +33,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_roles = new List<Roles>();
                 }

@@ -1,13 +1,10 @@
-﻿using CapaDatos;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -15,25 +12,25 @@ namespace CapaDatos
     {
         public List<ReportesDetalle> Compra_Detalle(FiltrosReportes filtros)
         {
-            List<ReportesDetalle> lista_compra_detalle = new List<ReportesDetalle>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_compra_detalle = new List<ReportesDetalle>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    SqlCommand cmd = new SqlCommand("SP_HISTORIAL_COMPRAS", oConexion);
-                    cmd.Parameters.AddWithValue("@fecha_desde", filtros.Fecha_desde);
-                    cmd.Parameters.AddWithValue("@fecha_hasta", filtros.Fecha_hasta);
-                    cmd.Parameters.AddWithValue("@id_compra", filtros.Id);
-                    cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
-                    cmd.Parameters.AddWithValue("@id_proveedor", filtros.Campo_adicional);
-                    cmd.Parameters.AddWithValue("@nombre_producto", filtros.Nombre_producto);
+                    var query = new StringBuilder();
+                    var cmd = new SqlCommand("SP_HISTORIAL_COMPRAS", oConexion);
+                    _ = cmd.Parameters.AddWithValue("@fecha_desde", filtros.Fecha_desde);
+                    _ = cmd.Parameters.AddWithValue("@fecha_hasta", filtros.Fecha_hasta);
+                    _ = cmd.Parameters.AddWithValue("@id_compra", filtros.Id);
+                    _ = cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
+                    _ = cmd.Parameters.AddWithValue("@id_proveedor", filtros.Campo_adicional);
+                    _ = cmd.Parameters.AddWithValue("@nombre_producto", filtros.Nombre_producto);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        while(reader.Read())
+                        while (reader.Read())
                         {
                             lista_compra_detalle.Add(new ReportesDetalle()
                             {
@@ -52,7 +49,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_compra_detalle = new List<ReportesDetalle>();
                 }
@@ -62,23 +59,23 @@ namespace CapaDatos
 
         public List<ReportesDetalle> Venta_Detalle(FiltrosReportes filtros)
         {
-            List<ReportesDetalle> lista_venta_detalle = new List<ReportesDetalle>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_venta_detalle = new List<ReportesDetalle>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    SqlCommand cmd = new SqlCommand("SP_HISTORIAL_VENTAS", oConexion);
-                    cmd.Parameters.AddWithValue("@fecha_desde", filtros.Fecha_desde);
-                    cmd.Parameters.AddWithValue("@fecha_hasta", filtros.Fecha_hasta);
-                    cmd.Parameters.AddWithValue("@id_venta", filtros.Id);
-                    cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
-                    cmd.Parameters.AddWithValue("@id_cliente", filtros.Campo_adicional);
-                    cmd.Parameters.AddWithValue("@nombre_producto", filtros.Nombre_producto);
+                    var query = new StringBuilder();
+                    var cmd = new SqlCommand("SP_HISTORIAL_VENTAS", oConexion);
+                    _ = cmd.Parameters.AddWithValue("@fecha_desde", filtros.Fecha_desde);
+                    _ = cmd.Parameters.AddWithValue("@fecha_hasta", filtros.Fecha_hasta);
+                    _ = cmd.Parameters.AddWithValue("@id_venta", filtros.Id);
+                    _ = cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
+                    _ = cmd.Parameters.AddWithValue("@id_cliente", filtros.Campo_adicional);
+                    _ = cmd.Parameters.AddWithValue("@nombre_producto", filtros.Nombre_producto);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -98,7 +95,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_venta_detalle = new List<ReportesDetalle>();
                 }
@@ -108,19 +105,19 @@ namespace CapaDatos
 
         public List<ReportesCierre> Cierres(FiltrosReportes filtros)
         {
-            List<ReportesCierre> lista_cierre_caja = new List<ReportesCierre>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_cierre_caja = new List<ReportesCierre>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    SqlCommand cmd = new SqlCommand("SP_HISTORIAL_CIERRES_CAJA", oConexion);
-                    cmd.Parameters.AddWithValue("@fecha_desde", filtros.Fecha_desde);
-                    cmd.Parameters.AddWithValue("@fecha_hasta", filtros.Fecha_hasta);
-                    cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
+                    var query = new StringBuilder();
+                    var cmd = new SqlCommand("SP_HISTORIAL_CIERRES_CAJA", oConexion);
+                    _ = cmd.Parameters.AddWithValue("@fecha_desde", filtros.Fecha_desde);
+                    _ = cmd.Parameters.AddWithValue("@fecha_hasta", filtros.Fecha_hasta);
+                    _ = cmd.Parameters.AddWithValue("@id_usuario", filtros.Id_usuario);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -136,7 +133,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_cierre_caja = new List<ReportesCierre>();
                 }

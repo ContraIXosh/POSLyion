@@ -1,21 +1,15 @@
-﻿using CapaDatos;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaEntidad.GraficosVentas;
 using DataLayer;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
     public class CN_Ventas
     {
 
-        private CD_Ventas oVenta = new CD_Ventas();
+        private readonly CD_Ventas oVenta = new CD_Ventas();
 
         public bool RestarStock(int id_producto, int cantidad)
         {

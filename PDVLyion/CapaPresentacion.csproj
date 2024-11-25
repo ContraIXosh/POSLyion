@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F30F9F9E-CD5B-4FBB-AB10-834D4E6FB783}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PDCLyion</RootNamespace>
-    <AssemblyName>PDCLyion</AssemblyName>
+    <RootNamespace>POSLyion</RootNamespace>
+    <AssemblyName>POSLyion</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -486,7 +486,16 @@
     <Compile Include="Modals\MD_Proveedores.Designer.cs">
       <DependentUpon>MD_Proveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resources\FormManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Funcionalidad\FormManager.cs" />
+    <Compile Include="Resources\Funcionalidad\CarritoManager.cs" />
+    <Compile Include="Resources\Funcionalidad\ProductoCarrito.cs" />
+    <Compile Include="Resources\Funcionalidad\Ticket.cs" />
+    <Compile Include="Resources\Funcionalidad\TicketManager.cs" />
     <Compile Include="Resources\OpcionCombo.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
@@ -567,14 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
     </EmbeddedResource>
@@ -620,49 +624,49 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="Resources\logo.png" />
+    <None Include="Resources\Imagenes\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\agregar.jpg" />
+    <None Include="Resources\Imagenes\agregar.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\agregarnegro.jpg" />
+    <None Include="Resources\Imagenes\agregarnegro.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\goldlogo.jpg" />
+    <None Include="Resources\Imagenes\goldlogo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\hamb.jpg" />
+    <None Include="Resources\Imagenes\hamb.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\impresora.jpg" />
+    <None Include="Resources\Imagenes\impresora.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\leon.jpg" />
+    <None Include="Resources\Imagenes\leon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lista.jpg" />
+    <None Include="Resources\Imagenes\lista.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\listita.jpg" />
+    <None Include="Resources\Imagenes\listita.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\listitoe.jpg" />
+    <None Include="Resources\Imagenes\listitoe.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\loguitonegrodorado.jpg" />
+    <None Include="Resources\Imagenes\loguitonegrodorado.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lupa.jpg" />
+    <None Include="Resources\Imagenes\lupa.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lupita.jpg" />
+    <None Include="Resources\Imagenes\lupita.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lupitanegra.jpg" />
+    <None Include="Resources\Imagenes\lupitanegra.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\medidas.jpg" />
+    <None Include="Resources\Imagenes\medidas.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\CapaNegocio.csproj">

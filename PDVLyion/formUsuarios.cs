@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaNegocio;
 using EntityLayer.Filtros;
 using POSLyion.Resources;
+using System;
+using System.Windows.Forms;
 
 namespace POSLyion
 {
     public partial class formUsuarios : Form
     {
-        private static Usuarios oUsuario = new Usuarios();
-        FiltrosUsuario filtros = new FiltrosUsuario();
+        private static readonly Usuarios oUsuario = new Usuarios();
+        private FiltrosUsuario filtros = new FiltrosUsuario();
         private formUsuariosAlta formUsuario;
         public formUsuarios()
         {
@@ -27,40 +19,40 @@ namespace POSLyion
 
         private void formUsuariosAlta_Load(object sender, EventArgs e)
         {
-            List<Roles> lista_roles = new CN_Roles().Leer();
-            cbo_roles.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Todos" });
-            foreach (Roles oRol in lista_roles)
+            var lista_roles = new CN_Roles().Leer();
+            _ = cbo_roles.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Todos" });
+            foreach (var oRol in lista_roles)
             {
-                cbo_roles.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
+                _ = cbo_roles.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
             }
             cbo_roles.DisplayMember = "Texto";
             cbo_roles.ValueMember = "Valor";
             cbo_roles.SelectedIndex = 0;
-            this.MostrarUsuarios();
+            MostrarUsuarios();
         }
 
         private void formUsuarios_Resize(object sender, EventArgs e)
         {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            if (ClientSize.Width > 1000 && ClientSize.Height > 700)
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             }
             else
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             }
         }
 
         private void grid_usuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+            var index = e.RowIndex;
             if (dgv_usuarios.Columns[e.ColumnIndex].Name == "btn_editar")
             {
                 if (index >= 0)
                 {
-                    Usuarios oUsuario = new Usuarios()
+                    var oUsuario = new Usuarios()
                     {
                         Id_usuario = Convert.ToInt32(dgv_usuarios.Rows[index].Cells["id_usuario"].Value),
                         Dni = dgv_usuarios.Rows[index].Cells["dni"].Value.ToString(),
@@ -76,7 +68,7 @@ namespace POSLyion
                         Telefono = dgv_usuarios.Rows[index].Cells["telefono"].Value.ToString(),
                         Estado = Convert.ToBoolean(dgv_usuarios.Rows[index].Cells["estado_valor"].Value)
                     };
-                    formUsuariosAlta formUsuariosAlta = new formUsuariosAlta(oUsuario);
+                    var formUsuariosAlta = new formUsuariosAlta(oUsuario);
                     formUsuariosAlta.Show();
                 }
             }
@@ -86,20 +78,14 @@ namespace POSLyion
                 {
                     if (index >= 0)
                     {
-                        string mensaje = string.Empty;
-                        Usuarios oUsuario = new Usuarios()
+                        var oUsuario = new Usuarios()
                         {
                             Id_usuario = Convert.ToInt32(dgv_usuarios.Rows[index].Cells["id_usuario"].Value)
                         };
-                        bool result = new CN_Usuarios().Eliminar(oUsuario, out mensaje);
-                        if (!result)
-                        {
-                            MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                        var result = new CN_Usuarios().Eliminar(oUsuario, out var mensaje);
+                        _ = !result
+                            ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            : MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
@@ -108,7 +94,7 @@ namespace POSLyion
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
             dgv_usuarios.Rows.Clear();
-            this.MostrarUsuarios();
+            MostrarUsuarios();
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
@@ -119,19 +105,19 @@ namespace POSLyion
                 Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor),
                 Estado = cb_inactivos.Checked ? 0 : 1
             };
-            this.MostrarUsuarios();
+            MostrarUsuarios();
         }
 
         private void MostrarUsuarios()
         {
-            if(dgv_usuarios.Rows.Count > 0)
+            if (dgv_usuarios.Rows.Count > 0)
             {
                 dgv_usuarios.Rows.Clear();
             }
-            List<Usuarios> lista_usuarios = new CN_Usuarios().Leer(filtros);
-            foreach (Usuarios oUsuario in lista_usuarios)
+            var lista_usuarios = new CN_Usuarios().Leer(filtros);
+            foreach (var oUsuario in lista_usuarios)
             {
-                dgv_usuarios.Rows.Add(new object[]
+                _ = dgv_usuarios.Rows.Add(new object[]
                 {
                     "",
                     oUsuario.Id_usuario,
@@ -158,7 +144,7 @@ namespace POSLyion
 
         private void btn_crear_usuario_Click_1(object sender, EventArgs e)
         {
-            if(formUsuario == null || formUsuario.IsDisposed)
+            if (formUsuario == null || formUsuario.IsDisposed)
             {
                 formUsuario = new formUsuariosAlta();
                 formUsuario.Show();

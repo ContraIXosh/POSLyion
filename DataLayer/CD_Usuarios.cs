@@ -1,12 +1,10 @@
-﻿using System;
+﻿using CapaEntidad;
+using EntityLayer.Filtros;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using CapaEntidad;
-using EntityLayer.Filtros;
+using System.Text;
 
 namespace CapaDatos
 {
@@ -16,29 +14,29 @@ namespace CapaDatos
         public int Crear(Usuarios oUsuario, out string mensaje)
         {
             mensaje = string.Empty;
-            int id_generada_usuario = 0;
+            var id_generada_usuario = 0;
             try
             {
-                using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+                using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_ALTA_USUARIO", oConexion);
-                    command.Parameters.AddWithValue("dni", oUsuario.Dni);
-                    command.Parameters.AddWithValue("nombre_completo", oUsuario.Nombre_completo);
-                    command.Parameters.AddWithValue("correo", oUsuario.Correo);
-                    command.Parameters.AddWithValue("nombre_usuario", oUsuario.Nombre_usuario);
-                    command.Parameters.AddWithValue("clave", oUsuario.Clave);
-                    command.Parameters.AddWithValue("id_rol", oUsuario.oRol.Id_rol);
-                    command.Parameters.AddWithValue("telefono", oUsuario.Telefono);
-                    command.Parameters.AddWithValue("estado", oUsuario.Estado);
+                    var command = new SqlCommand("SP_ALTA_USUARIO", oConexion);
+                    _ = command.Parameters.AddWithValue("dni", oUsuario.Dni);
+                    _ = command.Parameters.AddWithValue("nombre_completo", oUsuario.Nombre_completo);
+                    _ = command.Parameters.AddWithValue("correo", oUsuario.Correo);
+                    _ = command.Parameters.AddWithValue("nombre_usuario", oUsuario.Nombre_usuario);
+                    _ = command.Parameters.AddWithValue("clave", oUsuario.Clave);
+                    _ = command.Parameters.AddWithValue("id_rol", oUsuario.oRol.Id_rol);
+                    _ = command.Parameters.AddWithValue("telefono", oUsuario.Telefono);
+                    _ = command.Parameters.AddWithValue("estado", oUsuario.Estado);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("id_generada_usuario", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     id_generada_usuario = Convert.ToInt32(command.Parameters["id_generada_usuario"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 id_generada_usuario = 0;
@@ -49,24 +47,24 @@ namespace CapaDatos
 
         public List<Usuarios> Leer(FiltrosUsuario filtros)
         {
-            List<Usuarios> lista_usuarios = new List<Usuarios>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_usuarios = new List<Usuarios>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
                     oConexion.Open();
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.id_usuario, u.dni, u.nombre_completo, u.correo, u.nombre_usuario, u.clave, u.telefono, u.estado, r.id_rol, r.descripcion FROM Usuarios u");
-                    query.AppendLine("INNER JOIN Roles r ON r.id_rol = u.id_rol");
-                    query.AppendLine("WHERE (u.nombre_usuario LIKE '%' + @nombre_usuario + '%')");
-                    query.AppendLine("AND (u.id_rol = IIF(@id_rol = 0, u.id_rol, @id_rol))");
-                    query.AppendLine("AND (u.estado = @estado)");
-                    SqlCommand command = new SqlCommand(query.ToString(), oConexion);
-                    command.Parameters.AddWithValue("@nombre_usuario", filtros.Nombre_usuario);
-                    command.Parameters.AddWithValue("@id_rol", filtros.Id_rol);
-                    command.Parameters.AddWithValue("@estado", filtros.Estado);
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT u.id_usuario, u.dni, u.nombre_completo, u.correo, u.nombre_usuario, u.clave, u.telefono, u.estado, r.id_rol, r.descripcion FROM Usuarios u");
+                    _ = query.AppendLine("INNER JOIN Roles r ON r.id_rol = u.id_rol");
+                    _ = query.AppendLine("WHERE (u.nombre_usuario LIKE '%' + @nombre_usuario + '%')");
+                    _ = query.AppendLine("AND (u.id_rol = IIF(@id_rol = 0, u.id_rol, @id_rol))");
+                    _ = query.AppendLine("AND (u.estado = @estado)");
+                    var command = new SqlCommand(query.ToString(), oConexion);
+                    _ = command.Parameters.AddWithValue("@nombre_usuario", filtros.Nombre_usuario);
+                    _ = command.Parameters.AddWithValue("@id_rol", filtros.Id_rol);
+                    _ = command.Parameters.AddWithValue("@estado", filtros.Estado);
                     command.CommandType = CommandType.Text;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -89,7 +87,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_usuarios = new List<Usuarios>();
                 }
@@ -100,26 +98,26 @@ namespace CapaDatos
         public bool Modificar(Usuarios oUsuario, out string mensaje)
         {
             mensaje = string.Empty;
-            bool resultado = false;
+            var resultado = false;
             try
             {
-                using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+                using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_MODIFICAR_USUARIO", oConexion);
-                    command.Parameters.AddWithValue("id_usuario", oUsuario.Id_usuario);
-                    command.Parameters.AddWithValue("dni", oUsuario.Dni);
-                    command.Parameters.AddWithValue("nombre_completo", oUsuario.Nombre_completo);
-                    command.Parameters.AddWithValue("correo", oUsuario.Correo);
-                    command.Parameters.AddWithValue("nombre_usuario", oUsuario.Nombre_usuario);
-                    command.Parameters.AddWithValue("clave", oUsuario.Clave);
-                    command.Parameters.AddWithValue("id_rol", oUsuario.oRol.Id_rol);
-                    command.Parameters.AddWithValue("telefono", oUsuario.Telefono);
-                    command.Parameters.AddWithValue("estado", oUsuario.Estado);
+                    var command = new SqlCommand("SP_MODIFICAR_USUARIO", oConexion);
+                    _ = command.Parameters.AddWithValue("id_usuario", oUsuario.Id_usuario);
+                    _ = command.Parameters.AddWithValue("dni", oUsuario.Dni);
+                    _ = command.Parameters.AddWithValue("nombre_completo", oUsuario.Nombre_completo);
+                    _ = command.Parameters.AddWithValue("correo", oUsuario.Correo);
+                    _ = command.Parameters.AddWithValue("nombre_usuario", oUsuario.Nombre_usuario);
+                    _ = command.Parameters.AddWithValue("clave", oUsuario.Clave);
+                    _ = command.Parameters.AddWithValue("id_rol", oUsuario.oRol.Id_rol);
+                    _ = command.Parameters.AddWithValue("telefono", oUsuario.Telefono);
+                    _ = command.Parameters.AddWithValue("estado", oUsuario.Estado);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     resultado = Convert.ToBoolean(command.Parameters["resultado"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }
@@ -135,18 +133,18 @@ namespace CapaDatos
         public bool Eliminar(Usuarios oUsuario, out string mensaje)
         {
             mensaje = string.Empty;
-            bool resultado = false;
+            var resultado = false;
             try
             {
-                using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+                using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_BAJA_USUARIO", oConexion);
-                    command.Parameters.AddWithValue("id_usuario", oUsuario.Id_usuario);
+                    var command = new SqlCommand("SP_BAJA_USUARIO", oConexion);
+                    _ = command.Parameters.AddWithValue("id_usuario", oUsuario.Id_usuario);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     resultado = Convert.ToBoolean(command.Parameters["resultado"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }
@@ -162,18 +160,18 @@ namespace CapaDatos
         public bool Restaurar(Usuarios oUsuario, out string mensaje)
         {
             mensaje = string.Empty;
-            bool resultado = false;
+            var resultado = false;
             try
             {
-                using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+                using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_RESTAURAR_USUARIO", oConexion);
-                    command.Parameters.AddWithValue("id_usuario", oUsuario.Id_usuario);
+                    var command = new SqlCommand("SP_RESTAURAR_USUARIO", oConexion);
+                    _ = command.Parameters.AddWithValue("id_usuario", oUsuario.Id_usuario);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     resultado = Convert.ToBoolean(command.Parameters["resultado"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }

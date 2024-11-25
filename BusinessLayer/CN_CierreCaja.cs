@@ -1,17 +1,13 @@
-﻿using CapaEntidad;
-using CapaDatos;
-using System;
+﻿using CapaDatos;
+using CapaEntidad;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
     public class CN_CierreCaja
     {
 
-        private CD_CierreCaja oCD_CierreCaja = new CD_CierreCaja();
+        private readonly CD_CierreCaja oCD_CierreCaja = new CD_CierreCaja();
 
         public int Crear(CierreCaja oCierreCaja, out string mensaje)
         {

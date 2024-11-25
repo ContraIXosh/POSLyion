@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "..\DataLayer\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocio", "..\BusinessLayer\CapaNegocio.csproj", "{A02FBCC4-2422-47DE-B01D-AD3A83D09799}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "..\Test\Test.csproj", "{4651D49E-015E-48BD-9F73-F12E082AAD2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A02FBCC4-2422-47DE-B01D-AD3A83D09799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A02FBCC4-2422-47DE-B01D-AD3A83D09799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A02FBCC4-2422-47DE-B01D-AD3A83D09799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4651D49E-015E-48BD-9F73-F12E082AAD2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4651D49E-015E-48BD-9F73-F12E082AAD2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4651D49E-015E-48BD-9F73-F12E082AAD2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4651D49E-015E-48BD-9F73-F12E082AAD2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
