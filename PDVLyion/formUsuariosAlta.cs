@@ -2,33 +2,54 @@
 using CapaNegocio;
 using POSLyion.Resources;
 using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace POSLyion
 {
     public partial class formUsuariosAlta : Form
     {
-        private Usuarios Usuario;
-        private Usuarios Anterior_usuario;
-        private static readonly Usuarios oUsuario = new Usuarios();
+        private Usuarios _usuario;
+        private Usuarios _usuarioAnterior;
 
         public formUsuariosAlta()
         {
             InitializeComponent();
-            Usuario = new Usuarios();
+            _usuario = new Usuarios();
         }
 
         public formUsuariosAlta(Usuarios oUsuario)
         {
             InitializeComponent();
-            Usuario = oUsuario;
+            _usuario = oUsuario;
         }
 
         private void formUsuariosAlta_Load(object sender, EventArgs e)
         {
+            CargarManejadoresEventos();
+            CargarValoresPorDefecto();
+            CargarDatosUsuario();
+            KeyPreview = true;
+        }
+
+        private void CargarManejadoresEventos()
+        {
+            txt_dni.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_telefono.KeyPress += new KeyPressEventHandler(NoLetras);
+        }
+
+        private void NoLetras(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CargarValoresPorDefecto()
+        {
+            lbl_estado.Visible = false;
+            cbo_estado.Visible = false;
+            btn_reiniciar_datos.Visible = false;
 
             var lista_roles = new CN_Roles().Leer();
             foreach (var oRol in lista_roles)
@@ -43,26 +64,31 @@ namespace POSLyion
             cbo_estado.DisplayMember = "Texto";
             cbo_estado.ValueMember = "Valor";
 
-            txt_id.Texts = Usuario.Id_usuario.ToString();
-            txt_nombre_completo.Text = Usuario.Nombre_completo;
-            txt_correo.Text = Usuario.Correo;
-            txt_dni.Text = Usuario.Dni;
-            txt_nombre_usuario.Text = Usuario.Nombre_usuario;
-            txt_telefono.Text = Usuario.Telefono;
-            txt_contraseña.Text = Usuario.Clave;
-            var cbo_rol_index = 0;
-            var cbo_estado_index = 0;
+            cbo_estado.SelectedIndex = 0;
+            cbo_roles.SelectedIndex = 0;
+        }
 
-            if (Convert.ToInt32(txt_id.Texts) == 0)
+        private void CargarDatosUsuario()
+        {
+            if (_usuario.Id_usuario != 0)
             {
-                cbo_estado.SelectedIndex = 0;
-                cbo_roles.SelectedIndex = 0;
-            }
-            else
-            {
+                lbl_estado.Visible = true;
+                cbo_estado.Visible = true;
+                btn_reiniciar_datos.Visible = true;
+                CargarRespaldoUsuario();
+                txt_id.Texts = _usuario.Id_usuario.ToString();
+                txt_nombre_completo.Text = _usuario.Nombre_completo;
+                txt_correo.Text = _usuario.Correo;
+                txt_dni.Text = _usuario.Dni;
+                txt_nombre_usuario.Text = _usuario.Nombre_usuario;
+                txt_telefono.Text = _usuario.Telefono;
+                txt_contraseña.Text = _usuario.Clave;
+                var cbo_rol_index = 0;
+                var cbo_estado_index = 0;
+
                 foreach (OpcionCombo opcion_estado in cbo_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Valor) == (Usuario.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (_usuario.Estado == true ? 1 : 0))
                     {
                         cbo_estado_index = cbo_estado.Items.IndexOf(opcion_estado);
                         break;
@@ -72,7 +98,7 @@ namespace POSLyion
 
                 foreach (OpcionCombo opcion_rol in cbo_roles.Items)
                 {
-                    if (Convert.ToInt32(opcion_rol.Valor) == Usuario.oRol.Id_rol)
+                    if (Convert.ToInt32(opcion_rol.Valor) == _usuario.oRol.Id_rol)
                     {
                         cbo_rol_index = cbo_roles.Items.IndexOf(opcion_rol);
                         break;
@@ -138,67 +164,75 @@ namespace POSLyion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            string mensaje;
-            if (Convert.ToInt32(txt_id.Texts) == 0)
+            if (ValidarDatos())
             {
-                Usuario = new Usuarios()
+                if (_usuario.Id_usuario == 0)
                 {
-                    Dni = txt_dni.Text,
-                    Nombre_completo = txt_nombre_completo.Text,
-                    Correo = txt_correo.Text,
-                    Nombre_usuario = txt_nombre_usuario.Text,
-                    Clave = txt_contraseña.Text,
-                    oRol = new Roles()
-                    {
-                        Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor),
-                    },
-                    Telefono = txt_telefono.Text,
-                    Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1
-                };
-                var id_generada_usuario = new CN_Usuarios().Crear(Usuario, out mensaje);
-                if (id_generada_usuario == 0)
-                {
-                    _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    _ = GenerarUsuario();
+                    CrearNuevoUsuario();
                 }
                 else
                 {
-                    _ = MessageBox.Show("Usuario generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Close();
+                    CargarRespaldoUsuario();
+                    EditarUsuario();
                 }
             }
-            else
+        }
+
+        private bool ValidarDatos()
+        {
+            var resultado = true;
+            if (txt_nombre_completo.Text == "")
             {
-                Anterior_usuario = new Usuarios
-                {
-                    Id_usuario = Usuario.Id_usuario,
-                    Dni = Usuario.Dni,
-                    Nombre_completo = Usuario.Nombre_completo,
-                    Correo = Usuario.Correo,
-                    Nombre_usuario = Usuario.Nombre_usuario,
-                    Clave = Usuario.Clave,
-                    oRol = new Roles() { Id_rol = Usuario.oRol.Id_rol },
-                    Telefono = Usuario.Telefono,
-                    Estado = Usuario.Estado
-                };
-                Usuario.Dni = txt_dni.Text;
-                Usuario.Nombre_completo = txt_nombre_completo.Text;
-                Usuario.Correo = txt_correo.Text;
-                Usuario.Nombre_usuario = txt_nombre_usuario.Text;
-                Usuario.Clave = txt_contraseña.Text;
-                Usuario.oRol.Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor);
-                Usuario.Telefono = txt_telefono.Text;
-                Usuario.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1;
-                var resultado = new CN_Usuarios().Modificar(Usuario, out mensaje);
-                if (!resultado)
-                {
-                    _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    _ = MessageBox.Show("Usuario actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Close();
-                }
+                resultado = false;
+                errorProvider1.SetError(txt_nombre_completo, "Ingrese un nombre de pila");
             }
+            if (txt_nombre_usuario.Text == "")
+            {
+                resultado = false;
+                errorProvider2.SetError(txt_nombre_usuario, "Ingrese un nombre de usuario");
+            }
+            if (txt_contraseña.Text == "")
+            {
+                resultado = false;
+                errorProvider3.SetError(txt_contraseña, "Ingrese una contraseña de usuario");
+            }
+            return resultado;
+        }
+
+        private Usuarios GenerarUsuario()
+        {
+            _usuario = new Usuarios()
+            {
+                Dni = txt_dni.Text,
+                Nombre_completo = txt_nombre_completo.Text,
+                Correo = txt_correo.Text,
+                Nombre_usuario = txt_nombre_usuario.Text,
+                Clave = txt_contraseña.Text,
+                oRol = new Roles()
+                {
+                    Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor),
+                },
+                Telefono = txt_telefono.Text,
+                Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1
+            };
+            return _usuario;
+        }
+
+        private void CargarRespaldoUsuario()
+        {
+            _usuarioAnterior = new Usuarios
+            {
+                Id_usuario = _usuario.Id_usuario,
+                Dni = _usuario.Dni,
+                Nombre_completo = _usuario.Nombre_completo,
+                Correo = _usuario.Correo,
+                Nombre_usuario = _usuario.Nombre_usuario,
+                Clave = _usuario.Clave,
+                oRol = new Roles() { Id_rol = _usuario.oRol.Id_rol },
+                Telefono = _usuario.Telefono,
+                Estado = _usuario.Estado
+            };
         }
 
         private void btn_cerrar_Click(object sender, EventArgs e)
@@ -206,45 +240,59 @@ namespace POSLyion
             Close();
         }
 
-        private void txt_nombre_completo_KeyPress(object sender, KeyPressEventArgs e)
+        private void CrearNuevoUsuario()
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            if (new CN_Usuarios().Crear(_usuario, out var mensaje) == 0)
             {
-                e.Handled = true;
-                _ = MessageBox.Show("Ingrese solo letras", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void txt_dni_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                _ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Handled = true;
-            }
-        }
-
-        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                _ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Handled = true;
-            }
-        }
-
-        private void txt_correo_Validating(object sender, CancelEventArgs e)
-        {
-            var email = txt_correo.Text; var pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$"; if (!Regex.IsMatch(email, pattern))
-            {
-                e.Cancel = true;
-                txt_correo.BackColor = Color.LightCoral;
-                _ = MessageBox.Show("Ingresa un correo electrónico válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                txt_correo.BackColor = SystemColors.Window;
+                _ = MessageBox.Show("Usuario generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
             }
+        }
+
+        private void EditarUsuario()
+        {
+            _usuario.Dni = txt_dni.Text;
+            _usuario.Nombre_completo = txt_nombre_completo.Text;
+            _usuario.Correo = txt_correo.Text;
+            _usuario.Nombre_usuario = txt_nombre_usuario.Text;
+            _usuario.Clave = txt_contraseña.Text;
+            _usuario.oRol.Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor);
+            _usuario.Telefono = txt_telefono.Text;
+            _usuario.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1;
+            if (new CN_Usuarios().Modificar(_usuario, out var mensaje))
+            {
+                _ = MessageBox.Show("Usuario actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
+
+            }
+            else
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void formUsuariosAlta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void btn_reiniciar_datos_Click(object sender, EventArgs e)
+        {
+            txt_nombre_completo.Text = _usuarioAnterior.Nombre_completo;
+            txt_dni.Text = _usuarioAnterior.Dni;
+            txt_telefono.Text = _usuarioAnterior.Telefono;
+            cbo_roles.SelectedIndex = _usuarioAnterior.oRol.Id_rol - 1;
+            txt_correo.Text = _usuarioAnterior.Correo;
+            txt_nombre_usuario.Text = _usuarioAnterior.Nombre_usuario;
+            txt_contraseña.Text = _usuarioAnterior.Clave;
+            cbo_estado.SelectedIndex = _usuarioAnterior.Estado ? 0 : 1;
         }
     }
 }

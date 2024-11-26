@@ -17,6 +17,7 @@ namespace POSLyion
         public formDescuento()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         private void formDescuento_Load(object sender, EventArgs e)
@@ -73,6 +74,14 @@ namespace POSLyion
                 Cliente.Telefono = dgv_clientes.Rows[e.RowIndex].Cells["telefono"].Value.ToString();
                 Cliente.Descuento = Convert.ToInt32(dgv_clientes.Rows[e.RowIndex].Cells["descuento"].Value);
                 Cliente_seleccionado = true;
+                Close();
+            }
+        }
+
+        private void formDescuento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
                 Close();
             }
         }

@@ -2,9 +2,6 @@
 using CapaNegocio;
 using POSLyion.Resources;
 using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -12,46 +9,65 @@ namespace POSLyion
 
     public partial class formProveedoresAlta : Form
     {
-        private static readonly Usuarios oUsuario = new Usuarios();
-        private Proveedores Proveedor;
-        private Proveedores Anterior_proveedor;
+        private Proveedores _proveedor;
+        private Proveedores _proveedorAnterior;
 
         public formProveedoresAlta()
         {
             InitializeComponent();
-            Proveedor = new Proveedores();
+            _proveedor = new Proveedores();
         }
 
         public formProveedoresAlta(Proveedores oProveedor)
         {
             InitializeComponent();
-            Proveedor = oProveedor;
+            _proveedor = oProveedor;
         }
 
         private void formProveedoresAlta_Load(object sender, EventArgs e)
         {
+            CargarManejadoresEventos();
+            CargarValoresPorDefecto();
+            CargarDatosProveedor();
+            KeyPreview = true;
+        }
+
+        private void CargarManejadoresEventos()
+        {
+            txt_telefono.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_cuit.KeyPress += new KeyPressEventHandler(NoLetras);
+        }
+
+        private void CargarValoresPorDefecto()
+        {
+            cbo_estado.Visible = false;
+            lbl_estado.Visible = false;
+            btn_reiniciar_datos.Visible = false;
+
             _ = cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             _ = cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
             cbo_estado.DisplayMember = "Texto";
             cbo_estado.ValueMember = "Valor";
+        }
 
-            if (Proveedor.Id_proveedor == null)
+        private void CargarDatosProveedor()
+        {
+            if (_proveedor.Id_proveedor != null)
             {
-                txt_id.Text = "0";
-                cbo_estado.Visible = false;
-                lbl_estado.Visible = false;
-            }
-            else
-            {
+                CargarRespaldoProveedor();
+                cbo_estado.Visible = true;
+                lbl_estado.Visible = true;
+                btn_reiniciar_datos.Visible = true;
+
                 var cbo_state_index = 0;
-                txt_id.Text = Proveedor.Id_proveedor.ToString();
-                txt_cuit.Text = Proveedor.Cuit;
-                txt_descripcion.Text = Proveedor.Descripcion;
-                txt_correo.Text = Proveedor.Correo;
-                txt_telefono.Text = Proveedor.Telefono;
+                txt_id.Text = _proveedor.Id_proveedor.ToString();
+                txt_cuit.Text = _proveedor.Cuit;
+                txt_descripcion.Text = _proveedor.Descripcion;
+                txt_correo.Text = _proveedor.Correo;
+                txt_telefono.Text = _proveedor.Telefono;
                 foreach (OpcionCombo opcion_estado in cbo_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Valor) == (Proveedor.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (_proveedor.Estado == true ? 1 : 0))
                     {
                         cbo_state_index = cbo_estado.Items.IndexOf(opcion_estado);
                         break;
@@ -84,47 +100,75 @@ namespace POSLyion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            string mensaje;
-            if (txt_id.Text == "0")
+            if (ValidarDatos())
             {
-                Proveedor = new Proveedores()
+                if (_proveedor.Id_proveedor == null)
                 {
-                    Cuit = txt_cuit.Text,
-                    Descripcion = txt_descripcion.Text,
-                    Correo = txt_correo.Text,
-                    Telefono = txt_telefono.Text,
-                };
-                var id_generada_proveedor = new CN_Proveedores().Crear(Proveedor, out mensaje);
-                if (id_generada_proveedor == 0)
-                {
-                    _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    GenerarProveedor();
+                    CrearNuevoProveedor();
+                    Close();
                 }
                 else
                 {
-                    _ = MessageBox.Show("Proveedor generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Close();
+                    EditarProveedor();
                 }
+            }
+        }
+
+        private void GenerarProveedor()
+        {
+            _proveedor = new Proveedores()
+            {
+                Cuit = txt_cuit.Text,
+                Descripcion = txt_descripcion.Text,
+                Correo = txt_correo.Text,
+                Telefono = txt_telefono.Text,
+            };
+        }
+
+        private void EditarProveedor()
+        {
+            _proveedor.Cuit = txt_cuit.Text;
+            _proveedor.Descripcion = txt_descripcion.Text;
+            _proveedor.Correo = txt_correo.Text;
+            _proveedor.Telefono = txt_telefono.Text;
+            _proveedor.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1;
+
+            if (new CN_Proveedores().Modificar(_proveedor, out var mensaje))
+            {
+                _ = MessageBox.Show("Proveedor actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
             }
             else
             {
-                Anterior_proveedor = new Proveedores
-                {
-                    Id_proveedor = Proveedor.Id_proveedor,
-                    Cuit = Proveedor.Cuit,
-                    Correo = Proveedor.Correo,
-                    Telefono = Proveedor.Telefono,
-                    Estado = Proveedor.Estado
-                };
-                Proveedor.Cuit = txt_cuit.Text;
-                Proveedor.Descripcion = txt_descripcion.Text;
-                Proveedor.Correo = txt_correo.Text;
-                Proveedor.Telefono = txt_telefono.Text;
-                Proveedor.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1;
-                var resultado = new CN_Proveedores().Modificar(Proveedor, out mensaje);
-                _ = resultado == false
-                    ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    : MessageBox.Show("Proveedor actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void CrearNuevoProveedor()
+        {
+            if (new CN_Proveedores().Crear(_proveedor, out var mensaje) == 0)
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                _ = MessageBox.Show("Proveedor generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
+            }
+        }
+
+        private void CargarRespaldoProveedor()
+        {
+            _proveedorAnterior = new Proveedores
+            {
+                Id_proveedor = _proveedor.Id_proveedor,
+                Descripcion = _proveedor.Descripcion,
+                Cuit = _proveedor.Cuit,
+                Correo = _proveedor.Correo,
+                Telefono = _proveedor.Telefono,
+                Estado = _proveedor.Estado
+            };
         }
 
         private void btn_cerrar_Click(object sender, EventArgs e)
@@ -132,35 +176,39 @@ namespace POSLyion
             Close();
         }
 
-        private void txt_telefono_KeyPress_1(object sender, KeyPressEventArgs e)
+        private void NoLetras(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                _ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
             }
         }
 
-        private void txt_cuit_KeyPress_1(object sender, KeyPressEventArgs e)
+        private bool ValidarDatos()
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            var resultado = true;
+            if (txt_descripcion.Text == "")
             {
-                _ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Handled = true;
+                resultado = false;
+                errorProvider1.SetError(txt_descripcion, "Inserte un nombre para el proveedor");
             }
+            return resultado;
         }
 
-        private void txt_correo_Validating_1(object sender, CancelEventArgs e)
+        private void btn_reiniciar_datos_Click(object sender, EventArgs e)
         {
-            var email = txt_correo.Text; var pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$"; if (!Regex.IsMatch(email, pattern))
+            txt_descripcion.Text = _proveedorAnterior.Descripcion;
+            txt_telefono.Text = _proveedorAnterior.Telefono;
+            txt_cuit.Text = _proveedorAnterior.Cuit;
+            txt_correo.Text = _proveedorAnterior.Correo;
+            cbo_estado.SelectedIndex = _proveedorAnterior.Estado ? 0 : 1;
+        }
+
+        private void formProveedoresAlta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
             {
-                e.Cancel = true;
-                txt_correo.BackColor = Color.LightCoral;
-                _ = MessageBox.Show("Ingresa un correo electrónico válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                txt_correo.BackColor = SystemColors.Window;
+                Close();
             }
         }
     }

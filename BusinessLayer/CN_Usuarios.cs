@@ -12,18 +12,6 @@ namespace CapaNegocio
         public int Crear(Usuarios oUsuario, out string mensaje)
         {
             mensaje = string.Empty;
-            if (oUsuario.Nombre_completo == "")
-            {
-                mensaje += "Es necesario el nombre completo de pila.\n";
-            }
-            if (oUsuario.Nombre_usuario == "")
-            {
-                mensaje += "Es necesario el nombre de usuario.\n";
-            }
-            if (oUsuario.Clave == "")
-            {
-                mensaje += "Es necesario la contraseña del usuario.\n";
-            }
             return mensaje != string.Empty ? 0 : oCD_Usuario.Crear(oUsuario, out mensaje);
         }
 
@@ -35,18 +23,6 @@ namespace CapaNegocio
         public bool Modificar(Usuarios oUsuario, out string mensaje)
         {
             mensaje = string.Empty;
-            if (oUsuario.Nombre_completo == "")
-            {
-                mensaje += "Es necesario el nombre completo de pila.\n";
-            }
-            if (oUsuario.Nombre_usuario == "")
-            {
-                mensaje += "Es necesario el nombre de usuario.\n";
-            }
-            if (oUsuario.Clave == "")
-            {
-                mensaje += "Es necesario la contraseña del usuario.\n";
-            }
             return mensaje == string.Empty && oCD_Usuario.Modificar(oUsuario, out mensaje);
         }
 

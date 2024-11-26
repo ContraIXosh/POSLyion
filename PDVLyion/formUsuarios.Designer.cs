@@ -59,11 +59,10 @@
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
             this.btn_crear_usuario = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_buscar = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_rol = new System.Windows.Forms.Label();
+            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.lbl_busqueda = new System.Windows.Forms.Label();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.cbo_roles = new CustomBox.RJControls.RJComboBox();
@@ -193,7 +192,7 @@
             this.dgv_usuarios.AllowUserToDeleteRows = false;
             this.dgv_usuarios.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Red;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
@@ -204,7 +203,7 @@
             this.dgv_usuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkRed;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
@@ -227,7 +226,7 @@
             this.btn_eliminar});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -252,7 +251,7 @@
             this.dgv_usuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_usuarios.RowHeadersVisible = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Red;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
@@ -260,7 +259,7 @@
             this.dgv_usuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_usuarios.Size = new System.Drawing.Size(823, 507);
             this.dgv_usuarios.TabIndex = 32;
-            this.dgv_usuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_usuarios_CellContentClick);
+            this.dgv_usuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_usuarios_CellContentClick);
             // 
             // btn_seleccionar
             // 
@@ -402,8 +401,6 @@
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_btns.Controls.Add(this.btn_crear_usuario, 0, 0);
-            this.panel_btns.Controls.Add(this.btn_buscar, 0, 3);
-            this.panel_btns.Controls.Add(this.btn_limpiar_filtros, 0, 2);
             this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_btns.Location = new System.Drawing.Point(5, 315);
@@ -440,55 +437,7 @@
             this.btn_crear_usuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_crear_usuario.TextColor = System.Drawing.Color.Chartreuse;
             this.btn_crear_usuario.UseVisualStyleBackColor = false;
-            this.btn_crear_usuario.Click += new System.EventHandler(this.btn_crear_usuario_Click_1);
-            // 
-            // btn_buscar
-            // 
-            this.btn_buscar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_buscar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_buscar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_buscar.BorderColor = System.Drawing.Color.LawnGreen;
-            this.btn_buscar.BorderRadius = 7;
-            this.btn_buscar.BorderSize = 2;
-            this.btn_buscar.FlatAppearance.BorderSize = 0;
-            this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar.ForeColor = System.Drawing.Color.Chartreuse;
-            this.btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscar.Image")));
-            this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_buscar.Location = new System.Drawing.Point(11, 152);
-            this.btn_buscar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(225, 40);
-            this.btn_buscar.TabIndex = 16;
-            this.btn_buscar.Text = "Buscar";
-            this.btn_buscar.TextColor = System.Drawing.Color.Chartreuse;
-            this.btn_buscar.UseVisualStyleBackColor = false;
-            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
-            // 
-            // btn_limpiar_filtros
-            // 
-            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.BorderRadius = 10;
-            this.btn_limpiar_filtros.BorderSize = 2;
-            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
-            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
-            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(11, 103);
-            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
-            this.btn_limpiar_filtros.Size = new System.Drawing.Size(225, 38);
-            this.btn_limpiar_filtros.TabIndex = 17;
-            this.btn_limpiar_filtros.Text = "Limpiar filtros";
-            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
-            this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
+            this.btn_crear_usuario.Click += new System.EventHandler(this.btn_crear_usuario_Click);
             // 
             // btn_actualizar
             // 
@@ -509,7 +458,7 @@
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 38);
             this.btn_actualizar.TabIndex = 13;
-            this.btn_actualizar.Text = "Actualizar";
+            this.btn_actualizar.Text = "Actualizar grilla";
             this.btn_actualizar.TextColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.UseVisualStyleBackColor = false;
             this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
@@ -520,6 +469,7 @@
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_filter.Controls.Add(this.lbl_rol, 0, 2);
+            this.panel_filter.Controls.Add(this.btn_limpiar_filtros, 0, 6);
             this.panel_filter.Controls.Add(this.lbl_busqueda, 0, 0);
             this.panel_filter.Controls.Add(this.txt_busqueda, 0, 1);
             this.panel_filter.Controls.Add(this.cbo_roles, 0, 3);
@@ -552,6 +502,30 @@
             this.lbl_rol.TabIndex = 16;
             this.lbl_rol.Text = "ROL";
             // 
+            // btn_limpiar_filtros
+            // 
+            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.BorderRadius = 10;
+            this.btn_limpiar_filtros.BorderSize = 2;
+            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
+            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
+            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(11, 228);
+            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
+            this.btn_limpiar_filtros.Size = new System.Drawing.Size(225, 38);
+            this.btn_limpiar_filtros.TabIndex = 17;
+            this.btn_limpiar_filtros.Text = "Limpiar filtros";
+            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
+            this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
+            // 
             // lbl_busqueda
             // 
             this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -580,7 +554,7 @@
             this.cbo_roles.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.cbo_roles.BorderSize = 1;
             this.cbo_roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbo_roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbo_roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.cbo_roles.ForeColor = System.Drawing.Color.DimGray;
             this.cbo_roles.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.cbo_roles.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
@@ -782,7 +756,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn estado_valor;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
-        private RJCodeAdvance.RJControls.RJButton btn_buscar;
         private CustomBox.RJControls.RJButton btn_limpiar_filtros;
         private System.Windows.Forms.TableLayoutPanel panel_bot;
         private System.Windows.Forms.Label lbl_updateversion;

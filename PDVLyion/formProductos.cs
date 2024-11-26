@@ -13,86 +13,110 @@ namespace POSLyion
         private static readonly Usuarios oUsuario = new Usuarios();
         private FiltrosProducto filtros = new FiltrosProducto();
         private List<Productos> _lista_productos;
-        private formProductosAlta formProducto;
+        private readonly formProductosAlta formProducto;
 
         public formProductos()
         {
             InitializeComponent();
-
         }
 
         private void formProducts_Load(object sender, EventArgs e)
         {
-            _ = cbo_categorias.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Todas" });
+            CargarManejadoresEventos();
+            CargarCategorias();
+            CargarFiltros();
+        }
+
+        private void CargarManejadoresEventos()
+        {
+            cb_estado.Click += new EventHandler(Buscar);
+            txt_busqueda.TextChanged += new EventHandler(Buscar);
+            cbo_categorias.OnSelectedIndexChanged += new EventHandler(Buscar);
+        }
+
+        private void CargarCategorias()
+        {
             var lista_categorias = new CN_Categorias().Leer();
+
+            _ = cbo_categorias.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Todas" });
+
             foreach (var oCategoria in lista_categorias)
             {
                 _ = cbo_categorias.Items.Add(new OpcionCombo() { Valor = oCategoria.Id_categoria, Texto = oCategoria.Descripcion });
             }
+
             cbo_categorias.DisplayMember = "Texto";
             cbo_categorias.ValueMember = "Valor";
             cbo_categorias.SelectedIndex = 0;
-            CargarFiltros();
-            MostrarProductos();
         }
 
-        private void grid_productos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_productos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var index = e.RowIndex;
+            var indiceProducto = e.RowIndex;
             if (dgv_productos.Columns[e.ColumnIndex].Name == "btn_editar")
             {
-                if (index >= 0)
+                if (indiceProducto >= 0)
                 {
-                    var oProducto = new Productos()
+                    using (var formProductosAlta = new formProductosAlta(GenerarProducto(indiceProducto)))
                     {
-                        Id_producto = Convert.ToInt32(dgv_productos.Rows[index].Cells["id_producto"].Value),
-                        Codigo_barras = dgv_productos.Rows[index].Cells["codigo_barras"].Value.ToString(),
-                        Descripcion = dgv_productos.Rows[index].Cells["descripcion_producto"].Value.ToString(),
-                        oCategoria = new Categorias()
-                        {
-                            Id_categoria = Convert.ToInt32(dgv_productos.Rows[index].Cells["id_categoria"].Value),
-                            Descripcion = dgv_productos.Rows[index].Cells["descripcion_categoria"].Value.ToString()
-                        },
-                        Stock_actual = Convert.ToInt32(dgv_productos.Rows[index].Cells["stock_actual"].Value),
-                        Stock_minimo = Convert.ToInt32(dgv_productos.Rows[index].Cells["stock_minimo"].Value),
-                        Precio_costo = Convert.ToDecimal(dgv_productos.Rows[index].Cells["precio_costo"].Value),
-                        Precio_venta = Convert.ToDecimal(dgv_productos.Rows[index].Cells["precio_venta"].Value),
-                        Estado = Convert.ToBoolean(dgv_productos.Rows[index].Cells["estado_valor"].Value)
-                    };
-                    var formProductosAlta = new formProductosAlta(oProducto);
-                    formProductosAlta.Show();
+                        _ = formProductosAlta.ShowDialog();
+                    }
                 }
+                btn_actualizar_Click(sender, e);
             }
             else if (dgv_productos.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
-                if (MessageBox.Show("¿Desea eliminar el producto?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                EliminarProducto(indiceProducto);
+                btn_actualizar_Click(sender, e);
+            }
+        }
+
+        private Productos GenerarProducto(int indiceProducto)
+        {
+            var oProducto = new Productos()
+            {
+                Id_producto = Convert.ToInt32(dgv_productos.Rows[indiceProducto].Cells["id_producto"].Value),
+                Codigo_barras = dgv_productos.Rows[indiceProducto].Cells["codigo_barras"].Value.ToString(),
+                Descripcion = dgv_productos.Rows[indiceProducto].Cells["descripcion_producto"].Value.ToString(),
+                oCategoria = new Categorias()
                 {
-                    if (index >= 0)
+                    Id_categoria = Convert.ToInt32(dgv_productos.Rows[indiceProducto].Cells["id_categoria"].Value),
+                    Descripcion = dgv_productos.Rows[indiceProducto].Cells["descripcion_categoria"].Value.ToString()
+                },
+                Stock_actual = Convert.ToInt32(dgv_productos.Rows[indiceProducto].Cells["stock_actual"].Value),
+                Stock_minimo = Convert.ToInt32(dgv_productos.Rows[indiceProducto].Cells["stock_minimo"].Value),
+                Precio_costo = Convert.ToDecimal(dgv_productos.Rows[indiceProducto].Cells["precio_costo"].Value),
+                Precio_venta = Convert.ToDecimal(dgv_productos.Rows[indiceProducto].Cells["precio_venta"].Value),
+                Estado = Convert.ToBoolean(dgv_productos.Rows[indiceProducto].Cells["estado_valor"].Value)
+            };
+            return oProducto;
+        }
+
+        private void EliminarProducto(int indiceProducto)
+        {
+            if (MessageBox.Show("¿Desea eliminar el producto?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (indiceProducto >= 0)
+                {
+                    var oProducto = new Productos()
                     {
-                        var oProducto = new Productos()
-                        {
-                            Id_producto = Convert.ToInt32(dgv_productos.Rows[index].Cells["id_producto"].Value)
-                        };
-                        var result = new CN_Productos().Eliminar(oProducto, out var mensaje);
-                        _ = !result
-                            ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                            : MessageBox.Show("Producto eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                        Id_producto = Convert.ToInt32(dgv_productos.Rows[indiceProducto].Cells["id_producto"].Value)
+                    };
+                    var result = new CN_Productos().Eliminar(oProducto, out var mensaje);
+                    _ = !result
+                        ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        : MessageBox.Show("Producto eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
 
         private void btn_crear_producto_Click(object sender, EventArgs e)
         {
-            if (formProducto == null || formProducto.IsDisposed)
+            using (var formProductosAlta = new formProductosAlta())
             {
-                formProducto = new formProductosAlta();
-                formProducto.Show();
+                _ = formProductosAlta.ShowDialog();
             }
-            else
-            {
-                _ = formProducto.Focus();
-            }
+            btn_actualizar_Click(sender, e);
         }
 
         private void btn_actualizar_Click(object sender, EventArgs e)
@@ -102,7 +126,7 @@ namespace POSLyion
             MostrarProductos();
         }
 
-        private void btn_buscar_Click(object sender, EventArgs e)
+        private void Buscar(object sender, EventArgs e)
         {
             dgv_productos.Rows.Clear();
             CargarFiltros();
@@ -146,6 +170,7 @@ namespace POSLyion
             txt_busqueda.Text = "";
             cbo_categorias.SelectedIndex = 0;
             cb_estado.Checked = false;
+            Buscar(sender, e);
         }
 
         private void formProductos_FormClosing(object sender, FormClosingEventArgs e)

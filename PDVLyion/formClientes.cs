@@ -8,9 +8,9 @@ namespace POSLyion
 {
     public partial class formClientes : Form
     {
-        private static readonly Usuarios oUsuario = new Usuarios();
-        private FiltrosCliente filtros = new FiltrosCliente();
-        private formClientesAlta formClienteAlta;
+        private static readonly Usuarios _oUsuario = new Usuarios();
+        private FiltrosCliente _filtros = new FiltrosCliente();
+        private readonly formClientesAlta _formClienteAlta;
         public formClientes()
         {
             InitializeComponent();
@@ -35,35 +35,29 @@ namespace POSLyion
             }
         }
 
-        private void grid_proveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var index = e.RowIndex;
+            var indiceCliente = e.RowIndex;
             if (dgv_clientes.Columns[e.ColumnIndex].Name == "btn_editar")
             {
-                if (index >= 0)
+                if (indiceCliente >= 0)
                 {
-                    var oCliente = new Clientes()
+                    using (var formClientesAlta = new formClientesAlta(GenerarCliente(indiceCliente)))
                     {
-                        Id_cliente = Convert.ToInt32(dgv_clientes.Rows[index].Cells["id"].Value),
-                        Dni = dgv_clientes.Rows[index].Cells["dni"].Value.ToString(),
-                        Nombre_completo = dgv_clientes.Rows[index].Cells["nombre_completo"].Value.ToString(),
-                        Correo = dgv_clientes.Rows[index].Cells["correo"].Value.ToString(),
-                        Telefono = dgv_clientes.Rows[index].Cells["telefono"].Value.ToString(),
-                        Estado = Convert.ToBoolean(dgv_clientes.Rows[index].Cells["estado_valor"].Value)
-                    };
-                    var formClientesAlta = new formClientesAlta(oCliente);
-                    formClientesAlta.Show();
+                        _ = formClientesAlta.ShowDialog();
+                    }
+                    MostrarClientes();
                 }
             }
             else if (dgv_clientes.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
                 if (MessageBox.Show("¿Desea eliminar el cliente?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (index >= 0)
+                    if (indiceCliente >= 0)
                     {
                         var oCliente = new Clientes()
                         {
-                            Id_cliente = Convert.ToInt32(dgv_clientes.Rows[index].Cells["id"].Value)
+                            Id_cliente = Convert.ToInt32(dgv_clientes.Rows[indiceCliente].Cells["id"].Value)
                         };
                         var resultado = new CN_Clientes().Eliminar(oCliente, out var mensaje);
                         _ = !resultado
@@ -71,7 +65,23 @@ namespace POSLyion
                             : MessageBox.Show("Cliente eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
+                MostrarClientes();
             }
+        }
+
+        private Clientes GenerarCliente(int indiceCliente)
+        {
+            var oCliente = new Clientes()
+            {
+                Id_cliente = Convert.ToInt32(dgv_clientes.Rows[indiceCliente].Cells["id"].Value),
+                Dni = dgv_clientes.Rows[indiceCliente].Cells["dni"].Value.ToString(),
+                Nombre_completo = dgv_clientes.Rows[indiceCliente].Cells["nombre_completo"].Value.ToString(),
+                Correo = dgv_clientes.Rows[indiceCliente].Cells["correo"].Value.ToString(),
+                Telefono = dgv_clientes.Rows[indiceCliente].Cells["telefono"].Value.ToString(),
+                Estado = Convert.ToBoolean(dgv_clientes.Rows[indiceCliente].Cells["estado_valor"].Value),
+                Descuento = Convert.ToInt32(dgv_clientes.Rows[indiceCliente].Cells["descuento"].Value)
+            };
+            return oCliente;
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
@@ -91,10 +101,12 @@ namespace POSLyion
             {
                 dgv_clientes.Rows.Clear();
             }
-            var lista_clientes = new CN_Clientes().Leer(filtros);
+            var lista_clientes = new CN_Clientes().Leer(_filtros);
             foreach (var oCliente in lista_clientes)
             {
-                _ = dgv_clientes.Rows.Add(new object[]
+                if (oCliente.Id_cliente != 1)
+                {
+                    _ = dgv_clientes.Rows.Add(new object[]
                 {
                     oCliente.Id_cliente,
                     oCliente.Dni,
@@ -105,16 +117,45 @@ namespace POSLyion
                     oCliente.Estado == true ? 1 : 0,
                     oCliente.Descuento
                 });
+                }
             }
         }
 
-        private void btn_buscar_Click(object sender, EventArgs e)
+        private void btn_crear_Click(object sender, EventArgs e)
         {
-            filtros = new FiltrosCliente()
+            using (var formClienteAlta = new formClientesAlta())
+            {
+                _ = formClienteAlta.ShowDialog();
+            }
+            MostrarClientes();
+        }
+
+        private void formClientes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_formClienteAlta != null && !_formClienteAlta.IsDisposed)
+            {
+                _formClienteAlta.Close();
+            }
+        }
+
+        private void CargarFiltros()
+        {
+            _filtros = new FiltrosCliente()
             {
                 Nombre_cliente = txt_busqueda.Text,
                 Estado = cb_inactivo.Checked ? 0 : 1
             };
+        }
+
+        private void txt_busqueda_TextChanged(object sender, EventArgs e)
+        {
+            CargarFiltros();
+            MostrarClientes();
+        }
+
+        private void cb_inactivo_Click(object sender, EventArgs e)
+        {
+            CargarFiltros();
             MostrarClientes();
         }
 
@@ -122,27 +163,8 @@ namespace POSLyion
         {
             txt_busqueda.Text = "";
             cb_inactivo.Checked = false;
-        }
-
-        private void btn_crear_Click(object sender, EventArgs e)
-        {
-            if (formClienteAlta == null || formClienteAlta.IsDisposed)
-            {
-                formClienteAlta = new formClientesAlta();
-                formClienteAlta.Show();
-            }
-            else
-            {
-                _ = formClienteAlta.Focus();
-            }
-        }
-
-        private void formClientes_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (formClienteAlta != null && !formClienteAlta.IsDisposed)
-            {
-                formClienteAlta.Close();
-            }
+            _filtros = new FiltrosCliente();
+            MostrarClientes();
         }
     }
 }

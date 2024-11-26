@@ -188,12 +188,10 @@
             // 
             // Login
             // 
-            this.AcceptButton = this.btn_iniciar_sesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CancelButton = this.btn_cerrar;
             this.ClientSize = new System.Drawing.Size(588, 304);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
@@ -211,6 +209,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSLyion - Ingreso de usuario";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
             this.ResumeLayout(false);

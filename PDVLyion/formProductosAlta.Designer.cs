@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_main = new System.Windows.Forms.Panel();
+            this.btn_reiniciar_datos = new CustomBox.RJControls.RJButton();
             this.btn_guardar = new CustomBox.RJControls.RJButton();
             this.btn_cerrar = new CustomBox.RJControls.RJButton();
             this.panel_crimconfg = new System.Windows.Forms.Panel();
@@ -36,7 +38,6 @@
             this.txt_precio = new System.Windows.Forms.TextBox();
             this.txt_costo = new System.Windows.Forms.TextBox();
             this.lbl_config = new System.Windows.Forms.Label();
-            this.txt_id = new CustomBox.RJControls.RJTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,20 +56,24 @@
             this.lbl_cod = new System.Windows.Forms.Label();
             this.lbl_desc = new System.Windows.Forms.Label();
             this.lbl_tipoprod = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel_main.SuspendLayout();
             this.panel_crimconfg.SuspendLayout();
             this.panel_config.SuspendLayout();
             this.panel_crimdesc.SuspendLayout();
             this.panel_desc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
             // 
             this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_main.Controls.Add(this.btn_reiniciar_datos);
             this.panel_main.Controls.Add(this.btn_guardar);
             this.panel_main.Controls.Add(this.btn_cerrar);
             this.panel_main.Controls.Add(this.panel_crimconfg);
-            this.panel_main.Controls.Add(this.txt_id);
             this.panel_main.Controls.Add(this.label3);
             this.panel_main.Controls.Add(this.panel_crimdesc);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -76,6 +81,26 @@
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(889, 514);
             this.panel_main.TabIndex = 0;
+            // 
+            // btn_reiniciar_datos
+            // 
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BorderRadius = 10;
+            this.btn_reiniciar_datos.BorderSize = 2;
+            this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
+            this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.Location = new System.Drawing.Point(379, 468);
+            this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
+            this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 36);
+            this.btn_reiniciar_datos.TabIndex = 15;
+            this.btn_reiniciar_datos.Text = "Reiniciar datos";
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
+            this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_guardar
             // 
@@ -141,21 +166,23 @@
             // 
             // txt_precio
             // 
-            this.txt_precio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_precio.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_precio.Location = new System.Drawing.Point(311, 85);
             this.txt_precio.Name = "txt_precio";
-            this.txt_precio.Size = new System.Drawing.Size(213, 29);
+            this.txt_precio.Size = new System.Drawing.Size(272, 33);
             this.txt_precio.TabIndex = 26;
+            this.txt_precio.Text = "0";
+            this.txt_precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precio_KeyPress);
             // 
             // txt_costo
             // 
             this.txt_costo.Enabled = false;
-            this.txt_costo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_costo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_costo.Location = new System.Drawing.Point(8, 85);
             this.txt_costo.Name = "txt_costo";
-            this.txt_costo.Size = new System.Drawing.Size(213, 29);
+            this.txt_costo.Size = new System.Drawing.Size(273, 33);
             this.txt_costo.TabIndex = 25;
-            this.txt_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_costo_KeyPress);
+            this.txt_costo.Text = "0";
             // 
             // lbl_config
             // 
@@ -167,29 +194,6 @@
             this.lbl_config.Size = new System.Drawing.Size(342, 26);
             this.lbl_config.TabIndex = 10;
             this.lbl_config.Text = "CONFIGURACIÓN DEL PRODUCTO";
-            // 
-            // txt_id
-            // 
-            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_id.BorderColor = System.Drawing.Color.Crimson;
-            this.txt_id.BorderFocusColor = System.Drawing.Color.Crimson;
-            this.txt_id.BorderRadius = 0;
-            this.txt_id.BorderSize = 2;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(15, 468);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_id.Multiline = false;
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_id.PasswordChar = false;
-            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_id.PlaceholderText = "";
-            this.txt_id.Size = new System.Drawing.Size(75, 31);
-            this.txt_id.TabIndex = 13;
-            this.txt_id.Texts = "0";
-            this.txt_id.UnderlinedStyle = false;
-            this.txt_id.Visible = false;
             // 
             // label6
             // 
@@ -256,29 +260,29 @@
             // 
             // txt_stock_minimo
             // 
-            this.txt_stock_minimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_stock_minimo.Location = new System.Drawing.Point(616, 172);
+            this.txt_stock_minimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_stock_minimo.Location = new System.Drawing.Point(610, 172);
             this.txt_stock_minimo.Name = "txt_stock_minimo";
-            this.txt_stock_minimo.Size = new System.Drawing.Size(213, 29);
+            this.txt_stock_minimo.Size = new System.Drawing.Size(241, 33);
             this.txt_stock_minimo.TabIndex = 24;
-            this.txt_stock_minimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_stock_minimo_KeyPress);
+            this.txt_stock_minimo.Text = "0";
             // 
             // txt_descripcion
             // 
-            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_descripcion.Location = new System.Drawing.Point(311, 173);
             this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(213, 29);
+            this.txt_descripcion.Size = new System.Drawing.Size(272, 33);
             this.txt_descripcion.TabIndex = 23;
             // 
             // txt_cantidad
             // 
-            this.txt_cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_cantidad.Location = new System.Drawing.Point(616, 83);
+            this.txt_cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_cantidad.Location = new System.Drawing.Point(610, 83);
             this.txt_cantidad.Name = "txt_cantidad";
-            this.txt_cantidad.Size = new System.Drawing.Size(213, 29);
+            this.txt_cantidad.Size = new System.Drawing.Size(241, 33);
             this.txt_cantidad.TabIndex = 22;
-            this.txt_cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cantidad_KeyPress);
+            this.txt_cantidad.Text = "0";
             // 
             // lbl_prod
             // 
@@ -293,12 +297,11 @@
             // 
             // txt_codigo_barras
             // 
-            this.txt_codigo_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_codigo_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_codigo_barras.Location = new System.Drawing.Point(8, 83);
             this.txt_codigo_barras.Name = "txt_codigo_barras";
-            this.txt_codigo_barras.Size = new System.Drawing.Size(213, 29);
+            this.txt_codigo_barras.Size = new System.Drawing.Size(273, 33);
             this.txt_codigo_barras.TabIndex = 20;
-            this.txt_codigo_barras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_codigo_barras_KeyPress);
             // 
             // lbl_estado
             // 
@@ -317,16 +320,16 @@
             this.cbox_estado.BorderColor = System.Drawing.Color.GhostWhite;
             this.cbox_estado.BorderSize = 1;
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_estado.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_estado.IconColor = System.Drawing.Color.GhostWhite;
+            this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold);
+            this.cbox_estado.ForeColor = System.Drawing.Color.NavajoWhite;
+            this.cbox_estado.IconColor = System.Drawing.Color.NavajoWhite;
             this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_estado.Location = new System.Drawing.Point(8, 172);
             this.cbox_estado.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_estado.Name = "cbox_estado";
             this.cbox_estado.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_estado.Size = new System.Drawing.Size(213, 30);
+            this.cbox_estado.Size = new System.Drawing.Size(273, 30);
             this.cbox_estado.TabIndex = 14;
             this.cbox_estado.Texts = "";
             // 
@@ -335,7 +338,7 @@
             this.lbl_stock_minimo.AutoSize = true;
             this.lbl_stock_minimo.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_stock_minimo.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_stock_minimo.Location = new System.Drawing.Point(611, 143);
+            this.lbl_stock_minimo.Location = new System.Drawing.Point(605, 143);
             this.lbl_stock_minimo.Name = "lbl_stock_minimo";
             this.lbl_stock_minimo.Size = new System.Drawing.Size(167, 26);
             this.lbl_stock_minimo.TabIndex = 12;
@@ -347,16 +350,16 @@
             this.cbox_tipo.BorderColor = System.Drawing.Color.GhostWhite;
             this.cbox_tipo.BorderSize = 1;
             this.cbox_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbox_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbox_tipo.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_tipo.IconColor = System.Drawing.Color.GhostWhite;
+            this.cbox_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold);
+            this.cbox_tipo.ForeColor = System.Drawing.Color.NavajoWhite;
+            this.cbox_tipo.IconColor = System.Drawing.Color.NavajoWhite;
             this.cbox_tipo.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_tipo.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_tipo.Location = new System.Drawing.Point(311, 82);
             this.cbox_tipo.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_tipo.Name = "cbox_tipo";
             this.cbox_tipo.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_tipo.Size = new System.Drawing.Size(213, 30);
+            this.cbox_tipo.Size = new System.Drawing.Size(272, 34);
             this.cbox_tipo.TabIndex = 4;
             this.cbox_tipo.Texts = "";
             // 
@@ -365,7 +368,7 @@
             this.lbl_cantprod.AutoSize = true;
             this.lbl_cantprod.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cantprod.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cantprod.Location = new System.Drawing.Point(611, 53);
+            this.lbl_cantprod.Location = new System.Drawing.Point(605, 54);
             this.lbl_cantprod.Name = "lbl_cantprod";
             this.lbl_cantprod.Size = new System.Drawing.Size(117, 26);
             this.lbl_cantprod.TabIndex = 9;
@@ -404,6 +407,14 @@
             this.lbl_tipoprod.TabIndex = 5;
             this.lbl_tipoprod.Text = "TIPO DE PRODUCTO";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // formProductosAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,8 +424,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "formProductosAlta";
-            this.Text = "Crear Producto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Crear un producto";
             this.Load += new System.EventHandler(this.formProductosAlta_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formProductosAlta_KeyDown);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
             this.panel_crimconfg.ResumeLayout(false);
@@ -423,6 +436,8 @@
             this.panel_crimdesc.ResumeLayout(false);
             this.panel_desc.ResumeLayout(false);
             this.panel_desc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -446,7 +461,6 @@
         private System.Windows.Forms.Label lbl_stock_minimo;
         private CustomBox.RJControls.RJButton btn_guardar;
         private CustomBox.RJControls.RJButton btn_cerrar;
-        private CustomBox.RJControls.RJTextBox txt_id;
         private CustomBox.RJControls.RJComboBox cbox_estado;
         private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.Label lbl_prod;
@@ -456,5 +470,8 @@
         private System.Windows.Forms.TextBox txt_stock_minimo;
         private System.Windows.Forms.TextBox txt_costo;
         private System.Windows.Forms.TextBox txt_precio;
+        private CustomBox.RJControls.RJButton btn_reiniciar_datos;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

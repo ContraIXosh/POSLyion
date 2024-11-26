@@ -13,6 +13,7 @@ namespace POSLyion
         public Login()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         public void form_closing(object sender, FormClosingEventArgs e)
@@ -64,6 +65,18 @@ namespace POSLyion
         private void txtpassword_TextChanged_2(object sender, EventArgs e)
         {
             txt_clave.PasswordChar = '*';
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_iniciar_sesion.PerformClick();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                btn_cerrar.PerformClick();
+            }
         }
     }
 }

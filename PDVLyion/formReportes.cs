@@ -90,6 +90,7 @@ namespace POSLyion
             panel_izq.Controls.Add(_cbox_clientes, 0, 12);
             panel_izq.Controls.Add(btn_buscar, 0, 13);
             dgv_historial.Dock = DockStyle.Fill;
+            _cbox_clientes.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             chart1.Series.Clear();
             chart2.Series.Clear();
             chart3.Series.Clear();
@@ -124,6 +125,7 @@ namespace POSLyion
             panel_izq.Controls.Add(_cbox_proveedores, 0, 12);
             panel_izq.Controls.Add(btn_buscar, 0, 13);
             dgv_historial.Dock = DockStyle.Fill;
+            _cbox_proveedores.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             chart1.Series.Clear();
             chart2.Series.Clear();
             chart3.Series.Clear();
@@ -377,7 +379,6 @@ namespace POSLyion
             };
         }
 
-
         public void ExportarDataGridViewAExcel(DataGridView dataGridView)
         {
             using (var sfd = new SaveFileDialog())
@@ -440,7 +441,6 @@ namespace POSLyion
                 }
             }
         }
-
 
         private void btn_excel_Click(object sender, EventArgs e)
         {

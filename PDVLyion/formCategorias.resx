@@ -401,15 +401,10 @@
         QmCC
 </value>
   </data>
-  <metadata name="btn_eliminar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>874, 54</value>
   </metadata>
-  <data name="btn_eliminar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAIdJREFUSEvl
-        lbENgDAQxDIao7EZozAKfLor7iInFAhhyY2VC3Rpv2Arr+BePmJ0efcs+xmMu2TFiDu84vu4vyJi3JiI
-        cWMixo20pY5xI22pY9xIW+oYN9KWOsaNtKWOcSNtqWPcSFvqGDfSljrGjbSljtHRjJijdBeM7BtMf6Vm
-        PjL9sn2F1m4q/t3j0mMGlgAAAABJRU5ErkJggg==
-</value>
-  </data>
+  <metadata name="errorProvider2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1003, 54</value>
+  </metadata>
 </root>

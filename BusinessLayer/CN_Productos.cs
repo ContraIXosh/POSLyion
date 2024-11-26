@@ -50,14 +50,6 @@ namespace CapaNegocio
             {
                 mensaje += "Es necesario la descripción del producto.\n";
             }
-            if (oProducto.Precio_costo == 0)
-            {
-                mensaje += "Es necesario el costo del producto.\n";
-            }
-            if (oProducto.Precio_venta == 0)
-            {
-                mensaje += "Es necesario el precio de venta del producto.\n";
-            }
             return mensaje == string.Empty && oCD_Producto.Modificar(oProducto, out mensaje);
         }
 

@@ -19,6 +19,7 @@ namespace POSLyion
             lbl_diff.Visible = false;
             _total_ventas = new CN_Ventas().VerTotalVentasDesde(VariablesGlobales.Inicio_sesion, id_usuario);
             lbl_caja.Text = _total_ventas.Total.ToString();
+            KeyPreview = true;
         }
 
         private void btn_cierre_Click(object sender, EventArgs e)
@@ -121,6 +122,14 @@ namespace POSLyion
         {
             e.Handled = !char.IsDigit(e.KeyChar)
 && ((((TextBox)sender).Text.Trim().Length == 0 && e.KeyChar.ToString() == ",") || !char.IsControl(e.KeyChar));
+        }
+
+        private void formCierre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                btn_cancelar.PerformClick();
+            }
         }
     }
 }

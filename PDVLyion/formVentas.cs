@@ -27,6 +27,7 @@ namespace POSLyion
             InitializeComponent();
             _ticketManager = new TicketManager(flp_tickets, dgv_resumen, CalcularTotal, btn_factura_Click);
             _carritoManager = new CarritoManager(dgv_resumen, new CN_Ventas(), CalcularTotal, LimpiarBusqueda, VerDetalle, _ticketManager);
+            KeyPreview = true;
         }
 
         private void formVentas_Load(object sender, EventArgs e)
@@ -36,6 +37,8 @@ namespace POSLyion
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
         {
+            txt_buscarproductos.BackColor = SystemColors.Control;
+            txt_buscarproductos.BorderStyle = BorderStyle.FixedSingle;
             txt_buscarproductos.Select();
             dgv_productos.Rows.Clear();
             if (txt_buscarproductos.Text != "")
@@ -206,6 +209,7 @@ namespace POSLyion
             if (!panel_container.Controls.Container.Contains(dgv_detalle))
             {
                 dgv_detalle.Columns.Clear();
+                dgv_detalle.AlternatingRowsDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold);
                 _ = dgv_detalle.Columns.Add("dgv_detalle_codigo", "Cod. barras");
                 _ = dgv_detalle.Columns.Add("dgv_detalle_producto", "Producto");
                 _ = dgv_detalle.Columns.Add("dgv_detalle_categoria", "Categoria");
@@ -215,7 +219,7 @@ namespace POSLyion
                 panel_container.Controls.Add(dgv_detalle, 0, 1);
                 dgv_detalle.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgv_detalle.BackgroundColor = Color.MediumSlateBlue;
+                dgv_detalle.BackgroundColor = Color.Black;
                 dgv_detalle.BorderStyle = BorderStyle.None;
                 dgv_detalle.CellBorderStyle = DataGridViewCellBorderStyle.None;
                 dgv_detalle.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -225,6 +229,7 @@ namespace POSLyion
                 dgv_detalle.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
                 dgv_detalle.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
                 dgv_detalle.RowHeadersVisible = false;
+                dgv_detalle.RowsDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold);
                 dgv_detalle.EnableHeadersVisualStyles = false;
                 dgv_detalle.AllowUserToAddRows = false;
                 dgv_detalle.AllowUserToDeleteRows = false;
@@ -373,11 +378,27 @@ namespace POSLyion
 
         private void formVentas_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F4)
             {
                 btn_desc.PerformClick();
             }
+            if (e.KeyCode == Keys.F5)
+            {
+                btn_eliminar_ticket.PerformClick();
+            }
+            if (e.KeyCode == Keys.F6)
+            {
+                _ticketManager.AgregarNuevoTicket();
+            }
+            if (e.KeyCode == Keys.F7)
+            {
+                btn_cerrar_caja.PerformClick();
+            }
             if (e.KeyCode == Keys.F10)
+            {
+                btn_buscar_producto.PerformClick();
+            }
+            if (e.KeyCode == Keys.F12)
             {
                 btn_cerrarventa.PerformClick();
             }
@@ -395,7 +416,7 @@ namespace POSLyion
             }
         }
 
-        private void lbl_cerrarcaja_Click(object sender, EventArgs e)
+        private void btn_cerrar_caja_Click(object sender, EventArgs e)
         {
             using (var formCierreCaja = new formCierre(VariablesGlobales.Usuario_actual.Id_usuario))
             {
@@ -427,6 +448,14 @@ namespace POSLyion
                 }
             }
             _ticketManager.EliminarTicket();
+        }
+
+        private void btn_buscar_producto_Click(object sender, EventArgs e)
+        {
+            txt_buscarproductos.Select();
+            txt_buscarproductos.BackColor = Color.Bisque;
+            txt_buscarproductos.BorderStyle = BorderStyle.Fixed3D;
+            _ = txt_buscarproductos.Focus();
         }
     }
 }

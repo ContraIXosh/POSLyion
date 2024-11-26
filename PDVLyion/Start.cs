@@ -23,6 +23,7 @@ namespace POSLyion
             RegistrarEventos();
             FormManager.Instance.MostrarFormularioPrincipal(0);
             ActualizarColorSeleccionado(EncontrarMenuItem("tsmenu_venta"));
+            KeyPreview = true;
         }
 
         // Método para encontrar un ToolStripMenuItem por su nombre
@@ -150,6 +151,25 @@ namespace POSLyion
             }
             menuItem.BackColor = Color.Teal;
             currentSelectedMenuItem = menuItem;
+        }
+
+        private void Start_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                NavbarClick(EncontrarMenuItem("tsmenu_venta"), e);
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                NavbarClick(EncontrarMenuItem("tsmenu_clientes"), e);
+            }
+            if (e.KeyCode == Keys.F3)
+            {
+                NavbarClick(EncontrarMenuItem("tsmenu_prods"), e);
+            }
+            if (e.KeyCode == Keys.F10)
+            {
+            }
         }
     }
 }

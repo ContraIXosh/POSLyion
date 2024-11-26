@@ -28,27 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.panel_footer = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_reiniciar_datos = new RJCodeAdvance.RJControls.RJButton();
             this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
             this.btn_guardar = new RJCodeAdvance.RJControls.RJButton();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.panel_add = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_cuit = new System.Windows.Forms.TextBox();
+            this.txt_telefono = new System.Windows.Forms.TextBox();
             this.lbl_company_name = new System.Windows.Forms.Label();
             this.lbl_phone = new System.Windows.Forms.Label();
             this.lbl_email = new System.Windows.Forms.Label();
             this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.lbl_cuit = new System.Windows.Forms.Label();
+            this.txt_descripcion = new System.Windows.Forms.TextBox();
+            this.txt_correo = new System.Windows.Forms.TextBox();
             this.panelitop = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_vendedor = new System.Windows.Forms.Label();
-            this.txt_descripcion = new System.Windows.Forms.TextBox();
-            this.txt_telefono = new System.Windows.Forms.TextBox();
-            this.txt_cuit = new System.Windows.Forms.TextBox();
-            this.txt_correo = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel_main.SuspendLayout();
             this.panel_footer.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -56,6 +59,7 @@
             this.panel_add.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panelitop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
@@ -102,12 +106,14 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 1, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.btn_reiniciar_datos, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.txt_id, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -117,6 +123,27 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 56);
             this.tableLayoutPanel2.TabIndex = 27;
+            // 
+            // btn_reiniciar_datos
+            // 
+            this.btn_reiniciar_datos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BorderRadius = 7;
+            this.btn_reiniciar_datos.BorderSize = 2;
+            this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
+            this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.Location = new System.Drawing.Point(245, 10);
+            this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
+            this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 35);
+            this.btn_reiniciar_datos.TabIndex = 14;
+            this.btn_reiniciar_datos.Text = "Reiniciar datos";
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
+            this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_cerrar
             // 
@@ -151,7 +178,7 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btn_guardar.Location = new System.Drawing.Point(357, 10);
+            this.btn_guardar.Location = new System.Drawing.Point(401, 10);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 35);
             this.btn_guardar.TabIndex = 12;
@@ -217,6 +244,24 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(710, 244);
             this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // txt_cuit
+            // 
+            this.txt_cuit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_cuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_cuit.Location = new System.Drawing.Point(476, 43);
+            this.txt_cuit.Name = "txt_cuit";
+            this.txt_cuit.Size = new System.Drawing.Size(229, 29);
+            this.txt_cuit.TabIndex = 69;
+            // 
+            // txt_telefono
+            // 
+            this.txt_telefono.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_telefono.Location = new System.Drawing.Point(239, 43);
+            this.txt_telefono.Name = "txt_telefono";
+            this.txt_telefono.Size = new System.Drawing.Size(229, 29);
+            this.txt_telefono.TabIndex = 68;
             // 
             // lbl_company_name
             // 
@@ -298,6 +343,24 @@
             this.lbl_cuit.TabIndex = 57;
             this.lbl_cuit.Text = "CUIT";
             // 
+            // txt_descripcion
+            // 
+            this.txt_descripcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_descripcion.Location = new System.Drawing.Point(3, 43);
+            this.txt_descripcion.Name = "txt_descripcion";
+            this.txt_descripcion.Size = new System.Drawing.Size(229, 29);
+            this.txt_descripcion.TabIndex = 67;
+            // 
+            // txt_correo
+            // 
+            this.txt_correo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_correo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_correo.Location = new System.Drawing.Point(3, 123);
+            this.txt_correo.Name = "txt_correo";
+            this.txt_correo.Size = new System.Drawing.Size(229, 29);
+            this.txt_correo.TabIndex = 70;
+            // 
             // panelitop
             // 
             this.panelitop.BackColor = System.Drawing.Color.Black;
@@ -327,44 +390,9 @@
             this.lbl_vendedor.TabIndex = 0;
             this.lbl_vendedor.Text = "CREAR VENDEDOR";
             // 
-            // txt_descripcion
+            // errorProvider1
             // 
-            this.txt_descripcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_descripcion.Location = new System.Drawing.Point(3, 43);
-            this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(229, 29);
-            this.txt_descripcion.TabIndex = 67;
-            // 
-            // txt_telefono
-            // 
-            this.txt_telefono.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_telefono.Location = new System.Drawing.Point(239, 43);
-            this.txt_telefono.Name = "txt_telefono";
-            this.txt_telefono.Size = new System.Drawing.Size(229, 29);
-            this.txt_telefono.TabIndex = 68;
-            this.txt_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_telefono_KeyPress_1);
-            // 
-            // txt_cuit
-            // 
-            this.txt_cuit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_cuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_cuit.Location = new System.Drawing.Point(476, 43);
-            this.txt_cuit.Name = "txt_cuit";
-            this.txt_cuit.Size = new System.Drawing.Size(229, 29);
-            this.txt_cuit.TabIndex = 69;
-            this.txt_cuit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cuit_KeyPress_1);
-            // 
-            // txt_correo
-            // 
-            this.txt_correo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_correo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_correo.Location = new System.Drawing.Point(3, 123);
-            this.txt_correo.Name = "txt_correo";
-            this.txt_correo.Size = new System.Drawing.Size(229, 29);
-            this.txt_correo.TabIndex = 70;
-            this.txt_correo.Validating += new System.ComponentModel.CancelEventHandler(this.txt_correo_Validating_1);
+            this.errorProvider1.ContainerControl = this;
             // 
             // formProveedoresAlta
             // 
@@ -375,8 +403,10 @@
             this.MaximizeBox = false;
             this.Name = "formProveedoresAlta";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Agregar vendedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Crear un proveedor";
             this.Load += new System.EventHandler(this.formProveedoresAlta_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formProveedoresAlta_KeyDown);
             this.panel_main.ResumeLayout(false);
             this.panel_footer.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -387,6 +417,7 @@
             this.tableLayoutPanel4.PerformLayout();
             this.panelitop.ResumeLayout(false);
             this.panelitop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,5 +445,7 @@
         private System.Windows.Forms.TextBox txt_telefono;
         private System.Windows.Forms.TextBox txt_descripcion;
         private System.Windows.Forms.TextBox txt_correo;
+        private RJCodeAdvance.RJControls.RJButton btn_reiniciar_datos;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
