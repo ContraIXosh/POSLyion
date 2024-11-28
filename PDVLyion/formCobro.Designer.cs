@@ -1,6 +1,6 @@
 ﻿namespace POSLyion
 {
-    partial class formCambio
+    partial class formCobro
     {
         /// <summary>
         /// Required designer variable.
@@ -284,12 +284,12 @@
             this.lbl_vuelto.TabIndex = 13;
             this.lbl_vuelto.Text = "Vuelto: $0,00";
             // 
-            // formCambio
+            // formCobro
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(779, 362);
             this.Controls.Add(this.panel_main);
-            this.Name = "formCambio";
+            this.Name = "formCobro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.formCambio_Load);
             this.panel_main.ResumeLayout(false);

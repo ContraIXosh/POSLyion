@@ -1,6 +1,6 @@
 ﻿namespace POSLyion
 {
-    partial class formCierre
+    partial class formCierreCaja
     {
         /// <summary>
         /// Required designer variable.

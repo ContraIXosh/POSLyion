@@ -1,79 +1,193 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using POSLyion.Resources;
+using POSLyion.Resources.Interfaces;
 using System;
 using System.Windows.Forms;
 
 namespace POSLyion
 {
 
-    public partial class formProveedoresAlta : Form
+    public partial class formProveedoresAlta : Form, IFormCRUD
     {
-        private Proveedores _proveedor;
-        private Proveedores _proveedorAnterior;
+        private Proveedores _objeto;
+        private Proveedores _objetoAnterior;
 
         public formProveedoresAlta()
         {
             InitializeComponent();
-            _proveedor = new Proveedores();
+            _objeto = new Proveedores();
         }
 
         public formProveedoresAlta(Proveedores oProveedor)
         {
             InitializeComponent();
-            _proveedor = oProveedor;
+            _objeto = oProveedor;
         }
 
         private void formProveedoresAlta_Load(object sender, EventArgs e)
         {
-            CargarManejadoresEventos();
             CargarValoresPorDefecto();
-            CargarDatosProveedor();
+            MostrarDatosObjeto();
+            CargarManejadoresEventos();
             KeyPreview = true;
         }
 
-        private void CargarManejadoresEventos()
+        public void CargarManejadoresEventos()
         {
             txt_telefono.KeyPress += new KeyPressEventHandler(NoLetras);
             txt_cuit.KeyPress += new KeyPressEventHandler(NoLetras);
         }
 
-        private void CargarValoresPorDefecto()
+        public void CargarValoresPorDefecto()
         {
-            cbo_estado.Visible = false;
+            cbox_estado.Visible = false;
             lbl_estado.Visible = false;
             btn_reiniciar_datos.Visible = false;
 
-            _ = cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
-            _ = cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
-            cbo_estado.DisplayMember = "Texto";
-            cbo_estado.ValueMember = "Valor";
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
+            cbox_estado.DisplayMember = "Texto";
+            cbox_estado.ValueMember = "Valor";
+
+            cbox_estado.SelectedIndex = 0;
         }
 
-        private void CargarDatosProveedor()
+        public void MostrarDatosObjeto()
         {
-            if (_proveedor.Id_proveedor != null)
+            if (_objeto.Id_proveedor != 0)
             {
-                CargarRespaldoProveedor();
-                cbo_estado.Visible = true;
+                RespaldoDatosObjeto();
+
                 lbl_estado.Visible = true;
+                cbox_estado.Visible = true;
                 btn_reiniciar_datos.Visible = true;
 
-                var cbo_state_index = 0;
-                txt_id.Text = _proveedor.Id_proveedor.ToString();
-                txt_cuit.Text = _proveedor.Cuit;
-                txt_descripcion.Text = _proveedor.Descripcion;
-                txt_correo.Text = _proveedor.Correo;
-                txt_telefono.Text = _proveedor.Telefono;
-                foreach (OpcionCombo opcion_estado in cbo_estado.Items)
+
+                txt_cuit.Text = _objeto.Cuit;
+                txt_descripcion.Text = _objeto.Descripcion;
+                txt_correo.Text = _objeto.Correo;
+                txt_telefono.Text = _objeto.Telefono;
+
+                var cbox_state_index = 0;
+                foreach (OpcionCombo opcion_estado in cbox_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Valor) == (_proveedor.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (_objeto.Estado == true ? 1 : 0))
                     {
-                        cbo_state_index = cbo_estado.Items.IndexOf(opcion_estado);
+                        cbox_state_index = cbox_estado.Items.IndexOf(opcion_estado);
                         break;
                     }
                 }
-                cbo_estado.SelectedIndex = cbo_state_index;
+                cbox_estado.SelectedIndex = cbox_state_index;
+            }
+        }
+
+        public void CrearNuevoObjeto()
+        {
+            _objeto = new Proveedores()
+            {
+                Cuit = txt_cuit.Text,
+                Descripcion = txt_descripcion.Text,
+                Correo = txt_correo.Text,
+                Telefono = txt_telefono.Text,
+            };
+
+            if (new CN_Proveedores().Crear(_objeto, out var mensaje) == 0)
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                _ = MessageBox.Show("Proveedor generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
+            }
+        }
+
+        public void EditarObjeto()
+        {
+            _objeto.Cuit = txt_cuit.Text;
+            _objeto.Descripcion = txt_descripcion.Text;
+            _objeto.Correo = txt_correo.Text;
+            _objeto.Telefono = txt_telefono.Text;
+            _objeto.Estado = Convert.ToInt32(((OpcionCombo)cbox_estado.SelectedItem).Valor) == 1;
+
+            if (new CN_Proveedores().Modificar(_objeto, out var mensaje) == false)
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                _ = MessageBox.Show("Proveedor actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
+            }
+        }
+
+        public bool ValidarDatos()
+        {
+            var resultado = true;
+            if (txt_descripcion.Text == "")
+            {
+                resultado = false;
+                errorProvider1.SetError(txt_descripcion, "Inserte un nombre para el proveedor");
+            }
+            return resultado;
+        }
+
+        public void RespaldoDatosObjeto()
+        {
+            _objetoAnterior = new Proveedores
+            {
+                Id_proveedor = _objeto.Id_proveedor,
+                Descripcion = _objeto.Descripcion,
+                Cuit = _objeto.Cuit,
+                Correo = _objeto.Correo,
+                Telefono = _objeto.Telefono,
+                Estado = _objeto.Estado
+            };
+        }
+
+        private void NoLetras(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void btn_guardar_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatos())
+            {
+                if (_objeto.Id_proveedor == 0)
+                {
+                    CrearNuevoObjeto();
+                }
+                else
+                {
+                    EditarObjeto();
+                }
+            }
+        }
+
+        public void btn_cerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        public void btn_reiniciar_datos_Click(object sender, EventArgs e)
+        {
+            txt_descripcion.Text = _objetoAnterior.Descripcion;
+            txt_telefono.Text = _objetoAnterior.Telefono;
+            txt_cuit.Text = _objetoAnterior.Cuit;
+            txt_correo.Text = _objetoAnterior.Correo;
+            cbox_estado.SelectedIndex = _objetoAnterior.Estado ? 0 : 1;
+        }
+
+        private void formProveedoresAlta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
             }
         }
 
@@ -98,118 +212,5 @@ namespace POSLyion
             }
         }
 
-        private void btn_guardar_Click(object sender, EventArgs e)
-        {
-            if (ValidarDatos())
-            {
-                if (_proveedor.Id_proveedor == null)
-                {
-                    GenerarProveedor();
-                    CrearNuevoProveedor();
-                    Close();
-                }
-                else
-                {
-                    EditarProveedor();
-                }
-            }
-        }
-
-        private void GenerarProveedor()
-        {
-            _proveedor = new Proveedores()
-            {
-                Cuit = txt_cuit.Text,
-                Descripcion = txt_descripcion.Text,
-                Correo = txt_correo.Text,
-                Telefono = txt_telefono.Text,
-            };
-        }
-
-        private void EditarProveedor()
-        {
-            _proveedor.Cuit = txt_cuit.Text;
-            _proveedor.Descripcion = txt_descripcion.Text;
-            _proveedor.Correo = txt_correo.Text;
-            _proveedor.Telefono = txt_telefono.Text;
-            _proveedor.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1;
-
-            if (new CN_Proveedores().Modificar(_proveedor, out var mensaje))
-            {
-                _ = MessageBox.Show("Proveedor actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Close();
-            }
-            else
-            {
-                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void CrearNuevoProveedor()
-        {
-            if (new CN_Proveedores().Crear(_proveedor, out var mensaje) == 0)
-            {
-                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                _ = MessageBox.Show("Proveedor generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Close();
-            }
-        }
-
-        private void CargarRespaldoProveedor()
-        {
-            _proveedorAnterior = new Proveedores
-            {
-                Id_proveedor = _proveedor.Id_proveedor,
-                Descripcion = _proveedor.Descripcion,
-                Cuit = _proveedor.Cuit,
-                Correo = _proveedor.Correo,
-                Telefono = _proveedor.Telefono,
-                Estado = _proveedor.Estado
-            };
-        }
-
-        private void btn_cerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void NoLetras(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private bool ValidarDatos()
-        {
-            var resultado = true;
-            if (txt_descripcion.Text == "")
-            {
-                resultado = false;
-                errorProvider1.SetError(txt_descripcion, "Inserte un nombre para el proveedor");
-            }
-            return resultado;
-        }
-
-        private void btn_reiniciar_datos_Click(object sender, EventArgs e)
-        {
-            txt_descripcion.Text = _proveedorAnterior.Descripcion;
-            txt_telefono.Text = _proveedorAnterior.Telefono;
-            txt_cuit.Text = _proveedorAnterior.Cuit;
-            txt_correo.Text = _proveedorAnterior.Correo;
-            cbo_estado.SelectedIndex = _proveedorAnterior.Estado ? 0 : 1;
-        }
-
-        private void formProveedoresAlta_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-        }
     }
 }

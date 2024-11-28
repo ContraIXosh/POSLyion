@@ -180,6 +180,7 @@ namespace POSLyion
             {
                 _ = formUsuariosAlta.ShowDialog();
             }
+            MostrarUsuarios();
         }
     }
 }

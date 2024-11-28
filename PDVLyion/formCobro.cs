@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace POSLyion
 {
-    public partial class formCambio : Form
+    public partial class formCobro : Form
     {
         private readonly decimal montoEfectivo = 0m;
         private readonly decimal montoTarjeta = 0m;
@@ -17,7 +17,7 @@ namespace POSLyion
         public bool venta_cerrada = false;
         private readonly Clientes Cliente;
 
-        public formCambio(decimal p_total, Clientes cliente)
+        public formCobro(decimal p_total, Clientes cliente)
         {
             InitializeComponent();
             total = p_total - (p_total * (Convert.ToDecimal(cliente.Descuento) / 100));

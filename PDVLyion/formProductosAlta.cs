@@ -1,25 +1,26 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using POSLyion.Resources;
+using POSLyion.Resources.Interfaces;
 using System;
 using System.Windows.Forms;
 
 namespace POSLyion
 {
-    public partial class formProductosAlta : Form
+    public partial class formProductosAlta : Form, IFormCRUD
     {
-        private Productos _producto;
-        private Productos _productoAnterior;
+        private Productos _objeto;
+        private Productos _objetoAnterior;
 
         public formProductosAlta()
         {
-            _producto = new Productos();
+            _objeto = new Productos();
             InitializeComponent();
         }
 
         public formProductosAlta(Productos producto)
         {
-            _producto = producto;
+            _objeto = producto;
             InitializeComponent();
         }
 
@@ -27,18 +28,24 @@ namespace POSLyion
         {
             CargarManejadoresEventos();
             CargarValoresPorDefecto();
-            CargarValoresProducto();
+            MostrarDatosObjeto();
             KeyPreview = true;
         }
 
-        private void CargarValoresPorDefecto()
+        public void CargarManejadoresEventos()
         {
-            //Ocultar los controles para asignar un estado
+            txt_cantidad.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_codigo_barras.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_stock_minimo.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_cantidad.KeyPress += new KeyPressEventHandler(NoLetras);
+        }
+
+        public void CargarValoresPorDefecto()
+        {
             cbox_estado.Visible = false;
             lbl_estado.Visible = false;
             btn_reiniciar_datos.Visible = false;
 
-            //Carga de categorías
             var lista_categorias = new CN_Categorias().Leer();
             foreach (var oCategoria in lista_categorias)
             {
@@ -47,40 +54,38 @@ namespace POSLyion
             cbox_tipo.DisplayMember = "Texto";
             cbox_tipo.ValueMember = "Valor";
 
-            //Cargar los estados
             _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
             _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
             cbox_estado.DisplayMember = "Texto";
             cbox_estado.ValueMember = "Valor";
 
-            //Seleccionar la categoría y estado que se muestra por defecto
             cbox_tipo.SelectedIndex = 0;
             cbox_tipo.SelectedIndex = 0;
         }
 
-        private void CargarValoresProducto()
+        public void MostrarDatosObjeto()
         {
-            if (_producto.Id_producto != 0)
+            if (_objeto.Id_producto != 0)
             {
-                CargarRespaldoProducto();
+                RespaldoDatosObjeto();
 
                 lbl_estado.Visible = true;
                 cbox_estado.Visible = true;
                 btn_reiniciar_datos.Visible = true;
 
-                txt_codigo_barras.Text = _producto.Codigo_barras;
-                txt_cantidad.Text = _producto.Stock_actual.ToString();
-                txt_stock_minimo.Text = _producto.Stock_minimo.ToString();
-                txt_descripcion.Text = _producto.Descripcion;
-                txt_costo.Text = _producto.Precio_costo.ToString();
-                txt_precio.Text = _producto.Precio_venta.ToString();
+                txt_codigo_barras.Text = _objeto.Codigo_barras;
+                txt_cantidad.Text = _objeto.Stock_actual.ToString();
+                txt_stock_minimo.Text = _objeto.Stock_minimo.ToString();
+                txt_descripcion.Text = _objeto.Descripcion;
+                txt_costo.Text = _objeto.Precio_costo.ToString();
+                txt_precio.Text = _objeto.Precio_venta.ToString();
 
                 var cbox_tipo_index = 0;
                 var cbox_estado_index = 0;
 
                 foreach (OpcionCombo opcion_estado in cbox_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Valor) == (_producto.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (_objeto.Estado == true ? 1 : 0))
                     {
                         cbox_estado_index = cbox_estado.Items.IndexOf(opcion_estado);
                         break;
@@ -90,7 +95,7 @@ namespace POSLyion
 
                 foreach (OpcionCombo opcion_categoria in cbox_tipo.Items)
                 {
-                    if (Convert.ToInt32(opcion_categoria.Valor) == _producto.oCategoria.Id_categoria)
+                    if (Convert.ToInt32(opcion_categoria.Valor) == _objeto.oCategoria.Id_categoria)
                     {
                         cbox_tipo_index = cbox_tipo.Items.IndexOf(opcion_categoria);
                         break;
@@ -100,9 +105,9 @@ namespace POSLyion
             }
         }
 
-        private void CrearNuevoProducto()
+        public void CrearNuevoObjeto()
         {
-            _producto = new Productos()
+            _objeto = new Productos()
             {
                 Codigo_barras = txt_codigo_barras.Text,
                 Descripcion = txt_descripcion.Text,
@@ -115,7 +120,7 @@ namespace POSLyion
                 Stock_actual = Convert.ToInt32(txt_cantidad.Text),
                 Stock_minimo = Convert.ToInt32(txt_stock_minimo.Text),
             };
-            var id_generada_producto = new CN_Productos().Create(_producto, out var mensaje);
+            var id_generada_producto = new CN_Productos().Create(_objeto, out var mensaje);
             if (id_generada_producto == 0)
             {
                 _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -127,18 +132,18 @@ namespace POSLyion
             }
         }
 
-        private void EditarProducto()
+        public void EditarObjeto()
         {
-            _producto.Codigo_barras = txt_codigo_barras.Text;
-            _producto.Descripcion = txt_descripcion.Text;
-            _producto.oCategoria.Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Valor);
-            _producto.Precio_costo = Convert.ToDecimal(txt_costo.Text);
-            _producto.Precio_venta = Convert.ToDecimal(txt_precio.Text);
-            _producto.Stock_actual = Convert.ToInt32(txt_cantidad.Text);
-            _producto.Stock_minimo = Convert.ToInt32(txt_stock_minimo.Text);
-            _producto.Estado = Convert.ToBoolean(((OpcionCombo)cbox_estado.SelectedItem).Valor);
-            var resultado = new CN_Productos().Modificar(_producto, out var mensaje);
-            if (resultado == false)
+            _objeto.Codigo_barras = txt_codigo_barras.Text;
+            _objeto.Descripcion = txt_descripcion.Text;
+            _objeto.oCategoria.Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Valor);
+            _objeto.Precio_costo = Convert.ToDecimal(txt_costo.Text);
+            _objeto.Precio_venta = Convert.ToDecimal(txt_precio.Text);
+            _objeto.Stock_actual = Convert.ToInt32(txt_cantidad.Text);
+            _objeto.Stock_minimo = Convert.ToInt32(txt_stock_minimo.Text);
+            _objeto.Estado = Convert.ToBoolean(((OpcionCombo)cbox_estado.SelectedItem).Valor);
+
+            if (new CN_Productos().Modificar(_objeto, out var mensaje) == false)
             {
                 _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -149,38 +154,7 @@ namespace POSLyion
             }
         }
 
-        private void CargarRespaldoProducto()
-        {
-            _productoAnterior = new Productos
-            {
-                Id_producto = _producto.Id_producto,
-                Codigo_barras = _producto.Codigo_barras,
-                Descripcion = _producto.Descripcion,
-                oCategoria = new Categorias() { Id_categoria = _producto.oCategoria.Id_categoria },
-                Precio_costo = _producto.Precio_costo,
-                Precio_venta = _producto.Precio_venta,
-                Stock_actual = _producto.Stock_actual,
-                Stock_minimo = _producto.Stock_minimo,
-                Estado = _producto.Estado
-            };
-        }
-
-        private void btn_guardar_Click(object sender, EventArgs e)
-        {
-            if (ValidarDatos())
-            {
-                if (_producto.Id_producto == 0)
-                {
-                    CrearNuevoProducto();
-                }
-                else
-                {
-                    EditarProducto();
-                }
-            }
-        }
-
-        private bool ValidarDatos()
+        public bool ValidarDatos()
         {
             var resultado = true;
 
@@ -217,32 +191,20 @@ namespace POSLyion
             return resultado;
         }
 
-        private void btn_reiniciar_datos_Click(object sender, EventArgs e)
+        public void RespaldoDatosObjeto()
         {
-            if (_productoAnterior != null)
+            _objetoAnterior = new Productos
             {
-                txt_codigo_barras.Text = _productoAnterior.Codigo_barras;
-                cbox_tipo.SelectedIndex = _productoAnterior.oCategoria.Id_categoria - 1;
-                txt_cantidad.Text = _productoAnterior.Stock_actual.ToString();
-                cbox_estado.SelectedIndex = _productoAnterior.Estado == true ? 0 : 1;
-                txt_descripcion.Text = _productoAnterior.Descripcion;
-                txt_stock_minimo.Text = _productoAnterior.Stock_minimo.ToString();
-                txt_costo.Text = _productoAnterior.Precio_costo.ToString();
-                txt_precio.Text = _productoAnterior.Precio_venta.ToString();
-            }
-        }
-
-        private void btn_cancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void CargarManejadoresEventos()
-        {
-            txt_cantidad.KeyPress += new KeyPressEventHandler(NoLetras);
-            txt_codigo_barras.KeyPress += new KeyPressEventHandler(NoLetras);
-            txt_stock_minimo.KeyPress += new KeyPressEventHandler(NoLetras);
-            txt_cantidad.KeyPress += new KeyPressEventHandler(NoLetras);
+                Id_producto = _objeto.Id_producto,
+                Codigo_barras = _objeto.Codigo_barras,
+                Descripcion = _objeto.Descripcion,
+                oCategoria = new Categorias() { Id_categoria = _objeto.oCategoria.Id_categoria },
+                Precio_costo = _objeto.Precio_costo,
+                Precio_venta = _objeto.Precio_venta,
+                Stock_actual = _objeto.Stock_actual,
+                Stock_minimo = _objeto.Stock_minimo,
+                Estado = _objeto.Estado
+            };
         }
 
         private void NoLetras(object sender, KeyPressEventArgs e)
@@ -251,6 +213,41 @@ namespace POSLyion
             {
                 //_ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
+            }
+        }
+
+        public void btn_guardar_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatos())
+            {
+                if (_objeto.Id_producto == 0)
+                {
+                    CrearNuevoObjeto();
+                }
+                else
+                {
+                    EditarObjeto();
+                }
+            }
+        }
+
+        public void btn_cerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        public void btn_reiniciar_datos_Click(object sender, EventArgs e)
+        {
+            if (_objetoAnterior != null)
+            {
+                txt_codigo_barras.Text = _objetoAnterior.Codigo_barras;
+                cbox_tipo.SelectedIndex = _objetoAnterior.oCategoria.Id_categoria - 1;
+                txt_cantidad.Text = _objetoAnterior.Stock_actual.ToString();
+                cbox_estado.SelectedIndex = _objetoAnterior.Estado == true ? 0 : 1;
+                txt_descripcion.Text = _objetoAnterior.Descripcion;
+                txt_stock_minimo.Text = _objetoAnterior.Stock_minimo.ToString();
+                txt_costo.Text = _objetoAnterior.Precio_costo.ToString();
+                txt_precio.Text = _objetoAnterior.Precio_venta.ToString();
             }
         }
 

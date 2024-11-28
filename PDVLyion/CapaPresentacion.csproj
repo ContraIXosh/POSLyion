@@ -496,6 +496,7 @@
     <Compile Include="Resources\Funcionalidad\ProductoCarrito.cs" />
     <Compile Include="Resources\Funcionalidad\Ticket.cs" />
     <Compile Include="Resources\Funcionalidad\TicketManager.cs" />
+    <Compile Include="Resources\Interfaces\IFormCRUD.cs" />
     <Compile Include="Resources\OpcionCombo.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>

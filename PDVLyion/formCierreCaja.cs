@@ -5,14 +5,14 @@ using System.Windows.Forms;
 
 namespace POSLyion
 {
-    public partial class formCierre : Form
+    public partial class formCierreCaja : Form
     {
         private readonly Ventas _total_ventas = new Ventas();
         private readonly double[] valoresBilletes = { 10, 20, 50, 100, 200, 500, 1000, 2000, 10000 };
         private double monto_caja = 0;
         public bool _caja_cerrada = false;
 
-        public formCierre(int id_usuario)
+        public formCierreCaja(int id_usuario)
         {
             InitializeComponent();
             lbl_resultado.Visible = false;

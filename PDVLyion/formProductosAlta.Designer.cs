@@ -140,7 +140,7 @@
             this.btn_cerrar.Text = "Cerrar";
             this.btn_cerrar.TextColor = System.Drawing.Color.Red;
             this.btn_cerrar.UseVisualStyleBackColor = false;
-            this.btn_cerrar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // panel_crimconfg
             // 

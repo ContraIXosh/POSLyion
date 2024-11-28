@@ -1,6 +1,6 @@
 ﻿namespace POSLyion
 {
-    partial class formDescuento
+    partial class formSeleccionCliente
     {
         /// <summary>
         /// Required designer variable.

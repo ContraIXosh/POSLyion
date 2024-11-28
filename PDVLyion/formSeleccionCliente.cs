@@ -8,13 +8,13 @@ using System.Windows.Forms;
 
 namespace POSLyion
 {
-    public partial class formDescuento : Form
+    public partial class formSeleccionCliente : Form
     {
 
         public Clientes Cliente = new Clientes();
         public bool Cliente_seleccionado = false;
 
-        public formDescuento()
+        public formSeleccionCliente()
         {
             InitializeComponent();
             KeyPreview = true;

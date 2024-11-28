@@ -77,7 +77,7 @@ namespace POSLyion
         {
             if (dgv_resumen.Rows.Count > 0)
             {
-                using (var formularioCobro = new formCambio(total, Cliente))
+                using (var formularioCobro = new formCobro(total, Cliente))
                 {
                     _ = formularioCobro.ShowDialog();
                     // Después de cerrar, se obtiene el valor del vuelto
@@ -360,7 +360,7 @@ namespace POSLyion
 
         private void btn_desc_Click(object sender, EventArgs e)
         {
-            using (var formDescuento = new formDescuento())
+            using (var formDescuento = new formSeleccionCliente())
             {
                 _ = formDescuento.ShowDialog();
                 if (formDescuento.Cliente_seleccionado)
@@ -418,7 +418,7 @@ namespace POSLyion
 
         private void btn_cerrar_caja_Click(object sender, EventArgs e)
         {
-            using (var formCierreCaja = new formCierre(VariablesGlobales.Usuario_actual.Id_usuario))
+            using (var formCierreCaja = new formCierreCaja(VariablesGlobales.Usuario_actual.Id_usuario))
             {
                 _ = formCierreCaja.ShowDialog();
                 if (formCierreCaja._caja_cerrada)

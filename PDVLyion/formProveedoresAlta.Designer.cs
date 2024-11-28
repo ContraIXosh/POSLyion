@@ -36,7 +36,6 @@
             this.btn_reiniciar_datos = new RJCodeAdvance.RJControls.RJButton();
             this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
             this.btn_guardar = new RJCodeAdvance.RJControls.RJButton();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.panel_add = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_cuit = new System.Windows.Forms.TextBox();
@@ -44,7 +43,7 @@
             this.lbl_company_name = new System.Windows.Forms.Label();
             this.lbl_phone = new System.Windows.Forms.Label();
             this.lbl_email = new System.Windows.Forms.Label();
-            this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
+            this.cbox_estado = new RJCodeAdvance.RJControls.RJComboBox();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.lbl_cuit = new System.Windows.Forms.Label();
             this.txt_descripcion = new System.Windows.Forms.TextBox();
@@ -114,7 +113,6 @@
             this.tableLayoutPanel2.Controls.Add(this.btn_reiniciar_datos, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txt_id, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -187,15 +185,6 @@
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
-            // txt_id
-            // 
-            this.txt_id.Location = new System.Drawing.Point(3, 3);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(45, 20);
-            this.txt_id.TabIndex = 13;
-            this.txt_id.Text = "0";
-            this.txt_id.Visible = false;
-            // 
             // panel_add
             // 
             this.panel_add.BackColor = System.Drawing.Color.Green;
@@ -226,7 +215,7 @@
             this.tableLayoutPanel4.Controls.Add(this.lbl_company_name, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lbl_phone, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.lbl_email, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.cbo_estado, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.cbox_estado, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.lbl_estado, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.lbl_cuit, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.txt_descripcion, 0, 1);
@@ -299,25 +288,25 @@
             this.lbl_email.TabIndex = 64;
             this.lbl_email.Text = "EMAIL";
             // 
-            // cbo_estado
+            // cbox_estado
             // 
-            this.cbo_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbo_estado.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbo_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.BorderSize = 1;
-            this.cbo_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbo_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbo_estado.ForeColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbo_estado.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.Location = new System.Drawing.Point(239, 123);
-            this.cbo_estado.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbo_estado.Name = "cbo_estado";
-            this.cbo_estado.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_estado.Size = new System.Drawing.Size(230, 30);
-            this.cbo_estado.TabIndex = 66;
-            this.cbo_estado.Texts = "";
+            this.cbox_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbox_estado.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbox_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.BorderSize = 1;
+            this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbox_estado.ForeColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.Location = new System.Drawing.Point(239, 123);
+            this.cbox_estado.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbox_estado.Name = "cbox_estado";
+            this.cbox_estado.Padding = new System.Windows.Forms.Padding(1);
+            this.cbox_estado.Size = new System.Drawing.Size(230, 30);
+            this.cbox_estado.TabIndex = 66;
+            this.cbox_estado.Texts = "";
             // 
             // lbl_estado
             // 
@@ -411,7 +400,6 @@
             this.panel_footer.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.panel_add.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -431,7 +419,7 @@
         private System.Windows.Forms.Label lbl_cuit;
         private System.Windows.Forms.Label lbl_company_name;
         private System.Windows.Forms.Label lbl_phone;
-        private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
+        private RJCodeAdvance.RJControls.RJComboBox cbox_estado;
         private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.Label lbl_email;
         private System.Windows.Forms.TableLayoutPanel panelitop;
@@ -440,7 +428,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private RJCodeAdvance.RJControls.RJButton btn_cerrar;
         private RJCodeAdvance.RJControls.RJButton btn_guardar;
-        private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.TextBox txt_cuit;
         private System.Windows.Forms.TextBox txt_telefono;
         private System.Windows.Forms.TextBox txt_descripcion;
