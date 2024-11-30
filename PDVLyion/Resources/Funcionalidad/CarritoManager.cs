@@ -47,27 +47,8 @@ namespace POSLyion.Resources.Funcionalidad
             {
                 if (_ventasService.RestarStock(idProducto, 1))
                 {
-                    _ = _dgv_resumen.Rows.Add(new object[]
-                    {
-                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString(),
-                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_descripcion"].Value.ToString(),
-                        1,
-                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
-                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
-                        "Editar",
-                        "Eliminar"
-                    });
-
-                    var producto = new ProductoCarrito()
-                    {
-                        IdProducto = idProducto,
-                        NombreProducto = dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_descripcion"].Value.ToString(),
-                        Cantidad = 1,
-                        Precio = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value),
-                        Subtotal = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value)
-                    };
-
-                    _ticketManager.AgregarProductoEnTicket(producto);
+                    var productoAgregado = GenerarProducto(dgv_productos, e, idProducto);
+                    _ticketManager.AgregarProductoEnTicket(productoAgregado);
                 }
             }
             else
@@ -82,7 +63,35 @@ namespace POSLyion.Resources.Funcionalidad
                         Convert.ToDecimal(filaProductoEncontrado.Cells["dgv_resumen_precio"].Value);
                 }
             }
+        }
 
+        private ProductoCarrito GenerarProducto(DataGridView dgv_productos, DataGridViewCellEventArgs e, int idProducto)
+        {
+            _ = _dgv_resumen.Rows.Add(new object[]
+                    {
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value.ToString(),
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_descripcion"].Value.ToString(),
+                        1,
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio_mayorista"].Value.ToString(),
+                        dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value,
+                        "Editar",
+                        "Eliminar",
+                        "minorista"
+                    });
+
+            var producto = new ProductoCarrito()
+            {
+                IdProducto = idProducto,
+                NombreProducto = dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_descripcion"].Value.ToString(),
+                Cantidad = 1,
+                Precio = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value),
+                PrecioMayorista = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio_mayorista"].Value),
+                Subtotal = Convert.ToDecimal(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_precio"].Value),
+                ControlPrecioAplicado = "minorista"
+            };
+
+            return producto;
         }
 
         private bool VerificarExistenciaProducto(DataGridView dgv_productos, DataGridViewCellEventArgs e, out DataGridViewRow filaProductoEncontrado)

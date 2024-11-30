@@ -348,17 +348,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classTicket.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="formCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formCategorias.Designer.cs">
       <DependentUpon>formCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="formCierre.cs">
+    <Compile Include="formCierreCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formCierre.Designer.cs">
-      <DependentUpon>formCierre.cs</DependentUpon>
+    <Compile Include="formCierreCaja.Designer.cs">
+      <DependentUpon>formCierreCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="formConfiguracion.cs">
       <SubType>Form</SubType>
@@ -378,11 +384,11 @@
     <Compile Include="formClientesAlta.Designer.cs">
       <DependentUpon>formClientesAlta.cs</DependentUpon>
     </Compile>
-    <Compile Include="formDescuento.cs">
+    <Compile Include="formSeleccionCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formDescuento.Designer.cs">
-      <DependentUpon>formDescuento.cs</DependentUpon>
+    <Compile Include="formSeleccionCliente.Designer.cs">
+      <DependentUpon>formSeleccionCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="formLogOut.cs">
       <SubType>Form</SubType>
@@ -402,11 +408,11 @@
     <Compile Include="formProductosAlta.Designer.cs">
       <DependentUpon>formProductosAlta.cs</DependentUpon>
     </Compile>
-    <Compile Include="formCambio.cs">
+    <Compile Include="formCobro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formCambio.Designer.cs">
-      <DependentUpon>formCambio.cs</DependentUpon>
+    <Compile Include="formCobro.Designer.cs">
+      <DependentUpon>formCobro.cs</DependentUpon>
     </Compile>
     <Compile Include="formCompras.cs">
       <SubType>Form</SubType>
@@ -497,7 +503,7 @@
     <Compile Include="Resources\Funcionalidad\Ticket.cs" />
     <Compile Include="Resources\Funcionalidad\TicketManager.cs" />
     <Compile Include="Resources\Interfaces\IFormCRUD.cs" />
-    <Compile Include="Resources\OpcionCombo.cs" />
+    <Compile Include="Resources\Funcionalidad\OpcionCombo.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -506,11 +512,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formCategorias.resx">
       <DependentUpon>formCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formCierre.resx">
-      <DependentUpon>formCierre.cs</DependentUpon>
+    <EmbeddedResource Include="formCierreCaja.resx">
+      <DependentUpon>formCierreCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formConfiguracion.resx">
       <DependentUpon>formConfiguracion.cs</DependentUpon>
@@ -521,8 +530,8 @@
     <EmbeddedResource Include="formClientesAlta.resx">
       <DependentUpon>formClientesAlta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formDescuento.resx">
-      <DependentUpon>formDescuento.cs</DependentUpon>
+    <EmbeddedResource Include="formSeleccionCliente.resx">
+      <DependentUpon>formSeleccionCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formLogOut.resx">
       <DependentUpon>formLogOut.cs</DependentUpon>
@@ -533,8 +542,8 @@
     <EmbeddedResource Include="formProductosAlta.resx">
       <DependentUpon>formProductosAlta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formCambio.resx">
-      <DependentUpon>formCambio.cs</DependentUpon>
+    <EmbeddedResource Include="formCobro.resx">
+      <DependentUpon>formCobro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formCompras.resx">
       <DependentUpon>formCompras.cs</DependentUpon>

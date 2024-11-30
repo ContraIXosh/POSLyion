@@ -8,12 +8,8 @@ namespace POSLyion
     public partial class formCobro : Form
     {
         private readonly decimal montoEfectivo = 0m;
-        private readonly decimal montoTarjeta = 0m;
-        private readonly decimal montoMP = 0m;
         public decimal total = 0;
         public decimal vuelto = 0;
-        // Evento que se invoca al realizar el cobro
-        // para que formulario Start se suscriba
         public bool venta_cerrada = false;
         private readonly Clientes Cliente;
 
@@ -22,16 +18,7 @@ namespace POSLyion
             InitializeComponent();
             total = p_total - (p_total * (Convert.ToDecimal(cliente.Descuento) / 100));
             Cliente = cliente;
-            lbl_suma_total.Text = Convert.ToString(total);
-        }
-
-        private void formCambio_Load(object sender, EventArgs e)
-        {
-            if (Cliente.Descuento != 0)
-            {
-                lbl_descuento_aplicado.Text = "Descuento aplicado por cliente: " + Cliente.Nombre_completo;
-                lbl_descuento_aplicado.Visible = true;
-            }
+            lbl_suma_total.Text = $"$ {Convert.ToString(total)}";
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -41,11 +28,14 @@ namespace POSLyion
 
         private void btn_cobrar_Click(object sender, EventArgs e)
         {
-            var suma_total = Convert.ToDecimal(lbl_suma_total.Text);
-            decimal dinero_entregado;
+            var monto = lbl_suma_total.Text;
+            var sumaTotal = Convert.ToDecimal(monto.Replace("$", "").Trim());
+            string lblDineroEntregado;
+            decimal dineroEntregado;
             if (txt_dinero_entregado.Text != "")
             {
-                dinero_entregado = Convert.ToDecimal(txt_dinero_entregado.Text);
+                lblDineroEntregado = txt_dinero_entregado.Text;
+                dineroEntregado = Convert.ToDecimal(lblDineroEntregado.Replace("$", "").Trim());
             }
             else
             {
@@ -53,7 +43,7 @@ namespace POSLyion
                 return;
             }
 
-            if (suma_total > dinero_entregado)
+            if (sumaTotal > dineroEntregado)
             {
                 _ = MessageBox.Show("Dinero entregado insuficiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 _ = txt_dinero_entregado.Focus();
@@ -68,34 +58,69 @@ namespace POSLyion
 
         private void txt_dinero_entregado_TextChanged(object sender, EventArgs e)
         {
-            if (txt_dinero_entregado.Text != "")
+            var lblDineroEntregado = txt_dinero_entregado.Text.Replace("$", "").Trim();
+            if (lblDineroEntregado != "")
             {
-                vuelto = Convert.ToDecimal(txt_dinero_entregado.Text) - total;
-                lbl_vuelto.Text = vuelto >= 0 ? "Vuelto: $" + vuelto.ToString() : "Monto entregado insuficiente";
+                vuelto = Convert.ToDecimal(lblDineroEntregado) - total;
+                lbl_cambio.Text = vuelto >= 0 ? "$ " + vuelto.ToString() : "Monto entregado insuficiente";
             }
             else
             {
-                lbl_vuelto.Text = "Vuelto: $0,00";
+                lbl_cambio.Text = "$0,00";
             }
             txt_dinero_entregado.Select();
         }
 
         private void txt_dinero_entregado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar)
-&& ((txt_dinero_entregado.Text.Trim().Length == 0 && e.KeyChar.ToString() == ",")
-|| (!char.IsControl(e.KeyChar) && e.KeyChar.ToString() != ","));
+            var tecla = e.KeyChar;
+
+            // Permitir el símbolo de dólar solo si es el primer carácter
+            if (tecla == '$' && txt_dinero_entregado.Text.Length == 0)
+            {
+                e.Handled = false;
+                return;
+            }
+
+            // Permitir números
+            if (char.IsDigit(tecla))
+            {
+                e.Handled = false;
+                return;
+            }
+
+            // Permitir punto para los miles, pero no más de uno seguido
+            if (tecla == '.' && txt_dinero_entregado.Text.Length > 0)
+            {
+                var lastCommaIndex = txt_dinero_entregado.Text.LastIndexOf(',');
+                var lastDotIndex = txt_dinero_entregado.Text.LastIndexOf('.');
+
+                if (lastCommaIndex == -1 || lastDotIndex > lastCommaIndex)
+                {
+                    e.Handled = false;
+                    return;
+                }
+            }
+
+            // Permitir coma para decimales, pero solo una
+            if (tecla == ',' && txt_dinero_entregado.Text.IndexOf(',') == -1)
+            {
+                e.Handled = false;
+                return;
+            }
+
+            // Permitir teclas de control (backspace, delete, etc.)
+            if (char.IsControl(tecla))
+            {
+                e.Handled = false;
+                return;
+            }
+
+            // Bloquear cualquier otro carácter
+            e.Handled = true;
         }
 
-        private void btn_elimef_Click(object sender, EventArgs e)
-        {
-            lbl_efectivo.Text = string.Empty;
-            lbl_efectivo.Text = "Efectivo: $0.00";
-        }
 
-        private void btn_elimtj_Click(object sender, EventArgs e)
-        {
-        }
 
         private void btn_buscar_cliente_Click(object sender, EventArgs e)
         {

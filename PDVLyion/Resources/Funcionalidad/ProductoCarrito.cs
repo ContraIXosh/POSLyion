@@ -6,6 +6,8 @@
         public string NombreProducto { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
+        public decimal PrecioMayorista { get; set; }
         public decimal Subtotal { get; set; }
+        public string ControlPrecioAplicado { get; set; }
     }
 }

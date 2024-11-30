@@ -13,14 +13,10 @@ namespace POSLyion
     {
         private readonly CarritoManager _carritoManager;
         private readonly TicketManager _ticketManager;
-        private readonly Ticket _ticketSeleccionado;
         private readonly DataGridView dgv_detalle = new DataGridView();
-        private decimal total = 0;
-        private decimal vuelto = 0;
-        private string dgv_activo = "factura";
         public Clientes Cliente = new Clientes();
-        private readonly formConfiguracion formConfiguracion;
-        private readonly formCompras formCompras;
+        private decimal total = 0;
+        private string dgv_activo = "factura";
 
         public formVentas()
         {
@@ -43,14 +39,15 @@ namespace POSLyion
             dgv_productos.Rows.Clear();
             if (txt_buscarproductos.Text != "")
             {
-                var tabla_productos = new CN_Productos().Buscar(txt_buscarproductos.Text);
+                var tabla_productos = new CN_Productos().BuscarProductoCarrito(txt_buscarproductos.Text);
                 foreach (DataRow fila in tabla_productos.Rows)
                 {
                     _ = dgv_productos.Rows.Add(new object[]
                     {
                         fila["ID"],
                         fila["Descripcion"],
-                        fila["Precio"],
+                        fila["Precio minorista"],
+                        fila["Precio mayorista"],
                         fila["Stock actual"],
                     });
                 }
@@ -81,12 +78,12 @@ namespace POSLyion
                 {
                     _ = formularioCobro.ShowDialog();
                     // Después de cerrar, se obtiene el valor del vuelto
-                    vuelto = formularioCobro.vuelto;
+                    var vuelto = formularioCobro.vuelto;
                     // Start se suscribe al evento VentanaCerrada en cuanto sea invocado
                     if (formularioCobro.venta_cerrada)
                     {
                         var total_con_descuento = formularioCobro.total != Convert.ToDecimal(lbl_suma_total.Text) ? formularioCobro.total : Convert.ToDecimal(lbl_suma_total.Text);
-                        CrearVenta(total_con_descuento);
+                        CrearVenta(total_con_descuento, vuelto);
                     }
                 }
             }
@@ -96,18 +93,42 @@ namespace POSLyion
             }
         }
 
-        public void dgv_resumen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void CrearVenta(decimal totalConDescuento, decimal vuelto)
         {
-            _carritoManager.ModificarCarrito(e, dgv_activo, dgv_detalle);
+            if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto), GenerarVentaDetalle(), out var mensaje, out var id_venta_generado))
+            {
+                var Ticket1 = new classTicket.CreaTicket();
+                Ticket1.TextoCentro("Empresa xxxxx ");
+                Ticket1.TextoCentro("**********************************");
+                Ticket1.TextoIzquierda("");
+                Ticket1.TextoCentro("Factura de Venta");
+                Ticket1.TextoIzquierda("No Fac:" + id_venta_generado);
+                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
+                Ticket1.TextoIzquierda("Le Atendio: " + VariablesGlobales.Usuario_actual.Nombre_completo);
+                Ticket1.TextoIzquierda("");
+                _ = classTicket.CreaTicket.LineasGuion();
+                classTicket.CreaTicket.EncabezadoVenta(dgv_resumen);
+                _ = classTicket.CreaTicket.LineasGuion();
+                _ = classTicket.CreaTicket.LineasGuion();
+                Ticket1.TextoIzquierda(" ");
+                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(totalConDescuento));
+                Ticket1.TextoIzquierda(" ");
+                Ticket1.TextoIzquierda(" ");
+                var impresora = "Microsoft XPS Document Writer v4";
+                Ticket1.ImprimirTiket(impresora);
+
+                _ = MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _ticketManager.FinalizarVenta();
+                lbl_tipoticket.Text = "Consumidor final";
+                Cliente = new Clientes();
+            }
+            else
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void LimpiarBusqueda()
-        {
-            txt_buscarproductos.Text = "";
-            dgv_productos.Rows.Clear();
-        }
-
-        public void CrearVenta(decimal total_con_descuento)
+        public DataTable GenerarVentaDetalle()
         {
             var ventaDetalle = new DataTable();
             _ = ventaDetalle.Columns.Add("Id_Producto", typeof(int));
@@ -126,48 +147,31 @@ namespace POSLyion
                 });
             }
 
+            return ventaDetalle;
+        }
+
+        public Ventas GenerarVentaCabecera(decimal totalConDescuento, decimal vuelto)
+        {
             var oVenta = new Ventas()
             {
                 oUsuario = new Usuarios() { Id_usuario = VariablesGlobales.Usuario_actual.Id_usuario },
-                oCliente = new Clientes() { Id_cliente = Cliente.Id_cliente == null ? 1 : Cliente.Id_cliente },
-                Total = total_con_descuento,
+                oCliente = new Clientes() { Id_cliente = Cliente.Id_cliente == 0 ? 1 : Cliente.Id_cliente },
+                Total = totalConDescuento,
                 Vuelto = vuelto,
             };
 
-            var respuesta = new CN_Ventas().Crear(oVenta, ventaDetalle, out var mensaje, out var id_venta_generado);
+            return oVenta;
+        }
 
-            if (respuesta)
-            {
-                var Ticket1 = new classTicket.CreaTicket();
-                Ticket1.TextoCentro("Empresa xxxxx ");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoCentro("Factura de Venta");
-                Ticket1.TextoIzquierda("No Fac:" + id_venta_generado);
-                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                Ticket1.TextoIzquierda("Le Atendio: " + VariablesGlobales.Usuario_actual.Nombre_completo);
-                Ticket1.TextoIzquierda("");
-                _ = classTicket.CreaTicket.LineasGuion();
-                classTicket.CreaTicket.EncabezadoVenta(dgv_resumen);
-                _ = classTicket.CreaTicket.LineasGuion();
-                _ = classTicket.CreaTicket.LineasGuion();
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(total_con_descuento));
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.TextoIzquierda(" ");
-                var impresora = "Microsoft XPS Document Writer v4";
-                Ticket1.ImprimirTiket(impresora);
+        public void dgv_resumen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _carritoManager.ModificarCarrito(e, dgv_activo, dgv_detalle);
+        }
 
-                _ = MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgv_resumen.Rows.Clear();
-                lbl_tipoticket.Text = "Consumidor final";
-                Cliente = new Clientes();
-                CalcularTotal();
-            }
-            else
-            {
-                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+        private void LimpiarBusqueda()
+        {
+            txt_buscarproductos.Text = "";
+            dgv_productos.Rows.Clear();
         }
 
         public void CalcularTotal()
@@ -177,7 +181,7 @@ namespace POSLyion
             {
                 foreach (DataGridViewRow fila in dgv_resumen.Rows)
                 {
-                    total += Convert.ToDecimal(fila.Cells["dgv_resumen_subtotal"].Value.ToString());
+                    total += Convert.ToDecimal(fila.Cells["dgv_resumen_precio"].Value) * Convert.ToDecimal(fila.Cells["dgv_resumen_cantidad"].Value);
                 }
                 lbl_suma_total.Text = total.ToString();
             }
@@ -275,10 +279,14 @@ namespace POSLyion
                 _ = dgv_resumen.Columns.Add("dgv_resumen_descripcion", "Producto");
                 _ = dgv_resumen.Columns.Add("dgv_resumen_cantidad", "Cantidad");
                 _ = dgv_resumen.Columns.Add("dgv_resumen_precio", "Precio");
+                _ = dgv_resumen.Columns.Add("dgv_resumen_precio_mayorista", "Precio mayorista");
                 _ = dgv_resumen.Columns.Add("dgv_resumen_subtotal", "Subtotal");
                 _ = dgv_resumen.Columns.Add("btn_editar", "");
                 _ = dgv_resumen.Columns.Add("btn_eliminar", "");
+                _ = dgv_resumen.Columns.Add("control_precio_aplicado", "");
                 dgv_resumen.Columns["dgv_resumen_id"].Visible = false;
+                dgv_resumen.Columns["dgv_resumen_precio_mayorista"].Visible = false;
+                dgv_resumen.Columns["control_precio_aplicado"].Visible = false;
                 dgv_resumen.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgv_resumen.Visible = true;
@@ -378,42 +386,39 @@ namespace POSLyion
 
         private void formVentas_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F4)
+            Keys[] teclasEspeciales =
+                { Keys.F1, Keys.F2, Keys.F3, Keys.F4,
+                Keys.F5, Keys.F6, Keys.F7, Keys.F8,
+                Keys.F9, Keys.F10, Keys.F11, Keys.F12,
+                Keys.Enter, Keys.Delete, Keys.ShiftKey, Keys.ControlKey, Keys.Alt };
+            if (Array.Exists(teclasEspeciales, tecla => tecla == e.KeyCode))
             {
-                btn_desc.PerformClick();
+                if (e.KeyCode == Keys.F4)
+                {
+                    btn_desc.PerformClick();
+                }
+                if (e.KeyCode == Keys.F5)
+                {
+                    btn_eliminar_ticket.PerformClick();
+                }
+                if (e.KeyCode == Keys.F6)
+                {
+                    _ticketManager.AgregarNuevoTicket();
+                }
+                if (e.KeyCode == Keys.F7)
+                {
+                    btn_cerrar_caja.PerformClick();
+                }
+                if (e.KeyCode == Keys.F10)
+                {
+                    btn_buscar_producto.PerformClick();
+                }
+                if (e.KeyCode == Keys.F12)
+                {
+                    btn_cerrarventa.PerformClick();
+                }
             }
-            if (e.KeyCode == Keys.F5)
-            {
-                btn_eliminar_ticket.PerformClick();
-            }
-            if (e.KeyCode == Keys.F6)
-            {
-                _ticketManager.AgregarNuevoTicket();
-            }
-            if (e.KeyCode == Keys.F7)
-            {
-                btn_cerrar_caja.PerformClick();
-            }
-            if (e.KeyCode == Keys.F10)
-            {
-                btn_buscar_producto.PerformClick();
-            }
-            if (e.KeyCode == Keys.F12)
-            {
-                btn_cerrarventa.PerformClick();
-            }
-        }
 
-        private void formVentas_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (formConfiguracion != null && !formConfiguracion.IsDisposed)
-            {
-                formConfiguracion.Close();
-            }
-            if (formCompras != null && !formCompras.IsDisposed)
-            {
-                formCompras.Close();
-            }
         }
 
         private void btn_cerrar_caja_Click(object sender, EventArgs e)
@@ -456,6 +461,97 @@ namespace POSLyion
             txt_buscarproductos.BackColor = Color.Bisque;
             txt_buscarproductos.BorderStyle = BorderStyle.Fixed3D;
             _ = txt_buscarproductos.Focus();
+        }
+
+        private void AplicarPrecioMinorista(DataGridViewRow filaActual)
+        {
+            var respaldoPrecioMayorista = Convert.ToDecimal(filaActual.Cells["dgv_resumen_precio"].Value);
+            filaActual.Cells["dgv_resumen_precio"].Value = filaActual.Cells["dgv_resumen_precio_mayorista"].Value;
+            filaActual.Cells["dgv_resumen_precio_mayorista"].Value = respaldoPrecioMayorista;
+            filaActual.Cells["control_precio_aplicado"].Value = "minorista";
+            filaActual.DefaultCellStyle.BackColor = Color.White;
+            _ticketManager.AplicarPrecioMinorista(filaActual);
+            CalcularTotal();
+        }
+
+        private void AplicarPrecioMayorista(DataGridViewRow filaActual)
+        {
+            if (Convert.ToDecimal(filaActual.Cells["dgv_resumen_precio_mayorista"].Value) != 0)
+            {
+                var respaldoPrecioMinorista = Convert.ToDecimal(filaActual.Cells["dgv_resumen_precio"].Value);
+                filaActual.Cells["dgv_resumen_precio"].Value = filaActual.Cells["dgv_resumen_precio_mayorista"].Value;
+                filaActual.Cells["dgv_resumen_precio_mayorista"].Value = respaldoPrecioMinorista;
+                filaActual.Cells["control_precio_aplicado"].Value = "mayorista";
+                filaActual.DefaultCellStyle.BackColor = Color.Bisque;
+                _ticketManager.AplicarPrecioMayorista(filaActual);
+                CalcularTotal();
+            }
+            else
+            {
+                _ = MessageBox.Show("Producto sin precio mayorista", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txt_buscarproductos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                if (dgv_productos.Rows.Count > 0)
+                {
+                    dgv_productos.Select();
+                }
+                else if (_ticketManager.ObtenerTicketActual().Productos.Count > 0)
+                {
+                    if (!string.Equals(dgv_activo, "factura"))
+                    {
+                        btn_factura_Click("Facturación", e);
+                    }
+
+                    dgv_resumen.Select();
+                }
+            }
+        }
+
+        private void dgv_productos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var indiceFila = new DataGridViewCellEventArgs(0, dgv_productos.CurrentRow.Index);
+                _carritoManager.AgregarProductoCarrito(dgv_productos, indiceFila, dgv_activo);
+                txt_buscarproductos.Text = "";
+                txt_buscarproductos.Select();
+                CalcularTotal();
+                e.Handled = true;
+            }
+        }
+
+        private void dgv_resumen_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgv_resumen.Rows.Count > 0)
+            {
+                if (e.KeyCode == Keys.F11 && dgv_activo == "factura")
+                {
+                    _ = dgv_resumen.CurrentCell;
+                    var filaActual = dgv_resumen.CurrentRow;
+
+                    switch (filaActual.Cells["control_precio_aplicado"].Value)
+                    {
+                        case "mayorista":
+                            AplicarPrecioMinorista(filaActual);
+                            break;
+                        case "minorista":
+                            AplicarPrecioMayorista(filaActual);
+                            break;
+                    }
+                }
+                if (e.KeyCode == Keys.Delete && dgv_activo == "factura")
+                {
+                    // Se envía el ColumnIndex 7 que corresponde al "btn_eliminar",
+                    // y el índice de la fila posicionada actualmente
+                    var indicesFila = new DataGridViewCellEventArgs(7, dgv_resumen.CurrentRow.Index);
+                    _carritoManager.ModificarCarrito(indicesFila, dgv_activo, dgv_detalle);
+                }
+            }
         }
     }
 }

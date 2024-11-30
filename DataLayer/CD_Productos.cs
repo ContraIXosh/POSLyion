@@ -25,6 +25,7 @@ namespace CapaDatos
                     _ = command.Parameters.AddWithValue("id_categoria", oProducto.oCategoria.Id_categoria);
                     _ = command.Parameters.AddWithValue("precio_costo", oProducto.Precio_costo);
                     _ = command.Parameters.AddWithValue("precio_venta", oProducto.Precio_venta);
+                    _ = command.Parameters.AddWithValue("precio_mayorista", oProducto.Precio_venta);
                     _ = command.Parameters.AddWithValue("stock_actual", oProducto.Stock_actual);
                     _ = command.Parameters.AddWithValue("stock_minimo", oProducto.Stock_minimo);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
@@ -52,7 +53,7 @@ namespace CapaDatos
                 {
                     oConexion.Open();
                     var query = new StringBuilder();
-                    _ = query.AppendLine("SELECT id_producto, codigo_barras, p.descripcion, precio_costo, precio_venta, stock_actual, stock_minimo, p.estado, pc.id_categoria, pc.descripcion[DescripcionCategoria] FROM Productos as p");
+                    _ = query.AppendLine("SELECT id_producto, codigo_barras, p.descripcion, precio_costo, precio_venta, precio_mayorista, stock_actual, stock_minimo, p.estado, pc.id_categoria, pc.descripcion[DescripcionCategoria] FROM Productos as p");
                     _ = query.AppendLine("INNER JOIN Categorias as pc ON p.id_categoria = pc.id_categoria ");
                     _ = query.AppendLine("WHERE (p.descripcion LIKE '%' + @nombre_producto + '%' OR @nombre_producto = '')");
                     _ = query.AppendLine("AND (p.codigo_barras = IIF(@codigo_barras = '', p.codigo_barras, @codigo_barras))");
@@ -80,6 +81,7 @@ namespace CapaDatos
                                 },
                                 Precio_costo = Convert.ToDecimal(reader["precio_costo"]),
                                 Precio_venta = Convert.ToDecimal(reader["precio_venta"]),
+                                Precio_mayorista = Convert.ToDecimal(reader["precio_mayorista"]),
                                 Stock_actual = Convert.ToInt32(reader["stock_actual"]),
                                 Stock_minimo = Convert.ToInt32(reader["stock_minimo"]),
                                 Estado = Convert.ToBoolean(reader["estado"])
@@ -103,7 +105,7 @@ namespace CapaDatos
                 try
                 {
                     oConexion.Open();
-                    var query = "SELECT id_producto, descripcion, precio_costo, precio_venta, stock_actual FROM Productos WHERE estado = 1 AND id_producto = " + id;
+                    var query = "SELECT id_producto, descripcion, precio_costo, precio_venta, precio_mayorista, stock_actual FROM Productos WHERE estado = 1 AND id_producto = " + id;
                     var command = new SqlCommand(query.ToString(), oConexion)
                     {
                         CommandType = CommandType.Text
@@ -116,6 +118,7 @@ namespace CapaDatos
                             producto.Descripcion = reader["descripcion"].ToString();
                             producto.Precio_costo = Convert.ToDecimal(reader["precio_costo"]);
                             producto.Precio_venta = Convert.ToDecimal(reader["precio_venta"]);
+                            producto.Precio_mayorista = Convert.ToDecimal(reader["precio_mayorista"]);
                             producto.Stock_actual = Convert.ToInt32(reader["stock_actual"]);
                         }
                     }
@@ -128,7 +131,7 @@ namespace CapaDatos
             }
         }
 
-        public DataTable Buscar(string texto)
+        public DataTable BuscarProductoCarrito(string texto)
         {
             var tabla_datos = new DataTable();
             using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
@@ -136,7 +139,7 @@ namespace CapaDatos
                 try
                 {
                     oConexion.Open();
-                    var query = "SELECT id_producto, descripcion, precio_venta, stock_actual FROM Productos WHERE estado = 1 AND descripcion LIKE '%" + texto + "%'";
+                    var query = "SELECT id_producto, descripcion, precio_venta, precio_mayorista, stock_actual FROM Productos WHERE estado = 1 AND descripcion LIKE '%" + texto + "%'";
                     var command = new SqlCommand(query.ToString(), oConexion)
                     {
                         CommandType = CommandType.Text
@@ -146,11 +149,12 @@ namespace CapaDatos
                         tabla_datos = new DataTable();
                         _ = tabla_datos.Columns.Add("ID", typeof(int));
                         _ = tabla_datos.Columns.Add("Descripcion", typeof(string));
-                        _ = tabla_datos.Columns.Add("Precio", typeof(decimal));
+                        _ = tabla_datos.Columns.Add("Precio minorista", typeof(decimal));
+                        _ = tabla_datos.Columns.Add("Precio mayorista", typeof(decimal));
                         _ = tabla_datos.Columns.Add("Stock actual", typeof(int));
                         while (reader.Read())
                         {
-                            _ = tabla_datos.Rows.Add(reader["id_producto"], reader["descripcion"], reader["precio_venta"], reader["stock_actual"]);
+                            _ = tabla_datos.Rows.Add(reader["id_producto"], reader["descripcion"], reader["precio_venta"], reader["precio_mayorista"], reader["stock_actual"]);
                         }
                     }
                 }
@@ -178,6 +182,7 @@ namespace CapaDatos
                     _ = command.Parameters.AddWithValue("id_categoria", oProducto.oCategoria.Id_categoria);
                     _ = command.Parameters.AddWithValue("precio_costo", oProducto.Precio_costo);
                     _ = command.Parameters.AddWithValue("precio_venta", oProducto.Precio_venta);
+                    _ = command.Parameters.AddWithValue("precio_mayorista", oProducto.Precio_mayorista);
                     _ = command.Parameters.AddWithValue("stock_actual", oProducto.Stock_actual);
                     _ = command.Parameters.AddWithValue("stock_minimo", oProducto.Stock_minimo);
                     _ = command.Parameters.AddWithValue("estado", oProducto.Estado);

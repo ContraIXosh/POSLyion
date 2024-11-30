@@ -40,6 +40,7 @@ CREATE TABLE Productos (
 	id_categoria INT NOT NULL,
 	precio_costo DECIMAL(9, 2) NOT NULL,
 	precio_venta DECIMAL(9, 2) NOT NULL,
+	precio_mayorista DECIMAL(9, 2) NOT NULL,
 	stock_actual INT DEFAULT 0 NULL,
 	stock_minimo INT DEFAULT 0 NULL,
 	estado BIT DEFAULT 1 NULL,
@@ -128,6 +129,7 @@ CREATE TABLE Ventas (
 	id_cliente INT NOT NULL,
 	total DECIMAL(12, 2) NOT NULL,
 	vuelto DECIMAL(6, 2) NOT NULL,
+	notas_venta VARCHAR(365) NULL,
 	create_date DATETIME DEFAULT GETDATE() NULL,
 	modify_date DATETIME NULL,
 	CONSTRAINT PK_id_venta PRIMARY KEY (id_venta),	
@@ -256,17 +258,17 @@ VALUES('General'),
 ('Helados')
 GO
 
-INSERT INTO Productos(codigo_barras, descripcion, id_categoria, precio_costo, precio_venta, stock_actual, stock_minimo)
+INSERT INTO Productos(codigo_barras, descripcion, id_categoria, precio_costo, precio_venta, precio_mayorista, stock_actual, stock_minimo)
 VALUES
-('111', 'Tatin', 5, 6.60, 6.66, 5, 3),
-('222', 'Blancaflor 1kg', 2, 11.60, 7.66, 6, 2),
-('333', 'Fideo', 3, 9.60, 10.33, 5, 3),
-('444', 'Arroz', 3, 5.80, 8.66, 2, 4),
-('555', 'Agua Villavicencio 500ml', 4, 6.70, 10.46, -5, 2),
-('666', 'Pepsi 1,5L', 4, 4.55, 15.79, -4, 6),
-('777', 'Garrafa', 1, 12.32, 13.66, 0, 3),
-('888', 'Torta Helada familiar 1kg', 6, 5.75, 19.99, 4, 4),
-('999', 'Chupetin MR.POP', 5, 7.13, 10.01, -10, 5)
+('111', 'Tatin', 5, 6.60, 6.66, 0, 5, 3),
+('222', 'Blancaflor 1kg', 2, 11.60, 0, 7.66, 6, 2),
+('333', 'Fideo', 3, 9.60, 10.33, 0, 5, 3),
+('444', 'Arroz', 3, 5.80, 8.66, 0, 2, 4),
+('555', 'Agua Villavicencio 500ml', 4, 6.70, 10.46, 0, -5, 2),
+('666', 'Pepsi 1,5L', 4, 4.55, 15.79, 0, -4, 6),
+('777', 'Garrafa', 1, 12.32, 13.66, 0, 0, 3),
+('888', 'Torta Helada familiar 1kg', 6, 5.75, 19.99, 0, 4, 4),
+('999', 'Chupetin MR.POP', 5, 7.13, 10.01, 0, -10, 5)
 GO
 
 CREATE PROC SP_ALTA_PRODUCTO
@@ -275,6 +277,7 @@ CREATE PROC SP_ALTA_PRODUCTO
 	@id_categoria INT,
 	@precio_costo DECIMAL(9, 2),
 	@precio_venta DECIMAL(9, 2),
+	@precio_mayorista DECIMAL(9, 2),
 	@stock_actual INT,
 	@stock_minimo INT,
 	@mensaje VARCHAR(360) OUTPUT,
@@ -286,9 +289,9 @@ BEGIN
 	IF NOT EXISTS(SELECT * FROM Productos WHERE codigo_barras = @codigo_barras)
 	BEGIN
 		INSERT INTO Productos(codigo_barras, descripcion, id_categoria, precio_costo, precio_venta, 
-		stock_actual, stock_minimo)
+		precio_mayorista, stock_actual, stock_minimo)
 		VALUES(@codigo_barras, @descripcion, @id_categoria, @precio_costo, @precio_venta,
-		@stock_actual, @stock_minimo)
+		@precio_mayorista, @stock_actual, @stock_minimo)
 		SET @id_generada_producto = SCOPE_IDENTITY()
 	END
 	ELSE
@@ -305,6 +308,7 @@ CREATE PROC SP_MODIFICAR_PRODUCTO
 	@id_categoria INT,
 	@precio_costo DECIMAL(9, 2),
 	@precio_venta DECIMAL(9, 2),
+	@precio_mayorista DECIMAL(9, 2),
 	@stock_actual INT,
 	@stock_minimo INT,
 	@estado BIT,
@@ -323,6 +327,7 @@ BEGIN
 		id_categoria = @id_categoria,
 		precio_costo = @precio_costo,
 		precio_venta = @precio_venta,
+		precio_mayorista = @precio_mayorista,
 		stock_actual = @stock_actual,
 		stock_minimo = @stock_minimo,
 		estado = @estado,

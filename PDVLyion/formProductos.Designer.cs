@@ -37,19 +37,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formProductos));
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_productos = new System.Windows.Forms.DataGridView();
-            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo_barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_actual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio_costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio_venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
             this.btn_crear_producto = new RJCodeAdvance.RJControls.RJButton();
@@ -80,6 +67,20 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo_barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_actual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock_minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_mayorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_mid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_productos)).BeginInit();
             this.panel_midizq.SuspendLayout();
@@ -140,6 +141,7 @@
             this.stock_minimo,
             this.precio_costo,
             this.precio_venta,
+            this.precio_mayorista,
             this.estado,
             this.estado_valor,
             this.btn_editar,
@@ -181,110 +183,6 @@
             this.dgv_productos.Size = new System.Drawing.Size(818, 501);
             this.dgv_productos.TabIndex = 13;
             this.dgv_productos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_productos_CellContentClick);
-            // 
-            // id_producto
-            // 
-            this.id_producto.HeaderText = "ID";
-            this.id_producto.Name = "id_producto";
-            this.id_producto.ReadOnly = true;
-            this.id_producto.Visible = false;
-            // 
-            // codigo_barras
-            // 
-            this.codigo_barras.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.codigo_barras.HeaderText = "COD. BARRAS";
-            this.codigo_barras.Name = "codigo_barras";
-            this.codigo_barras.ReadOnly = true;
-            // 
-            // descripcion_producto
-            // 
-            this.descripcion_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion_producto.FillWeight = 150F;
-            this.descripcion_producto.HeaderText = "DESCRIPCIÓN";
-            this.descripcion_producto.Name = "descripcion_producto";
-            this.descripcion_producto.ReadOnly = true;
-            // 
-            // id_categoria
-            // 
-            this.id_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.id_categoria.FillWeight = 5F;
-            this.id_categoria.HeaderText = "ID CATEGORIA";
-            this.id_categoria.Name = "id_categoria";
-            this.id_categoria.ReadOnly = true;
-            this.id_categoria.Visible = false;
-            // 
-            // descripcion_categoria
-            // 
-            this.descripcion_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripcion_categoria.HeaderText = "CATEGORÍA";
-            this.descripcion_categoria.Name = "descripcion_categoria";
-            this.descripcion_categoria.ReadOnly = true;
-            // 
-            // stock_actual
-            // 
-            this.stock_actual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_actual.HeaderText = "STOCK ACTUAL";
-            this.stock_actual.Name = "stock_actual";
-            this.stock_actual.ReadOnly = true;
-            // 
-            // stock_minimo
-            // 
-            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stock_minimo.HeaderText = "STOCK MIN";
-            this.stock_minimo.Name = "stock_minimo";
-            this.stock_minimo.ReadOnly = true;
-            // 
-            // precio_costo
-            // 
-            this.precio_costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio_costo.FillWeight = 80F;
-            this.precio_costo.HeaderText = "PRECIO COSTO";
-            this.precio_costo.Name = "precio_costo";
-            this.precio_costo.ReadOnly = true;
-            // 
-            // precio_venta
-            // 
-            this.precio_venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio_venta.FillWeight = 80F;
-            this.precio_venta.HeaderText = "PRECIO VENTA";
-            this.precio_venta.Name = "precio_venta";
-            this.precio_venta.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.estado.FillWeight = 80F;
-            this.estado.HeaderText = "ESTADO";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
-            // estado_valor
-            // 
-            this.estado_valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.estado_valor.HeaderText = "ESTADO VALOR";
-            this.estado_valor.Name = "estado_valor";
-            this.estado_valor.ReadOnly = true;
-            this.estado_valor.Visible = false;
-            // 
-            // btn_editar
-            // 
-            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_editar.FillWeight = 80F;
-            this.btn_editar.HeaderText = "EDITAR";
-            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
-            this.btn_editar.Name = "btn_editar";
-            this.btn_editar.ReadOnly = true;
-            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_eliminar.FillWeight = 90F;
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.ReadOnly = true;
-            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel_midizq
             // 
@@ -671,6 +569,116 @@
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
+            // id_producto
+            // 
+            this.id_producto.HeaderText = "ID";
+            this.id_producto.Name = "id_producto";
+            this.id_producto.ReadOnly = true;
+            this.id_producto.Visible = false;
+            // 
+            // codigo_barras
+            // 
+            this.codigo_barras.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.codigo_barras.HeaderText = "COD. BARRAS";
+            this.codigo_barras.Name = "codigo_barras";
+            this.codigo_barras.ReadOnly = true;
+            // 
+            // descripcion_producto
+            // 
+            this.descripcion_producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion_producto.FillWeight = 150F;
+            this.descripcion_producto.HeaderText = "DESCRIPCIÓN";
+            this.descripcion_producto.Name = "descripcion_producto";
+            this.descripcion_producto.ReadOnly = true;
+            // 
+            // id_categoria
+            // 
+            this.id_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id_categoria.FillWeight = 5F;
+            this.id_categoria.HeaderText = "ID CATEGORIA";
+            this.id_categoria.Name = "id_categoria";
+            this.id_categoria.ReadOnly = true;
+            this.id_categoria.Visible = false;
+            // 
+            // descripcion_categoria
+            // 
+            this.descripcion_categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion_categoria.HeaderText = "CATEGORÍA";
+            this.descripcion_categoria.Name = "descripcion_categoria";
+            this.descripcion_categoria.ReadOnly = true;
+            // 
+            // stock_actual
+            // 
+            this.stock_actual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_actual.HeaderText = "STOCK ACTUAL";
+            this.stock_actual.Name = "stock_actual";
+            this.stock_actual.ReadOnly = true;
+            // 
+            // stock_minimo
+            // 
+            this.stock_minimo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stock_minimo.HeaderText = "STOCK MIN";
+            this.stock_minimo.Name = "stock_minimo";
+            this.stock_minimo.ReadOnly = true;
+            // 
+            // precio_costo
+            // 
+            this.precio_costo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio_costo.FillWeight = 80F;
+            this.precio_costo.HeaderText = "PRECIO COSTO";
+            this.precio_costo.Name = "precio_costo";
+            this.precio_costo.ReadOnly = true;
+            // 
+            // precio_venta
+            // 
+            this.precio_venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio_venta.FillWeight = 80F;
+            this.precio_venta.HeaderText = "PRECIO VENTA";
+            this.precio_venta.Name = "precio_venta";
+            this.precio_venta.ReadOnly = true;
+            // 
+            // precio_mayorista
+            // 
+            this.precio_mayorista.HeaderText = "PRECIO MAYORISTA";
+            this.precio_mayorista.Name = "precio_mayorista";
+            this.precio_mayorista.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.estado.FillWeight = 80F;
+            this.estado.HeaderText = "ESTADO";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            // 
+            // estado_valor
+            // 
+            this.estado_valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.estado_valor.HeaderText = "ESTADO VALOR";
+            this.estado_valor.Name = "estado_valor";
+            this.estado_valor.ReadOnly = true;
+            this.estado_valor.Visible = false;
+            // 
+            // btn_editar
+            // 
+            this.btn_editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_editar.FillWeight = 80F;
+            this.btn_editar.HeaderText = "EDITAR";
+            this.btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar.Image")));
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.ReadOnly = true;
+            this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btn_eliminar.FillWeight = 90F;
+            this.btn_eliminar.HeaderText = "ELIMINAR";
+            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.ReadOnly = true;
+            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // formProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -727,6 +735,10 @@
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel panel_bot;
+        private System.Windows.Forms.Label lbl_updateversion;
+        private System.Windows.Forms.Label lbl_updatetime;
+        private CustomBox.RJControls.RJButton btn_limpiar_filtros;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo_barras;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion_producto;
@@ -736,13 +748,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stock_minimo;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_costo;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_venta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio_mayorista;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado_valor;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
-        private System.Windows.Forms.TableLayoutPanel panel_bot;
-        private System.Windows.Forms.Label lbl_updateversion;
-        private System.Windows.Forms.Label lbl_updatetime;
-        private CustomBox.RJControls.RJButton btn_limpiar_filtros;
     }
 }

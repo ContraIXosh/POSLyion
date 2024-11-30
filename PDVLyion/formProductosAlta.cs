@@ -37,7 +37,8 @@ namespace POSLyion
             txt_cantidad.KeyPress += new KeyPressEventHandler(NoLetras);
             txt_codigo_barras.KeyPress += new KeyPressEventHandler(NoLetras);
             txt_stock_minimo.KeyPress += new KeyPressEventHandler(NoLetras);
-            txt_cantidad.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_precio_minorista.KeyPress += new KeyPressEventHandler(ControlTextboxPrecios);
+            txt_precio_mayorista.KeyPress += new KeyPressEventHandler(ControlTextboxPrecios);
         }
 
         public void CargarValoresPorDefecto()
@@ -78,7 +79,8 @@ namespace POSLyion
                 txt_stock_minimo.Text = _objeto.Stock_minimo.ToString();
                 txt_descripcion.Text = _objeto.Descripcion;
                 txt_costo.Text = _objeto.Precio_costo.ToString();
-                txt_precio.Text = _objeto.Precio_venta.ToString();
+                txt_precio_minorista.Text = _objeto.Precio_venta.ToString();
+                txt_precio_mayorista.Text = _objeto.Precio_mayorista.ToString();
 
                 var cbox_tipo_index = 0;
                 var cbox_estado_index = 0;
@@ -116,7 +118,8 @@ namespace POSLyion
                     Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Valor)
                 },
                 Precio_costo = Convert.ToDecimal(txt_costo.Text),
-                Precio_venta = Convert.ToDecimal(txt_precio.Text),
+                Precio_venta = Convert.ToDecimal(txt_precio_minorista.Text),
+                Precio_mayorista = Convert.ToDecimal(txt_precio_mayorista.Text),
                 Stock_actual = Convert.ToInt32(txt_cantidad.Text),
                 Stock_minimo = Convert.ToInt32(txt_stock_minimo.Text),
             };
@@ -138,7 +141,8 @@ namespace POSLyion
             _objeto.Descripcion = txt_descripcion.Text;
             _objeto.oCategoria.Id_categoria = Convert.ToInt32(((OpcionCombo)cbox_tipo.SelectedItem).Valor);
             _objeto.Precio_costo = Convert.ToDecimal(txt_costo.Text);
-            _objeto.Precio_venta = Convert.ToDecimal(txt_precio.Text);
+            _objeto.Precio_venta = Convert.ToDecimal(txt_precio_minorista.Text);
+            _objeto.Precio_mayorista = Convert.ToDecimal(txt_precio_mayorista.Text);
             _objeto.Stock_actual = Convert.ToInt32(txt_cantidad.Text);
             _objeto.Stock_minimo = Convert.ToInt32(txt_stock_minimo.Text);
             _objeto.Estado = Convert.ToBoolean(((OpcionCombo)cbox_estado.SelectedItem).Valor);
@@ -176,16 +180,22 @@ namespace POSLyion
                 errorProvider2.SetError(txt_descripcion, "Ingresar una descripción del producto");
             }
 
+            if (txt_precio_minorista.Text == "0")
+            {
+                resultado = false;
+                errorProvider3.SetError(txt_precio_minorista, "Ingrese un precio de venta");
+            }
+
             if (txt_stock_minimo.Text == "")
             {
                 resultado = false;
                 txt_stock_minimo.Text = "0";
             }
 
-            if (txt_precio.Text == "")
+            if (txt_precio_minorista.Text == "")
             {
                 resultado = false;
-                txt_precio.Text = "0";
+                txt_precio_minorista.Text = "0";
             }
 
             return resultado;
@@ -201,6 +211,7 @@ namespace POSLyion
                 oCategoria = new Categorias() { Id_categoria = _objeto.oCategoria.Id_categoria },
                 Precio_costo = _objeto.Precio_costo,
                 Precio_venta = _objeto.Precio_venta,
+                Precio_mayorista = _objeto.Precio_mayorista,
                 Stock_actual = _objeto.Stock_actual,
                 Stock_minimo = _objeto.Stock_minimo,
                 Estado = _objeto.Estado
@@ -213,6 +224,21 @@ namespace POSLyion
             {
                 //_ = MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
+            }
+        }
+
+        private void ControlTextboxPrecios(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf(',') > -1)
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -247,22 +273,7 @@ namespace POSLyion
                 txt_descripcion.Text = _objetoAnterior.Descripcion;
                 txt_stock_minimo.Text = _objetoAnterior.Stock_minimo.ToString();
                 txt_costo.Text = _objetoAnterior.Precio_costo.ToString();
-                txt_precio.Text = _objetoAnterior.Precio_venta.ToString();
-            }
-        }
-
-        private void txt_precio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf(',') > -1)
-                {
-                    e.Handled = true;
-                }
+                txt_precio_minorista.Text = _objetoAnterior.Precio_venta.ToString();
             }
         }
 

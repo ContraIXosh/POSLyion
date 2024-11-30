@@ -44,6 +44,7 @@
             this.dgv_productos_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_productos_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_productos_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_productos_precio_mayorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_productos_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_suma_total = new System.Windows.Forms.Label();
@@ -72,9 +73,11 @@
             this.dgv_resumen_descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_resumen_cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_resumen_precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_resumen_precio_mayorista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_resumen_subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_editar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.control_precio_aplicado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_resumen = new System.Windows.Forms.Label();
             this.tlp_pie = new System.Windows.Forms.TableLayoutPanel();
             this.panel_bottom = new System.Windows.Forms.TableLayoutPanel();
@@ -203,6 +206,7 @@
             this.dgv_productos_id,
             this.dgv_productos_descripcion,
             this.dgv_productos_precio,
+            this.dgv_productos_precio_mayorista,
             this.dgv_productos_stock});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightPink;
@@ -236,6 +240,7 @@
             this.dgv_productos.Size = new System.Drawing.Size(534, 333);
             this.dgv_productos.TabIndex = 10;
             this.dgv_productos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_productos_CellClick);
+            this.dgv_productos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_productos_KeyDown);
             // 
             // dgv_productos_id
             // 
@@ -259,6 +264,13 @@
             this.dgv_productos_precio.HeaderText = "PRECIO";
             this.dgv_productos_precio.Name = "dgv_productos_precio";
             this.dgv_productos_precio.ReadOnly = true;
+            // 
+            // dgv_productos_precio_mayorista
+            // 
+            this.dgv_productos_precio_mayorista.HeaderText = "PRECIO MAYORISTA";
+            this.dgv_productos_precio_mayorista.Name = "dgv_productos_precio_mayorista";
+            this.dgv_productos_precio_mayorista.ReadOnly = true;
+            this.dgv_productos_precio_mayorista.Visible = false;
             // 
             // dgv_productos_stock
             // 
@@ -366,6 +378,7 @@
             this.txt_buscarproductos.Size = new System.Drawing.Size(363, 26);
             this.txt_buscarproductos.TabIndex = 2;
             this.txt_buscarproductos.TextChanged += new System.EventHandler(this.txt_buscarproductos_TextChanged);
+            this.txt_buscarproductos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_buscarproductos_KeyDown);
             // 
             // panel_right
             // 
@@ -618,9 +631,11 @@
             this.dgv_resumen_descripcion,
             this.dgv_resumen_cantidad,
             this.dgv_resumen_precio,
+            this.dgv_resumen_precio_mayorista,
             this.dgv_resumen_subtotal,
             this.btn_editar,
-            this.btn_eliminar});
+            this.btn_eliminar,
+            this.control_precio_aplicado});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -638,9 +653,11 @@
             this.dgv_resumen.RowHeadersVisible = false;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgv_resumen.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv_resumen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_resumen.Size = new System.Drawing.Size(331, 259);
             this.dgv_resumen.TabIndex = 8;
             this.dgv_resumen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_resumen_CellContentClick);
+            this.dgv_resumen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgv_resumen_KeyDown);
             // 
             // dgv_resumen_id
             // 
@@ -671,6 +688,13 @@
             this.dgv_resumen_precio.Name = "dgv_resumen_precio";
             this.dgv_resumen_precio.ReadOnly = true;
             // 
+            // dgv_resumen_precio_mayorista
+            // 
+            this.dgv_resumen_precio_mayorista.HeaderText = "Precio mayorista";
+            this.dgv_resumen_precio_mayorista.Name = "dgv_resumen_precio_mayorista";
+            this.dgv_resumen_precio_mayorista.ReadOnly = true;
+            this.dgv_resumen_precio_mayorista.Visible = false;
+            // 
             // dgv_resumen_subtotal
             // 
             this.dgv_resumen_subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -693,6 +717,13 @@
             this.btn_eliminar.HeaderText = "";
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.ReadOnly = true;
+            // 
+            // control_precio_aplicado
+            // 
+            this.control_precio_aplicado.HeaderText = "";
+            this.control_precio_aplicado.Name = "control_precio_aplicado";
+            this.control_precio_aplicado.ReadOnly = true;
+            this.control_precio_aplicado.Visible = false;
             // 
             // lbl_resumen
             // 
@@ -943,7 +974,6 @@
             this.Controls.Add(this.panel_principal);
             this.Name = "formVentas";
             this.Text = "formVentas";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formVentas_FormClosing);
             this.Load += new System.EventHandler(this.formVentas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formVentas_KeyDown);
             this.panel_principal.ResumeLayout(false);
@@ -995,10 +1025,6 @@
         private System.Windows.Forms.TableLayoutPanel tlp_productos_carrito;
         private System.Windows.Forms.TableLayoutPanel tlp_productos;
         private System.Windows.Forms.DataGridView dgv_productos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_stock;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label lbl_suma_total;
         private System.Windows.Forms.Label lbl_totale;
@@ -1022,15 +1048,22 @@
         private System.Windows.Forms.TableLayoutPanel panel_container;
         private System.Windows.Forms.Panel panel_resumido;
         private System.Windows.Forms.DataGridView dgv_resumen;
+        private System.Windows.Forms.Label lbl_resumen;
+        private System.Windows.Forms.Label lbl_eliminar_ticket;
+        private System.Windows.Forms.Label lbl_cerrar_caja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio_mayorista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_precio_mayorista;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_subtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_eliminar;
-        private System.Windows.Forms.Label lbl_resumen;
-        private System.Windows.Forms.Label lbl_eliminar_ticket;
-        private System.Windows.Forms.Label lbl_cerrar_caja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn control_precio_aplicado;
     }
 }

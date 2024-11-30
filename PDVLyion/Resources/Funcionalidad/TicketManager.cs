@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace POSLyion.Resources.Funcionalidad
@@ -58,6 +59,7 @@ namespace POSLyion.Resources.Funcionalidad
                 _botonSeleccionado.Dispose();
                 SeleccionarTicket(_listaTickets[0]);
             }
+            TicketSeleccionado.Productos.Clear();
         }
 
         private List<Ticket> ObtenerTickets()
@@ -100,12 +102,44 @@ namespace POSLyion.Resources.Funcionalidad
                     producto.NombreProducto,
                     producto.Cantidad,
                     producto.Precio,
+                    producto.PrecioMayorista,
                     producto.Subtotal,
                     "Editar",
-                    "Eliminar"
+                    "Eliminar",
+                    producto.ControlPrecioAplicado,
                 });
             }
             _calcularTotalCallBack?.Invoke();
+        }
+
+        public Ticket ObtenerTicketActual()
+        {
+            return TicketSeleccionado;
+        }
+
+        public void FinalizarVenta()
+        {
+            TicketSeleccionado.Productos.Clear();
+            _dgv_resumen.Rows.Clear();
+            _calcularTotalCallBack?.Invoke();
+        }
+
+        public void AplicarPrecioMayorista(DataGridViewRow filaProducto)
+        {
+            var idProducto = Convert.ToInt32(filaProducto.Cells["dgv_resumen_id"].Value);
+            var producto = TicketSeleccionado.Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+
+            (producto.PrecioMayorista, producto.Precio) = (producto.Precio, producto.PrecioMayorista);
+            producto.ControlPrecioAplicado = "mayorista";
+        }
+
+        public void AplicarPrecioMinorista(DataGridViewRow filaProducto)
+        {
+            var idProducto = Convert.ToInt32(filaProducto.Cells["dgv_resumen_id"].Value);
+            var producto = TicketSeleccionado.Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+
+            (producto.PrecioMayorista, producto.Precio) = (producto.Precio, producto.PrecioMayorista);
+            producto.ControlPrecioAplicado = "minorista";
         }
     }
 }

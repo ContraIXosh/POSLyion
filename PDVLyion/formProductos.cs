@@ -10,7 +10,6 @@ namespace POSLyion
 {
     public partial class formProductos : Form
     {
-        private static readonly Usuarios oUsuario = new Usuarios();
         private FiltrosProducto filtros = new FiltrosProducto();
         private List<Productos> _lista_productos;
         private readonly formProductosAlta formProducto;
@@ -87,6 +86,7 @@ namespace POSLyion
                 Stock_minimo = Convert.ToInt32(dgv_productos.Rows[indiceProducto].Cells["stock_minimo"].Value),
                 Precio_costo = Convert.ToDecimal(dgv_productos.Rows[indiceProducto].Cells["precio_costo"].Value),
                 Precio_venta = Convert.ToDecimal(dgv_productos.Rows[indiceProducto].Cells["precio_venta"].Value),
+                Precio_mayorista = Convert.ToDecimal(dgv_productos.Rows[indiceProducto].Cells["precio_mayorista"].Value),
                 Estado = Convert.ToBoolean(dgv_productos.Rows[indiceProducto].Cells["estado_valor"].Value)
             };
             return oProducto;
@@ -149,6 +149,7 @@ namespace POSLyion
                     oProducto.Stock_minimo,
                     oProducto.Precio_costo,
                     oProducto.Precio_venta,
+                    oProducto.Precio_mayorista,
                     oProducto.Estado == true ? "Activo" : "Inactivo",
                     oProducto.Estado == true ? 1 : 0
                 });

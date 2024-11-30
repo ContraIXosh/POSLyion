@@ -35,11 +35,13 @@
             this.btn_cerrar = new CustomBox.RJControls.RJButton();
             this.panel_crimconfg = new System.Windows.Forms.Panel();
             this.panel_config = new System.Windows.Forms.Panel();
-            this.txt_precio = new System.Windows.Forms.TextBox();
+            this.txt_precio_mayorista = new System.Windows.Forms.TextBox();
+            this.lbl_precio_mayorista = new System.Windows.Forms.Label();
+            this.txt_precio_minorista = new System.Windows.Forms.TextBox();
             this.txt_costo = new System.Windows.Forms.TextBox();
             this.lbl_config = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lbl_costo = new System.Windows.Forms.Label();
+            this.lbl_precio_minorista = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel_crimdesc = new System.Windows.Forms.Panel();
             this.panel_desc = new System.Windows.Forms.Panel();
@@ -52,12 +54,14 @@
             this.cbox_estado = new CustomBox.RJControls.RJComboBox();
             this.lbl_stock_minimo = new System.Windows.Forms.Label();
             this.cbox_tipo = new CustomBox.RJControls.RJComboBox();
-            this.lbl_cantprod = new System.Windows.Forms.Label();
-            this.lbl_cod = new System.Windows.Forms.Label();
-            this.lbl_desc = new System.Windows.Forms.Label();
-            this.lbl_tipoprod = new System.Windows.Forms.Label();
+            this.lbl_cantidad = new System.Windows.Forms.Label();
+            this.lbl_codigo_barras = new System.Windows.Forms.Label();
+            this.lbl_descripcion = new System.Windows.Forms.Label();
+            this.lbl_categoria = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel_main.SuspendLayout();
             this.panel_crimconfg.SuspendLayout();
             this.panel_config.SuspendLayout();
@@ -65,6 +69,8 @@
             this.panel_desc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
@@ -154,25 +160,46 @@
             // panel_config
             // 
             this.panel_config.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel_config.Controls.Add(this.txt_precio);
+            this.panel_config.Controls.Add(this.txt_precio_mayorista);
+            this.panel_config.Controls.Add(this.lbl_precio_mayorista);
+            this.panel_config.Controls.Add(this.txt_precio_minorista);
             this.panel_config.Controls.Add(this.txt_costo);
             this.panel_config.Controls.Add(this.lbl_config);
-            this.panel_config.Controls.Add(this.label6);
-            this.panel_config.Controls.Add(this.label9);
+            this.panel_config.Controls.Add(this.lbl_costo);
+            this.panel_config.Controls.Add(this.lbl_precio_minorista);
             this.panel_config.Location = new System.Drawing.Point(3, 3);
             this.panel_config.Name = "panel_config";
             this.panel_config.Size = new System.Drawing.Size(859, 166);
             this.panel_config.TabIndex = 0;
             // 
-            // txt_precio
+            // txt_precio_mayorista
             // 
-            this.txt_precio.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_precio.Location = new System.Drawing.Point(311, 85);
-            this.txt_precio.Name = "txt_precio";
-            this.txt_precio.Size = new System.Drawing.Size(272, 33);
-            this.txt_precio.TabIndex = 26;
-            this.txt_precio.Text = "0";
-            this.txt_precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precio_KeyPress);
+            this.txt_precio_mayorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_precio_mayorista.Location = new System.Drawing.Point(610, 82);
+            this.txt_precio_mayorista.Name = "txt_precio_mayorista";
+            this.txt_precio_mayorista.Size = new System.Drawing.Size(241, 33);
+            this.txt_precio_mayorista.TabIndex = 28;
+            this.txt_precio_mayorista.Text = "0";
+            // 
+            // lbl_precio_mayorista
+            // 
+            this.lbl_precio_mayorista.AutoSize = true;
+            this.lbl_precio_mayorista.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_precio_mayorista.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_precio_mayorista.Location = new System.Drawing.Point(605, 53);
+            this.lbl_precio_mayorista.Name = "lbl_precio_mayorista";
+            this.lbl_precio_mayorista.Size = new System.Drawing.Size(207, 26);
+            this.lbl_precio_mayorista.TabIndex = 27;
+            this.lbl_precio_mayorista.Text = "PRECIO MAYORISTA";
+            // 
+            // txt_precio_minorista
+            // 
+            this.txt_precio_minorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_precio_minorista.Location = new System.Drawing.Point(311, 85);
+            this.txt_precio_minorista.Name = "txt_precio_minorista";
+            this.txt_precio_minorista.Size = new System.Drawing.Size(241, 33);
+            this.txt_precio_minorista.TabIndex = 26;
+            this.txt_precio_minorista.Text = "0";
             // 
             // txt_costo
             // 
@@ -180,7 +207,7 @@
             this.txt_costo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_costo.Location = new System.Drawing.Point(8, 85);
             this.txt_costo.Name = "txt_costo";
-            this.txt_costo.Size = new System.Drawing.Size(273, 33);
+            this.txt_costo.Size = new System.Drawing.Size(241, 33);
             this.txt_costo.TabIndex = 25;
             this.txt_costo.Text = "0";
             // 
@@ -195,27 +222,27 @@
             this.lbl_config.TabIndex = 10;
             this.lbl_config.Text = "CONFIGURACIÓN DEL PRODUCTO";
             // 
-            // label6
+            // lbl_costo
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gold;
-            this.label6.Location = new System.Drawing.Point(3, 53);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 26);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "COSTO";
+            this.lbl_costo.AutoSize = true;
+            this.lbl_costo.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_costo.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_costo.Location = new System.Drawing.Point(3, 53);
+            this.lbl_costo.Name = "lbl_costo";
+            this.lbl_costo.Size = new System.Drawing.Size(80, 26);
+            this.lbl_costo.TabIndex = 1;
+            this.lbl_costo.Text = "COSTO";
             // 
-            // label9
+            // lbl_precio_minorista
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Gold;
-            this.label9.Location = new System.Drawing.Point(306, 53);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 26);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "PRECIO";
+            this.lbl_precio_minorista.AutoSize = true;
+            this.lbl_precio_minorista.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_precio_minorista.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_precio_minorista.Location = new System.Drawing.Point(306, 53);
+            this.lbl_precio_minorista.Name = "lbl_precio_minorista";
+            this.lbl_precio_minorista.Size = new System.Drawing.Size(188, 26);
+            this.lbl_precio_minorista.TabIndex = 5;
+            this.lbl_precio_minorista.Text = "PRECIO DE VENTA";
             // 
             // label3
             // 
@@ -249,10 +276,10 @@
             this.panel_desc.Controls.Add(this.cbox_estado);
             this.panel_desc.Controls.Add(this.lbl_stock_minimo);
             this.panel_desc.Controls.Add(this.cbox_tipo);
-            this.panel_desc.Controls.Add(this.lbl_cantprod);
-            this.panel_desc.Controls.Add(this.lbl_cod);
-            this.panel_desc.Controls.Add(this.lbl_desc);
-            this.panel_desc.Controls.Add(this.lbl_tipoprod);
+            this.panel_desc.Controls.Add(this.lbl_cantidad);
+            this.panel_desc.Controls.Add(this.lbl_codigo_barras);
+            this.panel_desc.Controls.Add(this.lbl_descripcion);
+            this.panel_desc.Controls.Add(this.lbl_categoria);
             this.panel_desc.Location = new System.Drawing.Point(3, 3);
             this.panel_desc.Name = "panel_desc";
             this.panel_desc.Size = new System.Drawing.Size(859, 216);
@@ -270,9 +297,9 @@
             // txt_descripcion
             // 
             this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_descripcion.Location = new System.Drawing.Point(311, 173);
+            this.txt_descripcion.Location = new System.Drawing.Point(311, 172);
             this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(272, 33);
+            this.txt_descripcion.Size = new System.Drawing.Size(241, 33);
             this.txt_descripcion.TabIndex = 23;
             // 
             // txt_cantidad
@@ -300,7 +327,7 @@
             this.txt_codigo_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_codigo_barras.Location = new System.Drawing.Point(8, 83);
             this.txt_codigo_barras.Name = "txt_codigo_barras";
-            this.txt_codigo_barras.Size = new System.Drawing.Size(273, 33);
+            this.txt_codigo_barras.Size = new System.Drawing.Size(241, 33);
             this.txt_codigo_barras.TabIndex = 20;
             // 
             // lbl_estado
@@ -329,7 +356,7 @@
             this.cbox_estado.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_estado.Name = "cbox_estado";
             this.cbox_estado.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_estado.Size = new System.Drawing.Size(273, 30);
+            this.cbox_estado.Size = new System.Drawing.Size(241, 30);
             this.cbox_estado.TabIndex = 14;
             this.cbox_estado.Texts = "";
             // 
@@ -359,53 +386,53 @@
             this.cbox_tipo.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbox_tipo.Name = "cbox_tipo";
             this.cbox_tipo.Padding = new System.Windows.Forms.Padding(1);
-            this.cbox_tipo.Size = new System.Drawing.Size(272, 34);
+            this.cbox_tipo.Size = new System.Drawing.Size(241, 34);
             this.cbox_tipo.TabIndex = 4;
             this.cbox_tipo.Texts = "";
             // 
-            // lbl_cantprod
+            // lbl_cantidad
             // 
-            this.lbl_cantprod.AutoSize = true;
-            this.lbl_cantprod.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cantprod.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cantprod.Location = new System.Drawing.Point(605, 54);
-            this.lbl_cantprod.Name = "lbl_cantprod";
-            this.lbl_cantprod.Size = new System.Drawing.Size(117, 26);
-            this.lbl_cantprod.TabIndex = 9;
-            this.lbl_cantprod.Text = "CANTIDAD";
+            this.lbl_cantidad.AutoSize = true;
+            this.lbl_cantidad.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cantidad.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_cantidad.Location = new System.Drawing.Point(605, 54);
+            this.lbl_cantidad.Name = "lbl_cantidad";
+            this.lbl_cantidad.Size = new System.Drawing.Size(117, 26);
+            this.lbl_cantidad.TabIndex = 9;
+            this.lbl_cantidad.Text = "CANTIDAD";
             // 
-            // lbl_cod
+            // lbl_codigo_barras
             // 
-            this.lbl_cod.AutoSize = true;
-            this.lbl_cod.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cod.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cod.Location = new System.Drawing.Point(3, 53);
-            this.lbl_cod.Name = "lbl_cod";
-            this.lbl_cod.Size = new System.Drawing.Size(177, 26);
-            this.lbl_cod.TabIndex = 1;
-            this.lbl_cod.Text = "CODIGO BARRAS";
+            this.lbl_codigo_barras.AutoSize = true;
+            this.lbl_codigo_barras.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_codigo_barras.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_codigo_barras.Location = new System.Drawing.Point(3, 53);
+            this.lbl_codigo_barras.Name = "lbl_codigo_barras";
+            this.lbl_codigo_barras.Size = new System.Drawing.Size(177, 26);
+            this.lbl_codigo_barras.TabIndex = 1;
+            this.lbl_codigo_barras.Text = "CODIGO BARRAS";
             // 
-            // lbl_desc
+            // lbl_descripcion
             // 
-            this.lbl_desc.AutoSize = true;
-            this.lbl_desc.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_desc.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_desc.Location = new System.Drawing.Point(306, 142);
-            this.lbl_desc.Name = "lbl_desc";
-            this.lbl_desc.Size = new System.Drawing.Size(144, 26);
-            this.lbl_desc.TabIndex = 7;
-            this.lbl_desc.Text = "DESCRIPCIÓN";
+            this.lbl_descripcion.AutoSize = true;
+            this.lbl_descripcion.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_descripcion.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_descripcion.Location = new System.Drawing.Point(306, 142);
+            this.lbl_descripcion.Name = "lbl_descripcion";
+            this.lbl_descripcion.Size = new System.Drawing.Size(144, 26);
+            this.lbl_descripcion.TabIndex = 7;
+            this.lbl_descripcion.Text = "DESCRIPCIÓN";
             // 
-            // lbl_tipoprod
+            // lbl_categoria
             // 
-            this.lbl_tipoprod.AutoSize = true;
-            this.lbl_tipoprod.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tipoprod.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_tipoprod.Location = new System.Drawing.Point(306, 53);
-            this.lbl_tipoprod.Name = "lbl_tipoprod";
-            this.lbl_tipoprod.Size = new System.Drawing.Size(208, 26);
-            this.lbl_tipoprod.TabIndex = 5;
-            this.lbl_tipoprod.Text = "TIPO DE PRODUCTO";
+            this.lbl_categoria.AutoSize = true;
+            this.lbl_categoria.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_categoria.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_categoria.Location = new System.Drawing.Point(306, 53);
+            this.lbl_categoria.Name = "lbl_categoria";
+            this.lbl_categoria.Size = new System.Drawing.Size(208, 26);
+            this.lbl_categoria.TabIndex = 5;
+            this.lbl_categoria.Text = "TIPO DE PRODUCTO";
             // 
             // errorProvider1
             // 
@@ -414,6 +441,14 @@
             // errorProvider2
             // 
             this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
+            // 
+            // errorProvider4
+            // 
+            this.errorProvider4.ContainerControl = this;
             // 
             // formProductosAlta
             // 
@@ -438,6 +473,8 @@
             this.panel_desc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -445,18 +482,18 @@
         #endregion
 
         private System.Windows.Forms.Panel panel_main;
-        private System.Windows.Forms.Label lbl_cod;
-        private System.Windows.Forms.Label lbl_tipoprod;
+        private System.Windows.Forms.Label lbl_codigo_barras;
+        private System.Windows.Forms.Label lbl_categoria;
         private CustomBox.RJControls.RJComboBox cbox_tipo;
         private System.Windows.Forms.Panel panel_crimdesc;
-        private System.Windows.Forms.Label lbl_cantprod;
-        private System.Windows.Forms.Label lbl_desc;
+        private System.Windows.Forms.Label lbl_cantidad;
+        private System.Windows.Forms.Label lbl_descripcion;
         private System.Windows.Forms.Panel panel_desc;
         private System.Windows.Forms.Panel panel_crimconfg;
         private System.Windows.Forms.Panel panel_config;
         private System.Windows.Forms.Label lbl_config;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbl_costo;
+        private System.Windows.Forms.Label lbl_precio_minorista;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_stock_minimo;
         private CustomBox.RJControls.RJButton btn_guardar;
@@ -469,9 +506,13 @@
         private System.Windows.Forms.TextBox txt_descripcion;
         private System.Windows.Forms.TextBox txt_stock_minimo;
         private System.Windows.Forms.TextBox txt_costo;
-        private System.Windows.Forms.TextBox txt_precio;
+        private System.Windows.Forms.TextBox txt_precio_minorista;
         private CustomBox.RJControls.RJButton btn_reiniciar_datos;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.TextBox txt_precio_mayorista;
+        private System.Windows.Forms.Label lbl_precio_mayorista;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
+        private System.Windows.Forms.ErrorProvider errorProvider4;
     }
 }
