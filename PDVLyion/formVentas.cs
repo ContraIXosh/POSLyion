@@ -28,7 +28,7 @@ namespace POSLyion
 
         private void formVentas_Load(object sender, EventArgs e)
         {
-            _ticketManager.AgregarNuevoTicket();
+            _ = _ticketManager.AgregarNuevoTicketAsync();
         }
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
@@ -241,7 +241,7 @@ namespace POSLyion
             }
         }
 
-        private void CambioVentanas(string p_lbl_titulo, string p_dgv_activo)
+        private async void CambioVentanasAsync(string p_lbl_titulo, string p_dgv_activo)
         {
             lbl_titulo.Text = p_lbl_titulo;
             _ = dgv_activo.ToString();
@@ -265,7 +265,7 @@ namespace POSLyion
                 {
                     btn_cerrarventa.Visible = true;
                 }
-                _ticketManager.MostrarProductosTicket();
+                await _ticketManager.MostrarProductosTicketAsync();
             }
         }
 
@@ -290,7 +290,7 @@ namespace POSLyion
                 dgv_resumen.Dock = DockStyle.Fill;
                 dgv_resumen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgv_resumen.Visible = true;
-                CambioVentanas("Facturación", "factura");
+                CambioVentanasAsync("Facturación", "factura");
             }
         }
 
@@ -301,7 +301,7 @@ namespace POSLyion
                 var fecha_hoy = DateTime.Now;
                 var formato_fecha_hoy = fecha_hoy.ToString("yyyy-MM-dd");
                 var lista_compras = new CN_Compras().Leer(formato_fecha_hoy, formato_fecha_hoy);
-                CambioVentanas("Compras del día", "compras");
+                CambioVentanasAsync("Compras del día", "compras");
                 flagdgv();
                 dgv_resumen.Columns.Clear();
                 _ = dgv_resumen.Columns.Add("id_compra", "Nro. Compra");
@@ -336,7 +336,7 @@ namespace POSLyion
                 var fecha_hoy = DateTime.Now;
                 var formato_fecha_hoy = fecha_hoy.ToString("yyyy-MM-dd");
                 var lista_ventas = new CN_Ventas().Leer(formato_fecha_hoy, formato_fecha_hoy);
-                CambioVentanas("Ventas del día", "ventas");
+                CambioVentanasAsync("Ventas del día", "ventas");
                 flagdgv();
                 dgv_resumen.Columns.Clear();
                 _ = dgv_resumen.Columns.Add("id_venta", "Nro. Venta");
@@ -403,7 +403,7 @@ namespace POSLyion
                 }
                 if (e.KeyCode == Keys.F6)
                 {
-                    _ticketManager.AgregarNuevoTicket();
+                    _ = _ticketManager.AgregarNuevoTicketAsync();
                 }
                 if (e.KeyCode == Keys.F7)
                 {
@@ -435,24 +435,25 @@ namespace POSLyion
 
         private void btn_nuevo_ticket_Click(object sender, EventArgs e)
         {
-            _ticketManager.AgregarNuevoTicket();
+            _ = _ticketManager.AgregarNuevoTicketAsync();
         }
 
-        private void btn_eliminar_ticket_Click(object sender, EventArgs e)
+        private async void btn_eliminar_ticket_Click(object sender, EventArgs e)
         {
             btn_factura_Click("Facturación", e);
             if (dgv_resumen.Rows.Count > 0)
             {
-                var resultado = MessageBox.Show("Esto eliminará los productos del carrito\n¿Desea continuar?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (resultado == DialogResult.Yes)
+                var resultadoDialogo = MessageBox.Show("Esto eliminará los productos del carrito\n¿Desea continuar?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (resultadoDialogo == DialogResult.Yes)
                 {
-                    if (!_carritoManager.LimpiarCarrito())
+                    var resultadoOperacion = await _carritoManager.LimpiarCarritoAsync();
+                    if (!resultadoOperacion)
                     {
                         _ = MessageBox.Show("Ocurrió un error inesperado.\nPor favor, verificar stock de productos.", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                     }
                 }
             }
-            _ticketManager.EliminarTicket();
+            await _ticketManager.EliminarTicketAsync();
         }
 
         private void btn_buscar_producto_Click(object sender, EventArgs e)

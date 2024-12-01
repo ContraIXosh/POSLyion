@@ -3,6 +3,7 @@ using CapaEntidad.GraficosVentas;
 using DataLayer;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
@@ -16,9 +17,9 @@ namespace CapaNegocio
             return oVenta.RestarStock(id_producto, cantidad);
         }
 
-        public bool SumarStock(int id_producto, int cantidad)
+        public async Task<bool> SumarStockAsync(int id_producto, int cantidad)
         {
-            return oVenta.SumarStock(id_producto, cantidad);
+            return await oVenta.SumarStockAsync(id_producto, cantidad);
         }
 
         public bool Crear(Ventas _oVenta, DataTable VentaDetalle, out string mensaje, out int id_venta_generado)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POSLyion.Resources.Funcionalidad
@@ -27,7 +28,7 @@ namespace POSLyion.Resources.Funcionalidad
             _facturaClickCallback = facturaClickCallBack;
         }
 
-        public void AgregarNuevoTicket()
+        public async Task AgregarNuevoTicketAsync()
         {
             _cantidadTicketsCreados++;
             var numeroTicket = _cantidadTicketsCreados;
@@ -42,24 +43,24 @@ namespace POSLyion.Resources.Funcionalidad
             var nuevoTicket = new Ticket(numeroTicket, nombreTicket, botonTicket);
             _listaTickets.Add(nuevoTicket);
 
-            botonTicket.Click += (s, e) => SeleccionarTicket(nuevoTicket);
-            SeleccionarTicket(nuevoTicket);
+            botonTicket.Click += async (s, e) => await SeleccionarTicketAsync(nuevoTicket);
+            await SeleccionarTicketAsync(nuevoTicket);
 
             _flowLayoutPanel.Controls.Add(botonTicket);
         }
 
-        public void EliminarTicket()
+        public async Task EliminarTicketAsync()
         {
             var cantidadTickets = ObtenerTickets().Count;
+            TicketSeleccionado.Productos.Clear();
             if (cantidadTickets > 1)
             {
                 //_ = MessageBox.Show($"Ticket eliminado:\nId: {_ticketSeleccionado.IdTicket}\nNombre: {_ticketSeleccionado.NombreTicket}");
                 _ = _listaTickets.Remove(TicketSeleccionado);
                 _flowLayoutPanel.Controls.Remove(_botonSeleccionado);
                 _botonSeleccionado.Dispose();
-                SeleccionarTicket(_listaTickets[0]);
+                await SeleccionarTicketAsync(_listaTickets[0]);
             }
-            TicketSeleccionado.Productos.Clear();
         }
 
         private List<Ticket> ObtenerTickets()
@@ -67,7 +68,7 @@ namespace POSLyion.Resources.Funcionalidad
             return _listaTickets;
         }
 
-        private void SeleccionarTicket(Ticket ticket)
+        private async Task SeleccionarTicketAsync(Ticket ticket)
         {
             //_ = MessageBox.Show($"Ticket seleccionado:\nId: {ticket.IdTicket}\nNombre: {ticket.NombreTicket}");
             TicketSeleccionado = ticket;
@@ -77,7 +78,7 @@ namespace POSLyion.Resources.Funcionalidad
             }
             ticket.BotonTicket.BackColor = Color.LightBlue;
             _botonSeleccionado = ticket.BotonTicket;
-            MostrarProductosTicket();
+            await MostrarProductosTicketAsync();
         }
 
         public void AgregarProductoEnTicket(ProductoCarrito producto)
@@ -90,7 +91,7 @@ namespace POSLyion.Resources.Funcionalidad
             _ = TicketSeleccionado.Productos.Remove(producto);
         }
 
-        public void MostrarProductosTicket()
+        public async Task MostrarProductosTicketAsync()
         {
             _facturaClickCallback?.Invoke("Facturacion", null);
             _dgv_resumen.Rows.Clear();
@@ -108,6 +109,7 @@ namespace POSLyion.Resources.Funcionalidad
                     "Eliminar",
                     producto.ControlPrecioAplicado,
                 });
+                await Task.Yield();
             }
             _calcularTotalCallBack?.Invoke();
         }

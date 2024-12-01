@@ -4,6 +4,10 @@ GO
 USE POSLyion
 GO
 
+CREATE TABLE Lock(
+	id INT PRIMARY KEY
+);
+
 CREATE TABLE Roles (
   id_rol INT IDENTITY(1, 1) NOT NULL,
   descripcion VARCHAR(60) NOT NULL,
@@ -1006,3 +1010,31 @@ BEGIN
 	AND (u.id_usuario = IIF(@id_usuario = 0, u.id_usuario, @id_usuario))
 END
 GO
+
+CREATE PROC SP_SUMAR_STOCK(
+	@id_producto INT,
+	@cantidad INT,
+	@resultado BIT OUTPUT
+)
+AS
+BEGIN
+	SET @resultado = 1
+	BEGIN TRY
+		BEGIN TRANSACTION SUMAR_STOCK
+		INSERT INTO Lock (id) VALUES (1);
+
+		UPDATE Productos SET stock_actual = stock_actual + @cantidad WHERE id_producto = @id_producto;
+
+		DELETE FROM Lock WHERE id = 1;
+    
+		COMMIT TRANSACTION SUMAR_STOCK
+
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION SUMAR_STOCK
+		END
+	END CATCH;
+END

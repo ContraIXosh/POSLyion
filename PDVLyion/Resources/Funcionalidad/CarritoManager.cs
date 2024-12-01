@@ -5,6 +5,7 @@ using POSLyion.Modals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POSLyion.Resources.Funcionalidad
@@ -20,6 +21,7 @@ namespace POSLyion.Resources.Funcionalidad
         private readonly Action<string, DataGridViewCellEventArgs> _facturaClickCallback;
         private readonly Action<List<ReportesDetalle>> _verDetalleCallBack;
         private readonly TicketManager _ticketManager;
+        private readonly ActualizadorStock _actualizadorStock = new ActualizadorStock();
 
         public CarritoManager
             (
@@ -61,6 +63,7 @@ namespace POSLyion.Resources.Funcionalidad
                         Convert.ToInt32(filaProductoEncontrado.Cells["dgv_resumen_cantidad"].Value)
                         *
                         Convert.ToDecimal(filaProductoEncontrado.Cells["dgv_resumen_precio"].Value);
+                    _ticketManager.ObtenerTicketActual().Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault().Cantidad++;
                 }
             }
         }
@@ -110,9 +113,10 @@ namespace POSLyion.Resources.Funcionalidad
             return productoExiste;
         }
 
-        private void EliminarProductoCarrito(int idProducto, int cantidad, DataGridViewCellEventArgs e)
+        private async Task EliminarProductoCarrito(int idProducto, int cantidad, DataGridViewCellEventArgs e)
         {
-            if (new CN_Ventas().SumarStock(idProducto, cantidad))
+            var resultado = await new CN_Ventas().SumarStockAsync(idProducto, cantidad);
+            if (resultado)
             {
                 // Si se sumó al stock correctamente, se elimina el producto del carrito
                 var indice = e.RowIndex;
@@ -127,27 +131,28 @@ namespace POSLyion.Resources.Funcionalidad
             _limpiarBusquedaCallBack?.Invoke();
         }
 
-        public bool LimpiarCarrito()
+        public async Task<bool> LimpiarCarritoAsync()
         {
             var carritoLimpio = true;
-            foreach (DataGridViewRow producto in _dgv_resumen.Rows)
-            {
-                var idProducto = Convert.ToInt32(producto.Cells["dgv_resumen_id"].Value);
-                var cantidad = Convert.ToInt32(producto.Cells["dgv_resumen_cantidad"].Value);
+            var productos = _ticketManager.ObtenerTicketActual().Productos;
 
-                if (_ventasService.SumarStock(idProducto, cantidad))
-                {
-                    continue;
-                }
-                else
+            var tareas = productos.Select(async producto =>
+            {
+                var resultado = await _ventasService.SumarStockAsync(producto.IdProducto, producto.Cantidad);
+                if (!resultado)
                 {
                     carritoLimpio = false;
                 }
-            }
+            }).ToList();
+
+            await Task.WhenAll(tareas);
+
             _dgv_resumen.Rows.Clear();
             _calcularTotalCallBack?.Invoke();
             return carritoLimpio;
         }
+
+
 
         public void ModificarCarrito(DataGridViewCellEventArgs e, string dgv_activo, DataGridView dgv_detalle)
         {
@@ -157,7 +162,7 @@ namespace POSLyion.Resources.Funcionalidad
             {
                 var idProducto = Convert.ToInt32(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_id"].Value);
                 var cantidadActualCarrito = Convert.ToInt32(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value);
-                EliminarProductoCarrito(idProducto, cantidadActualCarrito, e);
+                _ = EliminarProductoCarrito(idProducto, cantidadActualCarrito, e);
             }
 
             if (_dgv_resumen.Columns[e.ColumnIndex].Name == "btn_editar")
@@ -250,12 +255,12 @@ namespace POSLyion.Resources.Funcionalidad
                 // Si la nueva cantidad es mayor a la que tenía antes, entonces se suma la diferencia al stock
                 else if (nuevaCantidad < cantidadActualCarrito)
                 {
-                    SumarStock(nuevaCantidad, cantidadActualCarrito, idProducto, e);
+                    _ = SumarStock(nuevaCantidad, cantidadActualCarrito, idProducto, e);
                 }
             }
             else
             {
-                ManejarCantidadInvalida(idProducto, cantidadActualCarrito, e);
+                _ = ManejarCantidadInvalida(idProducto, cantidadActualCarrito, e);
             }
         }
 
@@ -274,11 +279,12 @@ namespace POSLyion.Resources.Funcionalidad
             }
         }
 
-        private void SumarStock(int nuevaCantidad, int cantidadActualCarrito, int idProducto, DataGridViewCellEventArgs e)
+        private async Task SumarStock(int nuevaCantidad, int cantidadActualCarrito, int idProducto, DataGridViewCellEventArgs e)
         {
             var cantidadSumarStock = cantidadActualCarrito - nuevaCantidad;
+            var resultado = await new CN_Ventas().SumarStockAsync(idProducto, cantidadSumarStock);
 
-            if (new CN_Ventas().SumarStock(idProducto, cantidadSumarStock))
+            if (resultado)
             {
                 _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value = nuevaCantidad;
                 _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_subtotal"].Value =
@@ -289,13 +295,14 @@ namespace POSLyion.Resources.Funcionalidad
             }
         }
 
-        private void ManejarCantidadInvalida(int idProducto, int cantidadActualCarrito, DataGridViewCellEventArgs e)
+        private async Task ManejarCantidadInvalida(int idProducto, int cantidadActualCarrito, DataGridViewCellEventArgs e)
         {
-            var resultado_dialogo = MessageBox.Show("La cantidad ingresada es menor a 1. \n¿Desea eliminar el producto del carrito?", "Mensaje",
+            var resultadoDialogo = MessageBox.Show("La cantidad ingresada es menor a 1. \n¿Desea eliminar el producto del carrito?", "Mensaje",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (resultado_dialogo == DialogResult.Yes)
+            if (resultadoDialogo == DialogResult.Yes)
             {
-                if (new CN_Ventas().SumarStock(idProducto, cantidadActualCarrito))
+                var resultadoOperacion = await new CN_Ventas().SumarStockAsync(idProducto, cantidadActualCarrito);
+                if (resultadoOperacion)
                 {
                     _dgv_resumen.Rows.RemoveAt(e.RowIndex);
                     _calcularTotalCallBack?.Invoke();
