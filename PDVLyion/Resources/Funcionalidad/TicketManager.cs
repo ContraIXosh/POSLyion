@@ -63,12 +63,12 @@ namespace POSLyion.Resources.Funcionalidad
             }
         }
 
-        private List<Ticket> ObtenerTickets()
+        public List<Ticket> ObtenerTickets()
         {
             return _listaTickets;
         }
 
-        private async Task SeleccionarTicketAsync(Ticket ticket)
+        public async Task SeleccionarTicketAsync(Ticket ticket)
         {
             //_ = MessageBox.Show($"Ticket seleccionado:\nId: {ticket.IdTicket}\nNombre: {ticket.NombreTicket}");
             TicketSeleccionado = ticket;

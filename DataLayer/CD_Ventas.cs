@@ -12,25 +12,31 @@ namespace DataLayer
 {
     public class CD_Ventas
     {
-        public bool RestarStock(int id_producto, int cantidad)
+        public async Task<bool> RestarStockAsync(int id_producto, int cantidad)
         {
             var respuesta = true;
             using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    var consulta = new StringBuilder();
-                    _ = consulta.AppendLine("UPDATE Productos SET stock_actual = stock_actual - @cantidad WHERE id_producto = @id_producto");
-                    var cmd = new SqlCommand(consulta.ToString(), oConexion);
-                    _ = cmd.Parameters.AddWithValue("@cantidad", cantidad);
-                    _ = cmd.Parameters.AddWithValue("@id_producto", id_producto);
-                    cmd.CommandType = CommandType.Text;
-                    oConexion.Open();
-                    respuesta = cmd.ExecuteNonQuery() > 0;
+                    using (var cmd = new SqlCommand("SP_RESTAR_STOCK", oConexion))
+                    {
+                        _ = cmd.Parameters.AddWithValue("@id_producto", id_producto);
+                        _ = cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                        cmd.Parameters.Add("resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        await oConexion.OpenAsync();
+                        _ = await cmd.ExecuteNonQueryAsync();
+                        respuesta = Convert.ToBoolean(cmd.Parameters["resultado"].Value);
+                    }
                 }
                 catch (Exception)
                 {
                     respuesta = false;
+                }
+                finally
+                {
+                    oConexion.Close();
                 }
             }
             return respuesta;

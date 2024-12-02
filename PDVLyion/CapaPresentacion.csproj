@@ -497,7 +497,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Funcionalidad\ActualizadorStock.cs" />
+    <Compile Include="Resources\Funcionalidad\ActualizadorStockManager.cs" />
     <Compile Include="Resources\Funcionalidad\FormManager.cs" />
     <Compile Include="Resources\Funcionalidad\CarritoManager.cs" />
     <Compile Include="Resources\Funcionalidad\ProductoCarrito.cs" />

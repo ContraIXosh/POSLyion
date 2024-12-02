@@ -1038,3 +1038,32 @@ BEGIN
 		END
 	END CATCH;
 END
+GO
+
+CREATE PROC SP_RESTAR_STOCK(
+	@id_producto INT,
+	@cantidad INT,
+	@resultado BIT OUTPUT
+)
+AS
+BEGIN
+SET @resultado = 1
+	BEGIN TRY
+		BEGIN TRANSACTION RESTAR_STOCK
+		INSERT INTO Lock (id) VALUES (1);
+
+		UPDATE Productos SET stock_actual = stock_actual - @cantidad WHERE id_producto = @id_producto
+
+		DELETE FROM Lock WHERE id = 1;
+    
+		COMMIT TRANSACTION SUMAR_STOCK
+
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION SUMAR_STOCK
+		END
+	END CATCH;
+END

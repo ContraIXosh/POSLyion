@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
-public class ActualizadorStock
+public class ActualizadorStockManager
 {
     private readonly ConcurrentQueue<Func<Task>> _colaDeTareas = new ConcurrentQueue<Func<Task>>();
     private readonly SemaphoreSlim _semaforo = new SemaphoreSlim(1);

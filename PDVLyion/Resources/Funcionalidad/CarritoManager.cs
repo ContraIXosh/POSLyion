@@ -21,7 +21,7 @@ namespace POSLyion.Resources.Funcionalidad
         private readonly Action<string, DataGridViewCellEventArgs> _facturaClickCallback;
         private readonly Action<List<ReportesDetalle>> _verDetalleCallBack;
         private readonly TicketManager _ticketManager;
-        private readonly ActualizadorStock _actualizadorStock = new ActualizadorStock();
+        private readonly ActualizadorStockManager _actualizadorStock = new ActualizadorStockManager();
 
         public CarritoManager
             (
@@ -41,21 +41,26 @@ namespace POSLyion.Resources.Funcionalidad
             _ticketManager = ticketManager;
         }
 
-        public void AgregarProductoCarrito(DataGridView dgv_productos, DataGridViewCellEventArgs e, string dgv_activo)
+        public async Task AgregarProductoCarrito(DataGridView dgv_productos, DataGridViewCellEventArgs e, string dgv_activo)
         {
             var idProducto = Convert.ToInt32(dgv_productos.Rows[e.RowIndex].Cells["dgv_productos_id"].Value);
 
             if (!VerificarExistenciaProducto(dgv_productos, e, out var filaProductoEncontrado))
             {
-                if (_ventasService.RestarStock(idProducto, 1))
+                await _actualizadorStock.EncolarActualizacionStock(async () =>
                 {
-                    var productoAgregado = GenerarProducto(dgv_productos, e, idProducto);
-                    _ticketManager.AgregarProductoEnTicket(productoAgregado);
-                }
+                    var resultadoOperacion = await _ventasService.RestarStockAsync(idProducto, 1);
+                    if (resultadoOperacion)
+                    {
+                        var productoAgregado = GenerarProducto(dgv_productos, e, idProducto);
+                        _ticketManager.AgregarProductoEnTicket(productoAgregado);
+                    }
+                });
             }
             else
             {
-                if (_ventasService.RestarStock(idProducto, 1))
+                var resultadoOperacion = await _ventasService.RestarStockAsync(idProducto, 1);
+                if (resultadoOperacion)
                 {
                     filaProductoEncontrado.Cells["dgv_resumen_cantidad"].Value =
                     Convert.ToInt32(filaProductoEncontrado.Cells["dgv_resumen_cantidad"].Value) + 1;
@@ -115,19 +120,22 @@ namespace POSLyion.Resources.Funcionalidad
 
         private async Task EliminarProductoCarrito(int idProducto, int cantidad, DataGridViewCellEventArgs e)
         {
-            var resultado = await new CN_Ventas().SumarStockAsync(idProducto, cantidad);
-            if (resultado)
+            await _actualizadorStock.EncolarActualizacionStock(async () =>
             {
-                // Si se sumó al stock correctamente, se elimina el producto del carrito
-                var indice = e.RowIndex;
-                if (indice >= 0)
+                var resultado = await new CN_Ventas().SumarStockAsync(idProducto, cantidad);
+                if (resultado)
                 {
-                    _dgv_resumen.Rows.RemoveAt(indice);
-                    var productoEliminado = _ticketManager.TicketSeleccionado.Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
-                    _ticketManager.EliminarProductoEnTicket(productoEliminado);
-                    _calcularTotalCallBack?.Invoke();
+                    // Si se sumó al stock correctamente, se elimina el producto del carrito
+                    var indice = e.RowIndex;
+                    if (indice >= 0)
+                    {
+                        _dgv_resumen.Rows.RemoveAt(indice);
+                        var productoEliminado = _ticketManager.TicketSeleccionado.Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+                        _ticketManager.EliminarProductoEnTicket(productoEliminado);
+                        _calcularTotalCallBack?.Invoke();
+                    }
                 }
-            }
+            });
             _limpiarBusquedaCallBack?.Invoke();
         }
 
@@ -151,8 +159,6 @@ namespace POSLyion.Resources.Funcionalidad
             _calcularTotalCallBack?.Invoke();
             return carritoLimpio;
         }
-
-
 
         public void ModificarCarrito(DataGridViewCellEventArgs e, string dgv_activo, DataGridView dgv_detalle)
         {
@@ -250,7 +256,7 @@ namespace POSLyion.Resources.Funcionalidad
                 // Si la nueva cantidad es mayor a la que tenía antes, entonces se resta la diferencia al stock
                 if (nuevaCantidad > cantidadActualCarrito)
                 {
-                    RestarStock(nuevaCantidad, cantidadActualCarrito, idProducto, e);
+                    _ = RestarStock(nuevaCantidad, cantidadActualCarrito, idProducto, e);
                 }
                 // Si la nueva cantidad es mayor a la que tenía antes, entonces se suma la diferencia al stock
                 else if (nuevaCantidad < cantidadActualCarrito)
@@ -264,35 +270,41 @@ namespace POSLyion.Resources.Funcionalidad
             }
         }
 
-        private void RestarStock(int nuevaCantidad, int cantidadActualCarrito, int idProducto, DataGridViewCellEventArgs e)
+        private async Task RestarStock(int nuevaCantidad, int cantidadActualCarrito, int idProducto, DataGridViewCellEventArgs e)
         {
             var cantidadDescontarStock = nuevaCantidad - cantidadActualCarrito;
-
-            if (new CN_Ventas().RestarStock(idProducto, cantidadDescontarStock))
+            await _actualizadorStock.EncolarActualizacionStock(async () =>
             {
-                _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value = nuevaCantidad;
-                _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_subtotal"].Value =
-                                    nuevaCantidad
-                                    *
-                                    Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
-                _calcularTotalCallBack?.Invoke();
-            }
+                var resultadoOperacion = await _ventasService.RestarStockAsync(idProducto, cantidadDescontarStock);
+
+                if (resultadoOperacion)
+                {
+                    _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value = nuevaCantidad;
+                    _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_subtotal"].Value =
+                                        nuevaCantidad
+                                        *
+                                        Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
+                    _calcularTotalCallBack?.Invoke();
+                }
+            });
         }
 
         private async Task SumarStock(int nuevaCantidad, int cantidadActualCarrito, int idProducto, DataGridViewCellEventArgs e)
         {
             var cantidadSumarStock = cantidadActualCarrito - nuevaCantidad;
-            var resultado = await new CN_Ventas().SumarStockAsync(idProducto, cantidadSumarStock);
-
-            if (resultado)
+            await _actualizadorStock.EncolarActualizacionStock(async () =>
             {
-                _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value = nuevaCantidad;
-                _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_subtotal"].Value =
-                                    nuevaCantidad
-                                    *
-                                    Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
-                _calcularTotalCallBack?.Invoke();
-            }
+                var resultado = await new CN_Ventas().SumarStockAsync(idProducto, cantidadSumarStock);
+                if (resultado)
+                {
+                    _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_cantidad"].Value = nuevaCantidad;
+                    _dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_subtotal"].Value =
+                                        nuevaCantidad
+                                        *
+                                        Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
+                    _calcularTotalCallBack?.Invoke();
+                }
+            });
         }
 
         private async Task ManejarCantidadInvalida(int idProducto, int cantidadActualCarrito, DataGridViewCellEventArgs e)
@@ -301,12 +313,15 @@ namespace POSLyion.Resources.Funcionalidad
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (resultadoDialogo == DialogResult.Yes)
             {
-                var resultadoOperacion = await new CN_Ventas().SumarStockAsync(idProducto, cantidadActualCarrito);
-                if (resultadoOperacion)
+                await _actualizadorStock.EncolarActualizacionStock(async () =>
                 {
-                    _dgv_resumen.Rows.RemoveAt(e.RowIndex);
-                    _calcularTotalCallBack?.Invoke();
-                }
+                    var resultadoOperacion = await _ventasService.SumarStockAsync(idProducto, cantidadActualCarrito);
+                    if (resultadoOperacion)
+                    {
+                        _dgv_resumen.Rows.RemoveAt(e.RowIndex);
+                        _calcularTotalCallBack?.Invoke();
+                    }
+                });
             }
             else
             {

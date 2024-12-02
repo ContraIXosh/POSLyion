@@ -12,9 +12,9 @@ namespace CapaNegocio
 
         private readonly CD_Ventas oVenta = new CD_Ventas();
 
-        public bool RestarStock(int id_producto, int cantidad)
+        public async Task<bool> RestarStockAsync(int id_producto, int cantidad)
         {
-            return oVenta.RestarStock(id_producto, cantidad);
+            return await oVenta.RestarStockAsync(id_producto, cantidad);
         }
 
         public async Task<bool> SumarStockAsync(int id_producto, int cantidad)

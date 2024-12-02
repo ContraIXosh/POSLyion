@@ -54,7 +54,7 @@ namespace POSLyion
             }
         }
 
-        private void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgv_productos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -63,7 +63,7 @@ namespace POSLyion
                     btn_factura_Click("Facturación", e);
                 }
 
-                _carritoManager.AgregarProductoCarrito(dgv_productos, e, dgv_activo);
+                await _carritoManager.AgregarProductoCarrito(dgv_productos, e, dgv_activo);
                 txt_buscarproductos.Text = "";
                 txt_buscarproductos.Select();
                 CalcularTotal();
@@ -518,7 +518,7 @@ namespace POSLyion
             if (e.KeyCode == Keys.Enter)
             {
                 var indiceFila = new DataGridViewCellEventArgs(0, dgv_productos.CurrentRow.Index);
-                _carritoManager.AgregarProductoCarrito(dgv_productos, indiceFila, dgv_activo);
+                _ = _carritoManager.AgregarProductoCarrito(dgv_productos, indiceFila, dgv_activo);
                 txt_buscarproductos.Text = "";
                 txt_buscarproductos.Select();
                 CalcularTotal();
@@ -551,6 +551,45 @@ namespace POSLyion
                     // y el índice de la fila posicionada actualmente
                     var indicesFila = new DataGridViewCellEventArgs(7, dgv_resumen.CurrentRow.Index);
                     _carritoManager.ModificarCarrito(indicesFila, dgv_activo, dgv_detalle);
+                }
+            }
+        }
+
+        public async void formVentas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var ticketsConProductosPendientes = new List<Ticket>();
+            foreach (var ticket in _ticketManager.ObtenerTickets())
+            {
+                if (ticket.Productos.Count > 0)
+                {
+                    ticketsConProductosPendientes.Add(ticket);
+                }
+            }
+
+            if (ticketsConProductosPendientes.Count > 0)
+            {
+                var resultadoDialogo = MessageBox.Show("Hay tickets pendientes que aún contienen productos.\n¿Desea eliminarlos?",
+                     "Mensaje",
+                     MessageBoxButtons.YesNo,
+                     MessageBoxIcon.Warning);
+                if (resultadoDialogo == DialogResult.Yes)
+                {
+                    foreach (var ticket in ticketsConProductosPendientes)
+                    {
+                        await _ticketManager.SeleccionarTicketAsync(ticket);
+                        var resultadoOperacion = await _carritoManager.LimpiarCarritoAsync();
+                        if (!resultadoOperacion)
+                        {
+                            _ = MessageBox.Show("Ocurrió un error al limpiar el carrito para el ticket: " + ticket.IdTicket,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true; // Cancelar el cierre si algo falla
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    e.Cancel = true; // Cancelar el cierre si el usuario decide no eliminar los productos
                 }
             }
         }
