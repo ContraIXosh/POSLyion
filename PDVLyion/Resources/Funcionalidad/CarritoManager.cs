@@ -139,6 +139,13 @@ namespace POSLyion.Resources.Funcionalidad
             _limpiarBusquedaCallBack?.Invoke();
         }
 
+        public async Task<bool> EliminarProductosFormClosingAsync(Ticket ticket)
+        {
+            _ticketManager.TicketSeleccionado = ticket;
+            var resultadoOperacion = await LimpiarCarritoAsync();
+            return resultadoOperacion;
+        }
+
         public async Task<bool> LimpiarCarritoAsync()
         {
             var carritoLimpio = true;

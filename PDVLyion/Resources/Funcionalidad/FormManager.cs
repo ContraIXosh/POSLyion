@@ -45,5 +45,16 @@ namespace POSLyion.Resources
                 _ = formulariosDialogo[index].ShowDialog();
             }
         }
+
+        public Form ObtenerFormularioDialogo(int index)
+        {
+            return formulariosDialogo[index];
+        }
+
+        public Form ObtenerFormularioPrincipal(int index)
+        {
+            return formulariosPrincipales.ContainsKey(index) ? formulariosPrincipales[index] : null;
+        }
+
     }
 }

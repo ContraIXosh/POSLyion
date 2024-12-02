@@ -11,24 +11,25 @@ namespace POSLyion
 {
     public partial class formVentas : Form
     {
-        private readonly CarritoManager _carritoManager;
-        private readonly TicketManager _ticketManager;
+        public readonly CarritoManager CarritoManager;
+        public readonly TicketManager TicketManager;
         private readonly DataGridView dgv_detalle = new DataGridView();
         public Clientes Cliente = new Clientes();
         private decimal total = 0;
         private string dgv_activo = "factura";
+        public bool CerrandoSesion = true;
 
         public formVentas()
         {
             InitializeComponent();
-            _ticketManager = new TicketManager(flp_tickets, dgv_resumen, CalcularTotal, btn_factura_Click);
-            _carritoManager = new CarritoManager(dgv_resumen, new CN_Ventas(), CalcularTotal, LimpiarBusqueda, VerDetalle, _ticketManager);
+            TicketManager = new TicketManager(flp_tickets, dgv_resumen, CalcularTotal, btn_factura_Click);
+            CarritoManager = new CarritoManager(dgv_resumen, new CN_Ventas(), CalcularTotal, LimpiarBusqueda, VerDetalle, TicketManager);
             KeyPreview = true;
         }
 
         private void formVentas_Load(object sender, EventArgs e)
         {
-            _ = _ticketManager.AgregarNuevoTicketAsync();
+            _ = TicketManager.AgregarNuevoTicketAsync();
         }
 
         private void txt_buscarproductos_TextChanged(object sender, EventArgs e)
@@ -63,7 +64,7 @@ namespace POSLyion
                     btn_factura_Click("Facturación", e);
                 }
 
-                await _carritoManager.AgregarProductoCarrito(dgv_productos, e, dgv_activo);
+                await CarritoManager.AgregarProductoCarrito(dgv_productos, e, dgv_activo);
                 txt_buscarproductos.Text = "";
                 txt_buscarproductos.Select();
                 CalcularTotal();
@@ -118,7 +119,7 @@ namespace POSLyion
                 Ticket1.ImprimirTiket(impresora);
 
                 _ = MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _ticketManager.FinalizarVenta();
+                TicketManager.FinalizarVenta();
                 lbl_tipoticket.Text = "Consumidor final";
                 Cliente = new Clientes();
             }
@@ -165,7 +166,7 @@ namespace POSLyion
 
         public void dgv_resumen_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _carritoManager.ModificarCarrito(e, dgv_activo, dgv_detalle);
+            CarritoManager.ModificarCarrito(e, dgv_activo, dgv_detalle);
         }
 
         private void LimpiarBusqueda()
@@ -265,7 +266,7 @@ namespace POSLyion
                 {
                     btn_cerrarventa.Visible = true;
                 }
-                await _ticketManager.MostrarProductosTicketAsync();
+                await TicketManager.MostrarProductosTicketAsync();
             }
         }
 
@@ -403,7 +404,7 @@ namespace POSLyion
                 }
                 if (e.KeyCode == Keys.F6)
                 {
-                    _ = _ticketManager.AgregarNuevoTicketAsync();
+                    _ = TicketManager.AgregarNuevoTicketAsync();
                 }
                 if (e.KeyCode == Keys.F7)
                 {
@@ -435,7 +436,7 @@ namespace POSLyion
 
         private void btn_nuevo_ticket_Click(object sender, EventArgs e)
         {
-            _ = _ticketManager.AgregarNuevoTicketAsync();
+            _ = TicketManager.AgregarNuevoTicketAsync();
         }
 
         private async void btn_eliminar_ticket_Click(object sender, EventArgs e)
@@ -446,14 +447,14 @@ namespace POSLyion
                 var resultadoDialogo = MessageBox.Show("Esto eliminará los productos del carrito\n¿Desea continuar?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (resultadoDialogo == DialogResult.Yes)
                 {
-                    var resultadoOperacion = await _carritoManager.LimpiarCarritoAsync();
+                    var resultadoOperacion = await CarritoManager.LimpiarCarritoAsync();
                     if (!resultadoOperacion)
                     {
                         _ = MessageBox.Show("Ocurrió un error inesperado.\nPor favor, verificar stock de productos.", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                     }
                 }
             }
-            await _ticketManager.EliminarTicketAsync();
+            await TicketManager.EliminarTicketAsync();
         }
 
         private void btn_buscar_producto_Click(object sender, EventArgs e)
@@ -469,9 +470,14 @@ namespace POSLyion
             var respaldoPrecioMayorista = Convert.ToDecimal(filaActual.Cells["dgv_resumen_precio"].Value);
             filaActual.Cells["dgv_resumen_precio"].Value = filaActual.Cells["dgv_resumen_precio_mayorista"].Value;
             filaActual.Cells["dgv_resumen_precio_mayorista"].Value = respaldoPrecioMayorista;
+
+            var precioUnitario = Convert.ToDecimal(filaActual.Cells["dgv_resumen_precio"].Value);
+            var cantidad = Convert.ToInt32(filaActual.Cells["dgv_resumen_cantidad"].Value);
+
+            filaActual.Cells["dgv_resumen_subtotal"].Value = precioUnitario * cantidad;
             filaActual.Cells["control_precio_aplicado"].Value = "minorista";
             filaActual.DefaultCellStyle.BackColor = Color.White;
-            _ticketManager.AplicarPrecioMinorista(filaActual);
+            TicketManager.AplicarPrecioMinorista(filaActual);
             CalcularTotal();
         }
 
@@ -482,9 +488,15 @@ namespace POSLyion
                 var respaldoPrecioMinorista = Convert.ToDecimal(filaActual.Cells["dgv_resumen_precio"].Value);
                 filaActual.Cells["dgv_resumen_precio"].Value = filaActual.Cells["dgv_resumen_precio_mayorista"].Value;
                 filaActual.Cells["dgv_resumen_precio_mayorista"].Value = respaldoPrecioMinorista;
+
+                var precioUnitario = Convert.ToDecimal(filaActual.Cells["dgv_resumen_precio"].Value);
+                var cantidad = Convert.ToInt32(filaActual.Cells["dgv_resumen_cantidad"].Value);
+
+                filaActual.Cells["dgv_resumen_subtotal"].Value = precioUnitario * cantidad;
+
                 filaActual.Cells["control_precio_aplicado"].Value = "mayorista";
                 filaActual.DefaultCellStyle.BackColor = Color.Bisque;
-                _ticketManager.AplicarPrecioMayorista(filaActual);
+                TicketManager.AplicarPrecioMayorista(filaActual);
                 CalcularTotal();
             }
             else
@@ -501,7 +513,7 @@ namespace POSLyion
                 {
                     dgv_productos.Select();
                 }
-                else if (_ticketManager.ObtenerTicketActual().Productos.Count > 0)
+                else if (TicketManager.ObtenerTicketActual().Productos.Count > 0)
                 {
                     if (!string.Equals(dgv_activo, "factura"))
                     {
@@ -513,12 +525,12 @@ namespace POSLyion
             }
         }
 
-        private void dgv_productos_KeyDown(object sender, KeyEventArgs e)
+        private async void dgv_productos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 var indiceFila = new DataGridViewCellEventArgs(0, dgv_productos.CurrentRow.Index);
-                _ = _carritoManager.AgregarProductoCarrito(dgv_productos, indiceFila, dgv_activo);
+                await CarritoManager.AgregarProductoCarrito(dgv_productos, indiceFila, dgv_activo);
                 txt_buscarproductos.Text = "";
                 txt_buscarproductos.Select();
                 CalcularTotal();
@@ -550,46 +562,7 @@ namespace POSLyion
                     // Se envía el ColumnIndex 7 que corresponde al "btn_eliminar",
                     // y el índice de la fila posicionada actualmente
                     var indicesFila = new DataGridViewCellEventArgs(7, dgv_resumen.CurrentRow.Index);
-                    _carritoManager.ModificarCarrito(indicesFila, dgv_activo, dgv_detalle);
-                }
-            }
-        }
-
-        public async void formVentas_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var ticketsConProductosPendientes = new List<Ticket>();
-            foreach (var ticket in _ticketManager.ObtenerTickets())
-            {
-                if (ticket.Productos.Count > 0)
-                {
-                    ticketsConProductosPendientes.Add(ticket);
-                }
-            }
-
-            if (ticketsConProductosPendientes.Count > 0)
-            {
-                var resultadoDialogo = MessageBox.Show("Hay tickets pendientes que aún contienen productos.\n¿Desea eliminarlos?",
-                     "Mensaje",
-                     MessageBoxButtons.YesNo,
-                     MessageBoxIcon.Warning);
-                if (resultadoDialogo == DialogResult.Yes)
-                {
-                    foreach (var ticket in ticketsConProductosPendientes)
-                    {
-                        await _ticketManager.SeleccionarTicketAsync(ticket);
-                        var resultadoOperacion = await _carritoManager.LimpiarCarritoAsync();
-                        if (!resultadoOperacion)
-                        {
-                            _ = MessageBox.Show("Ocurrió un error al limpiar el carrito para el ticket: " + ticket.IdTicket,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            e.Cancel = true; // Cancelar el cierre si algo falla
-                            return;
-                        }
-                    }
-                }
-                else
-                {
-                    e.Cancel = true; // Cancelar el cierre si el usuario decide no eliminar los productos
+                    CarritoManager.ModificarCarrito(indicesFila, dgv_activo, dgv_detalle);
                 }
             }
         }
