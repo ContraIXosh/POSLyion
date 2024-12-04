@@ -10,6 +10,7 @@ namespace CapaEntidad
         public Clientes oCliente { get; set; }
         public decimal Total { get; set; }
         public decimal Vuelto { get; set; }
+        public string NotasVenta { get; set; }
         public string Create_date { get; set; }
         public string Modify_date { get; set; }
     }

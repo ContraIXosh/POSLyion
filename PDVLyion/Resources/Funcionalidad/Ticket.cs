@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CapaEntidad;
+using System.Collections.Generic;
 
 namespace POSLyion.Resources.Funcionalidad
 {
@@ -8,6 +9,7 @@ namespace POSLyion.Resources.Funcionalidad
         public string NombreTicket { get; set; }
         public System.Windows.Forms.Button BotonTicket { get; set; }
         public List<ProductoCarrito> Productos { get; set; }
+        public Clientes Cliente { get; set; }
 
         public Ticket(int idTicket, string nombreTicket, System.Windows.Forms.Button botonTicket)
         {

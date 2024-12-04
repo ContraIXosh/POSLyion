@@ -11,14 +11,41 @@ namespace POSLyion
         public decimal total = 0;
         public decimal vuelto = 0;
         public bool venta_cerrada = false;
+        public string NotasVenta;
         private readonly Clientes Cliente;
 
         public formCobro(decimal p_total, Clientes cliente)
         {
             InitializeComponent();
-            total = p_total - (p_total * (Convert.ToDecimal(cliente.Descuento) / 100));
+            total = p_total;
             Cliente = cliente;
-            lbl_suma_total.Text = $"$ {Convert.ToString(total)}";
+            NotasVenta = string.Empty;
+        }
+
+        private void formCobro_Load(object sender, EventArgs e)
+        {
+            if (Cliente == null)
+            {
+                lbl_nombre_cliente.Visible = false;
+                lbl_cliente_seleccionado.Visible = false;
+                btn_opciones_cliente.Visible = false;
+            }
+            else
+            {
+                CargarDatosCliente();
+            }
+
+            lbl_suma_total.Text = $"${Convert.ToString(total)}";
+            txt_dinero_entregado.Text = lbl_suma_total.Text;
+        }
+
+        private void CargarDatosCliente()
+        {
+            lbl_nombre_cliente.Text = Cliente.Nombre_completo.ToString();
+            if (Cliente.Descuento > 0)
+            {
+                total -= total * (Convert.ToDecimal(Cliente.Descuento) / 100);
+            }
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -28,14 +55,14 @@ namespace POSLyion
 
         private void btn_cobrar_Click(object sender, EventArgs e)
         {
-            var monto = lbl_suma_total.Text;
-            var sumaTotal = Convert.ToDecimal(monto.Replace("$", "").Trim());
-            string lblDineroEntregado;
+            var montoTotalVenta = lbl_suma_total.Text;
+            var sumaTotal = Convert.ToDecimal(montoTotalVenta.Replace("$", "").Trim());
+            var lblDineroEntregado = txt_dinero_entregado.Text.Replace("$", "").Trim();
             decimal dineroEntregado;
-            if (txt_dinero_entregado.Text != "")
+
+            if (lblDineroEntregado != "" && lblDineroEntregado != ",")
             {
-                lblDineroEntregado = txt_dinero_entregado.Text;
-                dineroEntregado = Convert.ToDecimal(lblDineroEntregado.Replace("$", "").Trim());
+                dineroEntregado = Convert.ToDecimal(lblDineroEntregado);
             }
             else
             {
@@ -50,33 +77,48 @@ namespace POSLyion
             }
             else
             {
-                _ = Convert.ToDecimal(txt_dinero_entregado.Text);
+                _ = Convert.ToDecimal(lblDineroEntregado);
                 venta_cerrada = true;
                 Close();
             }
         }
 
+        private void btn_notas_venta_Click(object sender, EventArgs e)
+        {
+            using (var modalNotasVenta = new MD_NotasVenta(NotasVenta))
+            {
+                _ = modalNotasVenta.ShowDialog();
+                if (modalNotasVenta.NotaAgregada == true)
+                {
+                    NotasVenta = modalNotasVenta.NotasVenta;
+                }
+            }
+        }
+
         private void txt_dinero_entregado_TextChanged(object sender, EventArgs e)
         {
-            var lblDineroEntregado = txt_dinero_entregado.Text.Replace("$", "").Trim();
-            if (lblDineroEntregado != "")
+            var dineroEntregado = txt_dinero_entregado.Text;
+
+            // Ignorar el símbolo de dólar para validaciones numéricas
+            if (dineroEntregado.StartsWith("$"))
             {
-                vuelto = Convert.ToDecimal(lblDineroEntregado) - total;
-                lbl_cambio.Text = vuelto >= 0 ? "$ " + vuelto.ToString() : "Monto entregado insuficiente";
+                dineroEntregado = dineroEntregado.Substring(1);
             }
-            else
+
+            if (dineroEntregado != "" && dineroEntregado != ",")
             {
-                lbl_cambio.Text = "$0,00";
+                vuelto = Convert.ToDecimal(dineroEntregado) - total;
+                lbl_cambio.Text = vuelto >= 0 ? $"${vuelto}" : "Monto entregado insuficiente";
             }
-            txt_dinero_entregado.Select();
         }
 
         private void txt_dinero_entregado_KeyPress(object sender, KeyPressEventArgs e)
         {
             var tecla = e.KeyChar;
+            var texto = txt_dinero_entregado.Text;
 
             // Permitir el símbolo de dólar solo si es el primer carácter
-            if (tecla == '$' && txt_dinero_entregado.Text.Length == 0)
+            if (tecla == '$' && texto.Length == 0)
             {
                 e.Handled = false;
                 return;
@@ -89,21 +131,8 @@ namespace POSLyion
                 return;
             }
 
-            // Permitir punto para los miles, pero no más de uno seguido
-            if (tecla == '.' && txt_dinero_entregado.Text.Length > 0)
-            {
-                var lastCommaIndex = txt_dinero_entregado.Text.LastIndexOf(',');
-                var lastDotIndex = txt_dinero_entregado.Text.LastIndexOf('.');
-
-                if (lastCommaIndex == -1 || lastDotIndex > lastCommaIndex)
-                {
-                    e.Handled = false;
-                    return;
-                }
-            }
-
-            // Permitir coma para decimales, pero solo una
-            if (tecla == ',' && txt_dinero_entregado.Text.IndexOf(',') == -1)
+            // Permitir coma para decimales, pero solo una vez
+            if (tecla == ',' && texto.IndexOf(',') == -1)
             {
                 e.Handled = false;
                 return;
@@ -120,19 +149,9 @@ namespace POSLyion
             e.Handled = true;
         }
 
-
-
-        private void btn_buscar_cliente_Click(object sender, EventArgs e)
+        private void btn_opciones_cliente_Click(object sender, EventArgs e)
         {
-            using (var modal = new MD_Clientes())
-            {
-                var resultado = modal.ShowDialog();
-                if (resultado == DialogResult.OK)
-                {
-                    //txt_dni_cliente.Text = modal.oCliente.Dni;
-                    //txt_nombre_completo_cliente.Text = modal.oCliente.Nombre_completo;
-                }
-            }
+
         }
     }
 }

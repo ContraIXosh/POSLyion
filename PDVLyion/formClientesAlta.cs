@@ -120,6 +120,7 @@ namespace POSLyion
             else
             {
                 _ = MessageBox.Show("Cliente actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActualizarDatos();
                 Close();
             }
         }
@@ -197,18 +198,32 @@ namespace POSLyion
             }
         }
 
-        private void panel_footer_Resize_1(object sender, EventArgs e)
+        // Si un cliente modificado recientemente está seleccionado en un ticket pendiente, se actualiza
+        private void ActualizarDatos()
         {
-            if (ClientSize.Width > 1000 && ClientSize.Height > 700)
+            var formVentas = FormManager.Instance.ObtenerFormularioPrincipal(0) as formVentas;
+            var listaTickets = formVentas.TicketManager.ObtenerTickets();
+            foreach (var ticket in listaTickets)
             {
-                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            }
-            else
-            {
-                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                if (ticket.Cliente != null && ticket.Cliente.Id_cliente == _objeto.Id_cliente)
+                {
+                    ticket.Cliente = _objeto;
+                }
             }
         }
+
+        //private void panel_footer_Resize_1(object sender, EventArgs e)
+        //{
+        //    if (ClientSize.Width > 1000 && ClientSize.Height > 700)
+        //    {
+        //        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        //        AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+        //    }
+        //    else
+        //    {
+        //        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        //        AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+        //    }
+        //}
     }
 }

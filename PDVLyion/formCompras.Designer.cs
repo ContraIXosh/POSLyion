@@ -72,8 +72,8 @@
             this.tlpanel_primera = new System.Windows.Forms.TableLayoutPanel();
             this.cbox_proveedores = new CustomBox.RJControls.RJComboBox();
             this.txt_numero_documento = new CustomBox.RJControls.RJTextBox();
-            this.lbl_nro_doc = new System.Windows.Forms.Label();
             this.lbl_proveedor = new System.Windows.Forms.Label();
+            this.lbl_nro_doc = new System.Windows.Forms.Label();
             this.oracleCommandBuilder1 = new System.Data.OracleClient.OracleCommandBuilder();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -663,18 +663,6 @@
             this.txt_numero_documento.Texts = "";
             this.txt_numero_documento.UnderlinedStyle = false;
             // 
-            // lbl_nro_doc
-            // 
-            this.lbl_nro_doc.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_nro_doc.AutoSize = true;
-            this.lbl_nro_doc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nro_doc.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_nro_doc.Location = new System.Drawing.Point(579, 11);
-            this.lbl_nro_doc.Name = "lbl_nro_doc";
-            this.lbl_nro_doc.Size = new System.Drawing.Size(156, 24);
-            this.lbl_nro_doc.TabIndex = 18;
-            this.lbl_nro_doc.Text = "Nro. de Factura";
-            // 
             // lbl_proveedor
             // 
             this.lbl_proveedor.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -686,6 +674,18 @@
             this.lbl_proveedor.Size = new System.Drawing.Size(107, 24);
             this.lbl_proveedor.TabIndex = 16;
             this.lbl_proveedor.Text = "Proveedor";
+            // 
+            // lbl_nro_doc
+            // 
+            this.lbl_nro_doc.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_nro_doc.AutoSize = true;
+            this.lbl_nro_doc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nro_doc.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_nro_doc.Location = new System.Drawing.Point(579, 11);
+            this.lbl_nro_doc.Name = "lbl_nro_doc";
+            this.lbl_nro_doc.Size = new System.Drawing.Size(156, 24);
+            this.lbl_nro_doc.TabIndex = 18;
+            this.lbl_nro_doc.Text = "Nro. de Factura";
             // 
             // errorProvider1
             // 

@@ -47,6 +47,8 @@
             this.btn_cobrar_sin_imprimir = new CustomBox.RJControls.RJButton();
             this.btn_cancelar = new CustomBox.RJControls.RJButton();
             this.btn_cobrar_imprimir = new CustomBox.RJControls.RJButton();
+            this.btn_notas_venta = new CustomBox.RJControls.RJButton();
+            this.btn_opciones_cliente = new CustomBox.RJControls.RJButton();
             this.tlp_principal.SuspendLayout();
             this.tlp_cobro.SuspendLayout();
             this.tlp_monto_cambio.SuspendLayout();
@@ -149,7 +151,7 @@
             this.lbl_cambio.Name = "lbl_cambio";
             this.lbl_cambio.Size = new System.Drawing.Size(540, 58);
             this.lbl_cambio.TabIndex = 16;
-            this.lbl_cambio.Text = "$ lbl_total";
+            this.lbl_cambio.Text = "$0";
             this.lbl_cambio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_paga_con
@@ -175,7 +177,7 @@
             this.lbl_suma_total.Name = "lbl_suma_total";
             this.lbl_suma_total.Size = new System.Drawing.Size(540, 57);
             this.lbl_suma_total.TabIndex = 14;
-            this.lbl_suma_total.Text = "$ lbl_total";
+            this.lbl_suma_total.Text = "$lbl_total";
             this.lbl_suma_total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_total_a_cobrar
@@ -210,6 +212,7 @@
             this.tlp_cliente.ColumnCount = 2;
             this.tlp_cliente.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tlp_cliente.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlp_cliente.Controls.Add(this.btn_opciones_cliente, 0, 0);
             this.tlp_cliente.Controls.Add(this.tlp_nombre_cliente, 0, 0);
             this.tlp_cliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_cliente.Location = new System.Drawing.Point(3, 439);
@@ -277,12 +280,14 @@
             // 
             // tlp_botones
             // 
-            this.tlp_botones.ColumnCount = 3;
-            this.tlp_botones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlp_botones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlp_botones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlp_botones.ColumnCount = 4;
+            this.tlp_botones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlp_botones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlp_botones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlp_botones.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlp_botones.Controls.Add(this.btn_notas_venta, 0, 0);
             this.tlp_botones.Controls.Add(this.btn_cobrar_sin_imprimir, 0, 0);
-            this.tlp_botones.Controls.Add(this.btn_cancelar, 2, 0);
+            this.tlp_botones.Controls.Add(this.btn_cancelar, 3, 0);
             this.tlp_botones.Controls.Add(this.btn_cobrar_imprimir, 0, 0);
             this.tlp_botones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_botones.Location = new System.Drawing.Point(3, 498);
@@ -304,11 +309,11 @@
             this.btn_cobrar_sin_imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cobrar_sin_imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cobrar_sin_imprimir.ForeColor = System.Drawing.Color.Gold;
-            this.btn_cobrar_sin_imprimir.Location = new System.Drawing.Point(123, 3);
+            this.btn_cobrar_sin_imprimir.Location = new System.Drawing.Point(93, 3);
             this.btn_cobrar_sin_imprimir.Name = "btn_cobrar_sin_imprimir";
-            this.btn_cobrar_sin_imprimir.Size = new System.Drawing.Size(114, 76);
+            this.btn_cobrar_sin_imprimir.Size = new System.Drawing.Size(84, 76);
             this.btn_cobrar_sin_imprimir.TabIndex = 10;
-            this.btn_cobrar_sin_imprimir.Text = "COBRAR SIN IMPRIMIR - F2";
+            this.btn_cobrar_sin_imprimir.Text = "COBRAR \r\nSIN \r\nIMPRIMIR\r\n(F2)";
             this.btn_cobrar_sin_imprimir.TextColor = System.Drawing.Color.Gold;
             this.btn_cobrar_sin_imprimir.UseVisualStyleBackColor = false;
             // 
@@ -322,13 +327,13 @@
             this.btn_cancelar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_cancelar.FlatAppearance.BorderSize = 0;
             this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancelar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cancelar.Location = new System.Drawing.Point(243, 3);
+            this.btn_cancelar.Location = new System.Drawing.Point(273, 3);
             this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(114, 76);
+            this.btn_cancelar.Size = new System.Drawing.Size(84, 76);
             this.btn_cancelar.TabIndex = 9;
-            this.btn_cancelar.Text = "CANCELAR";
+            this.btn_cancelar.Text = "CANCELAR\r\n(Escape)";
             this.btn_cancelar.TextColor = System.Drawing.Color.Red;
             this.btn_cancelar.UseVisualStyleBackColor = false;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
@@ -347,12 +352,54 @@
             this.btn_cobrar_imprimir.ForeColor = System.Drawing.Color.Gold;
             this.btn_cobrar_imprimir.Location = new System.Drawing.Point(3, 3);
             this.btn_cobrar_imprimir.Name = "btn_cobrar_imprimir";
-            this.btn_cobrar_imprimir.Size = new System.Drawing.Size(114, 76);
+            this.btn_cobrar_imprimir.Size = new System.Drawing.Size(84, 76);
             this.btn_cobrar_imprimir.TabIndex = 8;
-            this.btn_cobrar_imprimir.Text = "COBRAR E IMPRIMIR - F1";
+            this.btn_cobrar_imprimir.Text = "COBRAR E\r\nIMPRIMIR\r\n(F1)";
             this.btn_cobrar_imprimir.TextColor = System.Drawing.Color.Gold;
             this.btn_cobrar_imprimir.UseVisualStyleBackColor = false;
             this.btn_cobrar_imprimir.Click += new System.EventHandler(this.btn_cobrar_Click);
+            // 
+            // btn_notas_venta
+            // 
+            this.btn_notas_venta.BackColor = System.Drawing.Color.Transparent;
+            this.btn_notas_venta.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_notas_venta.BorderColor = System.Drawing.Color.Gold;
+            this.btn_notas_venta.BorderRadius = 10;
+            this.btn_notas_venta.BorderSize = 2;
+            this.btn_notas_venta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_notas_venta.FlatAppearance.BorderSize = 0;
+            this.btn_notas_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_notas_venta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_notas_venta.ForeColor = System.Drawing.Color.Gold;
+            this.btn_notas_venta.Location = new System.Drawing.Point(183, 3);
+            this.btn_notas_venta.Name = "btn_notas_venta";
+            this.btn_notas_venta.Size = new System.Drawing.Size(84, 76);
+            this.btn_notas_venta.TabIndex = 11;
+            this.btn_notas_venta.Text = "INGRESAR\r\nNOTAS DE\r\nVENTA\r\n(F4)";
+            this.btn_notas_venta.TextColor = System.Drawing.Color.Gold;
+            this.btn_notas_venta.UseVisualStyleBackColor = false;
+            this.btn_notas_venta.Click += new System.EventHandler(this.btn_notas_venta_Click);
+            // 
+            // btn_opciones_cliente
+            // 
+            this.btn_opciones_cliente.BackColor = System.Drawing.Color.Transparent;
+            this.btn_opciones_cliente.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_opciones_cliente.BorderColor = System.Drawing.Color.Gold;
+            this.btn_opciones_cliente.BorderRadius = 10;
+            this.btn_opciones_cliente.BorderSize = 2;
+            this.btn_opciones_cliente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_opciones_cliente.FlatAppearance.BorderSize = 0;
+            this.btn_opciones_cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_opciones_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_opciones_cliente.ForeColor = System.Drawing.Color.Gold;
+            this.btn_opciones_cliente.Location = new System.Drawing.Point(412, 3);
+            this.btn_opciones_cliente.Name = "btn_opciones_cliente";
+            this.btn_opciones_cliente.Size = new System.Drawing.Size(131, 135);
+            this.btn_opciones_cliente.TabIndex = 9;
+            this.btn_opciones_cliente.Text = "OPCIONES\r\nDE\r\nCLIENTE";
+            this.btn_opciones_cliente.TextColor = System.Drawing.Color.Gold;
+            this.btn_opciones_cliente.UseVisualStyleBackColor = false;
+            this.btn_opciones_cliente.Click += new System.EventHandler(this.btn_opciones_cliente_Click);
             // 
             // formCobro
             // 
@@ -361,6 +408,7 @@
             this.Controls.Add(this.tlp_principal);
             this.Name = "formCobro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.formCobro_Load);
             this.tlp_principal.ResumeLayout(false);
             this.tlp_cobro.ResumeLayout(false);
             this.tlp_cobro.PerformLayout();
@@ -399,5 +447,7 @@
         private CustomBox.RJControls.RJButton btn_cobrar_imprimir;
         private CustomBox.RJControls.RJButton btn_cancelar;
         private CustomBox.RJControls.RJButton btn_cobrar_sin_imprimir;
+        private CustomBox.RJControls.RJButton btn_notas_venta;
+        private CustomBox.RJControls.RJButton btn_opciones_cliente;
     }
 }

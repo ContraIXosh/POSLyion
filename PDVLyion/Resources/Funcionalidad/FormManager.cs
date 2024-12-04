@@ -48,7 +48,7 @@ namespace POSLyion.Resources
 
         public Form ObtenerFormularioDialogo(int index)
         {
-            return formulariosDialogo[index];
+            return formulariosDialogo.ContainsKey(index) ? formulariosPrincipales[index] : null;
         }
 
         public Form ObtenerFormularioPrincipal(int index)

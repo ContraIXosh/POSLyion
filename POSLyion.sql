@@ -865,6 +865,7 @@ CREATE PROC SP_ALTA_VENTA(
 	@id_cliente INT,
 	@total DECIMAL(12, 2),
 	@vuelto DECIMAL(6, 2),
+	@notas_venta VARCHAR(365),
 	@VentaDetalle [EVenta_Detalle] READONLY,
 	@resultado BIT OUTPUT,
 	@id_venta_generado INT OUTPUT,
@@ -878,8 +879,8 @@ BEGIN
 		SET @mensaje = ''
 
 		BEGIN TRANSACTION REGISTRO_VENTA
-			INSERT INTO Ventas(id_usuario, id_cliente, total, vuelto)
-			VALUES(@id_usuario, @id_cliente, @total, @vuelto)
+			INSERT INTO Ventas(id_usuario, id_cliente, total, vuelto, notas_venta)
+			VALUES(@id_usuario, @id_cliente, @total, @vuelto, @notas_venta)
 			SET @id_venta = SCOPE_IDENTITY()
 			SET @id_venta_generado = @id_venta
 

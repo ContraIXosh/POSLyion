@@ -14,11 +14,18 @@ namespace POSLyion.Resources.Funcionalidad
         private readonly DataGridView _dgv_resumen;
         private readonly Action _calcularTotalCallBack;
         private readonly Action<string, DataGridViewCellEventArgs> _facturaClickCallback;
+        private readonly Label _lbl_tipoticket;
         private Button _botonSeleccionado;
         public Ticket TicketSeleccionado;
         private int _cantidadTicketsCreados;
 
-        public TicketManager(FlowLayoutPanel flowLayoutPanel, DataGridView dgv_resumen, Action calcularTotalCallBack, Action<string, DataGridViewCellEventArgs> facturaClickCallBack)
+        public TicketManager(
+            FlowLayoutPanel flowLayoutPanel,
+            DataGridView dgv_resumen,
+            Action calcularTotalCallBack,
+            Action<string,
+            DataGridViewCellEventArgs> facturaClickCallBack,
+            Label lbl_tipoticket)
         {
             _listaTickets = new List<Ticket>();
             _flowLayoutPanel = flowLayoutPanel;
@@ -26,6 +33,7 @@ namespace POSLyion.Resources.Funcionalidad
             _botonSeleccionado = null;
             _dgv_resumen = dgv_resumen;
             _facturaClickCallback = facturaClickCallBack;
+            _lbl_tipoticket = lbl_tipoticket;
         }
 
         public async Task AgregarNuevoTicketAsync()
@@ -95,9 +103,10 @@ namespace POSLyion.Resources.Funcionalidad
         {
             _facturaClickCallback?.Invoke("Facturacion", null);
             _dgv_resumen.Rows.Clear();
+            MostrarNombreCliente();
             foreach (var producto in TicketSeleccionado.Productos)
             {
-                _ = _dgv_resumen.Rows.Add(new object[]
+                var indiceFila = _dgv_resumen.Rows.Add(new object[]
                 {
                     producto.IdProducto,
                     producto.NombreProducto,
@@ -109,9 +118,20 @@ namespace POSLyion.Resources.Funcionalidad
                     "Eliminar",
                     producto.ControlPrecioAplicado,
                 });
+
+                var filaAgregada = _dgv_resumen.Rows[indiceFila];
+
+                filaAgregada.DefaultCellStyle.BackColor = filaAgregada.Cells["control_precio_aplicado"].Value.ToString() == "mayorista" ? Color.Bisque : Color.White;
+
                 await Task.Yield();
             }
             _calcularTotalCallBack?.Invoke();
+        }
+
+        public void MostrarNombreCliente()
+        {
+            var clienteActual = TicketSeleccionado.Cliente;
+            _lbl_tipoticket.Text = clienteActual != null ? $"Cliente: {clienteActual.Nombre_completo}" : "Consumidor final";
         }
 
         public Ticket ObtenerTicketActual()
@@ -122,6 +142,7 @@ namespace POSLyion.Resources.Funcionalidad
         public void FinalizarVenta()
         {
             TicketSeleccionado.Productos.Clear();
+            TicketSeleccionado.Cliente = null;
             _dgv_resumen.Rows.Clear();
             _calcularTotalCallBack?.Invoke();
         }
@@ -142,6 +163,20 @@ namespace POSLyion.Resources.Funcionalidad
 
             (producto.PrecioMayorista, producto.Precio) = (producto.Precio, producto.PrecioMayorista);
             producto.ControlPrecioAplicado = "minorista";
+        }
+
+        public bool HayProductosPendientes()
+        {
+            var hayProductosPendientes = false;
+            foreach (var ticket in _listaTickets)
+            {
+                if (ticket.Productos.Count > 0)
+                {
+                    hayProductosPendientes |= true;
+                    break;
+                }
+            }
+            return hayProductosPendientes;
         }
     }
 }

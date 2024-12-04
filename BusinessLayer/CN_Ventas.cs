@@ -46,5 +46,10 @@ namespace CapaNegocio
         {
             return oVenta.VentasMensualesUsuarios();
         }
+
+        public Ventas BuscarVenta(int idVenta)
+        {
+            return oVenta.BuscarVenta(idVenta);
+        }
     }
 }

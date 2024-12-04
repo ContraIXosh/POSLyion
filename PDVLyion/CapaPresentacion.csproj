@@ -480,6 +480,12 @@
     <Compile Include="Modals\MD_EditarCantidad.Designer.cs">
       <DependentUpon>MD_EditarCantidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modals\MD_NotasVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modals\MD_NotasVenta.Designer.cs">
+      <DependentUpon>MD_NotasVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modals\MD_Productos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -578,6 +584,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modals\MD_EditarCantidad.resx">
       <DependentUpon>MD_EditarCantidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modals\MD_NotasVenta.resx">
+      <DependentUpon>MD_NotasVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modals\MD_Productos.resx">
       <DependentUpon>MD_Productos.cs</DependentUpon>

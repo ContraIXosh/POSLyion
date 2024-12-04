@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_principal = new System.Windows.Forms.Panel();
             this.tlp_principal = new System.Windows.Forms.TableLayoutPanel();
             this.tlp_productos_carrito = new System.Windows.Forms.TableLayoutPanel();
@@ -86,7 +87,7 @@
             this.lbl_ticket_pendiente = new System.Windows.Forms.Label();
             this.btn_eliminar_ticket = new RJCodeAdvance.RJControls.RJButton();
             this.btn_cerrar_caja = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_desc = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_seleccionar_cliente = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_seleccionar_cliente = new System.Windows.Forms.Label();
             this.btn_nuevo_ticket = new RJCodeAdvance.RJControls.RJButton();
             this.tlp_bot = new System.Windows.Forms.TableLayoutPanel();
@@ -176,6 +177,7 @@
             this.tlp_productos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tlp_productos.Size = new System.Drawing.Size(534, 453);
             this.tlp_productos.TabIndex = 20;
+            this.tlp_productos.Leave += new System.EventHandler(this.tlp_productos_Leave);
             // 
             // dgv_productos
             // 
@@ -650,9 +652,17 @@
             this.dgv_resumen.Margin = new System.Windows.Forms.Padding(0);
             this.dgv_resumen.Name = "dgv_resumen";
             this.dgv_resumen.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resumen.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgv_resumen.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_resumen.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_resumen.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_resumen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_resumen.Size = new System.Drawing.Size(331, 259);
             this.dgv_resumen.TabIndex = 8;
@@ -766,7 +776,7 @@
             this.panel_bottom.Controls.Add(this.lbl_ticket_pendiente, 1, 0);
             this.panel_bottom.Controls.Add(this.btn_eliminar_ticket, 0, 1);
             this.panel_bottom.Controls.Add(this.btn_cerrar_caja, 3, 1);
-            this.panel_bottom.Controls.Add(this.btn_desc, 0, 1);
+            this.panel_bottom.Controls.Add(this.btn_seleccionar_cliente, 0, 1);
             this.panel_bottom.Controls.Add(this.lbl_seleccionar_cliente, 0, 0);
             this.panel_bottom.Controls.Add(this.btn_nuevo_ticket, 1, 1);
             this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -865,29 +875,29 @@
             this.btn_cerrar_caja.UseVisualStyleBackColor = false;
             this.btn_cerrar_caja.Click += new System.EventHandler(this.btn_cerrar_caja_Click);
             // 
-            // btn_desc
+            // btn_seleccionar_cliente
             // 
-            this.btn_desc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_seleccionar_cliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_desc.AutoSize = true;
-            this.btn_desc.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn_desc.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn_desc.BorderColor = System.Drawing.Color.Black;
-            this.btn_desc.BorderRadius = 0;
-            this.btn_desc.BorderSize = 0;
-            this.btn_desc.FlatAppearance.BorderSize = 0;
-            this.btn_desc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_desc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_desc.ForeColor = System.Drawing.Color.White;
-            this.btn_desc.Location = new System.Drawing.Point(3, 43);
-            this.btn_desc.Name = "btn_desc";
-            this.btn_desc.Size = new System.Drawing.Size(216, 34);
-            this.btn_desc.TabIndex = 6;
-            this.btn_desc.Text = "SELECCIONAR CLIENTE";
-            this.btn_desc.TextColor = System.Drawing.Color.White;
-            this.btn_desc.UseVisualStyleBackColor = false;
-            this.btn_desc.Click += new System.EventHandler(this.btn_desc_Click);
+            this.btn_seleccionar_cliente.AutoSize = true;
+            this.btn_seleccionar_cliente.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btn_seleccionar_cliente.BackgroundColor = System.Drawing.Color.DarkSlateBlue;
+            this.btn_seleccionar_cliente.BorderColor = System.Drawing.Color.Black;
+            this.btn_seleccionar_cliente.BorderRadius = 0;
+            this.btn_seleccionar_cliente.BorderSize = 0;
+            this.btn_seleccionar_cliente.FlatAppearance.BorderSize = 0;
+            this.btn_seleccionar_cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_seleccionar_cliente.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_seleccionar_cliente.ForeColor = System.Drawing.Color.White;
+            this.btn_seleccionar_cliente.Location = new System.Drawing.Point(3, 43);
+            this.btn_seleccionar_cliente.Name = "btn_seleccionar_cliente";
+            this.btn_seleccionar_cliente.Size = new System.Drawing.Size(216, 34);
+            this.btn_seleccionar_cliente.TabIndex = 6;
+            this.btn_seleccionar_cliente.Text = "SELECCIONAR CLIENTE";
+            this.btn_seleccionar_cliente.TextColor = System.Drawing.Color.White;
+            this.btn_seleccionar_cliente.UseVisualStyleBackColor = false;
+            this.btn_seleccionar_cliente.Click += new System.EventHandler(this.btn_seleccionar_cliente_Click);
             // 
             // lbl_seleccionar_cliente
             // 
@@ -975,6 +985,7 @@
             this.Name = "formVentas";
             this.Text = "formVentas";
             this.Load += new System.EventHandler(this.formVentas_Load);
+            this.VisibleChanged += new System.EventHandler(this.formVentas_VisibleChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formVentas_KeyDown);
             this.panel_principal.ResumeLayout(false);
             this.tlp_principal.ResumeLayout(false);
@@ -1019,19 +1030,10 @@
         private System.Windows.Forms.Label lbl_ticket_pendiente;
         private RJCodeAdvance.RJControls.RJButton btn_eliminar_ticket;
         private RJCodeAdvance.RJControls.RJButton btn_cerrar_caja;
-        private RJCodeAdvance.RJControls.RJButton btn_desc;
+        private RJCodeAdvance.RJControls.RJButton btn_seleccionar_cliente;
         private System.Windows.Forms.Label lbl_seleccionar_cliente;
         private RJCodeAdvance.RJControls.RJButton btn_nuevo_ticket;
         private System.Windows.Forms.TableLayoutPanel tlp_productos_carrito;
-        private System.Windows.Forms.TableLayoutPanel tlp_productos;
-        private System.Windows.Forms.DataGridView dgv_productos;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.Label lbl_suma_total;
-        private System.Windows.Forms.Label lbl_totale;
-        private System.Windows.Forms.FlowLayoutPanel flp_tickets;
-        private System.Windows.Forms.TableLayoutPanel tlp_busqueda;
-        private RJCodeAdvance.RJControls.RJButton btn_buscar_producto;
-        private System.Windows.Forms.TextBox txt_buscarproductos;
         private System.Windows.Forms.TableLayoutPanel panel_right;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Panel panel_factura;
@@ -1051,11 +1053,6 @@
         private System.Windows.Forms.Label lbl_resumen;
         private System.Windows.Forms.Label lbl_eliminar_ticket;
         private System.Windows.Forms.Label lbl_cerrar_caja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio_mayorista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_resumen_cantidad;
@@ -1065,5 +1062,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn btn_eliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn control_precio_aplicado;
+        private System.Windows.Forms.TableLayoutPanel tlp_productos;
+        private System.Windows.Forms.DataGridView dgv_productos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_precio_mayorista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_productos_stock;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.Label lbl_suma_total;
+        private System.Windows.Forms.Label lbl_totale;
+        private System.Windows.Forms.FlowLayoutPanel flp_tickets;
+        private System.Windows.Forms.TableLayoutPanel tlp_busqueda;
+        private RJCodeAdvance.RJControls.RJButton btn_buscar_producto;
+        private System.Windows.Forms.TextBox txt_buscarproductos;
     }
 }

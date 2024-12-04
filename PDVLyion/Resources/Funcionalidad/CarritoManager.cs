@@ -198,6 +198,10 @@ namespace POSLyion.Resources.Funcionalidad
             {
                 VerDetalleCompraVenta(dgv_activo, e, dgv_detalle);
             }
+            if (_dgv_resumen.Columns[e.ColumnIndex].Name == "btn_notas_venta")
+            {
+                VerNotasVenta(e);
+            }
             if (_dgv_resumen.Columns[e.ColumnIndex].Name == "btn_imprimir")
             {
                 if (dgv_detalle.Rows.Count == 0)
@@ -291,6 +295,9 @@ namespace POSLyion.Resources.Funcionalidad
                                         nuevaCantidad
                                         *
                                         Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
+                    var productoModificado = _ticketManager.ObtenerTicketActual().Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+                    productoModificado.Cantidad = nuevaCantidad;
+                    productoModificado.Subtotal = nuevaCantidad * Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
                     _calcularTotalCallBack?.Invoke();
                 }
             });
@@ -309,6 +316,9 @@ namespace POSLyion.Resources.Funcionalidad
                                         nuevaCantidad
                                         *
                                         Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
+                    var productoModificado = _ticketManager.ObtenerTicketActual().Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+                    productoModificado.Cantidad = nuevaCantidad;
+                    productoModificado.Subtotal = nuevaCantidad * Convert.ToDecimal(_dgv_resumen.Rows[e.RowIndex].Cells["dgv_resumen_precio"].Value);
                     _calcularTotalCallBack?.Invoke();
                 }
             });
@@ -326,6 +336,9 @@ namespace POSLyion.Resources.Funcionalidad
                     if (resultadoOperacion)
                     {
                         _dgv_resumen.Rows.RemoveAt(e.RowIndex);
+                        var ticketActual = _ticketManager.ObtenerTicketActual();
+                        var productoEliminado = ticketActual.Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+                        _ = ticketActual.Productos.Remove(productoEliminado);
                         _calcularTotalCallBack?.Invoke();
                     }
                 });
@@ -366,6 +379,16 @@ namespace POSLyion.Resources.Funcionalidad
             dgv_detalle.Rows.Clear();
             var _lista_detalle = new CN_Reportes().Venta_Detalle(filtros);
             _verDetalleCallBack?.Invoke(_lista_detalle);
+        }
+
+        private void VerNotasVenta(DataGridViewCellEventArgs e)
+        {
+            var idCabecera = Convert.ToInt32(_dgv_resumen.Rows[e.RowIndex].Cells["id_venta"].Value.ToString());
+            var texto = new CN_Ventas().BuscarVenta(idCabecera).NotasVenta;
+            using (var notasVenta = new MD_NotasVenta(texto))
+            {
+                _ = notasVenta.ShowDialog();
+            }
         }
 
         //public void GuardarCarrito()

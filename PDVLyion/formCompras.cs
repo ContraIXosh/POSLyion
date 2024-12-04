@@ -34,6 +34,9 @@ namespace POSLyion
 
         private void CargarComboBox()
         {
+            cbo_tipo_documento.Items.Clear();
+            cbox_proveedores.Items.Clear();
+
             _ = cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Factura", Texto = "Factura" });
             _ = cbo_tipo_documento.Items.Add(new OpcionCombo() { Valor = "Boleta", Texto = "Boleta" });
             cbo_tipo_documento.DisplayMember = "Texto";
@@ -296,7 +299,7 @@ namespace POSLyion
             if (dgv_compras.Columns[e.ColumnIndex].Name == "btn_editar")
             {
                 var descripcionProducto = dgv_compras.Rows[e.RowIndex].Cells["descripcion_producto"].Value.ToString();
-                var cantidadActual = Convert.ToInt32(dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value);
+                var cantidadActual = Convert.ToInt32(dgv_compras.Rows[e.RowIndex].Cells["cantidad"].Value.ToString());
                 var nuevaCantidad = 0;
 
                 using (var md_editarCantidad = new MD_EditarCantidad(descripcionProducto, cantidadActual))
@@ -347,32 +350,51 @@ namespace POSLyion
                 return;
             }
             // Se verifica si existe al menos un producto ingresado
-            if (dgv_compras.Rows.Count < 1)
+            var formVentas = FormManager.Instance.ObtenerFormularioPrincipal(0) as formVentas;
+            if (!VerificarProductosPendientes(formVentas))
             {
-                _ = MessageBox.Show("Debe ingresar al menos un producto en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                var dataTable = GenerarCompraDetalles();
-                var oCompra = GenerarCompraCabecera();
-
-                if (new CN_Compras().Crear(oCompra, dataTable, out var mensaje))
+                if (dgv_compras.Rows.Count < 1)
                 {
-                    _ = MessageBox.Show("Compra registrada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cbox_proveedores.SelectedIndex = 0;
-                    txt_numero_documento.Texts = "";
-                    cbo_tipo_documento.SelectedIndex = 0;
-                    txt_cuit_proveedor.Text = "";
-                    dgv_compras.Rows.Clear();
-                    BorrarMensajesError();
-                    CalcularTotal();
-                    Close();
+                    _ = MessageBox.Show("Debe ingresar al menos un producto en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var dataTable = GenerarCompraDetalles();
+                    var oCompra = GenerarCompraCabecera();
+
+                    if (new CN_Compras().Crear(oCompra, dataTable, out var mensaje))
+                    {
+                        _ = MessageBox.Show("Compra registrada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cbox_proveedores.SelectedIndex = 0;
+                        txt_numero_documento.Texts = "";
+                        cbo_tipo_documento.SelectedIndex = 0;
+                        txt_cuit_proveedor.Text = "";
+                        dgv_compras.Rows.Clear();
+                        formVentas.LimpiarBusqueda();
+                        BorrarMensajesError();
+                        CalcularTotal();
+                        Close();
+                    }
+                    else
+                    {
+                        _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
+            else
+            {
+                _ = MessageBox.Show("Por favor, finalice todas sus ventas en los tickets con productos pendientes antes de registrar la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private bool VerificarProductosPendientes(formVentas formVentas)
+        {
+            var hayProductosPendientes = false;
+            if (formVentas != null)
+            {
+                hayProductosPendientes = formVentas.TicketManager.HayProductosPendientes();
+            }
+            return hayProductosPendientes;
         }
 
         private void BorrarMensajesError()

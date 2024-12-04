@@ -14,7 +14,6 @@ namespace POSLyion
         public readonly CarritoManager CarritoManager;
         public readonly TicketManager TicketManager;
         private readonly DataGridView dgv_detalle = new DataGridView();
-        public Clientes Cliente = new Clientes();
         private decimal total = 0;
         private string dgv_activo = "factura";
         public bool CerrandoSesion = true;
@@ -22,7 +21,7 @@ namespace POSLyion
         public formVentas()
         {
             InitializeComponent();
-            TicketManager = new TicketManager(flp_tickets, dgv_resumen, CalcularTotal, btn_factura_Click);
+            TicketManager = new TicketManager(flp_tickets, dgv_resumen, CalcularTotal, btn_factura_Click, lbl_tipoticket);
             CarritoManager = new CarritoManager(dgv_resumen, new CN_Ventas(), CalcularTotal, LimpiarBusqueda, VerDetalle, TicketManager);
             KeyPreview = true;
         }
@@ -75,7 +74,7 @@ namespace POSLyion
         {
             if (dgv_resumen.Rows.Count > 0)
             {
-                using (var formularioCobro = new formCobro(total, Cliente))
+                using (var formularioCobro = new formCobro(total, TicketManager.ObtenerTicketActual().Cliente))
                 {
                     _ = formularioCobro.ShowDialog();
                     // Después de cerrar, se obtiene el valor del vuelto
@@ -84,7 +83,7 @@ namespace POSLyion
                     if (formularioCobro.venta_cerrada)
                     {
                         var total_con_descuento = formularioCobro.total != Convert.ToDecimal(lbl_suma_total.Text) ? formularioCobro.total : Convert.ToDecimal(lbl_suma_total.Text);
-                        CrearVenta(total_con_descuento, vuelto);
+                        CrearVenta(total_con_descuento, vuelto, formularioCobro.NotasVenta);
                     }
                 }
             }
@@ -94,9 +93,9 @@ namespace POSLyion
             }
         }
 
-        public void CrearVenta(decimal totalConDescuento, decimal vuelto)
+        public void CrearVenta(decimal totalConDescuento, decimal vuelto, string notasVenta)
         {
-            if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto), GenerarVentaDetalle(), out var mensaje, out var id_venta_generado))
+            if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto, notasVenta), GenerarVentaDetalle(), out var mensaje, out var id_venta_generado))
             {
                 var Ticket1 = new classTicket.CreaTicket();
                 Ticket1.TextoCentro("Empresa xxxxx ");
@@ -121,7 +120,6 @@ namespace POSLyion
                 _ = MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TicketManager.FinalizarVenta();
                 lbl_tipoticket.Text = "Consumidor final";
-                Cliente = new Clientes();
             }
             else
             {
@@ -151,14 +149,16 @@ namespace POSLyion
             return ventaDetalle;
         }
 
-        public Ventas GenerarVentaCabecera(decimal totalConDescuento, decimal vuelto)
+        public Ventas GenerarVentaCabecera(decimal totalConDescuento, decimal vuelto, string notasVenta)
         {
+            var ticketActual = TicketManager.ObtenerTicketActual();
             var oVenta = new Ventas()
             {
                 oUsuario = new Usuarios() { Id_usuario = VariablesGlobales.Usuario_actual.Id_usuario },
-                oCliente = new Clientes() { Id_cliente = Cliente.Id_cliente == 0 ? 1 : Cliente.Id_cliente },
+                oCliente = new Clientes() { Id_cliente = ticketActual.Cliente == null ? 1 : ticketActual.Cliente.Id_cliente },
                 Total = totalConDescuento,
                 Vuelto = vuelto,
+                NotasVenta = notasVenta
             };
 
             return oVenta;
@@ -169,7 +169,7 @@ namespace POSLyion
             CarritoManager.ModificarCarrito(e, dgv_activo, dgv_detalle);
         }
 
-        private void LimpiarBusqueda()
+        public void LimpiarBusqueda()
         {
             txt_buscarproductos.Text = "";
             dgv_productos.Rows.Clear();
@@ -214,7 +214,7 @@ namespace POSLyion
             if (!panel_container.Controls.Container.Contains(dgv_detalle))
             {
                 dgv_detalle.Columns.Clear();
-                dgv_detalle.AlternatingRowsDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold);
+                dgv_detalle.AlternatingRowsDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
                 _ = dgv_detalle.Columns.Add("dgv_detalle_codigo", "Cod. barras");
                 _ = dgv_detalle.Columns.Add("dgv_detalle_producto", "Producto");
                 _ = dgv_detalle.Columns.Add("dgv_detalle_categoria", "Categoria");
@@ -234,7 +234,7 @@ namespace POSLyion
                 dgv_detalle.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
                 dgv_detalle.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
                 dgv_detalle.RowHeadersVisible = false;
-                dgv_detalle.RowsDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold);
+                dgv_detalle.RowsDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
                 dgv_detalle.EnableHeadersVisualStyles = false;
                 dgv_detalle.AllowUserToAddRows = false;
                 dgv_detalle.AllowUserToDeleteRows = false;
@@ -345,6 +345,7 @@ namespace POSLyion
                 _ = dgv_resumen.Columns.Add("nombre_cliente", "Cliente");
                 _ = dgv_resumen.Columns.Add("total", "Total");
                 _ = dgv_resumen.Columns.Add("btn_ver_detalle", "");
+                _ = dgv_resumen.Columns.Add("btn_notas_venta", "");
                 _ = dgv_resumen.Columns.Add("btn_imprimir", "");
                 dgv_detalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgv_resumen.Visible = true;
@@ -361,13 +362,14 @@ namespace POSLyion
                     venta.oCliente.Nombre_completo,
                     venta.Total,
                     "Ver detalle",
+                    "Ver notas",
                     "Imprimir ticket"
                     });
                 }
             }
         }
 
-        private void btn_desc_Click(object sender, EventArgs e)
+        private void btn_seleccionar_cliente_Click(object sender, EventArgs e)
         {
             using (var formDescuento = new formSeleccionCliente())
             {
@@ -375,51 +377,16 @@ namespace POSLyion
                 if (formDescuento.Cliente_seleccionado)
                 {
                     _ = MessageBox.Show("Cliente seleccionado:" + formDescuento.Cliente.Nombre_completo, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Cliente.Id_cliente = formDescuento.Cliente.Id_cliente;
-                    Cliente.Dni = formDescuento.Cliente.Dni;
-                    Cliente.Nombre_completo = formDescuento.Cliente.Nombre_completo;
-                    Cliente.Telefono = formDescuento.Cliente.Telefono;
-                    Cliente.Descuento = formDescuento.Cliente.Descuento;
-                    lbl_tipoticket.Text = Cliente.Nombre_completo != "Consumidor final" ? "Cliente: " + Cliente.Nombre_completo : "Consumidor final";
+                    TicketManager.ObtenerTicketActual().Cliente = new Clientes();
+                    var clienteTicketActual = TicketManager.ObtenerTicketActual().Cliente;
+                    clienteTicketActual.Id_cliente = formDescuento.Cliente.Id_cliente;
+                    clienteTicketActual.Dni = formDescuento.Cliente.Dni;
+                    clienteTicketActual.Nombre_completo = formDescuento.Cliente.Nombre_completo;
+                    clienteTicketActual.Telefono = formDescuento.Cliente.Telefono;
+                    clienteTicketActual.Descuento = formDescuento.Cliente.Descuento;
+                    TicketManager.MostrarNombreCliente();
                 }
             }
-        }
-
-        private void formVentas_KeyDown(object sender, KeyEventArgs e)
-        {
-            Keys[] teclasEspeciales =
-                { Keys.F1, Keys.F2, Keys.F3, Keys.F4,
-                Keys.F5, Keys.F6, Keys.F7, Keys.F8,
-                Keys.F9, Keys.F10, Keys.F11, Keys.F12,
-                Keys.Enter, Keys.Delete, Keys.ShiftKey, Keys.ControlKey, Keys.Alt };
-            if (Array.Exists(teclasEspeciales, tecla => tecla == e.KeyCode))
-            {
-                if (e.KeyCode == Keys.F4)
-                {
-                    btn_desc.PerformClick();
-                }
-                if (e.KeyCode == Keys.F5)
-                {
-                    btn_eliminar_ticket.PerformClick();
-                }
-                if (e.KeyCode == Keys.F6)
-                {
-                    _ = TicketManager.AgregarNuevoTicketAsync();
-                }
-                if (e.KeyCode == Keys.F7)
-                {
-                    btn_cerrar_caja.PerformClick();
-                }
-                if (e.KeyCode == Keys.F10)
-                {
-                    btn_buscar_producto.PerformClick();
-                }
-                if (e.KeyCode == Keys.F12)
-                {
-                    btn_cerrarventa.PerformClick();
-                }
-            }
-
         }
 
         private void btn_cerrar_caja_Click(object sender, EventArgs e)
@@ -459,9 +426,9 @@ namespace POSLyion
 
         private void btn_buscar_producto_Click(object sender, EventArgs e)
         {
-            txt_buscarproductos.Select();
             txt_buscarproductos.BackColor = Color.Bisque;
             txt_buscarproductos.BorderStyle = BorderStyle.Fixed3D;
+            txt_buscarproductos.Select();
             _ = txt_buscarproductos.Focus();
         }
 
@@ -505,6 +472,43 @@ namespace POSLyion
             }
         }
 
+        private void formVentas_KeyDown(object sender, KeyEventArgs e)
+        {
+            Keys[] teclasEspeciales =
+                { Keys.F1, Keys.F2, Keys.F3, Keys.F4,
+                Keys.F5, Keys.F6, Keys.F7, Keys.F8,
+                Keys.F9, Keys.F10, Keys.F11, Keys.F12,
+                Keys.Enter, Keys.Delete, Keys.ShiftKey, Keys.ControlKey, Keys.Alt };
+            if (Array.Exists(teclasEspeciales, tecla => tecla == e.KeyCode))
+            {
+                if (e.KeyCode == Keys.F4)
+                {
+                    btn_seleccionar_cliente.PerformClick();
+                }
+                if (e.KeyCode == Keys.F5)
+                {
+                    btn_eliminar_ticket.PerformClick();
+                }
+                if (e.KeyCode == Keys.F6)
+                {
+                    _ = TicketManager.AgregarNuevoTicketAsync();
+                }
+                if (e.KeyCode == Keys.F7)
+                {
+                    btn_cerrar_caja.PerformClick();
+                }
+                if (e.KeyCode == Keys.F10)
+                {
+                    btn_buscar_producto.PerformClick();
+                }
+                if (e.KeyCode == Keys.F12)
+                {
+                    btn_cerrarventa.PerformClick();
+                }
+            }
+
+        }
+
         private void txt_buscarproductos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Down)
@@ -531,8 +535,7 @@ namespace POSLyion
             {
                 var indiceFila = new DataGridViewCellEventArgs(0, dgv_productos.CurrentRow.Index);
                 await CarritoManager.AgregarProductoCarrito(dgv_productos, indiceFila, dgv_activo);
-                txt_buscarproductos.Text = "";
-                txt_buscarproductos.Select();
+                LimpiarBusqueda();
                 CalcularTotal();
                 e.Handled = true;
             }
@@ -565,6 +568,24 @@ namespace POSLyion
                     CarritoManager.ModificarCarrito(indicesFila, dgv_activo, dgv_detalle);
                 }
             }
+        }
+
+        private void formVentas_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible == false)
+            {
+                LimpiarBusqueda();
+            }
+            if (Visible == true)
+            {
+                txt_buscarproductos.Select();
+                _ = txt_buscarproductos.Focus();
+            }
+        }
+
+        private void tlp_productos_Leave(object sender, EventArgs e)
+        {
+            LimpiarBusqueda();
         }
     }
 }

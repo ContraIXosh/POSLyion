@@ -86,6 +86,7 @@ namespace DataLayer
                     _ = cmd.Parameters.AddWithValue("id_cliente", oVenta.oCliente.Id_cliente);
                     _ = cmd.Parameters.AddWithValue("total", oVenta.Total);
                     _ = cmd.Parameters.AddWithValue("vuelto", oVenta.Vuelto);
+                    _ = cmd.Parameters.AddWithValue("notas_venta", oVenta.NotasVenta);
                     _ = cmd.Parameters.AddWithValue("VentaDetalle", VentaDetalle);
                     cmd.Parameters.Add("resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
@@ -113,7 +114,7 @@ namespace DataLayer
             {
                 try
                 {
-                    var query = "SELECT id_venta[NumeroVenta], v.create_date[FechaVenta], c.nombre_completo[NombreCliente], total[Total] FROM Ventas v INNER JOIN Clientes c ON v.id_cliente = c.id_cliente WHERE CONVERT(DATE,v.create_date) BETWEEN @fecha_inicio AND @fecha_fin";
+                    var query = "SELECT id_venta[NumeroVenta], v.create_date[FechaVenta], c.nombre_completo[NombreCliente], total[Total], notas_venta[NotasVenta] FROM Ventas v INNER JOIN Clientes c ON v.id_cliente = c.id_cliente WHERE CONVERT(DATE,v.create_date) BETWEEN @fecha_inicio AND @fecha_fin";
                     var cmd = new SqlCommand(query, oConexion);
                     _ = cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
                     _ = cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);
@@ -128,7 +129,8 @@ namespace DataLayer
                                 Id_venta = Convert.ToInt32(reader["NumeroVenta"].ToString()),
                                 Create_date = reader["FechaVenta"].ToString(),
                                 oCliente = new Clientes() { Nombre_completo = reader["NombreCliente"].ToString() },
-                                Total = Convert.ToDecimal(reader["Total"].ToString())
+                                Total = Convert.ToDecimal(reader["Total"].ToString()),
+                                NotasVenta = reader["NotasVenta"].ToString()
                             });
                         }
                     }
@@ -168,6 +170,39 @@ namespace DataLayer
                 catch (Exception)
                 {
                     ventas = new Ventas();
+                }
+            }
+            return ventas;
+        }
+
+        public Ventas BuscarVenta(int idVenta)
+        {
+            var ventas = new Ventas();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    var query = "SELECT notas_venta FROM Ventas WHERE id_venta = @id_venta";
+                    using (var cmd = new SqlCommand(query, oConexion))
+                    {
+                        _ = cmd.Parameters.AddWithValue("@id_venta", idVenta);
+                        cmd.CommandType = CommandType.Text;
+                        oConexion.Open();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ventas.NotasVenta = reader["notas_venta"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    oConexion.Close();
                 }
             }
             return ventas;
