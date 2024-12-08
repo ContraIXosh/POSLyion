@@ -91,6 +91,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notas de venta";
             this.Load += new System.EventHandler(this.MD_NotasVenta_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MD_NotasVenta_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

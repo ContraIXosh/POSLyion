@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlp_principal = new System.Windows.Forms.TableLayoutPanel();
             this.tlp_cobro = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_titulo = new System.Windows.Forms.Label();
@@ -39,22 +44,28 @@
             this.lbl_total_a_cobrar = new System.Windows.Forms.Label();
             this.txt_dinero_entregado = new System.Windows.Forms.TextBox();
             this.tlp_cliente = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_tipo_venta = new CustomBox.RJControls.RJButton();
             this.tlp_nombre_cliente = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_nombre_cliente = new System.Windows.Forms.Label();
             this.lbl_cliente_seleccionado = new System.Windows.Forms.Label();
             this.tlp_detalle_venta = new System.Windows.Forms.TableLayoutPanel();
+            this.dgv_resumen = new System.Windows.Forms.DataGridView();
+            this.producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlp_botones = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_notas_venta = new CustomBox.RJControls.RJButton();
             this.btn_cobrar_sin_imprimir = new CustomBox.RJControls.RJButton();
             this.btn_cancelar = new CustomBox.RJControls.RJButton();
             this.btn_cobrar_imprimir = new CustomBox.RJControls.RJButton();
-            this.btn_notas_venta = new CustomBox.RJControls.RJButton();
-            this.btn_opciones_cliente = new CustomBox.RJControls.RJButton();
             this.tlp_principal.SuspendLayout();
             this.tlp_cobro.SuspendLayout();
             this.tlp_monto_cambio.SuspendLayout();
             this.tlp_cliente.SuspendLayout();
             this.tlp_nombre_cliente.SuspendLayout();
             this.tlp_detalle_venta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).BeginInit();
             this.tlp_botones.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,7 +175,7 @@
             this.lbl_paga_con.Name = "lbl_paga_con";
             this.lbl_paga_con.Size = new System.Drawing.Size(540, 57);
             this.lbl_paga_con.TabIndex = 15;
-            this.lbl_paga_con.Text = "Paga con:";
+            this.lbl_paga_con.Text = "Venta en efectivo - Paga con:";
             this.lbl_paga_con.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_suma_total
@@ -212,7 +223,7 @@
             this.tlp_cliente.ColumnCount = 2;
             this.tlp_cliente.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tlp_cliente.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlp_cliente.Controls.Add(this.btn_opciones_cliente, 0, 0);
+            this.tlp_cliente.Controls.Add(this.btn_tipo_venta, 0, 0);
             this.tlp_cliente.Controls.Add(this.tlp_nombre_cliente, 0, 0);
             this.tlp_cliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_cliente.Location = new System.Drawing.Point(3, 439);
@@ -221,6 +232,27 @@
             this.tlp_cliente.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlp_cliente.Size = new System.Drawing.Size(546, 141);
             this.tlp_cliente.TabIndex = 14;
+            // 
+            // btn_tipo_venta
+            // 
+            this.btn_tipo_venta.BackColor = System.Drawing.Color.Transparent;
+            this.btn_tipo_venta.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_tipo_venta.BorderColor = System.Drawing.Color.Gold;
+            this.btn_tipo_venta.BorderRadius = 10;
+            this.btn_tipo_venta.BorderSize = 2;
+            this.btn_tipo_venta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_tipo_venta.FlatAppearance.BorderSize = 0;
+            this.btn_tipo_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tipo_venta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_tipo_venta.ForeColor = System.Drawing.Color.Gold;
+            this.btn_tipo_venta.Location = new System.Drawing.Point(412, 3);
+            this.btn_tipo_venta.Name = "btn_tipo_venta";
+            this.btn_tipo_venta.Size = new System.Drawing.Size(131, 135);
+            this.btn_tipo_venta.TabIndex = 9;
+            this.btn_tipo_venta.Text = "VENTA\r\nA\r\nCREDITO\r\n(F3)\r\n";
+            this.btn_tipo_venta.TextColor = System.Drawing.Color.Gold;
+            this.btn_tipo_venta.UseVisualStyleBackColor = false;
+            this.btn_tipo_venta.Click += new System.EventHandler(this.btn_tipo_venta_Click);
             // 
             // tlp_nombre_cliente
             // 
@@ -268,6 +300,7 @@
             // 
             this.tlp_detalle_venta.ColumnCount = 1;
             this.tlp_detalle_venta.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlp_detalle_venta.Controls.Add(this.dgv_resumen, 0, 0);
             this.tlp_detalle_venta.Controls.Add(this.tlp_botones, 0, 1);
             this.tlp_detalle_venta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_detalle_venta.Location = new System.Drawing.Point(561, 3);
@@ -277,6 +310,89 @@
             this.tlp_detalle_venta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tlp_detalle_venta.Size = new System.Drawing.Size(366, 583);
             this.tlp_detalle_venta.TabIndex = 1;
+            // 
+            // dgv_resumen
+            // 
+            this.dgv_resumen.AllowUserToAddRows = false;
+            this.dgv_resumen.AllowUserToDeleteRows = false;
+            this.dgv_resumen.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_resumen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgv_resumen.BackgroundColor = System.Drawing.Color.DimGray;
+            this.dgv_resumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_resumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_resumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv_resumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_resumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.producto,
+            this.cantidad,
+            this.precio,
+            this.subtotal});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_resumen.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv_resumen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_resumen.EnableHeadersVisualStyles = false;
+            this.dgv_resumen.Location = new System.Drawing.Point(0, 0);
+            this.dgv_resumen.Margin = new System.Windows.Forms.Padding(0);
+            this.dgv_resumen.Name = "dgv_resumen";
+            this.dgv_resumen.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_resumen.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgv_resumen.RowHeadersVisible = false;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_resumen.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgv_resumen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_resumen.Size = new System.Drawing.Size(366, 495);
+            this.dgv_resumen.TabIndex = 9;
+            // 
+            // producto
+            // 
+            this.producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.producto.FillWeight = 200F;
+            this.producto.HeaderText = "Producto";
+            this.producto.Name = "producto";
+            this.producto.ReadOnly = true;
+            // 
+            // cantidad
+            // 
+            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            // 
+            // subtotal
+            // 
+            this.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
             // 
             // tlp_botones
             // 
@@ -294,8 +410,30 @@
             this.tlp_botones.Name = "tlp_botones";
             this.tlp_botones.RowCount = 1;
             this.tlp_botones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlp_botones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlp_botones.Size = new System.Drawing.Size(360, 82);
             this.tlp_botones.TabIndex = 0;
+            // 
+            // btn_notas_venta
+            // 
+            this.btn_notas_venta.BackColor = System.Drawing.Color.Transparent;
+            this.btn_notas_venta.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_notas_venta.BorderColor = System.Drawing.Color.Gold;
+            this.btn_notas_venta.BorderRadius = 10;
+            this.btn_notas_venta.BorderSize = 2;
+            this.btn_notas_venta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_notas_venta.FlatAppearance.BorderSize = 0;
+            this.btn_notas_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_notas_venta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_notas_venta.ForeColor = System.Drawing.Color.Gold;
+            this.btn_notas_venta.Location = new System.Drawing.Point(183, 3);
+            this.btn_notas_venta.Name = "btn_notas_venta";
+            this.btn_notas_venta.Size = new System.Drawing.Size(84, 76);
+            this.btn_notas_venta.TabIndex = 11;
+            this.btn_notas_venta.Text = "INGRESAR\r\nNOTAS DE\r\nVENTA\r\n(F4)";
+            this.btn_notas_venta.TextColor = System.Drawing.Color.Gold;
+            this.btn_notas_venta.UseVisualStyleBackColor = false;
+            this.btn_notas_venta.Click += new System.EventHandler(this.btn_notas_venta_Click);
             // 
             // btn_cobrar_sin_imprimir
             // 
@@ -316,6 +454,7 @@
             this.btn_cobrar_sin_imprimir.Text = "COBRAR \r\nSIN \r\nIMPRIMIR\r\n(F2)";
             this.btn_cobrar_sin_imprimir.TextColor = System.Drawing.Color.Gold;
             this.btn_cobrar_sin_imprimir.UseVisualStyleBackColor = false;
+            this.btn_cobrar_sin_imprimir.Click += new System.EventHandler(this.btn_cobrar_sin_imprimir_Click);
             // 
             // btn_cancelar
             // 
@@ -359,48 +498,6 @@
             this.btn_cobrar_imprimir.UseVisualStyleBackColor = false;
             this.btn_cobrar_imprimir.Click += new System.EventHandler(this.btn_cobrar_Click);
             // 
-            // btn_notas_venta
-            // 
-            this.btn_notas_venta.BackColor = System.Drawing.Color.Transparent;
-            this.btn_notas_venta.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_notas_venta.BorderColor = System.Drawing.Color.Gold;
-            this.btn_notas_venta.BorderRadius = 10;
-            this.btn_notas_venta.BorderSize = 2;
-            this.btn_notas_venta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_notas_venta.FlatAppearance.BorderSize = 0;
-            this.btn_notas_venta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_notas_venta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_notas_venta.ForeColor = System.Drawing.Color.Gold;
-            this.btn_notas_venta.Location = new System.Drawing.Point(183, 3);
-            this.btn_notas_venta.Name = "btn_notas_venta";
-            this.btn_notas_venta.Size = new System.Drawing.Size(84, 76);
-            this.btn_notas_venta.TabIndex = 11;
-            this.btn_notas_venta.Text = "INGRESAR\r\nNOTAS DE\r\nVENTA\r\n(F4)";
-            this.btn_notas_venta.TextColor = System.Drawing.Color.Gold;
-            this.btn_notas_venta.UseVisualStyleBackColor = false;
-            this.btn_notas_venta.Click += new System.EventHandler(this.btn_notas_venta_Click);
-            // 
-            // btn_opciones_cliente
-            // 
-            this.btn_opciones_cliente.BackColor = System.Drawing.Color.Transparent;
-            this.btn_opciones_cliente.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_opciones_cliente.BorderColor = System.Drawing.Color.Gold;
-            this.btn_opciones_cliente.BorderRadius = 10;
-            this.btn_opciones_cliente.BorderSize = 2;
-            this.btn_opciones_cliente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_opciones_cliente.FlatAppearance.BorderSize = 0;
-            this.btn_opciones_cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_opciones_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_opciones_cliente.ForeColor = System.Drawing.Color.Gold;
-            this.btn_opciones_cliente.Location = new System.Drawing.Point(412, 3);
-            this.btn_opciones_cliente.Name = "btn_opciones_cliente";
-            this.btn_opciones_cliente.Size = new System.Drawing.Size(131, 135);
-            this.btn_opciones_cliente.TabIndex = 9;
-            this.btn_opciones_cliente.Text = "OPCIONES\r\nDE\r\nCLIENTE";
-            this.btn_opciones_cliente.TextColor = System.Drawing.Color.Gold;
-            this.btn_opciones_cliente.UseVisualStyleBackColor = false;
-            this.btn_opciones_cliente.Click += new System.EventHandler(this.btn_opciones_cliente_Click);
-            // 
             // formCobro
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -409,6 +506,7 @@
             this.Name = "formCobro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.formCobro_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formCobro_KeyDown);
             this.tlp_principal.ResumeLayout(false);
             this.tlp_cobro.ResumeLayout(false);
             this.tlp_cobro.PerformLayout();
@@ -418,6 +516,7 @@
             this.tlp_nombre_cliente.ResumeLayout(false);
             this.tlp_nombre_cliente.PerformLayout();
             this.tlp_detalle_venta.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_resumen)).EndInit();
             this.tlp_botones.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -443,11 +542,16 @@
         private System.Windows.Forms.Label lbl_nombre_cliente;
         private System.Windows.Forms.Label lbl_cliente_seleccionado;
         private System.Windows.Forms.TableLayoutPanel tlp_detalle_venta;
+        private CustomBox.RJControls.RJButton btn_tipo_venta;
         private System.Windows.Forms.TableLayoutPanel tlp_botones;
-        private CustomBox.RJControls.RJButton btn_cobrar_imprimir;
-        private CustomBox.RJControls.RJButton btn_cancelar;
-        private CustomBox.RJControls.RJButton btn_cobrar_sin_imprimir;
         private CustomBox.RJControls.RJButton btn_notas_venta;
-        private CustomBox.RJControls.RJButton btn_opciones_cliente;
+        private CustomBox.RJControls.RJButton btn_cobrar_sin_imprimir;
+        private CustomBox.RJControls.RJButton btn_cancelar;
+        private CustomBox.RJControls.RJButton btn_cobrar_imprimir;
+        private System.Windows.Forms.DataGridView dgv_resumen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
     }
 }

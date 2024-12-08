@@ -1,6 +1,8 @@
 ﻿using CapaEntidad;
 using POSLyion.Modals;
+using POSLyion.Resources.Funcionalidad;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -12,26 +14,30 @@ namespace POSLyion
         public decimal vuelto = 0;
         public bool venta_cerrada = false;
         public string NotasVenta;
+        private bool _ventaACredito = false;
         private readonly Clientes Cliente;
 
-        public formCobro(decimal p_total, Clientes cliente)
+        public formCobro(decimal p_total, Clientes cliente, List<ProductoCarrito> productos)
         {
             InitializeComponent();
             total = p_total;
             Cliente = cliente;
             NotasVenta = string.Empty;
+            KeyPreview = true;
+            CargarDGV(productos);
         }
 
         private void formCobro_Load(object sender, EventArgs e)
         {
-            if (Cliente == null)
+            lbl_nombre_cliente.Visible = false;
+            lbl_cliente_seleccionado.Visible = false;
+            btn_tipo_venta.Visible = false;
+
+            if (Cliente != null && Cliente.Id_cliente != 0)
             {
-                lbl_nombre_cliente.Visible = false;
-                lbl_cliente_seleccionado.Visible = false;
-                btn_opciones_cliente.Visible = false;
-            }
-            else
-            {
+                lbl_nombre_cliente.Visible = true;
+                lbl_cliente_seleccionado.Visible = true;
+                btn_tipo_venta.Visible = true;
                 CargarDatosCliente();
             }
 
@@ -45,6 +51,20 @@ namespace POSLyion
             if (Cliente.Descuento > 0)
             {
                 total -= total * (Convert.ToDecimal(Cliente.Descuento) / 100);
+            }
+        }
+
+        private void CargarDGV(List<ProductoCarrito> productos)
+        {
+            foreach (var producto in productos)
+            {
+                _ = dgv_resumen.Rows.Add(new object[]
+                {
+                    producto.NombreProducto,
+                    producto.Cantidad,
+                    producto.Precio,
+                    producto.Subtotal
+                });
             }
         }
 
@@ -149,7 +169,59 @@ namespace POSLyion
             e.Handled = true;
         }
 
-        private void btn_opciones_cliente_Click(object sender, EventArgs e)
+        private void btn_tipo_venta_Click(object sender, EventArgs e)
+        {
+            if (_ventaACredito == false)
+            {
+                btn_tipo_venta.Text = "VENTA\nEN\nEFECTIVO\n(F3)";
+                lbl_paga_con.Text = "Venta a crédito - Abona:";
+                txt_dinero_entregado.Text = "$0";
+                lbl_vuelto.Visible = false;
+                lbl_cambio.Visible = false;
+                _ventaACredito = true;
+            }
+            else
+            {
+                btn_tipo_venta.Text = "VENTA\nA\nCREDITO\n(F3)";
+                lbl_paga_con.Text = "Venta en efectivo - Paga con:";
+                txt_dinero_entregado.Text = lbl_suma_total.Text;
+                lbl_vuelto.Visible = true;
+                lbl_cambio.Visible = true;
+                _ventaACredito = false;
+            }
+        }
+
+        private void formCobro_KeyDown(object sender, KeyEventArgs e)
+        {
+            Keys[] teclasEspeciales =
+                {
+                    Keys.F1, Keys.F2, Keys.F3, Keys.F4,
+                    Keys.F5, Keys.F6, Keys.F7, Keys.F8,
+                    Keys.F9, Keys.F10, Keys.F11, Keys.F12,
+                    Keys.Enter, Keys.Delete, Keys.ShiftKey, Keys.ControlKey, Keys.Alt, Keys.Escape
+                };
+            if (Array.Exists(teclasEspeciales, tecla => tecla == e.KeyCode))
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    btn_cobrar_Click(sender, e);
+                }
+                if (e.KeyCode == Keys.F3)
+                {
+                    btn_tipo_venta_Click(sender, e);
+                }
+                if (e.KeyCode == Keys.F4)
+                {
+                    btn_notas_venta_Click(sender, e);
+                }
+                if (e.KeyCode == Keys.Escape)
+                {
+                    btn_cancelar_Click(sender, e);
+                }
+            }
+        }
+
+        private void btn_cobrar_sin_imprimir_Click(object sender, EventArgs e)
         {
 
         }

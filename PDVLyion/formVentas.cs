@@ -74,7 +74,8 @@ namespace POSLyion
         {
             if (dgv_resumen.Rows.Count > 0)
             {
-                using (var formularioCobro = new formCobro(total, TicketManager.ObtenerTicketActual().Cliente))
+                var ticketActual = TicketManager.ObtenerTicketActual();
+                using (var formularioCobro = new formCobro(total, ticketActual.Cliente, ticketActual.Productos))
                 {
                     _ = formularioCobro.ShowDialog();
                     // Después de cerrar, se obtiene el valor del vuelto
@@ -378,13 +379,16 @@ namespace POSLyion
                 {
                     _ = MessageBox.Show("Cliente seleccionado:" + formDescuento.Cliente.Nombre_completo, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TicketManager.ObtenerTicketActual().Cliente = new Clientes();
-                    var clienteTicketActual = TicketManager.ObtenerTicketActual().Cliente;
-                    clienteTicketActual.Id_cliente = formDescuento.Cliente.Id_cliente;
-                    clienteTicketActual.Dni = formDescuento.Cliente.Dni;
-                    clienteTicketActual.Nombre_completo = formDescuento.Cliente.Nombre_completo;
-                    clienteTicketActual.Telefono = formDescuento.Cliente.Telefono;
-                    clienteTicketActual.Descuento = formDescuento.Cliente.Descuento;
-                    TicketManager.MostrarNombreCliente();
+                    if (formDescuento.Cliente.Id_cliente != 1)
+                    {
+                        var clienteTicketActual = TicketManager.ObtenerTicketActual().Cliente;
+                        clienteTicketActual.Id_cliente = formDescuento.Cliente.Id_cliente;
+                        clienteTicketActual.Dni = formDescuento.Cliente.Dni;
+                        clienteTicketActual.Nombre_completo = formDescuento.Cliente.Nombre_completo;
+                        clienteTicketActual.Telefono = formDescuento.Cliente.Telefono;
+                        clienteTicketActual.Descuento = formDescuento.Cliente.Descuento;
+                        TicketManager.MostrarNombreCliente();
+                    }
                 }
             }
         }
@@ -506,7 +510,6 @@ namespace POSLyion
                     btn_cerrarventa.PerformClick();
                 }
             }
-
         }
 
         private void txt_buscarproductos_KeyDown(object sender, KeyEventArgs e)
