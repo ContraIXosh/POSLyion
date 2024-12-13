@@ -84,6 +84,7 @@ namespace DataLayer
                     var cmd = new SqlCommand("SP_ALTA_VENTA", oConexion);
                     _ = cmd.Parameters.AddWithValue("id_usuario", oVenta.oUsuario.Id_usuario);
                     _ = cmd.Parameters.AddWithValue("id_cliente", oVenta.oCliente.Id_cliente);
+                    _ = cmd.Parameters.AddWithValue("id_tipo_venta", oVenta.oTipoVenta.Id);
                     _ = cmd.Parameters.AddWithValue("total", oVenta.Total);
                     _ = cmd.Parameters.AddWithValue("vuelto", oVenta.Vuelto);
                     _ = cmd.Parameters.AddWithValue("notas_venta", oVenta.NotasVenta);
@@ -199,6 +200,99 @@ namespace DataLayer
                 }
                 catch (Exception)
                 {
+                }
+                finally
+                {
+                    oConexion.Close();
+                }
+            }
+            return ventas;
+        }
+
+        public List<Ventas_Detalle> BuscarVentaDetalle(int idVentaCabecera)
+        {
+            var ventas_detalle = new List<Ventas_Detalle>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT p.codigo_barras[CodigoBarras], p.descripcion[Descripcion], v.precio[Precio], v.cantidad[Cantidad], v.subtotal[Subtotal] FROM Ventas_Detalle v");
+                    _ = query.AppendLine("INNER JOIN Productos p ON v.id_producto = p.id_producto");
+                    _ = query.AppendLine("WHERE id_venta = @id_venta");
+                    using (var cmd = new SqlCommand(query.ToString(), oConexion))
+                    {
+                        _ = cmd.Parameters.AddWithValue("@id_venta", idVentaCabecera);
+                        cmd.CommandType = CommandType.Text;
+                        oConexion.Open();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ventas_detalle.Add(new Ventas_Detalle()
+                                {
+                                    oProducto = new Productos()
+                                    {
+                                        Codigo_barras = reader["CodigoBarras"].ToString(),
+                                        Descripcion = reader["Descripcion"].ToString()
+                                    },
+                                    Precio = Convert.ToDecimal(reader["Precio"]),
+                                    Cantidad = Convert.ToInt32(reader["Cantidad"]),
+                                    Subtotal = Convert.ToDecimal(reader["Subtotal"])
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    ventas_detalle = new List<Ventas_Detalle>();
+                }
+                finally
+                {
+                    oConexion.Close();
+                }
+            }
+            return ventas_detalle;
+        }
+
+        public List<Ventas> BuscarVentasCreditoCliente(int idCliente)
+        {
+            var ventas = new List<Ventas>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                try
+                {
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT id_venta, u.nombre_completo[Usuario], v.total[Total], vuelto, notas_venta, v.create_date[FechaVenta] FROM Ventas v");
+                    _ = query.AppendLine("INNER JOIN Usuarios u ON u.id_usuario = v.id_usuario");
+                    _ = query.AppendLine("WHERE id_tipo_venta = 2");
+                    _ = query.AppendLine("AND id_cliente = @id_cliente");
+                    using (var cmd = new SqlCommand(query.ToString(), oConexion))
+                    {
+                        _ = cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                        cmd.CommandType = CommandType.Text;
+                        oConexion.Open();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ventas.Add(new Ventas()
+                                {
+                                    Id_venta = Convert.ToInt32(reader["id_venta"]),
+                                    oUsuario = new Usuarios() { Nombre_completo = reader["Usuario"].ToString() },
+                                    Total = Convert.ToDecimal(reader["Total"]),
+                                    Vuelto = Convert.ToDecimal(reader["vuelto"]),
+                                    NotasVenta = reader["notas_venta"].ToString(),
+                                    Create_date = reader["FechaVenta"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    ventas = new List<Ventas>();
                 }
                 finally
                 {

@@ -64,11 +64,14 @@ namespace POSLyion.Resources.Funcionalidad
                 {
                     filaProductoEncontrado.Cells["dgv_resumen_cantidad"].Value =
                     Convert.ToInt32(filaProductoEncontrado.Cells["dgv_resumen_cantidad"].Value) + 1;
-                    filaProductoEncontrado.Cells["dgv_resumen_subtotal"].Value =
+                    var subtotal =
                         Convert.ToInt32(filaProductoEncontrado.Cells["dgv_resumen_cantidad"].Value)
                         *
                         Convert.ToDecimal(filaProductoEncontrado.Cells["dgv_resumen_precio"].Value);
-                    _ticketManager.ObtenerTicketActual().Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault().Cantidad++;
+                    filaProductoEncontrado.Cells["dgv_resumen_subtotal"].Value = subtotal;
+                    var productoActual = _ticketManager.ObtenerTicketActual().Productos.Where(p => p.IdProducto == idProducto).FirstOrDefault();
+                    productoActual.Cantidad++;
+                    productoActual.Subtotal = subtotal;
                 }
             }
         }

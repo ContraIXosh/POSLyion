@@ -8,6 +8,7 @@ namespace CapaEntidad
         public Usuarios oUsuario { get; set; }
         public List<Ventas_Detalle> oVentas_detalle { get; set; }
         public Clientes oCliente { get; set; }
+        public Tipo_Venta oTipoVenta { get; set; }
         public decimal Total { get; set; }
         public decimal Vuelto { get; set; }
         public string NotasVenta { get; set; }

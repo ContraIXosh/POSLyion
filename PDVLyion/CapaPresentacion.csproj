@@ -468,6 +468,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modals\MD_Abonos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modals\MD_Abonos.Designer.cs">
+      <DependentUpon>MD_Abonos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modals\MD_Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -578,6 +584,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modals\MD_Abonos.resx">
+      <DependentUpon>MD_Abonos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modals\MD_Clientes.resx">
       <DependentUpon>MD_Clientes.cs</DependentUpon>

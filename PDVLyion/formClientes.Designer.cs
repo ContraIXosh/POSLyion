@@ -44,10 +44,12 @@
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
             this.btn_crear = new RJCodeAdvance.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
+            this.btn_ventas_credito = new CustomBox.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_busqueda = new System.Windows.Forms.Label();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.cb_inactivo = new System.Windows.Forms.CheckBox();
+            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.dgv_clientes = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +75,6 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.panel_main.SuspendLayout();
             this.panel_bot.SuspendLayout();
             this.panel_mid.SuspendLayout();
@@ -188,6 +189,7 @@
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_btns.Controls.Add(this.btn_crear, 0, 0);
             this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
+            this.panel_btns.Controls.Add(this.btn_ventas_credito, 0, 2);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_btns.Location = new System.Drawing.Point(5, 310);
             this.panel_btns.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
@@ -249,6 +251,29 @@
             this.btn_actualizar.UseVisualStyleBackColor = false;
             this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
             // 
+            // btn_ventas_credito
+            // 
+            this.btn_ventas_credito.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_ventas_credito.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ventas_credito.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_ventas_credito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_ventas_credito.BorderRadius = 10;
+            this.btn_ventas_credito.BorderSize = 2;
+            this.btn_ventas_credito.FlatAppearance.BorderSize = 0;
+            this.btn_ventas_credito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ventas_credito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ventas_credito.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_ventas_credito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_ventas_credito.Location = new System.Drawing.Point(29, 106);
+            this.btn_ventas_credito.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_ventas_credito.Name = "btn_ventas_credito";
+            this.btn_ventas_credito.Size = new System.Drawing.Size(225, 38);
+            this.btn_ventas_credito.TabIndex = 30;
+            this.btn_ventas_credito.Text = "Cuenta de ";
+            this.btn_ventas_credito.TextColor = System.Drawing.Color.Yellow;
+            this.btn_ventas_credito.UseVisualStyleBackColor = false;
+            this.btn_ventas_credito.Click += new System.EventHandler(this.btn_ventas_credito_Click);
+            // 
             // panel_filter
             // 
             this.panel_filter.BackColor = System.Drawing.Color.Black;
@@ -309,6 +334,30 @@
             this.cb_inactivo.Text = "Mostrar inactivos";
             this.cb_inactivo.UseVisualStyleBackColor = true;
             this.cb_inactivo.Click += new System.EventHandler(this.cb_inactivo_Click);
+            // 
+            // btn_limpiar_filtros
+            // 
+            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.BorderRadius = 10;
+            this.btn_limpiar_filtros.BorderSize = 2;
+            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
+            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
+            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 152);
+            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
+            this.btn_limpiar_filtros.Size = new System.Drawing.Size(224, 37);
+            this.btn_limpiar_filtros.TabIndex = 27;
+            this.btn_limpiar_filtros.Text = "Limpiar filtros";
+            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
+            this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
             // 
             // dgv_clientes
             // 
@@ -380,6 +429,7 @@
             this.dgv_clientes.Size = new System.Drawing.Size(683, 507);
             this.dgv_clientes.TabIndex = 27;
             this.dgv_clientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_clientes_CellContentClick);
+            this.dgv_clientes.SelectionChanged += new System.EventHandler(this.dgv_clientes_SelectionChanged);
             // 
             // id
             // 
@@ -559,30 +609,6 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             // 
-            // btn_limpiar_filtros
-            // 
-            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.BorderRadius = 10;
-            this.btn_limpiar_filtros.BorderSize = 2;
-            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
-            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
-            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 152);
-            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
-            this.btn_limpiar_filtros.Size = new System.Drawing.Size(224, 37);
-            this.btn_limpiar_filtros.TabIndex = 27;
-            this.btn_limpiar_filtros.Text = "Limpiar filtros";
-            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
-            this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
-            // 
             // formClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,5 +675,6 @@
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
         private CustomBox.RJControls.RJButton btn_limpiar_filtros;
+        private CustomBox.RJControls.RJButton btn_ventas_credito;
     }
 }

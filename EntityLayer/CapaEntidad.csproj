@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abono_ventas.cs" />
     <Compile Include="CierreCaja.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="GraficosVentas\DatosGraficoMensual.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="ReportesCierre.cs" />
     <Compile Include="ReportesDetalle.cs" />
     <Compile Include="Roles.cs" />
+    <Compile Include="Tipo_Venta.cs" />
     <Compile Include="UsuariosPOS.cs" />
     <Compile Include="VariablesGlobales.cs" />
     <Compile Include="Ventas_Detalle.cs" />

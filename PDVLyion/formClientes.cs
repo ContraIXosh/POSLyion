@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaEntidad.Filtros;
 using CapaNegocio;
+using POSLyion.Modals;
 using System;
 using System.Windows.Forms;
 
@@ -119,6 +120,16 @@ namespace POSLyion
                 });
                 }
             }
+            if (dgv_clientes.Rows.Count > 0)
+            {
+                btn_ventas_credito.Visible = true;
+                btn_ventas_credito.Text = $"Cuenta de: {dgv_clientes.CurrentRow.Cells["nombre_completo"].Value}";
+            }
+            else
+            {
+                btn_ventas_credito.Visible = false;
+            }
+
         }
 
         private void btn_crear_Click(object sender, EventArgs e)
@@ -165,6 +176,29 @@ namespace POSLyion
             cb_inactivo.Checked = false;
             _filtros = new FiltrosCliente();
             MostrarClientes();
+        }
+
+        private void dgv_clientes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_clientes.Rows.Count > 0)
+            {
+                if (dgv_clientes.SelectedRows.Count > 0)
+                {
+                    var filaSeleccionada = dgv_clientes.SelectedRows[0];
+                    var nombreCliente = filaSeleccionada.Cells["nombre_completo"].Value.ToString();
+                    btn_ventas_credito.Text = $"Cuenta de {nombreCliente}";
+                }
+            }
+        }
+
+        private void btn_ventas_credito_Click(object sender, EventArgs e)
+        {
+            var idCliente = Convert.ToInt32(dgv_clientes.CurrentRow.Cells["id"].Value);
+            var nombreCliente = dgv_clientes.CurrentRow.Cells["nombre_completo"].Value.ToString();
+            using (var modalClientes = new MD_Clientes(idCliente, nombreCliente))
+            {
+                _ = modalClientes.ShowDialog();
+            }
         }
     }
 }

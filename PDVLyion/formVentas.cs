@@ -80,11 +80,12 @@ namespace POSLyion
                     _ = formularioCobro.ShowDialog();
                     // Después de cerrar, se obtiene el valor del vuelto
                     var vuelto = formularioCobro.vuelto;
+                    var tipoVenta = formularioCobro.TipoVenta;
                     // Start se suscribe al evento VentanaCerrada en cuanto sea invocado
                     if (formularioCobro.venta_cerrada)
                     {
                         var total_con_descuento = formularioCobro.total != Convert.ToDecimal(lbl_suma_total.Text) ? formularioCobro.total : Convert.ToDecimal(lbl_suma_total.Text);
-                        CrearVenta(total_con_descuento, vuelto, formularioCobro.NotasVenta);
+                        CrearVenta(total_con_descuento, vuelto, formularioCobro.NotasVenta, tipoVenta);
                     }
                 }
             }
@@ -94,9 +95,9 @@ namespace POSLyion
             }
         }
 
-        public void CrearVenta(decimal totalConDescuento, decimal vuelto, string notasVenta)
+        public void CrearVenta(decimal totalConDescuento, decimal vuelto, string notasVenta, Tipo_Venta tipoVenta)
         {
-            if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto, notasVenta), GenerarVentaDetalle(), out var mensaje, out var id_venta_generado))
+            if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto, notasVenta, tipoVenta), GenerarVentaDetalle(), out var mensaje, out var id_venta_generado))
             {
                 var Ticket1 = new classTicket.CreaTicket();
                 Ticket1.TextoCentro("Empresa xxxxx ");
@@ -150,13 +151,14 @@ namespace POSLyion
             return ventaDetalle;
         }
 
-        public Ventas GenerarVentaCabecera(decimal totalConDescuento, decimal vuelto, string notasVenta)
+        public Ventas GenerarVentaCabecera(decimal totalConDescuento, decimal vuelto, string notasVenta, Tipo_Venta tipoVenta)
         {
             var ticketActual = TicketManager.ObtenerTicketActual();
             var oVenta = new Ventas()
             {
                 oUsuario = new Usuarios() { Id_usuario = VariablesGlobales.Usuario_actual.Id_usuario },
                 oCliente = new Clientes() { Id_cliente = ticketActual.Cliente == null ? 1 : ticketActual.Cliente.Id_cliente },
+                oTipoVenta = tipoVenta,
                 Total = totalConDescuento,
                 Vuelto = vuelto,
                 NotasVenta = notasVenta

@@ -127,10 +127,17 @@ CREATE TABLE Compras_Detalle (
 );	
 GO
 
+CREATE TABLE Tipo_Venta(
+	id_tipo_venta INT IDENTITY(1, 1) NOT NULL,
+	descripcion VARCHAR(30) NOT NULL,
+	CONSTRAINT PK_id_tipo_venta PRIMARY KEY (id_tipo_venta)
+);
+
 CREATE TABLE Ventas (
 	id_venta INT IDENTITY(1, 1) NOT NULL,
 	id_usuario INT NOT NULL,
 	id_cliente INT NOT NULL,
+	id_tipo_venta INT NOT NULL,
 	total DECIMAL(12, 2) NOT NULL,
 	vuelto DECIMAL(6, 2) NOT NULL,
 	notas_venta VARCHAR(365) NULL,
@@ -138,7 +145,8 @@ CREATE TABLE Ventas (
 	modify_date DATETIME NULL,
 	CONSTRAINT PK_id_venta PRIMARY KEY (id_venta),	
 	CONSTRAINT FK_Ventas_Usuarios FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
-	CONSTRAINT FK_Ventas_Clientes FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+	CONSTRAINT FK_Ventas_Clientes FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
+	CONSTRAINT FK_Ventas_TipoVenta FOREIGN KEY (id_tipo_Venta) REFERENCES Tipo_Venta(id_tipo_venta)
 );
 GO
 
@@ -152,6 +160,16 @@ CREATE TABLE Ventas_Detalle (
 	CONSTRAINT PK_id_venta_detalle PRIMARY KEY (id_venta_detalle),
 	CONSTRAINT FK_Ventas_Detalle_Ventas FOREIGN KEY (id_venta) REFERENCES Ventas(id_venta),
 	CONSTRAINT FK_Ventas_Detalle_Productos FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
+);
+GO
+
+CREATE TABLE Abono_Ventas (
+	id_abono INT IDENTITY(1, 1) NOT NULL,
+	id_cliente INT NOT NULL,
+	monto_abono DECIMAL(12, 2) NOT NULL,
+	fecha_abono DATETIME DEFAULT GETDATE() NULL,
+	CONSTRAINT PK_id_abono PRIMARY KEY (id_abono),
+	CONSTRAINT FK_id_cliente FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
 );
 GO
 
@@ -178,6 +196,11 @@ CREATE TABLE UsuariosPOS(
 	CONSTRAINT PK_id_usuario_pos PRIMARY KEY (id_usuario_pos)
 );
 GO
+
+INSERT INTO Tipo_Venta(descripcion)
+VALUES
+('Efectivo'),
+('A credito')
 
 INSERT INTO UsuariosPOS(nombre, clave, nombre_empresa, cantidad_sucursales, email, fecha_vencimiento)
 VALUES
@@ -863,6 +886,7 @@ GO
 CREATE PROC SP_ALTA_VENTA(
 	@id_usuario INT,
 	@id_cliente INT,
+	@id_tipo_venta INT,
 	@total DECIMAL(12, 2),
 	@vuelto DECIMAL(6, 2),
 	@notas_venta VARCHAR(365),
@@ -879,8 +903,8 @@ BEGIN
 		SET @mensaje = ''
 
 		BEGIN TRANSACTION REGISTRO_VENTA
-			INSERT INTO Ventas(id_usuario, id_cliente, total, vuelto, notas_venta)
-			VALUES(@id_usuario, @id_cliente, @total, @vuelto, @notas_venta)
+			INSERT INTO Ventas(id_usuario, id_cliente, id_tipo_venta, total, vuelto, notas_venta)
+			VALUES(@id_usuario, @id_cliente, @id_tipo_venta, @total, @vuelto, @notas_venta)
 			SET @id_venta = SCOPE_IDENTITY()
 			SET @id_venta_generado = @id_venta
 
@@ -1068,3 +1092,33 @@ SET @resultado = 1
 		END
 	END CATCH;
 END
+GO
+
+CREATE PROC SP_ABONO_VENTA(
+	@id_cliente INT,
+	@monto_abono DECIMAL(12, 2),
+	@resultado BIT OUTPUT,
+	@id_abono_generado INT OUTPUT,
+	@mensaje VARCHAR(360) OUTPUT
+)
+AS
+BEGIN
+	BEGIN TRY
+		DECLARE @id_abono INT = 0
+		SET @resultado = 1
+		SET @mensaje = ''
+
+		BEGIN TRANSACTION ABONO_VENTA
+			INSERT INTO Abono_Ventas(id_cliente, monto_abono)
+			VALUES(@id_cliente, @monto_abono)
+			SET @id_abono = SCOPE_IDENTITY()
+			SET @id_abono_generado = @id_abono
+		COMMIT TRANSACTION ABONO_VENTA
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		SET @mensaje = ERROR_MESSAGE()
+		ROLLBACK TRANSACTION ABONO_VENTA
+	END CATCH
+END
+GO

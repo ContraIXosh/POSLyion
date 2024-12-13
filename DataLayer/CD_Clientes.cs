@@ -170,5 +170,38 @@ namespace CapaDatos
                 return resultado;
             }
         }
+
+        public (decimal totalVentasCredito, decimal totalAbonos) ObtenerDeuda(int idCliente)
+        {
+            decimal totalVentasCredito = 0;
+            decimal totalAbonos = 0;
+
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                oConexion.Open();
+                var queryTotalVentasCredito = "SELECT SUM(total) FROM Ventas WHERE id_tipo_venta = 2 AND id_cliente = @id_cliente";
+                using (var cmd = new SqlCommand(queryTotalVentasCredito, oConexion))
+                {
+                    _ = cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                    var resultado = cmd.ExecuteScalar();
+                    if (resultado != DBNull.Value)
+                    {
+                        totalVentasCredito = Convert.ToDecimal(resultado);
+                    }
+                }
+
+                var queryTotalAbonos = "SELECT SUM(monto_abono) FROM Abono_Ventas WHERE id_cliente = @id_cliente";
+                using (var cmd = new SqlCommand(queryTotalAbonos, oConexion))
+                {
+                    _ = cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                    var resultado = cmd.ExecuteScalar();
+                    if (resultado != DBNull.Value)
+                    {
+                        totalAbonos = Convert.ToDecimal(resultado);
+                    }
+                }
+            }
+            return (totalVentasCredito, totalAbonos);
+        }
     }
 }

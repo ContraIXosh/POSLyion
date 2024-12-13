@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_AbonoVenta.cs" />
     <Compile Include="CD_CierreCaja.cs" />
     <Compile Include="CD_Compras.cs" />
     <Compile Include="CD_Reportes.cs" />
+    <Compile Include="CD_TiposVenta.cs" />
     <Compile Include="CD_UsuariosPOS.cs" />
     <Compile Include="CD_Ventas.cs" />
     <Compile Include="Conexion.cs" />

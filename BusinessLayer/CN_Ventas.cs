@@ -51,5 +51,15 @@ namespace CapaNegocio
         {
             return oVenta.BuscarVenta(idVenta);
         }
+
+        public List<Ventas_Detalle> BuscarVentaDetalle(int idVentaCabecera)
+        {
+            return oVenta.BuscarVentaDetalle(idVentaCabecera);
+        }
+
+        public List<Ventas> BuscarVentasCreditoCliente(int idCliente)
+        {
+            return oVenta.BuscarVentasCreditoCliente(idCliente);
+        }
     }
 }

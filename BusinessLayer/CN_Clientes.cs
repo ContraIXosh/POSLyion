@@ -43,5 +43,10 @@ namespace CapaNegocio
         {
             return oCD_Cliente.Restaurar(oCliente, out message);
         }
+
+        public (decimal totalVentasCredito, decimal totalAbonos) ObtenerDeuda(int idCliente)
+        {
+            return oCD_Cliente.ObtenerDeuda(idCliente);
+        }
     }
 }

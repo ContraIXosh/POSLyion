@@ -1,8 +1,10 @@
 ﻿using CapaEntidad;
+using CapaNegocio;
 using POSLyion.Modals;
 using POSLyion.Resources.Funcionalidad;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -14,8 +16,10 @@ namespace POSLyion
         public decimal vuelto = 0;
         public bool venta_cerrada = false;
         public string NotasVenta;
-        private bool _ventaACredito = false;
+        public bool _ventaACredito;
         private readonly Clientes Cliente;
+        private List<Tipo_Venta> lista_tipos_venta;
+        public Tipo_Venta TipoVenta;
 
         public formCobro(decimal p_total, Clientes cliente, List<ProductoCarrito> productos)
         {
@@ -43,6 +47,8 @@ namespace POSLyion
 
             lbl_suma_total.Text = $"${Convert.ToString(total)}";
             txt_dinero_entregado.Text = lbl_suma_total.Text;
+            lista_tipos_venta = new CN_TiposVenta().Leer();
+            TipoVenta = lista_tipos_venta.Where(t => t.Id == 1).FirstOrDefault();
         }
 
         private void CargarDatosCliente()
@@ -90,14 +96,19 @@ namespace POSLyion
                 return;
             }
 
-            if (sumaTotal > dineroEntregado)
+            if (sumaTotal > dineroEntregado && !_ventaACredito)
             {
                 _ = MessageBox.Show("Dinero entregado insuficiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 _ = txt_dinero_entregado.Focus();
             }
             else
             {
-                _ = Convert.ToDecimal(lblDineroEntregado);
+                venta_cerrada = true;
+                Close();
+            }
+
+            if (_ventaACredito)
+            {
                 venta_cerrada = true;
                 Close();
             }
@@ -174,11 +185,13 @@ namespace POSLyion
             if (_ventaACredito == false)
             {
                 btn_tipo_venta.Text = "VENTA\nEN\nEFECTIVO\n(F3)";
-                lbl_paga_con.Text = "Venta a crédito - Abona:";
+                lbl_paga_con.Text = "Venta a crédito";
                 txt_dinero_entregado.Text = "$0";
                 lbl_vuelto.Visible = false;
                 lbl_cambio.Visible = false;
+                txt_dinero_entregado.Visible = false;
                 _ventaACredito = true;
+                TipoVenta = lista_tipos_venta.Where(t => t.Id == 2).FirstOrDefault();
             }
             else
             {
@@ -187,7 +200,9 @@ namespace POSLyion
                 txt_dinero_entregado.Text = lbl_suma_total.Text;
                 lbl_vuelto.Visible = true;
                 lbl_cambio.Visible = true;
+                txt_dinero_entregado.Visible = true;
                 _ventaACredito = false;
+                TipoVenta = lista_tipos_venta.Where(t => t.Id == 1).FirstOrDefault();
             }
         }
 
