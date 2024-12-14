@@ -91,6 +91,10 @@ namespace CapaDatos
                 {
                     lista_usuarios = new List<Usuarios>();
                 }
+                finally
+                {
+                    oConexion.Close();
+                }
             }
             return lista_usuarios;
         }

@@ -702,6 +702,10 @@
       <Project>{a02fbcc4-2422-47de-b01d-ad3a83d09799}</Project>
       <Name>CapaNegocio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataLayer\CapaDatos.csproj">
+      <Project>{F22C8A46-D7F2-44C1-AC7C-12E7D31A653C}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityLayer\CapaEntidad.csproj">
       <Project>{ce28eb53-cc55-44ce-a7b6-dc86322c1cb9}</Project>
       <Name>CapaEntidad</Name>

@@ -1,6 +1,6 @@
-﻿using Microsoft.SqlServer.Management.Common;
-using Microsoft.SqlServer.Management.Smo;
-using System;
+﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -11,94 +11,6 @@ namespace POSLyion
         {
             InitializeComponent();
 
-        }
-
-
-
-        public void BackupBD(string nombre_base_datos, string backup_direccion)
-        {
-            try
-            {
-                var serverName = Environment.MachineName; // Nombre por defecto de la máquina
-                var instanceName = "SQLExpress"; // Ejemplo de nombre de instancia nombrada
-
-                // Combinación del nombre del servidor con el nombre de la instancia si es necesario
-                var fullServerName = $@"{serverName}\{instanceName}";
-
-                var servidor = new Server(new ServerConnection(fullServerName));
-                var backup = new Backup
-                {
-                    Action = BackupActionType.Database,
-                    Database = nombre_base_datos
-                };
-
-                var deviceItem = new BackupDeviceItem(backup_direccion, DeviceType.File);
-                backup.Devices.Add(deviceItem);
-                backup.Incremental = false;
-                backup.SqlBackup(servidor);
-                _ = System.Windows.Forms.MessageBox.Show("Punto de restauración realizado con éxito en " + backup_direccion, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                _ = System.Windows.Forms.MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-        public void RestaurarBD(string nombre_base_datos, string backup_direccion)
-        {
-            try
-            {
-                var servidor = new Server(new ServerConnection(Environment.MachineName));
-                servidor.KillAllProcesses("POSLyion");
-                var restaurar = new Restore
-                {
-                    Database = nombre_base_datos,
-                    Action = RestoreActionType.Database,
-                    ReplaceDatabase = true,
-                    NoRecovery = false
-                };
-
-                var deviceItem = new BackupDeviceItem(backup_direccion, DeviceType.File);
-                restaurar.Devices.Add(deviceItem);
-                restaurar.SqlRestore(servidor);
-                _ = System.Windows.Forms.MessageBox.Show("Base de datos restaurada con éxito desde" + backup_direccion, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                _ = System.Windows.Forms.MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-
-        private void btb_exportar_bd_Click(object sender, EventArgs e)
-        {
-            using (var sfd = new SaveFileDialog())
-            {
-                sfd.Filter = "Backup Files|*.bak";
-                sfd.Title = "Guardar archivo de punto de restauración";
-                sfd.FileName = "BackupPOSLyion" + DateTime.Now.ToString("ddMMyyyyhhmmss");
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    BackupBD("POSLyion", sfd.FileName);
-                }
-            }
-        }
-
-        private void btn_restaurar_bd_Click(object sender, EventArgs e)
-        {
-            using (var ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "Backup Files|*.bak";
-                ofd.Title = "Seleccionar archivo de restauración";
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    RestaurarBD("POSLyion", ofd.FileName);
-                }
-            }
         }
 
         private void btn_añadir_Click(object sender, EventArgs e)
@@ -119,6 +31,104 @@ namespace POSLyion
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_buscar_backup_Click(object sender, EventArgs e)
+        {
+            var dialogo = new FolderBrowserDialog();
+            if (dialogo.ShowDialog() == DialogResult.OK)
+            {
+                txt_ruta_backup.Text = dialogo.SelectedPath;
+            }
+        }
+
+        private void btb_backup_bd_Click(object sender, EventArgs e)
+        {
+            var fecha = DateTime.Now.ToString("dd-MMM-yyyy-HH-Mmm-ss");
+            if (txt_ruta_backup.Text == string.Empty)
+            {
+                _ = MessageBox.Show("Ingrese la ruta donde guardará el backup");
+                return;
+            }
+            try
+            {
+                var cadenaConexion = ConfigurationManager.ConnectionStrings["CadenaConexion"].ToString();
+                var oConexion = new SqlConnection(cadenaConexion);
+                var cmd = "BACKUP DATABASE [" + oConexion.Database.ToString() + "] TO DISK = '" + txt_ruta_backup.Text + "\\" + "POSLyion"
+                   + "-" + fecha + ".bak'";
+                oConexion.Open();
+                var comando = new SqlCommand(cmd, oConexion);
+                _ = comando.ExecuteNonQuery();
+                _ = MessageBox.Show("Base de datos respaldada exitosamente");
+                oConexion.Close();
+                txt_ruta_backup.Text = "";
+            }
+            catch
+            {
+                _ = MessageBox.Show("Respaldo de base de datos fallida");
+            }
+        }
+
+        private void btn_buscar_restaurar_Click(object sender, EventArgs e)
+        {
+            var dialogo = new OpenFileDialog
+            {
+                Filter = "SQL SERVER Backup files |*.bak",
+                Title = "Restauración de base de datos"
+            };
+            if (dialogo.ShowDialog() == DialogResult.OK)
+            {
+                txt_ruta_restaurar.Text = dialogo.FileName;
+            }
+        }
+
+        private void btn_restaurar_bd_Click(object sender, EventArgs e)
+        {
+            var cadenaConexion = ConfigurationManager.ConnectionStrings["CadenaConexion"].ToString();
+            using (var oConexion = new SqlConnection(cadenaConexion))
+            {
+                oConexion.Open();
+                if (string.IsNullOrEmpty(txt_ruta_restaurar.Text))
+                {
+                    _ = MessageBox.Show("Por favor seleccione el archivo de restauración");
+                }
+                else
+                {
+                    try
+                    {
+                        // Cambiar a la base de datos master
+                        var cambiarABaseDeDatosMaster = "USE master";
+                        using (var cmdCambiarABaseDeDatosMaster = new SqlCommand(cambiarABaseDeDatosMaster, oConexion))
+                        {
+                            _ = cmdCambiarABaseDeDatosMaster.ExecuteNonQuery();
+                        }
+
+                        var setSingleUser = $"ALTER DATABASE POSLyion SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
+                        using (var cmdSetSingleUser = new SqlCommand(setSingleUser, oConexion))
+                        {
+                            _ = cmdSetSingleUser.ExecuteNonQuery();
+                        }
+
+                        var restaurarBaseDeDatos = $"RESTORE DATABASE POSLyion FROM DISK = '{txt_ruta_restaurar.Text}' WITH REPLACE";
+                        using (var cmdRestaurarBaseDeDatos = new SqlCommand(restaurarBaseDeDatos, oConexion))
+                        {
+                            _ = cmdRestaurarBaseDeDatos.ExecuteNonQuery();
+                        }
+
+                        var setMultiUser = $"ALTER DATABASE POSLyion SET MULTI_USER";
+                        using (var cmdSetMultiUser = new SqlCommand(setMultiUser, oConexion))
+                        {
+                            _ = cmdSetMultiUser.ExecuteNonQuery();
+                        }
+
+                        _ = MessageBox.Show("Base de datos restaurada con éxito");
+                    }
+                    catch (Exception ex)
+                    {
+                        _ = MessageBox.Show("La restauración no se pudo realizar. Error: " + ex.Message);
+                    }
+                }
+            }
         }
     }
 }
