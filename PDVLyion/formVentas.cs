@@ -85,7 +85,8 @@ namespace POSLyion
                     if (formularioCobro.venta_cerrada)
                     {
                         var total_con_descuento = formularioCobro.total != Convert.ToDecimal(lbl_suma_total.Text) ? formularioCobro.total : Convert.ToDecimal(lbl_suma_total.Text);
-                        CrearVenta(total_con_descuento, vuelto, formularioCobro.NotasVenta, tipoVenta);
+                        var imprimir = formularioCobro.ImprimirTicket;
+                        CrearVenta(total_con_descuento, vuelto, formularioCobro.NotasVenta, tipoVenta, imprimir);
                     }
                 }
             }
@@ -95,30 +96,15 @@ namespace POSLyion
             }
         }
 
-        public void CrearVenta(decimal totalConDescuento, decimal vuelto, string notasVenta, Tipo_Venta tipoVenta)
+        public void CrearVenta(decimal totalConDescuento, decimal vuelto, string notasVenta, Tipo_Venta tipoVenta, bool imprimir)
         {
-            if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto, notasVenta, tipoVenta), GenerarVentaDetalle(), out var mensaje, out var id_venta_generado))
+            if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto, notasVenta, tipoVenta), GenerarVentaDetalle(), out var mensaje, out _))
             {
-                var Ticket1 = new classTicket.CreaTicket();
-                Ticket1.TextoCentro("Empresa xxxxx ");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoCentro("Factura de Venta");
-                Ticket1.TextoIzquierda("No Fac:" + id_venta_generado);
-                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                Ticket1.TextoIzquierda("Le Atendio: " + VariablesGlobales.Usuario_actual.Nombre_completo);
-                Ticket1.TextoIzquierda("");
-                _ = classTicket.CreaTicket.LineasGuion();
-                classTicket.CreaTicket.EncabezadoVenta(dgv_resumen);
-                _ = classTicket.CreaTicket.LineasGuion();
-                _ = classTicket.CreaTicket.LineasGuion();
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(totalConDescuento));
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.TextoIzquierda(" ");
-                var impresora = "Microsoft XPS Document Writer v4";
-                Ticket1.ImprimirTiket(impresora);
-
+                if (imprimir)
+                {
+                    var imprimirTicket = new ImpresionTicket(TicketManager.ObtenerTicketActual(), totalConDescuento, vuelto, notasVenta, tipoVenta, VariablesGlobales.Usuario_actual.Nombre_completo);
+                    imprimirTicket.Imprimir();
+                }
                 _ = MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TicketManager.FinalizarVenta();
                 lbl_tipoticket.Text = "Consumidor final";

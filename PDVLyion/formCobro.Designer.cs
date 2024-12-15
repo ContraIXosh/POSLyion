@@ -496,7 +496,7 @@
             this.btn_cobrar_imprimir.Text = "COBRAR E\r\nIMPRIMIR\r\n(F1)";
             this.btn_cobrar_imprimir.TextColor = System.Drawing.Color.Gold;
             this.btn_cobrar_imprimir.UseVisualStyleBackColor = false;
-            this.btn_cobrar_imprimir.Click += new System.EventHandler(this.btn_cobrar_Click);
+            this.btn_cobrar_imprimir.Click += new System.EventHandler(this.btn_cobrar_imprimir_Click);
             // 
             // formCobro
             // 

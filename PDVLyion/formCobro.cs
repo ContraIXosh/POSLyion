@@ -17,6 +17,7 @@ namespace POSLyion
         public bool venta_cerrada = false;
         public string NotasVenta;
         public bool _ventaACredito;
+        public bool ImprimirTicket;
         private readonly Clientes Cliente;
         private List<Tipo_Venta> lista_tipos_venta;
         public Tipo_Venta TipoVenta;
@@ -79,8 +80,9 @@ namespace POSLyion
             Close();
         }
 
-        private void btn_cobrar_Click(object sender, EventArgs e)
+        private void btn_cobrar_imprimir_Click(object sender, EventArgs e)
         {
+            ImprimirTicket = true;
             var montoTotalVenta = lbl_suma_total.Text;
             var sumaTotal = Convert.ToDecimal(montoTotalVenta.Replace("$", "").Trim());
             var lblDineroEntregado = txt_dinero_entregado.Text.Replace("$", "").Trim();
@@ -219,7 +221,7 @@ namespace POSLyion
             {
                 if (e.KeyCode == Keys.F1)
                 {
-                    btn_cobrar_Click(sender, e);
+                    btn_cobrar_imprimir_Click(sender, e);
                 }
                 if (e.KeyCode == Keys.F3)
                 {
@@ -238,7 +240,38 @@ namespace POSLyion
 
         private void btn_cobrar_sin_imprimir_Click(object sender, EventArgs e)
         {
+            ImprimirTicket = false;
+            var montoTotalVenta = lbl_suma_total.Text;
+            var sumaTotal = Convert.ToDecimal(montoTotalVenta.Replace("$", "").Trim());
+            var lblDineroEntregado = txt_dinero_entregado.Text.Replace("$", "").Trim();
+            decimal dineroEntregado;
 
+            if (lblDineroEntregado != "" && lblDineroEntregado != ",")
+            {
+                dineroEntregado = Convert.ToDecimal(lblDineroEntregado);
+            }
+            else
+            {
+                _ = MessageBox.Show("Ingrese un monto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (sumaTotal > dineroEntregado && !_ventaACredito)
+            {
+                _ = MessageBox.Show("Dinero entregado insuficiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                _ = txt_dinero_entregado.Focus();
+            }
+            else
+            {
+                venta_cerrada = true;
+                Close();
+            }
+
+            if (_ventaACredito)
+            {
+                venta_cerrada = true;
+                Close();
+            }
         }
     }
 }

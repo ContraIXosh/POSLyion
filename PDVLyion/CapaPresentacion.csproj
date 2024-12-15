@@ -512,6 +512,7 @@
     <Compile Include="Resources\Funcionalidad\ActualizadorStockManager.cs" />
     <Compile Include="Resources\Funcionalidad\FormManager.cs" />
     <Compile Include="Resources\Funcionalidad\CarritoManager.cs" />
+    <Compile Include="Resources\Funcionalidad\ImpresionTicket.cs" />
     <Compile Include="Resources\Funcionalidad\ProductoCarrito.cs" />
     <Compile Include="Resources\Funcionalidad\Ticket.cs" />
     <Compile Include="Resources\Funcionalidad\TicketManager.cs" />
