@@ -505,6 +505,7 @@
             this.Controls.Add(this.tlp_principal);
             this.Name = "formCobro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cierre de venta";
             this.Load += new System.EventHandler(this.formCobro_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formCobro_KeyDown);
             this.tlp_principal.ResumeLayout(false);

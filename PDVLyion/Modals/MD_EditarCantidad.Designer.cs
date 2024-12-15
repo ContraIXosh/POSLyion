@@ -93,7 +93,7 @@
             this.Controls.Add(this.lbl_descripcion_producto);
             this.Name = "MD_EditarCantidad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MD_EditarCantidad";
+            this.Text = "Editar cantidad de producto";
             ((System.ComponentModel.ISupportInitialize)(this.num_nueva_cantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

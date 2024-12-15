@@ -207,58 +207,32 @@ namespace POSLyion.Resources.Funcionalidad
             }
             if (_dgv_resumen.Columns[e.ColumnIndex].Name == "btn_imprimir")
             {
-                if (dgv_detalle.Rows.Count == 0)
-                {
-                    _ = MessageBox.Show("Debe presionar el boton Ver Detalle primero", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 // Obtiene el ID de la fila seleccionada
-                var id = Convert.ToInt32(_dgv_resumen.Rows[e.RowIndex].Cells["id_venta"].Value);
-                decimal total = 0;
+                var idVenta = Convert.ToInt32(_dgv_resumen.Rows[e.RowIndex].Cells["id_venta"].Value);
 
-                // Inicializa un nuevo DataGridView para el resumen
-                var dgv = new DataGridView
-                {
-                    AllowUserToAddRows = false, // No permitir al usuario añadir filas manualmente
-                    AllowUserToDeleteRows = false, // No permitir al usuario eliminar filas manualmente
-                    ReadOnly = true // Hacer que el DataGridView sea de solo lectura si es necesario
-                };
-                _ = dgv.Columns.Add("dgv_resumen_descripcion", "Descripción");
-                _ = dgv.Columns.Add("dgv_resumen_cantidad", "Cantidad");
-                _ = dgv.Columns.Add("dgv_resumen_precio", "Precio Unitario");
-                _ = dgv.Columns.Add("dgv_resumen_subtotal", "Subtotal");
+                var venta = new CN_Ventas().BuscarVenta(idVenta);
+                var ventaDetalle = new CN_Ventas().BuscarVentaDetalle(idVenta);
+                var listaProductos = new List<ProductoCarrito>();
 
-                // Itera sobre las filas del DataGridView original
-                foreach (DataGridViewRow row in dgv_detalle.Rows)
                 {
-                    // Compara el ID de la venta
-                    // Agrega las filas coincidentes al nuevo DataGridView
-                    _ = dgv.Rows.Add(new object[]
+                    var ticket = new Ticket(66, null, null);
+                    foreach (var producto in ventaDetalle)
                     {
-                        row.Cells["dgv_detalle_producto"].Value.ToString(),
-                        row.Cells["dgv_detalle_cantidad"].Value.ToString(),
-                        row.Cells["dgv_detalle_precio"].Value.ToString(),
-                        row.Cells["dgv_detalle_subtotal"].Value.ToString()
-                    });
-                    total += Convert.ToDecimal(row.Cells["dgv_detalle_subtotal"].Value);
+                        listaProductos.Add(new ProductoCarrito
+                        {
+                            Cantidad = producto.Cantidad,
+                            NombreProducto = producto.oProducto.Descripcion,
+                            Precio = producto.Precio,
+                            Subtotal = producto.Subtotal
+                        });
+                    }
+                    ticket.Productos = listaProductos;
+                    ticket.Cliente = new Clientes() { Nombre_completo = venta.oCliente.Nombre_completo };
+                    var impresionTicket = new ImpresionTicket(ticket, venta.Total, venta.Vuelto, venta.NotasVenta, venta.oTipoVenta, venta.oUsuario.Nombre_completo, venta.Create_date);
+                    impresionTicket.Imprimir();
                 }
-                var Ticket1 = new classTicket.CreaTicket();
-                Ticket1.TextoCentro("Empresa xxxxx ");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoCentro("Factura de Venta");
-                Ticket1.TextoIzquierda("No Fac:" + id);
-                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                _ = classTicket.CreaTicket.LineasGuion();
-                classTicket.CreaTicket.EncabezadoVenta(dgv);
-                _ = classTicket.CreaTicket.LineasGuion();
-                _ = classTicket.CreaTicket.LineasGuion();
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(total));
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.TextoIzquierda(" ");
-                var impresora = "Microsoft XPS Document Writer";
-                Ticket1.ImprimirTiket(impresora);
+
+
             }
         }
 

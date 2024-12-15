@@ -183,8 +183,13 @@ namespace DataLayer
             {
                 try
                 {
-                    var query = "SELECT notas_venta FROM Ventas WHERE id_venta = @id_venta";
-                    using (var cmd = new SqlCommand(query, oConexion))
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT v.id_venta[IdVenta], u.nombre_completo[Usuario], c.nombre_completo[Cliente], tv.descripcion[TipoVenta], total, vuelto, notas_venta, v.create_date[FechaVenta]  FROM Ventas v");
+                    _ = query.AppendLine("INNER JOIN Usuarios u ON v.id_usuario = u.id_usuario");
+                    _ = query.AppendLine("INNER JOIN Clientes c ON v.id_cliente = c.id_cliente");
+                    _ = query.AppendLine("INNER JOIN Tipo_Venta tv ON v.id_tipo_venta = tv.id_tipo_venta");
+                    _ = query.AppendLine("WHERE v.id_venta = @id_venta");
+                    using (var cmd = new SqlCommand(query.ToString(), oConexion))
                     {
                         _ = cmd.Parameters.AddWithValue("@id_venta", idVenta);
                         cmd.CommandType = CommandType.Text;
@@ -193,7 +198,14 @@ namespace DataLayer
                         {
                             while (reader.Read())
                             {
+                                ventas.Id_venta = Convert.ToInt32(reader["IdVenta"]);
+                                ventas.oUsuario = new Usuarios() { Nombre_completo = reader["Usuario"].ToString() };
+                                ventas.oCliente = new Clientes() { Nombre_completo = reader["Cliente"].ToString() };
+                                ventas.oTipoVenta = new Tipo_Venta() { Descripcion = reader["TipoVenta"].ToString() };
+                                ventas.Total = Convert.ToDecimal(reader["total"]);
+                                ventas.Vuelto = Convert.ToDecimal(reader["vuelto"]);
                                 ventas.NotasVenta = reader["notas_venta"].ToString();
+                                ventas.Create_date = reader["FechaVenta"].ToString();
                             }
                         }
                     }

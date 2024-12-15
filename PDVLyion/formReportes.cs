@@ -4,6 +4,7 @@ using CapaNegocio;
 using ClosedXML.Excel;
 using EntityLayer.Filtros;
 using POSLyion.Resources;
+using POSLyion.Resources.Funcionalidad;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -753,58 +754,28 @@ namespace POSLyion
             if (dgv_historial.Columns[e.ColumnIndex].Name == "btn_imprimir")
             {
                 // Obtiene el ID de la fila seleccionada
-                var id = Convert.ToInt32(dgv_historial.Rows[e.RowIndex].Cells["id_venta"].Value);
-                var usuario = dgv_historial.Rows[e.RowIndex].Cells["usuario_registro"].ToString();
-                decimal total = 0;
+                var idVenta = Convert.ToInt32(dgv_historial.Rows[e.RowIndex].Cells["id_venta"].Value);
+                var venta = new CN_Ventas().BuscarVenta(idVenta);
+                var ventaDetalle = new CN_Ventas().BuscarVentaDetalle(idVenta);
+                var listaProductos = new List<ProductoCarrito>();
 
-                // Inicializa un nuevo DataGridView para el resumen
-                var dgv_resumen = new DataGridView
                 {
-                    AllowUserToAddRows = false, // No permitir al usuario añadir filas manualmente
-                    AllowUserToDeleteRows = false, // No permitir al usuario eliminar filas manualmente
-                    ReadOnly = true // Hacer que el DataGridView sea de solo lectura si es necesario
-                };
-                _ = dgv_resumen.Columns.Add("dgv_resumen_descripcion", "Descripción");
-                _ = dgv_resumen.Columns.Add("dgv_resumen_cantidad", "Cantidad");
-                _ = dgv_resumen.Columns.Add("dgv_resumen_precio", "Precio Unitario");
-                _ = dgv_resumen.Columns.Add("dgv_resumen_subtotal", "Subtotal");
-
-                // Itera sobre las filas del DataGridView original
-                foreach (DataGridViewRow row in dgv_historial.Rows)
-                {
-                    // Compara el ID de la venta
-                    if (Convert.ToInt32(row.Cells["id_venta"].Value) == id)
+                    var ticket = new Ticket(66, null, null);
+                    foreach (var producto in ventaDetalle)
                     {
-                        // Agrega las filas coincidentes al nuevo DataGridView
-                        _ = dgv_resumen.Rows.Add(new object[]
+                        listaProductos.Add(new ProductoCarrito
                         {
-                            row.Cells["descripcion"].Value.ToString(),
-                            row.Cells["cantidad"].Value.ToString(),
-                            row.Cells["precio_unitario"].Value.ToString(),
-                            row.Cells["subtotal"].Value.ToString()
+                            Cantidad = producto.Cantidad,
+                            NombreProducto = producto.oProducto.Descripcion,
+                            Precio = producto.Precio,
+                            Subtotal = producto.Subtotal
                         });
-                        total += Convert.ToDecimal(row.Cells["subtotal"].Value);
                     }
+                    ticket.Productos = listaProductos;
+                    ticket.Cliente = new Clientes() { Nombre_completo = venta.oCliente.Nombre_completo };
+                    var impresionTicket = new ImpresionTicket(ticket, venta.Total, venta.Vuelto, venta.NotasVenta, venta.oTipoVenta, venta.oUsuario.Nombre_completo, venta.Create_date);
+                    impresionTicket.Imprimir();
                 }
-                var Ticket1 = new classTicket.CreaTicket();
-                Ticket1.TextoCentro("Empresa xxxxx ");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoCentro("Factura de Venta");
-                Ticket1.TextoIzquierda("No Fac:" + id);
-                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                Ticket1.TextoIzquierda("Le Atendio: " + usuario);
-                Ticket1.TextoIzquierda("");
-                _ = classTicket.CreaTicket.LineasGuion();
-                classTicket.CreaTicket.EncabezadoVenta(dgv_resumen);
-                _ = classTicket.CreaTicket.LineasGuion();
-                _ = classTicket.CreaTicket.LineasGuion();
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(total));
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.TextoIzquierda(" ");
-                var impresora = "Microsoft XPS Document Writer";
-                Ticket1.ImprimirTiket(impresora);
             }
         }
     }

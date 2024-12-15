@@ -277,15 +277,15 @@
             this.txt_busqueda.TabIndex = 31;
             this.txt_busqueda.TextChanged += new System.EventHandler(this.txt_busqueda_TextChanged);
             // 
-            // formDescuento
+            // formSeleccionCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 597);
             this.Controls.Add(this.panel_container);
-            this.Name = "formDescuento";
+            this.Name = "formSeleccionCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Clientes";
+            this.Text = "Seleccionar un cliente";
             this.Load += new System.EventHandler(this.formDescuento_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formDescuento_KeyDown);
             this.panel_container.ResumeLayout(false);

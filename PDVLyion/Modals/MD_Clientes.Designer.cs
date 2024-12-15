@@ -311,7 +311,7 @@
             this.Controls.Add(this.tlp_principal);
             this.Name = "MD_Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MD_Clientes";
+            this.Text = "Deuda de cliente";
             this.Load += new System.EventHandler(this.MD_Clientes_Load);
             this.tlp_principal.ResumeLayout(false);
             this.tlp_menu.ResumeLayout(false);

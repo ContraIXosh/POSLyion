@@ -440,6 +440,7 @@
             this.label2.Size = new System.Drawing.Size(268, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "Vinculación de cuenta";
+            this.label2.Visible = false;
             // 
             // lbl_informe
             // 
@@ -484,6 +485,7 @@
             this.btn_añadir.Text = "Añadir cuenta";
             this.btn_añadir.TextColor = System.Drawing.Color.Black;
             this.btn_añadir.UseVisualStyleBackColor = false;
+            this.btn_añadir.Visible = false;
             this.btn_añadir.Click += new System.EventHandler(this.btn_añadir_Click);
             // 
             // tableLayoutPanel1
@@ -602,7 +604,7 @@
             this.Controls.Add(this.panel_main);
             this.Name = "formConfiguracion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "formConfig";
+            this.Text = "Configuracion";
             this.panel_main.ResumeLayout(false);
             this.panel_general.ResumeLayout(false);
             this.panel_bot.ResumeLayout(false);
@@ -650,25 +652,25 @@
         private System.Windows.Forms.TableLayoutPanel panel_bot;
         private System.Windows.Forms.Label lbl_updateversion;
         private System.Windows.Forms.Label lbl_updatetime;
-        private System.Windows.Forms.TableLayoutPanel panel_mid;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lbl_configuracion;
-        private System.Windows.Forms.TableLayoutPanel panel_info;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label lbl_informe;
-        private System.Windows.Forms.Label lbl_fecha_vencimiento;
-        private CustomBox.RJControls.RJButton btn_añadir;
+        private System.Windows.Forms.TableLayoutPanel panel_mid;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox txt_ruta_backup;
+        private System.Windows.Forms.Button btn_buscar_backup;
         private CustomBox.RJControls.RJButton btb_backup_bd;
         private System.Windows.Forms.Label lbl_bdd;
         private CustomBox.RJControls.RJButton btn_restaurar_bd;
-        private RJCodeAdvance.RJControls.RJButton btn_cerrar;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Button btn_buscar_backup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btn_buscar_restaurar;
-        private System.Windows.Forms.TextBox txt_ruta_backup;
         private System.Windows.Forms.TextBox txt_ruta_restaurar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private RJCodeAdvance.RJControls.RJButton btn_cerrar;
+        private System.Windows.Forms.TableLayoutPanel panel_info;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_informe;
+        private System.Windows.Forms.Label lbl_fecha_vencimiento;
+        private CustomBox.RJControls.RJButton btn_añadir;
     }
 }

@@ -98,11 +98,15 @@ namespace POSLyion
 
         public void CrearVenta(decimal totalConDescuento, decimal vuelto, string notasVenta, Tipo_Venta tipoVenta, bool imprimir)
         {
+            if (vuelto < 0)
+            {
+                vuelto = 0;
+            }
             if (new CN_Ventas().Crear(GenerarVentaCabecera(totalConDescuento, vuelto, notasVenta, tipoVenta), GenerarVentaDetalle(), out var mensaje, out _))
             {
                 if (imprimir)
                 {
-                    var imprimirTicket = new ImpresionTicket(TicketManager.ObtenerTicketActual(), totalConDescuento, vuelto, notasVenta, tipoVenta, VariablesGlobales.Usuario_actual.Nombre_completo);
+                    var imprimirTicket = new ImpresionTicket(TicketManager.ObtenerTicketActual(), totalConDescuento, vuelto, notasVenta, tipoVenta, VariablesGlobales.Usuario_actual.Nombre_completo, DateTime.Now.ToString());
                     imprimirTicket.Imprimir();
                 }
                 _ = MessageBox.Show("Venta creada con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);

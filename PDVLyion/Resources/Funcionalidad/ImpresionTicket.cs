@@ -15,9 +15,10 @@ namespace POSLyion.Resources.Funcionalidad
         private readonly string _notasVenta;
         private readonly Tipo_Venta _tipoVenta;
         private readonly string _nombreUsuario;
+        private readonly string _fecha;
         private readonly Ticket _ticket;
 
-        public ImpresionTicket(Ticket oTicket, decimal totalConDescuento, decimal vuelto, string notasVenta, Tipo_Venta tipoVenta, string nombreUsuario)
+        public ImpresionTicket(Ticket oTicket, decimal totalConDescuento, decimal vuelto, string notasVenta, Tipo_Venta tipoVenta, string nombreUsuario, string fecha)
         {
             _ticket = oTicket;
             _totalConDescuento = totalConDescuento;
@@ -25,6 +26,7 @@ namespace POSLyion.Resources.Funcionalidad
             _notasVenta = notasVenta;
             _tipoVenta = tipoVenta;
             _nombreUsuario = nombreUsuario;
+            _fecha = fecha;
         }
 
         public void Imprimir()
@@ -40,13 +42,14 @@ namespace POSLyion.Resources.Funcionalidad
         {
             int posX, posY;
             var fuente = new Font("consola", 10, FontStyle.Bold);
+            var fecha = _fecha ?? DateTime.Now.ToString();
             try
             {
                 posX = 10;
                 posY = 10;
                 e.Graphics.DrawString("POSLyion", fuente, Brushes.Black, posX, posY);
                 posY += 30;
-                e.Graphics.DrawString($"Le atendió: {_nombreUsuario} - {DateTime.Now}", fuente, Brushes.Black, posX, posY);
+                e.Graphics.DrawString($"Le atendió: {_nombreUsuario} - {fecha}", fuente, Brushes.Black, posX, posY);
                 posY += 30;
                 fuente = new Font("consola", 9, FontStyle.Regular);
                 e.Graphics.DrawString($"Notas de venta: {_notasVenta}", fuente, Brushes.Black, posX, posY);
@@ -93,7 +96,7 @@ namespace POSLyion.Resources.Funcionalidad
                 fuente = new Font("consola", 10, FontStyle.Bold);
                 e.Graphics.DrawString("---------------------------------------------------------------------------", fuente, Brushes.Black, posX, posY);
                 posY += 30;
-                e.Graphics.DrawString($"Vuelto: {_vuelto}\nTotal: {_totalConDescuento}\nGracias por su compra.", fuente, Brushes.Black, posX, posY);
+                e.Graphics.DrawString($"Cliente: {_ticket.Cliente.Nombre_completo}\nTipo de venta: {_tipoVenta.Descripcion}\nVuelto: {_vuelto}\nTotal: {_totalConDescuento}\nGracias por su compra.", fuente, Brushes.Black, posX, posY);
             }
             catch (Exception ex)
             {
