@@ -1,12 +1,10 @@
 ﻿using CapaEntidad;
+using CapaEntidad.Filtros;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Text;
-using System.Threading.Tasks;
-using CapaEntidad.Filtros;
 
 namespace CapaDatos
 {
@@ -15,22 +13,22 @@ namespace CapaDatos
         public int Crear(Clientes oCliente, out string mensaje)
         {
             mensaje = string.Empty;
-            int id_generada_cliente = 0;
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
+                int id_generada_cliente;
                 try
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_ALTA_CLIENTE", oConexion);
-                    command.Parameters.AddWithValue("dni", oCliente.Dni);
-                    command.Parameters.AddWithValue("nombre_completo", oCliente.Nombre_completo);
-                    command.Parameters.AddWithValue("correo", oCliente.Correo);
-                    command.Parameters.AddWithValue("telefono", oCliente.Telefono);
-                    command.Parameters.AddWithValue("descuento", oCliente.Descuento);
+                    var command = new SqlCommand("SP_ALTA_CLIENTE", oConexion);
+                    _ = command.Parameters.AddWithValue("dni", oCliente.Dni);
+                    _ = command.Parameters.AddWithValue("nombre_completo", oCliente.Nombre_completo);
+                    _ = command.Parameters.AddWithValue("correo", oCliente.Correo);
+                    _ = command.Parameters.AddWithValue("telefono", oCliente.Telefono);
+                    _ = command.Parameters.AddWithValue("descuento", oCliente.Descuento);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("id_generada_cliente", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     id_generada_cliente = Convert.ToInt32(command.Parameters["id_generada_cliente"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }
@@ -45,21 +43,23 @@ namespace CapaDatos
 
         public List<Clientes> Leer(FiltrosCliente filtros)
         {
-            List<Clientes> lista_clientes = new List<Clientes>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_clientes = new List<Clientes>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
                     oConexion.Open();
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT id_cliente, dni, nombre_completo, correo, telefono, estado, descuento FROM Clientes");
-                    query.AppendLine("WHERE (nombre_completo LIKE '%' + @nombre_cliente + '%')");
-                    query.AppendLine("AND (estado = @estado)");
-                    SqlCommand command = new SqlCommand(query.ToString(), oConexion);
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@nombre_cliente", filtros.Nombre_cliente);
-                    command.Parameters.AddWithValue("@estado", filtros.Estado);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT id_cliente, dni, nombre_completo, correo, telefono, estado, descuento FROM Clientes");
+                    _ = query.AppendLine("WHERE (nombre_completo LIKE '%' + @nombre_cliente + '%')");
+                    _ = query.AppendLine("AND (estado = @estado)");
+                    var command = new SqlCommand(query.ToString(), oConexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
+                    _ = command.Parameters.AddWithValue("@nombre_cliente", filtros.Nombre_cliente);
+                    _ = command.Parameters.AddWithValue("@estado", filtros.Estado);
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -76,7 +76,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_clientes = new List<Clientes>();
                 }
@@ -87,24 +87,24 @@ namespace CapaDatos
         public bool Modificar(Clientes oCliente, out string mensaje)
         {
             mensaje = string.Empty;
-            bool resultado = false;
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
+                bool resultado;
                 try
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_MODIFICAR_CLIENTE", oConexion);
-                    command.Parameters.AddWithValue("id_cliente", oCliente.Id_cliente);
-                    command.Parameters.AddWithValue("dni", oCliente.Dni);
-                    command.Parameters.AddWithValue("nombre_completo", oCliente.Nombre_completo);
-                    command.Parameters.AddWithValue("correo", oCliente.Correo);
-                    command.Parameters.AddWithValue("telefono", oCliente.Telefono);
-                    command.Parameters.AddWithValue("estado", oCliente.Estado);
-                    command.Parameters.AddWithValue("descuento", oCliente.Descuento);
+                    var command = new SqlCommand("SP_MODIFICAR_CLIENTE", oConexion);
+                    _ = command.Parameters.AddWithValue("id_cliente", oCliente.Id_cliente);
+                    _ = command.Parameters.AddWithValue("dni", oCliente.Dni);
+                    _ = command.Parameters.AddWithValue("nombre_completo", oCliente.Nombre_completo);
+                    _ = command.Parameters.AddWithValue("correo", oCliente.Correo);
+                    _ = command.Parameters.AddWithValue("telefono", oCliente.Telefono);
+                    _ = command.Parameters.AddWithValue("estado", oCliente.Estado);
+                    _ = command.Parameters.AddWithValue("descuento", oCliente.Descuento);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     resultado = Convert.ToBoolean(command.Parameters["resultado"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }
@@ -120,18 +120,18 @@ namespace CapaDatos
         public bool Eliminar(Clientes oCliente, out string mensaje)
         {
             mensaje = string.Empty;
-            bool resultado = false;
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
+                bool resultado;
                 try
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_BAJA_CLIENTE", oConexion);
-                    command.Parameters.AddWithValue("id_cliente", oCliente.Id_cliente);
+                    var command = new SqlCommand("SP_BAJA_CLIENTE", oConexion);
+                    _ = command.Parameters.AddWithValue("id_cliente", oCliente.Id_cliente);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     resultado = Convert.ToBoolean(command.Parameters["resultado"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }
@@ -147,18 +147,18 @@ namespace CapaDatos
         public bool Restaurar(Clientes oCliente, out string mensaje)
         {
             mensaje = string.Empty;
-            bool resultado = false;
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
+                bool resultado;
                 try
                 {
                     oConexion.Open();
-                    SqlCommand command = new SqlCommand("SP_RESTAURAR_CLIENTE", oConexion);
-                    command.Parameters.AddWithValue("id_cliente", oCliente.Id_cliente);
+                    var command = new SqlCommand("SP_RESTAURAR_CLIENTE", oConexion);
+                    _ = command.Parameters.AddWithValue("id_cliente", oCliente.Id_cliente);
                     command.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     command.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
-                    command.ExecuteNonQuery();
+                    _ = command.ExecuteNonQuery();
                     resultado = Convert.ToBoolean(command.Parameters["resultado"].Value);
                     mensaje = command.Parameters["mensaje"].Value.ToString();
                 }
@@ -169,6 +169,39 @@ namespace CapaDatos
                 }
                 return resultado;
             }
+        }
+
+        public (decimal totalVentasCredito, decimal totalAbonos) ObtenerDeuda(int idCliente)
+        {
+            decimal totalVentasCredito = 0;
+            decimal totalAbonos = 0;
+
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
+            {
+                oConexion.Open();
+                var queryTotalVentasCredito = "SELECT SUM(total) FROM Ventas WHERE id_tipo_venta = 2 AND id_cliente = @id_cliente";
+                using (var cmd = new SqlCommand(queryTotalVentasCredito, oConexion))
+                {
+                    _ = cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                    var resultado = cmd.ExecuteScalar();
+                    if (resultado != DBNull.Value)
+                    {
+                        totalVentasCredito = Convert.ToDecimal(resultado);
+                    }
+                }
+
+                var queryTotalAbonos = "SELECT SUM(monto_abono) FROM Abono_Ventas WHERE id_cliente = @id_cliente";
+                using (var cmd = new SqlCommand(queryTotalAbonos, oConexion))
+                {
+                    _ = cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                    var resultado = cmd.ExecuteScalar();
+                    if (resultado != DBNull.Value)
+                    {
+                        totalAbonos = Convert.ToDecimal(resultado);
+                    }
+                }
+            }
+            return (totalVentasCredito, totalAbonos);
         }
     }
 }

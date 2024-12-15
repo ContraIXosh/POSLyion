@@ -32,32 +32,34 @@
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btttmm = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_id = new System.Windows.Forms.TextBox();
+            this.btn_reiniciar_datos = new RJCodeAdvance.RJControls.RJButton();
             this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
             this.btn_guardar = new RJCodeAdvance.RJControls.RJButton();
             this.panel_createclient = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_crearcliente = new System.Windows.Forms.Label();
             this.panel_create = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_telefono = new System.Windows.Forms.TextBox();
             this.txt_dni = new System.Windows.Forms.TextBox();
             this.txt_correo = new System.Windows.Forms.TextBox();
             this.lbl_descuento = new System.Windows.Forms.Label();
             this.lbl_full_name = new System.Windows.Forms.Label();
             this.num_descuento = new System.Windows.Forms.NumericUpDown();
             this.lbl_dni = new System.Windows.Forms.Label();
-            this.lbl_tel = new System.Windows.Forms.Label();
             this.lbl_email = new System.Windows.Forms.Label();
-            this.lbl_state = new System.Windows.Forms.Label();
-            this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
             this.txt_nombre_completo = new System.Windows.Forms.TextBox();
+            this.lbl_estado = new System.Windows.Forms.Label();
+            this.lbl_telefono = new System.Windows.Forms.Label();
+            this.cbox_estado = new RJCodeAdvance.RJControls.RJComboBox();
+            this.txt_telefono = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel_main.SuspendLayout();
             this.panel_btttmm.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_createclient.SuspendLayout();
             this.panel_create.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_descuento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_main
@@ -99,7 +101,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.txt_id, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_reiniciar_datos, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,14 +113,26 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(714, 56);
             this.tableLayoutPanel2.TabIndex = 26;
             // 
-            // txt_id
+            // btn_reiniciar_datos
             // 
-            this.txt_id.Location = new System.Drawing.Point(3, 3);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(48, 20);
-            this.txt_id.TabIndex = 59;
-            this.txt_id.Text = "0";
-            this.txt_id.Visible = false;
+            this.btn_reiniciar_datos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BorderRadius = 7;
+            this.btn_reiniciar_datos.BorderSize = 2;
+            this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
+            this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.Location = new System.Drawing.Point(249, 8);
+            this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
+            this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 40);
+            this.btn_reiniciar_datos.TabIndex = 60;
+            this.btn_reiniciar_datos.Text = "Reiniciar datos";
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
+            this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_cerrar
             // 
@@ -199,18 +213,18 @@
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.panel_create.Controls.Add(this.txt_telefono, 1, 3);
             this.panel_create.Controls.Add(this.txt_dni, 0, 3);
             this.panel_create.Controls.Add(this.txt_correo, 2, 1);
             this.panel_create.Controls.Add(this.lbl_descuento, 2, 2);
             this.panel_create.Controls.Add(this.lbl_full_name, 0, 0);
             this.panel_create.Controls.Add(this.num_descuento, 2, 3);
             this.panel_create.Controls.Add(this.lbl_dni, 0, 2);
-            this.panel_create.Controls.Add(this.lbl_tel, 1, 2);
             this.panel_create.Controls.Add(this.lbl_email, 2, 0);
-            this.panel_create.Controls.Add(this.lbl_state, 1, 0);
-            this.panel_create.Controls.Add(this.cbo_estado, 1, 1);
             this.panel_create.Controls.Add(this.txt_nombre_completo, 0, 1);
+            this.panel_create.Controls.Add(this.lbl_estado, 1, 2);
+            this.panel_create.Controls.Add(this.lbl_telefono, 1, 0);
+            this.panel_create.Controls.Add(this.cbox_estado, 1, 3);
+            this.panel_create.Controls.Add(this.txt_telefono, 1, 1);
             this.panel_create.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_create.Location = new System.Drawing.Point(0, 70);
             this.panel_create.Margin = new System.Windows.Forms.Padding(0);
@@ -224,15 +238,6 @@
             this.panel_create.Size = new System.Drawing.Size(714, 247);
             this.panel_create.TabIndex = 36;
             // 
-            // txt_telefono
-            // 
-            this.txt_telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_telefono.Location = new System.Drawing.Point(241, 186);
-            this.txt_telefono.Name = "txt_telefono";
-            this.txt_telefono.Size = new System.Drawing.Size(231, 29);
-            this.txt_telefono.TabIndex = 64;
-            this.txt_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_telefono_KeyPress);
-            // 
             // txt_dni
             // 
             this.txt_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,7 +245,6 @@
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(231, 29);
             this.txt_dni.TabIndex = 63;
-            this.txt_dni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_dni_KeyPress);
             // 
             // txt_correo
             // 
@@ -249,7 +253,6 @@
             this.txt_correo.Name = "txt_correo";
             this.txt_correo.Size = new System.Drawing.Size(231, 29);
             this.txt_correo.TabIndex = 62;
-            this.txt_correo.Validating += new System.ComponentModel.CancelEventHandler(this.txt_correo_Validating);
             // 
             // lbl_descuento
             // 
@@ -296,18 +299,6 @@
             this.lbl_dni.TabIndex = 51;
             this.lbl_dni.Text = "DNI";
             // 
-            // lbl_tel
-            // 
-            this.lbl_tel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_tel.AutoSize = true;
-            this.lbl_tel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tel.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_tel.Location = new System.Drawing.Point(290, 158);
-            this.lbl_tel.Name = "lbl_tel";
-            this.lbl_tel.Size = new System.Drawing.Size(133, 25);
-            this.lbl_tel.TabIndex = 53;
-            this.lbl_tel.Text = "TELEFONO";
-            // 
             // lbl_email
             // 
             this.lbl_email.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -320,38 +311,6 @@
             this.lbl_email.TabIndex = 55;
             this.lbl_email.Text = "EMAIL";
             // 
-            // lbl_state
-            // 
-            this.lbl_state.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_state.AutoSize = true;
-            this.lbl_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_state.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_state.Location = new System.Drawing.Point(305, 36);
-            this.lbl_state.Name = "lbl_state";
-            this.lbl_state.Size = new System.Drawing.Size(104, 25);
-            this.lbl_state.TabIndex = 57;
-            this.lbl_state.Text = "ESTADO";
-            // 
-            // cbo_estado
-            // 
-            this.cbo_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbo_estado.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbo_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.BorderSize = 1;
-            this.cbo_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbo_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbo_estado.ForeColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbo_estado.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.Location = new System.Drawing.Point(241, 64);
-            this.cbo_estado.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbo_estado.Name = "cbo_estado";
-            this.cbo_estado.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_estado.Size = new System.Drawing.Size(232, 30);
-            this.cbo_estado.TabIndex = 58;
-            this.cbo_estado.Texts = "";
-            // 
             // txt_nombre_completo
             // 
             this.txt_nombre_completo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -359,7 +318,62 @@
             this.txt_nombre_completo.Name = "txt_nombre_completo";
             this.txt_nombre_completo.Size = new System.Drawing.Size(231, 29);
             this.txt_nombre_completo.TabIndex = 61;
-            this.txt_nombre_completo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nombre_completo_KeyPress);
+            // 
+            // lbl_estado
+            // 
+            this.lbl_estado.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_estado.AutoSize = true;
+            this.lbl_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_estado.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_estado.Location = new System.Drawing.Point(305, 158);
+            this.lbl_estado.Name = "lbl_estado";
+            this.lbl_estado.Size = new System.Drawing.Size(104, 25);
+            this.lbl_estado.TabIndex = 57;
+            this.lbl_estado.Text = "ESTADO";
+            // 
+            // lbl_telefono
+            // 
+            this.lbl_telefono.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_telefono.AutoSize = true;
+            this.lbl_telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_telefono.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_telefono.Location = new System.Drawing.Point(290, 36);
+            this.lbl_telefono.Name = "lbl_telefono";
+            this.lbl_telefono.Size = new System.Drawing.Size(133, 25);
+            this.lbl_telefono.TabIndex = 53;
+            this.lbl_telefono.Text = "TELEFONO";
+            // 
+            // cbox_estado
+            // 
+            this.cbox_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbox_estado.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbox_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.BorderSize = 1;
+            this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbox_estado.ForeColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.Location = new System.Drawing.Point(241, 186);
+            this.cbox_estado.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbox_estado.Name = "cbox_estado";
+            this.cbox_estado.Padding = new System.Windows.Forms.Padding(1);
+            this.cbox_estado.Size = new System.Drawing.Size(232, 30);
+            this.cbox_estado.TabIndex = 58;
+            this.cbox_estado.Texts = "";
+            // 
+            // txt_telefono
+            // 
+            this.txt_telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_telefono.Location = new System.Drawing.Point(241, 64);
+            this.txt_telefono.Name = "txt_telefono";
+            this.txt_telefono.Size = new System.Drawing.Size(231, 29);
+            this.txt_telefono.TabIndex = 64;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // formClientesAlta
             // 
@@ -368,17 +382,19 @@
             this.ClientSize = new System.Drawing.Size(714, 373);
             this.Controls.Add(this.panel_main);
             this.Name = "formClientesAlta";
-            this.Text = "formCustomers2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Crear un cliente";
             this.Load += new System.EventHandler(this.formClientesAlta_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formClientesAlta_KeyDown);
             this.panel_main.ResumeLayout(false);
             this.panel_btttmm.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.panel_createclient.ResumeLayout(false);
             this.panel_createclient.PerformLayout();
             this.panel_create.ResumeLayout(false);
             this.panel_create.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_descuento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,14 +408,13 @@
         private System.Windows.Forms.TableLayoutPanel panel_create;
         private System.Windows.Forms.Label lbl_full_name;
         private System.Windows.Forms.Label lbl_dni;
-        private System.Windows.Forms.Label lbl_tel;
+        private System.Windows.Forms.Label lbl_telefono;
         private System.Windows.Forms.Label lbl_email;
-        private System.Windows.Forms.Label lbl_state;
-        private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
+        private System.Windows.Forms.Label lbl_estado;
+        private RJCodeAdvance.RJControls.RJComboBox cbox_estado;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private RJCodeAdvance.RJControls.RJButton btn_cerrar;
         private RJCodeAdvance.RJControls.RJButton btn_guardar;
-        private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Label lbl_descuento;
         private System.Windows.Forms.NumericUpDown num_descuento;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -408,5 +423,7 @@
         private System.Windows.Forms.TextBox txt_dni;
         private System.Windows.Forms.TextBox txt_correo;
         private System.Windows.Forms.TextBox txt_nombre_completo;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private RJCodeAdvance.RJControls.RJButton btn_reiniciar_datos;
     }
 }

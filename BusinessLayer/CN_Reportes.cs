@@ -1,18 +1,13 @@
 ﻿using CapaDatos;
 using CapaEntidad;
 using CapaEntidad.Filtros;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
     public class CN_Reportes
     {
-        private CD_Reportes oReporte = new CD_Reportes();
+        private readonly CD_Reportes oReporte = new CD_Reportes();
 
         public List<ReportesDetalle> Compra_Detalle(FiltrosReportes filtros)
         {

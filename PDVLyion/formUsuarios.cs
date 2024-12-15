@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaNegocio;
 using EntityLayer.Filtros;
 using POSLyion.Resources;
+using System;
+using System.Windows.Forms;
 
 namespace POSLyion
 {
     public partial class formUsuarios : Form
     {
-        private static Usuarios oUsuario = new Usuarios();
-        FiltrosUsuario filtros = new FiltrosUsuario();
-        private formUsuariosAlta formUsuario;
+        private static readonly Usuarios _oUsuario = new Usuarios();
+        private FiltrosUsuario _filtros = new FiltrosUsuario();
+        private readonly formUsuariosAlta _formUsuario;
         public formUsuarios()
         {
             InitializeComponent();
@@ -27,111 +19,135 @@ namespace POSLyion
 
         private void formUsuariosAlta_Load(object sender, EventArgs e)
         {
-            List<Roles> lista_roles = new CN_Roles().Leer();
-            cbo_roles.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Todos" });
-            foreach (Roles oRol in lista_roles)
+            CargarManejadoresEventos();
+            CargarRoles();
+            MostrarUsuarios();
+        }
+
+        private void CargarRoles()
+        {
+            var lista_roles = new CN_Roles().Leer();
+
+            _ = cbo_roles.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Todos" });
+
+            foreach (var oRol in lista_roles)
             {
-                cbo_roles.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
+                _ = cbo_roles.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
             }
+
             cbo_roles.DisplayMember = "Texto";
             cbo_roles.ValueMember = "Valor";
             cbo_roles.SelectedIndex = 0;
-            this.MostrarUsuarios();
+        }
+
+        private void CargarManejadoresEventos()
+        {
+            txt_busqueda.TextChanged += new EventHandler(Buscar);
+            cbo_roles.OnSelectedIndexChanged += new EventHandler(Buscar);
+            cb_inactivos.Click += new EventHandler(Buscar);
         }
 
         private void formUsuarios_Resize(object sender, EventArgs e)
         {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            if (ClientSize.Width > 1000 && ClientSize.Height > 700)
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             }
             else
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             }
         }
 
-        private void grid_usuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_usuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+            var indiceUsuario = e.RowIndex;
             if (dgv_usuarios.Columns[e.ColumnIndex].Name == "btn_editar")
             {
-                if (index >= 0)
+                if (indiceUsuario >= 0)
                 {
-                    Usuarios oUsuario = new Usuarios()
+                    var oUsuario = GenerarUsuario(indiceUsuario);
+                    using (var formUsuariosAlta = new formUsuariosAlta(oUsuario))
                     {
-                        Id_usuario = Convert.ToInt32(dgv_usuarios.Rows[index].Cells["id_usuario"].Value),
-                        Dni = dgv_usuarios.Rows[index].Cells["dni"].Value.ToString(),
-                        Nombre_completo = dgv_usuarios.Rows[index].Cells["nombre_completo"].Value.ToString(),
-                        Correo = dgv_usuarios.Rows[index].Cells["correo"].Value.ToString(),
-                        Nombre_usuario = dgv_usuarios.Rows[index].Cells["nombre_usuario"].Value.ToString(),
-                        Clave = dgv_usuarios.Rows[index].Cells["clave"].Value.ToString(),
-                        oRol = new Roles()
-                        {
-                            Id_rol = Convert.ToInt32(dgv_usuarios.Rows[index].Cells["id_rol"].Value),
-                            Descripcion = dgv_usuarios.Rows[index].Cells["descripcion_rol"].Value.ToString()
-                        },
-                        Telefono = dgv_usuarios.Rows[index].Cells["telefono"].Value.ToString(),
-                        Estado = Convert.ToBoolean(dgv_usuarios.Rows[index].Cells["estado_valor"].Value)
-                    };
-                    formUsuariosAlta formUsuariosAlta = new formUsuariosAlta(oUsuario);
-                    formUsuariosAlta.Show();
+                        _ = formUsuariosAlta.ShowDialog();
+                    }
                 }
+                MostrarUsuarios();
             }
             else if (dgv_usuarios.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
                 if (MessageBox.Show("¿Desea eliminar el usuario?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (index >= 0)
+                    if (indiceUsuario >= 0)
                     {
-                        string mensaje = string.Empty;
-                        Usuarios oUsuario = new Usuarios()
+                        var oUsuario = new Usuarios()
                         {
-                            Id_usuario = Convert.ToInt32(dgv_usuarios.Rows[index].Cells["id_usuario"].Value)
+                            Id_usuario = Convert.ToInt32(dgv_usuarios.Rows[indiceUsuario].Cells["id_usuario"].Value)
                         };
-                        bool result = new CN_Usuarios().Eliminar(oUsuario, out mensaje);
-                        if (!result)
-                        {
-                            MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                        var result = new CN_Usuarios().Eliminar(oUsuario, out var mensaje);
+                        _ = !result
+                            ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            : MessageBox.Show("Usuario eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
+                MostrarUsuarios();
             }
+        }
+
+        private Usuarios GenerarUsuario(int indiceUsuario)
+        {
+            var oUsuario = new Usuarios()
+            {
+                Id_usuario = Convert.ToInt32(dgv_usuarios.Rows[indiceUsuario].Cells["id_usuario"].Value),
+                Dni = dgv_usuarios.Rows[indiceUsuario].Cells["dni"].Value.ToString(),
+                Nombre_completo = dgv_usuarios.Rows[indiceUsuario].Cells["nombre_completo"].Value.ToString(),
+                Correo = dgv_usuarios.Rows[indiceUsuario].Cells["correo"].Value.ToString(),
+                Nombre_usuario = dgv_usuarios.Rows[indiceUsuario].Cells["nombre_usuario"].Value.ToString(),
+                Clave = dgv_usuarios.Rows[indiceUsuario].Cells["clave"].Value.ToString(),
+                oRol = new Roles()
+                {
+                    Id_rol = Convert.ToInt32(dgv_usuarios.Rows[indiceUsuario].Cells["id_rol"].Value),
+                    Descripcion = dgv_usuarios.Rows[indiceUsuario].Cells["descripcion_rol"].Value.ToString()
+                },
+                Telefono = dgv_usuarios.Rows[indiceUsuario].Cells["telefono"].Value.ToString(),
+                Estado = Convert.ToBoolean(dgv_usuarios.Rows[indiceUsuario].Cells["estado_valor"].Value)
+            };
+            return oUsuario;
         }
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            dgv_usuarios.Rows.Clear();
-            this.MostrarUsuarios();
+            MostrarUsuarios();
         }
 
-        private void btn_buscar_Click(object sender, EventArgs e)
+        private void CargarFiltros()
         {
-            filtros = new FiltrosUsuario()
+            _filtros = new FiltrosUsuario()
             {
                 Nombre_usuario = txt_busqueda.Text,
                 Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor),
                 Estado = cb_inactivos.Checked ? 0 : 1
             };
-            this.MostrarUsuarios();
+        }
+
+        private void Buscar(object sender, EventArgs e)
+        {
+            CargarFiltros();
+            MostrarUsuarios();
         }
 
         private void MostrarUsuarios()
         {
-            if(dgv_usuarios.Rows.Count > 0)
+            if (dgv_usuarios.Rows.Count > 0)
             {
                 dgv_usuarios.Rows.Clear();
             }
-            List<Usuarios> lista_usuarios = new CN_Usuarios().Leer(filtros);
-            foreach (Usuarios oUsuario in lista_usuarios)
+            var lista_usuarios = new CN_Usuarios().Leer(_filtros);
+            foreach (var oUsuario in lista_usuarios)
             {
-                dgv_usuarios.Rows.Add(new object[]
+                _ = dgv_usuarios.Rows.Add(new object[]
                 {
                     "",
                     oUsuario.Id_usuario,
@@ -154,15 +170,17 @@ namespace POSLyion
             txt_busqueda.Text = "";
             cbo_roles.SelectedIndex = 0;
             cb_inactivos.Checked = false;
+            _filtros = new FiltrosUsuario();
+            Buscar(sender, e);
         }
 
-        private void btn_crear_usuario_Click_1(object sender, EventArgs e)
+        private void btn_crear_usuario_Click(object sender, EventArgs e)
         {
-            if(formUsuario == null || formUsuario.IsDisposed)
+            using (var formUsuariosAlta = new formUsuariosAlta())
             {
-                formUsuario = new formUsuariosAlta();
-                formUsuario.Show();
+                _ = formUsuariosAlta.ShowDialog();
             }
+            MostrarUsuarios();
         }
     }
 }

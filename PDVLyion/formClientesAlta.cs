@@ -1,180 +1,229 @@
-﻿using CapaNegocio;
-using CapaEntidad;
+﻿using CapaEntidad;
+using CapaNegocio;
 using POSLyion.Resources;
+using POSLyion.Resources.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 
 namespace POSLyion
 {
-    public partial class formClientesAlta : Form
+    public partial class formClientesAlta : Form, IFormCRUD
     {
-        private static Usuarios oUsuario = new Usuarios();
-        private Clientes Cliente;
-        private Clientes Anterior_Cliente;
+        private Clientes _objeto;
+        private Clientes _objetoAnterior;
 
         public formClientesAlta()
         {
             InitializeComponent();
-            Cliente = new Clientes();
+            _objeto = new Clientes();
         }
 
         public formClientesAlta(Clientes oCliente)
         {
             InitializeComponent();
-            Cliente = oCliente;
+            _objeto = oCliente;
         }
 
         private void formClientesAlta_Load(object sender, EventArgs e)
         {
-            cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
-            cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
-            cbo_estado.DisplayMember = "Texto";
-            cbo_estado.ValueMember = "Valor";
+            CargarManejadoresEventos();
+            CargarValoresPorDefecto();
+            MostrarDatosObjeto();
+            KeyPreview = true;
+        }
 
-            int cbo_estado_index = 0;
+        public void CargarManejadoresEventos()
+        {
+            txt_dni.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_telefono.KeyPress += new KeyPressEventHandler(NoLetras);
+        }
 
-            if (Cliente.Id_cliente == null)
+        public void CargarValoresPorDefecto()
+        {
+            lbl_estado.Visible = false;
+            cbox_estado.Visible = false;
+            btn_reiniciar_datos.Visible = false;
+
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
+
+            cbox_estado.DisplayMember = "Texto";
+            cbox_estado.ValueMember = "Valor";
+
+            cbox_estado.SelectedIndex = 0;
+        }
+
+        public void MostrarDatosObjeto()
+        {
+            if (_objeto.Id_cliente != 0)
             {
-                cbo_estado.SelectedIndex = 0;
-            }
-            else
-            {
-                txt_id.Text = Cliente.Id_cliente.ToString();
-                txt_nombre_completo.Text = Cliente.Nombre_completo;
-                txt_correo.Text = Cliente.Correo;
-                txt_dni.Text = Cliente.Dni;
-                txt_telefono.Text = Cliente.Telefono;
-                foreach (OpcionCombo opcion_estado in cbo_estado.Items)
+                RespaldoDatosObjeto();
+
+                lbl_estado.Visible = true;
+                cbox_estado.Visible = true;
+                btn_reiniciar_datos.Visible = true;
+
+                txt_nombre_completo.Text = _objeto.Nombre_completo;
+                txt_correo.Text = _objeto.Correo;
+                txt_dni.Text = _objeto.Dni;
+                txt_telefono.Text = _objeto.Telefono;
+                num_descuento.Value = _objeto.Descuento;
+
+                var cbox_estado_index = 0;
+                foreach (OpcionCombo opcion_estado in cbox_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Valor) == (Cliente.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (_objeto.Estado == true ? 1 : 0))
                     {
-                        cbo_estado_index = cbo_estado.Items.IndexOf(opcion_estado);
+                        cbox_estado_index = cbox_estado.Items.IndexOf(opcion_estado);
                         break;
                     }
                 }
-                cbo_estado.SelectedIndex = cbo_estado_index;
+                cbox_estado.SelectedIndex = cbox_estado_index;
             }
         }
 
-        private void panel_footer_Resize_1(object sender, EventArgs e)
+        public void CrearNuevoObjeto()
         {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            _objeto = new Clientes()
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                Dni = txt_dni.Text,
+                Nombre_completo = txt_nombre_completo.Text,
+                Correo = txt_correo.Text,
+                Telefono = txt_telefono.Text,
+                Descuento = Convert.ToInt32(num_descuento.Value)
+            };
+
+            if (new CN_Clientes().Crear(_objeto, out var mensaje) == 0)
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                _ = MessageBox.Show("Cliente generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
             }
         }
 
-        private void btn_guardar_Click(object sender, EventArgs e)
+        public void EditarObjeto()
         {
-            string mensaje = string.Empty;
-            if (Convert.ToInt32(txt_id.Text) == 0)
+            _objeto.Dni = txt_dni.Text;
+            _objeto.Nombre_completo = txt_nombre_completo.Text;
+            _objeto.Correo = txt_correo.Text;
+            _objeto.Telefono = txt_telefono.Text;
+            _objeto.Estado = Convert.ToInt32(((OpcionCombo)cbox_estado.SelectedItem).Valor) == 1;
+            _objeto.Descuento = Convert.ToInt32(num_descuento.Value);
+
+            if (new CN_Clientes().Modificar(_objeto, out var mensaje) == false)
             {
-                Clientes oCliente = new Clientes()
-                {
-                    Dni = txt_dni.Text,
-                    Nombre_completo = txt_nombre_completo.Text,
-                    Correo = txt_correo.Text,
-                    Telefono = txt_telefono.Text,
-                    Descuento = Convert.ToInt32(num_descuento.Value)
-                };
-                int id_generada_cliente = new CN_Clientes().Crear(oCliente, out mensaje);
-                if (id_generada_cliente == 0)
-                {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    MessageBox.Show("Cliente generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                }
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                Anterior_Cliente = new Clientes();
-                Anterior_Cliente.Id_cliente = Cliente.Id_cliente;
-                Anterior_Cliente.Dni = Cliente.Dni;
-                Anterior_Cliente.Nombre_completo = Cliente.Nombre_completo;
-                Anterior_Cliente.Correo = Cliente.Correo;
-                Anterior_Cliente.Telefono = Cliente.Telefono;
-                Anterior_Cliente.Estado = Cliente.Estado;
-                Cliente.Dni = txt_dni.Text;
-                Cliente.Nombre_completo = txt_nombre_completo.Text;
-                Cliente.Correo = txt_correo.Text;
-                Cliente.Telefono = txt_telefono.Text;
-                Cliente.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1 ? true : false;
-                Cliente.Descuento = Convert.ToInt32(num_descuento.Value);
-                bool resultado = false;
-                resultado = new CN_Clientes().Modificar(Cliente, out mensaje);
-                if (resultado == false)
-                {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    MessageBox.Show("Cliente actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                }
+                _ = MessageBox.Show("Cliente actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ActualizarDatos();
+                Close();
             }
         }
 
-        private void btn_cerrar_Click(object sender, EventArgs e)
+        public bool ValidarDatos()
         {
-            this.Close();
+            var resultado = true;
+            if (txt_nombre_completo.Text == "")
+            {
+                resultado = false;
+                errorProvider1.SetError(txt_nombre_completo, "Ingrese un nombre para el cliente");
+            }
+            return resultado;
         }
 
-        private void txt_nombre_completo_KeyPress(object sender, KeyPressEventArgs e)
+        public void RespaldoDatosObjeto()
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            _objetoAnterior = new Clientes
             {
-                e.Handled = true;
-                MessageBox.Show("Ingrese solo letras", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                Id_cliente = _objeto.Id_cliente,
+                Dni = _objeto.Dni,
+                Nombre_completo = _objeto.Nombre_completo,
+                Correo = _objeto.Correo,
+                Telefono = _objeto.Telefono,
+                Estado = _objeto.Estado
+            };
         }
 
-        private void txt_correo_Validating(object sender, CancelEventArgs e)
-        {
-            string email = txt_correo.Text; string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$"; if (!Regex.IsMatch(email, pattern))
-            {
-                e.Cancel = true;
-                txt_correo.BackColor = Color.LightCoral;
-                MessageBox.Show("Ingresa un correo electrónico válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                txt_correo.BackColor = SystemColors.Window;
-            }
-        }
-
-        private void txt_dni_KeyPress(object sender, KeyPressEventArgs e)
+        private void NoLetras(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Handled = true;
             }
         }
 
-        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        public void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (ValidarDatos())
             {
-                MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Handled = true;
+                if (_objeto.Id_cliente == 0)
+                {
+                    CrearNuevoObjeto();
+                }
+                else
+                {
+                    EditarObjeto();
+                }
             }
         }
+
+        public void btn_cerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        public void btn_reiniciar_datos_Click(object sender, EventArgs e)
+        {
+            if (_objetoAnterior != null)
+            {
+                txt_nombre_completo.Text = _objetoAnterior.Nombre_completo;
+                cbox_estado.SelectedIndex = _objetoAnterior.Estado == true ? 0 : 1;
+                txt_correo.Text = _objetoAnterior.Correo;
+                txt_dni.Text = _objetoAnterior.Dni;
+                txt_telefono.Text = _objetoAnterior.Telefono;
+                num_descuento.Value = _objetoAnterior.Descuento;
+            }
+        }
+
+        private void formClientesAlta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        // Si un cliente modificado recientemente está seleccionado en un ticket pendiente, se actualiza
+        private void ActualizarDatos()
+        {
+            var formVentas = FormManager.Instance.ObtenerFormularioPrincipal(0) as formVentas;
+            var listaTickets = formVentas.TicketManager.ObtenerTickets();
+            foreach (var ticket in listaTickets)
+            {
+                if (ticket.Cliente != null && ticket.Cliente.Id_cliente == _objeto.Id_cliente)
+                {
+                    ticket.Cliente = _objeto;
+                }
+            }
+        }
+
+        //private void panel_footer_Resize_1(object sender, EventArgs e)
+        //{
+        //    if (ClientSize.Width > 1000 && ClientSize.Height > 700)
+        //    {
+        //        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        //        AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+        //    }
+        //    else
+        //    {
+        //        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        //        AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+        //    }
+        //}
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CapaEntidad
+﻿namespace CapaEntidad
 {
     public class Productos
     {
@@ -14,6 +8,7 @@ namespace CapaEntidad
         public Categorias oCategoria { get; set; }
         public decimal Precio_costo { get; set; }
         public decimal Precio_venta { get; set; }
+        public decimal Precio_mayorista { get; set; }
         public int Stock_actual { get; set; }
         public int Stock_minimo { get; set; }
         public bool Estado { get; set; }

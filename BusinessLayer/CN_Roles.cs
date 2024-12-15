@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CapaDatos;
 using CapaEntidad;
-using CapaDatos;
+using System.Collections.Generic;
 
 namespace CapaNegocio
 {
     public class CN_Roles
     {
 
-        private CD_Roles oCD_Rol = new CD_Roles();
+        private readonly CD_Roles oCD_Rol = new CD_Roles();
 
         public List<Roles> Leer()
         {

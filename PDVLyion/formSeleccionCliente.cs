@@ -1,39 +1,32 @@
 ﻿using CapaEntidad;
 using CapaEntidad.Filtros;
 using CapaNegocio;
-using DocumentFormat.OpenXml.Spreadsheet;
-using POSLyion;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POSLyion
 {
-    public partial class formDescuento : Form
+    public partial class formSeleccionCliente : Form
     {
 
         public Clientes Cliente = new Clientes();
         public bool Cliente_seleccionado = false;
 
-        public formDescuento()
+        public formSeleccionCliente()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         private void formDescuento_Load(object sender, EventArgs e)
         {
-            FiltrosCliente filtros = new FiltrosCliente();
-            List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros).Where(c => c.Nombre_completo.ToLower().Contains(txt_busqueda.Text)).ToList();
-            foreach (Clientes cliente in lista_clientes)
+            var filtros = new FiltrosCliente();
+            var lista_clientes = new CN_Clientes().Leer(filtros).Where(c => c.Nombre_completo.ToLower().Contains(txt_busqueda.Text)).ToList();
+            foreach (var cliente in lista_clientes)
             {
-                dgv_clientes.Rows.Add(new object[]
+                _ = dgv_clientes.Rows.Add(new object[]
                 {
                         cliente.Id_cliente,
                         cliente.Dni,
@@ -50,11 +43,11 @@ namespace POSLyion
             dgv_clientes.Rows.Clear();
             if (txt_busqueda.Text.ToLower() != "")
             {
-                FiltrosCliente filtros = new FiltrosCliente();
-                List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros).Where(c => c.Nombre_completo.ToLower().Contains(txt_busqueda.Text)).ToList();
-                foreach (Clientes cliente in lista_clientes)
+                var filtros = new FiltrosCliente();
+                var lista_clientes = new CN_Clientes().Leer(filtros).Where(c => c.Nombre_completo.ToLower().Contains(txt_busqueda.Text)).ToList();
+                foreach (var cliente in lista_clientes)
                 {
-                    dgv_clientes.Rows.Add(new object[]
+                    _ = dgv_clientes.Rows.Add(new object[]
                     {
                         cliente.Id_cliente,
                         cliente.Dni,
@@ -66,14 +59,14 @@ namespace POSLyion
             }
             else
             {
-                this.formDescuento_Load(sender, e);
+                formDescuento_Load(sender, e);
             }
             txt_busqueda.Select();
         }
 
         private void dgv_clientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 Cliente.Id_cliente = Convert.ToInt32(dgv_clientes.Rows[e.RowIndex].Cells["id"].Value.ToString());
                 Cliente.Dni = dgv_clientes.Rows[e.RowIndex].Cells["dni"].Value.ToString();
@@ -81,7 +74,15 @@ namespace POSLyion
                 Cliente.Telefono = dgv_clientes.Rows[e.RowIndex].Cells["telefono"].Value.ToString();
                 Cliente.Descuento = Convert.ToInt32(dgv_clientes.Rows[e.RowIndex].Cells["descuento"].Value);
                 Cliente_seleccionado = true;
-                this.Close();
+                Close();
+            }
+        }
+
+        private void formDescuento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
             }
         }
     }

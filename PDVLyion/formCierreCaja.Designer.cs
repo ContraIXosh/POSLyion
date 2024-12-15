@@ -1,6 +1,6 @@
 ﻿namespace POSLyion
 {
-    partial class formCierre
+    partial class formCierreCaja
     {
         /// <summary>
         /// Required designer variable.
@@ -37,8 +37,8 @@
             this.lbl_total = new System.Windows.Forms.Label();
             this.btn_cancelar = new CustomBox.RJControls.RJButton();
             this.btn_cierre = new CustomBox.RJControls.RJButton();
-            this.lbl_caja = new System.Windows.Forms.Label();
             this.lbl_diff = new System.Windows.Forms.Label();
+            this.lbl_caja = new System.Windows.Forms.Label();
             this.lbl_cierre = new System.Windows.Forms.Label();
             this.table_centerColor = new System.Windows.Forms.TableLayoutPanel();
             this.panel_center = new System.Windows.Forms.TableLayoutPanel();
@@ -118,7 +118,6 @@
             this.table_bottom.Controls.Add(this.lbl_total, 0, 1);
             this.table_bottom.Controls.Add(this.btn_cancelar, 3, 1);
             this.table_bottom.Controls.Add(this.btn_cierre, 2, 1);
-            this.table_bottom.Controls.Add(this.lbl_diff, 2, 0);
             this.table_bottom.Controls.Add(this.lbl_caja, 1, 1);
             this.table_bottom.Controls.Add(this.lbl_diff, 3, 0);
             this.table_bottom.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -230,7 +229,7 @@
             this.lbl_diff.AutoSize = true;
             this.lbl_diff.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_diff.ForeColor = System.Drawing.Color.White;
-            this.lbl_diff.Location = new System.Drawing.Point(413, 4);
+            this.lbl_diff.Location = new System.Drawing.Point(534, 4);
             this.lbl_diff.Name = "lbl_diff";
             this.lbl_diff.Size = new System.Drawing.Size(54, 25);
             this.lbl_diff.TabIndex = 18;
@@ -249,27 +248,15 @@
             this.lbl_caja.TabIndex = 19;
             this.lbl_caja.Text = "0.00";
             // 
-            // lbl_diff
-            // 
-            this.lbl_diff.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_diff.AutoSize = true;
-            this.lbl_diff.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_diff.ForeColor = System.Drawing.Color.White;
-            this.lbl_diff.Location = new System.Drawing.Point(534, 4);
-            this.lbl_diff.Name = "lbl_diff";
-            this.lbl_diff.Size = new System.Drawing.Size(54, 25);
-            this.lbl_diff.TabIndex = 18;
-            this.lbl_diff.Text = "0.00";
-            // 
             // lbl_cierre
             // 
             this.lbl_cierre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_cierre.AutoSize = true;
-            this.lbl_cierre.Font = new System.Drawing.Font("Geometr415 Blk BT", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cierre.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cierre.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cierre.Location = new System.Drawing.Point(119, 19);
+            this.lbl_cierre.Location = new System.Drawing.Point(105, 20);
             this.lbl_cierre.Name = "lbl_cierre";
-            this.lbl_cierre.Size = new System.Drawing.Size(393, 57);
+            this.lbl_cierre.Size = new System.Drawing.Size(422, 55);
             this.lbl_cierre.TabIndex = 2;
             this.lbl_cierre.Text = "CIERRE DE CAJA";
             // 
@@ -548,6 +535,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ciere de caja";
             this.Load += new System.EventHandler(this.formCierre_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formCierre_KeyDown);
             this.panel_container.ResumeLayout(false);
             this.panel_container.PerformLayout();
             this.panel_bottomColor.ResumeLayout(false);

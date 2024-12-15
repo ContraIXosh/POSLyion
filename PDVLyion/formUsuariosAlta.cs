@@ -1,254 +1,244 @@
-﻿using POSLyion.Resources;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaNegocio;
-using System.Web.UI.WebControls;
-using System.Text.RegularExpressions;
+using POSLyion.Resources;
+using System;
+using System.Windows.Forms;
 
 namespace POSLyion
 {
     public partial class formUsuariosAlta : Form
     {
-        private Usuarios Usuario;
-        private Usuarios Anterior_usuario;
-        private static Usuarios oUsuario = new Usuarios();
+        private Usuarios _objeto;
+        private Usuarios _objetoAnterior;
 
         public formUsuariosAlta()
         {
             InitializeComponent();
-            Usuario = new Usuarios();
+            _objeto = new Usuarios();
         }
 
         public formUsuariosAlta(Usuarios oUsuario)
         {
             InitializeComponent();
-            Usuario = oUsuario;
+            _objeto = oUsuario;
         }
 
         private void formUsuariosAlta_Load(object sender, EventArgs e)
         {
+            CargarManejadoresEventos();
+            CargarValoresPorDefecto();
+            MostrarDatosObjeto();
+            KeyPreview = true;
+        }
 
-            List<Roles> lista_roles = new CN_Roles().Leer();
-            foreach (Roles oRol in lista_roles)
+        private void CargarManejadoresEventos()
+        {
+            txt_dni.KeyPress += new KeyPressEventHandler(NoLetras);
+            txt_telefono.KeyPress += new KeyPressEventHandler(NoLetras);
+        }
+
+        private void CargarValoresPorDefecto()
+        {
+            lbl_estado.Visible = false;
+            cbox_estado.Visible = false;
+            btn_reiniciar_datos.Visible = false;
+
+            var lista_roles = new CN_Roles().Leer();
+            foreach (var oRol in lista_roles)
             {
-                cbo_roles.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
+                _ = cbox_roles.Items.Add(new OpcionCombo() { Valor = oRol.Id_rol, Texto = oRol.Descripcion });
             }
-            cbo_roles.DisplayMember = "Texto";
-            cbo_roles.ValueMember = "Valor";
+            cbox_roles.DisplayMember = "Texto";
+            cbox_roles.ValueMember = "Valor";
 
-            cbo_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
-            cbo_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
-            cbo_estado.DisplayMember = "Texto";
-            cbo_estado.ValueMember = "Valor";
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Activo" });
+            _ = cbox_estado.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Inactivo" });
+            cbox_estado.DisplayMember = "Texto";
+            cbox_estado.ValueMember = "Valor";
 
-            txt_id.Texts = Usuario.Id_usuario.ToString();
-            txt_nombre_completo.Text = Usuario.Nombre_completo;
-            txt_correo.Text = Usuario.Correo;
-            txt_dni.Text = Usuario.Dni;
-            txt_nombre_usuario.Text = Usuario.Nombre_usuario;
-            txt_telefono.Text = Usuario.Telefono;
-            txt_contraseña.Text = Usuario.Clave;
-            int cbo_rol_index = 0;
-            int cbo_estado_index = 0;
+            cbox_estado.SelectedIndex = 0;
+            cbox_roles.SelectedIndex = 0;
+        }
 
-            if (Convert.ToInt32(txt_id.Texts) == 0)
+        private void MostrarDatosObjeto()
+        {
+            if (_objeto.Id_usuario != 0)
             {
-                cbo_estado.SelectedIndex = 0;
-                cbo_roles.SelectedIndex = 0;
-            }
-            else
-            {
-                foreach (OpcionCombo opcion_estado in cbo_estado.Items)
+                RespaldoDatosObjeto();
+
+                lbl_estado.Visible = true;
+                cbox_estado.Visible = true;
+                btn_reiniciar_datos.Visible = true;
+
+                txt_nombre_completo.Text = _objeto.Nombre_completo;
+                txt_correo.Text = _objeto.Correo;
+                txt_dni.Text = _objeto.Dni;
+                txt_nombre_usuario.Text = _objeto.Nombre_usuario;
+                txt_telefono.Text = _objeto.Telefono;
+                txt_contraseña.Text = _objeto.Clave;
+
+                var cbo_rol_index = 0;
+                var cbo_estado_index = 0;
+
+                foreach (OpcionCombo opcion_estado in cbox_estado.Items)
                 {
-                    if (Convert.ToInt32(opcion_estado.Valor) == (Usuario.Estado == true ? 1 : 0))
+                    if (Convert.ToInt32(opcion_estado.Valor) == (_objeto.Estado == true ? 1 : 0))
                     {
-                        cbo_estado_index = cbo_estado.Items.IndexOf(opcion_estado);
+                        cbo_estado_index = cbox_estado.Items.IndexOf(opcion_estado);
                         break;
                     }
                 }
-                cbo_estado.SelectedIndex = cbo_estado_index;
+                cbox_estado.SelectedIndex = cbo_estado_index;
 
-                foreach (OpcionCombo opcion_rol in cbo_roles.Items)
+                foreach (OpcionCombo opcion_rol in cbox_roles.Items)
                 {
-                    if (Convert.ToInt32(opcion_rol.Valor) == Usuario.oRol.Id_rol)
+                    if (Convert.ToInt32(opcion_rol.Valor) == _objeto.oRol.Id_rol)
                     {
-                        cbo_rol_index = cbo_roles.Items.IndexOf(opcion_rol);
+                        cbo_rol_index = cbox_roles.Items.IndexOf(opcion_rol);
                         break;
                     }
                 }
-                cbo_roles.SelectedIndex = cbo_rol_index;
+                cbox_roles.SelectedIndex = cbo_rol_index;
             }
         }
 
-        private void panel1_Resize(object sender, EventArgs e)
+        private void CrearNuevoObjeto()
         {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            _objeto = new Usuarios()
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                Dni = txt_dni.Text,
+                Nombre_completo = txt_nombre_completo.Text,
+                Correo = txt_correo.Text,
+                Nombre_usuario = txt_nombre_usuario.Text,
+                Clave = txt_contraseña.Text,
+                oRol = new Roles()
+                {
+                    Id_rol = Convert.ToInt32(((OpcionCombo)cbox_roles.SelectedItem).Valor),
+                },
+                Telefono = txt_telefono.Text,
+                Estado = Convert.ToInt32(((OpcionCombo)cbox_estado.SelectedItem).Valor) == 1
+            };
 
+            if (new CN_Usuarios().Crear(_objeto, out var mensaje) == 0)
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-               
+                _ = MessageBox.Show("Usuario generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
             }
         }
 
-        private void panel_useradd_Resize(object sender, EventArgs e)
+        private void EditarObjeto()
         {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            _objeto.Dni = txt_dni.Text;
+            _objeto.Nombre_completo = txt_nombre_completo.Text;
+            _objeto.Correo = txt_correo.Text;
+            _objeto.Nombre_usuario = txt_nombre_usuario.Text;
+            _objeto.Clave = txt_contraseña.Text;
+            _objeto.oRol.Id_rol = Convert.ToInt32(((OpcionCombo)cbox_roles.SelectedItem).Valor);
+            _objeto.Telefono = txt_telefono.Text;
+            _objeto.Estado = Convert.ToInt32(((OpcionCombo)cbox_estado.SelectedItem).Valor) == 1;
+
+            if (new CN_Usuarios().Modificar(_objeto, out var mensaje) == false)
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                btn_cerrar.Width = 150;
-                btn_cerrar.Left = this.ClientSize.Width - btn_cerrar.Width;
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-                btn_cerrar.Left = this.ClientSize.Width - btn_cerrar.Width;
+                _ = MessageBox.Show("Usuario actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
             }
         }
 
-        //private void btn_deshacer_Click(object sender, EventArgs e)
-        //{
-        //    if (Convert.ToInt32(txt_id.Texts) != 0)
-        //    {
-        //        formUsuariosAdd frmuseradd = new formUsuariosAdd(Anterior_usuario);
-        //        this.Close();
-        //        frmuseradd.Show();
-        //    }
-        //    else
-        //    {
-        //        txt_dni.Texts = "";
-        //        txt_correo.Texts = "";
-        //        txt_nombre_completo.Texts = "";
-        //        txt_pass.Texts = "";
-        //        txt_tel.Texts = "";
-        //        txt_username.Texts = "";
-        //        cbo_estado.SelectedIndex = 0;
-        //        cbo_rol.SelectedIndex = 0;
-        //    }
-        //}
+        private bool ValidarDatos()
+        {
+            var resultado = true;
+            if (txt_nombre_completo.Text == "")
+            {
+                resultado = false;
+                errorProvider1.SetError(txt_nombre_completo, "Ingrese un nombre de pila");
+            }
+            if (txt_nombre_usuario.Text == "")
+            {
+                resultado = false;
+                errorProvider2.SetError(txt_nombre_usuario, "Ingrese un nombre de usuario");
+            }
+            if (txt_contraseña.Text == "")
+            {
+                resultado = false;
+                errorProvider3.SetError(txt_contraseña, "Ingrese una contraseña de usuario");
+            }
+            if (txt_dni.Text == "")
+            {
+                resultado = false;
+                errorProvider4.SetError(txt_dni, "Ingrese el DNI del usuario");
+            }
+            return resultado;
+        }
+
+        private void RespaldoDatosObjeto()
+        {
+            _objetoAnterior = new Usuarios
+            {
+                Id_usuario = _objeto.Id_usuario,
+                Dni = _objeto.Dni,
+                Nombre_completo = _objeto.Nombre_completo,
+                Correo = _objeto.Correo,
+                Nombre_usuario = _objeto.Nombre_usuario,
+                Clave = _objeto.Clave,
+                oRol = new Roles() { Id_rol = _objeto.oRol.Id_rol },
+                Telefono = _objeto.Telefono,
+                Estado = _objeto.Estado
+            };
+        }
+
+        private void NoLetras(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            string mensaje = string.Empty;
-            if (Convert.ToInt32(txt_id.Texts) == 0)
+            if (ValidarDatos())
             {
-                Usuario = new Usuarios()
+                if (_objeto.Id_usuario == 0)
                 {
-                    Dni = txt_dni.Text,
-                    Nombre_completo = txt_nombre_completo.Text,
-                    Correo = txt_correo.Text,
-                    Nombre_usuario = txt_nombre_usuario.Text,
-                    Clave = txt_contraseña.Text,
-                    oRol = new Roles()
-                    {
-                        Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor),
-                    },
-                    Telefono = txt_telefono.Text,
-                    Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1 ? true : false
-                };
-                int id_generada_usuario = new CN_Usuarios().Crear(Usuario, out mensaje);
-                if (id_generada_usuario == 0)
-                {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    CrearNuevoObjeto();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario generado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                }
-            }
-            else
-            {
-                Anterior_usuario = new Usuarios();
-                Anterior_usuario.Id_usuario = Usuario.Id_usuario;
-                Anterior_usuario.Dni = Usuario.Dni;
-                Anterior_usuario.Nombre_completo = Usuario.Nombre_completo;
-                Anterior_usuario.Correo = Usuario.Correo;
-                Anterior_usuario.Nombre_usuario = Usuario.Nombre_usuario;
-                Anterior_usuario.Clave = Usuario.Clave;
-                Anterior_usuario.oRol = new Roles() { Id_rol = Usuario.oRol.Id_rol };
-                Anterior_usuario.Telefono = Usuario.Telefono;
-                Anterior_usuario.Estado = Usuario.Estado;
-                Usuario.Dni = txt_dni.Text;
-                Usuario.Nombre_completo = txt_nombre_completo.Text;
-                Usuario.Correo = txt_correo.Text;
-                Usuario.Nombre_usuario = txt_nombre_usuario.Text;
-                Usuario.Clave = txt_contraseña.Text;
-                Usuario.oRol.Id_rol = Convert.ToInt32(((OpcionCombo)cbo_roles.SelectedItem).Valor);
-                Usuario.Telefono = txt_telefono.Text;
-                Usuario.Estado = Convert.ToInt32(((OpcionCombo)cbo_estado.SelectedItem).Valor) == 1 ? true : false;
-                bool resultado = new CN_Usuarios().Modificar(Usuario, out mensaje);
-                if (!resultado)
-                {
-                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    MessageBox.Show("Usuario actualizado con éxito.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
+                    EditarObjeto();
                 }
             }
         }
 
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        private void txt_nombre_completo_KeyPress(object sender, KeyPressEventArgs e)
+        private void btn_reiniciar_datos_Click(object sender, EventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Ingrese solo letras", "Error de entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            txt_nombre_completo.Text = _objetoAnterior.Nombre_completo;
+            txt_dni.Text = _objetoAnterior.Dni;
+            txt_telefono.Text = _objetoAnterior.Telefono;
+            cbox_roles.SelectedIndex = _objetoAnterior.oRol.Id_rol - 1;
+            txt_correo.Text = _objetoAnterior.Correo;
+            txt_nombre_usuario.Text = _objetoAnterior.Nombre_usuario;
+            txt_contraseña.Text = _objetoAnterior.Clave;
+            cbox_estado.SelectedIndex = _objetoAnterior.Estado ? 0 : 1;
         }
 
-        private void txt_dni_KeyPress(object sender, KeyPressEventArgs e)
+        private void formUsuariosAlta_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (e.KeyCode == Keys.Escape)
             {
-                MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Handled = true;
-            }
-        }
-
-        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                MessageBox.Show("Ingresa solo valores numericos positivos.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Handled = true;
-            }
-        }
-
-        private void txt_correo_Validating(object sender, CancelEventArgs e)
-        {
-            string email = txt_correo.Text; string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$"; if (!Regex.IsMatch(email, pattern))
-            {
-                e.Cancel = true;
-                txt_correo.BackColor = Color.LightCoral;
-                MessageBox.Show("Ingresa un correo electrónico válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                txt_correo.BackColor = SystemColors.Window;
+                Close();
             }
         }
     }

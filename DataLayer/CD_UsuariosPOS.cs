@@ -1,13 +1,9 @@
-﻿using CapaDatos;
-using CapaEntidad;
-using EntityLayer.Filtros;
+﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -15,17 +11,19 @@ namespace CapaDatos
     {
         public List<UsuariosPOS> Leer()
         {
-            List<UsuariosPOS> lista_usuarios_pos = new List<UsuariosPOS>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_usuarios_pos = new List<UsuariosPOS>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
                     oConexion.Open();
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT id_usuario_pos, nombre, clave, nombre_empresa, cantidad_sucursales, email, fecha_vencimiento FROM UsuariosPOS");
-                    SqlCommand command = new SqlCommand(query.ToString(), oConexion);
-                    command.CommandType = CommandType.Text;
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT id_usuario_pos, nombre, clave, nombre_empresa, cantidad_sucursales, email, fecha_vencimiento FROM UsuariosPOS");
+                    var command = new SqlCommand(query.ToString(), oConexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -42,7 +40,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_usuarios_pos = new List<UsuariosPOS>();
                 }

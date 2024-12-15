@@ -112,7 +112,7 @@
             this.txt_nombre_usuario.Name = "txt_nombre_usuario";
             this.txt_nombre_usuario.Size = new System.Drawing.Size(262, 26);
             this.txt_nombre_usuario.TabIndex = 16;
-            this.txt_nombre_usuario.Text = "admin";
+            this.txt_nombre_usuario.Text = "Ejemplo: warchi123";
             // 
             // txt_clave
             // 
@@ -122,7 +122,7 @@
             this.txt_clave.Name = "txt_clave";
             this.txt_clave.Size = new System.Drawing.Size(262, 26);
             this.txt_clave.TabIndex = 17;
-            this.txt_clave.Text = "123";
+            this.txt_clave.Text = "Ingrese su contraseña";
             this.txt_clave.TextChanged += new System.EventHandler(this.txtpassword_TextChanged_2);
             // 
             // label1
@@ -169,6 +169,7 @@
             this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
             this.btn_cerrar.BorderRadius = 10;
             this.btn_cerrar.BorderSize = 0;
+            this.btn_cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -208,6 +209,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSLyion - Ingreso de usuario";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rjCircularPictureBox1)).EndInit();
             this.ResumeLayout(false);

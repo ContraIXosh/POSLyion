@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CapaEntidad
+﻿namespace CapaEntidad
 {
     public class Proveedores
     {
-        public int? Id_proveedor { get; set; }
+        public int Id_proveedor { get; set; }
         public string Cuit { get; set; }
         public string Descripcion { get; set; }
         public string Correo { get; set; }

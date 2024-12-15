@@ -1,13 +1,8 @@
-﻿using CapaDatos;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaEntidad.GraficosVentas;
 using DataLayer;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CapaNegocio
@@ -15,16 +10,16 @@ namespace CapaNegocio
     public class CN_Ventas
     {
 
-        private CD_Ventas oVenta = new CD_Ventas();
+        private readonly CD_Ventas oVenta = new CD_Ventas();
 
-        public bool RestarStock(int id_producto, int cantidad)
+        public async Task<bool> RestarStockAsync(int id_producto, int cantidad)
         {
-            return oVenta.RestarStock(id_producto, cantidad);
+            return await oVenta.RestarStockAsync(id_producto, cantidad);
         }
 
-        public bool SumarStock(int id_producto, int cantidad)
+        public async Task<bool> SumarStockAsync(int id_producto, int cantidad)
         {
-            return oVenta.SumarStock(id_producto, cantidad);
+            return await oVenta.SumarStockAsync(id_producto, cantidad);
         }
 
         public bool Crear(Ventas _oVenta, DataTable VentaDetalle, out string mensaje, out int id_venta_generado)
@@ -50,6 +45,21 @@ namespace CapaNegocio
         public List<DatosGraficoUsuarios> VentasMensualesUsuarios()
         {
             return oVenta.VentasMensualesUsuarios();
+        }
+
+        public Ventas BuscarVenta(int idVenta)
+        {
+            return oVenta.BuscarVenta(idVenta);
+        }
+
+        public List<Ventas_Detalle> BuscarVentaDetalle(int idVentaCabecera)
+        {
+            return oVenta.BuscarVentaDetalle(idVentaCabecera);
+        }
+
+        public List<Ventas> BuscarVentasCreditoCliente(int idCliente)
+        {
+            return oVenta.BuscarVentasCreditoCliente(idCliente);
         }
     }
 }

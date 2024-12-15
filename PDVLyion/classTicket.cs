@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POSLyion
@@ -13,14 +10,14 @@ namespace POSLyion
         public class CreaTicket
         {
             public static StringBuilder line = new StringBuilder();
-            string ticket = "";
-            string parte1, parte2;
+            private string ticket = "";
+            private string parte1, parte2;
 
             public static int max = 40;
-            int cort;
+            private int cort;
             public static string LineasGuion()
             {
-                string LineaGuion = "----------------------------------------"; 
+                var LineaGuion = "----------------------------------------";
 
                 return line.AppendLine(LineaGuion).ToString();
             }
@@ -28,206 +25,204 @@ namespace POSLyion
 
             public static void EncabezadoVenta(DataGridView dgv)
             {
-                string LineEncavesado = "Articulo       Cant   P.Unit    Valor";
-                string venta_detalle = string.Empty;
-                line.AppendLine(LineEncavesado);
+                var LineEncavesado = "Articulo       Cant   P.Unit    Valor";
+                _ = line.AppendLine(LineEncavesado);
                 foreach (DataGridViewRow row in dgv.Rows)
                 {
-                    venta_detalle =
-                        row.Cells["dgv_resumen_descripcion"].Value.ToString() + "\t" +
-                        row.Cells["dgv_resumen_cantidad"].Value.ToString() + "\t" +
-                        row.Cells["dgv_resumen_precio"].Value.ToString() + "\t" +
-                        row.Cells["dgv_resumen_subtotal"].Value.ToString() + "\t";
-                    line.AppendLine(venta_detalle);
+                    var venta_detalle =
+        row.Cells["dgv_resumen_descripcion"].Value.ToString() + "\t" +
+        row.Cells["dgv_resumen_cantidad"].Value.ToString() + "\t" +
+        row.Cells["dgv_resumen_precio"].Value.ToString() + "\t" +
+        row.Cells["dgv_resumen_subtotal"].Value.ToString() + "\t";
+                    _ = line.AppendLine(venta_detalle);
                 }
             }
-            public void TextoIzquierda(string par1)                   
+            public void TextoIzquierda(string par1)
             {
                 max = par1.Length;
-                if (max > 40)                               
+                if (max > 40)
                 {
                     cort = max - 40;
-                    parte1 = par1.Remove(40, cort);       
+                    parte1 = par1.Remove(40, cort);
                 }
-                else { parte1 = par1; }               
-                line.AppendLine(ticket = parte1);
+                else { parte1 = par1; }
+                _ = line.AppendLine(ticket = parte1);
 
             }
             public void TextoDerecha(string par1)
             {
                 ticket = "";
                 max = par1.Length;
-                if (max > 40)                             
+                if (max > 40)
                 {
                     cort = max - 40;
-                    parte1 = par1.Remove(40, cort);         
+                    parte1 = par1.Remove(40, cort);
                 }
-                else { parte1 = par1; }                   
-                max = 40 - par1.Length;                    
-                for (int i = 0; i < max; i++)
+                else { parte1 = par1; }
+                max = 40 - par1.Length;
+                for (var i = 0; i < max; i++)
                 {
-                    ticket += " ";                         
+                    ticket += " ";
                 }
-                line.AppendLine(ticket += parte1 + "\n");              
+                _ = line.AppendLine(ticket += parte1 + "\n");
 
             }
             public void TextoCentro(string par1)
             {
                 ticket = "";
                 max = par1.Length;
-                if (max > 40)                             
+                if (max > 40)
                 {
                     cort = max - 40;
-                    parte1 = par1.Remove(40, cort);         
+                    parte1 = par1.Remove(40, cort);
                 }
-                else { parte1 = par1; }                   
-                max = (int)(40 - parte1.Length) / 2;       
-                for (int i = 0; i < max; i++)             
+                else { parte1 = par1; }
+                max = (40 - parte1.Length) / 2;
+                for (var i = 0; i < max; i++)
                 {
-                    ticket += " ";                          
-                }                                            
-                line.AppendLine(ticket += parte1 + "\n");
+                    ticket += " ";
+                }
+                _ = line.AppendLine(ticket += parte1 + "\n");
 
             }
             public void TextoExtremos(string par1, string par2)
             {
                 max = par1.Length;
-                if (max > 18)                               
+                if (max > 18)
                 {
                     cort = max - 18;
-                    parte1 = par1.Remove(18, cort);        
+                    parte1 = par1.Remove(18, cort);
                 }
-                else { parte1 = par1; }                    
-                ticket = parte1;                            
+                else { parte1 = par1; }
+                ticket = parte1;
                 max = par2.Length;
-                if (max > 18)                                 
+                if (max > 18)
                 {
                     cort = max - 18;
-                    parte2 = par2.Remove(18, cort);          
+                    parte2 = par2.Remove(18, cort);
                 }
                 else { parte2 = par2; }
                 max = 40 - (parte1.Length + parte2.Length);
-                for (int i = 0; i < max; i++)                 
+                for (var i = 0; i < max; i++)
                 {
-                    ticket += " ";                            
-                }                                             
-                line.AppendLine(ticket += parte2 + "\n");                
+                    ticket += " ";
+                }
+                _ = line.AppendLine(ticket += parte2 + "\n");
 
             }
             public void AgregaTotales(string par1, double total)
             {
                 max = par1.Length;
-                if (max > 25)                                
+                if (max > 25)
                 {
                     cort = max - 25;
-                    parte1 = par1.Remove(25, cort);         
+                    parte1 = par1.Remove(25, cort);
                 }
-                else { parte1 = par1; }                     
+                else { parte1 = par1; }
                 ticket = parte1;
                 parte2 = total.ToString("c");
                 max = 40 - (parte1.Length + parte2.Length);
-                for (int i = 0; i < max; i++)               
+                for (var i = 0; i < max; i++)
                 {
-                    ticket += " ";                           
-                }                                          
-                line.AppendLine(ticket += parte2 + "\n");
+                    ticket += " ";
+                }
+                _ = line.AppendLine(ticket += parte2 + "\n");
 
             }
 
             public void AgregaArticulo(string Articulo, double precio, int cant, double subtotal)
             {
-                if (cant.ToString().Length <= 3 && precio.ToString("c").Length <= 10 && subtotal.ToString("c").Length <= 11) 
+                if (cant.ToString().Length <= 3 && precio.ToString("c").Length <= 10 && subtotal.ToString("c").Length <= 11)
                 {
                     string elementos = "", espacios = "";
-                    bool bandera = false;
-                    int nroEspacios = 0;
-
+                    var bandera = false;
+                    int nroEspacios;
                     if (Articulo.Length > 40)
                     {
 
-                        nroEspacios = (3 - cant.ToString().Length);
+                        nroEspacios = 3 - cant.ToString().Length;
                         espacios = "";
-                        for (int i = 0; i < nroEspacios; i++)
+                        for (var i = 0; i < nroEspacios; i++)
                         {
                             espacios += " ";
                         }
                         elementos += espacios + cant.ToString();
 
                         // colocamos el precio a la derecha
-                        nroEspacios = (10 - precio.ToString().Length);
+                        nroEspacios = 10 - precio.ToString().Length;
                         espacios = "";
 
-                        for (int i = 0; i < nroEspacios; i++)
+                        for (var i = 0; i < nroEspacios; i++)
                         {
                             espacios += " ";
                         }
                         elementos += espacios + precio.ToString();
 
                         //colocar el subtotal a la derecha
-                        nroEspacios = (11 - subtotal.ToString().Length);
+                        nroEspacios = 11 - subtotal.ToString().Length;
                         espacios = "";
 
-                        for (int i = 0; i < nroEspacios; i++)
+                        for (var i = 0; i < nroEspacios; i++)
                         {
                             espacios += " ";
                         }
                         elementos += espacios + subtotal.ToString();
 
-                        int CaracterActual = 0;
-                        for (int Longtext = Articulo.Length; Longtext > 16; Longtext++)
+                        var CaracterActual = 0;
+                        for (var Longtext = Articulo.Length; Longtext > 16; Longtext++)
                         {
                             if (bandera == false)
                             {
-                                line.AppendLine(Articulo.Substring(CaracterActual, 16) + elementos);
+                                _ = line.AppendLine(Articulo.Substring(CaracterActual, 16) + elementos);
                                 bandera = true;
                             }
                             else
                             {
-                                line.AppendLine(Articulo.Substring(CaracterActual, 16));
+                                _ = line.AppendLine(Articulo.Substring(CaracterActual, 16));
 
                             }
                             CaracterActual += 16;
                         }
-                        line.AppendLine(Articulo.Substring(CaracterActual, Articulo.Length - CaracterActual));
+                        _ = line.AppendLine(Articulo.Substring(CaracterActual, Articulo.Length - CaracterActual));
 
 
                     }
                     else
                     {
-                        for (int i = 0; i < (16 - Articulo.Length); i++)
+                        for (var i = 0; i < (16 - Articulo.Length); i++)
                         {
                             espacios += " ";
 
                         }
                         elementos = Articulo + espacios;
-                        nroEspacios = (3 - cant.ToString().Length);
+                        nroEspacios = 3 - cant.ToString().Length;
                         espacios = "";
-                        for (int i = 0; i < nroEspacios; i++)
+                        for (var i = 0; i < nroEspacios; i++)
                         {
                             espacios += " ";
                         }
                         elementos += espacios + cant.ToString();
 
                         // colocamos el precio a la derecha
-                        nroEspacios = (10 - precio.ToString().Length);
+                        nroEspacios = 10 - precio.ToString().Length;
                         espacios = "";
 
-                        for (int i = 0; i < nroEspacios; i++)
+                        for (var i = 0; i < nroEspacios; i++)
                         {
                             espacios += " ";
                         }
                         elementos += espacios + precio.ToString();
 
                         //colocar el subtotal a la derecha
-                        nroEspacios = (11 - subtotal.ToString().Length);
+                        nroEspacios = 11 - subtotal.ToString().Length;
                         espacios = "";
 
-                        for (int i = 0; i < nroEspacios; i++)
+                        for (var i = 0; i < nroEspacios; i++)
                         {
                             espacios += " ";
                         }
                         elementos += espacios + subtotal.ToString();
-                        line.AppendLine(elementos);
+                        _ = line.AppendLine(elementos);
 
                     }
                 }
@@ -240,7 +235,7 @@ namespace POSLyion
 
             public void ImprimirTiket(string stringimpresora)
             {
-                RawPrinterHelper.SendStringToPrinter(stringimpresora, line.ToString());
+                _ = RawPrinterHelper.SendStringToPrinter(stringimpresora, line.ToString());
                 line = new StringBuilder();
 
             }
@@ -267,7 +262,7 @@ namespace POSLyion
             public static extern bool ClosePrinter(IntPtr hPrinter);
 
             [DllImport("winspool.Drv", EntryPoint = "StartDocPrinterA", SetLastError = true, CharSet = CharSet.Ansi, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
-            public static extern bool StartDocPrinter(IntPtr hPrinter, Int32 level, [In, MarshalAs(UnmanagedType.LPStruct)] DOCINFOA di);
+            public static extern bool StartDocPrinter(IntPtr hPrinter, int level, [In, MarshalAs(UnmanagedType.LPStruct)] DOCINFOA di);
 
             [DllImport("winspool.Drv", EntryPoint = "EndDocPrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
             public static extern bool EndDocPrinter(IntPtr hPrinter);
@@ -279,34 +274,32 @@ namespace POSLyion
             public static extern bool EndPagePrinter(IntPtr hPrinter);
 
             [DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
-            public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, Int32 dwCount, out Int32 dwWritten);
+            public static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
 
-            public static bool SendBytesToPrinter(string szPrinterName, IntPtr pBytes, Int32 dwCount)
+            public static bool SendBytesToPrinter(string szPrinterName, IntPtr pBytes, int dwCount)
             {
-                Int32 dwError = 0, dwWritten = 0;
-                IntPtr hPrinter = new IntPtr(0);
-                DOCINFOA di = new DOCINFOA();
-                bool bSuccess = false;
+                _ = new IntPtr(0);
+                var di = new DOCINFOA();
+                var bSuccess = false;
 
                 di.pDocName = "Documento de impresion";
                 di.pDataType = "RAW";
-
-                if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero))
+                if (OpenPrinter(szPrinterName.Normalize(), out var hPrinter, IntPtr.Zero))
                 {
                     if (StartDocPrinter(hPrinter, 1, di))
                     {
                         if (StartPagePrinter(hPrinter))
                         {
-                            bSuccess = WritePrinter(hPrinter, pBytes, dwCount, out dwWritten);
-                            EndPagePrinter(hPrinter);
+                            bSuccess = WritePrinter(hPrinter, pBytes, dwCount, out var _);
+                            _ = EndPagePrinter(hPrinter);
                         }
-                        EndDocPrinter(hPrinter);
+                        _ = EndDocPrinter(hPrinter);
                     }
-                    ClosePrinter(hPrinter);
+                    _ = ClosePrinter(hPrinter);
                 }
                 if (bSuccess == false)
                 {
-                    dwError = Marshal.GetLastWin32Error();
+                    _ = Marshal.GetLastWin32Error();
                 }
                 return bSuccess;
             }
@@ -314,10 +307,10 @@ namespace POSLyion
             public static bool SendStringToPrinter(string szPrinterName, string szString)
             {
                 IntPtr pBytes;
-                Int32 dwCount;
+                int dwCount;
                 dwCount = szString.Length;
                 pBytes = Marshal.StringToCoTaskMemAnsi(szString);
-                SendBytesToPrinter(szPrinterName, pBytes, dwCount);
+                _ = SendBytesToPrinter(szPrinterName, pBytes, dwCount);
                 Marshal.FreeCoTaskMem(pBytes);
                 return true;
             }

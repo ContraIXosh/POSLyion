@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_red = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_telefono = new System.Windows.Forms.TextBox();
@@ -36,28 +37,36 @@
             this.txt_correo = new System.Windows.Forms.TextBox();
             this.txt_nombre_usuario = new System.Windows.Forms.TextBox();
             this.lbl_estado = new System.Windows.Forms.Label();
-            this.cbo_estado = new RJCodeAdvance.RJControls.RJComboBox();
+            this.cbox_estado = new RJCodeAdvance.RJControls.RJComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_rol = new System.Windows.Forms.Label();
-            this.cbo_roles = new RJCodeAdvance.RJControls.RJComboBox();
+            this.cbox_roles = new RJCodeAdvance.RJControls.RJComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lbl_username = new System.Windows.Forms.Label();
             this.lbl_pass = new System.Windows.Forms.Label();
             this.txt_contraseña = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_id = new RJCodeAdvance.RJControls.RJTextBox();
+            this.btn_reiniciar_datos = new RJCodeAdvance.RJControls.RJButton();
             this.btn_cerrar = new RJCodeAdvance.RJControls.RJButton();
             this.btn_guardar = new RJCodeAdvance.RJControls.RJButton();
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_crearuser = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel_red.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel_main.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_red
@@ -87,12 +96,12 @@
             this.tableLayoutPanel4.Controls.Add(this.txt_correo, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.txt_nombre_usuario, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.lbl_estado, 1, 6);
-            this.tableLayoutPanel4.Controls.Add(this.cbo_estado, 1, 7);
+            this.tableLayoutPanel4.Controls.Add(this.cbox_estado, 1, 7);
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label5, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.label6, 0, 4);
             this.tableLayoutPanel4.Controls.Add(this.lbl_rol, 0, 6);
-            this.tableLayoutPanel4.Controls.Add(this.cbo_roles, 0, 7);
+            this.tableLayoutPanel4.Controls.Add(this.cbox_roles, 0, 7);
             this.tableLayoutPanel4.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.lbl_username, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.lbl_pass, 1, 4);
@@ -121,7 +130,6 @@
             this.txt_telefono.Name = "txt_telefono";
             this.txt_telefono.Size = new System.Drawing.Size(246, 29);
             this.txt_telefono.TabIndex = 103;
-            this.txt_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_telefono_KeyPress);
             // 
             // txt_dni
             // 
@@ -131,7 +139,6 @@
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(246, 29);
             this.txt_dni.TabIndex = 102;
-            this.txt_dni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_dni_KeyPress);
             // 
             // txt_nombre_completo
             // 
@@ -141,7 +148,6 @@
             this.txt_nombre_completo.Name = "txt_nombre_completo";
             this.txt_nombre_completo.Size = new System.Drawing.Size(246, 29);
             this.txt_nombre_completo.TabIndex = 101;
-            this.txt_nombre_completo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nombre_completo_KeyPress);
             // 
             // txt_correo
             // 
@@ -151,7 +157,6 @@
             this.txt_correo.Name = "txt_correo";
             this.txt_correo.Size = new System.Drawing.Size(246, 29);
             this.txt_correo.TabIndex = 100;
-            this.txt_correo.Validating += new System.ComponentModel.CancelEventHandler(this.txt_correo_Validating);
             // 
             // txt_nombre_usuario
             // 
@@ -174,25 +179,25 @@
             this.lbl_estado.TabIndex = 97;
             this.lbl_estado.Text = "ESTADO";
             // 
-            // cbo_estado
+            // cbox_estado
             // 
-            this.cbo_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbo_estado.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbo_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.BorderSize = 1;
-            this.cbo_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbo_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbo_estado.ForeColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbo_estado.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_estado.Location = new System.Drawing.Point(410, 220);
-            this.cbo_estado.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbo_estado.Name = "cbo_estado";
-            this.cbo_estado.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_estado.Size = new System.Drawing.Size(245, 30);
-            this.cbo_estado.TabIndex = 96;
-            this.cbo_estado.Texts = "";
+            this.cbox_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbox_estado.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbox_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.BorderSize = 1;
+            this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbox_estado.ForeColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbox_estado.Location = new System.Drawing.Point(410, 220);
+            this.cbox_estado.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbox_estado.Name = "cbox_estado";
+            this.cbox_estado.Padding = new System.Windows.Forms.Padding(1);
+            this.cbox_estado.Size = new System.Drawing.Size(245, 30);
+            this.cbox_estado.TabIndex = 96;
+            this.cbox_estado.Texts = "";
             // 
             // label3
             // 
@@ -243,25 +248,25 @@
             this.lbl_rol.TabIndex = 89;
             this.lbl_rol.Text = "ROL";
             // 
-            // cbo_roles
+            // cbox_roles
             // 
-            this.cbo_roles.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbo_roles.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbo_roles.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_roles.BorderSize = 1;
-            this.cbo_roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbo_roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbo_roles.ForeColor = System.Drawing.Color.DimGray;
-            this.cbo_roles.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbo_roles.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbo_roles.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbo_roles.Location = new System.Drawing.Point(53, 220);
-            this.cbo_roles.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbo_roles.Name = "cbo_roles";
-            this.cbo_roles.Padding = new System.Windows.Forms.Padding(1);
-            this.cbo_roles.Size = new System.Drawing.Size(249, 30);
-            this.cbo_roles.TabIndex = 88;
-            this.cbo_roles.Texts = "";
+            this.cbox_roles.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbox_roles.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbox_roles.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_roles.BorderSize = 1;
+            this.cbox_roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbox_roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbox_roles.ForeColor = System.Drawing.Color.DimGray;
+            this.cbox_roles.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_roles.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbox_roles.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbox_roles.Location = new System.Drawing.Point(53, 220);
+            this.cbox_roles.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbox_roles.Name = "cbox_roles";
+            this.cbox_roles.Padding = new System.Windows.Forms.Padding(1);
+            this.cbox_roles.Size = new System.Drawing.Size(249, 30);
+            this.cbox_roles.TabIndex = 88;
+            this.cbox_roles.Texts = "";
             // 
             // label7
             // 
@@ -326,46 +331,44 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.Desktop;
-            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.Controls.Add(this.txt_id, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 2, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.btn_reiniciar_datos, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_cerrar, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_guardar, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(710, 54);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
-            // txt_id
+            // btn_reiniciar_datos
             // 
-            this.txt_id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_id.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txt_id.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_id.BorderRadius = 0;
-            this.txt_id.BorderSize = 2;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_id.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_id.Location = new System.Drawing.Point(4, 4);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_id.Multiline = false;
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_id.PasswordChar = false;
-            this.txt_id.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_id.PlaceholderText = "";
-            this.txt_id.Size = new System.Drawing.Size(40, 31);
-            this.txt_id.TabIndex = 32;
-            this.txt_id.Texts = "0";
-            this.txt_id.UnderlinedStyle = false;
-            this.txt_id.Visible = false;
+            this.btn_reiniciar_datos.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BorderRadius = 1;
+            this.btn_reiniciar_datos.BorderSize = 2;
+            this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
+            this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.Location = new System.Drawing.Point(245, 10);
+            this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
+            this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 33);
+            this.btn_reiniciar_datos.TabIndex = 33;
+            this.btn_reiniciar_datos.Text = "Reiniciar datos";
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
+            this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_cerrar
             // 
@@ -400,7 +403,7 @@
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btn_guardar.Location = new System.Drawing.Point(357, 10);
+            this.btn_guardar.Location = new System.Drawing.Point(401, 10);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 33);
             this.btn_guardar.TabIndex = 12;
@@ -442,6 +445,22 @@
             this.lbl_crearuser.TabIndex = 45;
             this.lbl_crearuser.Text = "CREAR USUARIO";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
+            // 
+            // errorProvider4
+            // 
+            this.errorProvider4.ContainerControl = this;
+            // 
             // formUsuariosAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,8 +471,10 @@
             this.MaximizeBox = false;
             this.Name = "formUsuariosAlta";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "formUsers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Crear un usuario";
             this.Load += new System.EventHandler(this.formUsuariosAlta_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formUsuariosAlta_KeyDown);
             this.panel_red.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -461,6 +482,10 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -472,19 +497,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private RJCodeAdvance.RJControls.RJButton btn_cerrar;
         private RJCodeAdvance.RJControls.RJButton btn_guardar;
-        private RJCodeAdvance.RJControls.RJTextBox txt_id;
         private System.Windows.Forms.TableLayoutPanel panel_main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl_rol;
-        private RJCodeAdvance.RJControls.RJComboBox cbo_roles;
+        private RJCodeAdvance.RJControls.RJComboBox cbox_roles;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbl_username;
         private System.Windows.Forms.Label lbl_pass;
         private System.Windows.Forms.Label lbl_estado;
-        private RJCodeAdvance.RJControls.RJComboBox cbo_estado;
+        private RJCodeAdvance.RJControls.RJComboBox cbox_estado;
         private System.Windows.Forms.Label lbl_crearuser;
         private System.Windows.Forms.TextBox txt_telefono;
         private System.Windows.Forms.TextBox txt_dni;
@@ -492,5 +516,10 @@
         private System.Windows.Forms.TextBox txt_correo;
         private System.Windows.Forms.TextBox txt_nombre_usuario;
         private System.Windows.Forms.TextBox txt_contraseña;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
+        private RJCodeAdvance.RJControls.RJButton btn_reiniciar_datos;
+        private System.Windows.Forms.ErrorProvider errorProvider4;
     }
 }

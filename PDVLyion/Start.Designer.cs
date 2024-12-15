@@ -35,10 +35,10 @@ namespace POSLyion
             this.tlp_navbar_principal = new System.Windows.Forms.TableLayoutPanel();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.tsmenu_venta = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmenu_compras = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmenu_prods = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmenu_users = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_clientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmenu_prods = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmenu_compras = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmenu_users = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_proveedor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_reports = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmenu_cat = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,10 +95,10 @@ namespace POSLyion
             this.menu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmenu_venta,
-            this.tsmenu_compras,
-            this.tsmenu_prods,
-            this.tsmenu_users,
             this.tsmenu_clientes,
+            this.tsmenu_prods,
+            this.tsmenu_compras,
+            this.tsmenu_users,
             this.tsmenu_proveedor,
             this.tsmenu_reports,
             this.tsmenu_cat,
@@ -118,9 +118,29 @@ namespace POSLyion
             this.tsmenu_venta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmenu_venta.MergeIndex = 0;
             this.tsmenu_venta.Name = "tsmenu_venta";
-            this.tsmenu_venta.Size = new System.Drawing.Size(73, 46);
-            this.tsmenu_venta.Text = "Ventas";
+            this.tsmenu_venta.Size = new System.Drawing.Size(76, 46);
+            this.tsmenu_venta.Text = "Ventas (F1)";
             this.tsmenu_venta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsmenu_clientes
+            // 
+            this.tsmenu_clientes.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_clientes.Image")));
+            this.tsmenu_clientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_clientes.MergeIndex = 4;
+            this.tsmenu_clientes.Name = "tsmenu_clientes";
+            this.tsmenu_clientes.Size = new System.Drawing.Size(84, 46);
+            this.tsmenu_clientes.Text = "Clientes (F2)";
+            this.tsmenu_clientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsmenu_prods
+            // 
+            this.tsmenu_prods.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_prods.Image")));
+            this.tsmenu_prods.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmenu_prods.MergeIndex = 2;
+            this.tsmenu_prods.Name = "tsmenu_prods";
+            this.tsmenu_prods.Size = new System.Drawing.Size(96, 46);
+            this.tsmenu_prods.Text = "Productos (F3)";
+            this.tsmenu_prods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsmenu_compras
             // 
@@ -132,16 +152,6 @@ namespace POSLyion
             this.tsmenu_compras.Text = "Compras";
             this.tsmenu_compras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // tsmenu_prods
-            // 
-            this.tsmenu_prods.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_prods.Image")));
-            this.tsmenu_prods.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmenu_prods.MergeIndex = 2;
-            this.tsmenu_prods.Name = "tsmenu_prods";
-            this.tsmenu_prods.Size = new System.Drawing.Size(73, 46);
-            this.tsmenu_prods.Text = "Productos";
-            this.tsmenu_prods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
             // tsmenu_users
             // 
             this.tsmenu_users.BackColor = System.Drawing.Color.Gold;
@@ -152,16 +162,6 @@ namespace POSLyion
             this.tsmenu_users.Size = new System.Drawing.Size(64, 46);
             this.tsmenu_users.Text = "Usuarios";
             this.tsmenu_users.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsmenu_clientes
-            // 
-            this.tsmenu_clientes.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_clientes.Image")));
-            this.tsmenu_clientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmenu_clientes.MergeIndex = 4;
-            this.tsmenu_clientes.Name = "tsmenu_clientes";
-            this.tsmenu_clientes.Size = new System.Drawing.Size(61, 46);
-            this.tsmenu_clientes.Text = "Clientes";
-            this.tsmenu_clientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsmenu_proveedor
             // 
@@ -280,6 +280,7 @@ namespace POSLyion
             this.Text = "POSLyion";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Start_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Start_KeyDown);
             this.tlp_principal.ResumeLayout(false);
             this.tlp_navbar_principal.ResumeLayout(false);
             this.tlp_navbar_principal.PerformLayout();

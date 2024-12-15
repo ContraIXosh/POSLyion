@@ -1,86 +1,129 @@
-﻿using System;
-using POSLyion.Resources;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaNegocio;
-using CapaEntidad.Filtros;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace POSLyion.Modals
 {
     public partial class MD_Clientes : Form
     {
 
-        public Clientes oCliente { get; set; }
+        public int IdCliente { get; set; }
+        public string NombreCliente { get; set; }
+        public List<Ventas> ListaVentas { get; set; }
 
-        public MD_Clientes()
+        public MD_Clientes(int idCliente, string nombreCliente)
         {
             InitializeComponent();
+            IdCliente = idCliente;
+            NombreCliente = nombreCliente;
         }
 
-        private void MD_Clientes_Load(object sender, EventArgs e)
+        private void MD_Clientes_Load(object sender, System.EventArgs e)
         {
-            foreach (DataGridViewColumn columna in dgv_modal_clientes.Columns)
+            ListaVentas = new CN_Ventas().BuscarVentasCreditoCliente(IdCliente);
+            lbl_cliente.Text = $"Cliente: {NombreCliente}";
+            lbl_deuda_monto.Text = CalcularDeuda().ToString();
+            MostrarVentas();
+        }
+
+        private decimal CalcularDeuda()
+        {
+            var (totalVentasCredito, totalAbonos) = new CN_Clientes().ObtenerDeuda(IdCliente);
+            return totalVentasCredito - totalAbonos;
+        }
+
+        private void MostrarVentas()
+        {
+            foreach (var venta in ListaVentas)
             {
-                if (columna.Visible == true)
+                _ = dgv_ventas.Rows.Add(new object[] {
+                    venta.Id_venta,
+                    venta.Create_date,
+                    venta.Total
+                });
+            }
+        }
+
+        private void dgv_ventas_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgv_ventas.Rows.Count > 0)
+            {
+                dgv_productos.Rows.Clear();
+                var idVentaCabecera = Convert.ToInt32(dgv_ventas.CurrentRow.Cells["id_venta"].Value);
+                var ventas_detalle = new CN_Ventas().BuscarVentaDetalle(idVentaCabecera);
+                if (ventas_detalle.Count > 0)
                 {
-                    cbo_filtro.Items.Add(new OpcionCombo() { Valor = columna.Name, Texto = columna.HeaderText });
+                    foreach (var venta_detalle in ventas_detalle)
+                    {
+                        _ = dgv_productos.Rows.Add(new object[]
+                        {
+                            venta_detalle.oProducto.Codigo_barras,
+                            venta_detalle.oProducto.Descripcion,
+                            venta_detalle.Precio,
+                            venta_detalle.Cantidad,
+                            venta_detalle.Subtotal
+                        });
+                    }
                 }
             }
+        }
 
-            cbo_filtro.DisplayMember = "Texto";
-            cbo_filtro.ValueMember = "Valor";
-            cbo_filtro.SelectedIndex = 0;
-
-            FiltrosCliente filtros = new FiltrosCliente();
-            List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros);
-
-            foreach (Clientes cliente in lista_clientes)
+        private void btn_abonar_Click(object sender, EventArgs e)
+        {
+            var totalDeuda = Convert.ToDecimal(lbl_deuda_monto.Text);
+            if (totalDeuda == 0)
             {
-                if (cliente.Estado)
+                _ = MessageBox.Show("El cliente no tiene deuda pendiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                using (var modalAbonos = new MD_Abonos(totalDeuda))
                 {
-                    dgv_modal_clientes.Rows.Add(new object[] { cliente.Dni, cliente.Nombre_completo });
+                    _ = modalAbonos.ShowDialog();
+                    if (modalAbonos.AbonoRealizado)
+                    {
+                        if (modalAbonos.AbonoRealizado)
+                        {
+                            GenerarAbono(modalAbonos.MontoAbonado);
+                        }
+                    }
                 }
             }
         }
 
-        private void dgv_modal_clientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void GenerarAbono(decimal montoAbonado)
         {
-            int indice_fila = e.RowIndex;
-            int indice_columna = e.ColumnIndex;
-            if (indice_fila >= 0 && indice_columna >= 0)
+            var oAbono = new Abono_ventas()
             {
-                oCliente = new Clientes()
-                {
-                    Dni = dgv_modal_clientes.Rows[indice_fila].Cells["dni"].Value.ToString(),
-                    Nombre_completo = dgv_modal_clientes.Rows[indice_fila].Cells["nombre_completo"].Value.ToString()
-                };
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                oCliente = new Clientes() { Id_cliente = IdCliente },
+                MontoAbono = montoAbonado
+            };
+            if (new CN_AbonoVenta().Crear(oAbono, out var mensaje, out _))
+            {
+                _ = MessageBox.Show($"Abono de {montoAbonado} generado con éxito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                lbl_deuda_monto.Text = CalcularDeuda().ToString();
+            }
+            else
+            {
+                _ = MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btn_buscar_Click(object sender, EventArgs e)
+        private void btn_liquidar_deuda_Click(object sender, EventArgs e)
         {
-            string filtro = ((OpcionCombo)cbo_filtro.SelectedItem).Valor.ToString();
-            if (dgv_modal_clientes.Rows.Count > 0)
+            var totalDeuda = Convert.ToDecimal(lbl_deuda_monto.Text);
+            if (totalDeuda == 0)
             {
-                foreach (DataGridViewRow fila in dgv_modal_clientes.Rows)
+                _ = MessageBox.Show("El cliente no tiene deuda pendiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                var resultado = MessageBox.Show($"Se liquidará la deuda de {totalDeuda}.\n¿Desea continuar?", "Liquidación de deuda", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (resultado == DialogResult.Yes)
                 {
-                    if (fila.Cells[filtro].Value.ToString().Trim().ToUpper().Contains(txt_busqueda.Texts.Trim().ToUpper()))
-                    {
-                        fila.Visible = true;
-                    }
-                    else
-                    {
-                        fila.Visible = false;
-                    }
+                    GenerarAbono(totalDeuda);
                 }
             }
         }

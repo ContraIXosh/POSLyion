@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formCategorias));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,25 +56,26 @@
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_buscar = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_cancelar = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_edicion = new System.Windows.Forms.Label();
+            this.txt_descripcion_editar = new CustomBox.RJControls.RJTextBox();
+            this.btn_buscar = new RJCodeAdvance.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
             this.btn_crear_categoria = new RJCodeAdvance.RJControls.RJButton();
             this.txt_descripcion = new CustomBox.RJControls.RJTextBox();
-            this.txt_categoryedit = new CustomBox.RJControls.RJTextBox();
             this.lbl_crear = new System.Windows.Forms.Label();
             this.btn_editar_categoria = new RJCodeAdvance.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_search = new System.Windows.Forms.Label();
             this.txt_search = new System.Windows.Forms.TextBox();
             this.txt_id = new CustomBox.RJControls.RJTextBox();
-            this.grid_categoria = new System.Windows.Forms.DataGridView();
+            this.dgv_categorias = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_eliminar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_cancelar = new RJCodeAdvance.RJControls.RJButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menu_sesion.SuspendLayout();
             this.menu_Main.SuspendLayout();
             this.panel_main.SuspendLayout();
@@ -84,7 +85,9 @@
             this.panel_midizq.SuspendLayout();
             this.panel_btns.SuspendLayout();
             this.panel_filter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_categoria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // menu_sesion
@@ -271,7 +274,7 @@
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.panel_mid.Controls.Add(this.panel_midizq, 0, 0);
-            this.panel_mid.Controls.Add(this.grid_categoria, 1, 0);
+            this.panel_mid.Controls.Add(this.dgv_categorias, 1, 0);
             this.panel_mid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_mid.Location = new System.Drawing.Point(0, 0);
             this.panel_mid.Margin = new System.Windows.Forms.Padding(0);
@@ -305,7 +308,7 @@
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_btns.Controls.Add(this.btn_cancelar, 0, 3);
             this.panel_btns.Controls.Add(this.lbl_edicion, 0, 0);
-            this.panel_btns.Controls.Add(this.txt_categoryedit, 0, 1);
+            this.panel_btns.Controls.Add(this.txt_descripcion_editar, 0, 1);
             this.panel_btns.Controls.Add(this.btn_buscar, 0, 8);
             this.panel_btns.Controls.Add(this.btn_actualizar, 0, 7);
             this.panel_btns.Controls.Add(this.btn_crear_categoria, 0, 6);
@@ -329,6 +332,63 @@
             this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_btns.Size = new System.Drawing.Size(284, 404);
             this.panel_btns.TabIndex = 16;
+            // 
+            // btn_cancelar
+            // 
+            this.btn_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_cancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_cancelar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_cancelar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cancelar.BorderRadius = 6;
+            this.btn_cancelar.BorderSize = 2;
+            this.btn_cancelar.FlatAppearance.BorderSize = 0;
+            this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cancelar.Location = new System.Drawing.Point(23, 142);
+            this.btn_cancelar.Name = "btn_cancelar";
+            this.btn_cancelar.Size = new System.Drawing.Size(238, 28);
+            this.btn_cancelar.TabIndex = 46;
+            this.btn_cancelar.Text = "CANCELAR EDICION";
+            this.btn_cancelar.TextColor = System.Drawing.Color.Red;
+            this.btn_cancelar.UseVisualStyleBackColor = false;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            // 
+            // lbl_edicion
+            // 
+            this.lbl_edicion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_edicion.AutoSize = true;
+            this.lbl_edicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_edicion.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_edicion.Location = new System.Drawing.Point(90, 13);
+            this.lbl_edicion.Name = "lbl_edicion";
+            this.lbl_edicion.Size = new System.Drawing.Size(104, 25);
+            this.lbl_edicion.TabIndex = 43;
+            this.lbl_edicion.Text = "EDICION";
+            // 
+            // txt_descripcion_editar
+            // 
+            this.txt_descripcion_editar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_descripcion_editar.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_descripcion_editar.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txt_descripcion_editar.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_descripcion_editar.BorderRadius = 0;
+            this.txt_descripcion_editar.BorderSize = 2;
+            this.txt_descripcion_editar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txt_descripcion_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_descripcion_editar.Location = new System.Drawing.Point(4, 42);
+            this.txt_descripcion_editar.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_descripcion_editar.Multiline = false;
+            this.txt_descripcion_editar.Name = "txt_descripcion_editar";
+            this.txt_descripcion_editar.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_descripcion_editar.PasswordChar = false;
+            this.txt_descripcion_editar.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_descripcion_editar.PlaceholderText = "";
+            this.txt_descripcion_editar.Size = new System.Drawing.Size(276, 39);
+            this.txt_descripcion_editar.TabIndex = 42;
+            this.txt_descripcion_editar.Texts = "";
+            this.txt_descripcion_editar.UnderlinedStyle = false;
             // 
             // btn_buscar
             // 
@@ -354,18 +414,6 @@
             this.btn_buscar.Visible = false;
             this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
-            // lbl_edicion
-            // 
-            this.lbl_edicion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_edicion.AutoSize = true;
-            this.lbl_edicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_edicion.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_edicion.Location = new System.Drawing.Point(90, 13);
-            this.lbl_edicion.Name = "lbl_edicion";
-            this.lbl_edicion.Size = new System.Drawing.Size(104, 25);
-            this.lbl_edicion.TabIndex = 43;
-            this.lbl_edicion.Text = "EDICION";
-            // 
             // btn_actualizar
             // 
             this.btn_actualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -385,7 +433,7 @@
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(225, 37);
             this.btn_actualizar.TabIndex = 13;
-            this.btn_actualizar.Text = "Actualizar";
+            this.btn_actualizar.Text = "Actualizar grilla";
             this.btn_actualizar.TextColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.UseVisualStyleBackColor = false;
             this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
@@ -421,7 +469,7 @@
             this.txt_descripcion.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txt_descripcion.BorderRadius = 0;
             this.txt_descripcion.BorderSize = 2;
-            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.txt_descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txt_descripcion.Location = new System.Drawing.Point(4, 236);
             this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
@@ -431,33 +479,10 @@
             this.txt_descripcion.PasswordChar = false;
             this.txt_descripcion.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_descripcion.PlaceholderText = "";
-            this.txt_descripcion.Size = new System.Drawing.Size(276, 31);
+            this.txt_descripcion.Size = new System.Drawing.Size(276, 39);
             this.txt_descripcion.TabIndex = 39;
             this.txt_descripcion.Texts = "";
             this.txt_descripcion.UnderlinedStyle = false;
-            // 
-            // txt_categoryedit
-            // 
-            this.txt_categoryedit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_categoryedit.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_categoryedit.BorderColor = System.Drawing.Color.SeaGreen;
-            this.txt_categoryedit.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_categoryedit.BorderRadius = 0;
-            this.txt_categoryedit.BorderSize = 2;
-            this.txt_categoryedit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.txt_categoryedit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_categoryedit.Location = new System.Drawing.Point(4, 42);
-            this.txt_categoryedit.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_categoryedit.Multiline = false;
-            this.txt_categoryedit.Name = "txt_categoryedit";
-            this.txt_categoryedit.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_categoryedit.PasswordChar = false;
-            this.txt_categoryedit.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_categoryedit.PlaceholderText = "";
-            this.txt_categoryedit.Size = new System.Drawing.Size(276, 31);
-            this.txt_categoryedit.TabIndex = 42;
-            this.txt_categoryedit.Texts = "";
-            this.txt_categoryedit.UnderlinedStyle = false;
             // 
             // lbl_crear
             // 
@@ -529,7 +554,6 @@
             this.lbl_search.Size = new System.Drawing.Size(137, 25);
             this.lbl_search.TabIndex = 13;
             this.lbl_search.Text = "BUSQUEDA";
-            this.lbl_search.Visible = false;
             // 
             // txt_search
             // 
@@ -539,7 +563,6 @@
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(251, 29);
             this.txt_search.TabIndex = 11;
-            this.txt_search.Visible = false;
             // 
             // txt_id
             // 
@@ -562,69 +585,69 @@
             this.txt_id.TabIndex = 40;
             this.txt_id.Texts = "0";
             this.txt_id.UnderlinedStyle = false;
+            this.txt_id.Visible = false;
             // 
-            // grid_categoria
+            // dgv_categorias
             // 
-            this.grid_categoria.AllowUserToAddRows = false;
-            this.grid_categoria.AllowUserToDeleteRows = false;
-            this.grid_categoria.AllowUserToResizeColumns = false;
-            this.grid_categoria.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Violet;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.grid_categoria.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.grid_categoria.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.grid_categoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grid_categoria.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.grid_categoria.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Pink;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Pink;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_categoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.grid_categoria.ColumnHeadersHeight = 30;
-            this.grid_categoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_categorias.AllowUserToAddRows = false;
+            this.dgv_categorias.AllowUserToDeleteRows = false;
+            this.dgv_categorias.AllowUserToResizeColumns = false;
+            this.dgv_categorias.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgv_categorias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_categorias.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgv_categorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_categorias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_categorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Pink;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Pink;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_categorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_categorias.ColumnHeadersHeight = 30;
+            this.dgv_categorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.descripcion,
             this.cantidad,
-            this.btn_editar,
-            this.btn_eliminar});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Crimson;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Violet;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid_categoria.DefaultCellStyle = dataGridViewCellStyle7;
-            this.grid_categoria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_categoria.EnableHeadersVisualStyles = false;
-            this.grid_categoria.GridColor = System.Drawing.Color.Magenta;
-            this.grid_categoria.Location = new System.Drawing.Point(294, 5);
-            this.grid_categoria.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
-            this.grid_categoria.MultiSelect = false;
-            this.grid_categoria.Name = "grid_categoria";
-            this.grid_categoria.ReadOnly = true;
-            this.grid_categoria.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.grid_categoria.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkViolet;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Violet;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.grid_categoria.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.grid_categoria.RowTemplate.Height = 35;
-            this.grid_categoria.RowTemplate.ReadOnly = true;
-            this.grid_categoria.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid_categoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid_categoria.Size = new System.Drawing.Size(683, 507);
-            this.grid_categoria.TabIndex = 17;
-            this.grid_categoria.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_category_CellContentClick);
+            this.btn_editar});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_categorias.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_categorias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_categorias.EnableHeadersVisualStyles = false;
+            this.dgv_categorias.GridColor = System.Drawing.Color.Magenta;
+            this.dgv_categorias.Location = new System.Drawing.Point(294, 5);
+            this.dgv_categorias.Margin = new System.Windows.Forms.Padding(0, 5, 5, 5);
+            this.dgv_categorias.MultiSelect = false;
+            this.dgv_categorias.Name = "dgv_categorias";
+            this.dgv_categorias.ReadOnly = true;
+            this.dgv_categorias.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgv_categorias.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkViolet;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgv_categorias.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_categorias.RowTemplate.Height = 35;
+            this.dgv_categorias.RowTemplate.ReadOnly = true;
+            this.dgv_categorias.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_categorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_categorias.Size = new System.Drawing.Size(683, 507);
+            this.dgv_categorias.TabIndex = 17;
+            this.dgv_categorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_categorias_CellContentClick);
             // 
             // id
             // 
@@ -657,37 +680,13 @@
             this.btn_editar.ReadOnly = true;
             this.btn_editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // btn_eliminar
+            // errorProvider1
             // 
-            this.btn_eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btn_eliminar.HeaderText = "ELIMINAR";
-            this.btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("btn_eliminar.Image")));
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.ReadOnly = true;
-            this.btn_eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btn_eliminar.Visible = false;
+            this.errorProvider1.ContainerControl = this;
             // 
-            // btn_cancelar
+            // errorProvider2
             // 
-            this.btn_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_cancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cancelar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cancelar.BorderColor = System.Drawing.Color.Red;
-            this.btn_cancelar.BorderRadius = 6;
-            this.btn_cancelar.BorderSize = 2;
-            this.btn_cancelar.FlatAppearance.BorderSize = 0;
-            this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancelar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancelar.Location = new System.Drawing.Point(23, 142);
-            this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(238, 28);
-            this.btn_cancelar.TabIndex = 46;
-            this.btn_cancelar.Text = "CANCELAR EDICION";
-            this.btn_cancelar.TextColor = System.Drawing.Color.Red;
-            this.btn_cancelar.UseVisualStyleBackColor = false;
-            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            this.errorProvider2.ContainerControl = this;
             // 
             // formCategorias
             // 
@@ -710,7 +709,9 @@
             this.panel_btns.PerformLayout();
             this.panel_filter.ResumeLayout(false);
             this.panel_filter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_categoria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -743,19 +744,20 @@
         private System.Windows.Forms.Label lbl_search;
         private System.Windows.Forms.TextBox txt_search;
         private CustomBox.RJControls.RJTextBox txt_descripcion;
-        private CustomBox.RJControls.RJTextBox txt_categoryedit;
+        private CustomBox.RJControls.RJTextBox txt_descripcion_editar;
         private RJCodeAdvance.RJControls.RJButton btn_editar_categoria;
         private CustomBox.RJControls.RJTextBox txt_id;
-        private System.Windows.Forms.DataGridView grid_categoria;
+        private System.Windows.Forms.DataGridView dgv_categorias;
         private System.Windows.Forms.TableLayoutPanel panel_bot;
         private System.Windows.Forms.Label lbl_updateversion;
         private System.Windows.Forms.Label lbl_updatetime;
         private RJCodeAdvance.RJControls.RJButton btn_buscar;
+        private RJCodeAdvance.RJControls.RJButton btn_cancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
-        private System.Windows.Forms.DataGridViewImageColumn btn_eliminar;
-        private RJCodeAdvance.RJControls.RJButton btn_cancelar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

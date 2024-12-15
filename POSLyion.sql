@@ -4,6 +4,10 @@ GO
 USE POSLyion
 GO
 
+CREATE TABLE Lock(
+	id INT PRIMARY KEY
+);
+
 CREATE TABLE Roles (
   id_rol INT IDENTITY(1, 1) NOT NULL,
   descripcion VARCHAR(60) NOT NULL,
@@ -40,6 +44,7 @@ CREATE TABLE Productos (
 	id_categoria INT NOT NULL,
 	precio_costo DECIMAL(9, 2) NOT NULL,
 	precio_venta DECIMAL(9, 2) NOT NULL,
+	precio_mayorista DECIMAL(9, 2) NOT NULL,
 	stock_actual INT DEFAULT 0 NULL,
 	stock_minimo INT DEFAULT 0 NULL,
 	estado BIT DEFAULT 1 NULL,
@@ -122,17 +127,26 @@ CREATE TABLE Compras_Detalle (
 );	
 GO
 
+CREATE TABLE Tipo_Venta(
+	id_tipo_venta INT IDENTITY(1, 1) NOT NULL,
+	descripcion VARCHAR(30) NOT NULL,
+	CONSTRAINT PK_id_tipo_venta PRIMARY KEY (id_tipo_venta)
+);
+
 CREATE TABLE Ventas (
 	id_venta INT IDENTITY(1, 1) NOT NULL,
 	id_usuario INT NOT NULL,
 	id_cliente INT NOT NULL,
+	id_tipo_venta INT NOT NULL,
 	total DECIMAL(12, 2) NOT NULL,
 	vuelto DECIMAL(6, 2) NOT NULL,
+	notas_venta VARCHAR(365) NULL,
 	create_date DATETIME DEFAULT GETDATE() NULL,
 	modify_date DATETIME NULL,
 	CONSTRAINT PK_id_venta PRIMARY KEY (id_venta),	
 	CONSTRAINT FK_Ventas_Usuarios FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
-	CONSTRAINT FK_Ventas_Clientes FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+	CONSTRAINT FK_Ventas_Clientes FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
+	CONSTRAINT FK_Ventas_TipoVenta FOREIGN KEY (id_tipo_Venta) REFERENCES Tipo_Venta(id_tipo_venta)
 );
 GO
 
@@ -146,6 +160,16 @@ CREATE TABLE Ventas_Detalle (
 	CONSTRAINT PK_id_venta_detalle PRIMARY KEY (id_venta_detalle),
 	CONSTRAINT FK_Ventas_Detalle_Ventas FOREIGN KEY (id_venta) REFERENCES Ventas(id_venta),
 	CONSTRAINT FK_Ventas_Detalle_Productos FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
+);
+GO
+
+CREATE TABLE Abono_Ventas (
+	id_abono INT IDENTITY(1, 1) NOT NULL,
+	id_cliente INT NOT NULL,
+	monto_abono DECIMAL(12, 2) NOT NULL,
+	fecha_abono DATETIME DEFAULT GETDATE() NULL,
+	CONSTRAINT PK_id_abono PRIMARY KEY (id_abono),
+	CONSTRAINT FK_id_cliente FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
 );
 GO
 
@@ -172,6 +196,11 @@ CREATE TABLE UsuariosPOS(
 	CONSTRAINT PK_id_usuario_pos PRIMARY KEY (id_usuario_pos)
 );
 GO
+
+INSERT INTO Tipo_Venta(descripcion)
+VALUES
+('Efectivo'),
+('A credito')
 
 INSERT INTO UsuariosPOS(nombre, clave, nombre_empresa, cantidad_sucursales, email, fecha_vencimiento)
 VALUES
@@ -248,25 +277,72 @@ VALUES
 GO
 
 INSERT INTO Categorias(descripcion)
-VALUES('General'),
-('Harinas'),
-('No perecederos'),
-('Bebidas'),
-('Golosinas'),
-('Helados')
+VALUES('Analgesicos'),
+('Higiene/Cuidado personal')
 GO
 
-INSERT INTO Productos(codigo_barras, descripcion, id_categoria, precio_costo, precio_venta, stock_actual, stock_minimo)
+INSERT INTO Productos(codigo_barras, descripcion, id_categoria, precio_costo, precio_venta, precio_mayorista, stock_actual, stock_minimo)
 VALUES
-('111', 'Tatin', 5, 6.60, 6.66, 5, 3),
-('222', 'Blancaflor 1kg', 2, 11.60, 7.66, 6, 2),
-('333', 'Fideo', 3, 9.60, 10.33, 5, 3),
-('444', 'Arroz', 3, 5.80, 8.66, 2, 4),
-('555', 'Agua Villavicencio 500ml', 4, 6.70, 10.46, -5, 2),
-('666', 'Pepsi 1,5L', 4, 4.55, 15.79, -4, 6),
-('777', 'Garrafa', 1, 12.32, 13.66, 0, 3),
-('888', 'Torta Helada familiar 1kg', 6, 5.75, 19.99, 4, 4),
-('999', 'Chupetin MR.POP', 5, 7.13, 10.01, -10, 5)
+('1000000001', 'AC 400', 1, 1500, 2200, 1895, 50, 10),
+('1000000002', 'AC 600', 1, 4000, 5000, 4545, 40, 8),
+('1000000003', 'AC Mujer', 1, 1800, 2600, 2225, 35, 7),
+('1000000004', 'AC Plus', 1, 2200, 3000, 2735, 60, 12),
+('1000000005', 'Alik clásico / naranja X1', 1, 350, 500, 481, 55, 15),
+('1000000006', 'Alikal Caja clásico / naranja 30u.', 1, 12000, 15500, 14135, 20, 5),
+('1000000007', 'Almaximo 50mg x2 comprimidos', 1, 700, 1000, 860, 70, 10),
+('1000000008', 'Amox Fbx', 1, 1000, 1400, 1215, 80, 20),
+('1000000009', 'Amoxidal 500 x7 comprimidos', 1, 1600, 2200, 2000, 45, 9),
+('1000000010', 'Aspirineta', 1, 400, 700, 560, 100, 20),
+('1000000011', 'Ib 600 Fabogesic', 1, 500, 900, 700, 75, 15),
+('1000000012', 'Ib 600 Siend', 1, 500, 900, 700, 60, 10),
+('1000000013', 'Ib 600 Labsyna', 1, 400, 800, 600, 55, 12),
+('1000000014', 'IbuE Común', 1, 1200, 1800, 1572, 50, 8),
+('1000000015', 'Jarabe Ibuxin ibuprofeno 4%', 1, 1200, 1600, 1500, 40, 10),
+('1000000016', 'Ketorolac', 1, 350, 500, 417, 80, 15),
+('1000000017', 'Loratatadina Vannier 10mg', 1, 300, 500, 450, 70, 12),
+('1000000018', 'Loperamida Lovoprem', 1, 300, 550, 430, 50, 10),
+('1000000019', 'Mejoral Niños', 1, 1200, 1800, 1660, 35, 8),
+('1000000020', 'Mig Compuesto', 1, 2200, 3300, 2975, 25, 5),
+('1000000021', 'Novalgina', 1, 3000, 4500, 4000, 30, 8),
+('1000000022', 'Omeprazol 20mg X14', 1, 400, 700, 597, 45, 12),
+('1000000023', 'Paracetamol 500mg Rolfita', 1, 350, 600, 500, 60, 15),
+('1000000024', 'Qplus', 1, 2000, 3000, 2575, 55, 15),
+('1000000025', 'Sertal Compuesto', 1, 3500, 4500, 4110, 20, 8),
+('1000000026', 'Sertal Perla', 1, 2600, 3500, 3185, 35, 10),
+('1000000027', 'Solucion Fisiologica Sanadrog 100ml', 1, 300, 600, 460, 85, 20),
+('1000000028', 'Taf 1 G', 1, 1000, 1500, 1340, 40, 8),
+('1000000029', 'Te Rolfita x1', 1, 300, 550, 465, 50, 10),
+('1000000030', 'Tafi 500', 1, 1000, 1500, 1350, 35, 7),
+('1000000031', 'Tafi 650', 1, 1200, 1700, 1595, 30, 6),
+('1000000032', 'Tafi Plus', 1, 1500, 2000, 1850, 25, 5),
+('1000000033', 'Te Vick forte x1', 1, 1000, 1500, 1410, 40, 8),
+('1000000034', 'Te Vent3 plus x1', 1, 500, 800, 656, 55, 12),
+('1000000035', 'Te Vent3 verde x1', 1, 400, 750, 590, 70, 15),
+('1000000036', 'Uvasal x2', 1, 400, 750, 590, 90, 20),
+('1000000037', 'Uvasal caja 15x2 sobres', 1, 7000, 9500, 8670, 20, 5),
+('2000000001', 'Afeita BIC Comfort 2 filos x12u.', 2, 7000, 9500, 8990, 30, 10),
+('2000000002', 'Agua Oxig 10vol.', 2, 200, 300, 265, 50, 15),
+('2000000003', 'Algodon Caress X 75g', 2, 350, 550, 450, 45, 12),
+('2000000004', 'Cepillo Colgate', 2, 500, 750, 695, 60, 15),
+('2000000005', 'Cortau Trim Gde', 2, 500, 750, 670, 35, 10),
+('2000000006', 'Gasa Suez X10', 2, 1200, 1700, 1660, 40, 12),
+('2000000007', 'Hisopo Dismar x100u.', 2, 900, 1300, 1280, 55, 15),
+('2000000008', 'Hisopo Qsoft x100u.', 2, 1000, 1450, 1395, 50, 12),
+('2000000009', 'Manteca de cacao Luyagus', 2, 450, 700, 590, 70, 20),
+('2000000010', 'Pañuelo Elite x 6', 2, 500, 750, 660, 45, 10),
+('2000000011', 'Pañuelo Candela x 6', 2, 700, 1000, 955, 35, 8),
+('2000000012', 'Prime x3u.', 2, 1200, 1700, 1515, 30, 8),
+('2000000013', 'Repelente aerosol 811 de 150g', 2, 2000, 2800, 2680, 25, 8),
+('2000000014', 'Rexona bolilla mujer/hombre', 2, 1000, 1500, 1373, 50, 12),
+('2000000015', 'Sedal shampoo/acondicionador x24', 2, 2600, 3400, 3130, 20, 5),
+('2000000016', 'Quitaesmalte Algabo 50cm x1', 2, 700, 900, 875, 60, 15),
+('2000000017', 'Talco Algabo 200g x1', 2, 1000, 1400, 1270, 45, 10),
+('2000000018', 'Tela Hipoalergénica 2,5cm', 2, 600, 900, 880, 70, 18),
+('2000000019', 'Test De Embarazo', 2, 1200, 1800, 1700, 25, 5),
+('2000000020', 'Toallita Calipso con alas', 2, 400, 600, 527, 80, 20),
+('2000000021', 'Toallita Humeda BB X 100', 2, 600, 900, 780, 60, 15),
+('2000000022', 'Toallita Lion con alas', 2, 400, 600, 510, 85, 18),
+('2000000023', 'Tulipan x1 simple/color cajita', 2, 900, 1300, 1150, 50, 10);
 GO
 
 CREATE PROC SP_ALTA_PRODUCTO
@@ -275,6 +351,7 @@ CREATE PROC SP_ALTA_PRODUCTO
 	@id_categoria INT,
 	@precio_costo DECIMAL(9, 2),
 	@precio_venta DECIMAL(9, 2),
+	@precio_mayorista DECIMAL(9, 2),
 	@stock_actual INT,
 	@stock_minimo INT,
 	@mensaje VARCHAR(360) OUTPUT,
@@ -286,9 +363,9 @@ BEGIN
 	IF NOT EXISTS(SELECT * FROM Productos WHERE codigo_barras = @codigo_barras)
 	BEGIN
 		INSERT INTO Productos(codigo_barras, descripcion, id_categoria, precio_costo, precio_venta, 
-		stock_actual, stock_minimo)
+		precio_mayorista, stock_actual, stock_minimo)
 		VALUES(@codigo_barras, @descripcion, @id_categoria, @precio_costo, @precio_venta,
-		@stock_actual, @stock_minimo)
+		@precio_mayorista, @stock_actual, @stock_minimo)
 		SET @id_generada_producto = SCOPE_IDENTITY()
 	END
 	ELSE
@@ -305,6 +382,7 @@ CREATE PROC SP_MODIFICAR_PRODUCTO
 	@id_categoria INT,
 	@precio_costo DECIMAL(9, 2),
 	@precio_venta DECIMAL(9, 2),
+	@precio_mayorista DECIMAL(9, 2),
 	@stock_actual INT,
 	@stock_minimo INT,
 	@estado BIT,
@@ -323,6 +401,7 @@ BEGIN
 		id_categoria = @id_categoria,
 		precio_costo = @precio_costo,
 		precio_venta = @precio_venta,
+		precio_mayorista = @precio_mayorista,
 		stock_actual = @stock_actual,
 		stock_minimo = @stock_minimo,
 		estado = @estado,
@@ -854,8 +933,10 @@ GO
 CREATE PROC SP_ALTA_VENTA(
 	@id_usuario INT,
 	@id_cliente INT,
+	@id_tipo_venta INT,
 	@total DECIMAL(12, 2),
 	@vuelto DECIMAL(6, 2),
+	@notas_venta VARCHAR(365),
 	@VentaDetalle [EVenta_Detalle] READONLY,
 	@resultado BIT OUTPUT,
 	@id_venta_generado INT OUTPUT,
@@ -869,8 +950,8 @@ BEGIN
 		SET @mensaje = ''
 
 		BEGIN TRANSACTION REGISTRO_VENTA
-			INSERT INTO Ventas(id_usuario, id_cliente, total, vuelto)
-			VALUES(@id_usuario, @id_cliente, @total, @vuelto)
+			INSERT INTO Ventas(id_usuario, id_cliente, id_tipo_venta, total, vuelto, notas_venta)
+			VALUES(@id_usuario, @id_cliente, @id_tipo_venta, @total, @vuelto, @notas_venta)
 			SET @id_venta = SCOPE_IDENTITY()
 			SET @id_venta_generado = @id_venta
 
@@ -999,5 +1080,92 @@ BEGIN
 	WHERE (CONVERT(DATE, fecha_inicio_turno) >= @fecha_desde)
 	AND (CONVERT(DATE, fecha_fin_turno) <= @fecha_hasta)
 	AND (u.id_usuario = IIF(@id_usuario = 0, u.id_usuario, @id_usuario))
+END
+GO
+
+CREATE PROC SP_SUMAR_STOCK(
+	@id_producto INT,
+	@cantidad INT,
+	@resultado BIT OUTPUT
+)
+AS
+BEGIN
+	SET @resultado = 1
+	BEGIN TRY
+		BEGIN TRANSACTION SUMAR_STOCK
+		INSERT INTO Lock (id) VALUES (1);
+
+		UPDATE Productos SET stock_actual = stock_actual + @cantidad WHERE id_producto = @id_producto;
+
+		DELETE FROM Lock WHERE id = 1;
+    
+		COMMIT TRANSACTION SUMAR_STOCK
+
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION SUMAR_STOCK
+		END
+	END CATCH;
+END
+GO
+
+CREATE PROC SP_RESTAR_STOCK(
+	@id_producto INT,
+	@cantidad INT,
+	@resultado BIT OUTPUT
+)
+AS
+BEGIN
+SET @resultado = 1
+	BEGIN TRY
+		BEGIN TRANSACTION RESTAR_STOCK
+		INSERT INTO Lock (id) VALUES (1);
+
+		UPDATE Productos SET stock_actual = stock_actual - @cantidad WHERE id_producto = @id_producto
+
+		DELETE FROM Lock WHERE id = 1;
+    
+		COMMIT TRANSACTION SUMAR_STOCK
+
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION SUMAR_STOCK
+		END
+	END CATCH;
+END
+GO
+
+CREATE PROC SP_ABONO_VENTA(
+	@id_cliente INT,
+	@monto_abono DECIMAL(12, 2),
+	@resultado BIT OUTPUT,
+	@id_abono_generado INT OUTPUT,
+	@mensaje VARCHAR(360) OUTPUT
+)
+AS
+BEGIN
+	BEGIN TRY
+		DECLARE @id_abono INT = 0
+		SET @resultado = 1
+		SET @mensaje = ''
+
+		BEGIN TRANSACTION ABONO_VENTA
+			INSERT INTO Abono_Ventas(id_cliente, monto_abono)
+			VALUES(@id_cliente, @monto_abono)
+			SET @id_abono = SCOPE_IDENTITY()
+			SET @id_abono_generado = @id_abono
+		COMMIT TRANSACTION ABONO_VENTA
+	END TRY
+	BEGIN CATCH
+		SET @resultado = 0
+		SET @mensaje = ERROR_MESSAGE()
+		ROLLBACK TRANSACTION ABONO_VENTA
+	END CATCH
 END
 GO

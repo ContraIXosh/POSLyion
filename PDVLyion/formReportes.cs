@@ -1,19 +1,15 @@
 ﻿using CapaEntidad;
 using CapaEntidad.Filtros;
-using CapaEntidad.GraficosVentas;
 using CapaNegocio;
 using ClosedXML.Excel;
 using EntityLayer.Filtros;
-using POSLyion;
 using POSLyion.Resources;
+using POSLyion.Resources.Funcionalidad;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -24,10 +20,10 @@ namespace POSLyion
 
         private string dgv_activo = string.Empty;
         private List<ReportesDetalle> _lista = new List<ReportesDetalle>();
-        private Label _lbl_busqueda_proveedor = new Label();
-        private Label _lbl_busqueda_cliente = new Label();
-        private ComboBox _cbox_proveedores = new ComboBox();
-        private ComboBox _cbox_clientes = new ComboBox();
+        private readonly Label _lbl_busqueda_proveedor = new Label();
+        private readonly Label _lbl_busqueda_cliente = new Label();
+        private readonly ComboBox _cbox_proveedores = new ComboBox();
+        private readonly ComboBox _cbox_clientes = new ComboBox();
         private FiltrosReportes _filtros = new FiltrosReportes();
 
         public formReportes()
@@ -46,36 +42,36 @@ namespace POSLyion
             chart3.Visible = false;
             chart4.Visible = false;
 
-            FiltrosUsuario filtros_usuario = new FiltrosUsuario();
-            cbox_usuarios.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Cualquier usuario" });
-            List<Usuarios> lista_usuarios = new CN_Usuarios().Leer(filtros_usuario);
-            foreach (Usuarios oUsuario in lista_usuarios)
+            var filtros_usuario = new FiltrosUsuario();
+            _ = cbox_usuarios.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Cualquier usuario" });
+            var lista_usuarios = new CN_Usuarios().Leer(filtros_usuario);
+            foreach (var oUsuario in lista_usuarios)
             {
-                cbox_usuarios.Items.Add(new OpcionCombo() { Valor = oUsuario.Id_usuario, Texto = oUsuario.Nombre_usuario });
+                _ = cbox_usuarios.Items.Add(new OpcionCombo() { Valor = oUsuario.Id_usuario, Texto = oUsuario.Nombre_usuario });
             }
             cbox_usuarios.DisplayMember = "Texto";
             cbox_usuarios.ValueMember = "Valor";
             cbox_usuarios.SelectedIndex = 0;
 
-            this.CrearControlesCompras();
-            FiltrosProveedor filtros_proveedor = new FiltrosProveedor();
-            _cbox_proveedores.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Cualquier proveedor" });
-            List<Proveedores> lista_proveedores = new CN_Proveedores().Leer(filtros_proveedor);
-            foreach (Proveedores oProveedor in lista_proveedores)
+            CrearControlesCompras();
+            var filtros_proveedor = new FiltrosProveedor();
+            _ = _cbox_proveedores.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Cualquier proveedor" });
+            var lista_proveedores = new CN_Proveedores().Leer(filtros_proveedor);
+            foreach (var oProveedor in lista_proveedores)
             {
-                _cbox_proveedores.Items.Add(new OpcionCombo() { Valor = oProveedor.Id_proveedor, Texto = oProveedor.Descripcion });
+                _ = _cbox_proveedores.Items.Add(new OpcionCombo() { Valor = oProveedor.Id_proveedor, Texto = oProveedor.Descripcion });
             }
             _cbox_proveedores.DisplayMember = "Texto";
             _cbox_proveedores.ValueMember = "Valor";
             _cbox_proveedores.SelectedIndex = 0;
 
-            this.CrearControlesVentas();
-            FiltrosCliente filtros_clientes = new FiltrosCliente();
-            _cbox_clientes.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Cualquier cliente" });
-            List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros_clientes);
-            foreach (Clientes oCliente in lista_clientes)
+            CrearControlesVentas();
+            var filtros_clientes = new FiltrosCliente();
+            _ = _cbox_clientes.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Cualquier cliente" });
+            var lista_clientes = new CN_Clientes().Leer(filtros_clientes);
+            foreach (var oCliente in lista_clientes)
             {
-                _cbox_clientes.Items.Add(new OpcionCombo() { Valor = oCliente.Id_cliente, Texto = oCliente.Nombre_completo });
+                _ = _cbox_clientes.Items.Add(new OpcionCombo() { Valor = oCliente.Id_cliente, Texto = oCliente.Nombre_completo });
             }
             _cbox_clientes.DisplayMember = "Texto";
             _cbox_clientes.ValueMember = "Valor";
@@ -85,16 +81,17 @@ namespace POSLyion
         private void btn_ver_ventas_Click(object sender, EventArgs e)
         {
             dgv_activo = "ventas";
-            this.CrearDgv(1);
-            if(this.panel_izq.Controls.Container.Contains(_lbl_busqueda_proveedor))
+            CrearDgv(1);
+            if (panel_izq.Controls.Container.Contains(_lbl_busqueda_proveedor))
             {
-                this.panel_izq.Controls.Remove(_lbl_busqueda_proveedor);
-                this.panel_izq.Controls.Remove(_cbox_proveedores);
+                panel_izq.Controls.Remove(_lbl_busqueda_proveedor);
+                panel_izq.Controls.Remove(_cbox_proveedores);
             }
-            this.panel_izq.Controls.Add(_lbl_busqueda_cliente, 0, 11);
-            this.panel_izq.Controls.Add(_cbox_clientes, 0, 12);
-            this.panel_izq.Controls.Add(btn_buscar, 0, 13);
+            panel_izq.Controls.Add(_lbl_busqueda_cliente, 0, 11);
+            panel_izq.Controls.Add(_cbox_clientes, 0, 12);
+            panel_izq.Controls.Add(btn_buscar, 0, 13);
             dgv_historial.Dock = DockStyle.Fill;
+            _cbox_clientes.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             chart1.Series.Clear();
             chart2.Series.Clear();
             chart3.Series.Clear();
@@ -111,24 +108,25 @@ namespace POSLyion
             label6.Text = "VENTAS POR USUARIO";
             label2.Text = "VENTAS MENSUALES - GRAFICO DONA";
             label3.Text = "VENTAS POR USUARIO - GRAFICO DONA";
-            this.DatosVentas();
-            this.VentasUsuarios();
+            DatosVentas();
+            VentasUsuarios();
         }
 
         private void btn_ver_compras_Click(object sender, EventArgs e)
         {
             dgv_activo = "compras";
-            this.CrearDgv(2);
-            if (this.panel_izq.Controls.Container.Contains(_lbl_busqueda_cliente))
+            CrearDgv(2);
+            if (panel_izq.Controls.Container.Contains(_lbl_busqueda_cliente))
             {
-                this.panel_izq.Controls.Remove(_lbl_busqueda_cliente);
-                this.panel_izq.Controls.Remove(_cbox_clientes);
+                panel_izq.Controls.Remove(_lbl_busqueda_cliente);
+                panel_izq.Controls.Remove(_cbox_clientes);
 
             }
-            this.panel_izq.Controls.Add(_lbl_busqueda_proveedor, 0, 11);
-            this.panel_izq.Controls.Add(_cbox_proveedores, 0, 12);
-            this.panel_izq.Controls.Add(btn_buscar, 0, 13);
+            panel_izq.Controls.Add(_lbl_busqueda_proveedor, 0, 11);
+            panel_izq.Controls.Add(_cbox_proveedores, 0, 12);
+            panel_izq.Controls.Add(btn_buscar, 0, 13);
             dgv_historial.Dock = DockStyle.Fill;
+            _cbox_proveedores.Font = new Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             chart1.Series.Clear();
             chart2.Series.Clear();
             chart3.Series.Clear();
@@ -145,23 +143,23 @@ namespace POSLyion
             label6.Text = "COMPRAS POR USUARIO";
             label2.Text = "COMPRAS MENSUALES - GRAFICO DONA";
             label3.Text = "COMPRAS POR USUARIO - GRAFICO DONA";
-            this.DatosCompras();
-            this.ComprasUsuarios();
+            DatosCompras();
+            ComprasUsuarios();
         }
 
         private void btn_ver_cierres_Click(object sender, EventArgs e)
         {
             dgv_activo = "cierres";
-            this.CrearDgv(3);
-            if (this.panel_izq.Controls.Container.Contains(_lbl_busqueda_cliente))
+            CrearDgv(3);
+            if (panel_izq.Controls.Container.Contains(_lbl_busqueda_cliente))
             {
-                this.panel_izq.Controls.Remove(_lbl_busqueda_cliente);
-                this.panel_izq.Controls.Remove(_cbox_clientes);
+                panel_izq.Controls.Remove(_lbl_busqueda_cliente);
+                panel_izq.Controls.Remove(_cbox_clientes);
             }
-            if (this.panel_izq.Controls.Container.Contains(_lbl_busqueda_proveedor))
+            if (panel_izq.Controls.Container.Contains(_lbl_busqueda_proveedor))
             {
-                this.panel_izq.Controls.Remove(_lbl_busqueda_proveedor);
-                this.panel_izq.Controls.Remove(_cbox_proveedores);
+                panel_izq.Controls.Remove(_lbl_busqueda_proveedor);
+                panel_izq.Controls.Remove(_cbox_proveedores);
             }
             label1.Visible = false;
             label6.Visible = false;
@@ -180,12 +178,12 @@ namespace POSLyion
             dgv_historial.Rows.Clear();
             if (caso == 3)
             {
-                dgv_historial.Columns.Add("id_cierre", "Numero de turno");
-                dgv_historial.Columns.Add("nombre_usuario", "Usuario");
-                dgv_historial.Columns.Add("monto_ventas", "Total vendido");
-                dgv_historial.Columns.Add("monto_caja", "Dinero en caja");
-                dgv_historial.Columns.Add("fecha_inicio_turno", "Fecha de inicio de turno");
-                dgv_historial.Columns.Add("fecha_fin_turno", "Fecha de fin de turno");
+                _ = dgv_historial.Columns.Add("id_cierre", "Numero de turno");
+                _ = dgv_historial.Columns.Add("nombre_usuario", "Usuario");
+                _ = dgv_historial.Columns.Add("monto_ventas", "Total vendido");
+                _ = dgv_historial.Columns.Add("monto_caja", "Dinero en caja");
+                _ = dgv_historial.Columns.Add("fecha_inicio_turno", "Fecha de inicio de turno");
+                _ = dgv_historial.Columns.Add("fecha_fin_turno", "Fecha de fin de turno");
                 dgv_historial.Visible = true;
                 dgv_historial.Dock = DockStyle.Fill;
                 dgv_historial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -194,48 +192,46 @@ namespace POSLyion
                 dgv_historial.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 return;
             }
-            string id = string.Empty;
-            string campo_adicional_name = string.Empty;
-            string campo_adicional_header = string.Empty;
+
             if (dgv_activo == "ventas")
-            {   
-                this.CrearControlesVentas();
-                dgv_historial.Columns.Add("id_venta", "Número de venta");
-            } 
+            {
+                CrearControlesVentas();
+                _ = dgv_historial.Columns.Add("id_venta", "Número de venta");
+            }
             else if (dgv_activo == "compras")
             {
-                this.CrearControlesCompras();
-                dgv_historial.Columns.Add("id_venta", "Número de compra");
+                CrearControlesCompras();
+                _ = dgv_historial.Columns.Add("id_venta", "Número de compra");
             }
-            dgv_historial.Columns.Add("codigo_barras", "Código de barras");
-            dgv_historial.Columns.Add("descripcion", "Producto");
-            dgv_historial.Columns.Add("categoria", "Categoría");
-            dgv_historial.Columns.Add("precio_unitario", "Precio unitario");
-            dgv_historial.Columns.Add("cantidad", "Cantidad");
+            _ = dgv_historial.Columns.Add("codigo_barras", "Código de barras");
+            _ = dgv_historial.Columns.Add("descripcion", "Producto");
+            _ = dgv_historial.Columns.Add("categoria", "Categoría");
+            _ = dgv_historial.Columns.Add("precio_unitario", "Precio unitario");
+            _ = dgv_historial.Columns.Add("cantidad", "Cantidad");
             if (caso == 1)
             {
-                dgv_historial.Columns.Add("nombre_cliente", "Cliente");
+                _ = dgv_historial.Columns.Add("nombre_cliente", "Cliente");
             }
             else if (caso == 2)
             {
-                dgv_historial.Columns.Add("nombre_proveedor", "Proveedor");
+                _ = dgv_historial.Columns.Add("nombre_proveedor", "Proveedor");
             }
-            dgv_historial.Columns.Add("subtotal", "Subtotal");
-            dgv_historial.Columns.Add("usuario_registro", "Usuario");
+            _ = dgv_historial.Columns.Add("subtotal", "Subtotal");
+            _ = dgv_historial.Columns.Add("usuario_registro", "Usuario");
             if (dgv_activo == "compras")
             {
-                dgv_historial.Columns.Add("fecha_documento", "Fecha de documento");
+                _ = dgv_historial.Columns.Add("fecha_documento", "Fecha de documento");
             }
-            dgv_historial.Columns.Add("fecha_registro", "Fecha y hora");
-            if(caso == 1)
+            _ = dgv_historial.Columns.Add("fecha_registro", "Fecha y hora");
+            if (caso == 1)
             {
-                dgv_historial.Columns.Add("btn_imprimir", "");
+                _ = dgv_historial.Columns.Add("btn_imprimir", "");
             }
             dgv_historial.Visible = true;
             dgv_historial.Dock = DockStyle.Fill;
             dgv_historial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_historial.ColumnHeadersHeight = 50;
-            dgv_historial.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold); 
+            dgv_historial.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
             dgv_historial.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
@@ -246,7 +242,7 @@ namespace POSLyion
             // 
             _lbl_busqueda_proveedor.Anchor = AnchorStyles.None;
             _lbl_busqueda_proveedor.AutoSize = true;
-            _lbl_busqueda_proveedor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            _lbl_busqueda_proveedor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             _lbl_busqueda_proveedor.ForeColor = Color.DarkGreen;
             _lbl_busqueda_proveedor.Location = new Point(54, 521);
             _lbl_busqueda_proveedor.Name = "lbl_busqueda_proveedor";
@@ -272,7 +268,7 @@ namespace POSLyion
             // 
             _lbl_busqueda_cliente.Anchor = AnchorStyles.None;
             _lbl_busqueda_cliente.AutoSize = true;
-            _lbl_busqueda_cliente.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            _lbl_busqueda_cliente.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             _lbl_busqueda_cliente.ForeColor = Color.DarkGreen;
             _lbl_busqueda_cliente.Location = new Point(54, 521);
             _lbl_busqueda_cliente.Name = "lbl_busqueda_cliente";
@@ -293,16 +289,16 @@ namespace POSLyion
 
         private void MostrarReporte()
         {
-            if(dgv_historial.Rows.Count > 0)
+            if (dgv_historial.Rows.Count > 0)
             {
                 dgv_historial.Rows.Clear();
             }
-            if(dgv_activo == "ventas")
+            if (dgv_activo == "ventas")
             {
                 _lista = new CN_Reportes().Venta_Detalle(_filtros);
-                foreach (ReportesDetalle item in _lista)
+                foreach (var item in _lista)
                 {
-                    dgv_historial.Rows.Add(new object[]
+                    _ = dgv_historial.Rows.Add(new object[]
                     {
                         item.Id,
                         item.Codigo_barras,
@@ -321,9 +317,9 @@ namespace POSLyion
             else if (dgv_activo == "compras")
             {
                 _lista = new CN_Reportes().Compra_Detalle(_filtros);
-                foreach (ReportesDetalle item in _lista)
+                foreach (var item in _lista)
                 {
-                    dgv_historial.Rows.Add(new object[]
+                    _ = dgv_historial.Rows.Add(new object[]
                     {
                         item.Id,
                         item.Codigo_barras,
@@ -341,10 +337,10 @@ namespace POSLyion
             }
             else if (dgv_activo == "cierres")
             {
-                List<ReportesCierre> lista_cierres = new CN_Reportes().Cierres(_filtros);
-                foreach (ReportesCierre cierre in lista_cierres)
+                var lista_cierres = new CN_Reportes().Cierres(_filtros);
+                foreach (var cierre in lista_cierres)
                 {
-                    dgv_historial.Rows.Add(new object[]
+                    _ = dgv_historial.Rows.Add(new object[]
                     {
                         cierre.Id_cierre,
                         cierre.Nombre_usuario,
@@ -359,20 +355,20 @@ namespace POSLyion
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            if(dgv_activo == String.Empty)
+            if (dgv_activo == string.Empty)
             {
-                MessageBox.Show("Debe seleccionar ver ventas, compras o cierres de caja", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show("Debe seleccionar ver ventas, compras o cierres de caja", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            this.CargarFiltros();
-            this.MostrarReporte();
+            CargarFiltros();
+            MostrarReporte();
         }
 
         public void CargarFiltros()
         {
-            string fecha_desde = date_desde.Value.ToString("yyyy-MM-dd");
-            string fecha_hasta = date_hasta.Value.ToString("yyyy-MM-dd");
-            int campo_adicional = (dgv_activo == "ventas" ? Convert.ToInt32(((OpcionCombo)_cbox_clientes.SelectedItem).Valor) : Convert.ToInt32(((OpcionCombo)_cbox_proveedores.SelectedItem).Valor));
+            var fecha_desde = date_desde.Value.ToString("yyyy-MM-dd");
+            var fecha_hasta = date_hasta.Value.ToString("yyyy-MM-dd");
+            var campo_adicional = dgv_activo == "ventas" ? Convert.ToInt32(((OpcionCombo)_cbox_clientes.SelectedItem).Valor) : Convert.ToInt32(((OpcionCombo)_cbox_proveedores.SelectedItem).Valor);
 
             _filtros = new FiltrosReportes()
             {
@@ -384,10 +380,9 @@ namespace POSLyion
             };
         }
 
-
         public void ExportarDataGridViewAExcel(DataGridView dataGridView)
         {
-            using (SaveFileDialog sfd = new SaveFileDialog())
+            using (var sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Excel Workbook|*.xlsx";
                 sfd.Title = "Guardar archivo Excel";
@@ -398,7 +393,7 @@ namespace POSLyion
                     { "cierres", "ReporteCierres_" }
                 };
 
-                string nombre_archivo = nombreArchivos.ContainsKey(dgv_activo) ? nombreArchivos[dgv_activo] : string.Empty;
+                var nombre_archivo = nombreArchivos.ContainsKey(dgv_activo) ? nombreArchivos[dgv_activo] : string.Empty;
 
                 sfd.FileName = nombre_archivo + DateTime.Now.ToString("ddMMyyyyhhmmss");
 
@@ -406,21 +401,25 @@ namespace POSLyion
                 {
                     try
                     {
-                        using (XLWorkbook workbook = new XLWorkbook())
+                        using (var workbook = new XLWorkbook())
                         {
-                            DataTable dt = new DataTable();
+                            var dt = new DataTable();
 
                             // Crear columnas en el DataTable
                             foreach (DataGridViewColumn column in dataGridView.Columns)
                             {
-                                dt.Columns.Add(column.HeaderText);
+                                _ = dt.Columns.Add(column.HeaderText);
                             }
 
                             // Añadir filas al DataTable
                             foreach (DataGridViewRow row in dataGridView.Rows)
                             {
-                                if (row.IsNewRow) continue;
-                                DataRow dataRow = dt.NewRow();
+                                if (row.IsNewRow)
+                                {
+                                    continue;
+                                }
+
+                                var dataRow = dt.NewRow();
                                 foreach (DataGridViewCell cell in row.Cells)
                                 {
                                     dataRow[cell.ColumnIndex] = cell.Value;
@@ -429,47 +428,46 @@ namespace POSLyion
                             }
 
                             // Añadir el DataTable al libro Excel
-                            workbook.Worksheets.Add(dt, "Productos");
+                            _ = workbook.Worksheets.Add(dt, "Productos");
 
                             // Guardar el archivo Excel
                             workbook.SaveAs(sfd.FileName);
                         }
-                        MessageBox.Show("Datos exportados exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _ = MessageBox.Show("Datos exportados exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error al exportar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        _ = MessageBox.Show("Error al exportar datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
 
-
         private void btn_excel_Click(object sender, EventArgs e)
         {
-            if(dgv_historial.Rows.Count > 0)
+            if (dgv_historial.Rows.Count > 0)
             {
                 ExportarDataGridViewAExcel(dgv_historial);
             }
             else
             {
-                MessageBox.Show("No hay datos para exportar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show("No hay datos para exportar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void VentasUsuarios()
         {
-            List<DatosGraficoUsuarios> lista_ventas_usuarios = new CN_Ventas().VentasMensualesUsuarios();
-            List<string> usuario = lista_ventas_usuarios.Select(v => v.Nombre_usuario).ToList();
-            List<int> cantidades = lista_ventas_usuarios.Select(v => v.Cantidad).ToList();
-            this.ConfigurarVentasUsuariosBarra(cantidades, usuario);
-            this.ConfigurarVentasUsuariosDona(cantidades, usuario);
+            var lista_ventas_usuarios = new CN_Ventas().VentasMensualesUsuarios();
+            var usuario = lista_ventas_usuarios.Select(v => v.Nombre_usuario).ToList();
+            var cantidades = lista_ventas_usuarios.Select(v => v.Cantidad).ToList();
+            ConfigurarVentasUsuariosBarra(cantidades, usuario);
+            ConfigurarVentasUsuariosDona(cantidades, usuario);
         }
 
         private void ConfigurarVentasUsuariosBarra(List<int> cantidad, List<string> usuario)
         {
             // Crear una nueva serie
-            Series series = new Series("Ventas Mensuales por Usuario")
+            var series = new Series("Ventas Mensuales por Usuario")
             {
                 ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.String,
@@ -477,15 +475,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < usuario.Count; i++)
+            for (var i = 0; i < usuario.Count; i++)
             {
-                series.Points.AddXY(usuario[i], cantidad[i]);
+                _ = series.Points.AddXY(usuario[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart4.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart4.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart4.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart4.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart4.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart4.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
             // Configurar el Chart
@@ -501,7 +499,7 @@ namespace POSLyion
         private void ConfigurarVentasUsuariosDona(List<int> cantidad, List<string> usuario)
         {
             // Crear una nueva serie
-            Series series = new Series("Ventas Mensuales por Usuario")
+            var series = new Series("Ventas Mensuales por Usuario")
             {
                 ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.String,
@@ -509,15 +507,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < usuario.Count; i++)
+            for (var i = 0; i < usuario.Count; i++)
             {
-                series.Points.AddXY(usuario[i], cantidad[i]);
+                _ = series.Points.AddXY(usuario[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart3.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart3.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart3.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart3.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart3.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart3.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
             // Configurar el Chart
@@ -532,17 +530,17 @@ namespace POSLyion
 
         private void DatosVentas()
         {
-            List<DatosGraficoMensual> lista_ventas_mensuales = new CN_Ventas().VentasMensuales();
-            List<int> meses = lista_ventas_mensuales.Select(v => v.Mes).ToList();
-            List<int> cantidades = lista_ventas_mensuales.Select(v => v.Cantidad).ToList();
-            this.ConfigurarVentasMensualesBarra(meses, cantidades);
-            this.ConfigurarVentasMensualesDona(meses, cantidades);
+            var lista_ventas_mensuales = new CN_Ventas().VentasMensuales();
+            var meses = lista_ventas_mensuales.Select(v => v.Mes).ToList();
+            var cantidades = lista_ventas_mensuales.Select(v => v.Cantidad).ToList();
+            ConfigurarVentasMensualesBarra(meses, cantidades);
+            ConfigurarVentasMensualesDona(meses, cantidades);
         }
 
         private void ConfigurarVentasMensualesBarra(List<int> meses, List<int> cantidad)
         {
             // Crear una nueva serie
-            Series series = new Series("Ventas Mensuales")
+            var series = new Series("Ventas Mensuales")
             {
                 ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.Int32,
@@ -550,15 +548,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < meses.Count; i++)
+            for (var i = 0; i < meses.Count; i++)
             {
-                series.Points.AddXY(meses[i], cantidad[i]);
+                _ = series.Points.AddXY(meses[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart1.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart1.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart1.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart1.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart1.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart1.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
 
@@ -575,7 +573,7 @@ namespace POSLyion
         private void ConfigurarVentasMensualesDona(List<int> meses, List<int> cantidad)
         {
             // Crear una nueva serie
-            Series series = new Series("Ventas Mensuales")
+            var series = new Series("Ventas Mensuales")
             {
                 ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.Int32,
@@ -583,15 +581,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < meses.Count; i++)
+            for (var i = 0; i < meses.Count; i++)
             {
-                series.Points.AddXY("Mes n°:" + meses[i], cantidad[i]);
+                _ = series.Points.AddXY("Mes n°:" + meses[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart2.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart2.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart2.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart2.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart2.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart2.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
             // Configurar el Chart
@@ -606,17 +604,17 @@ namespace POSLyion
 
         private void DatosCompras()
         {
-            List<DatosGraficoMensual> lista_compras_mensuales = new CN_Compras().ComprasMensuales();
-            List<int> meses = lista_compras_mensuales.Select(v => v.Mes).ToList();
-            List<int> cantidades = lista_compras_mensuales.Select(v => v.Cantidad).ToList();
-            this.ConfigurarComprasMensualesBarra(meses, cantidades);
-            this.ConfigurarComprasMensualesDona(meses, cantidades);
+            var lista_compras_mensuales = new CN_Compras().ComprasMensuales();
+            var meses = lista_compras_mensuales.Select(v => v.Mes).ToList();
+            var cantidades = lista_compras_mensuales.Select(v => v.Cantidad).ToList();
+            ConfigurarComprasMensualesBarra(meses, cantidades);
+            ConfigurarComprasMensualesDona(meses, cantidades);
         }
 
         private void ConfigurarComprasMensualesBarra(List<int> meses, List<int> cantidad)
         {
             // Crear una nueva serie
-            Series series = new Series("Compras Mensuales")
+            var series = new Series("Compras Mensuales")
             {
                 ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.Int32,
@@ -624,15 +622,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < meses.Count; i++)
+            for (var i = 0; i < meses.Count; i++)
             {
-                series.Points.AddXY(meses[i], cantidad[i]);
+                _ = series.Points.AddXY(meses[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart1.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart1.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart1.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart1.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart1.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart1.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
             // Configurar el Chart
@@ -648,7 +646,7 @@ namespace POSLyion
         private void ConfigurarComprasMensualesDona(List<int> meses, List<int> cantidad)
         {
             // Crear una nueva serie
-            Series series = new Series("Compras Mensuales")
+            var series = new Series("Compras Mensuales")
             {
                 ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.Int32,
@@ -656,15 +654,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < meses.Count; i++)
+            for (var i = 0; i < meses.Count; i++)
             {
-                series.Points.AddXY("Mes n°:" + meses[i], cantidad[i]);
+                _ = series.Points.AddXY("Mes n°:" + meses[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart2.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart2.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart2.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart2.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart2.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart2.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
             // Configurar el Chart
@@ -679,17 +677,17 @@ namespace POSLyion
 
         private void ComprasUsuarios()
         {
-            List<DatosGraficoUsuarios> lista_compras_usuarios = new CN_Compras().ComprasMensualesUsuarios();
-            List<string> usuario = lista_compras_usuarios.Select(v => v.Nombre_usuario).ToList();
-            List<int> cantidades = lista_compras_usuarios.Select(v => v.Cantidad).ToList();
-            this.ConfigurarComprasUsuariosBarra(cantidades, usuario);
-            this.ConfigurarComprasUsuariosDona(cantidades, usuario);
+            var lista_compras_usuarios = new CN_Compras().ComprasMensualesUsuarios();
+            var usuario = lista_compras_usuarios.Select(v => v.Nombre_usuario).ToList();
+            var cantidades = lista_compras_usuarios.Select(v => v.Cantidad).ToList();
+            ConfigurarComprasUsuariosBarra(cantidades, usuario);
+            ConfigurarComprasUsuariosDona(cantidades, usuario);
         }
 
         private void ConfigurarComprasUsuariosBarra(List<int> cantidad, List<string> usuario)
         {
             // Crear una nueva serie
-            Series series = new Series("Compras Mensuales por Usuario")
+            var series = new Series("Compras Mensuales por Usuario")
             {
                 ChartType = SeriesChartType.Column, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.String,
@@ -697,15 +695,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < usuario.Count; i++)
+            for (var i = 0; i < usuario.Count; i++)
             {
-                series.Points.AddXY(usuario[i], cantidad[i]);
+                _ = series.Points.AddXY(usuario[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart4.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart4.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart4.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart4.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart4.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart4.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
             // Configurar el Chart
@@ -721,7 +719,7 @@ namespace POSLyion
         private void ConfigurarComprasUsuariosDona(List<int> cantidad, List<string> usuario)
         {
             // Crear una nueva serie
-            Series series = new Series("Compras Mensuales por Usuario")
+            var series = new Series("Compras Mensuales por Usuario")
             {
                 ChartType = SeriesChartType.Doughnut, // Puedes cambiar el tipo de gráfico
                 XValueType = ChartValueType.String,
@@ -729,15 +727,15 @@ namespace POSLyion
             };
 
             // Añadir puntos a la serie
-            for (int i = 0; i < usuario.Count; i++)
+            for (var i = 0; i < usuario.Count; i++)
             {
-                series.Points.AddXY(usuario[i], cantidad[i]);
+                _ = series.Points.AddXY(usuario[i], cantidad[i]);
             }
 
             // Configuración para ajustar automáticamente los ejes
             chart3.ChartAreas[0].AxisY.IsStartedFromZero = true;
-            chart3.ChartAreas[0].AxisY.Minimum = Double.NaN; // Permite valores mínimos automáticos
-            chart3.ChartAreas[0].AxisY.Maximum = Double.NaN; // Permite valores máximos automáticos
+            chart3.ChartAreas[0].AxisY.Minimum = double.NaN; // Permite valores mínimos automáticos
+            chart3.ChartAreas[0].AxisY.Maximum = double.NaN; // Permite valores máximos automáticos
             chart3.ChartAreas[0].RecalculateAxesScale(); // Recalcula la escala de los ejes
 
             // Configurar el Chart
@@ -756,56 +754,28 @@ namespace POSLyion
             if (dgv_historial.Columns[e.ColumnIndex].Name == "btn_imprimir")
             {
                 // Obtiene el ID de la fila seleccionada
-                int id = Convert.ToInt32(dgv_historial.Rows[e.RowIndex].Cells["id_venta"].Value);
-                string usuario = dgv_historial.Rows[e.RowIndex].Cells["usuario_registro"].ToString();
-                decimal total = 0;
+                var idVenta = Convert.ToInt32(dgv_historial.Rows[e.RowIndex].Cells["id_venta"].Value);
+                var venta = new CN_Ventas().BuscarVenta(idVenta);
+                var ventaDetalle = new CN_Ventas().BuscarVentaDetalle(idVenta);
+                var listaProductos = new List<ProductoCarrito>();
 
-                // Inicializa un nuevo DataGridView para el resumen
-                DataGridView dgv_resumen = new DataGridView();
-                dgv_resumen.AllowUserToAddRows = false; // No permitir al usuario añadir filas manualmente
-                dgv_resumen.AllowUserToDeleteRows = false; // No permitir al usuario eliminar filas manualmente
-                dgv_resumen.ReadOnly = true; // Hacer que el DataGridView sea de solo lectura si es necesario
-                dgv_resumen.Columns.Add("dgv_resumen_descripcion", "Descripción");
-                dgv_resumen.Columns.Add("dgv_resumen_cantidad", "Cantidad");
-                dgv_resumen.Columns.Add("dgv_resumen_precio", "Precio Unitario");
-                dgv_resumen.Columns.Add("dgv_resumen_subtotal", "Subtotal");
-
-                // Itera sobre las filas del DataGridView original
-                foreach (DataGridViewRow row in dgv_historial.Rows)
                 {
-                    // Compara el ID de la venta
-                    if (Convert.ToInt32(row.Cells["id_venta"].Value) == id)
+                    var ticket = new Ticket(66, null, null);
+                    foreach (var producto in ventaDetalle)
                     {
-                        // Agrega las filas coincidentes al nuevo DataGridView
-                        dgv_resumen.Rows.Add(new object[]
+                        listaProductos.Add(new ProductoCarrito
                         {
-                            row.Cells["descripcion"].Value.ToString(),
-                            row.Cells["cantidad"].Value.ToString(),
-                            row.Cells["precio_unitario"].Value.ToString(),
-                            row.Cells["subtotal"].Value.ToString()
+                            Cantidad = producto.Cantidad,
+                            NombreProducto = producto.oProducto.Descripcion,
+                            Precio = producto.Precio,
+                            Subtotal = producto.Subtotal
                         });
-                        total += Convert.ToDecimal(row.Cells["subtotal"].Value);
                     }
+                    ticket.Productos = listaProductos;
+                    ticket.Cliente = new Clientes() { Nombre_completo = venta.oCliente.Nombre_completo };
+                    var impresionTicket = new ImpresionTicket(ticket, venta.Total, venta.Vuelto, venta.NotasVenta, venta.oTipoVenta, venta.oUsuario.Nombre_completo, venta.Create_date);
+                    impresionTicket.Imprimir();
                 }
-                classTicket.CreaTicket Ticket1 = new classTicket.CreaTicket();
-                Ticket1.TextoCentro("Empresa xxxxx ");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoCentro("Factura de Venta");
-                Ticket1.TextoIzquierda("No Fac:" + id);
-                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                Ticket1.TextoIzquierda("Le Atendio: " + usuario);
-                Ticket1.TextoIzquierda("");
-                classTicket.CreaTicket.LineasGuion();
-                classTicket.CreaTicket.EncabezadoVenta(dgv_resumen);
-                classTicket.CreaTicket.LineasGuion();
-                classTicket.CreaTicket.LineasGuion();
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Total: ", Convert.ToDouble(total));
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.TextoIzquierda(" ");
-                string impresora = "Microsoft XPS Document Writer";
-                Ticket1.ImprimirTiket(impresora);
             }
         }
     }

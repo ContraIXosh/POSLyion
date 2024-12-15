@@ -7,8 +7,8 @@
     <ProjectGuid>{CE28EB53-CC55-44CE-A7B6-DC86322C1CB9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityLayer</RootNamespace>
-    <AssemblyName>EntityLayer</AssemblyName>
+    <RootNamespace>CapaEntidad</RootNamespace>
+    <AssemblyName>CapaEntidad</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abono_ventas.cs" />
     <Compile Include="CierreCaja.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="GraficosVentas\DatosGraficoMensual.cs" />
@@ -59,13 +60,16 @@
     <Compile Include="ReportesCierre.cs" />
     <Compile Include="ReportesDetalle.cs" />
     <Compile Include="Roles.cs" />
-    <Compile Include="Ticket.cs" />
+    <Compile Include="Tipo_Venta.cs" />
     <Compile Include="UsuariosPOS.cs" />
     <Compile Include="VariablesGlobales.cs" />
     <Compile Include="Ventas_Detalle.cs" />
     <Compile Include="Ventas.cs" />
     <Compile Include="Usuarios.cs" />
     <Compile Include="Proveedores.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

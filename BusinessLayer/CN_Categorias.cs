@@ -1,17 +1,13 @@
 ﻿using CapaDatos;
 using CapaEntidad;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
     public class CN_Categorias
     {
 
-        private CD_Categorias oCD_Categoria = new CD_Categorias();
+        private readonly CD_Categorias oCD_Categoria = new CD_Categorias();
 
         public int Crear(Categorias oCategoria, out string mensaje)
         {
@@ -20,14 +16,7 @@ namespace CapaNegocio
             {
                 mensaje += "Es necesario la descripción de la categoría.\n";
             }
-            if (mensaje != string.Empty)
-            {
-                return 0;
-            }
-            else
-            {
-                return oCD_Categoria.Crear(oCategoria, out mensaje);
-            }
+            return mensaje != string.Empty ? 0 : oCD_Categoria.Crear(oCategoria, out mensaje);
         }
 
         public List<Categorias> Leer()
@@ -42,14 +31,7 @@ namespace CapaNegocio
             {
                 mensaje += "Es necesario la descripción de la categoría.\n";
             }
-            if (mensaje != string.Empty)
-            {
-                return false;
-            }
-            else
-            {
-                return oCD_Categoria.Modificar(oCategoria, out mensaje);
-            }
+            return mensaje == string.Empty && oCD_Categoria.Modificar(oCategoria, out mensaje);
         }
 
         public List<Categorias> ContarProductos()

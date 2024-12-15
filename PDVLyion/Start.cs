@@ -1,34 +1,48 @@
 ﻿using CapaEntidad;
-using POSLyion.Resources;
-using CapaEntidad.Filtros;
 using CapaNegocio;
-using FontAwesome.Sharp;
-using POSLyion;
-using POSLyion.Modals;
+using POSLyion.Resources;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Web.UI.Design;
 using System.Windows.Forms;
 
 namespace POSLyion
 {
     public partial class Start : Form
     {
-        private static List<Form> oFormList = new List<Form>();
+        private static readonly List<Form> oFormList = new List<Form>();
         private ToolStripMenuItem currentSelectedMenuItem;
 
         public Start()
         {
             InitializeComponent();
             lbl_usuario.Text = VariablesGlobales.Usuario_actual.Nombre_completo;
-            this.KeyPreview = true;
-            AbrirFormularios();
+            KeyPreview = true;
+            AgregarControles();
             RegistrarEventos();
-            FormManager.Instance.MostrarFormularioPrincipal(0);
             ActualizarColorSeleccionado(EncontrarMenuItem("tsmenu_venta"));
+        }
+
+        private void Start_Load(object sender, EventArgs e)
+        {
+            var lista_permisos = new CN_Permisos().Leer(VariablesGlobales.Usuario_actual.Id_usuario);
+            foreach (ToolStripMenuItem item in menu.Items)
+            {
+                var encontrado = lista_permisos.Any(m => m.Nombre_menu == item.Name);
+                if (encontrado == false)
+                {
+                    item.Visible = false;
+                }
+            }
+        }
+
+        private void AgregarControles()
+        {
+            foreach (var formulario in FormManager.Instance.formulariosPrincipales.Values)
+            {
+                panel_formularios.Controls.Add(ConfigurarFormularios(formulario));
+            }
         }
 
         // Método para encontrar un ToolStripMenuItem por su nombre
@@ -44,19 +58,6 @@ namespace POSLyion
             return null; // Retornar null si no se encuentra el ítem
         }
 
-        private void Start_Load(object sender, EventArgs e)
-        {
-            List<Permisos> lista_permisos = new CN_Permisos().Leer(VariablesGlobales.Usuario_actual.Id_usuario);
-            foreach (ToolStripMenuItem item in menu.Items)
-            {
-                bool encontrado = lista_permisos.Any(m => m.Nombre_menu == item.Name);
-                if (encontrado == false)
-                {
-                    item.Visible = false;
-                }
-            }
-        }
-
         private void NavbarClick(object sender, EventArgs e)
         {
             var menuSeleccionado = sender as ToolStripMenuItem;
@@ -65,7 +66,7 @@ namespace POSLyion
             if (menuSeleccionado != null)
             {
                 // Definir un diccionario para mapear nombres de menús a índices
-                Dictionary<string, int> menuIndices = new Dictionary<string, int>
+                var menuIndices = new Dictionary<string, int>
                 {
                     { "tsmenu_venta", 0 },
                     { "tsmenu_compras", 1 },
@@ -81,7 +82,7 @@ namespace POSLyion
 
                 if (menuIndices.ContainsKey(menuSeleccionado.Name))
                 {
-                    int index = menuIndices[menuSeleccionado.Name];
+                    var index = menuIndices[menuSeleccionado.Name];
 
                     if (FormManager.Instance.formulariosPrincipales.ContainsKey(index))
                     {
@@ -93,37 +94,6 @@ namespace POSLyion
                     }
                 }
             }
-        }
-
-        private void AbrirFormularios()
-        {
-            formVentas formVentas = new formVentas();
-            formProductos formProductos = new formProductos();
-            formUsuarios formUsuarios = new formUsuarios();
-            formClientes formClientes = new formClientes();
-            formProveedores formProveedores = new formProveedores();
-            formReportes formReportes = new formReportes();
-            formCategorias formCategorias = new formCategorias();
-
-            panel_formularios.Controls.Add(ConfigurarFormularios(formVentas));
-            panel_formularios.Controls.Add(ConfigurarFormularios(formProductos));
-            panel_formularios.Controls.Add(ConfigurarFormularios(formUsuarios));
-            panel_formularios.Controls.Add(ConfigurarFormularios(formClientes));
-            panel_formularios.Controls.Add(ConfigurarFormularios(formProveedores));
-            panel_formularios.Controls.Add(ConfigurarFormularios(formReportes));
-            panel_formularios.Controls.Add(ConfigurarFormularios(formCategorias));
-
-            FormManager.Instance.RegistrarFormularioPrincipal(0, formVentas);
-            FormManager.Instance.RegistrarFormularioPrincipal(2, formProductos);
-            FormManager.Instance.RegistrarFormularioPrincipal(3, formUsuarios);
-            FormManager.Instance.RegistrarFormularioPrincipal(4, formClientes);
-            FormManager.Instance.RegistrarFormularioPrincipal(5, formProveedores);
-            FormManager.Instance.RegistrarFormularioPrincipal(6,formReportes);
-            FormManager.Instance.RegistrarFormularioPrincipal(7, formCategorias);
-
-            FormManager.Instance.RegistrarFormularioDialogo(1, new formCompras());
-            FormManager.Instance.RegistrarFormularioDialogo(8, new formConfiguracion());
-            FormManager.Instance.RegistrarFormularioDialogo(9, new formLogOut());
         }
 
         private Form ConfigurarFormularios(Form form)
@@ -156,6 +126,33 @@ namespace POSLyion
             }
             menuItem.BackColor = Color.Teal;
             currentSelectedMenuItem = menuItem;
+        }
+
+        private void Start_KeyDown(object sender, KeyEventArgs e)
+        {
+            Keys[] teclasEspeciales =
+                { Keys.F1, Keys.F2, Keys.F3, Keys.F4,
+                Keys.F5, Keys.F6, Keys.F7, Keys.F8,
+                Keys.F9, Keys.F10, Keys.F11, Keys.F12,
+                Keys.Enter, Keys.Delete, Keys.ShiftKey, Keys.ControlKey, Keys.Alt };
+            if (Array.Exists(teclasEspeciales, tecla => tecla == e.KeyCode))
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    NavbarClick(EncontrarMenuItem("tsmenu_venta"), e);
+                }
+                if (e.KeyCode == Keys.F2)
+                {
+                    NavbarClick(EncontrarMenuItem("tsmenu_clientes"), e);
+                }
+                if (e.KeyCode == Keys.F3)
+                {
+                    NavbarClick(EncontrarMenuItem("tsmenu_prods"), e);
+                }
+                if (e.KeyCode == Keys.F10)
+                {
+                }
+            }
         }
     }
 }

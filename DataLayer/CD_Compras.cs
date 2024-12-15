@@ -1,14 +1,10 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaEntidad.GraficosVentas;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using CapaEntidad;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using CapaDatos;
-using CapaEntidad.GraficosVentas;
-using System.Reflection;
 
 namespace CapaDatos
 {
@@ -16,25 +12,25 @@ namespace CapaDatos
     {
         public bool Crear(Compras oCompra, DataTable CompraDetalle, out string mensaje)
         {
-            bool respuesta = false;
+            var respuesta = false;
             mensaje = string.Empty;
             try
             {
-                using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+                using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
                 {
-                    SqlCommand cmd = new SqlCommand("SP_ALTA_COMPRA", oConexion);
-                    cmd.Parameters.AddWithValue("id_usuario", oCompra.oUsuario.Id_usuario);
-                    cmd.Parameters.AddWithValue("id_proveedor", oCompra.oProveedor.Id_proveedor);
-                    cmd.Parameters.AddWithValue("total", oCompra.Total);
-                    cmd.Parameters.AddWithValue("tipo_documento", oCompra.Tipo_documento);
-                    cmd.Parameters.AddWithValue("numero_documento", oCompra.Numero_documento);
-                    cmd.Parameters.AddWithValue("fecha_documento", oCompra.Fecha_documento);
-                    cmd.Parameters.AddWithValue("CompraDetalle", CompraDetalle);
+                    var cmd = new SqlCommand("SP_ALTA_COMPRA", oConexion);
+                    _ = cmd.Parameters.AddWithValue("id_usuario", oCompra.oUsuario.Id_usuario);
+                    _ = cmd.Parameters.AddWithValue("id_proveedor", oCompra.oProveedor.Id_proveedor);
+                    _ = cmd.Parameters.AddWithValue("total", oCompra.Total);
+                    _ = cmd.Parameters.AddWithValue("tipo_documento", oCompra.Tipo_documento);
+                    _ = cmd.Parameters.AddWithValue("numero_documento", oCompra.Numero_documento);
+                    _ = cmd.Parameters.AddWithValue("fecha_documento", oCompra.Fecha_documento);
+                    _ = cmd.Parameters.AddWithValue("CompraDetalle", CompraDetalle);
                     cmd.Parameters.Add("resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 360).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
                     oConexion.Open();
-                    cmd.ExecuteNonQuery();
+                    _ = cmd.ExecuteNonQuery();
                     respuesta = Convert.ToBoolean(cmd.Parameters["resultado"].Value);
                     mensaje = cmd.Parameters["mensaje"].Value.ToString();
                 }
@@ -49,18 +45,18 @@ namespace CapaDatos
 
         public List<Compras> Leer(string fecha_inicio, string fecha_fin)
         {
-            List<Compras> lista_compras = new List<Compras>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_compras = new List<Compras>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    string query = "SELECT id_compra, id_proveedor, total, numero_documento, fecha_documento FROM Compras WHERE (CONVERT(DATE,create_date) BETWEEN @fecha_inicio AND @fecha_fin)";
-                    SqlCommand cmd = new SqlCommand(query, oConexion);
-                    cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
-                    cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);
+                    var query = "SELECT id_compra, id_proveedor, total, numero_documento, fecha_documento FROM Compras WHERE (CONVERT(DATE,create_date) BETWEEN @fecha_inicio AND @fecha_fin)";
+                    var cmd = new SqlCommand(query, oConexion);
+                    _ = cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
+                    _ = cmd.Parameters.AddWithValue("@fecha_fin", fecha_fin);
                     cmd.CommandType = CommandType.Text;
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -75,7 +71,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_compras = new List<Compras>();
                 }
@@ -85,18 +81,20 @@ namespace CapaDatos
 
         public List<DatosGraficoMensual> ComprasMensuales()
         {
-            List<DatosGraficoMensual> lista_compras = new List<DatosGraficoMensual>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_compras = new List<DatosGraficoMensual>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT DATEPART(MONTH, create_date)[mes], COUNT(*)[cantidad_compras] FROM Compras");
-                    query.AppendLine("GROUP BY  DATEPART(MONTH, create_date) ORDER BY mes;");
-                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
-                    cmd.CommandType = CommandType.Text;
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT DATEPART(MONTH, create_date)[mes], COUNT(*)[cantidad_compras] FROM Compras");
+                    _ = query.AppendLine("GROUP BY  DATEPART(MONTH, create_date) ORDER BY mes;");
+                    var cmd = new SqlCommand(query.ToString(), oConexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -108,7 +106,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_compras = new List<DatosGraficoMensual>();
                 }
@@ -118,20 +116,22 @@ namespace CapaDatos
 
         public List<DatosGraficoUsuarios> ComprasMensualesUsuarios()
         {
-            List<DatosGraficoUsuarios> lista_compras = new List<DatosGraficoUsuarios>();
-            using (SqlConnection oConexion = new SqlConnection(Conexion.CadenaConexion))
+            var lista_compras = new List<DatosGraficoUsuarios>();
+            using (var oConexion = new SqlConnection(Conexion.CadenaConexion))
             {
                 try
                 {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT u.nombre_usuario[NombreUsuario], COUNT(c.id_usuario)[CantidadCompras], DATEPART(MONTH, c.create_date)[Mes]");
-                    query.AppendLine("FROM Compras c INNER JOIN Usuarios u ON c.id_usuario = u.id_usuario");
-                    query.AppendLine("WHERE c.create_date >= '2024-01-01' AND c.create_date < '2024-12-31'");
-                    query.AppendLine("GROUP BY u.nombre_usuario, DATEPART(MONTH, c.create_date) ORDER BY u.nombre_usuario;");
-                    SqlCommand cmd = new SqlCommand(query.ToString(), oConexion);
-                    cmd.CommandType = CommandType.Text;
+                    var query = new StringBuilder();
+                    _ = query.AppendLine("SELECT u.nombre_usuario[NombreUsuario], COUNT(c.id_usuario)[CantidadCompras], DATEPART(MONTH, c.create_date)[Mes]");
+                    _ = query.AppendLine("FROM Compras c INNER JOIN Usuarios u ON c.id_usuario = u.id_usuario");
+                    _ = query.AppendLine("WHERE c.create_date >= '2024-01-01' AND c.create_date < '2024-12-31'");
+                    _ = query.AppendLine("GROUP BY u.nombre_usuario, DATEPART(MONTH, c.create_date) ORDER BY u.nombre_usuario;");
+                    var cmd = new SqlCommand(query.ToString(), oConexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
                     oConexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -144,7 +144,7 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     lista_compras = new List<DatosGraficoUsuarios>();
                 }

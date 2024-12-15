@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POSLyion.Modals
@@ -26,21 +19,21 @@ namespace POSLyion.Modals
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            if(num_nueva_cantidad.Text != "")
+            if (num_nueva_cantidad.Text != "")
             {
                 nueva_cantidad = Convert.ToInt32(num_nueva_cantidad.Text);
                 VentanaCerrada?.Invoke(this, EventArgs.Empty);
-                this.Close();
+                Close();
             }
             else
             {
-                MessageBox.Show("Por favor ingrese una cantidad válida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show("Por favor ingrese una cantidad válida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

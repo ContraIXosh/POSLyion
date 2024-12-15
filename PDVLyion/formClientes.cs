@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaEntidad.Filtros;
 using CapaNegocio;
-using Google.OrTools.ConstraintSolver;
+using POSLyion.Modals;
+using System;
+using System.Windows.Forms;
 
 namespace POSLyion
 {
     public partial class formClientes : Form
     {
-        private static Usuarios oUsuario = new Usuarios();
-        private FiltrosCliente filtros = new FiltrosCliente();
-        private formClientesAlta formClienteAlta;
+        private static readonly Usuarios _oUsuario = new Usuarios();
+        private FiltrosCliente _filtros = new FiltrosCliente();
+        private readonly formClientesAlta _formClienteAlta;
         public formClientes()
         {
             InitializeComponent();
@@ -26,90 +19,95 @@ namespace POSLyion
 
         private void formClientes_Load(object sender, EventArgs e)
         {
-            this.MostrarClientes();
+            MostrarClientes();
         }
 
         private void panel_footer_Resize_1(object sender, EventArgs e)
         {
-            if (this.ClientSize.Width > 1000 && this.ClientSize.Height > 700)
+            if (ClientSize.Width > 1000 && ClientSize.Height > 700)
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             }
             else
             {
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             }
         }
 
-        private void grid_proveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+            var indiceCliente = e.RowIndex;
             if (dgv_clientes.Columns[e.ColumnIndex].Name == "btn_editar")
             {
-                if (index >= 0)
+                if (indiceCliente >= 0)
                 {
-                    Clientes oCliente = new Clientes()
+                    using (var formClientesAlta = new formClientesAlta(GenerarCliente(indiceCliente)))
                     {
-                        Id_cliente = Convert.ToInt32(dgv_clientes.Rows[index].Cells["id"].Value),
-                        Dni = dgv_clientes.Rows[index].Cells["dni"].Value.ToString(),
-                        Nombre_completo = dgv_clientes.Rows[index].Cells["nombre_completo"].Value.ToString(),
-                        Correo = dgv_clientes.Rows[index].Cells["correo"].Value.ToString(),
-                        Telefono = dgv_clientes.Rows[index].Cells["telefono"].Value.ToString(),
-                        Estado = Convert.ToBoolean(dgv_clientes.Rows[index].Cells["estado_valor"].Value)
-                    };
-                    formClientesAlta formClientesAlta = new formClientesAlta(oCliente);
-                    formClientesAlta.Show();
+                        _ = formClientesAlta.ShowDialog();
+                    }
+                    MostrarClientes();
                 }
             }
             else if (dgv_clientes.Columns[e.ColumnIndex].Name == "btn_eliminar")
             {
                 if (MessageBox.Show("¿Desea eliminar el cliente?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (index >= 0)
+                    if (indiceCliente >= 0)
                     {
-                        string mensaje = string.Empty;
-                        Clientes oCliente = new Clientes()
+                        var oCliente = new Clientes()
                         {
-                            Id_cliente = Convert.ToInt32(dgv_clientes.Rows[index].Cells["id"].Value)
+                            Id_cliente = Convert.ToInt32(dgv_clientes.Rows[indiceCliente].Cells["id"].Value)
                         };
-                        bool resultado = new CN_Clientes().Eliminar(oCliente, out mensaje);
-                        if (!resultado)
-                        {
-                            MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Cliente eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                        }
+                        var resultado = new CN_Clientes().Eliminar(oCliente, out var mensaje);
+                        _ = !resultado
+                            ? MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            : MessageBox.Show("Cliente eliminado con exito", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
+                MostrarClientes();
             }
+        }
+
+        private Clientes GenerarCliente(int indiceCliente)
+        {
+            var oCliente = new Clientes()
+            {
+                Id_cliente = Convert.ToInt32(dgv_clientes.Rows[indiceCliente].Cells["id"].Value),
+                Dni = dgv_clientes.Rows[indiceCliente].Cells["dni"].Value.ToString(),
+                Nombre_completo = dgv_clientes.Rows[indiceCliente].Cells["nombre_completo"].Value.ToString(),
+                Correo = dgv_clientes.Rows[indiceCliente].Cells["correo"].Value.ToString(),
+                Telefono = dgv_clientes.Rows[indiceCliente].Cells["telefono"].Value.ToString(),
+                Estado = Convert.ToBoolean(dgv_clientes.Rows[indiceCliente].Cells["estado_valor"].Value),
+                Descuento = Convert.ToInt32(dgv_clientes.Rows[indiceCliente].Cells["descuento"].Value)
+            };
+            return oCliente;
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
-            formClientesAlta formClientesAlta = new formClientesAlta();
+            var formClientesAlta = new formClientesAlta();
             formClientesAlta.Show();
         }
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            this.MostrarClientes();
+            MostrarClientes();
         }
 
         private void MostrarClientes()
         {
-            if(dgv_clientes.Rows.Count > 0)
+            if (dgv_clientes.Rows.Count > 0)
             {
                 dgv_clientes.Rows.Clear();
             }
-            List<Clientes> lista_clientes = new CN_Clientes().Leer(filtros);
-            foreach (Clientes oCliente in lista_clientes)
+            var lista_clientes = new CN_Clientes().Leer(_filtros);
+            foreach (var oCliente in lista_clientes)
             {
-                dgv_clientes.Rows.Add(new object[]
+                if (oCliente.Id_cliente != 1)
+                {
+                    _ = dgv_clientes.Rows.Add(new object[]
                 {
                     oCliente.Id_cliente,
                     oCliente.Dni,
@@ -120,43 +118,86 @@ namespace POSLyion
                     oCliente.Estado == true ? 1 : 0,
                     oCliente.Descuento
                 });
+                }
+            }
+            if (dgv_clientes.Rows.Count > 0)
+            {
+                btn_ventas_credito.Visible = true;
+                btn_ventas_credito.Text = $"Cuenta de: {dgv_clientes.CurrentRow.Cells["nombre_completo"].Value}";
+            }
+            else
+            {
+                btn_ventas_credito.Visible = false;
+            }
+
+        }
+
+        private void btn_crear_Click(object sender, EventArgs e)
+        {
+            using (var formClienteAlta = new formClientesAlta())
+            {
+                _ = formClienteAlta.ShowDialog();
+            }
+            MostrarClientes();
+        }
+
+        private void formClientes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_formClienteAlta != null && !_formClienteAlta.IsDisposed)
+            {
+                _formClienteAlta.Close();
             }
         }
 
-        private void btn_buscar_Click(object sender, EventArgs e)
+        private void CargarFiltros()
         {
-            filtros = new FiltrosCliente()
+            _filtros = new FiltrosCliente()
             {
                 Nombre_cliente = txt_busqueda.Text,
                 Estado = cb_inactivo.Checked ? 0 : 1
             };
-            this.MostrarClientes();
+        }
+
+        private void txt_busqueda_TextChanged(object sender, EventArgs e)
+        {
+            CargarFiltros();
+            MostrarClientes();
+        }
+
+        private void cb_inactivo_Click(object sender, EventArgs e)
+        {
+            CargarFiltros();
+            MostrarClientes();
         }
 
         private void btn_limpiar_filtros_Click(object sender, EventArgs e)
         {
             txt_busqueda.Text = "";
             cb_inactivo.Checked = false;
+            _filtros = new FiltrosCliente();
+            MostrarClientes();
         }
 
-        private void btn_crear_Click(object sender, EventArgs e)
+        private void dgv_clientes_SelectionChanged(object sender, EventArgs e)
         {
-            if(formClienteAlta == null || formClienteAlta.IsDisposed)
+            if (dgv_clientes.Rows.Count > 0)
             {
-                formClienteAlta = new formClientesAlta();
-                formClienteAlta.Show();
-            }
-            else
-            {
-                formClienteAlta.Focus();
+                if (dgv_clientes.SelectedRows.Count > 0)
+                {
+                    var filaSeleccionada = dgv_clientes.SelectedRows[0];
+                    var nombreCliente = filaSeleccionada.Cells["nombre_completo"].Value.ToString();
+                    btn_ventas_credito.Text = $"Cuenta de {nombreCliente}";
+                }
             }
         }
 
-        private void formClientes_FormClosing(object sender, FormClosingEventArgs e)
+        private void btn_ventas_credito_Click(object sender, EventArgs e)
         {
-            if (formClienteAlta != null && !formClienteAlta.IsDisposed) 
+            var idCliente = Convert.ToInt32(dgv_clientes.CurrentRow.Cells["id"].Value);
+            var nombreCliente = dgv_clientes.CurrentRow.Cells["nombre_completo"].Value.ToString();
+            using (var modalClientes = new MD_Clientes(idCliente, nombreCliente))
             {
-                formClienteAlta.Close();
+                _ = modalClientes.ShowDialog();
             }
         }
     }
