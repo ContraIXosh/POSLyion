@@ -183,12 +183,12 @@
             // 
             this.cbox_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbox_estado.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.BorderColor = System.Drawing.Color.DarkOrange;
             this.cbox_estado.BorderSize = 1;
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.cbox_estado.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.IconColor = System.Drawing.Color.DarkOrange;
             this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_estado.Location = new System.Drawing.Point(410, 220);
@@ -252,12 +252,12 @@
             // 
             this.cbox_roles.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbox_roles.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_roles.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_roles.BorderColor = System.Drawing.Color.DarkOrange;
             this.cbox_roles.BorderSize = 1;
             this.cbox_roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbox_roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.cbox_roles.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_roles.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_roles.IconColor = System.Drawing.Color.DarkOrange;
             this.cbox_roles.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_roles.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_roles.Location = new System.Drawing.Point(53, 220);
@@ -330,7 +330,7 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.Desktop;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Maroon;
             this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -352,69 +352,69 @@
             // btn_reiniciar_datos
             // 
             this.btn_reiniciar_datos.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
-            this.btn_reiniciar_datos.BorderRadius = 1;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Orange;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Orange;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.SaddleBrown;
+            this.btn_reiniciar_datos.BorderRadius = 5;
             this.btn_reiniciar_datos.BorderSize = 2;
             this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
             this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.BlanchedAlmond;
             this.btn_reiniciar_datos.Location = new System.Drawing.Point(245, 10);
             this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
             this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 33);
             this.btn_reiniciar_datos.TabIndex = 33;
             this.btn_reiniciar_datos.Text = "Reiniciar datos";
-            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.BlanchedAlmond;
             this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
             this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_cerrar
             // 
             this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BackColor = System.Drawing.Color.DarkRed;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.DarkRed;
             this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
-            this.btn_cerrar.BorderRadius = 1;
+            this.btn_cerrar.BorderRadius = 5;
             this.btn_cerrar.BorderSize = 2;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.ForeColor = System.Drawing.Color.DarkSalmon;
             this.btn_cerrar.Location = new System.Drawing.Point(557, 10);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 33);
             this.btn_cerrar.TabIndex = 11;
             this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.TextColor = System.Drawing.Color.DarkSalmon;
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // btn_guardar
             // 
             this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BorderColor = System.Drawing.Color.LimeGreen;
-            this.btn_guardar.BorderRadius = 1;
+            this.btn_guardar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btn_guardar.BorderRadius = 5;
             this.btn_guardar.BorderSize = 2;
             this.btn_guardar.FlatAppearance.BorderSize = 0;
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.ForeColor = System.Drawing.Color.PaleGreen;
             this.btn_guardar.Location = new System.Drawing.Point(401, 10);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 33);
             this.btn_guardar.TabIndex = 12;
             this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.TextColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.TextColor = System.Drawing.Color.PaleGreen;
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // panel_main
             // 
-            this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_main.BackColor = System.Drawing.Color.Maroon;
             this.panel_main.ColumnCount = 1;
             this.panel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_main.Controls.Add(this.tableLayoutPanel1, 0, 2);
@@ -436,12 +436,12 @@
             // 
             this.lbl_crearuser.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_crearuser.AutoSize = true;
-            this.lbl_crearuser.BackColor = System.Drawing.Color.Black;
-            this.lbl_crearuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_crearuser.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_crearuser.Location = new System.Drawing.Point(136, 4);
+            this.lbl_crearuser.BackColor = System.Drawing.Color.Maroon;
+            this.lbl_crearuser.Font = new System.Drawing.Font("FORESTS ITALIC PERSONAL USE", 50.24999F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_crearuser.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbl_crearuser.Location = new System.Drawing.Point(174, 0);
             this.lbl_crearuser.Name = "lbl_crearuser";
-            this.lbl_crearuser.Size = new System.Drawing.Size(438, 55);
+            this.lbl_crearuser.Size = new System.Drawing.Size(361, 63);
             this.lbl_crearuser.TabIndex = 45;
             this.lbl_crearuser.Text = "CREAR USUARIO";
             // 

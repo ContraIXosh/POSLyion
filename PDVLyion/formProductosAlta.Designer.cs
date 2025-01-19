@@ -75,13 +75,13 @@
             // 
             // panel_main
             // 
-            this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_main.BackColor = System.Drawing.Color.White;
             this.panel_main.Controls.Add(this.btn_reiniciar_datos);
             this.panel_main.Controls.Add(this.btn_guardar);
             this.panel_main.Controls.Add(this.btn_cerrar);
             this.panel_main.Controls.Add(this.panel_crimconfg);
-            this.panel_main.Controls.Add(this.label3);
             this.panel_main.Controls.Add(this.panel_crimdesc);
+            this.panel_main.Controls.Add(this.label3);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(0, 0);
             this.panel_main.Name = "panel_main";
@@ -90,76 +90,76 @@
             // 
             // btn_reiniciar_datos
             // 
-            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.DarkGoldenrod;
             this.btn_reiniciar_datos.BorderRadius = 10;
             this.btn_reiniciar_datos.BorderSize = 2;
             this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
             this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.DarkOrange;
             this.btn_reiniciar_datos.Location = new System.Drawing.Point(379, 468);
             this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
             this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 36);
             this.btn_reiniciar_datos.TabIndex = 15;
             this.btn_reiniciar_datos.Text = "Reiniciar datos";
-            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.DarkOrange;
             this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
             this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_guardar
             // 
-            this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BorderColor = System.Drawing.Color.Lime;
+            this.btn_guardar.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.PaleGreen;
+            this.btn_guardar.BorderColor = System.Drawing.Color.ForestGreen;
             this.btn_guardar.BorderRadius = 10;
             this.btn_guardar.BorderSize = 2;
             this.btn_guardar.FlatAppearance.BorderSize = 0;
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.ForeColor = System.Drawing.Color.Lime;
+            this.btn_guardar.ForeColor = System.Drawing.Color.DarkGreen;
             this.btn_guardar.Location = new System.Drawing.Point(554, 468);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 36);
             this.btn_guardar.TabIndex = 14;
             this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.TextColor = System.Drawing.Color.Lime;
+            this.btn_guardar.TextColor = System.Drawing.Color.DarkGreen;
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // btn_cerrar
             // 
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.BorderRadius = 10;
             this.btn_cerrar.BorderSize = 2;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.Location = new System.Drawing.Point(727, 468);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 36);
             this.btn_cerrar.TabIndex = 13;
             this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.TextColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // panel_crimconfg
             // 
-            this.panel_crimconfg.BackColor = System.Drawing.Color.Crimson;
+            this.panel_crimconfg.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_crimconfg.Controls.Add(this.panel_config);
-            this.panel_crimconfg.Location = new System.Drawing.Point(12, 272);
+            this.panel_crimconfg.Location = new System.Drawing.Point(12, 283);
             this.panel_crimconfg.Name = "panel_crimconfg";
             this.panel_crimconfg.Size = new System.Drawing.Size(865, 174);
             this.panel_crimconfg.TabIndex = 11;
             // 
             // panel_config
             // 
-            this.panel_config.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_config.BackColor = System.Drawing.Color.White;
             this.panel_config.Controls.Add(this.txt_precio_mayorista);
             this.panel_config.Controls.Add(this.lbl_precio_mayorista);
             this.panel_config.Controls.Add(this.txt_precio_minorista);
@@ -174,6 +174,7 @@
             // 
             // txt_precio_mayorista
             // 
+            this.txt_precio_mayorista.BackColor = System.Drawing.Color.PeachPuff;
             this.txt_precio_mayorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_precio_mayorista.Location = new System.Drawing.Point(610, 82);
             this.txt_precio_mayorista.Name = "txt_precio_mayorista";
@@ -185,7 +186,7 @@
             // 
             this.lbl_precio_mayorista.AutoSize = true;
             this.lbl_precio_mayorista.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_precio_mayorista.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_precio_mayorista.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_precio_mayorista.Location = new System.Drawing.Point(605, 53);
             this.lbl_precio_mayorista.Name = "lbl_precio_mayorista";
             this.lbl_precio_mayorista.Size = new System.Drawing.Size(207, 26);
@@ -194,6 +195,7 @@
             // 
             // txt_precio_minorista
             // 
+            this.txt_precio_minorista.BackColor = System.Drawing.Color.PeachPuff;
             this.txt_precio_minorista.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_precio_minorista.Location = new System.Drawing.Point(311, 85);
             this.txt_precio_minorista.Name = "txt_precio_minorista";
@@ -203,6 +205,7 @@
             // 
             // txt_costo
             // 
+            this.txt_costo.BackColor = System.Drawing.Color.PeachPuff;
             this.txt_costo.Enabled = false;
             this.txt_costo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_costo.Location = new System.Drawing.Point(8, 85);
@@ -215,7 +218,7 @@
             // 
             this.lbl_config.AutoSize = true;
             this.lbl_config.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_config.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_config.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_config.Location = new System.Drawing.Point(3, 10);
             this.lbl_config.Name = "lbl_config";
             this.lbl_config.Size = new System.Drawing.Size(342, 26);
@@ -226,7 +229,7 @@
             // 
             this.lbl_costo.AutoSize = true;
             this.lbl_costo.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_costo.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_costo.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_costo.Location = new System.Drawing.Point(3, 53);
             this.lbl_costo.Name = "lbl_costo";
             this.lbl_costo.Size = new System.Drawing.Size(80, 26);
@@ -237,7 +240,7 @@
             // 
             this.lbl_precio_minorista.AutoSize = true;
             this.lbl_precio_minorista.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_precio_minorista.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_precio_minorista.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_precio_minorista.Location = new System.Drawing.Point(306, 53);
             this.lbl_precio_minorista.Name = "lbl_precio_minorista";
             this.lbl_precio_minorista.Size = new System.Drawing.Size(188, 26);
@@ -247,26 +250,26 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(274, 9);
+            this.label3.Font = new System.Drawing.Font("FORESTS ITALIC PERSONAL USE", 39.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label3.Location = new System.Drawing.Point(234, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(342, 31);
+            this.label3.Size = new System.Drawing.Size(433, 64);
             this.label3.TabIndex = 11;
             this.label3.Text = "CREAR NUEVO PRODUCTO";
             // 
             // panel_crimdesc
             // 
-            this.panel_crimdesc.BackColor = System.Drawing.Color.Crimson;
+            this.panel_crimdesc.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_crimdesc.Controls.Add(this.panel_desc);
-            this.panel_crimdesc.Location = new System.Drawing.Point(12, 44);
+            this.panel_crimdesc.Location = new System.Drawing.Point(12, 58);
             this.panel_crimdesc.Name = "panel_crimdesc";
             this.panel_crimdesc.Size = new System.Drawing.Size(865, 222);
             this.panel_crimdesc.TabIndex = 10;
             // 
             // panel_desc
             // 
-            this.panel_desc.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_desc.BackColor = System.Drawing.Color.White;
             this.panel_desc.Controls.Add(this.txt_stock_minimo);
             this.panel_desc.Controls.Add(this.txt_descripcion);
             this.panel_desc.Controls.Add(this.txt_cantidad);
@@ -287,6 +290,7 @@
             // 
             // txt_stock_minimo
             // 
+            this.txt_stock_minimo.BackColor = System.Drawing.Color.PeachPuff;
             this.txt_stock_minimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_stock_minimo.Location = new System.Drawing.Point(610, 172);
             this.txt_stock_minimo.Name = "txt_stock_minimo";
@@ -296,6 +300,7 @@
             // 
             // txt_descripcion
             // 
+            this.txt_descripcion.BackColor = System.Drawing.Color.PeachPuff;
             this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_descripcion.Location = new System.Drawing.Point(311, 172);
             this.txt_descripcion.Name = "txt_descripcion";
@@ -304,6 +309,7 @@
             // 
             // txt_cantidad
             // 
+            this.txt_cantidad.BackColor = System.Drawing.Color.PeachPuff;
             this.txt_cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_cantidad.Location = new System.Drawing.Point(610, 83);
             this.txt_cantidad.Name = "txt_cantidad";
@@ -315,7 +321,7 @@
             // 
             this.lbl_prod.AutoSize = true;
             this.lbl_prod.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_prod.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_prod.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_prod.Location = new System.Drawing.Point(3, 14);
             this.lbl_prod.Name = "lbl_prod";
             this.lbl_prod.Size = new System.Drawing.Size(202, 26);
@@ -324,6 +330,7 @@
             // 
             // txt_codigo_barras
             // 
+            this.txt_codigo_barras.BackColor = System.Drawing.Color.PeachPuff;
             this.txt_codigo_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_codigo_barras.Location = new System.Drawing.Point(8, 83);
             this.txt_codigo_barras.Name = "txt_codigo_barras";
@@ -334,7 +341,7 @@
             // 
             this.lbl_estado.AutoSize = true;
             this.lbl_estado.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_estado.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_estado.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_estado.Location = new System.Drawing.Point(3, 142);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(91, 26);
@@ -343,7 +350,7 @@
             // 
             // cbox_estado
             // 
-            this.cbox_estado.BackColor = System.Drawing.Color.Crimson;
+            this.cbox_estado.BackColor = System.Drawing.Color.OrangeRed;
             this.cbox_estado.BorderColor = System.Drawing.Color.GhostWhite;
             this.cbox_estado.BorderSize = 1;
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
@@ -364,7 +371,7 @@
             // 
             this.lbl_stock_minimo.AutoSize = true;
             this.lbl_stock_minimo.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_stock_minimo.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_stock_minimo.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_stock_minimo.Location = new System.Drawing.Point(605, 143);
             this.lbl_stock_minimo.Name = "lbl_stock_minimo";
             this.lbl_stock_minimo.Size = new System.Drawing.Size(167, 26);
@@ -373,7 +380,7 @@
             // 
             // cbox_tipo
             // 
-            this.cbox_tipo.BackColor = System.Drawing.Color.Crimson;
+            this.cbox_tipo.BackColor = System.Drawing.Color.OrangeRed;
             this.cbox_tipo.BorderColor = System.Drawing.Color.GhostWhite;
             this.cbox_tipo.BorderSize = 1;
             this.cbox_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
@@ -394,7 +401,7 @@
             // 
             this.lbl_cantidad.AutoSize = true;
             this.lbl_cantidad.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cantidad.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_cantidad.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_cantidad.Location = new System.Drawing.Point(605, 54);
             this.lbl_cantidad.Name = "lbl_cantidad";
             this.lbl_cantidad.Size = new System.Drawing.Size(117, 26);
@@ -405,7 +412,7 @@
             // 
             this.lbl_codigo_barras.AutoSize = true;
             this.lbl_codigo_barras.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_codigo_barras.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_codigo_barras.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_codigo_barras.Location = new System.Drawing.Point(3, 53);
             this.lbl_codigo_barras.Name = "lbl_codigo_barras";
             this.lbl_codigo_barras.Size = new System.Drawing.Size(177, 26);
@@ -416,7 +423,7 @@
             // 
             this.lbl_descripcion.AutoSize = true;
             this.lbl_descripcion.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_descripcion.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_descripcion.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_descripcion.Location = new System.Drawing.Point(306, 142);
             this.lbl_descripcion.Name = "lbl_descripcion";
             this.lbl_descripcion.Size = new System.Drawing.Size(144, 26);
@@ -427,7 +434,7 @@
             // 
             this.lbl_categoria.AutoSize = true;
             this.lbl_categoria.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_categoria.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_categoria.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_categoria.Location = new System.Drawing.Point(306, 53);
             this.lbl_categoria.Name = "lbl_categoria";
             this.lbl_categoria.Size = new System.Drawing.Size(208, 26);

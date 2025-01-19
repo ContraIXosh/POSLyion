@@ -70,12 +70,14 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel_bot.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.panel_mid.SuspendLayout();
@@ -89,11 +91,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_bot
             // 
-            this.panel_bot.BackColor = System.Drawing.Color.Black;
+            this.panel_bot.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_bot.ColumnCount = 3;
             this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -113,11 +117,12 @@
             // 
             this.lbl_updateversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updateversion.AutoSize = true;
-            this.lbl_updateversion.BackColor = System.Drawing.Color.Black;
+            this.lbl_updateversion.BackColor = System.Drawing.Color.OrangeRed;
+            this.lbl_updateversion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_updateversion.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_updateversion.Location = new System.Drawing.Point(864, 1);
+            this.lbl_updateversion.Location = new System.Drawing.Point(841, 1);
             this.lbl_updateversion.Name = "lbl_updateversion";
-            this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
+            this.lbl_updateversion.Size = new System.Drawing.Size(138, 13);
             this.lbl_updateversion.TabIndex = 2;
             this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
             // 
@@ -125,11 +130,12 @@
             // 
             this.lbl_updatetime.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updatetime.AutoSize = true;
-            this.lbl_updatetime.BackColor = System.Drawing.Color.Black;
+            this.lbl_updatetime.BackColor = System.Drawing.Color.OrangeRed;
+            this.lbl_updatetime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_updatetime.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_updatetime.Location = new System.Drawing.Point(659, 1);
+            this.lbl_updatetime.Location = new System.Drawing.Point(598, 1);
             this.lbl_updatetime.Name = "lbl_updatetime";
-            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
+            this.lbl_updatetime.Size = new System.Drawing.Size(237, 13);
             this.lbl_updatetime.TabIndex = 3;
             this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
             // 
@@ -153,7 +159,7 @@
             // 
             // panel_mid
             // 
-            this.panel_mid.BackColor = System.Drawing.Color.Crimson;
+            this.panel_mid.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_mid.ColumnCount = 2;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -170,39 +176,38 @@
             // 
             // panel_izq
             // 
-            this.panel_izq.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panel_izq.BackColor = System.Drawing.Color.Gold;
             this.panel_izq.ColumnCount = 1;
             this.panel_izq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_izq.Controls.Add(this.lbl_busqueda_usuario, 0, 7);
+            this.panel_izq.Controls.Add(this.lbl_busqueda_usuario, 0, 6);
             this.panel_izq.Controls.Add(this.btn_excel, 0, 1);
             this.panel_izq.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.panel_izq.Controls.Add(this.txt_busqueda_producto, 0, 10);
-            this.panel_izq.Controls.Add(this.lbl_desde, 0, 3);
-            this.panel_izq.Controls.Add(this.date_desde, 0, 4);
-            this.panel_izq.Controls.Add(this.lbl_hasta, 0, 5);
-            this.panel_izq.Controls.Add(this.date_hasta, 0, 6);
-            this.panel_izq.Controls.Add(this.lbl_busqueda_producto, 0, 9);
-            this.panel_izq.Controls.Add(this.cbox_usuarios, 0, 8);
-            this.panel_izq.Controls.Add(this.btn_buscar, 0, 13);
+            this.panel_izq.Controls.Add(this.txt_busqueda_producto, 0, 9);
+            this.panel_izq.Controls.Add(this.lbl_desde, 0, 2);
+            this.panel_izq.Controls.Add(this.date_desde, 0, 3);
+            this.panel_izq.Controls.Add(this.lbl_hasta, 0, 4);
+            this.panel_izq.Controls.Add(this.date_hasta, 0, 5);
+            this.panel_izq.Controls.Add(this.lbl_busqueda_producto, 0, 8);
+            this.panel_izq.Controls.Add(this.cbox_usuarios, 0, 7);
+            this.panel_izq.Controls.Add(this.btn_buscar, 0, 12);
             this.panel_izq.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_izq.Location = new System.Drawing.Point(5, 5);
             this.panel_izq.Margin = new System.Windows.Forms.Padding(5);
             this.panel_izq.Name = "panel_izq";
-            this.panel_izq.RowCount = 14;
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.52448F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.39109F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.478217F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.950108F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.004895F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.628059F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.514685F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.420372F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.300588F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.065166F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.692202F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.827795F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.601175F));
-            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.601175F));
+            this.panel_izq.RowCount = 13;
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.13441F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.99453F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.239873F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.443426F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.902142F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.880645F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.68434F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.510024F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.136261F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.920709F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.113551F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.020046F));
+            this.panel_izq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.020046F));
             this.panel_izq.Size = new System.Drawing.Size(284, 585);
             this.panel_izq.TabIndex = 39;
             // 
@@ -210,11 +215,11 @@
             // 
             this.lbl_busqueda_usuario.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_busqueda_usuario.AutoSize = true;
-            this.lbl_busqueda_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_busqueda_usuario.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lbl_busqueda_usuario.Location = new System.Drawing.Point(36, 327);
+            this.lbl_busqueda_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_busqueda_usuario.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_busqueda_usuario.Location = new System.Drawing.Point(27, 332);
             this.lbl_busqueda_usuario.Name = "lbl_busqueda_usuario";
-            this.lbl_busqueda_usuario.Size = new System.Drawing.Size(212, 24);
+            this.lbl_busqueda_usuario.Size = new System.Drawing.Size(229, 24);
             this.lbl_busqueda_usuario.TabIndex = 44;
             this.lbl_busqueda_usuario.Text = "NOMBRE DE USUARIO";
             // 
@@ -230,7 +235,7 @@
             this.btn_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_excel.ForeColor = System.Drawing.Color.White;
-            this.btn_excel.Location = new System.Drawing.Point(30, 89);
+            this.btn_excel.Location = new System.Drawing.Point(30, 94);
             this.btn_excel.Name = "btn_excel";
             this.btn_excel.Size = new System.Drawing.Size(224, 40);
             this.btn_excel.TabIndex = 28;
@@ -254,7 +259,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(278, 67);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(278, 70);
             this.tableLayoutPanel1.TabIndex = 39;
             // 
             // btn_ver_cierres
@@ -262,14 +267,14 @@
             this.btn_ver_cierres.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_ver_cierres.BackColor = System.Drawing.Color.OrangeRed;
             this.btn_ver_cierres.BackgroundColor = System.Drawing.Color.OrangeRed;
-            this.btn_ver_cierres.BorderColor = System.Drawing.Color.Red;
+            this.btn_ver_cierres.BorderColor = System.Drawing.Color.Black;
             this.btn_ver_cierres.BorderRadius = 10;
-            this.btn_ver_cierres.BorderSize = 0;
+            this.btn_ver_cierres.BorderSize = 2;
             this.btn_ver_cierres.FlatAppearance.BorderSize = 0;
             this.btn_ver_cierres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ver_cierres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_cierres.ForeColor = System.Drawing.Color.Black;
-            this.btn_ver_cierres.Location = new System.Drawing.Point(187, 11);
+            this.btn_ver_cierres.Location = new System.Drawing.Point(187, 13);
             this.btn_ver_cierres.Name = "btn_ver_cierres";
             this.btn_ver_cierres.Size = new System.Drawing.Size(88, 44);
             this.btn_ver_cierres.TabIndex = 31;
@@ -281,18 +286,19 @@
             // btn_ver_compras
             // 
             this.btn_ver_compras.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_ver_compras.BackColor = System.Drawing.Color.Orange;
-            this.btn_ver_compras.BackgroundColor = System.Drawing.Color.Orange;
-            this.btn_ver_compras.BorderColor = System.Drawing.Color.Red;
+            this.btn_ver_compras.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_ver_compras.BackgroundColor = System.Drawing.Color.DarkOrange;
+            this.btn_ver_compras.BorderColor = System.Drawing.Color.Black;
             this.btn_ver_compras.BorderRadius = 10;
-            this.btn_ver_compras.BorderSize = 0;
+            this.btn_ver_compras.BorderSize = 2;
             this.btn_ver_compras.FlatAppearance.BorderSize = 0;
             this.btn_ver_compras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ver_compras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_compras.ForeColor = System.Drawing.Color.Black;
-            this.btn_ver_compras.Location = new System.Drawing.Point(95, 11);
+            this.btn_ver_compras.Location = new System.Drawing.Point(92, 13);
+            this.btn_ver_compras.Margin = new System.Windows.Forms.Padding(0);
             this.btn_ver_compras.Name = "btn_ver_compras";
-            this.btn_ver_compras.Size = new System.Drawing.Size(86, 44);
+            this.btn_ver_compras.Size = new System.Drawing.Size(92, 44);
             this.btn_ver_compras.TabIndex = 30;
             this.btn_ver_compras.Text = "Compras";
             this.btn_ver_compras.TextColor = System.Drawing.Color.Black;
@@ -302,16 +308,16 @@
             // btn_ver_ventas
             // 
             this.btn_ver_ventas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_ver_ventas.BackColor = System.Drawing.Color.Gold;
-            this.btn_ver_ventas.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_ver_ventas.BorderColor = System.Drawing.Color.Red;
+            this.btn_ver_ventas.BackColor = System.Drawing.Color.Wheat;
+            this.btn_ver_ventas.BackgroundColor = System.Drawing.Color.Wheat;
+            this.btn_ver_ventas.BorderColor = System.Drawing.Color.Black;
             this.btn_ver_ventas.BorderRadius = 10;
-            this.btn_ver_ventas.BorderSize = 0;
+            this.btn_ver_ventas.BorderSize = 2;
             this.btn_ver_ventas.FlatAppearance.BorderSize = 0;
             this.btn_ver_ventas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ver_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_ventas.ForeColor = System.Drawing.Color.Black;
-            this.btn_ver_ventas.Location = new System.Drawing.Point(3, 11);
+            this.btn_ver_ventas.Location = new System.Drawing.Point(3, 13);
             this.btn_ver_ventas.Name = "btn_ver_ventas";
             this.btn_ver_ventas.Size = new System.Drawing.Size(86, 44);
             this.btn_ver_ventas.TabIndex = 29;
@@ -324,7 +330,7 @@
             // 
             this.txt_busqueda_producto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_busqueda_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_busqueda_producto.Location = new System.Drawing.Point(3, 408);
+            this.txt_busqueda_producto.Location = new System.Drawing.Point(3, 420);
             this.txt_busqueda_producto.Name = "txt_busqueda_producto";
             this.txt_busqueda_producto.Size = new System.Drawing.Size(278, 29);
             this.txt_busqueda_producto.TabIndex = 43;
@@ -333,63 +339,63 @@
             // 
             this.lbl_desde.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_desde.AutoSize = true;
-            this.lbl_desde.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_desde.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lbl_desde.Location = new System.Drawing.Point(70, 169);
+            this.lbl_desde.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_desde.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_desde.Location = new System.Drawing.Point(64, 164);
             this.lbl_desde.Name = "lbl_desde";
-            this.lbl_desde.Size = new System.Drawing.Size(144, 24);
+            this.lbl_desde.Size = new System.Drawing.Size(155, 24);
             this.lbl_desde.TabIndex = 34;
             this.lbl_desde.Text = "FECHA DESDE";
             // 
             // date_desde
             // 
             this.date_desde.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.date_desde.BorderColor = System.Drawing.Color.DarkCyan;
+            this.date_desde.BorderColor = System.Drawing.Color.DarkOrange;
             this.date_desde.BorderSize = 0;
             this.date_desde.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.date_desde.Location = new System.Drawing.Point(23, 201);
+            this.date_desde.Location = new System.Drawing.Point(23, 198);
             this.date_desde.MinimumSize = new System.Drawing.Size(4, 35);
             this.date_desde.Name = "date_desde";
             this.date_desde.Size = new System.Drawing.Size(237, 35);
-            this.date_desde.SkinColor = System.Drawing.Color.Teal;
+            this.date_desde.SkinColor = System.Drawing.Color.DarkOrange;
             this.date_desde.TabIndex = 35;
-            this.date_desde.TextColor = System.Drawing.Color.White;
+            this.date_desde.TextColor = System.Drawing.Color.Black;
             // 
             // lbl_hasta
             // 
             this.lbl_hasta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_hasta.AutoSize = true;
-            this.lbl_hasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_hasta.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lbl_hasta.Location = new System.Drawing.Point(70, 253);
+            this.lbl_hasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_hasta.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_hasta.Location = new System.Drawing.Point(64, 253);
             this.lbl_hasta.Name = "lbl_hasta";
-            this.lbl_hasta.Size = new System.Drawing.Size(144, 24);
+            this.lbl_hasta.Size = new System.Drawing.Size(155, 24);
             this.lbl_hasta.TabIndex = 36;
             this.lbl_hasta.Text = "FECHA HASTA";
             // 
             // date_hasta
             // 
             this.date_hasta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.date_hasta.BorderColor = System.Drawing.Color.DarkCyan;
+            this.date_hasta.BorderColor = System.Drawing.Color.DarkOrange;
             this.date_hasta.BorderSize = 0;
             this.date_hasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.date_hasta.Location = new System.Drawing.Point(23, 281);
+            this.date_hasta.Location = new System.Drawing.Point(23, 282);
             this.date_hasta.MinimumSize = new System.Drawing.Size(4, 35);
             this.date_hasta.Name = "date_hasta";
             this.date_hasta.Size = new System.Drawing.Size(237, 35);
-            this.date_hasta.SkinColor = System.Drawing.Color.Teal;
+            this.date_hasta.SkinColor = System.Drawing.Color.DarkOrange;
             this.date_hasta.TabIndex = 37;
-            this.date_hasta.TextColor = System.Drawing.Color.White;
+            this.date_hasta.TextColor = System.Drawing.Color.Black;
             // 
             // lbl_busqueda_producto
             // 
             this.lbl_busqueda_producto.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_busqueda_producto.AutoSize = true;
-            this.lbl_busqueda_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_busqueda_producto.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lbl_busqueda_producto.Location = new System.Drawing.Point(24, 381);
+            this.lbl_busqueda_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_busqueda_producto.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_busqueda_producto.Location = new System.Drawing.Point(15, 393);
             this.lbl_busqueda_producto.Name = "lbl_busqueda_producto";
-            this.lbl_busqueda_producto.Size = new System.Drawing.Size(235, 24);
+            this.lbl_busqueda_producto.Size = new System.Drawing.Size(253, 24);
             this.lbl_busqueda_producto.TabIndex = 41;
             this.lbl_busqueda_producto.Text = "NOMBRE DE PRODUCTO";
             // 
@@ -398,7 +404,7 @@
             this.cbox_usuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbox_usuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbox_usuarios.FormattingEnabled = true;
-            this.cbox_usuarios.Location = new System.Drawing.Point(3, 354);
+            this.cbox_usuarios.Location = new System.Drawing.Point(3, 359);
             this.cbox_usuarios.Name = "cbox_usuarios";
             this.cbox_usuarios.Size = new System.Drawing.Size(278, 32);
             this.cbox_usuarios.TabIndex = 45;
@@ -406,21 +412,21 @@
             // btn_buscar
             // 
             this.btn_buscar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_buscar.BackColor = System.Drawing.Color.LimeGreen;
-            this.btn_buscar.BackgroundColor = System.Drawing.Color.LimeGreen;
+            this.btn_buscar.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_buscar.BackgroundColor = System.Drawing.Color.PaleGreen;
             this.btn_buscar.BorderColor = System.Drawing.Color.DarkGreen;
             this.btn_buscar.BorderRadius = 8;
             this.btn_buscar.BorderSize = 3;
             this.btn_buscar.FlatAppearance.BorderSize = 0;
             this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btn_buscar.ForeColor = System.Drawing.Color.DarkGreen;
             this.btn_buscar.Location = new System.Drawing.Point(36, 537);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(212, 37);
             this.btn_buscar.TabIndex = 38;
             this.btn_buscar.Text = "BUSCAR";
-            this.btn_buscar.TextColor = System.Drawing.SystemColors.Desktop;
+            this.btn_buscar.TextColor = System.Drawing.Color.DarkGreen;
             this.btn_buscar.UseVisualStyleBackColor = false;
             this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
@@ -443,7 +449,7 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -464,7 +470,7 @@
             this.dgv_historial.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgv_historial.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_historial.BackgroundColor = System.Drawing.Color.Black;
+            this.dgv_historial.BackgroundColor = System.Drawing.Color.White;
             this.dgv_historial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_historial.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_historial.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -502,18 +508,18 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.OrangeRed;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.chart4, 0, 3);
             this.tableLayoutPanel4.Controls.Add(this.chart2, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.label6, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.chart1, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label3, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.chart3, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel1, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel2, 1, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 292);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -533,14 +539,14 @@
             this.chart4.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chart4.Legends.Add(legend1);
-            this.chart4.Location = new System.Drawing.Point(3, 197);
+            this.chart4.Location = new System.Drawing.Point(3, 203);
             this.chart4.Name = "chart4";
             this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart4.Series.Add(series1);
-            this.chart4.Size = new System.Drawing.Size(335, 93);
+            this.chart4.Size = new System.Drawing.Size(335, 87);
             this.chart4.TabIndex = 7;
             this.chart4.Text = "c_ventausuarioBarra";
             // 
@@ -559,26 +565,16 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(336, 92);
+            this.chart2.Size = new System.Drawing.Size(336, 87);
             this.chart2.TabIndex = 5;
             this.chart2.Text = "c_ventageneralDona";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gold;
-            this.label6.Location = new System.Drawing.Point(3, 146);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(238, 24);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "VENTAS POR USUARIO";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gold;
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
             this.label2.Location = new System.Drawing.Point(344, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(334, 48);
@@ -599,31 +595,21 @@
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(335, 92);
+            this.chart1.Size = new System.Drawing.Size(335, 87);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "c_ventageneralBarra";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(334, 48);
             this.label1.TabIndex = 1;
             this.label1.Text = "VENTAS MENSUALES - GRAFICO BARRA";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(344, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(276, 48);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "VENTAS MENSUALES USUARIOS-GRAFICO DONA";
             // 
             // chart3
             // 
@@ -632,7 +618,7 @@
             this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
             legend4.Name = "Legend1";
             this.chart3.Legends.Add(legend4);
-            this.chart3.Location = new System.Drawing.Point(344, 197);
+            this.chart3.Location = new System.Drawing.Point(344, 203);
             this.chart3.Name = "chart3";
             this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series4.ChartArea = "ChartArea1";
@@ -640,9 +626,50 @@
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             this.chart3.Series.Add(series4);
-            this.chart3.Size = new System.Drawing.Size(336, 93);
+            this.chart3.Size = new System.Drawing.Size(336, 87);
             this.chart3.TabIndex = 6;
             this.chart3.Text = "c_ventausuarioDona";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Controls.Add(this.label6);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 144);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(335, 53);
+            this.flowLayoutPanel1.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Maroon;
+            this.label6.Location = new System.Drawing.Point(3, 2);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(238, 24);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "VENTAS POR USUARIO";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel2.Controls.Add(this.label3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(344, 144);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(334, 53);
+            this.flowLayoutPanel2.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Maroon;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(276, 48);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "VENTAS MENSUALES USUARIOS-GRAFICO DONA";
             // 
             // formReportes
             // 
@@ -669,6 +696,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -701,11 +732,13 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -96,6 +96,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Bisque;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -116,69 +117,69 @@
             // btn_reiniciar_datos
             // 
             this.btn_reiniciar_datos.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Gold;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Sienna;
             this.btn_reiniciar_datos.BorderRadius = 7;
             this.btn_reiniciar_datos.BorderSize = 2;
             this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
             this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Sienna;
             this.btn_reiniciar_datos.Location = new System.Drawing.Point(249, 8);
             this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
             this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 40);
             this.btn_reiniciar_datos.TabIndex = 60;
             this.btn_reiniciar_datos.Text = "Reiniciar datos";
-            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Sienna;
             this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
             this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_cerrar
             // 
             this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.BorderRadius = 7;
             this.btn_cerrar.BorderSize = 2;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.Location = new System.Drawing.Point(561, 8);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 40);
             this.btn_cerrar.TabIndex = 11;
             this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.TextColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // btn_guardar
             // 
             this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BorderColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.PaleGreen;
+            this.btn_guardar.BorderColor = System.Drawing.Color.ForestGreen;
             this.btn_guardar.BorderRadius = 7;
             this.btn_guardar.BorderSize = 2;
             this.btn_guardar.FlatAppearance.BorderSize = 0;
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.ForeColor = System.Drawing.Color.ForestGreen;
             this.btn_guardar.Location = new System.Drawing.Point(405, 8);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 40);
             this.btn_guardar.TabIndex = 12;
             this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.TextColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.TextColor = System.Drawing.Color.ForestGreen;
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // panel_createclient
             // 
-            this.panel_createclient.BackColor = System.Drawing.Color.Indigo;
+            this.panel_createclient.BackColor = System.Drawing.Color.Bisque;
             this.panel_createclient.ColumnCount = 1;
             this.panel_createclient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_createclient.Controls.Add(this.lbl_crearcliente, 0, 0);
@@ -198,17 +199,17 @@
             // 
             this.lbl_crearcliente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_crearcliente.AutoSize = true;
-            this.lbl_crearcliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_crearcliente.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_crearcliente.Location = new System.Drawing.Point(146, 7);
+            this.lbl_crearcliente.Font = new System.Drawing.Font("FORESTS ITALIC PERSONAL USE", 47.99999F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_crearcliente.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbl_crearcliente.Location = new System.Drawing.Point(189, 0);
             this.lbl_crearcliente.Name = "lbl_crearcliente";
-            this.lbl_crearcliente.Size = new System.Drawing.Size(422, 55);
+            this.lbl_crearcliente.Size = new System.Drawing.Size(336, 70);
             this.lbl_crearcliente.TabIndex = 34;
             this.lbl_crearcliente.Text = "CREAR CLIENTE";
             // 
             // panel_create
             // 
-            this.panel_create.BackColor = System.Drawing.Color.Indigo;
+            this.panel_create.BackColor = System.Drawing.Color.Bisque;
             this.panel_create.ColumnCount = 3;
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.panel_create.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -259,7 +260,7 @@
             this.lbl_descuento.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_descuento.AutoSize = true;
             this.lbl_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_descuento.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_descuento.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_descuento.Location = new System.Drawing.Point(519, 158);
             this.lbl_descuento.Name = "lbl_descuento";
             this.lbl_descuento.Size = new System.Drawing.Size(152, 25);
@@ -271,7 +272,7 @@
             this.lbl_full_name.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_full_name.AutoSize = true;
             this.lbl_full_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_full_name.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_full_name.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_full_name.Location = new System.Drawing.Point(49, 11);
             this.lbl_full_name.Name = "lbl_full_name";
             this.lbl_full_name.Size = new System.Drawing.Size(140, 50);
@@ -292,7 +293,7 @@
             this.lbl_dni.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_dni.AutoSize = true;
             this.lbl_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dni.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_dni.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_dni.Location = new System.Drawing.Point(94, 158);
             this.lbl_dni.Name = "lbl_dni";
             this.lbl_dni.Size = new System.Drawing.Size(50, 25);
@@ -304,7 +305,7 @@
             this.lbl_email.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_email.AutoSize = true;
             this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_email.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_email.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_email.Location = new System.Drawing.Point(555, 36);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(80, 25);
@@ -324,7 +325,7 @@
             this.lbl_estado.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_estado.AutoSize = true;
             this.lbl_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_estado.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_estado.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_estado.Location = new System.Drawing.Point(305, 158);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(104, 25);
@@ -336,7 +337,7 @@
             this.lbl_telefono.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_telefono.AutoSize = true;
             this.lbl_telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_telefono.ForeColor = System.Drawing.Color.Orange;
+            this.lbl_telefono.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_telefono.Location = new System.Drawing.Point(290, 36);
             this.lbl_telefono.Name = "lbl_telefono";
             this.lbl_telefono.Size = new System.Drawing.Size(133, 25);
@@ -347,12 +348,12 @@
             // 
             this.cbox_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbox_estado.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_estado.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.BorderColor = System.Drawing.Color.OrangeRed;
             this.cbox_estado.BorderSize = 1;
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbox_estado.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_estado.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbox_estado.IconColor = System.Drawing.Color.OrangeRed;
             this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_estado.Location = new System.Drawing.Point(241, 186);

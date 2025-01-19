@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_izq = new System.Windows.Forms.Panel();
@@ -79,6 +80,8 @@
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel_izq.SuspendLayout();
@@ -93,6 +96,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -122,8 +127,7 @@
             // 
             // panel_izq
             // 
-            this.panel_izq.BackColor = System.Drawing.Color.Crimson;
-            this.panel_izq.Controls.Add(this.txt_id_producto);
+            this.panel_izq.BackColor = System.Drawing.Color.DarkOrange;
             this.panel_izq.Controls.Add(this.lbox_productos);
             this.panel_izq.Controls.Add(this.txt_precio_costo);
             this.panel_izq.Controls.Add(this.txt_codigo_barras);
@@ -145,9 +149,9 @@
             // txt_id_producto
             // 
             this.txt_id_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_id_producto.Location = new System.Drawing.Point(329, 3);
+            this.txt_id_producto.Location = new System.Drawing.Point(469, 3);
             this.txt_id_producto.Name = "txt_id_producto";
-            this.txt_id_producto.Size = new System.Drawing.Size(53, 29);
+            this.txt_id_producto.Size = new System.Drawing.Size(52, 29);
             this.txt_id_producto.TabIndex = 39;
             this.txt_id_producto.Visible = false;
             // 
@@ -192,21 +196,21 @@
             // 
             // btn_buscar_producto
             // 
-            this.btn_buscar_producto.BackColor = System.Drawing.Color.Transparent;
-            this.btn_buscar_producto.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_buscar_producto.BorderColor = System.Drawing.Color.White;
+            this.btn_buscar_producto.BackColor = System.Drawing.Color.Gold;
+            this.btn_buscar_producto.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_buscar_producto.BorderColor = System.Drawing.Color.DarkRed;
             this.btn_buscar_producto.BorderRadius = 10;
             this.btn_buscar_producto.BorderSize = 2;
             this.btn_buscar_producto.FlatAppearance.BorderSize = 0;
             this.btn_buscar_producto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar_producto.ForeColor = System.Drawing.Color.White;
-            this.btn_buscar_producto.Location = new System.Drawing.Point(192, 20);
+            this.btn_buscar_producto.ForeColor = System.Drawing.Color.DarkRed;
+            this.btn_buscar_producto.Location = new System.Drawing.Point(192, 10);
             this.btn_buscar_producto.Name = "btn_buscar_producto";
-            this.btn_buscar_producto.Size = new System.Drawing.Size(170, 29);
+            this.btn_buscar_producto.Size = new System.Drawing.Size(170, 46);
             this.btn_buscar_producto.TabIndex = 32;
             this.btn_buscar_producto.Text = "Buscar producto";
-            this.btn_buscar_producto.TextColor = System.Drawing.Color.White;
+            this.btn_buscar_producto.TextColor = System.Drawing.Color.DarkRed;
             this.btn_buscar_producto.UseVisualStyleBackColor = false;
             this.btn_buscar_producto.Click += new System.EventHandler(this.btn_buscar_producto_Click);
             // 
@@ -225,7 +229,7 @@
             this.lbl_codigo_barras.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_codigo_barras.AutoSize = true;
             this.lbl_codigo_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_codigo_barras.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_codigo_barras.ForeColor = System.Drawing.Color.Wheat;
             this.lbl_codigo_barras.Location = new System.Drawing.Point(15, 20);
             this.lbl_codigo_barras.Name = "lbl_codigo_barras";
             this.lbl_codigo_barras.Size = new System.Drawing.Size(171, 24);
@@ -234,21 +238,21 @@
             // 
             // btn_agregar_producto
             // 
-            this.btn_agregar_producto.BackColor = System.Drawing.Color.Transparent;
-            this.btn_agregar_producto.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_agregar_producto.BorderColor = System.Drawing.Color.Lime;
+            this.btn_agregar_producto.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btn_agregar_producto.BackgroundColor = System.Drawing.Color.LemonChiffon;
+            this.btn_agregar_producto.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_agregar_producto.BorderRadius = 10;
-            this.btn_agregar_producto.BorderSize = 2;
+            this.btn_agregar_producto.BorderSize = 3;
             this.btn_agregar_producto.FlatAppearance.BorderSize = 0;
             this.btn_agregar_producto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregar_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregar_producto.ForeColor = System.Drawing.Color.Lime;
-            this.btn_agregar_producto.Location = new System.Drawing.Point(225, 298);
+            this.btn_agregar_producto.ForeColor = System.Drawing.Color.OrangeRed;
+            this.btn_agregar_producto.Location = new System.Drawing.Point(250, 300);
             this.btn_agregar_producto.Name = "btn_agregar_producto";
             this.btn_agregar_producto.Size = new System.Drawing.Size(137, 37);
             this.btn_agregar_producto.TabIndex = 5;
             this.btn_agregar_producto.Text = "Agregar";
-            this.btn_agregar_producto.TextColor = System.Drawing.Color.Lime;
+            this.btn_agregar_producto.TextColor = System.Drawing.Color.OrangeRed;
             this.btn_agregar_producto.UseVisualStyleBackColor = false;
             this.btn_agregar_producto.Click += new System.EventHandler(this.btn_agregar_producto_Click);
             // 
@@ -257,7 +261,7 @@
             this.lbl_precio_costo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_precio_costo.AutoSize = true;
             this.lbl_precio_costo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_precio_costo.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_precio_costo.ForeColor = System.Drawing.Color.Wheat;
             this.lbl_precio_costo.Location = new System.Drawing.Point(9, 270);
             this.lbl_precio_costo.Name = "lbl_precio_costo";
             this.lbl_precio_costo.Size = new System.Drawing.Size(108, 24);
@@ -269,7 +273,7 @@
             this.lbl_cantidad.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_cantidad.AutoSize = true;
             this.lbl_cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cantidad.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_cantidad.ForeColor = System.Drawing.Color.Wheat;
             this.lbl_cantidad.Location = new System.Drawing.Point(12, 202);
             this.lbl_cantidad.Name = "lbl_cantidad";
             this.lbl_cantidad.Size = new System.Drawing.Size(92, 24);
@@ -281,7 +285,7 @@
             this.lbl_descripcion_producto.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_descripcion_producto.AutoSize = true;
             this.lbl_descripcion_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_descripcion_producto.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_descripcion_producto.ForeColor = System.Drawing.Color.Wheat;
             this.lbl_descripcion_producto.Location = new System.Drawing.Point(15, 134);
             this.lbl_descripcion_producto.Name = "lbl_descripcion_producto";
             this.lbl_descripcion_producto.Size = new System.Drawing.Size(94, 24);
@@ -301,20 +305,22 @@
             // 
             this.dgv_compras.AllowUserToAddRows = false;
             this.dgv_compras.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_compras.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_compras.BackgroundColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgv_compras.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgv_compras.BackgroundColor = System.Drawing.Color.White;
             this.dgv_compras.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_compras.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_compras.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_compras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_compras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_compras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_compras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_producto,
@@ -325,6 +331,14 @@
             this.subtotal,
             this.btn_editar,
             this.btn_eliminar});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_compras.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_compras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_compras.EnableHeadersVisualStyles = false;
             this.dgv_compras.GridColor = System.Drawing.Color.Orange;
@@ -333,8 +347,8 @@
             this.dgv_compras.Name = "dgv_compras";
             this.dgv_compras.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgv_compras.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgv_compras.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgv_compras.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgv_compras.Size = new System.Drawing.Size(594, 338);
             this.dgv_compras.TabIndex = 0;
             this.dgv_compras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_compras_CellContentClick);
@@ -405,11 +419,10 @@
             // 
             // panel_bottom
             // 
-            this.panel_bottom.BackColor = System.Drawing.Color.Black;
-            this.panel_bottom.Controls.Add(this.lbl_suma_total);
+            this.panel_bottom.BackColor = System.Drawing.Color.White;
+            this.panel_bottom.Controls.Add(this.flowLayoutPanel1);
             this.panel_bottom.Controls.Add(this.btn_cerrar);
             this.panel_bottom.Controls.Add(this.btn_guardar);
-            this.panel_bottom.Controls.Add(this.label10);
             this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_bottom.Location = new System.Drawing.Point(0, 338);
             this.panel_bottom.Margin = new System.Windows.Forms.Padding(5);
@@ -419,13 +432,14 @@
             // 
             // lbl_suma_total
             // 
-            this.lbl_suma_total.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_suma_total.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_suma_total.AutoSize = true;
-            this.lbl_suma_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_suma_total.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_suma_total.Location = new System.Drawing.Point(162, 13);
+            this.lbl_suma_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_suma_total.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_suma_total.Location = new System.Drawing.Point(149, 2);
             this.lbl_suma_total.Name = "lbl_suma_total";
-            this.lbl_suma_total.Size = new System.Drawing.Size(88, 39);
+            this.lbl_suma_total.Size = new System.Drawing.Size(84, 37);
             this.lbl_suma_total.TabIndex = 27;
             this.lbl_suma_total.Text = "0,00";
             // 
@@ -471,11 +485,13 @@
             // 
             // label10
             // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gold;
-            this.label10.Location = new System.Drawing.Point(16, 13);
+            this.label10.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(140, 39);
             this.label10.TabIndex = 22;
@@ -483,12 +499,14 @@
             // 
             // tlpanel_3
             // 
+            this.tlpanel_3.BackColor = System.Drawing.Color.White;
             this.tlpanel_3.ColumnCount = 5;
             this.tlpanel_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.81119F));
             this.tlpanel_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.715F));
             this.tlpanel_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.958043F));
             this.tlpanel_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.715F));
             this.tlpanel_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.80076F));
+            this.tlpanel_3.Controls.Add(this.txt_id_producto, 2, 0);
             this.tlpanel_3.Controls.Add(this.txt_cuit_proveedor, 1, 0);
             this.tlpanel_3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpanel_3.Location = new System.Drawing.Point(0, 92);
@@ -502,8 +520,8 @@
             // txt_cuit_proveedor
             // 
             this.txt_cuit_proveedor.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_cuit_proveedor.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txt_cuit_proveedor.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_cuit_proveedor.BorderColor = System.Drawing.Color.DarkOrange;
+            this.txt_cuit_proveedor.BorderFocusColor = System.Drawing.Color.DarkOrange;
             this.txt_cuit_proveedor.BorderRadius = 0;
             this.txt_cuit_proveedor.BorderSize = 2;
             this.txt_cuit_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -524,6 +542,7 @@
             // 
             // tlpanel_2
             // 
+            this.tlpanel_2.BackColor = System.Drawing.Color.White;
             this.tlpanel_2.ColumnCount = 4;
             this.tlpanel_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99752F));
             this.tlpanel_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00248F));
@@ -546,8 +565,9 @@
             // 
             this.lbl_fecha_doc.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbl_fecha_doc.AutoSize = true;
+            this.lbl_fecha_doc.BackColor = System.Drawing.Color.Transparent;
             this.lbl_fecha_doc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_fecha_doc.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_fecha_doc.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_fecha_doc.Location = new System.Drawing.Point(576, 11);
             this.lbl_fecha_doc.Name = "lbl_fecha_doc";
             this.lbl_fecha_doc.Size = new System.Drawing.Size(157, 24);
@@ -558,8 +578,9 @@
             // 
             this.lbl_tipo_doc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_tipo_doc.AutoSize = true;
+            this.lbl_tipo_doc.BackColor = System.Drawing.Color.Transparent;
             this.lbl_tipo_doc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tipo_doc.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_tipo_doc.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_tipo_doc.Location = new System.Drawing.Point(43, 11);
             this.lbl_tipo_doc.Name = "lbl_tipo_doc";
             this.lbl_tipo_doc.Size = new System.Drawing.Size(158, 24);
@@ -570,12 +591,12 @@
             // 
             this.cbo_tipo_documento.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbo_tipo_documento.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbo_tipo_documento.BorderColor = System.Drawing.Color.Orange;
+            this.cbo_tipo_documento.BorderColor = System.Drawing.Color.DarkOrange;
             this.cbo_tipo_documento.BorderSize = 2;
             this.cbo_tipo_documento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbo_tipo_documento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.cbo_tipo_documento.ForeColor = System.Drawing.Color.DimGray;
-            this.cbo_tipo_documento.IconColor = System.Drawing.Color.Orange;
+            this.cbo_tipo_documento.IconColor = System.Drawing.Color.OrangeRed;
             this.cbo_tipo_documento.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbo_tipo_documento.ListTextColor = System.Drawing.Color.DimGray;
             this.cbo_tipo_documento.Location = new System.Drawing.Point(248, 7);
@@ -596,12 +617,13 @@
             this.date_fecha_doc.MinimumSize = new System.Drawing.Size(4, 35);
             this.date_fecha_doc.Name = "date_fecha_doc";
             this.date_fecha_doc.Size = new System.Drawing.Size(241, 35);
-            this.date_fecha_doc.SkinColor = System.Drawing.Color.Orange;
+            this.date_fecha_doc.SkinColor = System.Drawing.Color.DarkOrange;
             this.date_fecha_doc.TabIndex = 23;
-            this.date_fecha_doc.TextColor = System.Drawing.Color.White;
+            this.date_fecha_doc.TextColor = System.Drawing.Color.Black;
             // 
             // tlpanel_primera
             // 
+            this.tlpanel_primera.BackColor = System.Drawing.Color.White;
             this.tlpanel_primera.ColumnCount = 4;
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpanel_primera.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -624,12 +646,12 @@
             // 
             this.cbox_proveedores.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbox_proveedores.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbox_proveedores.BorderColor = System.Drawing.Color.Orange;
+            this.cbox_proveedores.BorderColor = System.Drawing.Color.DarkOrange;
             this.cbox_proveedores.BorderSize = 2;
             this.cbox_proveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbox_proveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.cbox_proveedores.ForeColor = System.Drawing.Color.DimGray;
-            this.cbox_proveedores.IconColor = System.Drawing.Color.Orange;
+            this.cbox_proveedores.IconColor = System.Drawing.Color.OrangeRed;
             this.cbox_proveedores.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_proveedores.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_proveedores.Location = new System.Drawing.Point(249, 7);
@@ -643,8 +665,8 @@
             // txt_numero_documento
             // 
             this.txt_numero_documento.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_numero_documento.BorderColor = System.Drawing.Color.Orange;
-            this.txt_numero_documento.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_numero_documento.BorderColor = System.Drawing.Color.DarkOrange;
+            this.txt_numero_documento.BorderFocusColor = System.Drawing.Color.OrangeRed;
             this.txt_numero_documento.BorderRadius = 0;
             this.txt_numero_documento.BorderSize = 2;
             this.txt_numero_documento.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -667,8 +689,9 @@
             // 
             this.lbl_proveedor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_proveedor.AutoSize = true;
+            this.lbl_proveedor.BackColor = System.Drawing.Color.Transparent;
             this.lbl_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_proveedor.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_proveedor.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_proveedor.Location = new System.Drawing.Point(69, 11);
             this.lbl_proveedor.Name = "lbl_proveedor";
             this.lbl_proveedor.Size = new System.Drawing.Size(107, 24);
@@ -679,8 +702,9 @@
             // 
             this.lbl_nro_doc.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbl_nro_doc.AutoSize = true;
+            this.lbl_nro_doc.BackColor = System.Drawing.Color.Transparent;
             this.lbl_nro_doc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nro_doc.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_nro_doc.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_nro_doc.Location = new System.Drawing.Point(579, 11);
             this.lbl_nro_doc.Name = "lbl_nro_doc";
             this.lbl_nro_doc.Size = new System.Drawing.Size(156, 24);
@@ -703,6 +727,26 @@
             // 
             this.errorProvider4.ContainerControl = this;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.OrangeRed;
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(11, 8);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(363, 46);
+            this.flowLayoutPanel1.TabIndex = 28;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel2.Controls.Add(this.label10);
+            this.flowLayoutPanel2.Controls.Add(this.lbl_suma_total);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(356, 39);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
             // formCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,8 +768,8 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_compras)).EndInit();
             this.panel_bottom.ResumeLayout(false);
-            this.panel_bottom.PerformLayout();
             this.tlpanel_3.ResumeLayout(false);
+            this.tlpanel_3.PerformLayout();
             this.tlpanel_2.ResumeLayout(false);
             this.tlpanel_2.PerformLayout();
             this.tlpanel_primera.ResumeLayout(false);
@@ -734,6 +778,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -787,5 +834,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.ErrorProvider errorProvider3;
         private System.Windows.Forms.ErrorProvider errorProvider4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }

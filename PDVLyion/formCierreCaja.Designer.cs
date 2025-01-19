@@ -37,8 +37,8 @@
             this.lbl_total = new System.Windows.Forms.Label();
             this.btn_cancelar = new CustomBox.RJControls.RJButton();
             this.btn_cierre = new CustomBox.RJControls.RJButton();
-            this.lbl_diff = new System.Windows.Forms.Label();
             this.lbl_caja = new System.Windows.Forms.Label();
+            this.lbl_diff = new System.Windows.Forms.Label();
             this.lbl_cierre = new System.Windows.Forms.Label();
             this.table_centerColor = new System.Windows.Forms.TableLayoutPanel();
             this.panel_center = new System.Windows.Forms.TableLayoutPanel();
@@ -69,7 +69,7 @@
             // 
             // panel_container
             // 
-            this.panel_container.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_container.BackColor = System.Drawing.Color.White;
             this.panel_container.ColumnCount = 1;
             this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_container.Controls.Add(this.panel_bottomColor, 0, 2);
@@ -106,7 +106,7 @@
             // 
             // table_bottom
             // 
-            this.table_bottom.BackColor = System.Drawing.Color.Black;
+            this.table_bottom.BackColor = System.Drawing.Color.White;
             this.table_bottom.ColumnCount = 4;
             this.table_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.table_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
@@ -146,9 +146,9 @@
             // 
             this.lbl_sub.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_sub.AutoSize = true;
-            this.lbl_sub.BackColor = System.Drawing.Color.Black;
+            this.lbl_sub.BackColor = System.Drawing.Color.White;
             this.lbl_sub.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_sub.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_sub.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_sub.Location = new System.Drawing.Point(174, 1);
             this.lbl_sub.Name = "lbl_sub";
             this.lbl_sub.Size = new System.Drawing.Size(71, 31);
@@ -159,9 +159,9 @@
             // 
             this.lbl_subtotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbl_subtotal.AutoSize = true;
-            this.lbl_subtotal.BackColor = System.Drawing.Color.Black;
+            this.lbl_subtotal.BackColor = System.Drawing.Color.White;
             this.lbl_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_subtotal.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_subtotal.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_subtotal.Location = new System.Drawing.Point(13, 1);
             this.lbl_subtotal.Name = "lbl_subtotal";
             this.lbl_subtotal.Size = new System.Drawing.Size(155, 31);
@@ -172,9 +172,9 @@
             // 
             this.lbl_total.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbl_total.AutoSize = true;
-            this.lbl_total.BackColor = System.Drawing.Color.Black;
+            this.lbl_total.BackColor = System.Drawing.Color.White;
             this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_total.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_total.ForeColor = System.Drawing.Color.Maroon;
             this.lbl_total.Location = new System.Drawing.Point(61, 45);
             this.lbl_total.Name = "lbl_total";
             this.lbl_total.Size = new System.Drawing.Size(107, 31);
@@ -184,21 +184,21 @@
             // btn_cancelar
             // 
             this.btn_cancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_cancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cancelar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cancelar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cancelar.BackColor = System.Drawing.Color.Red;
+            this.btn_cancelar.BackgroundColor = System.Drawing.Color.Red;
+            this.btn_cancelar.BorderColor = System.Drawing.Color.DarkRed;
             this.btn_cancelar.BorderRadius = 10;
-            this.btn_cancelar.BorderSize = 4;
+            this.btn_cancelar.BorderSize = 2;
             this.btn_cancelar.FlatAppearance.BorderSize = 0;
             this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancelar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.ForeColor = System.Drawing.Color.DarkRed;
             this.btn_cancelar.Location = new System.Drawing.Point(504, 41);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(114, 38);
             this.btn_cancelar.TabIndex = 1;
             this.btn_cancelar.Text = "Cancelar";
-            this.btn_cancelar.TextColor = System.Drawing.Color.Red;
+            this.btn_cancelar.TextColor = System.Drawing.Color.DarkRed;
             this.btn_cancelar.UseVisualStyleBackColor = false;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
@@ -207,21 +207,34 @@
             this.btn_cierre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_cierre.BackColor = System.Drawing.Color.Gold;
             this.btn_cierre.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_cierre.BorderColor = System.Drawing.Color.Red;
+            this.btn_cierre.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_cierre.BorderRadius = 10;
-            this.btn_cierre.BorderSize = 0;
+            this.btn_cierre.BorderSize = 2;
             this.btn_cierre.FlatAppearance.BorderSize = 0;
             this.btn_cierre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cierre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cierre.ForeColor = System.Drawing.Color.Black;
+            this.btn_cierre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cierre.ForeColor = System.Drawing.Color.OrangeRed;
             this.btn_cierre.Location = new System.Drawing.Point(383, 41);
             this.btn_cierre.Name = "btn_cierre";
             this.btn_cierre.Size = new System.Drawing.Size(114, 38);
             this.btn_cierre.TabIndex = 0;
             this.btn_cierre.Text = "Cerrar caja";
-            this.btn_cierre.TextColor = System.Drawing.Color.Black;
+            this.btn_cierre.TextColor = System.Drawing.Color.OrangeRed;
             this.btn_cierre.UseVisualStyleBackColor = false;
             this.btn_cierre.Click += new System.EventHandler(this.btn_cierre_Click);
+            // 
+            // lbl_caja
+            // 
+            this.lbl_caja.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_caja.AutoSize = true;
+            this.lbl_caja.BackColor = System.Drawing.Color.White;
+            this.lbl_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_caja.ForeColor = System.Drawing.Color.YellowGreen;
+            this.lbl_caja.Location = new System.Drawing.Point(174, 45);
+            this.lbl_caja.Name = "lbl_caja";
+            this.lbl_caja.Size = new System.Drawing.Size(71, 31);
+            this.lbl_caja.TabIndex = 19;
+            this.lbl_caja.Text = "0.00";
             // 
             // lbl_diff
             // 
@@ -235,34 +248,21 @@
             this.lbl_diff.TabIndex = 18;
             this.lbl_diff.Text = "0.00";
             // 
-            // lbl_caja
-            // 
-            this.lbl_caja.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_caja.AutoSize = true;
-            this.lbl_caja.BackColor = System.Drawing.Color.Black;
-            this.lbl_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_caja.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_caja.Location = new System.Drawing.Point(174, 45);
-            this.lbl_caja.Name = "lbl_caja";
-            this.lbl_caja.Size = new System.Drawing.Size(71, 31);
-            this.lbl_caja.TabIndex = 19;
-            this.lbl_caja.Text = "0.00";
-            // 
             // lbl_cierre
             // 
             this.lbl_cierre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_cierre.AutoSize = true;
-            this.lbl_cierre.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cierre.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_cierre.Location = new System.Drawing.Point(105, 20);
+            this.lbl_cierre.Font = new System.Drawing.Font("FORESTS ITALIC PERSONAL USE", 47.99999F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cierre.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbl_cierre.Location = new System.Drawing.Point(143, 9);
             this.lbl_cierre.Name = "lbl_cierre";
-            this.lbl_cierre.Size = new System.Drawing.Size(422, 55);
+            this.lbl_cierre.Size = new System.Drawing.Size(345, 77);
             this.lbl_cierre.TabIndex = 2;
             this.lbl_cierre.Text = "CIERRE DE CAJA";
             // 
             // table_centerColor
             // 
-            this.table_centerColor.BackColor = System.Drawing.Color.Crimson;
+            this.table_centerColor.BackColor = System.Drawing.Color.OrangeRed;
             this.table_centerColor.ColumnCount = 1;
             this.table_centerColor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.table_centerColor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -279,7 +279,7 @@
             // 
             // panel_center
             // 
-            this.panel_center.BackColor = System.Drawing.Color.Black;
+            this.panel_center.BackColor = System.Drawing.Color.White;
             this.panel_center.ColumnCount = 2;
             this.panel_center.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.panel_center.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
@@ -333,11 +333,11 @@
             // 
             this.lbl_10mil.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_10mil.AutoSize = true;
-            this.lbl_10mil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_10mil.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_10mil.Location = new System.Drawing.Point(220, 404);
+            this.lbl_10mil.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_10mil.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_10mil.Location = new System.Drawing.Point(220, 402);
             this.lbl_10mil.Name = "lbl_10mil";
-            this.lbl_10mil.Size = new System.Drawing.Size(97, 25);
+            this.lbl_10mil.Size = new System.Drawing.Size(104, 29);
             this.lbl_10mil.TabIndex = 17;
             this.lbl_10mil.Text = "$10.000";
             // 
@@ -345,11 +345,11 @@
             // 
             this.lbl_2mil.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_2mil.AutoSize = true;
-            this.lbl_2mil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_2mil.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_2mil.Location = new System.Drawing.Point(220, 355);
+            this.lbl_2mil.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_2mil.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_2mil.Location = new System.Drawing.Point(220, 353);
             this.lbl_2mil.Name = "lbl_2mil";
-            this.lbl_2mil.Size = new System.Drawing.Size(84, 25);
+            this.lbl_2mil.Size = new System.Drawing.Size(90, 29);
             this.lbl_2mil.TabIndex = 15;
             this.lbl_2mil.Text = "$2.000";
             // 
@@ -357,11 +357,11 @@
             // 
             this.lbl_1mil.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_1mil.AutoSize = true;
-            this.lbl_1mil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_1mil.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_1mil.Location = new System.Drawing.Point(220, 306);
+            this.lbl_1mil.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_1mil.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_1mil.Location = new System.Drawing.Point(220, 304);
             this.lbl_1mil.Name = "lbl_1mil";
-            this.lbl_1mil.Size = new System.Drawing.Size(84, 25);
+            this.lbl_1mil.Size = new System.Drawing.Size(90, 29);
             this.lbl_1mil.TabIndex = 14;
             this.lbl_1mil.Text = "$1.000";
             // 
@@ -369,11 +369,11 @@
             // 
             this.lbl_500.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_500.AutoSize = true;
-            this.lbl_500.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_500.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_500.Location = new System.Drawing.Point(220, 257);
+            this.lbl_500.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_500.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_500.Location = new System.Drawing.Point(220, 255);
             this.lbl_500.Name = "lbl_500";
-            this.lbl_500.Size = new System.Drawing.Size(64, 25);
+            this.lbl_500.Size = new System.Drawing.Size(69, 29);
             this.lbl_500.TabIndex = 13;
             this.lbl_500.Text = "$500";
             // 
@@ -381,11 +381,11 @@
             // 
             this.lbl_200.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_200.AutoSize = true;
-            this.lbl_200.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_200.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_200.Location = new System.Drawing.Point(220, 208);
+            this.lbl_200.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_200.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_200.Location = new System.Drawing.Point(220, 206);
             this.lbl_200.Name = "lbl_200";
-            this.lbl_200.Size = new System.Drawing.Size(64, 25);
+            this.lbl_200.Size = new System.Drawing.Size(69, 29);
             this.lbl_200.TabIndex = 12;
             this.lbl_200.Text = "$200";
             // 
@@ -393,11 +393,11 @@
             // 
             this.lbl_100.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_100.AutoSize = true;
-            this.lbl_100.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_100.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_100.Location = new System.Drawing.Point(220, 159);
+            this.lbl_100.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_100.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_100.Location = new System.Drawing.Point(220, 157);
             this.lbl_100.Name = "lbl_100";
-            this.lbl_100.Size = new System.Drawing.Size(64, 25);
+            this.lbl_100.Size = new System.Drawing.Size(69, 29);
             this.lbl_100.TabIndex = 11;
             this.lbl_100.Text = "$100";
             // 
@@ -405,11 +405,11 @@
             // 
             this.lbl_50.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_50.AutoSize = true;
-            this.lbl_50.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_50.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_50.Location = new System.Drawing.Point(220, 110);
+            this.lbl_50.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_50.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_50.Location = new System.Drawing.Point(220, 108);
             this.lbl_50.Name = "lbl_50";
-            this.lbl_50.Size = new System.Drawing.Size(51, 25);
+            this.lbl_50.Size = new System.Drawing.Size(55, 29);
             this.lbl_50.TabIndex = 10;
             this.lbl_50.Text = "$50";
             // 
@@ -417,11 +417,11 @@
             // 
             this.lbl_20.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_20.AutoSize = true;
-            this.lbl_20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_20.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_20.Location = new System.Drawing.Point(220, 61);
+            this.lbl_20.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_20.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_20.Location = new System.Drawing.Point(220, 59);
             this.lbl_20.Name = "lbl_20";
-            this.lbl_20.Size = new System.Drawing.Size(51, 25);
+            this.lbl_20.Size = new System.Drawing.Size(55, 29);
             this.lbl_20.TabIndex = 9;
             this.lbl_20.Text = "$20";
             // 
@@ -517,21 +517,21 @@
             // 
             this.lbl_10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_10.AutoSize = true;
-            this.lbl_10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_10.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_10.Location = new System.Drawing.Point(220, 12);
+            this.lbl_10.Font = new System.Drawing.Font("Geometr415 Blk BT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_10.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbl_10.Location = new System.Drawing.Point(220, 10);
             this.lbl_10.Name = "lbl_10";
-            this.lbl_10.Size = new System.Drawing.Size(51, 25);
+            this.lbl_10.Size = new System.Drawing.Size(55, 29);
             this.lbl_10.TabIndex = 8;
             this.lbl_10.Text = "$10";
             // 
-            // formCierre
+            // formCierreCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 639);
             this.Controls.Add(this.panel_container);
-            this.Name = "formCierre";
+            this.Name = "formCierreCaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ciere de caja";
             this.Load += new System.EventHandler(this.formCierre_Load);

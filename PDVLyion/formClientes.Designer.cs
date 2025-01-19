@@ -106,7 +106,7 @@
             // 
             // panel_bot
             // 
-            this.panel_bot.BackColor = System.Drawing.Color.Black;
+            this.panel_bot.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_bot.ColumnCount = 3;
             this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -126,11 +126,12 @@
             // 
             this.lbl_updateversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updateversion.AutoSize = true;
-            this.lbl_updateversion.BackColor = System.Drawing.Color.Black;
+            this.lbl_updateversion.BackColor = System.Drawing.Color.OrangeRed;
+            this.lbl_updateversion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_updateversion.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_updateversion.Location = new System.Drawing.Point(864, 3);
+            this.lbl_updateversion.Location = new System.Drawing.Point(841, 3);
             this.lbl_updateversion.Name = "lbl_updateversion";
-            this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
+            this.lbl_updateversion.Size = new System.Drawing.Size(138, 13);
             this.lbl_updateversion.TabIndex = 2;
             this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
             // 
@@ -138,17 +139,18 @@
             // 
             this.lbl_updatetime.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updatetime.AutoSize = true;
-            this.lbl_updatetime.BackColor = System.Drawing.Color.Black;
+            this.lbl_updatetime.BackColor = System.Drawing.Color.OrangeRed;
+            this.lbl_updatetime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_updatetime.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_updatetime.Location = new System.Drawing.Point(659, 3);
+            this.lbl_updatetime.Location = new System.Drawing.Point(598, 3);
             this.lbl_updatetime.Name = "lbl_updatetime";
-            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
+            this.lbl_updatetime.Size = new System.Drawing.Size(237, 13);
             this.lbl_updatetime.TabIndex = 3;
             this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
             // 
             // panel_mid
             // 
-            this.panel_mid.BackColor = System.Drawing.Color.Crimson;
+            this.panel_mid.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_mid.ColumnCount = 2;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -167,7 +169,7 @@
             // 
             // panel_midizq
             // 
-            this.panel_midizq.BackColor = System.Drawing.Color.Crimson;
+            this.panel_midizq.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_midizq.ColumnCount = 1;
             this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
@@ -184,7 +186,7 @@
             // 
             // panel_btns
             // 
-            this.panel_btns.BackColor = System.Drawing.Color.Black;
+            this.panel_btns.BackColor = System.Drawing.Color.White;
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_btns.Controls.Add(this.btn_crear, 0, 0);
@@ -206,15 +208,15 @@
             // btn_crear
             // 
             this.btn_crear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_crear.BackColor = System.Drawing.Color.Transparent;
-            this.btn_crear.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_crear.BorderColor = System.Drawing.Color.Lime;
+            this.btn_crear.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_crear.BackgroundColor = System.Drawing.Color.PaleGreen;
+            this.btn_crear.BorderColor = System.Drawing.Color.DarkGreen;
             this.btn_crear.BorderRadius = 7;
             this.btn_crear.BorderSize = 2;
             this.btn_crear.FlatAppearance.BorderSize = 0;
             this.btn_crear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_crear.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear.ForeColor = System.Drawing.Color.Lime;
+            this.btn_crear.ForeColor = System.Drawing.Color.ForestGreen;
             this.btn_crear.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear.Image")));
             this.btn_crear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_crear.Location = new System.Drawing.Point(29, 8);
@@ -223,15 +225,15 @@
             this.btn_crear.TabIndex = 29;
             this.btn_crear.Text = "AGREGAR CLIENTE";
             this.btn_crear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_crear.TextColor = System.Drawing.Color.Lime;
+            this.btn_crear.TextColor = System.Drawing.Color.ForestGreen;
             this.btn_crear.UseVisualStyleBackColor = false;
             this.btn_crear.Click += new System.EventHandler(this.btn_crear_Click);
             // 
             // btn_actualizar
             // 
             this.btn_actualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_actualizar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_actualizar.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_actualizar.BackgroundColor = System.Drawing.Color.DarkCyan;
             this.btn_actualizar.BorderColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.BorderRadius = 10;
             this.btn_actualizar.BorderSize = 2;
@@ -254,15 +256,15 @@
             // btn_ventas_credito
             // 
             this.btn_ventas_credito.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_ventas_credito.BackColor = System.Drawing.Color.Transparent;
-            this.btn_ventas_credito.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_ventas_credito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_ventas_credito.BackColor = System.Drawing.Color.PeachPuff;
+            this.btn_ventas_credito.BackgroundColor = System.Drawing.Color.PeachPuff;
+            this.btn_ventas_credito.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_ventas_credito.BorderRadius = 10;
             this.btn_ventas_credito.BorderSize = 2;
             this.btn_ventas_credito.FlatAppearance.BorderSize = 0;
             this.btn_ventas_credito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ventas_credito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ventas_credito.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_ventas_credito.ForeColor = System.Drawing.Color.OrangeRed;
             this.btn_ventas_credito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_ventas_credito.Location = new System.Drawing.Point(29, 106);
             this.btn_ventas_credito.Margin = new System.Windows.Forms.Padding(0);
@@ -270,19 +272,19 @@
             this.btn_ventas_credito.Size = new System.Drawing.Size(225, 38);
             this.btn_ventas_credito.TabIndex = 30;
             this.btn_ventas_credito.Text = "Cuenta de ";
-            this.btn_ventas_credito.TextColor = System.Drawing.Color.Yellow;
+            this.btn_ventas_credito.TextColor = System.Drawing.Color.OrangeRed;
             this.btn_ventas_credito.UseVisualStyleBackColor = false;
             this.btn_ventas_credito.Click += new System.EventHandler(this.btn_ventas_credito_Click);
             // 
             // panel_filter
             // 
-            this.panel_filter.BackColor = System.Drawing.Color.Black;
+            this.panel_filter.BackColor = System.Drawing.Color.White;
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_filter.Controls.Add(this.lbl_busqueda, 0, 0);
             this.panel_filter.Controls.Add(this.txt_busqueda, 0, 1);
             this.panel_filter.Controls.Add(this.cb_inactivo, 0, 2);
-            this.panel_filter.Controls.Add(this.btn_limpiar_filtros, 0, 4);
+            this.panel_filter.Controls.Add(this.btn_limpiar_filtros, 0, 3);
             this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_filter.Location = new System.Drawing.Point(5, 5);
             this.panel_filter.Margin = new System.Windows.Forms.Padding(5);
@@ -304,7 +306,7 @@
             this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_busqueda.AutoSize = true;
             this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_busqueda.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_busqueda.Location = new System.Drawing.Point(17, 13);
             this.lbl_busqueda.Name = "lbl_busqueda";
             this.lbl_busqueda.Size = new System.Drawing.Size(250, 25);
@@ -326,7 +328,7 @@
             this.cb_inactivo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cb_inactivo.AutoSize = true;
             this.cb_inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_inactivo.ForeColor = System.Drawing.Color.Gold;
+            this.cb_inactivo.ForeColor = System.Drawing.Color.OrangeRed;
             this.cb_inactivo.Location = new System.Drawing.Point(60, 83);
             this.cb_inactivo.Name = "cb_inactivo";
             this.cb_inactivo.Size = new System.Drawing.Size(164, 24);
@@ -338,9 +340,9 @@
             // btn_limpiar_filtros
             // 
             this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Silver;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Silver;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.DimGray;
             this.btn_limpiar_filtros.BorderRadius = 10;
             this.btn_limpiar_filtros.BorderSize = 2;
             this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
@@ -349,7 +351,7 @@
             this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
             this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
             this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 152);
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 114);
             this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
             this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
             this.btn_limpiar_filtros.Size = new System.Drawing.Size(224, 37);
@@ -364,22 +366,22 @@
             this.dgv_clientes.AllowUserToAddRows = false;
             this.dgv_clientes.AllowUserToDeleteRows = false;
             this.dgv_clientes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv_clientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_clientes.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgv_clientes.BackgroundColor = System.Drawing.Color.White;
             this.dgv_clientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_clientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_clientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkViolet;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Purple;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_clientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_clientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -394,11 +396,11 @@
             this.btn_editar,
             this.btn_eliminar});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Violet;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Coral;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkMagenta;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.OrangeRed;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_clientes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_clientes.Dock = System.Windows.Forms.DockStyle.Fill;

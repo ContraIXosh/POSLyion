@@ -343,11 +343,13 @@ namespace POSLyion
                 dgv_detalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgv_resumen.Visible = true;
                 dgv_resumen.Dock = DockStyle.Fill;
+                dgv_resumen.BackgroundColor = Color.White;
                 _ = panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
                 _ = panel_container.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
                 panel_container.Controls.Add(dgv_resumen, 0, 0);
                 foreach (var venta in lista_ventas)
                 {
+                    dgv_resumen.BackgroundColor = Color.White;
                     _ = dgv_resumen.Rows.Add(new object[]
                     {
                     venta.Id_venta,
@@ -581,6 +583,16 @@ namespace POSLyion
         private void tlp_productos_Leave(object sender, EventArgs e)
         {
             LimpiarBusqueda();
+        }
+
+        private void lbl_titulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel_factura_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

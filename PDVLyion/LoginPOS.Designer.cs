@@ -47,7 +47,7 @@
             // 
             // panel_container
             // 
-            this.panel_container.BackColor = System.Drawing.Color.Black;
+            this.panel_container.BackColor = System.Drawing.Color.White;
             this.panel_container.Controls.Add(this.label1);
             this.panel_container.Controls.Add(this.txt_clave);
             this.panel_container.Controls.Add(this.txt_nombre_usuario);
@@ -66,20 +66,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Crimson;
-            this.label1.Location = new System.Drawing.Point(245, 9);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("FORESTS ITALIC PERSONAL USE", 32.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label1.Location = new System.Drawing.Point(250, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(339, 34);
+            this.label1.Size = new System.Drawing.Size(326, 52);
             this.label1.TabIndex = 25;
             this.label1.Text = "POSLyion - Inicio WEB";
             // 
             // txt_clave
             // 
-            this.txt_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic);
             this.txt_clave.ForeColor = System.Drawing.Color.Gray;
-            this.txt_clave.Location = new System.Drawing.Point(279, 155);
+            this.txt_clave.Location = new System.Drawing.Point(275, 155);
             this.txt_clave.Multiline = true;
             this.txt_clave.Name = "txt_clave";
             this.txt_clave.Size = new System.Drawing.Size(262, 31);
@@ -88,9 +88,9 @@
             // 
             // txt_nombre_usuario
             // 
-            this.txt_nombre_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic);
             this.txt_nombre_usuario.ForeColor = System.Drawing.Color.Gray;
-            this.txt_nombre_usuario.Location = new System.Drawing.Point(282, 86);
+            this.txt_nombre_usuario.Location = new System.Drawing.Point(275, 81);
             this.txt_nombre_usuario.Multiline = true;
             this.txt_nombre_usuario.Name = "txt_nombre_usuario";
             this.txt_nombre_usuario.Size = new System.Drawing.Size(262, 31);
@@ -102,18 +102,18 @@
             this.btn_iniciar_sesion.BackColor = System.Drawing.Color.Gold;
             this.btn_iniciar_sesion.BackgroundColor = System.Drawing.Color.Gold;
             this.btn_iniciar_sesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_iniciar_sesion.BorderColor = System.Drawing.Color.Red;
+            this.btn_iniciar_sesion.BorderColor = System.Drawing.Color.Black;
             this.btn_iniciar_sesion.BorderRadius = 10;
-            this.btn_iniciar_sesion.BorderSize = 0;
+            this.btn_iniciar_sesion.BorderSize = 2;
             this.btn_iniciar_sesion.FlatAppearance.BorderSize = 0;
             this.btn_iniciar_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_iniciar_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_iniciar_sesion.Font = new System.Drawing.Font("Swis721 BlkCn BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_iniciar_sesion.ForeColor = System.Drawing.Color.Black;
             this.btn_iniciar_sesion.Image = ((System.Drawing.Image)(resources.GetObject("btn_iniciar_sesion.Image")));
             this.btn_iniciar_sesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_iniciar_sesion.Location = new System.Drawing.Point(275, 255);
+            this.btn_iniciar_sesion.Location = new System.Drawing.Point(275, 250);
             this.btn_iniciar_sesion.Name = "btn_iniciar_sesion";
-            this.btn_iniciar_sesion.Size = new System.Drawing.Size(139, 31);
+            this.btn_iniciar_sesion.Size = new System.Drawing.Size(135, 42);
             this.btn_iniciar_sesion.TabIndex = 22;
             this.btn_iniciar_sesion.Text = "Iniciar Sesion";
             this.btn_iniciar_sesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -123,25 +123,25 @@
             // 
             // btn_cerrar
             // 
-            this.btn_cerrar.BackColor = System.Drawing.Color.Crimson;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Crimson;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Red;
             this.btn_cerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Black;
             this.btn_cerrar.BorderRadius = 10;
-            this.btn_cerrar.BorderSize = 0;
+            this.btn_cerrar.BorderSize = 2;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.White;
+            this.btn_cerrar.Font = new System.Drawing.Font("Swis721 BlkCn BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Black;
             this.btn_cerrar.Image = ((System.Drawing.Image)(resources.GetObject("btn_cerrar.Image")));
             this.btn_cerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cerrar.Location = new System.Drawing.Point(431, 255);
+            this.btn_cerrar.Location = new System.Drawing.Point(429, 250);
             this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(111, 31);
+            this.btn_cerrar.Size = new System.Drawing.Size(96, 42);
             this.btn_cerrar.TabIndex = 21;
             this.btn_cerrar.Text = "Cerrar";
             this.btn_cerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_cerrar.TextColor = System.Drawing.Color.White;
+            this.btn_cerrar.TextColor = System.Drawing.Color.Black;
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
@@ -150,8 +150,8 @@
             this.notice.AutoSize = true;
             this.notice.BackColor = System.Drawing.Color.Transparent;
             this.notice.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notice.ForeColor = System.Drawing.Color.White;
-            this.notice.Location = new System.Drawing.Point(279, 204);
+            this.notice.ForeColor = System.Drawing.Color.Black;
+            this.notice.Location = new System.Drawing.Point(274, 203);
             this.notice.Name = "notice";
             this.notice.Size = new System.Drawing.Size(263, 32);
             this.notice.TabIndex = 20;
@@ -161,11 +161,11 @@
             // 
             this.lbl_clave.AutoSize = true;
             this.lbl_clave.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_clave.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_clave.Location = new System.Drawing.Point(275, 132);
+            this.lbl_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_clave.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbl_clave.Location = new System.Drawing.Point(270, 130);
             this.lbl_clave.Name = "lbl_clave";
-            this.lbl_clave.Size = new System.Drawing.Size(107, 20);
+            this.lbl_clave.Size = new System.Drawing.Size(153, 29);
             this.lbl_clave.TabIndex = 19;
             this.lbl_clave.Text = "Contraseña:";
             // 
@@ -173,17 +173,17 @@
             // 
             this.lbl_nombre_usuario.AutoSize = true;
             this.lbl_nombre_usuario.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_nombre_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nombre_usuario.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_nombre_usuario.Location = new System.Drawing.Point(276, 58);
+            this.lbl_nombre_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nombre_usuario.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lbl_nombre_usuario.Location = new System.Drawing.Point(271, 56);
             this.lbl_nombre_usuario.Name = "lbl_nombre_usuario";
-            this.lbl_nombre_usuario.Size = new System.Drawing.Size(76, 20);
+            this.lbl_nombre_usuario.Size = new System.Drawing.Size(110, 29);
             this.lbl_nombre_usuario.TabIndex = 18;
             this.lbl_nombre_usuario.Text = "Usuario:";
             // 
             // panel_izq
             // 
-            this.panel_izq.BackColor = System.Drawing.Color.Gold;
+            this.panel_izq.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_izq.Controls.Add(this.pictureBox1);
             this.panel_izq.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_izq.Location = new System.Drawing.Point(0, 0);
@@ -195,9 +195,9 @@
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 35);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 45);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(207, 190);
+            this.pictureBox1.Size = new System.Drawing.Size(217, 200);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 

@@ -124,7 +124,7 @@ namespace POSLyion
             {
                 currentSelectedMenuItem.BackColor = Color.Transparent;
             }
-            menuItem.BackColor = Color.Teal;
+            menuItem.BackColor = Color.OrangeRed;
             currentSelectedMenuItem = menuItem;
         }
 
@@ -153,6 +153,11 @@ namespace POSLyion
                 {
                 }
             }
+        }
+
+        private void tsmenu_venta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

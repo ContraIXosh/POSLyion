@@ -114,7 +114,7 @@
             // 
             // panel_bot
             // 
-            this.panel_bot.BackColor = System.Drawing.Color.Black;
+            this.panel_bot.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_bot.ColumnCount = 3;
             this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_bot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
@@ -134,11 +134,12 @@
             // 
             this.lbl_updateversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updateversion.AutoSize = true;
-            this.lbl_updateversion.BackColor = System.Drawing.Color.Black;
+            this.lbl_updateversion.BackColor = System.Drawing.Color.OrangeRed;
+            this.lbl_updateversion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_updateversion.ForeColor = System.Drawing.Color.Gold;
             this.lbl_updateversion.Location = new System.Drawing.Point(423, 3);
             this.lbl_updateversion.Name = "lbl_updateversion";
-            this.lbl_updateversion.Size = new System.Drawing.Size(115, 13);
+            this.lbl_updateversion.Size = new System.Drawing.Size(138, 13);
             this.lbl_updateversion.TabIndex = 2;
             this.lbl_updateversion.Text = "Actualizacion: v1.0.0.5";
             // 
@@ -146,11 +147,12 @@
             // 
             this.lbl_updatetime.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updatetime.AutoSize = true;
-            this.lbl_updatetime.BackColor = System.Drawing.Color.Black;
+            this.lbl_updatetime.BackColor = System.Drawing.Color.OrangeRed;
+            this.lbl_updatetime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_updatetime.ForeColor = System.Drawing.Color.Gold;
             this.lbl_updatetime.Location = new System.Drawing.Point(173, 3);
             this.lbl_updatetime.Name = "lbl_updatetime";
-            this.lbl_updatetime.Size = new System.Drawing.Size(199, 13);
+            this.lbl_updatetime.Size = new System.Drawing.Size(237, 13);
             this.lbl_updatetime.TabIndex = 3;
             this.lbl_updatetime.Text = "Ultimo chequeo: 10:06:12  - 20/09/2024";
             // 
@@ -174,7 +176,7 @@
             // 
             // panel_izq
             // 
-            this.panel_izq.BackColor = System.Drawing.Color.Crimson;
+            this.panel_izq.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_izq.ColumnCount = 1;
             this.panel_izq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_izq.Controls.Add(this.panel6, 0, 1);
@@ -203,7 +205,7 @@
             // 
             // panel_mid
             // 
-            this.panel_mid.BackColor = System.Drawing.Color.Crimson;
+            this.panel_mid.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_mid.ColumnCount = 1;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_mid.Controls.Add(this.tableLayoutPanel5, 0, 0);
@@ -223,7 +225,7 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -281,22 +283,22 @@
             // 
             // btb_backup_bd
             // 
-            this.btb_backup_bd.BackColor = System.Drawing.Color.Transparent;
-            this.btb_backup_bd.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btb_backup_bd.BorderColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.BackColor = System.Drawing.Color.OliveDrab;
+            this.btb_backup_bd.BackgroundColor = System.Drawing.Color.OliveDrab;
+            this.btb_backup_bd.BorderColor = System.Drawing.Color.PaleGreen;
             this.btb_backup_bd.BorderRadius = 3;
             this.btb_backup_bd.BorderSize = 2;
             this.btb_backup_bd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btb_backup_bd.FlatAppearance.BorderSize = 0;
             this.btb_backup_bd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btb_backup_bd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btb_backup_bd.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.ForeColor = System.Drawing.Color.GreenYellow;
             this.btb_backup_bd.Location = new System.Drawing.Point(3, 109);
             this.btb_backup_bd.Name = "btb_backup_bd";
             this.btb_backup_bd.Size = new System.Drawing.Size(301, 48);
             this.btb_backup_bd.TabIndex = 78;
             this.btb_backup_bd.Text = "Backup BD";
-            this.btb_backup_bd.TextColor = System.Drawing.Color.SpringGreen;
+            this.btb_backup_bd.TextColor = System.Drawing.Color.GreenYellow;
             this.btb_backup_bd.UseVisualStyleBackColor = false;
             this.btb_backup_bd.Click += new System.EventHandler(this.btb_backup_bd_Click);
             // 
@@ -305,7 +307,7 @@
             this.lbl_bdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_bdd.AutoSize = true;
             this.lbl_bdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_bdd.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_bdd.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_bdd.Location = new System.Drawing.Point(63, 12);
             this.lbl_bdd.Name = "lbl_bdd";
             this.lbl_bdd.Size = new System.Drawing.Size(180, 29);
@@ -315,8 +317,8 @@
             // 
             // btn_restaurar_bd
             // 
-            this.btn_restaurar_bd.BackColor = System.Drawing.Color.Transparent;
-            this.btn_restaurar_bd.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_restaurar_bd.BackColor = System.Drawing.Color.DarkCyan;
+            this.btn_restaurar_bd.BackgroundColor = System.Drawing.Color.DarkCyan;
             this.btn_restaurar_bd.BorderColor = System.Drawing.Color.DeepSkyBlue;
             this.btn_restaurar_bd.BorderRadius = 3;
             this.btn_restaurar_bd.BorderSize = 2;
@@ -372,7 +374,7 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -391,27 +393,27 @@
             // btn_cerrar
             // 
             this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.BorderRadius = 7;
             this.btn_cerrar.BorderSize = 2;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.ForeColor = System.Drawing.Color.White;
             this.btn_cerrar.Location = new System.Drawing.Point(455, 13);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 40);
             this.btn_cerrar.TabIndex = 12;
             this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.TextColor = System.Drawing.Color.White;
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // panel_info
             // 
-            this.panel_info.BackColor = System.Drawing.Color.Black;
+            this.panel_info.BackColor = System.Drawing.Color.White;
             this.panel_info.ColumnCount = 2;
             this.panel_info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.panel_info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -432,10 +434,11 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Crimson;
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.label2.Location = new System.Drawing.Point(50, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(268, 29);
             this.label2.TabIndex = 0;
@@ -446,10 +449,11 @@
             // 
             this.lbl_informe.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_informe.AutoSize = true;
-            this.lbl_informe.ForeColor = System.Drawing.Color.White;
-            this.lbl_informe.Location = new System.Drawing.Point(3, 89);
+            this.lbl_informe.Font = new System.Drawing.Font("Niagara Solid", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_informe.ForeColor = System.Drawing.Color.Black;
+            this.lbl_informe.Location = new System.Drawing.Point(3, 83);
             this.lbl_informe.Name = "lbl_informe";
-            this.lbl_informe.Size = new System.Drawing.Size(207, 13);
+            this.lbl_informe.Size = new System.Drawing.Size(266, 26);
             this.lbl_informe.TabIndex = 1;
             this.lbl_informe.Text = "nombredueño-nombreempresa-nrosucursal";
             this.lbl_informe.Visible = false;
@@ -458,10 +462,11 @@
             // 
             this.lbl_fecha_vencimiento.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_fecha_vencimiento.AutoSize = true;
-            this.lbl_fecha_vencimiento.ForeColor = System.Drawing.Color.White;
-            this.lbl_fecha_vencimiento.Location = new System.Drawing.Point(3, 154);
+            this.lbl_fecha_vencimiento.Font = new System.Drawing.Font("Niagara Solid", 18F, System.Drawing.FontStyle.Italic);
+            this.lbl_fecha_vencimiento.ForeColor = System.Drawing.Color.Black;
+            this.lbl_fecha_vencimiento.Location = new System.Drawing.Point(3, 147);
             this.lbl_fecha_vencimiento.Name = "lbl_fecha_vencimiento";
-            this.lbl_fecha_vencimiento.Size = new System.Drawing.Size(151, 13);
+            this.lbl_fecha_vencimiento.Size = new System.Drawing.Size(186, 26);
             this.lbl_fecha_vencimiento.TabIndex = 3;
             this.lbl_fecha_vencimiento.Text = "fecha de vencimiento de pago";
             this.lbl_fecha_vencimiento.Visible = false;
@@ -471,16 +476,16 @@
             this.btn_añadir.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_añadir.BackColor = System.Drawing.Color.Gold;
             this.btn_añadir.BackgroundColor = System.Drawing.Color.Gold;
-            this.btn_añadir.BorderColor = System.Drawing.Color.Red;
+            this.btn_añadir.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_añadir.BorderRadius = 9;
-            this.btn_añadir.BorderSize = 0;
+            this.btn_añadir.BorderSize = 2;
             this.btn_añadir.FlatAppearance.BorderSize = 0;
             this.btn_añadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_añadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_añadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_añadir.ForeColor = System.Drawing.Color.Black;
-            this.btn_añadir.Location = new System.Drawing.Point(416, 131);
+            this.btn_añadir.Location = new System.Drawing.Point(411, 131);
             this.btn_añadir.Name = "btn_añadir";
-            this.btn_añadir.Size = new System.Drawing.Size(150, 31);
+            this.btn_añadir.Size = new System.Drawing.Size(160, 42);
             this.btn_añadir.TabIndex = 4;
             this.btn_añadir.Text = "Añadir cuenta";
             this.btn_añadir.TextColor = System.Drawing.Color.Black;
@@ -490,18 +495,17 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.09174F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.73394F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.174312F));
             this.tableLayoutPanel1.Controls.Add(this.lbl_configuracion, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(614, 125);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
@@ -509,13 +513,13 @@
             // 
             this.lbl_configuracion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_configuracion.AutoSize = true;
-            this.lbl_configuracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_configuracion.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_configuracion.Location = new System.Drawing.Point(175, 41);
+            this.lbl_configuracion.Font = new System.Drawing.Font("Humnst777 Blk BT", 33.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_configuracion.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_configuracion.Location = new System.Drawing.Point(103, 34);
             this.lbl_configuracion.Name = "lbl_configuracion";
-            this.lbl_configuracion.Size = new System.Drawing.Size(262, 42);
+            this.lbl_configuracion.Size = new System.Drawing.Size(410, 56);
             this.lbl_configuracion.TabIndex = 2;
-            this.lbl_configuracion.Text = "Configuración";
+            this.lbl_configuracion.Text = "CONFIGURACIÓN";
             // 
             // menu_sesion
             // 
