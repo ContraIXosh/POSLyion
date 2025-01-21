@@ -40,13 +40,13 @@
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
             this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_crear_proveedor = new RJCodeAdvance.RJControls.RJButton();
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
+            this.btn_crear_proveedor = new RJCodeAdvance.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_busqueda = new System.Windows.Forms.Label();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
-            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.cb_inactivo = new System.Windows.Forms.CheckBox();
+            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.dgv_proveedores = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,8 +160,8 @@
             this.panel_midizq.Margin = new System.Windows.Forms.Padding(0);
             this.panel_midizq.Name = "panel_midizq";
             this.panel_midizq.RowCount = 2;
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_midizq.Size = new System.Drawing.Size(312, 518);
             this.panel_midizq.TabIndex = 17;
             // 
@@ -170,43 +170,19 @@
             this.panel_btns.BackColor = System.Drawing.Color.IndianRed;
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_crear_proveedor, 0, 0);
             this.panel_btns.Controls.Add(this.btn_actualizar, 0, 1);
+            this.panel_btns.Controls.Add(this.btn_crear_proveedor, 0, 0);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_btns.Location = new System.Drawing.Point(5, 315);
+            this.panel_btns.Location = new System.Drawing.Point(5, 393);
             this.panel_btns.Margin = new System.Windows.Forms.Padding(5);
             this.panel_btns.Name = "panel_btns";
-            this.panel_btns.RowCount = 4;
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.panel_btns.Size = new System.Drawing.Size(302, 198);
+            this.panel_btns.RowCount = 2;
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.panel_btns.Size = new System.Drawing.Size(302, 120);
             this.panel_btns.TabIndex = 16;
-            // 
-            // btn_crear_proveedor
-            // 
-            this.btn_crear_proveedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_crear_proveedor.BackColor = System.Drawing.Color.LightGreen;
-            this.btn_crear_proveedor.BackgroundColor = System.Drawing.Color.LightGreen;
-            this.btn_crear_proveedor.BorderColor = System.Drawing.Color.DarkGreen;
-            this.btn_crear_proveedor.BorderRadius = 7;
-            this.btn_crear_proveedor.BorderSize = 2;
-            this.btn_crear_proveedor.FlatAppearance.BorderSize = 0;
-            this.btn_crear_proveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_crear_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_proveedor.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btn_crear_proveedor.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_proveedor.Image")));
-            this.btn_crear_proveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_crear_proveedor.Location = new System.Drawing.Point(31, 7);
-            this.btn_crear_proveedor.Name = "btn_crear_proveedor";
-            this.btn_crear_proveedor.Size = new System.Drawing.Size(239, 34);
-            this.btn_crear_proveedor.TabIndex = 26;
-            this.btn_crear_proveedor.Text = "AGREGAR PROVEEDOR";
-            this.btn_crear_proveedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_crear_proveedor.TextColor = System.Drawing.Color.DarkGreen;
-            this.btn_crear_proveedor.UseVisualStyleBackColor = false;
-            this.btn_crear_proveedor.Click += new System.EventHandler(this.btn_crear_proveedor_Click);
             // 
             // btn_actualizar
             // 
@@ -222,7 +198,7 @@
             this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
             this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(32, 54);
+            this.btn_actualizar.Location = new System.Drawing.Point(32, 71);
             this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(238, 38);
@@ -233,6 +209,30 @@
             this.btn_actualizar.UseVisualStyleBackColor = false;
             this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
             // 
+            // btn_crear_proveedor
+            // 
+            this.btn_crear_proveedor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_crear_proveedor.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_crear_proveedor.BackgroundColor = System.Drawing.Color.LightGreen;
+            this.btn_crear_proveedor.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btn_crear_proveedor.BorderRadius = 7;
+            this.btn_crear_proveedor.BorderSize = 2;
+            this.btn_crear_proveedor.FlatAppearance.BorderSize = 0;
+            this.btn_crear_proveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_crear_proveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_crear_proveedor.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btn_crear_proveedor.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_proveedor.Image")));
+            this.btn_crear_proveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_crear_proveedor.Location = new System.Drawing.Point(31, 13);
+            this.btn_crear_proveedor.Name = "btn_crear_proveedor";
+            this.btn_crear_proveedor.Size = new System.Drawing.Size(239, 34);
+            this.btn_crear_proveedor.TabIndex = 26;
+            this.btn_crear_proveedor.Text = "AGREGAR PROVEEDOR";
+            this.btn_crear_proveedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_crear_proveedor.TextColor = System.Drawing.Color.DarkGreen;
+            this.btn_crear_proveedor.UseVisualStyleBackColor = false;
+            this.btn_crear_proveedor.Click += new System.EventHandler(this.btn_crear_proveedor_Click);
+            // 
             // panel_filter
             // 
             this.panel_filter.BackColor = System.Drawing.Color.IndianRed;
@@ -241,7 +241,7 @@
             this.panel_filter.Controls.Add(this.lbl_busqueda, 0, 0);
             this.panel_filter.Controls.Add(this.txt_busqueda, 0, 1);
             this.panel_filter.Controls.Add(this.cb_inactivo, 0, 2);
-            this.panel_filter.Controls.Add(this.btn_limpiar_filtros, 0, 7);
+            this.panel_filter.Controls.Add(this.btn_limpiar_filtros, 0, 3);
             this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_filter.Location = new System.Drawing.Point(5, 5);
             this.panel_filter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
@@ -255,7 +255,7 @@
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
             this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
-            this.panel_filter.Size = new System.Drawing.Size(302, 305);
+            this.panel_filter.Size = new System.Drawing.Size(302, 383);
             this.panel_filter.TabIndex = 17;
             // 
             // lbl_busqueda
@@ -264,7 +264,7 @@
             this.lbl_busqueda.AutoSize = true;
             this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_busqueda.Location = new System.Drawing.Point(17, 14);
+            this.lbl_busqueda.Location = new System.Drawing.Point(17, 24);
             this.lbl_busqueda.Name = "lbl_busqueda";
             this.lbl_busqueda.Size = new System.Drawing.Size(268, 24);
             this.lbl_busqueda.TabIndex = 13;
@@ -274,16 +274,29 @@
             // 
             this.txt_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_busqueda.Location = new System.Drawing.Point(25, 41);
+            this.txt_busqueda.Location = new System.Drawing.Point(25, 51);
             this.txt_busqueda.Name = "txt_busqueda";
             this.txt_busqueda.Size = new System.Drawing.Size(251, 29);
             this.txt_busqueda.TabIndex = 11;
             // 
+            // cb_inactivo
+            // 
+            this.cb_inactivo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cb_inactivo.AutoSize = true;
+            this.cb_inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_inactivo.ForeColor = System.Drawing.Color.Gold;
+            this.cb_inactivo.Location = new System.Drawing.Point(69, 108);
+            this.cb_inactivo.Name = "cb_inactivo";
+            this.cb_inactivo.Size = new System.Drawing.Size(164, 24);
+            this.cb_inactivo.TabIndex = 18;
+            this.cb_inactivo.Text = "Mostrar inactivos";
+            this.cb_inactivo.UseVisualStyleBackColor = true;
+            // 
             // btn_limpiar_filtros
             // 
             this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.OrangeRed;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.OrangeRed;
             this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
             this.btn_limpiar_filtros.BorderRadius = 10;
             this.btn_limpiar_filtros.BorderSize = 2;
@@ -293,7 +306,7 @@
             this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
             this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
             this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(32, 266);
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(32, 149);
             this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
             this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
             this.btn_limpiar_filtros.Size = new System.Drawing.Size(238, 38);
@@ -302,19 +315,6 @@
             this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
             this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
             this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
-            // 
-            // cb_inactivo
-            // 
-            this.cb_inactivo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cb_inactivo.AutoSize = true;
-            this.cb_inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_inactivo.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactivo.Location = new System.Drawing.Point(69, 83);
-            this.cb_inactivo.Name = "cb_inactivo";
-            this.cb_inactivo.Size = new System.Drawing.Size(164, 24);
-            this.cb_inactivo.TabIndex = 18;
-            this.cb_inactivo.Text = "Mostrar inactivos";
-            this.cb_inactivo.UseVisualStyleBackColor = true;
             // 
             // dgv_proveedores
             // 
@@ -370,7 +370,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Moccasin;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.OrangeRed;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv_proveedores.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_proveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

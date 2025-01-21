@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsuarios));
             this.panel_main = new System.Windows.Forms.TableLayoutPanel();
             this.panel_bottom = new System.Windows.Forms.TableLayoutPanel();
@@ -62,11 +62,11 @@
             this.btn_actualizar = new CustomBox.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_rol = new System.Windows.Forms.Label();
-            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.lbl_busqueda = new System.Windows.Forms.Label();
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.cbo_roles = new CustomBox.RJControls.RJComboBox();
             this.cb_inactivos = new System.Windows.Forms.CheckBox();
+            this.btn_limpiar_filtros = new CustomBox.RJControls.RJButton();
             this.menu_sesion = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inicioAdministradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -193,24 +193,24 @@
             this.dgv_usuarios.AllowUserToAddRows = false;
             this.dgv_usuarios.AllowUserToDeleteRows = false;
             this.dgv_usuarios.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.MistyRose;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgv_usuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.MistyRose;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_usuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_usuarios.BackgroundColor = System.Drawing.Color.White;
             this.dgv_usuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_usuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_usuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Bisque;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_usuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Bisque;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_usuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_usuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btn_seleccionar,
             this.id_usuario,
@@ -226,14 +226,14 @@
             this.estado_valor,
             this.btn_editar,
             this.btn_eliminar});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_usuarios.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_usuarios.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_usuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_usuarios.EnableHeadersVisualStyles = false;
             this.dgv_usuarios.GridColor = System.Drawing.Color.DarkRed;
@@ -243,21 +243,21 @@
             this.dgv_usuarios.Name = "dgv_usuarios";
             this.dgv_usuarios.ReadOnly = true;
             this.dgv_usuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_usuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_usuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_usuarios.RowHeadersVisible = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightCoral;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgv_usuarios.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv_usuarios.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_usuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_usuarios.Size = new System.Drawing.Size(823, 507);
             this.dgv_usuarios.TabIndex = 32;
@@ -504,30 +504,6 @@
             this.lbl_rol.TabIndex = 16;
             this.lbl_rol.Text = "ROL";
             // 
-            // btn_limpiar_filtros
-            // 
-            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.OrangeRed;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.OrangeRed;
-            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.BorderRadius = 10;
-            this.btn_limpiar_filtros.BorderSize = 2;
-            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
-            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
-            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(11, 190);
-            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
-            this.btn_limpiar_filtros.Size = new System.Drawing.Size(225, 38);
-            this.btn_limpiar_filtros.TabIndex = 17;
-            this.btn_limpiar_filtros.Text = "Limpiar filtros";
-            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
-            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
-            this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
-            // 
             // lbl_busqueda
             // 
             this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -581,6 +557,30 @@
             this.cb_inactivos.TabIndex = 18;
             this.cb_inactivos.Text = "Mostrar inactivos";
             this.cb_inactivos.UseVisualStyleBackColor = true;
+            // 
+            // btn_limpiar_filtros
+            // 
+            this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.OrangeRed;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.OrangeRed;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.BorderRadius = 10;
+            this.btn_limpiar_filtros.BorderSize = 2;
+            this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
+            this.btn_limpiar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
+            this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(11, 190);
+            this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
+            this.btn_limpiar_filtros.Size = new System.Drawing.Size(225, 38);
+            this.btn_limpiar_filtros.TabIndex = 17;
+            this.btn_limpiar_filtros.Text = "Limpiar filtros";
+            this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.UseVisualStyleBackColor = false;
+            this.btn_limpiar_filtros.Click += new System.EventHandler(this.btn_limpiar_filtros_Click);
             // 
             // menu_sesion
             // 

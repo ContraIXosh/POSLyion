@@ -88,7 +88,7 @@
             // 
             // panel_bottomColor
             // 
-            this.panel_bottomColor.BackColor = System.Drawing.Color.Crimson;
+            this.panel_bottomColor.BackColor = System.Drawing.Color.OrangeRed;
             this.panel_bottomColor.ColumnCount = 1;
             this.panel_bottomColor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_bottomColor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
