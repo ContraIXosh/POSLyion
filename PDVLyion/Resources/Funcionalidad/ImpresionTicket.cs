@@ -96,7 +96,14 @@ namespace POSLyion.Resources.Funcionalidad
                 fuente = new Font("consola", 10, FontStyle.Bold);
                 e.Graphics.DrawString("---------------------------------------------------------------------------", fuente, Brushes.Black, posX, posY);
                 posY += 30;
-                e.Graphics.DrawString($"Cliente: {_ticket.Cliente.Nombre_completo}\nTipo de venta: {_tipoVenta.Descripcion}\nVuelto: {_vuelto}\nTotal: {_totalConDescuento}\nGracias por su compra.", fuente, Brushes.Black, posX, posY);
+                if(_ticket.Cliente != null)
+                {
+                    e.Graphics.DrawString($"Cliente: {_ticket.Cliente.Nombre_completo} \nTipo de venta: {_tipoVenta.Descripcion}\nTotal: {_totalConDescuento} ({_ticket.Cliente.Descuento}%) \nVuelto: {_vuelto}\nGracias por su compra.", fuente, Brushes.Black, posX, posY);
+                }
+                else
+                {
+                    e.Graphics.DrawString($"Tipo de venta: {_tipoVenta.Descripcion}\nVuelto: {_vuelto}\nTotal: {_totalConDescuento}\nGracias por su compra.", fuente, Brushes.Black, posX, posY);
+                }
             }
             catch (Exception ex)
             {

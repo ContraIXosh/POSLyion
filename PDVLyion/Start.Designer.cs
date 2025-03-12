@@ -91,7 +91,7 @@ namespace POSLyion
             // 
             // menu
             // 
-            this.menu.BackColor = System.Drawing.Color.Gold;
+            this.menu.BackColor = System.Drawing.Color.Orange;
             this.menu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmenu_venta,
@@ -154,7 +154,7 @@ namespace POSLyion
             // 
             // tsmenu_users
             // 
-            this.tsmenu_users.BackColor = System.Drawing.Color.Gold;
+            this.tsmenu_users.BackColor = System.Drawing.Color.Transparent;
             this.tsmenu_users.Image = ((System.Drawing.Image)(resources.GetObject("tsmenu_users.Image")));
             this.tsmenu_users.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmenu_users.MergeIndex = 3;
@@ -234,7 +234,7 @@ namespace POSLyion
             // lbl_pos
             // 
             this.lbl_pos.AutoSize = true;
-            this.lbl_pos.BackColor = System.Drawing.Color.Crimson;
+            this.lbl_pos.BackColor = System.Drawing.Color.Gold;
             this.lbl_pos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_pos.Enabled = false;
             this.lbl_pos.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -249,7 +249,7 @@ namespace POSLyion
             // lbl_usuario
             // 
             this.lbl_usuario.AutoSize = true;
-            this.lbl_usuario.BackColor = System.Drawing.Color.Crimson;
+            this.lbl_usuario.BackColor = System.Drawing.Color.Gold;
             this.lbl_usuario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_usuario.Enabled = false;
             this.lbl_usuario.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

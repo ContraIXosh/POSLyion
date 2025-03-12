@@ -105,6 +105,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -125,63 +126,63 @@
             // btn_reiniciar_datos
             // 
             this.btn_reiniciar_datos.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Gold;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_reiniciar_datos.BorderRadius = 7;
             this.btn_reiniciar_datos.BorderSize = 2;
             this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
             this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.OrangeRed;
             this.btn_reiniciar_datos.Location = new System.Drawing.Point(245, 10);
             this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
             this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 35);
             this.btn_reiniciar_datos.TabIndex = 14;
             this.btn_reiniciar_datos.Text = "Reiniciar datos";
-            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.OrangeRed;
             this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
             this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_cerrar
             // 
             this.btn_cerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Salmon;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Salmon;
             this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
             this.btn_cerrar.BorderRadius = 7;
             this.btn_cerrar.BorderSize = 2;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.ForeColor = System.Drawing.Color.DarkRed;
             this.btn_cerrar.Location = new System.Drawing.Point(557, 10);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 35);
             this.btn_cerrar.TabIndex = 11;
             this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.TextColor = System.Drawing.Color.DarkRed;
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // btn_guardar
             // 
             this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BorderColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.LightGreen;
+            this.btn_guardar.BorderColor = System.Drawing.Color.ForestGreen;
             this.btn_guardar.BorderRadius = 7;
             this.btn_guardar.BorderSize = 2;
             this.btn_guardar.FlatAppearance.BorderSize = 0;
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.ForeColor = System.Drawing.Color.Green;
             this.btn_guardar.Location = new System.Drawing.Point(401, 10);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(150, 35);
             this.btn_guardar.TabIndex = 12;
             this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.TextColor = System.Drawing.Color.LimeGreen;
+            this.btn_guardar.TextColor = System.Drawing.Color.Green;
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
@@ -352,7 +353,7 @@
             // 
             // panelitop
             // 
-            this.panelitop.BackColor = System.Drawing.Color.Black;
+            this.panelitop.BackColor = System.Drawing.Color.White;
             this.panelitop.ColumnCount = 1;
             this.panelitop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panelitop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -371,11 +372,11 @@
             // 
             this.lbl_vendedor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_vendedor.AutoSize = true;
-            this.lbl_vendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_vendedor.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_vendedor.Location = new System.Drawing.Point(108, 7);
+            this.lbl_vendedor.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_vendedor.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_vendedor.Location = new System.Drawing.Point(114, 2);
             this.lbl_vendedor.Name = "lbl_vendedor";
-            this.lbl_vendedor.Size = new System.Drawing.Size(493, 55);
+            this.lbl_vendedor.Size = new System.Drawing.Size(482, 64);
             this.lbl_vendedor.TabIndex = 0;
             this.lbl_vendedor.Text = "CREAR VENDEDOR";
             // 

@@ -171,6 +171,7 @@
             this.txt_precio_costo.Name = "txt_precio_costo";
             this.txt_precio_costo.Size = new System.Drawing.Size(232, 29);
             this.txt_precio_costo.TabIndex = 4;
+            this.txt_precio_costo.TextChanged += new System.EventHandler(this.txt_precio_costo_TextChanged);
             this.txt_precio_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precio_costo_KeyPress);
             // 
             // txt_codigo_barras

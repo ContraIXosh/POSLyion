@@ -160,6 +160,7 @@
             // 
             // tlp_productos
             // 
+            this.tlp_productos.BackColor = System.Drawing.Color.Coral;
             this.tlp_productos.ColumnCount = 1;
             this.tlp_productos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlp_productos.Controls.Add(this.dgv_productos, 0, 2);
@@ -191,7 +192,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.HotPink;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dgv_productos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_productos.BackgroundColor = System.Drawing.Color.Black;
+            this.dgv_productos.BackgroundColor = System.Drawing.Color.White;
             this.dgv_productos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_productos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_productos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -284,7 +285,7 @@
             // 
             // tableLayoutPanel12
             // 
-            this.tableLayoutPanel12.BackColor = System.Drawing.Color.HotPink;
+            this.tableLayoutPanel12.BackColor = System.Drawing.Color.OrangeRed;
             this.tableLayoutPanel12.ColumnCount = 3;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -327,6 +328,7 @@
             // 
             // flp_tickets
             // 
+            this.flp_tickets.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flp_tickets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp_tickets.Location = new System.Drawing.Point(3, 3);
             this.flp_tickets.Name = "flp_tickets";
@@ -400,7 +402,7 @@
             // 
             // tableLayoutPanel10
             // 
-            this.tableLayoutPanel10.BackColor = System.Drawing.Color.DarkMagenta;
+            this.tableLayoutPanel10.BackColor = System.Drawing.Color.Coral;
             this.tableLayoutPanel10.ColumnCount = 1;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.Controls.Add(this.panel_factura, 0, 1);
@@ -431,7 +433,7 @@
             this.lbl_titulo.AutoSize = true;
             this.lbl_titulo.Enabled = false;
             this.lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_titulo.Location = new System.Drawing.Point(62, 16);
+            this.lbl_titulo.Location = new System.Drawing.Point(69, 13);
             this.lbl_titulo.Name = "lbl_titulo";
             this.lbl_titulo.Size = new System.Drawing.Size(224, 31);
             this.lbl_titulo.TabIndex = 0;
@@ -496,7 +498,7 @@
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.BackColor = System.Drawing.Color.DarkMagenta;
+            this.tableLayoutPanel8.BackColor = System.Drawing.Color.Coral;
             this.tableLayoutPanel8.ColumnCount = 3;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -519,7 +521,7 @@
             // 
             // tableLayoutPanel9
             // 
-            this.tableLayoutPanel9.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.tableLayoutPanel9.BackColor = System.Drawing.Color.OrangeRed;
             this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -552,9 +554,9 @@
             // 
             // btn_cerrarventa
             // 
-            this.btn_cerrarventa.BackColor = System.Drawing.Color.Black;
-            this.btn_cerrarventa.BackgroundColor = System.Drawing.Color.Black;
-            this.btn_cerrarventa.BorderColor = System.Drawing.Color.Gold;
+            this.btn_cerrarventa.BackColor = System.Drawing.Color.DarkRed;
+            this.btn_cerrarventa.BackgroundColor = System.Drawing.Color.DarkRed;
+            this.btn_cerrarventa.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_cerrarventa.BorderRadius = 5;
             this.btn_cerrarventa.BorderSize = 2;
             this.btn_cerrarventa.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -585,7 +587,7 @@
             // 
             // panel_container
             // 
-            this.panel_container.BackColor = System.Drawing.Color.Black;
+            this.panel_container.BackColor = System.Drawing.Color.White;
             this.panel_container.ColumnCount = 1;
             this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_container.Controls.Add(this.panel_resumido, 0, 0);
@@ -615,7 +617,7 @@
             this.dgv_resumen.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgv_resumen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_resumen.BackgroundColor = System.Drawing.Color.Black;
+            this.dgv_resumen.BackgroundColor = System.Drawing.Color.White;
             this.dgv_resumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_resumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_resumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -765,7 +767,7 @@
             // 
             // panel_bottom
             // 
-            this.panel_bottom.BackColor = System.Drawing.Color.Crimson;
+            this.panel_bottom.BackColor = System.Drawing.Color.Tomato;
             this.panel_bottom.ColumnCount = 4;
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.panel_bottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -956,7 +958,7 @@
             // 
             this.lbl_updateversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updateversion.AutoSize = true;
-            this.lbl_updateversion.BackColor = System.Drawing.Color.Black;
+            this.lbl_updateversion.BackColor = System.Drawing.Color.Transparent;
             this.lbl_updateversion.ForeColor = System.Drawing.Color.Gold;
             this.lbl_updateversion.Location = new System.Drawing.Point(773, 3);
             this.lbl_updateversion.Name = "lbl_updateversion";
@@ -968,7 +970,7 @@
             // 
             this.lbl_updatetime.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_updatetime.AutoSize = true;
-            this.lbl_updatetime.BackColor = System.Drawing.Color.Black;
+            this.lbl_updatetime.BackColor = System.Drawing.Color.Transparent;
             this.lbl_updatetime.ForeColor = System.Drawing.Color.Gold;
             this.lbl_updatetime.Location = new System.Drawing.Point(568, 3);
             this.lbl_updatetime.Name = "lbl_updatetime";

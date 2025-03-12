@@ -129,7 +129,7 @@
             // 
             // panel_mid
             // 
-            this.panel_mid.BackColor = System.Drawing.Color.Crimson;
+            this.panel_mid.BackColor = System.Drawing.Color.Coral;
             this.panel_mid.ColumnCount = 2;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -148,7 +148,7 @@
             // 
             // panel_midizq
             // 
-            this.panel_midizq.BackColor = System.Drawing.Color.Crimson;
+            this.panel_midizq.BackColor = System.Drawing.Color.Coral;
             this.panel_midizq.ColumnCount = 1;
             this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
@@ -165,7 +165,7 @@
             // 
             // panel_btns
             // 
-            this.panel_btns.BackColor = System.Drawing.Color.Black;
+            this.panel_btns.BackColor = System.Drawing.Color.White;
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_btns.Controls.Add(this.btn_crear_proveedor, 0, 0);
@@ -185,9 +185,9 @@
             // btn_crear_proveedor
             // 
             this.btn_crear_proveedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_crear_proveedor.BackColor = System.Drawing.Color.Transparent;
-            this.btn_crear_proveedor.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_crear_proveedor.BorderColor = System.Drawing.Color.Lime;
+            this.btn_crear_proveedor.BackColor = System.Drawing.Color.Green;
+            this.btn_crear_proveedor.BackgroundColor = System.Drawing.Color.Green;
+            this.btn_crear_proveedor.BorderColor = System.Drawing.Color.DarkGreen;
             this.btn_crear_proveedor.BorderRadius = 7;
             this.btn_crear_proveedor.BorderSize = 2;
             this.btn_crear_proveedor.FlatAppearance.BorderSize = 0;
@@ -209,9 +209,9 @@
             // btn_actualizar
             // 
             this.btn_actualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_actualizar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BorderColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_actualizar.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.btn_actualizar.BackgroundColor = System.Drawing.Color.LightSeaGreen;
+            this.btn_actualizar.BorderColor = System.Drawing.Color.DarkCyan;
             this.btn_actualizar.BorderRadius = 10;
             this.btn_actualizar.BorderSize = 2;
             this.btn_actualizar.FlatAppearance.BorderSize = 0;
@@ -232,7 +232,7 @@
             // 
             // panel_filter
             // 
-            this.panel_filter.BackColor = System.Drawing.Color.Black;
+            this.panel_filter.BackColor = System.Drawing.Color.White;
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_filter.Controls.Add(this.lbl_busqueda, 0, 0);
@@ -260,7 +260,7 @@
             this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_busqueda.AutoSize = true;
             this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_busqueda.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_busqueda.Location = new System.Drawing.Point(17, 14);
             this.lbl_busqueda.Name = "lbl_busqueda";
             this.lbl_busqueda.Size = new System.Drawing.Size(268, 24);
@@ -279,9 +279,9 @@
             // btn_limpiar_filtros
             // 
             this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.DarkGray;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.DimGray;
             this.btn_limpiar_filtros.BorderRadius = 10;
             this.btn_limpiar_filtros.BorderSize = 2;
             this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
@@ -305,7 +305,7 @@
             this.cb_inactivo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cb_inactivo.AutoSize = true;
             this.cb_inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_inactivo.ForeColor = System.Drawing.Color.Gold;
+            this.cb_inactivo.ForeColor = System.Drawing.Color.OrangeRed;
             this.cb_inactivo.Location = new System.Drawing.Point(69, 83);
             this.cb_inactivo.Name = "cb_inactivo";
             this.cb_inactivo.Size = new System.Drawing.Size(164, 24);
@@ -324,15 +324,15 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Orange;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dgv_proveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_proveedores.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgv_proveedores.BackgroundColor = System.Drawing.Color.White;
             this.dgv_proveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_proveedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_proveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Tomato;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Tomato;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_proveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -368,7 +368,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dgv_proveedores.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_proveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_proveedores.Size = new System.Drawing.Size(725, 508);

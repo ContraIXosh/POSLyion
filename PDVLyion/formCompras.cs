@@ -465,7 +465,7 @@ namespace POSLyion
             var cantidadAnterior = oProducto.Stock_actual;
             var costoNuevo = Convert.ToDecimal(filaProducto.Cells["precio_costo"].Value);
             var cantidadNueva = Convert.ToInt32(filaProducto.Cells["cantidad"].Value);
-            var nuevoCostoProducto = ((costoAnterior * Math.Abs(cantidadAnterior)) + (costoNuevo * cantidadNueva)) / (Math.Abs(cantidadAnterior) + cantidadNueva);
+            var nuevoCostoProducto = (costoNuevo);
             return nuevoCostoProducto;
         }
 
@@ -557,6 +557,11 @@ namespace POSLyion
             {
                 Close();
             }
+        }
+
+        private void txt_precio_costo_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         // Busca un proveedor mediante un modal

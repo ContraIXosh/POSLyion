@@ -148,7 +148,7 @@
             // 
             // panel_mid
             // 
-            this.panel_mid.BackColor = System.Drawing.Color.Crimson;
+            this.panel_mid.BackColor = System.Drawing.Color.Coral;
             this.panel_mid.ColumnCount = 2;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -167,7 +167,7 @@
             // 
             // panel_midizq
             // 
-            this.panel_midizq.BackColor = System.Drawing.Color.Crimson;
+            this.panel_midizq.BackColor = System.Drawing.Color.Coral;
             this.panel_midizq.ColumnCount = 1;
             this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
@@ -184,7 +184,7 @@
             // 
             // panel_btns
             // 
-            this.panel_btns.BackColor = System.Drawing.Color.Black;
+            this.panel_btns.BackColor = System.Drawing.Color.White;
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_btns.Controls.Add(this.btn_crear, 0, 0);
@@ -206,9 +206,9 @@
             // btn_crear
             // 
             this.btn_crear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_crear.BackColor = System.Drawing.Color.Transparent;
-            this.btn_crear.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_crear.BorderColor = System.Drawing.Color.Lime;
+            this.btn_crear.BackColor = System.Drawing.Color.Green;
+            this.btn_crear.BackgroundColor = System.Drawing.Color.Green;
+            this.btn_crear.BorderColor = System.Drawing.Color.ForestGreen;
             this.btn_crear.BorderRadius = 7;
             this.btn_crear.BorderSize = 2;
             this.btn_crear.FlatAppearance.BorderSize = 0;
@@ -230,9 +230,9 @@
             // btn_actualizar
             // 
             this.btn_actualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_actualizar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BorderColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_actualizar.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.btn_actualizar.BackgroundColor = System.Drawing.Color.LightSeaGreen;
+            this.btn_actualizar.BorderColor = System.Drawing.Color.DarkCyan;
             this.btn_actualizar.BorderRadius = 10;
             this.btn_actualizar.BorderSize = 2;
             this.btn_actualizar.FlatAppearance.BorderSize = 0;
@@ -254,15 +254,15 @@
             // btn_ventas_credito
             // 
             this.btn_ventas_credito.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_ventas_credito.BackColor = System.Drawing.Color.Transparent;
-            this.btn_ventas_credito.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_ventas_credito.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_ventas_credito.BackColor = System.Drawing.Color.Gold;
+            this.btn_ventas_credito.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_ventas_credito.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_ventas_credito.BorderRadius = 10;
             this.btn_ventas_credito.BorderSize = 2;
             this.btn_ventas_credito.FlatAppearance.BorderSize = 0;
             this.btn_ventas_credito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ventas_credito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ventas_credito.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_ventas_credito.ForeColor = System.Drawing.Color.OrangeRed;
             this.btn_ventas_credito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_ventas_credito.Location = new System.Drawing.Point(29, 106);
             this.btn_ventas_credito.Margin = new System.Windows.Forms.Padding(0);
@@ -270,32 +270,29 @@
             this.btn_ventas_credito.Size = new System.Drawing.Size(225, 38);
             this.btn_ventas_credito.TabIndex = 30;
             this.btn_ventas_credito.Text = "Cuenta de ";
-            this.btn_ventas_credito.TextColor = System.Drawing.Color.Yellow;
+            this.btn_ventas_credito.TextColor = System.Drawing.Color.OrangeRed;
             this.btn_ventas_credito.UseVisualStyleBackColor = false;
             this.btn_ventas_credito.Click += new System.EventHandler(this.btn_ventas_credito_Click);
             // 
             // panel_filter
             // 
-            this.panel_filter.BackColor = System.Drawing.Color.Black;
+            this.panel_filter.BackColor = System.Drawing.Color.White;
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_filter.Controls.Add(this.lbl_busqueda, 0, 0);
             this.panel_filter.Controls.Add(this.txt_busqueda, 0, 1);
             this.panel_filter.Controls.Add(this.cb_inactivo, 0, 2);
-            this.panel_filter.Controls.Add(this.btn_limpiar_filtros, 0, 4);
+            this.panel_filter.Controls.Add(this.btn_limpiar_filtros, 0, 3);
             this.panel_filter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_filter.Location = new System.Drawing.Point(5, 5);
             this.panel_filter.Margin = new System.Windows.Forms.Padding(5);
             this.panel_filter.Name = "panel_filter";
-            this.panel_filter.RowCount = 8;
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.7551F));
-            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.71429F));
+            this.panel_filter.RowCount = 5;
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.06897F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.06897F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.06897F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.06897F));
+            this.panel_filter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.72414F));
             this.panel_filter.Size = new System.Drawing.Size(284, 300);
             this.panel_filter.TabIndex = 17;
             // 
@@ -304,8 +301,8 @@
             this.lbl_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_busqueda.AutoSize = true;
             this.lbl_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_busqueda.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_busqueda.Location = new System.Drawing.Point(17, 13);
+            this.lbl_busqueda.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_busqueda.Location = new System.Drawing.Point(17, 11);
             this.lbl_busqueda.Name = "lbl_busqueda";
             this.lbl_busqueda.Size = new System.Drawing.Size(250, 25);
             this.lbl_busqueda.TabIndex = 13;
@@ -315,7 +312,7 @@
             // 
             this.txt_busqueda.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_busqueda.Location = new System.Drawing.Point(16, 41);
+            this.txt_busqueda.Location = new System.Drawing.Point(16, 39);
             this.txt_busqueda.Name = "txt_busqueda";
             this.txt_busqueda.Size = new System.Drawing.Size(251, 29);
             this.txt_busqueda.TabIndex = 11;
@@ -326,8 +323,8 @@
             this.cb_inactivo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cb_inactivo.AutoSize = true;
             this.cb_inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_inactivo.ForeColor = System.Drawing.Color.Gold;
-            this.cb_inactivo.Location = new System.Drawing.Point(60, 83);
+            this.cb_inactivo.ForeColor = System.Drawing.Color.OrangeRed;
+            this.cb_inactivo.Location = new System.Drawing.Point(60, 78);
             this.cb_inactivo.Name = "cb_inactivo";
             this.cb_inactivo.Size = new System.Drawing.Size(164, 24);
             this.cb_inactivo.TabIndex = 18;
@@ -338,9 +335,9 @@
             // btn_limpiar_filtros
             // 
             this.btn_limpiar_filtros.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.White;
+            this.btn_limpiar_filtros.BackColor = System.Drawing.Color.Silver;
+            this.btn_limpiar_filtros.BackgroundColor = System.Drawing.Color.Silver;
+            this.btn_limpiar_filtros.BorderColor = System.Drawing.Color.DimGray;
             this.btn_limpiar_filtros.BorderRadius = 10;
             this.btn_limpiar_filtros.BorderSize = 2;
             this.btn_limpiar_filtros.FlatAppearance.BorderSize = 0;
@@ -349,10 +346,10 @@
             this.btn_limpiar_filtros.ForeColor = System.Drawing.Color.White;
             this.btn_limpiar_filtros.Image = ((System.Drawing.Image)(resources.GetObject("btn_limpiar_filtros.Image")));
             this.btn_limpiar_filtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 152);
+            this.btn_limpiar_filtros.Location = new System.Drawing.Point(30, 108);
             this.btn_limpiar_filtros.Margin = new System.Windows.Forms.Padding(0);
             this.btn_limpiar_filtros.Name = "btn_limpiar_filtros";
-            this.btn_limpiar_filtros.Size = new System.Drawing.Size(224, 37);
+            this.btn_limpiar_filtros.Size = new System.Drawing.Size(224, 36);
             this.btn_limpiar_filtros.TabIndex = 27;
             this.btn_limpiar_filtros.Text = "Limpiar filtros";
             this.btn_limpiar_filtros.TextColor = System.Drawing.Color.White;
@@ -370,7 +367,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Purple;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dgv_clientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_clientes.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgv_clientes.BackgroundColor = System.Drawing.Color.White;
             this.dgv_clientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_clientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_clientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;

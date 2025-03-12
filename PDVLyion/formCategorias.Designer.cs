@@ -55,16 +55,17 @@
             this.lbl_updatetime = new System.Windows.Forms.Label();
             this.panel_mid = new System.Windows.Forms.TableLayoutPanel();
             this.panel_midizq = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_cancelar = new RJCodeAdvance.RJControls.RJButton();
-            this.lbl_edicion = new System.Windows.Forms.Label();
-            this.txt_descripcion_editar = new CustomBox.RJControls.RJTextBox();
-            this.btn_buscar = new RJCodeAdvance.RJControls.RJButton();
-            this.btn_actualizar = new CustomBox.RJControls.RJButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_crear_categoria = new RJCodeAdvance.RJControls.RJButton();
             this.txt_descripcion = new CustomBox.RJControls.RJTextBox();
+            this.btn_buscar = new RJCodeAdvance.RJControls.RJButton();
             this.lbl_crear = new System.Windows.Forms.Label();
+            this.rjButton1 = new CustomBox.RJControls.RJButton();
+            this.panel_btns = new System.Windows.Forms.TableLayoutPanel();
+            this.lbl_edicion = new System.Windows.Forms.Label();
+            this.txt_descripcion_editar = new CustomBox.RJControls.RJTextBox();
             this.btn_editar_categoria = new RJCodeAdvance.RJControls.RJButton();
+            this.btn_cancelar = new RJCodeAdvance.RJControls.RJButton();
             this.panel_filter = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_search = new System.Windows.Forms.Label();
             this.txt_search = new System.Windows.Forms.TextBox();
@@ -83,6 +84,7 @@
             this.panel_bot.SuspendLayout();
             this.panel_mid.SuspendLayout();
             this.panel_midizq.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel_btns.SuspendLayout();
             this.panel_filter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).BeginInit();
@@ -269,7 +271,7 @@
             // 
             // panel_mid
             // 
-            this.panel_mid.BackColor = System.Drawing.Color.Crimson;
+            this.panel_mid.BackColor = System.Drawing.Color.Coral;
             this.panel_mid.ColumnCount = 2;
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.panel_mid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
@@ -286,82 +288,178 @@
             // 
             // panel_midizq
             // 
-            this.panel_midizq.BackColor = System.Drawing.Color.Crimson;
+            this.panel_midizq.BackColor = System.Drawing.Color.Coral;
             this.panel_midizq.ColumnCount = 1;
             this.panel_midizq.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panel_midizq.Controls.Add(this.tableLayoutPanel1, 0, 2);
             this.panel_midizq.Controls.Add(this.panel_btns, 0, 1);
             this.panel_midizq.Controls.Add(this.panel_filter, 0, 0);
             this.panel_midizq.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_midizq.Location = new System.Drawing.Point(0, 0);
             this.panel_midizq.Margin = new System.Windows.Forms.Padding(0);
             this.panel_midizq.Name = "panel_midizq";
-            this.panel_midizq.RowCount = 2;
+            this.panel_midizq.RowCount = 3;
             this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.panel_midizq.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.panel_midizq.Size = new System.Drawing.Size(294, 517);
             this.panel_midizq.TabIndex = 29;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.btn_crear_categoria, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txt_descripcion, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btn_buscar, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_crear, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rjButton1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 309);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.74746F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.60294F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.60294F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.79391F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.25275F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(288, 205);
+            this.tableLayoutPanel1.TabIndex = 51;
+            // 
+            // btn_crear_categoria
+            // 
+            this.btn_crear_categoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_crear_categoria.BackColor = System.Drawing.Color.Green;
+            this.btn_crear_categoria.BackgroundColor = System.Drawing.Color.Green;
+            this.btn_crear_categoria.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btn_crear_categoria.BorderRadius = 7;
+            this.btn_crear_categoria.BorderSize = 2;
+            this.btn_crear_categoria.FlatAppearance.BorderSize = 0;
+            this.btn_crear_categoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_crear_categoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_crear_categoria.ForeColor = System.Drawing.Color.Lime;
+            this.btn_crear_categoria.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_categoria.Image")));
+            this.btn_crear_categoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_crear_categoria.Location = new System.Drawing.Point(18, 69);
+            this.btn_crear_categoria.Name = "btn_crear_categoria";
+            this.btn_crear_categoria.Size = new System.Drawing.Size(251, 35);
+            this.btn_crear_categoria.TabIndex = 47;
+            this.btn_crear_categoria.Text = "AGREGAR CATEGORIA";
+            this.btn_crear_categoria.TextColor = System.Drawing.Color.Lime;
+            this.btn_crear_categoria.UseVisualStyleBackColor = false;
+            // 
+            // txt_descripcion
+            // 
+            this.txt_descripcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_descripcion.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_descripcion.BorderColor = System.Drawing.Color.Crimson;
+            this.txt_descripcion.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txt_descripcion.BorderRadius = 0;
+            this.txt_descripcion.BorderSize = 2;
+            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txt_descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txt_descripcion.Location = new System.Drawing.Point(6, 114);
+            this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_descripcion.Multiline = false;
+            this.txt_descripcion.Name = "txt_descripcion";
+            this.txt_descripcion.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txt_descripcion.PasswordChar = false;
+            this.txt_descripcion.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txt_descripcion.PlaceholderText = "";
+            this.txt_descripcion.Size = new System.Drawing.Size(276, 39);
+            this.txt_descripcion.TabIndex = 48;
+            this.txt_descripcion.Texts = "";
+            this.txt_descripcion.UnderlinedStyle = false;
+            // 
+            // btn_buscar
+            // 
+            this.btn_buscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_buscar.BackColor = System.Drawing.Color.Green;
+            this.btn_buscar.BackgroundColor = System.Drawing.Color.Green;
+            this.btn_buscar.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btn_buscar.BorderRadius = 6;
+            this.btn_buscar.BorderSize = 2;
+            this.btn_buscar.FlatAppearance.BorderSize = 0;
+            this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buscar.ForeColor = System.Drawing.Color.Lime;
+            this.btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscar.Image")));
+            this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_buscar.Location = new System.Drawing.Point(22, 165);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(243, 35);
+            this.btn_buscar.TabIndex = 50;
+            this.btn_buscar.Text = "BUSCAR";
+            this.btn_buscar.TextColor = System.Drawing.Color.Lime;
+            this.btn_buscar.UseVisualStyleBackColor = false;
+            this.btn_buscar.Visible = false;
+            // 
+            // lbl_crear
+            // 
+            this.lbl_crear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl_crear.AutoSize = true;
+            this.lbl_crear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_crear.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_crear.Location = new System.Drawing.Point(21, 2);
+            this.lbl_crear.Name = "lbl_crear";
+            this.lbl_crear.Size = new System.Drawing.Size(246, 20);
+            this.lbl_crear.TabIndex = 51;
+            this.lbl_crear.Text = "CREAR NUEVA CATEGORÍA";
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rjButton1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.LightSeaGreen;
+            this.rjButton1.BorderColor = System.Drawing.Color.DarkCyan;
+            this.rjButton1.BorderRadius = 10;
+            this.rjButton1.BorderSize = 2;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.rjButton1.Image = ((System.Drawing.Image)(resources.GetObject("rjButton1.Image")));
+            this.rjButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rjButton1.Location = new System.Drawing.Point(19, 25);
+            this.rjButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(250, 38);
+            this.rjButton1.TabIndex = 46;
+            this.rjButton1.Text = "Actualizar grilla";
+            this.rjButton1.TextColor = System.Drawing.Color.PaleTurquoise;
+            this.rjButton1.UseVisualStyleBackColor = false;
+            // 
             // panel_btns
             // 
-            this.panel_btns.BackColor = System.Drawing.Color.Black;
+            this.panel_btns.BackColor = System.Drawing.Color.White;
             this.panel_btns.ColumnCount = 1;
             this.panel_btns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_btns.Controls.Add(this.btn_cancelar, 0, 3);
             this.panel_btns.Controls.Add(this.lbl_edicion, 0, 0);
             this.panel_btns.Controls.Add(this.txt_descripcion_editar, 0, 1);
-            this.panel_btns.Controls.Add(this.btn_buscar, 0, 8);
-            this.panel_btns.Controls.Add(this.btn_actualizar, 0, 7);
-            this.panel_btns.Controls.Add(this.btn_crear_categoria, 0, 6);
-            this.panel_btns.Controls.Add(this.txt_descripcion, 0, 5);
-            this.panel_btns.Controls.Add(this.lbl_crear, 0, 4);
             this.panel_btns.Controls.Add(this.btn_editar_categoria, 0, 2);
+            this.panel_btns.Controls.Add(this.btn_cancelar, 0, 3);
             this.panel_btns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_btns.Location = new System.Drawing.Point(5, 108);
             this.panel_btns.Margin = new System.Windows.Forms.Padding(5);
             this.panel_btns.Name = "panel_btns";
-            this.panel_btns.RowCount = 9;
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.08646F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.10375F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.40922F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.08646F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.40922F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.40922F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.40922F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.08646F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.panel_btns.Size = new System.Drawing.Size(284, 404);
-            this.panel_btns.TabIndex = 16;
-            // 
-            // btn_cancelar
-            // 
-            this.btn_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_cancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cancelar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cancelar.BorderColor = System.Drawing.Color.Red;
-            this.btn_cancelar.BorderRadius = 6;
-            this.btn_cancelar.BorderSize = 2;
-            this.btn_cancelar.FlatAppearance.BorderSize = 0;
-            this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancelar.ForeColor = System.Drawing.Color.Red;
-            this.btn_cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancelar.Location = new System.Drawing.Point(23, 142);
-            this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(238, 28);
-            this.btn_cancelar.TabIndex = 46;
-            this.btn_cancelar.Text = "CANCELAR EDICION";
-            this.btn_cancelar.TextColor = System.Drawing.Color.Red;
-            this.btn_cancelar.UseVisualStyleBackColor = false;
-            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
+            this.panel_btns.RowCount = 4;
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.244376F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.40729F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.40729F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.49728F));
+            this.panel_btns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.44376F));
+            this.panel_btns.Size = new System.Drawing.Size(284, 196);
+            this.panel_btns.TabIndex = 18;
             // 
             // lbl_edicion
             // 
             this.lbl_edicion.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_edicion.AutoSize = true;
             this.lbl_edicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_edicion.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_edicion.Location = new System.Drawing.Point(90, 13);
+            this.lbl_edicion.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_edicion.Location = new System.Drawing.Point(90, 7);
             this.lbl_edicion.Name = "lbl_edicion";
             this.lbl_edicion.Size = new System.Drawing.Size(104, 25);
             this.lbl_edicion.TabIndex = 43;
@@ -371,13 +469,13 @@
             // 
             this.txt_descripcion_editar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_descripcion_editar.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_descripcion_editar.BorderColor = System.Drawing.Color.SeaGreen;
+            this.txt_descripcion_editar.BorderColor = System.Drawing.Color.Crimson;
             this.txt_descripcion_editar.BorderFocusColor = System.Drawing.Color.HotPink;
             this.txt_descripcion_editar.BorderRadius = 0;
             this.txt_descripcion_editar.BorderSize = 2;
             this.txt_descripcion_editar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.txt_descripcion_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_descripcion_editar.Location = new System.Drawing.Point(4, 42);
+            this.txt_descripcion_editar.Location = new System.Drawing.Point(4, 36);
             this.txt_descripcion_editar.Margin = new System.Windows.Forms.Padding(4);
             this.txt_descripcion_editar.Multiline = false;
             this.txt_descripcion_editar.Name = "txt_descripcion_editar";
@@ -390,118 +488,12 @@
             this.txt_descripcion_editar.Texts = "";
             this.txt_descripcion_editar.UnderlinedStyle = false;
             // 
-            // btn_buscar
-            // 
-            this.btn_buscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_buscar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_buscar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_buscar.BorderColor = System.Drawing.Color.Lime;
-            this.btn_buscar.BorderRadius = 6;
-            this.btn_buscar.BorderSize = 2;
-            this.btn_buscar.FlatAppearance.BorderSize = 0;
-            this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar.ForeColor = System.Drawing.Color.Lime;
-            this.btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscar.Image")));
-            this.btn_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_buscar.Location = new System.Drawing.Point(24, 383);
-            this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(236, 18);
-            this.btn_buscar.TabIndex = 45;
-            this.btn_buscar.Text = "BUSCAR";
-            this.btn_buscar.TextColor = System.Drawing.Color.Lime;
-            this.btn_buscar.UseVisualStyleBackColor = false;
-            this.btn_buscar.Visible = false;
-            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
-            // 
-            // btn_actualizar
-            // 
-            this.btn_actualizar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_actualizar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_actualizar.BorderColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_actualizar.BorderRadius = 10;
-            this.btn_actualizar.BorderSize = 2;
-            this.btn_actualizar.FlatAppearance.BorderSize = 0;
-            this.btn_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_actualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_actualizar.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_actualizar.Image")));
-            this.btn_actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_actualizar.Location = new System.Drawing.Point(29, 342);
-            this.btn_actualizar.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_actualizar.Name = "btn_actualizar";
-            this.btn_actualizar.Size = new System.Drawing.Size(225, 37);
-            this.btn_actualizar.TabIndex = 13;
-            this.btn_actualizar.Text = "Actualizar grilla";
-            this.btn_actualizar.TextColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_actualizar.UseVisualStyleBackColor = false;
-            this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
-            // 
-            // btn_crear_categoria
-            // 
-            this.btn_crear_categoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_crear_categoria.BackColor = System.Drawing.Color.Transparent;
-            this.btn_crear_categoria.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_crear_categoria.BorderColor = System.Drawing.Color.Lime;
-            this.btn_crear_categoria.BorderRadius = 7;
-            this.btn_crear_categoria.BorderSize = 2;
-            this.btn_crear_categoria.FlatAppearance.BorderSize = 0;
-            this.btn_crear_categoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_crear_categoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_categoria.ForeColor = System.Drawing.Color.Lime;
-            this.btn_crear_categoria.Image = ((System.Drawing.Image)(resources.GetObject("btn_crear_categoria.Image")));
-            this.btn_crear_categoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_crear_categoria.Location = new System.Drawing.Point(16, 290);
-            this.btn_crear_categoria.Name = "btn_crear_categoria";
-            this.btn_crear_categoria.Size = new System.Drawing.Size(251, 31);
-            this.btn_crear_categoria.TabIndex = 27;
-            this.btn_crear_categoria.Text = "AGREGAR CATEGORIA";
-            this.btn_crear_categoria.TextColor = System.Drawing.Color.Lime;
-            this.btn_crear_categoria.UseVisualStyleBackColor = false;
-            this.btn_crear_categoria.Click += new System.EventHandler(this.btn_crear_categoria_Click);
-            // 
-            // txt_descripcion
-            // 
-            this.txt_descripcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_descripcion.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_descripcion.BorderColor = System.Drawing.Color.SeaGreen;
-            this.txt_descripcion.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txt_descripcion.BorderRadius = 0;
-            this.txt_descripcion.BorderSize = 2;
-            this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txt_descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txt_descripcion.Location = new System.Drawing.Point(4, 236);
-            this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_descripcion.Multiline = false;
-            this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_descripcion.PasswordChar = false;
-            this.txt_descripcion.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txt_descripcion.PlaceholderText = "";
-            this.txt_descripcion.Size = new System.Drawing.Size(276, 39);
-            this.txt_descripcion.TabIndex = 39;
-            this.txt_descripcion.Texts = "";
-            this.txt_descripcion.UnderlinedStyle = false;
-            // 
-            // lbl_crear
-            // 
-            this.lbl_crear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbl_crear.AutoSize = true;
-            this.lbl_crear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_crear.ForeColor = System.Drawing.Color.Gold;
-            this.lbl_crear.Location = new System.Drawing.Point(19, 212);
-            this.lbl_crear.Name = "lbl_crear";
-            this.lbl_crear.Size = new System.Drawing.Size(246, 20);
-            this.lbl_crear.TabIndex = 44;
-            this.lbl_crear.Text = "CREAR NUEVA CATEGORÍA";
-            // 
             // btn_editar_categoria
             // 
             this.btn_editar_categoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_editar_categoria.BackColor = System.Drawing.Color.Transparent;
-            this.btn_editar_categoria.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_editar_categoria.BorderColor = System.Drawing.Color.Lime;
+            this.btn_editar_categoria.BackColor = System.Drawing.Color.Green;
+            this.btn_editar_categoria.BackgroundColor = System.Drawing.Color.Green;
+            this.btn_editar_categoria.BorderColor = System.Drawing.Color.ForestGreen;
             this.btn_editar_categoria.BorderRadius = 6;
             this.btn_editar_categoria.BorderSize = 2;
             this.btn_editar_categoria.FlatAppearance.BorderSize = 0;
@@ -510,18 +502,38 @@
             this.btn_editar_categoria.ForeColor = System.Drawing.Color.Lime;
             this.btn_editar_categoria.Image = ((System.Drawing.Image)(resources.GetObject("btn_editar_categoria.Image")));
             this.btn_editar_categoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_editar_categoria.Location = new System.Drawing.Point(23, 87);
+            this.btn_editar_categoria.Location = new System.Drawing.Point(23, 89);
             this.btn_editar_categoria.Name = "btn_editar_categoria";
-            this.btn_editar_categoria.Size = new System.Drawing.Size(238, 28);
+            this.btn_editar_categoria.Size = new System.Drawing.Size(238, 32);
             this.btn_editar_categoria.TabIndex = 41;
             this.btn_editar_categoria.Text = "EDITAR CATEGORÍA";
             this.btn_editar_categoria.TextColor = System.Drawing.Color.Lime;
             this.btn_editar_categoria.UseVisualStyleBackColor = false;
-            this.btn_editar_categoria.Click += new System.EventHandler(this.btn_editar_categoria_Click);
+            // 
+            // btn_cancelar
+            // 
+            this.btn_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_cancelar.BackColor = System.Drawing.Color.Salmon;
+            this.btn_cancelar.BackgroundColor = System.Drawing.Color.Salmon;
+            this.btn_cancelar.BorderColor = System.Drawing.Color.DarkRed;
+            this.btn_cancelar.BorderRadius = 6;
+            this.btn_cancelar.BorderSize = 2;
+            this.btn_cancelar.FlatAppearance.BorderSize = 0;
+            this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.btn_cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_cancelar.Location = new System.Drawing.Point(23, 143);
+            this.btn_cancelar.Name = "btn_cancelar";
+            this.btn_cancelar.Size = new System.Drawing.Size(238, 36);
+            this.btn_cancelar.TabIndex = 46;
+            this.btn_cancelar.Text = "CANCELAR EDICION";
+            this.btn_cancelar.TextColor = System.Drawing.Color.DarkRed;
+            this.btn_cancelar.UseVisualStyleBackColor = false;
             // 
             // panel_filter
             // 
-            this.panel_filter.BackColor = System.Drawing.Color.Black;
+            this.panel_filter.BackColor = System.Drawing.Color.White;
             this.panel_filter.ColumnCount = 1;
             this.panel_filter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_filter.Controls.Add(this.lbl_search, 0, 0);
@@ -548,7 +560,7 @@
             this.lbl_search.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbl_search.AutoSize = true;
             this.lbl_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_search.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_search.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_search.Location = new System.Drawing.Point(73, 7);
             this.lbl_search.Name = "lbl_search";
             this.lbl_search.Size = new System.Drawing.Size(137, 25);
@@ -599,7 +611,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Violet;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv_categorias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_categorias.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgv_categorias.BackgroundColor = System.Drawing.Color.White;
             this.dgv_categorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_categorias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_categorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -705,6 +717,8 @@
             this.panel_bot.PerformLayout();
             this.panel_mid.ResumeLayout(false);
             this.panel_midizq.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panel_btns.ResumeLayout(false);
             this.panel_btns.PerformLayout();
             this.panel_filter.ResumeLayout(false);
@@ -734,30 +748,31 @@
         private System.Windows.Forms.Panel panel_main;
         private System.Windows.Forms.TableLayoutPanel panel_retoque;
         private System.Windows.Forms.TableLayoutPanel panel_mid;
-        private System.Windows.Forms.TableLayoutPanel panel_midizq;
-        private System.Windows.Forms.TableLayoutPanel panel_btns;
-        private RJCodeAdvance.RJControls.RJButton btn_crear_categoria;
-        private CustomBox.RJControls.RJButton btn_actualizar;
-        private System.Windows.Forms.TableLayoutPanel panel_filter;
-        private System.Windows.Forms.Label lbl_crear;
-        private System.Windows.Forms.Label lbl_edicion;
-        private System.Windows.Forms.Label lbl_search;
-        private System.Windows.Forms.TextBox txt_search;
-        private CustomBox.RJControls.RJTextBox txt_descripcion;
-        private CustomBox.RJControls.RJTextBox txt_descripcion_editar;
-        private RJCodeAdvance.RJControls.RJButton btn_editar_categoria;
-        private CustomBox.RJControls.RJTextBox txt_id;
         private System.Windows.Forms.DataGridView dgv_categorias;
         private System.Windows.Forms.TableLayoutPanel panel_bot;
         private System.Windows.Forms.Label lbl_updateversion;
         private System.Windows.Forms.Label lbl_updatetime;
-        private RJCodeAdvance.RJControls.RJButton btn_buscar;
-        private RJCodeAdvance.RJControls.RJButton btn_cancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewImageColumn btn_editar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.TableLayoutPanel panel_midizq;
+        private System.Windows.Forms.TableLayoutPanel panel_filter;
+        private System.Windows.Forms.Label lbl_search;
+        private System.Windows.Forms.TextBox txt_search;
+        private CustomBox.RJControls.RJTextBox txt_id;
+        private System.Windows.Forms.TableLayoutPanel panel_btns;
+        private System.Windows.Forms.Label lbl_edicion;
+        private CustomBox.RJControls.RJTextBox txt_descripcion_editar;
+        private RJCodeAdvance.RJControls.RJButton btn_editar_categoria;
+        private RJCodeAdvance.RJControls.RJButton btn_cancelar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private RJCodeAdvance.RJControls.RJButton btn_crear_categoria;
+        private CustomBox.RJControls.RJTextBox txt_descripcion;
+        private RJCodeAdvance.RJControls.RJButton btn_buscar;
+        private System.Windows.Forms.Label lbl_crear;
+        private CustomBox.RJControls.RJButton rjButton1;
     }
 }

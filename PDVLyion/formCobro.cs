@@ -13,6 +13,7 @@ namespace POSLyion
     {
         private readonly decimal montoEfectivo = 0m;
         public decimal total = 0;
+        public decimal totalsindesc = 0;
         public decimal vuelto = 0;
         public bool venta_cerrada = false;
         public string NotasVenta;
@@ -26,6 +27,7 @@ namespace POSLyion
         {
             InitializeComponent();
             total = p_total;
+            totalsindesc = p_total;
             Cliente = cliente;
             NotasVenta = string.Empty;
             KeyPreview = true;
@@ -34,20 +36,30 @@ namespace POSLyion
 
         private void formCobro_Load(object sender, EventArgs e)
         {
+            lbl_textcondesc.Visible = false;
+            total_completo.Visible = false;
             lbl_nombre_cliente.Visible = false;
             lbl_cliente_seleccionado.Visible = false;
             btn_tipo_venta.Visible = false;
+            lbl_totaldesc.Visible = false;
+            lbl_textporc.Visible = false;
 
             if (Cliente != null && Cliente.Id_cliente != 0)
             {
                 lbl_nombre_cliente.Visible = true;
                 lbl_cliente_seleccionado.Visible = true;
                 btn_tipo_venta.Visible = true;
+                lbl_totaldesc.Visible = true;
+                lbl_textcondesc.Visible = true;
+                total_completo.Visible = true;
+                lbl_textporc.Visible = true;
                 CargarDatosCliente();
             }
 
-            lbl_suma_total.Text = $"${Convert.ToString(total)}";
-            txt_dinero_entregado.Text = lbl_suma_total.Text;
+            
+            lbl_total.Text = $"${Convert.ToString(total)}";
+            total_completo.Text = $"${Convert.ToString(totalsindesc)}";
+            txt_dinero_entregado.Text = lbl_total.Text;
             lista_tipos_venta = new CN_TiposVenta().Leer();
             TipoVenta = lista_tipos_venta.Where(t => t.Id == 1).FirstOrDefault();
         }
@@ -58,6 +70,12 @@ namespace POSLyion
             if (Cliente.Descuento > 0)
             {
                 total -= total * (Convert.ToDecimal(Cliente.Descuento) / 100);
+                lbl_totaldesc.Text = Cliente.Descuento.ToString() + "%";
+            }
+            else
+            {
+                total -= total;
+                lbl_totaldesc.Text = "SIN DESCUENTOS";
             }
         }
 
@@ -83,7 +101,7 @@ namespace POSLyion
         private void btn_cobrar_imprimir_Click(object sender, EventArgs e)
         {
             ImprimirTicket = true;
-            var montoTotalVenta = lbl_suma_total.Text;
+            var montoTotalVenta = lbl_total.Text;
             var sumaTotal = Convert.ToDecimal(montoTotalVenta.Replace("$", "").Trim());
             var lblDineroEntregado = txt_dinero_entregado.Text.Replace("$", "").Trim();
             decimal dineroEntregado;
@@ -189,7 +207,7 @@ namespace POSLyion
                 btn_tipo_venta.Text = "VENTA\nEN\nEFECTIVO\n(F3)";
                 lbl_paga_con.Text = "Venta a crédito";
                 txt_dinero_entregado.Text = "$0";
-                lbl_vuelto.Visible = false;
+                lbl_vueltex.Visible = false;
                 lbl_cambio.Visible = false;
                 txt_dinero_entregado.Visible = false;
                 _ventaACredito = true;
@@ -199,8 +217,8 @@ namespace POSLyion
             {
                 btn_tipo_venta.Text = "VENTA\nA\nCREDITO\n(F3)";
                 lbl_paga_con.Text = "Venta en efectivo - Paga con:";
-                txt_dinero_entregado.Text = lbl_suma_total.Text;
-                lbl_vuelto.Visible = true;
+                txt_dinero_entregado.Text = lbl_total.Text;
+                lbl_vueltex.Visible = true;
                 lbl_cambio.Visible = true;
                 txt_dinero_entregado.Visible = true;
                 _ventaACredito = false;
@@ -241,7 +259,7 @@ namespace POSLyion
         private void btn_cobrar_sin_imprimir_Click(object sender, EventArgs e)
         {
             ImprimirTicket = false;
-            var montoTotalVenta = lbl_suma_total.Text;
+            var montoTotalVenta = lbl_total.Text;
             var sumaTotal = Convert.ToDecimal(montoTotalVenta.Replace("$", "").Trim());
             var lblDineroEntregado = txt_dinero_entregado.Text.Replace("$", "").Trim();
             decimal dineroEntregado;
@@ -273,6 +291,34 @@ namespace POSLyion
                 Close();
             }
         }
+
+        private void txt_dinero_entregado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                decimal precio;
+                decimal pagado;
+
+                if (decimal.TryParse(lbl_total.Text, out precio) && decimal.TryParse(txt_dinero_entregado.Text, out pagado))
+                {
+                    if (pagado >= precio)
+                    {
+                        decimal vuelto = pagado - precio;
+                        lbl_vuelto.Text = "Recibes " + vuelto.ToString("C2") + " de vuelto.";
+                    }
+                    else
+                    {
+                        decimal faltante = precio - pagado;
+                        lbl_cambio.Text = "Faltan " + faltante.ToString("C2") + " para completar el pago.";
+                    }
+                }
+                else
+                {
+                    lbl_cambio.Text = "Introduce valores válidos.";
+                }
+            }
+        }
+
     }
 }
 

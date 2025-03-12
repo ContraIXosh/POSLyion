@@ -47,11 +47,11 @@
             // 
             this.lbl_nombre_usuario.AutoSize = true;
             this.lbl_nombre_usuario.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_nombre_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nombre_usuario.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_nombre_usuario.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nombre_usuario.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_nombre_usuario.Location = new System.Drawing.Point(292, 64);
             this.lbl_nombre_usuario.Name = "lbl_nombre_usuario";
-            this.lbl_nombre_usuario.Size = new System.Drawing.Size(76, 20);
+            this.lbl_nombre_usuario.Size = new System.Drawing.Size(84, 23);
             this.lbl_nombre_usuario.TabIndex = 2;
             this.lbl_nombre_usuario.Text = "Usuario:";
             // 
@@ -59,11 +59,11 @@
             // 
             this.lbl_clave.AutoSize = true;
             this.lbl_clave.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_clave.ForeColor = System.Drawing.Color.Gold;
+            this.lbl_clave.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_clave.ForeColor = System.Drawing.Color.OrangeRed;
             this.lbl_clave.Location = new System.Drawing.Point(291, 138);
             this.lbl_clave.Name = "lbl_clave";
-            this.lbl_clave.Size = new System.Drawing.Size(107, 20);
+            this.lbl_clave.Size = new System.Drawing.Size(116, 23);
             this.lbl_clave.TabIndex = 3;
             this.lbl_clave.Text = "Contraseña:";
             // 
@@ -72,7 +72,7 @@
             this.notice.AutoSize = true;
             this.notice.BackColor = System.Drawing.Color.Transparent;
             this.notice.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notice.ForeColor = System.Drawing.Color.White;
+            this.notice.ForeColor = System.Drawing.Color.Black;
             this.notice.Location = new System.Drawing.Point(295, 210);
             this.notice.Name = "notice";
             this.notice.Size = new System.Drawing.Size(263, 32);
@@ -81,7 +81,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Crimson;
+            this.panel1.BackColor = System.Drawing.Color.DarkOrange;
             this.panel1.Controls.Add(this.rjCircularPictureBox1);
             this.panel1.Location = new System.Drawing.Point(-1, 1);
             this.panel1.Name = "panel1";
@@ -128,12 +128,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Swis721 Hv BT", 26.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Crimson;
             this.label1.Location = new System.Drawing.Point(341, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 44);
+            this.label1.Size = new System.Drawing.Size(189, 42);
             this.label1.TabIndex = 18;
             this.label1.Text = "POSLyion";
             // 
@@ -163,8 +163,8 @@
             // 
             // btn_cerrar
             // 
-            this.btn_cerrar.BackColor = System.Drawing.Color.Crimson;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Crimson;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Red;
             this.btn_cerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
             this.btn_cerrar.BorderRadius = 10;
@@ -190,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(588, 304);
             this.ControlBox = false;

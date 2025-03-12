@@ -75,7 +75,7 @@
             // 
             // panel_main
             // 
-            this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_main.BackColor = System.Drawing.Color.White;
             this.panel_main.Controls.Add(this.btn_reiniciar_datos);
             this.panel_main.Controls.Add(this.btn_guardar);
             this.panel_main.Controls.Add(this.btn_cerrar);
@@ -87,31 +87,32 @@
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(889, 514);
             this.panel_main.TabIndex = 0;
+            this.panel_main.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_main_Paint);
             // 
             // btn_reiniciar_datos
             // 
-            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.BackColor = System.Drawing.Color.Gold;
+            this.btn_reiniciar_datos.BackgroundColor = System.Drawing.Color.Gold;
+            this.btn_reiniciar_datos.BorderColor = System.Drawing.Color.OrangeRed;
             this.btn_reiniciar_datos.BorderRadius = 10;
             this.btn_reiniciar_datos.BorderSize = 2;
             this.btn_reiniciar_datos.FlatAppearance.BorderSize = 0;
             this.btn_reiniciar_datos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reiniciar_datos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.ForeColor = System.Drawing.Color.OrangeRed;
             this.btn_reiniciar_datos.Location = new System.Drawing.Point(379, 468);
             this.btn_reiniciar_datos.Name = "btn_reiniciar_datos";
             this.btn_reiniciar_datos.Size = new System.Drawing.Size(150, 36);
             this.btn_reiniciar_datos.TabIndex = 15;
             this.btn_reiniciar_datos.Text = "Reiniciar datos";
-            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.Yellow;
+            this.btn_reiniciar_datos.TextColor = System.Drawing.Color.OrangeRed;
             this.btn_reiniciar_datos.UseVisualStyleBackColor = false;
             this.btn_reiniciar_datos.Click += new System.EventHandler(this.btn_reiniciar_datos_Click);
             // 
             // btn_guardar
             // 
-            this.btn_guardar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_guardar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_guardar.BackColor = System.Drawing.Color.Green;
+            this.btn_guardar.BackgroundColor = System.Drawing.Color.Green;
             this.btn_guardar.BorderColor = System.Drawing.Color.Lime;
             this.btn_guardar.BorderRadius = 10;
             this.btn_guardar.BorderSize = 2;
@@ -130,36 +131,36 @@
             // 
             // btn_cerrar
             // 
-            this.btn_cerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btn_cerrar.BorderColor = System.Drawing.Color.Red;
+            this.btn_cerrar.BackColor = System.Drawing.Color.Tomato;
+            this.btn_cerrar.BackgroundColor = System.Drawing.Color.Tomato;
+            this.btn_cerrar.BorderColor = System.Drawing.Color.DarkRed;
             this.btn_cerrar.BorderRadius = 10;
             this.btn_cerrar.BorderSize = 2;
             this.btn_cerrar.FlatAppearance.BorderSize = 0;
             this.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.ForeColor = System.Drawing.Color.Red;
+            this.btn_cerrar.ForeColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.Location = new System.Drawing.Point(727, 468);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(150, 36);
             this.btn_cerrar.TabIndex = 13;
             this.btn_cerrar.Text = "Cerrar";
-            this.btn_cerrar.TextColor = System.Drawing.Color.Red;
+            this.btn_cerrar.TextColor = System.Drawing.Color.Maroon;
             this.btn_cerrar.UseVisualStyleBackColor = false;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
             // panel_crimconfg
             // 
-            this.panel_crimconfg.BackColor = System.Drawing.Color.Crimson;
+            this.panel_crimconfg.BackColor = System.Drawing.Color.Coral;
             this.panel_crimconfg.Controls.Add(this.panel_config);
-            this.panel_crimconfg.Location = new System.Drawing.Point(12, 272);
+            this.panel_crimconfg.Location = new System.Drawing.Point(12, 281);
             this.panel_crimconfg.Name = "panel_crimconfg";
             this.panel_crimconfg.Size = new System.Drawing.Size(865, 174);
             this.panel_crimconfg.TabIndex = 11;
             // 
             // panel_config
             // 
-            this.panel_config.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_config.BackColor = System.Drawing.Color.Tomato;
             this.panel_config.Controls.Add(this.txt_precio_mayorista);
             this.panel_config.Controls.Add(this.lbl_precio_mayorista);
             this.panel_config.Controls.Add(this.txt_precio_minorista);
@@ -214,11 +215,11 @@
             // lbl_config
             // 
             this.lbl_config.AutoSize = true;
-            this.lbl_config.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_config.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_config.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_config.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_config.Location = new System.Drawing.Point(3, 10);
             this.lbl_config.Name = "lbl_config";
-            this.lbl_config.Size = new System.Drawing.Size(342, 26);
+            this.lbl_config.Size = new System.Drawing.Size(429, 31);
             this.lbl_config.TabIndex = 10;
             this.lbl_config.Text = "CONFIGURACIÓN DEL PRODUCTO";
             // 
@@ -247,26 +248,26 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(274, 9);
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label3.Location = new System.Drawing.Point(229, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(342, 31);
+            this.label3.Size = new System.Drawing.Size(452, 42);
             this.label3.TabIndex = 11;
             this.label3.Text = "CREAR NUEVO PRODUCTO";
             // 
             // panel_crimdesc
             // 
-            this.panel_crimdesc.BackColor = System.Drawing.Color.Crimson;
+            this.panel_crimdesc.BackColor = System.Drawing.Color.Coral;
             this.panel_crimdesc.Controls.Add(this.panel_desc);
-            this.panel_crimdesc.Location = new System.Drawing.Point(12, 44);
+            this.panel_crimdesc.Location = new System.Drawing.Point(12, 54);
             this.panel_crimdesc.Name = "panel_crimdesc";
             this.panel_crimdesc.Size = new System.Drawing.Size(865, 222);
             this.panel_crimdesc.TabIndex = 10;
             // 
             // panel_desc
             // 
-            this.panel_desc.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel_desc.BackColor = System.Drawing.Color.Tomato;
             this.panel_desc.Controls.Add(this.txt_stock_minimo);
             this.panel_desc.Controls.Add(this.txt_descripcion);
             this.panel_desc.Controls.Add(this.txt_cantidad);
@@ -304,9 +305,11 @@
             // 
             // txt_cantidad
             // 
+            this.txt_cantidad.Enabled = false;
             this.txt_cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_cantidad.Location = new System.Drawing.Point(610, 83);
             this.txt_cantidad.Name = "txt_cantidad";
+            this.txt_cantidad.ReadOnly = true;
             this.txt_cantidad.Size = new System.Drawing.Size(241, 33);
             this.txt_cantidad.TabIndex = 22;
             this.txt_cantidad.Text = "0";
@@ -314,11 +317,11 @@
             // lbl_prod
             // 
             this.lbl_prod.AutoSize = true;
-            this.lbl_prod.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_prod.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_prod.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_prod.ForeColor = System.Drawing.Color.DarkRed;
             this.lbl_prod.Location = new System.Drawing.Point(3, 14);
             this.lbl_prod.Name = "lbl_prod";
-            this.lbl_prod.Size = new System.Drawing.Size(202, 26);
+            this.lbl_prod.Size = new System.Drawing.Size(253, 31);
             this.lbl_prod.TabIndex = 21;
             this.lbl_prod.Text = "PRODUCTO NUEVO";
             // 
@@ -343,13 +346,13 @@
             // 
             // cbox_estado
             // 
-            this.cbox_estado.BackColor = System.Drawing.Color.Crimson;
+            this.cbox_estado.BackColor = System.Drawing.Color.LavenderBlush;
             this.cbox_estado.BorderColor = System.Drawing.Color.GhostWhite;
             this.cbox_estado.BorderSize = 1;
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbox_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold);
-            this.cbox_estado.ForeColor = System.Drawing.Color.NavajoWhite;
-            this.cbox_estado.IconColor = System.Drawing.Color.NavajoWhite;
+            this.cbox_estado.ForeColor = System.Drawing.Color.OrangeRed;
+            this.cbox_estado.IconColor = System.Drawing.Color.OrangeRed;
             this.cbox_estado.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_estado.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_estado.Location = new System.Drawing.Point(8, 172);
@@ -373,13 +376,13 @@
             // 
             // cbox_tipo
             // 
-            this.cbox_tipo.BackColor = System.Drawing.Color.Crimson;
+            this.cbox_tipo.BackColor = System.Drawing.Color.LavenderBlush;
             this.cbox_tipo.BorderColor = System.Drawing.Color.GhostWhite;
             this.cbox_tipo.BorderSize = 1;
             this.cbox_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cbox_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold);
-            this.cbox_tipo.ForeColor = System.Drawing.Color.NavajoWhite;
-            this.cbox_tipo.IconColor = System.Drawing.Color.NavajoWhite;
+            this.cbox_tipo.ForeColor = System.Drawing.Color.OrangeRed;
+            this.cbox_tipo.IconColor = System.Drawing.Color.OrangeRed;
             this.cbox_tipo.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbox_tipo.ListTextColor = System.Drawing.Color.DimGray;
             this.cbox_tipo.Location = new System.Drawing.Point(311, 82);

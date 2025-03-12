@@ -126,7 +126,7 @@
             // 
             // panelgrid
             // 
-            this.panelgrid.BackColor = System.Drawing.Color.Crimson;
+            this.panelgrid.BackColor = System.Drawing.Color.OrangeRed;
             this.panelgrid.ColumnCount = 1;
             this.panelgrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panelgrid.Controls.Add(this.dgv_clientes, 0, 1);
@@ -146,22 +146,22 @@
             this.dgv_clientes.AllowUserToAddRows = false;
             this.dgv_clientes.AllowUserToDeleteRows = false;
             this.dgv_clientes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepPink;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Moccasin;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.OrangeRed;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Crimson;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dgv_clientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_clientes.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgv_clientes.BackgroundColor = System.Drawing.Color.White;
             this.dgv_clientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_clientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_clientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkViolet;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkViolet;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_clientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_clientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -171,10 +171,10 @@
             this.telefono,
             this.descuento});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LemonChiffon;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkMagenta;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.OrangeRed;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Crimson;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_clientes.DefaultCellStyle = dataGridViewCellStyle3;
@@ -247,7 +247,7 @@
             // 
             // panel_ttop
             // 
-            this.panel_ttop.BackColor = System.Drawing.Color.Black;
+            this.panel_ttop.BackColor = System.Drawing.Color.Salmon;
             this.panel_ttop.Controls.Add(this.label1);
             this.panel_ttop.Controls.Add(this.txt_busqueda);
             this.panel_ttop.Dock = System.Windows.Forms.DockStyle.Fill;

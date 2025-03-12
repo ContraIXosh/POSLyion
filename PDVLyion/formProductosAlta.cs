@@ -284,5 +284,10 @@ namespace POSLyion
                 Close();
             }
         }
+
+        private void panel_main_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
